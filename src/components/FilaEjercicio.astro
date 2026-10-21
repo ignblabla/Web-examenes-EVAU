@@ -1,0 +1,59 @@
+---
+// Ejercicio suelto en el listado por tema: coordenada | enunciado | datos.
+// Enlaza al ejercicio dentro de su examen, con la solución tapada como siempre.
+import Icono from './Icono.astro';
+import { nombreBloque, type Asignatura } from '../config/asignaturas';
+import { urlExamen, nombreConvocatoria, type Examen, type EjercicioIdx } from '../lib/examenes';
+interface Props { asignatura: Asignatura; examen: Examen; ejercicio: EjercicioIdx }
+const { asignatura: a, examen: e, ejercicio: ej } = Astro.props;
+const texto = ej.texto.length > 180 ? `${ej.texto.slice(0, 180).trimEnd()}…` : ej.texto;
+---
+<li class="fj" data-anio={e.data.anio} data-convocatoria={e.data.convocatoria} data-tema={ej.tema ?? ''}>
+  <span class="fj__coord num">{ej.id}</span>
+  <div class="fj__cuerpo">
+    <h3 class="fj__titulo">
+      <a href={`${urlExamen(e)}#ej-${ej.id}`}>
+        {ej.tema ? nombreBloque(a, ej.tema) : 'Ejercicio'} · {nombreConvocatoria(e.data.convocatoria)} {e.data.anio}
+      </a>
+    </h3>
+    <p class="fj__txt">{texto}</p>
+    <p class="fj__datos">
+      <span>{ej.apartados.length ? `${ej.apartados.length} apartados` : 'Sin apartados'}</span>
+      {ej.puntos && <span class="num">{ej.puntos} puntos</span>}
+      <span class="fj__ir">Ir al ejercicio <Icono nombre="flecha" tamano={14} /></span>
+    </p>
+  </div>
+</li>
+
+<style>
+  .fj {
+    position: relative;
+    display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: var(--s-3);
+    padding: var(--s-4) 0;
+    border-bottom: var(--b-hair) solid var(--rule-ink);
+    transition: background-color var(--dur-2) var(--ease-out);
+  }
+  .fj:hover { background: var(--fill); }
+  .fj__coord {
+    align-self: start;
+    font: 800 var(--t-lg)/1 var(--f-frame); font-stretch: var(--stretch-frame);
+    color: var(--acc); padding-top: 0.1rem;
+  }
+  .fj__titulo { font: 650 var(--t-md)/1.25 var(--f-frame); font-stretch: 88%; }
+  .fj__titulo a { text-decoration: none; }
+  .fj__titulo a::after { content: ''; position: absolute; inset: 0; }
+  .fj__titulo a:focus-visible { outline: none; }
+  .fj:has(a:focus-visible) { outline: 2px solid var(--acc); outline-offset: 2px; }
+  .fj__txt { margin-top: var(--s-1); font-size: var(--t-sm); line-height: 1.5; color: var(--ink-2); max-width: 70ch; }
+  .fj__datos {
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); margin-top: var(--s-2);
+    font: 600 var(--t-xs)/1.2 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2);
+  }
+  .fj__ir { display: inline-flex; align-items: center; gap: 0.3em; color: var(--ink); }
+  .fj:hover .fj__ir { text-decoration: underline; }
+  @media (min-width: 48rem) {
+    .fj { grid-template-columns: 4rem minmax(0, 1fr); gap: var(--s-5); padding-right: var(--s-3); }
+    .fj__coord { font-size: var(--t-xl); }
+  }
+</style>

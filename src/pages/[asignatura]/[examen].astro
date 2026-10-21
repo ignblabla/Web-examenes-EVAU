@@ -1,0 +1,306 @@
+---
+import 'katex/dist/katex.min.css';
+import '../../styles/examen.css';
+import '../../styles/imprimir.css';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icono from '../../components/Icono.astro';
+import Cronometro from '../../components/Cronometro.astro';
+import IndiceEjercicios from '../../components/IndiceEjercicios.astro';
+import { getAsignatura, nombreBloque, estiloAcento } from '../../config/asignaturas';
+import { examenes, estructura, urlExamen, slugExamen, nombreConvocatoria, type Examen } from '../../lib/examenes';
+
+export async function getStaticPaths() {
+  const todos = (await examenes()).filter((e) => e.data.resuelto);
+  return todos.map((e) => ({ params: { asignatura: e.data.asignatura, examen: slugExamen(e) }, props: { examen: e } }));
+}
+
+const { examen: e } = Astro.props as { examen: Examen };
+const asig = getAsignatura(e.data.asignatura)!;
+const { Content } = await render(e);
+const bloques = estructura(e.body);
+const nEj = bloques.reduce((n, b) => n + b.ejercicios.length, 0);
+const conv = nombreConvocatoria(e.data.convocatoria);
+
+// Anterior / siguiente dentro de la asignatura (solo resueltos)
+const hermanos = (await examenes(asig.slug)).filter((x) => x.data.resuelto);
+const i = hermanos.findIndex((x) => x.id === e.id);
+const anterior = hermanos[i + 1]; // más antiguo
+const siguiente = hermanos[i - 1]; // más reciente
+
+// Otros exámenes con ejercicios del mismo bloque temático
+const relacionados = e.data.bloques
+  .map((b) => ({
+    bloque: b,
+    nombre: nombreBloque(asig, b),
+    items: hermanos
+      .filter((x) => x.id !== e.id)
+      .map((x) => ({
+        examen: x,
+        ejercicios: estructura(x.body).flatMap((bl) => bl.ejercicios).filter((ej) => ej.tema === b),
+      }))
+      .filter((r) => r.ejercicios.length),
+  }))
+  .filter((r) => r.items.length);
+
+const titulo = `Examen PEvAU ${asig.nombreCorto} ${e.data.anio} ${conv} resuelto | Andalucía`;
+const descripcion = `${e.data.titulo} resuelto paso a paso: ${nEj} ejercicios con solución, puntuación por apartado y cronómetro de ${e.data.duracion} minutos.`;
+---
+<Base titulo={titulo} descripcion={descripcion} asignatura={asig} seccion="asignaturas">
+  <div class="wrap examen" data-examen={e.id}>
+    <nav class="migas" aria-label="Migas de pan">
+      <ol>
+        <li><a href="/">Inicio</a></li>
+        <li><a href={`/${asig.slug}/`}>{asig.nombreCorto}</a></li>
+        <li aria-current="page">{e.data.anio} · {conv}</li>
+      </ol>
+    </nav>
+
+    <header class="ex-cab">
+      <h1 class="display ex-cab__h1">
+        <span class="sr-only">Examen PEvAU resuelto: </span>
+        {asig.nombreCorto} <span class="ex-cab__anio num">{e.data.anio}</span>
+        <span class="ex-cab__conv">Convocatoria {conv.toLowerCase()}</span>
+      </h1>
+
+      <div class="ex-cab__rejilla">
+        <dl class="form ex-form">
+          <div class="form__campo"><dt class="form__rotulo">Asignatura</dt><dd class="form__valor">{asig.nombreCorto}</dd></div>
+          <div class="form__campo"><dt class="form__rotulo">Convocatoria</dt><dd class="form__valor">{conv} · {e.data.anio}</dd></div>
+          <div class="form__campo"><dt class="form__rotulo">Duración</dt><dd class="form__valor num">{e.data.duracion} min</dd></div>
+          <div class="form__campo"><dt class="form__rotulo">Ejercicios</dt><dd class="form__valor">{e.data.responder ?? `${nEj} ejercicios`}</dd></div>
+          <Cronometro duracion={e.data.duracion} />
+        </dl>
+
+        <div class="ex-lateral">
+          <div class="ex-acciones">
+            {e.data.pdf_oficial && (
+              <a class="btn" href={e.data.pdf_oficial}><Icono nombre="documento" /> Enunciado PDF</a>
+            )}
+            <details class="imprimir">
+              <summary class="btn"><Icono nombre="imprimir" /> Imprimir</summary>
+              <div class="imprimir__menu">
+                <button type="button" data-imprimir="sin">Sin soluciones<span>Para hacerlo en papel</span></button>
+                <button type="button" data-imprimir="con">Con soluciones<span>Para repasar</span></button>
+              </div>
+            </details>
+            <button class="btn btn--sutil ex-acciones__todas" type="button" data-todas aria-pressed="false">
+              <Icono nombre="ojo" /> <span data-todas-txt>Destapar todas</span>
+            </button>
+          </div>
+          <div class="instr">
+            <span class="instr__titulo">Instrucciones</span>
+            <p>{e.data.responder ? `${e.data.responder}. ` : ''}Cada ejercicio vale 2,5 puntos; la puntuación de cada apartado figura en la columna de la derecha.</p>
+            <p class="instr__practica"><span class="casilla" aria-hidden="true"></span> Modo práctica: las soluciones están tapadas. Inténtalo primero y destapa solo el apartado que quieras comprobar.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="ex-layout">
+      <IndiceEjercicios bloques={bloques} />
+
+      <div class="ex-cuerpo">
+        <nav class="saltos" aria-label="Saltar a un bloque">
+          <ul>
+            {bloques.map((b) => <li><a href={`#bloque-${b.id}`} data-salto={b.id}><span class="sr-only">Bloque </span>{b.id}</a></li>)}
+          </ul>
+          <label class="saltos__sel">
+            <span class="sr-only">Ir a un ejercicio o apartado</span>
+            <select data-ir>
+              <option value="">Ir a</option>
+              {bloques.map((b) => (
+                <optgroup label={`Bloque ${b.id} · ${b.titulo}`}>
+                  {b.ejercicios.flatMap((ej) => [
+                    <option value={`ej-${ej.id}`}>Ejercicio {ej.id}</option>,
+                    ...ej.apartados.map((ap) => <option value={ap.id}>&nbsp;&nbsp;{ap.coord}</option>),
+                  ])}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+          <span class="saltos__crono num" data-crono-mini hidden aria-hidden="true"></span>
+        </nav>
+
+        <article class="doc" aria-label={e.data.titulo}>
+          <Content />
+        </article>
+
+        <nav class="ex-nav" aria-label="Otros exámenes de la asignatura">
+          {anterior ? (
+            <a class="ex-nav__item" href={urlExamen(anterior)} rel="prev">
+              <span class="form__rotulo"><Icono nombre="flecha-izq" tamano={14} /> Examen anterior</span>
+              <span class="ex-nav__titulo">{anterior.data.anio} · {nombreConvocatoria(anterior.data.convocatoria)}</span>
+            </a>
+          ) : <span class="ex-nav__item ex-nav__item--vacio"><span class="form__rotulo">Examen anterior</span><span class="ex-nav__titulo">No hay más antiguos resueltos</span></span>}
+          {siguiente ? (
+            <a class="ex-nav__item ex-nav__item--sig" href={urlExamen(siguiente)} rel="next">
+              <span class="form__rotulo">Examen siguiente <Icono nombre="flecha" tamano={14} /></span>
+              <span class="ex-nav__titulo">{siguiente.data.anio} · {nombreConvocatoria(siguiente.data.convocatoria)}</span>
+            </a>
+          ) : <span class="ex-nav__item ex-nav__item--sig ex-nav__item--vacio"><span class="form__rotulo">Examen siguiente</span><span class="ex-nav__titulo">Es el más reciente</span></span>}
+        </nav>
+
+        {relacionados.length > 0 && (
+          <section class="relacionados" aria-labelledby="rel-titulo">
+            <div class="seccion-cab"><h2 id="rel-titulo">Practica el mismo bloque</h2><p>Otros exámenes de {asig.nombreCorto}</p></div>
+            <dl class="relacionados__lista">
+              {relacionados.map((r) => (
+                <div class="relacionados__fila">
+                  <dt class="caps">{r.nombre}</dt>
+                  <dd>
+                    {r.items.map((it) => (
+                      <span class="relacionados__item">
+                        <a href={urlExamen(it.examen)}>{it.examen.data.anio} · {nombreConvocatoria(it.examen.data.convocatoria)}</a>
+                        {it.ejercicios.map((ej) => <a class="etiqueta etiqueta--tinta" href={`${urlExamen(it.examen)}#ej-${ej.id}`}>{ej.id}</a>)}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+        <a class="btn ex-volver" href={`/${asig.slug}/`}><Icono nombre="flecha-izq" /> Todos los exámenes de {asig.nombreCorto}</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="solapa" data-solapa hidden aria-label="Dónde lo dejaste">
+    <Icono nombre="marcador" class="solapa__icono" />
+    <a href="#" data-solapa-ir>Seguir donde lo dejaste <b class="num" data-solapa-coord></b></a>
+    <button type="button" class="solapa__cerrar" data-solapa-cerrar aria-label="Cerrar aviso"><Icono nombre="cerrar" tamano={18} /></button>
+  </aside>
+  <p class="sr-only" role="status" aria-live="polite" data-anuncio></p>
+</Base>
+
+<script>
+  import { initExamen } from '../../lib/examen';
+  initExamen();
+</script>
+
+<style>
+  .ex-cab { margin-top: var(--s-4); }
+  .ex-cab__h1 { font-size: var(--t-2xl); }
+  .ex-cab__anio { color: var(--acc); }
+  .ex-cab__conv { display: block; font-size: 0.62em; margin-top: 0.12em; color: var(--ink-2); }
+  .ex-cab__rejilla { display: grid; gap: var(--s-4); margin-top: var(--s-5); }
+  .ex-lateral { display: grid; gap: var(--s-4); align-content: start; }
+  .ex-acciones { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .ex-acciones > * { flex: 1 1 auto; }
+  .ex-acciones__todas { flex-basis: 100%; }
+  .instr p + p { margin-top: var(--s-2); }
+  .instr__practica { display: flex; gap: var(--s-2); align-items: baseline; color: var(--ink); }
+
+  .imprimir { position: relative; }
+  .imprimir > summary { list-style: none; width: 100%; }
+  .imprimir > summary::-webkit-details-marker { display: none; }
+  .imprimir__menu {
+    position: absolute; z-index: 20; top: calc(100% + var(--s-1)); right: 0; min-width: min(15rem, calc(100vw - 2rem));
+    background: var(--paper-2); border: var(--b-form) solid var(--rule-ink); box-shadow: var(--shadow-float);
+  }
+  .imprimir__menu button {
+    display: grid; width: 100%; text-align: left; gap: 0.15rem;
+    padding: var(--s-3) var(--s-4); background: none; border: 0;
+    font: 700 var(--t-sm)/1.2 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: var(--track-caps);
+  }
+  .imprimir__menu button + button { border-top: var(--b-hair) solid var(--rule); }
+  .imprimir__menu button span { font: 400 var(--t-sm)/1.3 var(--f-read); text-transform: none; letter-spacing: 0; color: var(--ink-2); }
+  .imprimir__menu button:hover { background: var(--fill); }
+
+  .ex-layout { margin-top: var(--s-6); }
+  .ex-cuerpo { min-width: 0; }
+
+  /* Tira de saltos: el índice compacto del móvil, pegada arriba al hacer scroll */
+  .saltos {
+    position: sticky; top: 0; z-index: 15;
+    display: flex; align-items: stretch;
+    margin: 0 calc(var(--gutter) * -1) var(--s-5);
+    padding: 0 var(--gutter);
+    background: var(--paper);
+    border-bottom: var(--b-form) solid var(--rule-ink);
+  }
+  .saltos ul { display: flex; flex: none; list-style: none; padding: 0; border-left: var(--b-form) solid var(--rule-ink); }
+  @media (max-width: 22.5rem) { .saltos ul a { min-width: 2rem; } .saltos__sel select { padding: 0 1.5rem 0 var(--s-2); background-position: right 0.35rem center; } .saltos__crono { padding-inline: var(--s-2); font-size: var(--t-base); } }
+  .saltos a {
+    display: grid; place-items: center;
+    min-width: 2.75rem; min-height: 2.75rem;
+    border-right: var(--b-hair) solid var(--rule-ink);
+    font: 800 var(--t-sm)/1 var(--f-frame);
+    text-decoration: none;
+  }
+  .saltos a:hover { background: var(--fill); }
+  .saltos a[aria-current='true'] { background: var(--acc); color: var(--on-acc); }
+  .saltos__sel { flex: 1 1 0; display: flex; min-width: 3.5rem; }
+  .saltos__sel select { text-overflow: clip; overflow: hidden; white-space: nowrap; }
+  .saltos__crono { flex: none; }
+  .saltos__sel select {
+    appearance: none; width: 100%; min-width: 0;
+    padding: 0 2.25rem 0 var(--s-3);
+    border: 0; border-right: var(--b-form) solid var(--rule-ink); border-radius: 0;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23777' stroke-width='1.75'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E") no-repeat right 0.6rem center;
+    font: 700 var(--t-sm)/1 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: var(--track-caps);
+  }
+  .saltos__crono {
+    display: flex; align-items: center; padding: 0 var(--s-3);
+    font: 800 var(--t-md)/1 var(--f-frame);
+    border-right: var(--b-form) solid var(--rule-ink);
+  }
+  .saltos__crono[data-aviso='poco'] { color: var(--warn); }
+  .saltos__crono[data-aviso='fin'] { background: var(--alarm); color: var(--paper); }
+
+  .ex-nav { display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--s-8); border: var(--b-form) solid var(--rule-ink); }
+  .ex-nav__item { display: grid; gap: var(--s-1); padding: var(--s-3) var(--s-4) var(--s-4); text-decoration: none; min-width: 0; }
+  .ex-nav__item .form__rotulo { display: flex; align-items: center; gap: var(--s-1); }
+  .ex-nav__item--sig { border-left: var(--b-hair) solid var(--rule-ink); text-align: right; }
+  .ex-nav__item--sig .form__rotulo { justify-content: flex-end; }
+  a.ex-nav__item:hover { background: var(--fill); }
+  .ex-nav__titulo { font: 750 var(--t-md)/1.15 var(--f-frame); font-stretch: var(--stretch-frame); text-transform: uppercase; }
+  .ex-nav__item--vacio .ex-nav__titulo { font: 400 var(--t-sm)/1.3 var(--f-read); text-transform: none; color: var(--ink-3); }
+
+  .relacionados { margin-top: var(--s-7); }
+  .relacionados__lista { display: grid; }
+  .relacionados__fila { display: grid; gap: var(--s-2); padding: var(--s-3) 0; border-bottom: var(--b-hair) solid var(--rule); }
+  .relacionados__fila dt { font-size: var(--t-sm); }
+  .relacionados__fila dd { display: grid; gap: var(--s-2); }
+  .relacionados__item { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
+  .relacionados__item > a:first-child { font: 650 var(--t-base)/1.2 var(--f-frame); font-stretch: 88%; margin-right: var(--s-2); }
+  .relacionados__item .etiqueta { text-decoration: none; min-height: 2rem; padding-inline: 0.65em; }
+  .relacionados__item .etiqueta:hover { background: var(--ink); color: var(--paper); }
+  .ex-volver { margin-top: var(--s-6); max-width: 100%; white-space: normal; text-align: left; line-height: 1.2; padding-block: var(--s-2); }
+
+  .solapa {
+    position: fixed; z-index: 40;
+    left: var(--gutter); right: var(--gutter); bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
+    display: flex; align-items: center; gap: var(--s-3);
+    max-width: 26rem; margin-inline: auto;
+    padding: var(--s-2) var(--s-2) var(--s-2) var(--s-4);
+    background: var(--ink); color: var(--paper);
+    box-shadow: var(--shadow-float);
+    animation: solapa var(--dur-3) var(--ease-out) both;
+  }
+  :global(.solapa__icono) { flex: none; color: var(--acc); width: 1.25rem; }
+  .solapa a {
+    flex: 1; min-height: 2.75rem; display: flex; align-items: center; gap: var(--s-2);
+    font: 700 var(--t-sm)/1.1 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: var(--track-caps); color: inherit; text-decoration: none;
+  }
+  .solapa a:focus-visible, .solapa button:focus-visible { outline-color: var(--paper); }
+  .solapa b { color: var(--paper); border: var(--b-hair) solid currentColor; padding: 0.2em 0.4em; }
+  .solapa__cerrar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; background: none; border: 0; color: inherit; }
+  @keyframes solapa { from { translate: 0 120%; } to { translate: 0 0; } }
+
+  @media (min-width: 48rem) {
+    .ex-cab__rejilla { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+    .ex-acciones__todas { flex-basis: auto; }
+    .relacionados__fila { grid-template-columns: 13rem minmax(0, 1fr); gap: var(--s-4); }
+  }
+  @media (min-width: 64rem) {
+    .ex-layout { display: grid; grid-template-columns: 14.5rem minmax(0, 1fr); gap: var(--s-7); }
+    .ex-cuerpo { max-width: 52rem; }
+    .saltos { display: none; }
+    .solapa { left: auto; right: var(--gutter); margin: 0; }
+  }
+</style>

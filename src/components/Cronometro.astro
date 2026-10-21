@@ -1,0 +1,62 @@
+---
+// Temporizador del simulacro: vive en el campo "Hora" de la carátula.
+// La lógica está en src/lib/examen.ts (initCronometro).
+import Icono from './Icono.astro';
+interface Props { duracion: number }
+const { duracion } = Astro.props;
+const mm = String(duracion).padStart(2, '0');
+---
+<div class="form__campo form__campo--ancho crono" data-crono data-duracion={duracion} data-estado="parado">
+  <div class="crono__lectura">
+    <dt class="form__rotulo">Hora · Simulacro de examen</dt>
+    <dd>
+      <span class="crono__tiempo num" data-crono-tiempo role="timer" aria-label={`Tiempo restante: ${duracion} minutos`}>{mm}:00</span>
+      <span class="crono__estado" data-crono-estado>Sin empezar · {duracion} minutos</span>
+    </dd>
+  </div>
+  <div class="crono__botones">
+    <button class="btn btn--acc" type="button" data-crono-accion="alternar">
+      <Icono nombre="play" class="crono__ico-play" /><Icono nombre="pausa" class="crono__ico-pausa" />
+      <span data-crono-txt>Empezar</span>
+    </button>
+    <button class="btn btn--sutil crono__reiniciar" type="button" data-crono-accion="reiniciar" aria-label="Reiniciar el cronómetro" hidden>
+      <Icono nombre="reiniciar" />
+    </button>
+  </div>
+  <div class="crono__barra" aria-hidden="true"><span data-crono-barra></span></div>
+</div>
+
+<style>
+  .crono {
+    position: relative;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+    padding-bottom: var(--s-4);
+  }
+  .crono__lectura { min-width: 0; }
+  .crono dd { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s-3); }
+  .crono__tiempo {
+    font: 800 2.5rem/1 var(--f-frame);
+    font-stretch: var(--stretch-frame);
+    letter-spacing: 0.01em;
+    margin-top: 0.1rem;
+  }
+  .crono__estado {
+    font: 600 var(--t-xs)/1.2 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--ink-3);
+  }
+  .crono__botones { display: flex; gap: var(--s-2); flex: none; }
+  :global(.crono__ico-pausa) { display: none; }
+  .crono[data-estado='corriendo'] :global(.crono__ico-pausa) { display: block; }
+  .crono[data-estado='corriendo'] :global(.crono__ico-play) { display: none; }
+  .crono[data-estado='corriendo'] .btn--acc { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  /* El tiempo consumido se marca como una regla que avanza bajo el campo */
+  .crono__barra { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--fill); }
+  .crono__barra span { display: block; height: 100%; width: 0; background: var(--acc); transition: width 1s linear; }
+  .crono[data-aviso='poco'] .crono__tiempo { color: var(--warn); }
+  .crono[data-aviso='poco'] .crono__barra span { background: var(--warn); }
+  .crono[data-aviso='fin'] .crono__tiempo, .crono[data-aviso='fin'] .crono__estado { color: var(--alarm); }
+  .crono[data-aviso='fin'] .crono__barra span { background: var(--alarm); }
+
+  @media (min-width: 48rem) { .crono__tiempo { font-size: 3rem; } }
+</style>

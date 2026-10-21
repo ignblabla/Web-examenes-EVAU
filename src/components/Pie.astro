@@ -1,0 +1,29 @@
+---
+import { asignaturas } from '../config/asignaturas';
+const disponibles = asignaturas.filter((a) => a.disponible);
+---
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie__rejilla">
+      <div>
+        <h2>PEvAU Resueltos</h2>
+        <p>Exámenes de la PEvAU de Andalucía resueltos paso a paso. Soluciones de María Luisa Aguirre, profesora y graduada en Física. Web de Ignacio Blanquero.</p>
+      </div>
+      <div>
+        <h2>Asignaturas</h2>
+        <ul>{disponibles.map((a) => <li><a href={`/${a.slug}/`}>{a.nombreCorto}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>El proyecto</h2>
+        <ul>
+          <li><a href="/sobre/">Sobre el proyecto</a></li>
+          <li><a href="/buscar/">Buscar ejercicios</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie__legal">
+      Prototipo de diseño: los recuentos, enunciados y soluciones son contenido de ejemplo.
+      Proyecto independiente, sin vínculo con las universidades andaluzas; los enunciados oficiales pertenecen a sus autores y se enlazan en su PDF original.
+    </p>
+  </div>
+</footer>

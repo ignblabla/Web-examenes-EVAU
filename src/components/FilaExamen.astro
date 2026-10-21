@@ -1,0 +1,105 @@
+---
+// Tarjeta de examen como fila de registro: convocatoria | título y bloques | datos | estado.
+import Icono from './Icono.astro';
+import { getAsignatura, nombreBloque, estiloAcento } from '../config/asignaturas';
+import { urlExamen, nombreConvocatoria, contarEjercicios, type Examen } from '../lib/examenes';
+interface Props { examen: Examen; mostrarAsignatura?: boolean; mostrarAnio?: boolean; nivel?: 'h3' | 'h4' }
+const { examen: e, mostrarAsignatura = false, mostrarAnio = true, nivel = 'h3' } = Astro.props;
+const asig = getAsignatura(e.data.asignatura)!;
+const n = contarEjercicios(e);
+const H = nivel;
+---
+<li
+  class:list={['fe', { 'fe--pendiente': !e.data.resuelto }]}
+  data-acento
+  style={estiloAcento(asig)}
+  data-anio={e.data.anio}
+  data-convocatoria={e.data.convocatoria}
+  data-bloques={e.data.bloques.join(' ')}
+>
+  <span class="fe__conv">
+    {mostrarAsignatura && <span class="fe__asig">{asig.nombreCorto}</span>}
+    <span>{nombreConvocatoria(e.data.convocatoria)}</span>
+    {mostrarAnio && <span class="num fe__anio">{e.data.anio}</span>}
+  </span>
+  <div class="fe__cuerpo">
+    <H class="fe__titulo">
+      {e.data.resuelto
+        ? <a href={urlExamen(e)}>{e.data.titulo}</a>
+        : <span>{e.data.titulo}</span>}
+    </H>
+    <p class="fe__bloques"><span class="sr-only">Bloques temáticos: </span>{e.data.bloques.map((b) => nombreBloque(asig, b)).join(' · ')}</p>
+  </div>
+  <div class="fe__datos">
+    <span class="fe__estado">
+      <span class="casilla" data-estado={e.data.resuelto ? 'hecho' : 'pendiente'} aria-hidden="true"></span>
+      {e.data.resuelto ? `Resuelto · ${n} ejercicios` : 'Resolución en preparación'}
+    </span>
+    <span class="fe__dur num">{e.data.duracion} min</span>
+    {e.data.pdf_oficial && (
+      <a class="fe__pdf" href={e.data.pdf_oficial} aria-label={`Enunciado oficial en PDF: ${e.data.titulo}`}>
+        PDF<Icono nombre="externo" tamano={14} />
+      </a>
+    )}
+  </div>
+</li>
+
+<style>
+  .fe {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-2);
+    padding: var(--s-4) 0;
+    border-bottom: var(--b-hair) solid var(--rule-ink);
+    transition: background-color var(--dur-2) var(--ease-out);
+  }
+  .fe:hover:not(.fe--pendiente) { background: var(--fill); }
+  .fe__conv {
+    display: flex; gap: var(--s-2); align-items: baseline;
+    font: 700 var(--t-xs)/1.1 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: var(--track-caps);
+    color: var(--acc);
+  }
+  .fe__asig { color: var(--ink); }
+  .fe__anio { color: var(--ink-3); }
+  .fe__titulo { font: 650 var(--t-md)/1.25 var(--f-frame); font-stretch: 88%; }
+  .fe__titulo a { text-decoration: none; }
+  .fe__titulo a::after { content: ''; position: absolute; inset: 0; }
+  .fe__titulo a:focus-visible { outline: none; }
+  .fe:has(.fe__titulo a:focus-visible) { outline: 2px solid var(--acc); outline-offset: 2px; }
+  .fe__titulo a:hover { text-decoration: underline; }
+  .fe__bloques {
+    margin-top: var(--s-1);
+    font: 600 var(--t-xs)/1.4 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2);
+  }
+  .fe__datos {
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4);
+    font: 600 var(--t-xs)/1.2 var(--f-frame); font-stretch: var(--stretch-frame);
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-2);
+  }
+  .fe__estado { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--ink); }
+  .fe__pdf {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: 0.3em;
+    min-height: 2.75rem; padding-inline: var(--s-2);
+    margin-block: calc(var(--s-3) * -1);
+    color: var(--ink); text-decoration: none;
+  }
+  .fe__pdf:hover { text-decoration: underline; }
+  .fe--pendiente .fe__titulo { color: var(--ink-2); }
+  .fe--pendiente .fe__estado { color: var(--ink-2); }
+
+  @media (min-width: 48rem) {
+    .fe {
+      grid-template-columns: 9rem minmax(0, 1fr) 15rem;
+      gap: var(--s-5);
+      align-items: start;
+      padding: var(--s-4) var(--s-3) var(--s-4) 0;
+    }
+    .fe__conv { flex-direction: column; gap: var(--s-1); padding-top: 0.2rem; }
+    .fe__datos { flex-direction: column; align-items: flex-start; gap: var(--s-2); padding-top: 0.2rem; }
+    .fe__pdf { margin: calc(var(--s-3) * -1) 0 calc(var(--s-3) * -1) calc(var(--s-2) * -1); }
+  }
+</style>

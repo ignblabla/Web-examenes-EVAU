@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Tokens · El cuadernillo oficial
+   Tintas cerradas: papel, tinta (3 niveles), filete, relleno y UN acento
+   por asignatura. No se inventan tonos intermedios fuera de esta lista.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Papel y tinta */
+  --paper: #F6F7F5;
+  --paper-2: #FFFFFF;          /* hojas elevadas: menús, solapa, campos */
+  --fill: #E7ECF1;             /* casillas rellenas, filas de tabla alternas */
+  --ink: #14171C;
+  --ink-2: #454C56;            /* texto secundario · 8.1:1 sobre papel */
+  --ink-3: #5F6670;            /* metadatos pequeños · 5.6:1 sobre papel */
+  --rule: #C5CBD2;             /* filete fino */
+  --rule-ink: var(--ink);      /* filete de formulario */
+
+  /* Acento de asignatura: lo inyecta `estiloAcento()` desde la config.
+     Sin asignatura, el acento es la propia tinta. */
+  --acc-l: #14171C;
+  --acc-d: #E6E9ED;
+  --acc: var(--acc-l);
+  --on-acc: #FFFFFF;
+
+  /* Estados funcionales (independientes de la asignatura) */
+  --ok: #1E6B3A;
+  --warn: #8A5A00;
+  --alarm: #B3261E;
+
+  /* Tipografía */
+  --f-frame: 'Archivo Variable', 'Archivo', 'Arial Narrow', sans-serif;
+  --f-read: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
+  --f-num: var(--f-frame);
+
+  --t-2xs: 0.6875rem;  /* 11 · rótulos de casilla */
+  --t-xs: 0.75rem;     /* 12 */
+  --t-sm: 0.875rem;    /* 14 */
+  --t-base: 1.0625rem; /* 17 · lectura en móvil */
+  --t-md: 1.1875rem;   /* 19 */
+  --t-lg: 1.375rem;    /* 22 */
+  --t-xl: 1.75rem;     /* 28 */
+  --t-2xl: clamp(2.125rem, 1.6rem + 2.4vw, 3rem);    /* 34 → 48 */
+  --t-3xl: clamp(2.75rem, 1.7rem + 5.2vw, 5.5rem);   /* 44 → 88 · portada */
+
+  --lh-read: 1.62;
+  --lh-tight: 0.96;
+  --measure: 68ch;
+
+  /* El marco se compone condensado y en versalitas */
+  --stretch-frame: 78%;
+  --stretch-display: 68%;
+  --track-caps: 0.08em;
+
+  /* Espaciado (base 4) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --gutter: 1rem;
+
+  /* Bordes: el mundo es de esquina viva */
+  --r-0: 0;
+  --r-1: 2px;
+  --b-hair: 1px;
+  --b-form: 1.5px;
+  --b-band: 6px;
+
+  /* Profundidad: solo lo que flota (menús, solapa, barra del cronómetro) */
+  --shadow-float: 0 10px 24px -12px rgb(20 23 28 / 0.35), 0 2px 6px -2px rgb(20 23 28 / 0.12);
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 360ms;
+
+  --header-h: 3.25rem;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --t-base: 1.125rem; /* 18 en escritorio */
+    --gutter: 2rem;
+  }
+}
+
+/* Modo oscuro: papel de noche, tinta clara, acento claro de la config */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --paper: #111418;
+    --paper-2: #181C21;
+    --fill: #1F252C;
+    --ink: #E6E9ED;
+    --ink-2: #B3BAC4;
+    --ink-3: #959DA8;
+    --rule: #39414B;
+    --acc: var(--acc-d);
+    --on-acc: #0B0D10;
+    --ok: #6CCB8C;
+    --warn: #E6B450;
+    --alarm: #FF8A80;
+    --shadow-float: 0 12px 28px -12px rgb(0 0 0 / 0.7), 0 2px 6px -2px rgb(0 0 0 / 0.4);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #111418;
+  --paper-2: #181C21;
+  --fill: #1F252C;
+  --ink: #E6E9ED;
+  --ink-2: #B3BAC4;
+  --ink-3: #959DA8;
+  --rule: #39414B;
+  --acc: var(--acc-d);
+  --on-acc: #0B0D10;
+  --ok: #6CCB8C;
+  --warn: #E6B450;
+  --alarm: #FF8A80;
+  --shadow-float: 0 12px 28px -12px rgb(0 0 0 / 0.7), 0 2px 6px -2px rgb(0 0 0 / 0.4);
+}
+
+/* Un subárbol con acento propio (filas de asignatura en la portada)
+   recalcula --acc a partir de sus --acc-l / --acc-d. */
+[data-acento] { --acc: var(--acc-l); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) [data-acento] { --acc: var(--acc-d); }
+}
+:root[data-theme='dark'] [data-acento] { --acc: var(--acc-d); }

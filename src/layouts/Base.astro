@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
+import '../styles/global.css';
+import Cabecera from '../components/Cabecera.astro';
+import Pie from '../components/Pie.astro';
+import { estiloAcento, type Asignatura } from '../config/asignaturas';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+  asignatura?: Asignatura;
+  seccion?: 'inicio' | 'asignaturas' | 'buscar' | 'sobre';
+  noindex?: boolean;
+}
+const { titulo, descripcion, asignatura, seccion, noindex } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta name="theme-color" content="#F6F7F5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      // Antes de pintar: tema guardado (si lo hay) para no parpadear.
+      try {
+        const t = localStorage.getItem('tema');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <slot name="head" />
+  </head>
+  <body data-acento={asignatura ? '' : undefined} style={asignatura ? estiloAcento(asignatura) : undefined}>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <div class="banda" aria-hidden="true"></div>
+    <Cabecera seccion={seccion} />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Pie />
+    <script>
+      import { initTema } from '../lib/tema';
+      initTema();
+    </script>
+  </body>
+</html>
