@@ -1,254 +1,253 @@
 ---
-import Base from '../../layouts/Base.astro';
-import FilaExamen from '../../components/FilaExamen.astro';
-import FilaEjercicio from '../../components/FilaEjercicio.astro';
-import Icono from '../../components/Icono.astro';
-import { asignaturas, convocatorias, type Asignatura, type Convocatoria } from '../../config/asignaturas';
-import { examenes, contarEjercicios, estructura } from '../../lib/examenes';
+import { getCollection } from "astro:content"
+import Icon from "../../components/Icon.astro"
+import SubjectSymbol from "../../components/SubjectSymbol.astro"
+import { asignaturas, type Asignatura } from "../../data/asignaturas"
+import {
+  cursos,
+  primerAnio,
+  rutaExamen,
+  totalExamenes,
+  ultimoAnio,
+  type Examen,
+} from "../../data/examenes"
+import Base from "../../layouts/Base.astro"
 
 export function getStaticPaths() {
-  return asignaturas.map((a) => ({ params: { asignatura: a.slug }, props: { asignatura: a } }));
+  return asignaturas.map((asignatura) => ({
+    params: { asignatura: asignatura.slug },
+    props: { asignatura },
+  }))
 }
 
-const { asignatura: a } = Astro.props as { asignatura: Asignatura };
-const lista = await examenes(a.slug);
-const resueltos = lista.filter((e) => e.data.resuelto);
-const anios = [...new Set(lista.map((e) => e.data.anio))].sort((x, y) => y - x);
-const convs = [...new Set(lista.map((e) => e.data.convocatoria))] as Convocatoria[];
-const ejercicios = resueltos.reduce((n, e) => n + contarEjercicios(e), 0);
-// Vista "por ejercicio": cada ejercicio resuelto suelto, con su tema, agrupado por año.
-const sueltos = resueltos.flatMap((e) =>
-  estructura(e.body).flatMap((b) => b.ejercicios.map((ej) => ({ examen: e, ejercicio: ej }))),
-);
-const aniosSueltos = [...new Set(sueltos.map((s) => s.examen.data.anio))].sort((x, y) => y - x);
-const otras = asignaturas.filter((x) => x.disponible && x.slug !== a.slug);
+interface Props {
+  asignatura: Asignatura
+}
 
-const titulo = a.disponible
-  ? `Exámenes PEvAU ${a.nombreCorto} resueltos | Andalucía`
-  : `${a.nombreCorto}: exámenes PEvAU en preparación | Andalucía`;
-const descripcion = a.disponible
-  ? `Exámenes de ${a.nombre} de la PEvAU de Andalucía resueltos paso a paso, por año, convocatoria y bloque temático.`
-  : `Estamos preparando los exámenes resueltos de ${a.nombre} de la PEvAU de Andalucía.`;
+const { asignatura } = Astro.props
+const { slug, temas } = asignatura
+
+// Solo se enlazan los exámenes que ya están publicados; el resto se muestran sin enlace.
+const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
+const publicado = (anio: number, e: Examen) => publicados.has(`${slug}/${anio}/${e.slug}`)
+
+// Cada tema tiene su propio tono: una escala del color de la asignatura que
+// va del más intenso (primer tema) al más claro (último), sin repetir ninguno.
+const tono = (i: number) =>
+  `--mix: ${temas.length > 1 ? 100 - (i * 100) / (temas.length - 1) : 100}%`
+
+// La tarjeta final ocupa los huecos que dejan los temas en la última fila.
+const ctaSpan = `--cta-span-3: ${3 - (temas.length % 3)}; --cta-span-2: ${2 - (temas.length % 2)}`
+
+const filas = [
+  { titulo: "Exámenes oficiales", nota: "Ordinaria y extraordinaria", campo: "oficiales" },
+  { titulo: "Exámenes de reserva", nota: "Cuatro modelos por curso", campo: "reservas" },
+] as const
+
+const titulo = `Exámenes de ${asignatura.nombre} resueltos · PEvAU Andalucía ${primerAnio}–${ultimoAnio}`
+const descripcion = `Exámenes de ${asignatura.nombre} de la PEvAU de Andalucía de ${primerAnio} a ${ultimoAnio}: convocatoria ordinaria, extraordinaria y reservas, resueltos paso a paso y organizados por temas.`
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: titulo,
+    description: descripcion,
+    inLanguage: "es",
+    about: asignatura.nombre,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: Astro.site?.href },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: asignatura.nombre,
+        item: new URL(`/${slug}/`, Astro.site).href,
+      },
+    ],
+  },
+]
 ---
-<Base titulo={titulo} descripcion={descripcion} asignatura={a} seccion="asignaturas" noindex={!a.disponible}>
-  <div class="wrap">
-    <nav class="migas" aria-label="Migas de pan">
-      <ol><li><a href="/">Inicio</a></li><li><a href="/#asignaturas">Asignaturas</a></li><li aria-current="page">{a.nombreCorto}</li></ol>
-    </nav>
 
-    <header class="asig-cab">
-      <span class="asig-cab__icono"><Icono nombre={a.icono} tamano={36} /></span>
-      <div>
-        <h1 class="display asig-cab__h1">{a.nombre}</h1>
-        <p class="asig-cab__desc">{a.descripcion}</p>
-      </div>
-    </header>
-
-    {a.disponible && lista.length > 0 ? (
-      <>
-        <dl class="form form--4 asig-datos">
-          <div class="form__campo"><dt class="form__rotulo">Exámenes resueltos</dt><dd class="form__valor form__valor--grande num">{resueltos.length}<small> de {lista.length}</small></dd></div>
-          <div class="form__campo"><dt class="form__rotulo">Ejercicios resueltos</dt><dd class="form__valor form__valor--grande num">{ejercicios}</dd></div>
-          <div class="form__campo"><dt class="form__rotulo">Años</dt><dd class="form__valor form__valor--grande num">{Math.min(...anios)}–{Math.max(...anios)}</dd></div>
-          <div class="form__campo"><dt class="form__rotulo">Bloques temáticos</dt><dd class="form__valor form__valor--grande num">{a.bloques.length}</dd></div>
-        </dl>
-
-        <form class="filtros" data-filtros aria-label="Filtrar exámenes y ejercicios">
-          <fieldset class="campo campo--seg">
-            <legend class="form__rotulo">Ver</legend>
-            <div class="seg">
-              <label><input type="radio" name="ver" value="examenes" checked /><span>Exámenes completos</span></label>
-              <label><input type="radio" name="ver" value="ejercicios" /><span>Ejercicios por tema</span></label>
-            </div>
-          </fieldset>
-          <div class="filtros__fila">
-            <label class="campo">
-              <span class="form__rotulo">Año</span>
-              <select name="anio">
-                <option value="">Todos</option>
-                {anios.map((y) => <option value={y}>{y}</option>)}
-              </select>
-            </label>
-            <fieldset class="campo campo--seg">
-              <legend class="form__rotulo">Convocatoria</legend>
-              <div class="seg">
-                <label><input type="radio" name="convocatoria" value="" checked /><span>Todas</span></label>
-                {convs.map((c) => <label><input type="radio" name="convocatoria" value={c} /><span>{convocatorias[c]}</span></label>)}
-              </div>
-            </fieldset>
-          </div>
-          {a.bloques.length > 0 && (
-            <fieldset class="campo">
-              <legend class="form__rotulo">Bloque temático</legend>
-              <div class="toggles">
-                {a.bloques.map((b) => (
-                  <label class="toggle"><input type="checkbox" name="bloque" value={b.slug} /><span><span class="casilla" aria-hidden="true"></span>{b.nombre}</span></label>
-                ))}
-              </div>
-              <p class="filtros__ayuda">Marca un bloque para practicar solo sus ejercicios, sueltos y de todos los años.</p>
-            </fieldset>
-          )}
-          <div class="filtros__pie">
-            <p class="filtros__cuenta" role="status" aria-live="polite" data-cuenta>{lista.length} exámenes</p>
-            <button class="btn btn--sutil" type="reset">Quitar filtros</button>
-          </div>
-        </form>
-
-        <div class="anios" data-lista>
-          {anios.map((y) => (
-            <section class="anio" data-anio-grupo={y} aria-labelledby={`anio-${y}`}>
-              <h2 class="anio__h display num" id={`anio-${y}`}>{y}</h2>
-              <ul class="lista-limpia">
-                {lista.filter((e) => e.data.anio === y).map((e) => <FilaExamen examen={e} mostrarAnio={false} />)}
-              </ul>
-            </section>
-          ))}
+<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+  <section class="hero subject-hero">
+    <div class="container subject-hero-grid">
+      <div class="hero-copy">
+        <nav class="breadcrumb" aria-label="Ruta">
+          <a href="/">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <a href="/#asignaturas">Asignaturas</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{asignatura.nombre}</span>
+        </nav>
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          {asignatura.nombre} · PEvAU Andalucía
         </div>
-
-        <div class="anios" data-lista-ej hidden>
-          {aniosSueltos.map((y) => (
-            <section class="anio" data-anio-grupo={y} aria-labelledby={`anio-ej-${y}`}>
-              <h2 class="anio__h display num" id={`anio-ej-${y}`}>{y}</h2>
-              <ol class="lista-limpia">
-                {sueltos.filter((s) => s.examen.data.anio === y).map((s) => <FilaEjercicio asignatura={a} {...s} />)}
-              </ol>
-            </section>
-          ))}
-        </div>
-
-        <div class="vacio vacio--filtros" data-vacio hidden>
-          <div class="vacio__hoja" aria-hidden="true">
-            <span></span><span></span><span></span>
+        <h1>
+          {asignatura.titulo}
+          <br />
+          <em>De {primerAnio} a {ultimoAnio}.</em>
+        </h1>
+        <p class="hero-lead">
+          Todas las convocatorias de cada curso, la ordinaria, la extraordinaria y los cuatro
+          exámenes de reserva, y los ejercicios agrupados por temas, con su resolución completa.
+        </p>
+        <dl class="subject-stats">
+          <div>
+            <dt>Cursos</dt>
+            <dd>{cursos.length}</dd>
           </div>
           <div>
-            <h2 class="vacio__titulo" data-vacio-titulo>Nada con estos filtros</h2>
-            <p data-vacio-txt>Prueba con otro año o quita algún bloque temático.</p>
-            <button class="btn btn--tinta" type="button" data-limpiar>Quitar filtros</button>
+            <dt>Exámenes</dt>
+            <dd>{totalExamenes}</dd>
           </div>
+          <div>
+            <dt>Temas</dt>
+            <dd>{temas.length}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <aside
+        class={`subject-panel subject-panel--${asignatura.color}`}
+        aria-label="Convocatorias de cada curso"
+      >
+        <div class="subject-panel-symbol" aria-hidden="true">
+          <SubjectSymbol type={asignatura.simbolo} />
         </div>
-      </>
-    ) : (
-      <section class="vacio vacio--asig" aria-labelledby="vacio-titulo">
-        <div class="vacio__hoja" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
+        <ul class="subject-panel-list">
+          <li>
+            <span>Ordinaria</span>
+            <strong>Junio</strong>
+          </li>
+          <li>
+            <span>Extraordinaria</span>
+            <strong>Julio</strong>
+          </li>
+          <li>
+            <span>Reservas</span>
+            <strong>4 exámenes</strong>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section archive" id="examenes">
+    <div class="container">
+      <div class="section-heading">
         <div>
-          <h2 class="vacio__titulo" id="vacio-titulo">Este cuadernillo todavía está en blanco</h2>
-          <p>
-            Estamos preparando los exámenes resueltos de {a.nombre}. Mientras tanto, puedes practicar con las
-            asignaturas que ya están disponibles.
-          </p>
-          <ul class="vacio__otras">
-            {otras.map((o) => <li><a class="btn" href={`/${o.slug}/`}>{o.nombreCorto}<Icono nombre="flecha" /></a></li>)}
-          </ul>
+          <span class="section-index">01</span>
+          <p class="section-kicker">Archivo por años</p>
         </div>
-      </section>
-    )}
-  </div>
+        <h2>
+          Cada convocatoria.
+          <br />
+          <em>Cada año.</em>
+        </h2>
+        <p>
+          Cada curso tiene una convocatoria ordinaria en junio, una extraordinaria en julio y
+          cuatro exámenes de reserva.
+        </p>
+      </div>
+
+      <div class="archive-columns">
+        {
+          filas.map((fila) => (
+            <article class="archive-panel">
+              <header class="archive-panel-head">
+                <h3>{fila.titulo}</h3>
+                <p>{fila.nota}</p>
+              </header>
+              <ul class="archive-list">
+                {cursos.map((c) => (
+                  <li>
+                    <strong>{c.anio}</strong>
+                    <div class="exam-links">
+                      {c[fila.campo].map((e) => {
+                        const texto = e.titulo.replace("Reserva ", "Res ")
+                        return publicado(c.anio, e) ? (
+                          <a
+                            href={rutaExamen(slug, c.anio, e)}
+                            class={`exam-link exam-link--${e.tipo}`}
+                          >
+                            {texto}
+                          </a>
+                        ) : (
+                          <span
+                            class={`exam-link exam-link--${e.tipo} is-pending`}
+                            title="Próximamente"
+                          >
+                            {texto}
+                          </span>
+                        )
+                      })}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class={`section topics topics--${asignatura.color}`} id="temas">
+    <div class="container">
+      <div class="topics-heading">
+        <div>
+          <span class="section-index section-index--light">02</span>
+          <p class="section-kicker section-kicker--light">Ejercicios resueltos por temas</p>
+        </div>
+        <h2>
+          Practica un tema.
+          <br />
+          <em>Año a año.</em>
+        </h2>
+      </div>
+
+      <div class="topic-grid">
+        {
+          temas.map((t, i) => (
+            <article class="topic-card topic-card--tone" style={tono(i)}>
+              <span class="topic-number">Tema {i + 1}</span>
+              <h3>{t.titulo}</h3>
+              <div class="topic-years">
+                {cursos.map((c) => (
+                  <span class="is-pending" title="Próximamente">
+                    {c.anio}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+        <a href="#examenes" class="topic-card topic-card--cta" style={ctaSpan}>
+          <span class="topic-number">Examen completo</span>
+          <h3>¿Prefieres hacerlo entero?</h3>
+          <span class="topic-cta-link">
+            Ir al archivo por años
+            <span class="topic-cta-arrow">
+              <Icon name="arrow-up-right" />
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container closing-inner">
+      <Icon name="book-open" />
+      <p>¿Preparas otra asignatura? <em>Hay más esperando.</em></p>
+      <a href="/#asignaturas" class="circle-link" aria-label="Ver asignaturas">
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
 </Base>
-
-<script>
-  import { initFiltros } from '../../lib/filtros';
-  initFiltros();
-</script>
-
-<style>
-  .lista-limpia { list-style: none; padding: 0; }
-
-  .asig-cab {
-    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-4);
-    align-items: start;
-    margin-top: var(--s-4);
-  }
-  .asig-cab__icono {
-    display: grid; place-items: center;
-    width: 3.5rem; height: 3.5rem; margin-top: 0.25rem;
-    background: var(--acc); color: var(--on-acc);
-  }
-  .asig-cab__h1 { font-size: var(--t-2xl); max-width: 22ch; }
-  .asig-cab__desc { margin-top: var(--s-3); color: var(--ink-2); max-width: 60ch; }
-  .asig-datos { margin-top: var(--s-5); }
-  .asig-datos small { font-size: var(--t-sm); font-weight: 500; color: var(--ink-3); }
-
-  .filtros {
-    margin-top: var(--s-6);
-    border-top: 3px solid var(--acc);
-    padding-top: var(--s-4);
-    display: grid; gap: var(--s-4);
-  }
-  .filtros fieldset { border: 0; padding: 0; min-width: 0; }
-  .filtros__fila { display: grid; gap: var(--s-4); }
-  .campo { display: grid; gap: var(--s-2); }
-  .campo select {
-    appearance: none;
-    min-height: 2.75rem; padding: 0 2.25rem 0 var(--s-3);
-    border: var(--b-form) solid var(--rule-ink); border-radius: var(--r-0);
-    background: var(--paper-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23777' stroke-width='1.75'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
-    font: 650 var(--t-base)/1 var(--f-frame); font-stretch: 90%;
-  }
-  /* Casillas contiguas que se parten en filas si no caben: los filetes se solapan */
-  .seg { display: flex; flex-wrap: wrap; padding: 0 0 1px 1px; }
-  .seg label { position: relative; border: var(--b-hair) solid var(--rule-ink); margin: 0 0 -1px -1px; }
-  .seg input, .toggle input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .seg span {
-    display: flex; align-items: center; min-height: 2.75rem; padding: 0 var(--s-4);
-    font: 650 var(--t-sm)/1 var(--f-frame); font-stretch: var(--stretch-frame);
-    text-transform: uppercase; letter-spacing: var(--track-caps);
-  }
-  .seg input:checked + span { background: var(--ink); color: var(--paper); }
-  .seg input:focus-visible + span, .toggle input:focus-visible + span { outline: 2px solid var(--acc); outline-offset: 2px; }
-  .seg label:hover span { background: var(--fill); }
-  .seg label:hover input:checked + span { background: var(--ink); }
-
-  .toggles { display: flex; flex-wrap: wrap; gap: var(--s-2); }
-  .toggle { position: relative; }
-  .toggle > span {
-    display: inline-flex; align-items: center; gap: var(--s-2);
-    min-height: 2.75rem; padding: 0 var(--s-3);
-    border: var(--b-hair) solid var(--rule-ink);
-    font: 600 var(--t-sm)/1 var(--f-frame); font-stretch: 85%;
-  }
-  .toggle:hover > span { background: var(--fill); }
-  .toggle input:checked + span { border-color: var(--acc); box-shadow: inset 0 0 0 1px var(--acc); }
-  .toggle input:checked + span .casilla { background: var(--acc); border-color: var(--acc); }
-
-  .filtros__pie { display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); border-top: var(--b-hair) solid var(--rule); padding-top: var(--s-3); }
-  .filtros__cuenta { font: 650 var(--t-sm)/1 var(--f-frame); font-stretch: var(--stretch-frame); text-transform: uppercase; letter-spacing: var(--track-caps); color: var(--ink-2); }
-
-  .anios { margin-top: var(--s-6); display: grid; gap: var(--s-6); }
-  .anio { display: grid; gap: var(--s-2); }
-  .anio__h { font-size: var(--t-2xl); color: var(--ink); border-bottom: var(--b-form) solid var(--rule-ink); padding-bottom: var(--s-2); }
-
-  .vacio {
-    display: grid; gap: var(--s-5); align-items: start;
-    padding: var(--s-6) var(--s-5);
-    border: var(--b-form) dashed var(--ink-2);
-  }
-  .vacio__hoja {
-    width: 7rem; display: grid; gap: var(--s-2);
-    padding: var(--s-3);
-    border: var(--b-form) solid var(--rule-ink);
-    background: var(--paper-2);
-    rotate: -3deg;
-  }
-  .vacio__hoja span { height: 0.625rem; border-bottom: var(--b-hair) dashed var(--ink-3); }
-  .vacio__hoja span:first-child { height: 1.25rem; background: var(--acc); border: 0; }
-  .vacio__titulo {
-    font: 800 var(--t-xl)/1.05 var(--f-frame); font-stretch: var(--stretch-frame);
-    text-transform: uppercase; text-wrap: balance;
-  }
-  .vacio p { margin-top: var(--s-3); color: var(--ink-2); max-width: 55ch; }
-  .vacio .btn { margin-top: var(--s-4); }
-  .vacio--asig, .vacio--filtros { margin-top: var(--s-6); }
-  .filtros__ayuda { margin-top: var(--s-2); font-size: var(--t-sm); font-style: italic; color: var(--ink-3); }
-  .vacio__otras { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-2); }
-
-  @media (min-width: 48rem) {
-    .asig-cab__icono { width: 4.5rem; height: 4.5rem; }
-    .filtros__fila { grid-template-columns: 12rem auto; justify-content: start; gap: var(--s-6); }
-    .anio { grid-template-columns: 8rem minmax(0, 1fr); gap: var(--s-5); }
-    .anio__h { border-bottom: 0; border-top: var(--b-form) solid var(--rule-ink); padding: var(--s-3) 0 0; }
-    .anio .lista-limpia { border-top: var(--b-form) solid var(--rule-ink); }
-    .vacio { grid-template-columns: auto minmax(0, 1fr); gap: var(--s-6); padding: var(--s-7) var(--s-6); }
-  }
-</style>

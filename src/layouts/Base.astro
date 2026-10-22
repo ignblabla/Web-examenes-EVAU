@@ -1,58 +1,46 @@
 ---
-import '@fontsource-variable/archivo/wdth.css';
-import '@fontsource-variable/source-serif-4/opsz.css';
-import '@fontsource-variable/source-serif-4/opsz-italic.css';
-import '../styles/global.css';
-import Cabecera from '../components/Cabecera.astro';
-import Pie from '../components/Pie.astro';
-import { estiloAcento, type Asignatura } from '../config/asignaturas';
+import "../styles/global.css"
+import SiteFooter from "../components/SiteFooter.astro"
+import SiteHeader from "../components/SiteHeader.astro"
 
 interface Props {
-  titulo: string;
-  descripcion: string;
-  asignatura?: Asignatura;
-  seccion?: 'inicio' | 'asignaturas' | 'buscar' | 'sobre';
-  noindex?: boolean;
+  title: string
+  description: string
+  // Datos estructurados (schema.org) de la página, si los tiene.
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
-const { titulo, descripcion, asignatura, seccion, noindex } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, jsonLd } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site)
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{titulo}</title>
-    <meta name="description" content={descripcion} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:title" content={titulo} />
-    <meta property="og:description" content={descripcion} />
-    <meta name="theme-color" content="#F6F7F5" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111418" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script is:inline>
-      // Antes de pintar: tema guardado (si lo hay) para no parpadear.
-      try {
-        const t = localStorage.getItem('tema');
-        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
-      } catch {}
-    </script>
-    <slot name="head" />
+    <meta property="og:site_name" content="Selectividad resuelta" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
-  <body data-acento={asignatura ? '' : undefined} style={asignatura ? estiloAcento(asignatura) : undefined}>
-    <a class="skip" href="#contenido">Saltar al contenido</a>
-    <div class="banda" aria-hidden="true"></div>
-    <Cabecera seccion={seccion} />
-    <main id="contenido">
-      <slot />
-    </main>
-    <Pie />
-    <script>
-      import { initTema } from '../lib/tema';
-      initTema();
-    </script>
+  <body>
+    <div class="site-shell">
+      <SiteHeader />
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
   </body>
 </html>

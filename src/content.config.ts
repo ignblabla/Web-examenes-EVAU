@@ -1,21 +1,22 @@
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { defineCollection, z } from "astro:content"
+import { glob } from "astro/loaders"
 
+// Cada examen es un archivo .mdx en src/content/examenes/<asignatura>/<año>/<convocatoria>.mdx,
+// por ejemplo src/content/examenes/fisica/2026/junio.mdx → /fisica/2026/junio/
 const examenes = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/examenes' }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/examenes" }),
   schema: z.object({
     asignatura: z.string(),
-    anio: z.number().int(),
-    convocatoria: z.enum(['ordinaria', 'extraordinaria', 'junio', 'julio', 'septiembre']),
-    titulo: z.string(),
-    duracion: z.number().int().default(90),
-    pdf_oficial: z.string().optional(),
-    bloques: z.array(z.string()).default([]),
-    /** Instrucción general de la carátula, p. ej. "Un ejercicio de cada bloque". */
-    responder: z.string().optional(),
-    /** false = el enunciado existe pero la resolución está en preparación. */
-    resuelto: z.boolean().default(true),
+    anio: z.number(),
+    convocatoria: z.string(),
+    // Maquetación del enunciado: "normal" (apartados en párrafos) o "sangrado"
+    // (ejercicios A1, A2… con sangría francesa, como en los cursos hasta 2023-2024).
+    // "bloque" (curso 2020-2021): el primer apartado con sangría francesa y los siguientes
+    // como bloques sangrados, en letra estrecha.
+    formato: z.enum(["normal", "sangrado", "bloque"]).default("normal"),
+    // Texto para la meta descripción; si falta se genera uno.
+    descripcion: z.string().optional(),
   }),
-});
+})
 
-export const collections = { examenes };
+export const collections = { examenes }

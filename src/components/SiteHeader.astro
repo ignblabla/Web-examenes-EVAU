@@ -1,0 +1,53 @@
+---
+import Icon from "./Icon.astro"
+import Logo from "./Logo.astro"
+
+// En la portada los enlaces son anclas de la misma página; en el resto
+// de páginas apuntan a esas secciones de la portada.
+const base = Astro.url.pathname === "/" ? "" : "/"
+const links = [
+  { href: `${base}#asignaturas`, label: "Asignaturas" },
+  { href: `${base}#metodo`, label: "Cómo funciona" },
+  { href: `${base}#convocatorias`, label: "Convocatorias" },
+]
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <Logo />
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <a href={`${base}#asignaturas`} class="header-cta">
+      Ver exámenes
+      <Icon name="arrow-up-right" />
+    </a>
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <Icon name="menu" class="menu-icon-open" />
+      <Icon name="close" class="menu-icon-close" />
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" hidden>
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".menu-button")!
+  const nav = document.getElementById("mobile-nav")!
+
+  function setOpen(open: boolean) {
+    nav.hidden = !open
+    button.setAttribute("aria-expanded", String(open))
+    button.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú")
+  }
+
+  button.addEventListener("click", () => setOpen(nav.hidden))
+  nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)))
+</script>

@@ -1,0 +1,30 @@
+---
+import type { Cabecera } from "../../data/cabeceras"
+
+interface Props {
+  cabecera: Cabecera
+}
+
+const { cabecera } = Astro.props
+---
+
+<div class:list={["official-header", { "is-serif": cabecera.serifa }]}>
+  <div class="official-top">
+    <div class="official-logo" aria-hidden="true"></div>
+    <div class="official-title">
+      <p class="official-title-main">
+        {cabecera.titulo.map((linea) => <span>{linea}</span>)}
+      </p>
+      <p class="official-title-scope">{cabecera.ambito}</p>
+      <p class="official-title-year">{cabecera.curso}</p>
+    </div>
+    <p class="official-subject">{cabecera.asignatura}</p>
+  </div>
+
+  <div class:list={["official-instructions", { "is-spaced": cabecera.espaciadas }]}>
+    <p class="official-instructions-label">Instrucciones:</p>
+    <div class="official-instructions-list">
+      {cabecera.instrucciones.map((texto) => <p>{texto}</p>)}
+    </div>
+  </div>
+</div>

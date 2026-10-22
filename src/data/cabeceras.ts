@@ -1,0 +1,131 @@
+// Cabeceras oficiales copiadas de los enunciados, por examen
+// ("asignatura/año/convocatoria"). Solo se muestran en los exámenes que tienen una.
+
+export interface Cabecera {
+  titulo: string[]
+  ambito: string
+  curso: string
+  asignatura: string
+  instrucciones: string[]
+  // Instrucciones separadas por un pequeño espacio, como en algunos cursos.
+  espaciadas?: boolean
+  // Título, curso y asignatura en letra con serifa (curso 2020-2021).
+  serifa?: boolean
+}
+
+const fisica2026: Cabecera = {
+  titulo: ["PRUEBA DE ACCESO A LA UNIVERSIDAD Y PRUEBA DE", "ADMISIÓN"],
+  ambito: "ANDALUCÍA, CEUTA, MELILLA y CENTROS en MARRUECOS",
+  curso: "CURSO 2025-2026",
+  asignatura: "FÍSICA",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 4 ejercicios (un ejercicio por cada bloque A, B, C y D de los cuales uno será obligatorio y tres optativos). El estudiante debe desarrollar un apartado a) y un apartado b) por cada bloque. En caso de responder a dos apartados a) o b) de un mismo bloque en los ejercicios optativos, solo será tenido en cuenta el respondido en primer lugar.",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado a) hasta 1 punto y b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
+const fisica2023: Cabecera = {
+  titulo: ["PRUEBA DE EVALUACIÓN DE BACHILLERATO PARA EL", "ACCESO A LA UNIVERSIDAD Y PRUEBAS DE ADMISIÓN"],
+  ambito: "ANDALUCÍA, CEUTA, MELILLA y CENTROS en MARRUECOS",
+  curso: "CURSO 2022-2023",
+  asignatura: "FÍSICA",
+  espaciadas: true,
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) El examen consta de 8 ejercicios (dos ejercicios por cada bloque A, B, C y D). Debe desarrollar en total cuatro ejercicios, elegidos libremente (puede seleccionar más de un ejercicio por bloque). En caso de responder a más ejercicios de los requeridos, serán tenidos en cuenta los 4 respondidos en primer lugar.",
+    "c) Puede utilizar regla y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "d) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "e) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
+const fisica2021Junio: Cabecera = {
+  titulo: ["PRUEBA DE ACCESO Y ADMISIÓN A LA", "UNIVERSIDAD"],
+  ambito: "ANDALUCÍA, CEUTA, MELILLA y CENTROS en MARRUECOS",
+  curso: "CONVOCATORIA ORDINARIA, CURSO 2020-2021",
+  asignatura: "FÍSICA",
+  espaciadas: true,
+  serifa: true,
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) El examen consta de 8 ejercicios (dos ejercicios por cada bloque A, B, C y D). Debe desarrollar en total cuatro ejercicios, elegidos libremente (puede seleccionar más de un ejercicio por bloque). En caso de responder a más ejercicios de los requeridos, serán tenidos en cuenta los 4 respondidos en primer lugar.",
+    "c) Puede utilizar material de dibujo y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "d) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "e) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
+const fisica2021Julio: Cabecera = {
+  ...fisica2021Junio,
+  curso: "CONVOCATORIA EXTRAORDINARIA, CURSO 2020-2021",
+}
+
+// En el curso 2021-2022 las instrucciones son las mismas que en 2022-2023.
+const fisica2022Junio: Cabecera = {
+  ...fisica2023,
+  curso: "CONVOCATORIA ORDINARIA. CURSO 2021-2022",
+}
+
+const fisica2022Julio: Cabecera = {
+  ...fisica2023,
+  curso: "CONVOCATORIA EXTRAORDINARIA. CURSO 2021-2022",
+}
+
+// En julio de 2023 las instrucciones d) y e) aparecen en un mismo párrafo.
+const fisica2023Julio: Cabecera = {
+  ...fisica2023,
+  instrucciones: [
+    ...fisica2023.instrucciones.slice(0, 3),
+    `${fisica2023.instrucciones[3]} ${fisica2023.instrucciones[4]}`,
+  ],
+}
+
+const fisica2024: Cabecera = {
+  titulo: ["PRUEBA DE EVALUACIÓN DE BACHILLERATO PARA EL", "ACCESO A LA UNIVERSIDAD Y PRUEBAS DE ADMISIÓN"],
+  ambito: "ANDALUCÍA, CEUTA, MELILLA y CENTROS en MARRUECOS",
+  curso: "CURSO 2023-2024",
+  asignatura: "FÍSICA",
+  espaciadas: true,
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 8 ejercicios (dos ejercicios por cada bloque A, B, C y D). El alumno/a debe desarrollar un ejercicio por cada bloque. En caso de responder a más ejercicios de los requeridos, solo será tenido en cuenta el respondido en primer lugar en cada bloque.",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
+const fisica2025: Cabecera = {
+  titulo: ["PRUEBA DE ACCESO A LA UNIVERSIDAD Y PRUEBA DE", "ADMISIÓN"],
+  ambito: "ANDALUCÍA, CEUTA, MELILLA y CENTROS en MARRUECOS",
+  curso: "CURSO 2024-2025",
+  asignatura: "FÍSICA",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 4 ejercicios correspondientes a los bloques A, B, C y D. Cada ejercicio contiene un apartado a) y dos apartados b). El alumno deberá responder al apartado a) y elegir un apartado b) entre los dos propuestos en cada bloque. En caso de responder a los dos apartados b), sólo será tenido en cuenta el respondido en primer lugar",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
+export const cabeceras: Record<string, Cabecera> = {
+  "fisica/2021/junio": fisica2021Junio,
+  "fisica/2021/julio": fisica2021Julio,
+  "fisica/2022/junio": fisica2022Junio,
+  "fisica/2022/julio": fisica2022Julio,
+  "fisica/2023/junio": fisica2023,
+  "fisica/2023/julio": fisica2023Julio,
+  "fisica/2024/junio": fisica2024,
+  "fisica/2024/julio": fisica2024,
+  "fisica/2025/junio": fisica2025,
+  "fisica/2025/julio": fisica2025,
+  "fisica/2026/junio": fisica2026,
+  "fisica/2026/julio": fisica2026,
+}

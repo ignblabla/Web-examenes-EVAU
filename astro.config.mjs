@@ -1,14 +1,22 @@
-import { defineConfig } from 'astro/config';
-import remarkMath from 'remark-math';
-import remarkDirective from 'remark-directive';
-import rehypeKatex from 'rehype-katex';
-import remarkPevau from './src/lib/remark-pevau.mjs';
+import { defineConfig } from 'astro/config'
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import tailwindcss from '@tailwindcss/vite'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  // Dominio definitivo de la web: se usa en las URL canónicas y en el sitemap.
+  site: 'https://selectividadresuelta.es',
   trailingSlash: 'always',
+  devToolbar: { enabled: false },
+  integrations: [mdx(), sitemap()],
   markdown: {
-    remarkPlugins: [remarkMath, remarkDirective, remarkPevau],
-    rehypePlugins: [[rehypeKatex, { strict: false, output: 'htmlAndMathml' }]],
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
-});
+  vite: {
+    plugins: [tailwindcss()],
+  },
+})

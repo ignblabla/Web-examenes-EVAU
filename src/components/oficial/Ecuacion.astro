@@ -1,0 +1,12 @@
+---
+interface Props {
+  nota?: string
+}
+
+const { nota } = Astro.props
+---
+
+<p class="official-equation">
+  <span><slot /></span>
+  {nota && <span>{nota}</span>}
+</p>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  name: "arrow-up-right" | "book-open" | "menu" | "close"
+  class?: string
+}
+
+const { name, class: className } = Astro.props
+---
+
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class={className}>
+  {
+    name === "arrow-up-right" && (
+      <path
+        d="M7 17 17 7M8 7h9v9"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    )
+  }
+  {
+    name === "book-open" && (
+      <path
+        d="M4 5.5c2.8-.7 5.5.1 8 2.1v11c-2.5-2-5.2-2.7-8-2V5.5Zm16 0c-2.8-.7-5.5.1-8 2.1v11c2.5-2 5.2-2.7 8-2V5.5Z"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    )
+  }
+  {
+    name === "menu" && (
+      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    )
+  }
+  {
+    name === "close" && (
+      <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    )
+  }
+</svg>
