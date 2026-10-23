@@ -568,7 +568,7 @@
   background: var(--rose);
 }
 
-.subject-card--chemistry {
+.subject-card--english {
   background: var(--gold);
 }
 
@@ -647,12 +647,12 @@
 }
 
 .geometry-symbol,
-.chemistry-symbol {
+.english-symbol {
   width: 175px;
   color: var(--ink);
 }
 
-.chemistry-symbol {
+.english-symbol {
   width: 155px;
   color: var(--teal);
 }
@@ -1169,17 +1169,17 @@ footer {
 
 .subject-panel--math,
 .subject-panel--math-two,
-.subject-panel--chemistry {
+.subject-panel--english {
   color: var(--ink);
 }
 
 .subject-panel--math { background: var(--blue); }
 .subject-panel--math-two { background: var(--rose); }
-.subject-panel--chemistry { background: var(--gold); }
+.subject-panel--english { background: var(--gold); }
 
 .subject-panel--math .subject-panel-list li,
 .subject-panel--math-two .subject-panel-list li,
-.subject-panel--chemistry .subject-panel-list li {
+.subject-panel--english .subject-panel-list li {
   border-top-color: rgba(23, 44, 39, 0.2);
 }
 
@@ -1391,7 +1391,7 @@ footer {
   --tone-light: #f8dcd5;
 }
 
-.topics--chemistry {
+.topics--english {
   --tone-dark: #d9a12e;
   --tone-light: #f8e8bd;
 }
@@ -1639,7 +1639,7 @@ footer {
 
 .official-top {
   display: grid;
-  grid-template-columns: 110px 1fr 150px;
+  grid-template-columns: 110px 1fr minmax(150px, auto);
   align-items: center;
   min-height: 118px;
   padding: 12px 16px;
@@ -2018,4 +2018,368 @@ footer {
 
 .official-statement--bloque .official-exercise .official-lines p {
   text-indent: 0;
+}
+
+.official-subject span {
+  display: block;
+  white-space: nowrap;
+}
+
+.official-statement--ingles .en-instruction {
+  text-align: left;
+}
+
+/* Formato "ingles": bloques A, B y C con el texto de comprensión en líneas numeradas. */
+.official-statement--ingles {
+  font-size: 14.5px;
+}
+
+.official-statement--ingles p {
+  margin: 0;
+}
+
+.official-statement--ingles .en-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.official-statement--ingles > p:not([class]) {
+  margin-bottom: 12px;
+}
+
+.official-statement--ingles .en-block {
+  margin: 34px 0 18px;
+}
+
+.official-statement--ingles .en-block p,
+.official-statement--ingles .en-text li,
+.official-statement--ingles .en-options span {
+  text-align: left;
+}
+
+.official-statement--ingles .en-task {
+  margin-bottom: 10px;
+}
+
+.official-statement--ingles .en-gap {
+  margin-top: 14px;
+}
+
+.official-statement--ingles .en-heading {
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.official-statement--ingles .en-text {
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+  counter-reset: en-linea;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.official-statement--ingles .en-text li {
+  position: relative;
+  padding-left: 40px;
+  counter-increment: en-linea;
+}
+
+.official-statement--ingles .en-text li::before {
+  content: counter(en-linea);
+  position: absolute;
+  left: 0;
+  width: 18px;
+  text-align: right;
+  text-indent: 0;
+}
+
+.official-statement--ingles .en-text li.is-start {
+  text-indent: 32px;
+}
+
+.official-statement--ingles .en-question {
+  margin-top: 2px;
+}
+
+.official-statement--ingles .en-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  padding-left: 18px;
+}
+
+.official-statement--ingles .en-list > p {
+  margin-bottom: 2px;
+}
+
+.official-statement--ingles .en-sub {
+  padding-left: 18px;
+}
+
+.official-statement--ingles .en-option {
+  margin: 22px 0 6px;
+}
+
+.official-statement--ingles .en-task + .en-option {
+  margin-top: 6px;
+}
+
+.official-statement--ingles .en-bullets {
+  margin: 0 0 22px;
+  padding-left: 46px;
+  list-style: circle;
+}
+
+.official-statement--ingles .en-bullets--disc {
+  list-style: disc;
+}
+
+.official-statement--ingles .en-rewrite > p {
+  margin-bottom: 20px;
+}
+
+/* Si la frase lleva su solución debajo, el espacio lo pone la solución. */
+.official-statement--ingles .en-rewrite > p:has(+ .solution) {
+  margin-bottom: 0;
+}
+
+.official-statement--ingles .en-topics {
+  padding-left: 18px;
+}
+
+@media (max-width: 560px) {
+  .official-statement--ingles {
+    font-size: 13.5px;
+  }
+
+  .official-statement--ingles .en-text {
+    font-size: 12.5px;
+  }
+
+  .official-statement--ingles .en-text li {
+    padding-left: 28px;
+  }
+
+  .official-statement--ingles .en-text li.is-start {
+    text-indent: 16px;
+  }
+
+  .official-statement--ingles .en-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Página de un tema y un año: un bloque por examen, cada uno con su enunciado y soluciones. */
+.topic-exam {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.topic-exam + .topic-exam {
+  margin-top: 16px;
+}
+
+.topic-exam[open] + .topic-exam,
+.topic-exam + .topic-exam[open] {
+  margin-top: 48px;
+}
+
+.topic-exam:first-child {
+  margin-top: -40px;
+}
+
+.topic-exam-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  position: relative;
+  padding: 22px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  list-style: none;
+  transition: border-color 0.2s ease;
+}
+
+.topic-exam-head::-webkit-details-marker {
+  display: none;
+}
+
+.topic-exam-head:hover {
+  border-color: var(--teal);
+}
+
+.topic-exam-head:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.topic-exam:not([open]) .topic-exam-head {
+  margin-bottom: 0;
+}
+
+.topic-exam-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.topic-exam-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.topic-exam-toggle::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.topic-exam[open] .topic-exam-toggle::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.topic-exam-toggle-close,
+.topic-exam[open] .topic-exam-toggle-open {
+  display: none;
+}
+
+.topic-exam[open] .topic-exam-toggle-close {
+  display: inline;
+}
+
+.topic-exam-type {
+  margin: 0 0 4px;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.topic-exam-head h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.topic-exam .exam-sheet {
+  margin-top: 0;
+}
+
+@media (max-width: 560px) {
+  .topic-exam-head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-inline: -8px;
+    padding: 18px 14px;
+  }
+
+  .topic-exam-head h2 {
+    font-size: 32px;
+  }
+}
+
+/* Solución intercalada en el enunciado: se distingue del examen impreso por la letra
+   y el color de la web. */
+.official-statement .solution {
+  margin: 10px 0 22px;
+  padding: 14px 18px 16px;
+  border-left: 3px solid var(--teal);
+  background: #eef4f1;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.official-statement .solution p {
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.official-statement .solution p:last-child {
+  margin-bottom: 0;
+}
+
+.official-statement .solution .solution-label {
+  margin-bottom: 6px;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.official-statement .solution blockquote {
+  margin: 0 0 8px;
+  padding: 0;
+  font-style: italic;
+}
+
+.official-statement .solution blockquote p {
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .official-statement .solution {
+    padding: 12px 14px 14px;
+    font-size: 14px;
+  }
+}
+
+.topic-exam-head .text-link {
+  align-items: center;
+  white-space: nowrap;
+}
+
+.topic-exam-head .text-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.official-statement--ingles > .en-block:first-child {
+  margin-top: 0;
+}
+
+/* Preguntas numeradas con sangría francesa (Use of English de 2023-2024). */
+.official-statement--ingles .en-hanging {
+  padding-left: 26px;
+  text-indent: -26px;
+}
+
+.official-statement--ingles .en-questions > p {
+  margin-bottom: 6px;
+}
+
+/* Recuadro de palabras para ordenar. */
+.official-statement--ingles .en-words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 6px 0 14px;
+}
+
+.official-statement--ingles .en-words span {
+  padding: 4px 9px;
+  border: 1px solid #111;
+  margin: 0 -1px -1px 0;
 }

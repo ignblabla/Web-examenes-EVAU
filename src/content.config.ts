@@ -13,10 +13,26 @@ const examenes = defineCollection({
     // (ejercicios A1, A2… con sangría francesa, como en los cursos hasta 2023-2024).
     // "bloque" (curso 2020-2021): el primer apartado con sangría francesa y los siguientes
     // como bloques sangrados, en letra estrecha.
-    formato: z.enum(["normal", "sangrado", "bloque"]).default("normal"),
+    // "ingles": texto de comprensión con las líneas numeradas y opciones a dos columnas.
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles"]).default("normal"),
     // Texto para la meta descripción; si falta se genera uno.
     descripcion: z.string().optional(),
   }),
 })
 
-export const collections = { examenes }
+// Ejercicios resueltos de un tema: la parte de cada examen que corresponde a ese tema, con
+// las soluciones. Un archivo por examen en
+// src/content/ejercicios/<asignatura>/<tema>/<año>/<convocatoria>.mdx, por ejemplo
+// src/content/ejercicios/ingles/comprension-lectora/2026/junio.mdx → /ingles/temas/comprension-lectora/2026/
+const ejercicios = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/ejercicios" }),
+  schema: z.object({
+    asignatura: z.string(),
+    tema: z.string(),
+    anio: z.number(),
+    convocatoria: z.string(),
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles"]).default("normal"),
+  }),
+})
+
+export const collections = { examenes, ejercicios }

@@ -7,6 +7,7 @@ import {
   cursos,
   primerAnio,
   rutaExamen,
+  rutaTema,
   totalExamenes,
   ultimoAnio,
   type Examen,
@@ -30,6 +31,13 @@ const { slug, temas } = asignatura
 // Solo se enlazan los exámenes que ya están publicados; el resto se muestran sin enlace.
 const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
 const publicado = (anio: number, e: Examen) => publicados.has(`${slug}/${anio}/${e.slug}`)
+
+// Igual con los temas: un año se enlaza si tiene ejercicios de algún examen.
+const temasPublicados = new Set(
+  (await getCollection("ejercicios"))
+    .filter((e) => e.data.asignatura === slug)
+    .map((e) => `${e.data.tema}/${e.data.anio}`),
+)
 
 // Cada tema tiene su propio tono: una escala del color de la asignatura que
 // va del más intenso (primer tema) al más claro (último), sin repetir ninguno.
@@ -218,11 +226,15 @@ const jsonLd = [
               <span class="topic-number">Tema {i + 1}</span>
               <h3>{t.titulo}</h3>
               <div class="topic-years">
-                {cursos.map((c) => (
-                  <span class="is-pending" title="Próximamente">
-                    {c.anio}
-                  </span>
-                ))}
+                {cursos.map((c) =>
+                  temasPublicados.has(`${t.slug}/${c.anio}`) ? (
+                    <a href={rutaTema(slug, t, c.anio)}>{c.anio}</a>
+                  ) : (
+                    <span class="is-pending" title="Próximamente">
+                      {c.anio}
+                    </span>
+                  ),
+                )}
               </div>
             </article>
           ))

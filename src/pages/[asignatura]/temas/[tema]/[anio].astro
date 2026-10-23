@@ -1,0 +1,173 @@
+---
+import "katex/dist/katex.min.css"
+import { getCollection, render } from "astro:content"
+import Icon from "../../../../components/Icon.astro"
+import Datos from "../../../../components/oficial/Datos.astro"
+import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
+import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
+import Nuclido from "../../../../components/oficial/Nuclido.astro"
+import Solucion from "../../../../components/Solucion.astro"
+import { buscarAsignatura } from "../../../../data/asignaturas"
+import { cursos, rutaExamen } from "../../../../data/examenes"
+import Base from "../../../../layouts/Base.astro"
+
+// Una página por asignatura, tema y año con los ejercicios de todos los exámenes de ese curso.
+export async function getStaticPaths() {
+  const ejercicios = await getCollection("ejercicios")
+  const claves = new Set(
+    ejercicios.map((e) => `${e.data.asignatura}/${e.data.tema}/${e.data.anio}`),
+  )
+  return [...claves].map((clave) => {
+    const [asignatura, tema, anio] = clave.split("/")
+    return { params: { asignatura, tema, anio } }
+  })
+}
+
+const { asignatura: slug, tema: temaSlug, anio: anioTexto } = Astro.params
+const anio = Number(anioTexto)
+const asignatura = buscarAsignatura(slug)
+const tema = asignatura.temas.find((t) => t.slug === temaSlug)
+if (!tema) throw new Error(`Tema desconocido: ${slug}/${temaSlug}`)
+
+const curso = cursos.find((c) => c.anio === anio)
+const examenes = [...(curso?.oficiales ?? []), ...(curso?.reservas ?? [])]
+
+// Los ejercicios se ordenan como las convocatorias: junio, julio y las reservas.
+const entradas = (await getCollection("ejercicios"))
+  .filter((e) => e.data.asignatura === slug && e.data.tema === temaSlug && e.data.anio === anio)
+  .map((entrada) => ({
+    entrada,
+    orden: examenes.findIndex((e) => e.slug === entrada.data.convocatoria),
+    examen: examenes.find((e) => e.slug === entrada.data.convocatoria),
+  }))
+  .sort((a, b) => a.orden - b.orden)
+
+const examenesPublicados = new Set((await getCollection("examenes")).map((e) => e.id))
+
+const secciones = await Promise.all(
+  entradas.map(async ({ entrada, examen }) => {
+    const { Content } = await render(entrada)
+    const nombre = examen?.titulo ?? entrada.data.convocatoria
+    const tipo =
+      examen?.tipo === "ordinaria"
+        ? "Convocatoria ordinaria"
+        : examen?.tipo === "extraordinaria"
+          ? "Convocatoria extraordinaria"
+          : "Examen de reserva"
+    const enlace =
+      examen && examenesPublicados.has(`${slug}/${anio}/${examen.slug}`)
+        ? rutaExamen(slug, anio, examen)
+        : undefined
+    return { entrada, Content, nombre, tipo, enlace }
+  }),
+)
+
+const titulo = `${tema.titulo} · ${asignatura.nombre} ${anio} resuelto · PEvAU Andalucía`
+const descripcion = `Ejercicios de ${tema.titulo.toLowerCase()} de los exámenes de ${asignatura.nombre} de la PEvAU de Andalucía de ${anio} (curso ${curso?.curso ?? anio}), resueltos y explicados.`
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: `${tema.titulo} · ${asignatura.nombre} ${anio} · PEvAU Andalucía`,
+    description: descripcion,
+    url,
+    inLanguage: "es",
+    learningResourceType: "Ejercicios resueltos",
+    educationalLevel: "2.º de Bachillerato",
+    about: `${asignatura.nombre}: ${tema.titulo}`,
+    isAccessibleForFree: true,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: Astro.site?.href },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: asignatura.nombre,
+        item: new URL(`/${slug}/`, Astro.site).href,
+      },
+      { "@type": "ListItem", position: 3, name: `${tema.titulo} ${anio}`, item: url },
+    ],
+  },
+]
+---
+
+<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${slug}/`}>{asignatura.nombre}</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${slug}/#temas`}>{tema.titulo}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{anio}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {asignatura.nombre} · Curso {curso?.curso ?? anio}
+      </div>
+      <h1>
+        {tema.titulo}.
+        <br />
+        <em>Exámenes de {anio}.</em>
+      </h1>
+    </div>
+  </section>
+
+  <section class="exam-body">
+    <div class="container">
+      {
+        secciones.map(({ entrada, Content, nombre, tipo, enlace }) => (
+          <details class="topic-exam" id={entrada.data.convocatoria}>
+            <summary class="topic-exam-head">
+              <div>
+                <p class="topic-exam-type">{tipo}</p>
+                <h2>
+                  {nombre} {anio}
+                </h2>
+              </div>
+              <div class="topic-exam-actions">
+                {enlace && (
+                  <a href={enlace} class="text-link">
+                    Ver el examen completo
+                    <Icon name="arrow-up-right" />
+                  </a>
+                )}
+                <span class="topic-exam-toggle" aria-hidden="true">
+                  <span class="topic-exam-toggle-open">Ver respuestas</span>
+                  <span class="topic-exam-toggle-close">Ocultar respuestas</span>
+                </span>
+              </div>
+            </summary>
+            <div class="exam-sheet">
+              <div class={`official-statement official-statement--${entrada.data.formato}`}>
+                <Content components={{ Datos, Ecuacion, Ejercicio, Nuclido, Solucion }} />
+              </div>
+            </div>
+          </details>
+        ))
+      }
+
+      <a href={`/${slug}/#temas`} class="button button--dark exam-back">
+        Volver a los temas de {asignatura.nombre}
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Si se llega con un ancla (#junio, #reserva-1…), se despliega ese examen.
+    function abrirAncla() {
+      const destino = location.hash && document.getElementById(location.hash.slice(1))
+      if (destino instanceof HTMLDetailsElement) destino.open = true
+    }
+    abrirAncla()
+    window.addEventListener("hashchange", abrirAncla)
+  </script>
+</Base>

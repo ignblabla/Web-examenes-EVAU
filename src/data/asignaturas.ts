@@ -4,8 +4,8 @@ export interface Asignatura {
   slug: string
   nombre: string
   titulo: string
-  simbolo: "atom" | "graph" | "geometry" | "chemistry"
-  color: "physics" | "math" | "math-two" | "chemistry"
+  simbolo: "atom" | "graph" | "geometry" | "english"
+  color: "physics" | "math" | "math-two" | "english"
   temas: Tema[]
 }
 
@@ -69,22 +69,12 @@ export const asignaturas: Asignatura[] = [
     ]),
   },
   {
-    slug: "quimica",
-    nombre: "Química",
-    titulo: "Exámenes de Química.",
-    simbolo: "chemistry",
-    color: "chemistry",
-    temas: temas([
-      "Formulación química",
-      "Estructura del átomo",
-      "Enlaces químicos",
-      "Energía de las reacciones químicas",
-      "Equilibrio químico",
-      "Enlaces ácido-base",
-      "Reacciones redox",
-      "Equilibrio de precipitación",
-      "Química orgánica",
-    ]),
+    slug: "ingles",
+    nombre: "Inglés",
+    titulo: "Exámenes de Inglés.",
+    simbolo: "english",
+    color: "english",
+    temas: temas(["Comprensión lectora", "Uso de la lengua"]),
   },
 ]
 

@@ -18,13 +18,19 @@ const { cabecera } = Astro.props
       <p class="official-title-scope">{cabecera.ambito}</p>
       <p class="official-title-year">{cabecera.curso}</p>
     </div>
-    <p class="official-subject">{cabecera.asignatura}</p>
+    <p class="official-subject">
+      {[cabecera.asignatura].flat().map((linea) => <span>{linea}</span>)}
+    </p>
   </div>
 
-  <div class:list={["official-instructions", { "is-spaced": cabecera.espaciadas }]}>
-    <p class="official-instructions-label">Instrucciones:</p>
-    <div class="official-instructions-list">
-      {cabecera.instrucciones.map((texto) => <p>{texto}</p>)}
-    </div>
-  </div>
+  {
+    cabecera.instrucciones.length > 0 && (
+      <div class:list={["official-instructions", { "is-spaced": cabecera.espaciadas }]}>
+        <p class="official-instructions-label">Instrucciones:</p>
+        <div class="official-instructions-list">
+          {cabecera.instrucciones.map((texto) => <p>{texto}</p>)}
+        </div>
+      </div>
+    )
+  }
 </div>

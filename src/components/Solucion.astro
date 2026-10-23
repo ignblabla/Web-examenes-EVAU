@@ -1,0 +1,13 @@
+---
+// Solución de un ejercicio, intercalada en el enunciado justo después de la pregunta.
+interface Props {
+  titulo?: string
+}
+
+const { titulo = "Solución" } = Astro.props
+---
+
+<div class="solution">
+  <p class="solution-label">{titulo}</p>
+  <slot />
+</div>
