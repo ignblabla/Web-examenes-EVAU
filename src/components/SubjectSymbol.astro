@@ -1,6 +1,6 @@
 ---
 interface Props {
-  type: "atom" | "graph" | "geometry" | "english"
+  type: "atom" | "graph" | "english" | "french"
 }
 
 const { type } = Astro.props
@@ -41,13 +41,17 @@ const { type } = Astro.props
 }
 
 {
-  type === "geometry" && (
-    <div class="geometry-symbol">
-      <svg viewBox="0 0 180 130" fill="none">
-        <circle cx="90" cy="65" r="52" stroke="currentColor" stroke-width="1.5" />
-        <path d="M90 13 139 91H41L90 13Z" stroke="currentColor" stroke-width="2" />
-        <path d="m41 91 98-38M90 13v104" stroke="currentColor" opacity=".45" />
-        <circle cx="90" cy="65" r="5" fill="currentColor" />
+  type === "french" && (
+    <div class="french-symbol">
+      <svg viewBox="0 0 180 150" fill="none">
+        <path
+          d="M90 8v14M84 22h12l6 40H78l6-40ZM74 62h32l12 40H62l12-40ZM56 102h68l18 40h-26c-4-18-14-28-26-28s-22 10-26 28H38l18-40Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <path d="M68 82h44M84 42h12" stroke="currentColor" stroke-linecap="round" opacity=".45" />
+        <circle cx="90" cy="8" r="5" fill="currentColor" />
       </svg>
     </div>
   )

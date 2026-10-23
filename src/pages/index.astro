@@ -16,6 +16,16 @@ const subjects = [
   },
   {
     key: "02",
+    symbol: "french",
+    title: "Francés",
+    description:
+      "Comprensión de textos y ejercicios de lengua resueltos y explicados respuesta a respuesta.",
+    detail: "Comprensión lectora · Uso de la lengua",
+    className: "subject-card subject-card--french",
+    href: "/frances/",
+  },
+  {
+    key: "03",
     symbol: "atom",
     title: "Física",
     description:
@@ -25,7 +35,7 @@ const subjects = [
     href: "/fisica/",
   },
   {
-    key: "03",
+    key: "04",
     symbol: "graph",
     title: "Matemáticas aplicadas",
     description:
@@ -33,16 +43,6 @@ const subjects = [
     detail: "Álgebra · Análisis · Probabilidad",
     className: "subject-card subject-card--math",
     href: "/matematicas-aplicadas/",
-  },
-  {
-    key: "04",
-    symbol: "geometry",
-    title: "Matemáticas II",
-    description:
-      "Demostraciones y procedimientos completos para dominar cada bloque del examen.",
-    detail: "Matrices · Geometría · Análisis · Probabilidad",
-    className: "subject-card subject-card--math-two",
-    href: "/matematicas-ii/",
   },
 ] as const
 
@@ -53,13 +53,13 @@ const jsonLd = {
   url: Astro.site?.href,
   inLanguage: "es",
   description:
-    "Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Física, Matemáticas aplicadas, Matemáticas II e Inglés.",
+    "Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Inglés, Francés, Física y Matemáticas aplicadas.",
 }
 ---
 
 <Base
   title="Selectividad resuelta · Exámenes de la PEvAU de Andalucía resueltos"
-  description="Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Física, Matemáticas aplicadas a las CCSS, Matemáticas II e Inglés, de 2021 a 2026."
+  description="Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Inglés, Francés, Física y Matemáticas aplicadas a las CCSS, de 2021 a 2026."
   jsonLd={jsonLd}
 >
   <section class="hero">

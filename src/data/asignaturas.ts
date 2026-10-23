@@ -4,8 +4,8 @@ export interface Asignatura {
   slug: string
   nombre: string
   titulo: string
-  simbolo: "atom" | "graph" | "geometry" | "english"
-  color: "physics" | "math" | "math-two" | "english"
+  simbolo: "atom" | "graph" | "english" | "french"
+  color: "physics" | "math" | "english" | "french"
   temas: Tema[]
 }
 
@@ -53,27 +53,19 @@ export const asignaturas: Asignatura[] = [
     ]),
   },
   {
-    slug: "matematicas-ii",
-    nombre: "Matemáticas II",
-    titulo: "Matemáticas II.",
-    simbolo: "geometry",
-    color: "math-two",
-    temas: temas([
-      "Matrices y determinantes",
-      "Sistemas de ecuaciones lineales",
-      "Espacio afín y euclídeo",
-      "Funciones",
-      "Integrales",
-      "Distribución binomial y normal",
-      "Probabilidad",
-    ]),
-  },
-  {
     slug: "ingles",
     nombre: "Inglés",
     titulo: "Exámenes de Inglés.",
     simbolo: "english",
     color: "english",
+    temas: temas(["Comprensión lectora", "Uso de la lengua"]),
+  },
+  {
+    slug: "frances",
+    nombre: "Francés",
+    titulo: "Exámenes de Francés.",
+    simbolo: "french",
+    color: "french",
     temas: temas(["Comprensión lectora", "Uso de la lengua"]),
   },
 ]

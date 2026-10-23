@@ -564,7 +564,7 @@
   background: var(--blue);
 }
 
-.subject-card--math-two {
+.subject-card--french {
   background: var(--rose);
 }
 
@@ -646,7 +646,7 @@
   color: var(--teal);
 }
 
-.geometry-symbol,
+.french-symbol,
 .english-symbol {
   width: 175px;
   color: var(--ink);
@@ -1168,17 +1168,17 @@ footer {
 }
 
 .subject-panel--math,
-.subject-panel--math-two,
+.subject-panel--french,
 .subject-panel--english {
   color: var(--ink);
 }
 
 .subject-panel--math { background: var(--blue); }
-.subject-panel--math-two { background: var(--rose); }
+.subject-panel--french { background: var(--rose); }
 .subject-panel--english { background: var(--gold); }
 
 .subject-panel--math .subject-panel-list li,
-.subject-panel--math-two .subject-panel-list li,
+.subject-panel--french .subject-panel-list li,
 .subject-panel--english .subject-panel-list li {
   border-top-color: rgba(23, 44, 39, 0.2);
 }
@@ -1386,7 +1386,7 @@ footer {
   --tone-light: #e3edf4;
 }
 
-.topics--math-two {
+.topics--french {
   --tone-dark: #db6f5e;
   --tone-light: #f8dcd5;
 }
@@ -2170,6 +2170,183 @@ footer {
 
   .official-statement--ingles .en-options {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Formato "frances": bloques I, II y III, texto en párrafos justificados y preguntas sangradas. */
+.official-statement--frances {
+  font-size: 14.5px;
+}
+
+.official-statement--frances p {
+  margin: 0;
+}
+
+.official-statement--frances .fr-title {
+  margin: 0 0 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.official-statement--frances .fr-intro,
+.official-statement--frances .fr-dashes {
+  font-style: italic;
+  text-align: left;
+}
+
+.official-statement--frances .fr-dashes {
+  margin: 12px 0 0;
+  padding-left: 46px;
+  list-style: none;
+}
+
+.official-statement--frances .fr-dashes li {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.official-statement--frances .fr-dashes li::before {
+  content: "-";
+  position: absolute;
+  left: -22px;
+  font-style: normal;
+}
+
+.official-statement--frances .fr-heading {
+  margin: 34px 0 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.official-statement--frances .fr-text p {
+  font-size: 13.5px;
+  line-height: 1.9;
+  text-align: justify;
+  text-indent: 40px;
+}
+
+.official-statement--frances > .fr-heading:first-child,
+.official-statement--frances > .fr-block:first-child {
+  margin-top: 0;
+}
+
+.official-statement--frances .fr-source {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  text-align: right;
+}
+
+.official-statement--frances .fr-block {
+  margin: 34px 0 2px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.official-statement--frances .fr-block + p {
+  font-weight: 700;
+}
+
+.official-statement--frances .fr-question {
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.official-statement--frances .fr-items {
+  margin-top: 4px;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.official-statement--frances .fr-items p,
+.official-statement--frances .fr-question {
+  text-align: left;
+}
+
+.official-statement--frances .fr-items > p {
+  margin-bottom: 2px;
+}
+
+.official-statement--frances .fr-items .fr-question {
+  margin-top: 0;
+}
+
+.official-statement--frances .fr-options + .fr-question {
+  margin-top: 0;
+}
+
+.official-statement--frances .fr-items--wide {
+  padding-left: 72px;
+}
+
+.official-statement--frances .fr-items--spaced > p {
+  margin-bottom: 8px;
+}
+
+/* Curso 2024-2025: párrafos sin sangría, subtítulo "Preguntas del bloque A" y preguntas poco sangradas. */
+.official-statement--frances .fr-text--flush p {
+  text-indent: 0;
+}
+
+.official-statement--frances .fr-subtitle {
+  margin: 30px 0 4px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.official-statement--frances .fr-items--near {
+  padding-left: 14px;
+}
+
+.official-statement--frances .fr-items .fr-gap {
+  margin-top: 24px;
+}
+
+/* Curso 2023-2024: dos textos a elegir, cada uno con su rótulo centrado ("TEXTE 1"). */
+.official-statement--frances .fr-center {
+  margin: 26px 0 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+.official-statement--frances .fr-center + .fr-heading {
+  margin-top: 6px;
+}
+
+.official-statement--frances .fr-u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.official-statement--frances .fr-dashes + .fr-intro {
+  margin-top: 14px;
+}
+
+/* Preguntas del bloque I algo sangradas (julio de 2026). */
+.official-statement--frances .fr-indent {
+  padding-left: 22px;
+}
+
+@media (max-width: 560px) {
+  .official-statement--frances {
+    font-size: 13.5px;
+  }
+
+  .official-statement--frances .fr-text p {
+    font-size: 12.5px;
+    text-indent: 20px;
+  }
+
+  .official-statement--frances .fr-items,
+  .official-statement--frances .fr-items--wide {
+    padding-left: 18px;
+  }
+
+  .official-statement--frances .fr-indent {
+    padding-left: 0;
   }
 }
 
