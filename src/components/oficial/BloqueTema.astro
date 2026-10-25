@@ -1,0 +1,8 @@
+---
+import Bloque from "./Bloque.astro"
+
+// En la página de un tema cada examen ya es un h2, así que los bloques bajan a h3.
+const { class: clase } = Astro.props
+---
+
+<Bloque nivel={3} class={clase}><slot /></Bloque>

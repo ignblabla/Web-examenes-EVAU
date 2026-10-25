@@ -6,7 +6,8 @@ import Logo from "./Logo.astro"
 // de páginas apuntan a esas secciones de la portada.
 const base = Astro.url.pathname === "/" ? "" : "/"
 const links = [
-  { href: `${base}#asignaturas`, label: "Asignaturas" },
+  { href: "/ingles/", label: "Inglés" },
+  { href: "/frances/", label: "Francés" },
   { href: `${base}#metodo`, label: "Cómo funciona" },
   { href: `${base}#convocatorias`, label: "Convocatorias" },
 ]

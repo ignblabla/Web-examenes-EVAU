@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "seo": "astro build && node scripts/verificar-seo.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",

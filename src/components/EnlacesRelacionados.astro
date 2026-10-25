@@ -1,0 +1,40 @@
+---
+import Icon from "./Icon.astro"
+
+// Bloque de enlaces a otras páginas (examen anterior, misma convocatoria en la otra lengua,
+// temas…), cada uno con una etiqueta corta y un texto descriptivo que sirve de anchor.
+export interface Enlace {
+  etiqueta: string
+  texto: string
+  href: string
+}
+
+interface Props {
+  id: string
+  titulo: string
+  enlaces: Enlace[]
+}
+
+const { id, titulo, enlaces } = Astro.props
+---
+
+{
+  enlaces.length > 0 && (
+    <section class="related" aria-labelledby={id}>
+      <h2 id={id} class="related-title">
+        {titulo}
+      </h2>
+      <ul class="related-grid">
+        {enlaces.map((enlace) => (
+          <li>
+            <a href={enlace.href} class="related-card">
+              <span class="related-label">{enlace.etiqueta}</span>
+              <span class="related-text">{enlace.texto}</span>
+              <Icon name="arrow-up-right" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

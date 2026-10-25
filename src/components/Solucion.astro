@@ -1,5 +1,6 @@
 ---
 // Solución de un ejercicio, intercalada en el enunciado justo después de la pregunta.
+// Va en español aunque el enunciado esté en inglés o en francés.
 interface Props {
   titulo?: string
 }
@@ -7,7 +8,7 @@ interface Props {
 const { titulo = "Solución" } = Astro.props
 ---
 
-<div class="solution">
+<div class="solution" lang="es">
   <p class="solution-label">{titulo}</p>
   <slot />
 </div>

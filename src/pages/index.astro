@@ -1,6 +1,13 @@
 ---
+import { Image } from "astro:assets"
+import { getCollection } from "astro:content"
+import portada from "../assets/examen-selectividad-andalucia.png"
+import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
 import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
+import { asignaturas } from "../data/asignaturas"
+import { cursos, examenesDe, nombreExamen, rutaAnio, rutaExamen } from "../data/examenes"
+import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
 const subjects = [
@@ -9,8 +16,8 @@ const subjects = [
     symbol: "english",
     title: "Inglés",
     description:
-      "Textos y ejercicios resueltos con explicaciones claras de cada respuesta.",
-    detail: "Comprensión lectora · Uso de la lengua",
+      "Todos los exámenes desde 2021, con cada respuesta del Reading y del Use of English explicada en español.",
+    detail: "Reading · Use of English · Writing",
     className: "subject-card subject-card--english",
     href: "/ingles/",
   },
@@ -19,8 +26,8 @@ const subjects = [
     symbol: "french",
     title: "Francés",
     description:
-      "Comprensión de textos y ejercicios de lengua resueltos y explicados respuesta a respuesta.",
-    detail: "Comprensión lectora · Uso de la lengua",
+      "Todos los exámenes desde 2021, con cada respuesta de la compréhension y la compétence linguistique explicada.",
+    detail: "Compréhension · Compétence linguistique · Expression",
     className: "subject-card subject-card--french",
     href: "/frances/",
   },
@@ -48,18 +55,58 @@ const subjects = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Selectividad resuelta",
-  url: Astro.site?.href,
-  inLanguage: "es",
-  description:
-    "Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Inglés, Francés, Física y Matemáticas aplicadas.",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": "WebSite",
+      "@id": new URL("/#web", Astro.site).href,
+      name: sitio.nombre,
+      alternateName: sitio.nombreAlternativo,
+      url: Astro.site?.href,
+      inLanguage: "es",
+      description: sitio.descripcion,
+      publisher: referenciaEditor(Astro.site),
+      audience: {
+        "@type": "EducationalAudience",
+        educationalRole: "student",
+        audienceType: "Alumnado de 2.º de Bachillerato de Andalucía",
+      },
+    },
+  ],
 }
+
+// Últimos tres cursos con exámenes, cada uno enlazado a su página en las lenguas indexables.
+const examenes = await getCollection("examenes")
+const lenguas = asignaturas.filter((a) => a.idioma && a.indexable)
+const anios = cursos
+  .filter((c) => examenes.some((e) => e.data.anio === c.anio))
+  .slice(0, 3)
+  .map((c) => ({
+    anio: c.anio,
+    lenguas: lenguas.filter((a) =>
+      examenes.some((e) => e.data.asignatura === a.slug && e.data.anio === c.anio),
+    ),
+  }))
+
+// Exámenes oficiales (junio y julio) del último curso, enlazados directamente.
+const ultimo = cursos.find((c) => examenes.some((e) => e.data.anio === c.anio))
+const ultimosExamenes: Enlace[] = ultimo
+  ? lenguas.flatMap((a) =>
+      ultimo.oficiales
+        .filter((e) => examenes.some((x) => x.id === `${a.slug}/${ultimo.anio}/${e.slug}`))
+        .map((e) => ({
+          etiqueta: `${a.nombre} · ${e.tipo === "ordinaria" ? "Ordinaria" : "Extraordinaria"}`,
+          texto: `Examen de ${a.nombre} de ${nombreExamen(ultimo.anio, e)} resuelto`,
+          href: rutaExamen(a.slug, ultimo.anio, e),
+        })),
+    )
+  : []
+const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.length : 0
 ---
 
 <Base
-  title="Selectividad resuelta · Exámenes de la PEvAU de Andalucía resueltos"
-  description="Exámenes de Selectividad (PEvAU) de Andalucía resueltos paso a paso: Inglés, Francés, Física y Matemáticas aplicadas a las CCSS, de 2021 a 2026."
+  title="Exámenes Selectividad Andalucía resueltos: Inglés y Francés"
+  description="Exámenes de Inglés y Francés de Selectividad de Andalucía (PAU y PEvAU) de 2021 a 2026 resueltos: junio, julio y reservas, con cada respuesta explicada."
   jsonLd={jsonLd}
 >
   <section class="hero">
@@ -67,16 +114,17 @@ const jsonLd = {
       <div class="hero-copy">
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
-          PEvAU · Andalucía
+          Selectividad (PAU) · Andalucía
         </div>
         <h1>
-          Entender el examen.
+          Exámenes resueltos
           <br />
-          <em>Resolverlo bien.</em>
+          <em>de Selectividad.</em>
         </h1>
         <p class="hero-lead">
-          Exámenes de Selectividad de Andalucía resueltos con rigor, claridad y todo el
-          razonamiento que necesitas para preparar la prueba.
+          Los exámenes de Inglés y Francés de la Selectividad de Andalucía (PAU, antes PEvAU) de
+          2021 a 2026, con el enunciado oficial y cada respuesta explicada para que entiendas el
+          porqué y no solo la solución.
         </p>
         <div class="hero-actions">
           <a href="#asignaturas" class="button button--primary">
@@ -93,9 +141,13 @@ const jsonLd = {
       <div class="hero-visual" aria-label="Ejemplo de resolución de un examen">
         <div class="formula-orbit formula-orbit--one">✓</div>
         <div class="paper-card paper-card--real">
-          <img
-            src="/examen-selectividad-andalucia.png"
+          <Image
+            src={portada}
             alt="Examen oficial de Selectividad de Andalucía"
+            width={375}
+            densities={[1, 2]}
+            loading="eager"
+            fetchpriority="high"
           />
         </div>
       </div>
@@ -149,6 +201,29 @@ const jsonLd = {
     </div>
   </section>
 
+  <section class="section latest" id="ultimos">
+    <div class="container">
+      <EnlacesRelacionados
+        id="ultimos-examenes"
+        titulo={`Últimos exámenes resueltos: Selectividad ${ultimo?.anio ?? ""}`}
+        enlaces={ultimosExamenes}
+      />
+      {
+        ultimo && (
+          <p class="latest-note">
+            Y los {reservasUltimo} exámenes de reserva de {ultimo.anio} en{" "}
+            {lenguas.map((a, i) => (
+              <>
+                {i > 0 && " y "}
+                <a href={rutaAnio(a.slug, ultimo.anio)}>{`${a.nombre} ${ultimo.anio}`}</a>{i === lenguas.length - 1 && "."}
+              </>
+            ))}
+          </p>
+        )
+      }
+    </div>
+  </section>
+
   <section class="method section" id="metodo">
     <div class="container method-grid">
       <div class="method-intro">
@@ -175,7 +250,8 @@ const jsonLd = {
           <div>
             <h3>Razonamiento visible</h3>
             <p>
-              Explicamos qué fórmula usar, por qué y cómo llegar al resultado sin atajos.
+              Citamos la línea del texto que justifica cada respuesta y explicamos en español la
+              regla gramatical que se aplica.
             </p>
           </div>
         </article>
@@ -213,18 +289,73 @@ const jsonLd = {
       </div>
       <div class="year-stack" aria-label="Convocatorias disponibles">
         {
-          ["2025", "2024", "2023"].map((year, index) => (
+          anios.map(({ anio, lenguas }, index) => (
             <div class="year-row">
               <span class="year-status">{index === 0 ? "Última" : "Archivo"}</span>
-              <strong>{year}</strong>
+              <strong>{anio}</strong>
               <div class="year-meta">
-                <span>Ordinaria</span>
-                <span>Extraordinaria</span>
+                {lenguas.map((a) => (
+                  <a href={rutaAnio(a.slug, anio)}>
+                    {a.nombre} {anio}
+                  </a>
+                ))}
               </div>
               <Icon name="arrow-up-right" />
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="selectividad">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">04</span>
+          <p class="section-kicker">La prueba, en breve</p>
+        </div>
+        <h2>
+          La Selectividad de Andalucía,
+          <br />
+          <em>en cuatro respuestas.</em>
+        </h2>
+        <p>Lo que conviene saber antes de ponerte con los exámenes.</p>
+      </div>
+      <div class="faq-grid">
+        <article>
+          <h3>¿PAU, PEvAU o Selectividad?</h3>
+          <p>
+            Es la misma prueba con distintos nombres. Hasta 2024 se llamaba PEvAU (Prueba de
+            Evaluación de Bachillerato para el Acceso a la Universidad) y desde 2025 es la PAU,
+            Prueba de Acceso a la Universidad. Casi todo el mundo la sigue llamando Selectividad.
+          </p>
+        </article>
+        <article>
+          <h3>¿Qué convocatorias hay?</h3>
+          <p>
+            Cada curso hay una convocatoria ordinaria en junio y una extraordinaria en julio.
+            Además se preparan exámenes de reserva, versiones alternativas por si hay que sustituir
+            el examen titular, que sirven igual para practicar.
+          </p>
+        </article>
+        <article>
+          <h3>¿Cómo es el examen de Inglés?</h3>
+          <p>
+            Tiene tres bloques: Reading (4 puntos), Use of English (3 puntos) y Writing (3 puntos).
+            La redacción pedía unas 120 palabras hasta 2025 y desde 2026 pide de 140 a 180.
+            <a href="/ingles/">Ver los exámenes de Inglés resueltos</a>.
+          </p>
+        </article>
+        <article>
+          <h3>¿Cómo es el examen de Francés?</h3>
+          <p>
+            Tiene tres bloques: compréhension, compétence linguistique y expression écrite. Hasta
+            2025 valían 4, 2 y 4 puntos, con una redacción de 80 a 120 palabras; desde 2026 valen 5, 2
+            y 3, y la redacción es de 120 a 150. <a href="/frances/">Ver los exámenes de Francés
+            resueltos</a>.
+          </p>
+        </article>
       </div>
     </div>
   </section>

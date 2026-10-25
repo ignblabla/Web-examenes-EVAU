@@ -1,11 +1,20 @@
 ---
 import Logo from "./Logo.astro"
+import { asignaturas } from "../data/asignaturas"
+
+const enlaces = asignaturas.filter((a) => a.indexable)
 ---
 
 <footer>
   <div class="container footer-inner">
     <Logo />
-    <p>Exámenes resueltos de PEvAU Andalucía.</p>
-    <p>© 2025</p>
+    <nav class="footer-nav" aria-label="Exámenes por asignatura">
+      {
+        enlaces.map((a) => (
+          <a href={`/${a.slug}/`}>Exámenes de {a.nombre} de Selectividad</a>
+        ))
+      }
+    </nav>
+    <p>© {new Date().getFullYear()} · Exámenes resueltos de Selectividad de Andalucía</p>
   </div>
 </footer>

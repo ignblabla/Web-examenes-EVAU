@@ -1,15 +1,29 @@
 ---
 import "katex/dist/katex.min.css"
 import { getCollection, render, type CollectionEntry } from "astro:content"
+import EnlacesRelacionados, { type Enlace } from "../../../components/EnlacesRelacionados.astro"
 import Icon from "../../../components/Icon.astro"
+import Bloque from "../../../components/oficial/Bloque.astro"
 import Cabecera from "../../../components/oficial/Cabecera.astro"
 import Datos from "../../../components/oficial/Datos.astro"
 import Ecuacion from "../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../components/oficial/Nuclido.astro"
-import { buscarAsignatura } from "../../../data/asignaturas"
+import Resuelto from "../../../components/oficial/Resuelto.astro"
+import { buscarAsignatura, otraLengua } from "../../../data/asignaturas"
 import { cabeceras } from "../../../data/cabeceras"
-import { cursos } from "../../../data/examenes"
+import {
+  cursos,
+  examenesDe,
+  nombreExamen,
+  prueba,
+  rutaAnio,
+  rutaExamen,
+  rutaTema,
+  tipoLargo,
+} from "../../../data/examenes"
+import { fechaLarga, fechas } from "../../../data/fechas"
+import { editor, migas, referenciaEditor } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
 export async function getStaticPaths() {
@@ -31,79 +45,158 @@ interface Props {
 const { entrada } = Astro.props
 const { anio, convocatoria } = entrada.data
 const asignatura = buscarAsignatura(entrada.data.asignatura)
+const { slug } = asignatura
 const { Content } = await render(entrada)
 
 const curso = cursos.find((c) => c.anio === anio)
-const examen = [...(curso?.oficiales ?? []), ...(curso?.reservas ?? [])].find(
-  (e) => e.slug === convocatoria,
-)
-const nombre = examen?.titulo ?? convocatoria
-const tipo =
-  examen?.tipo === "ordinaria"
-    ? "Convocatoria ordinaria"
-    : examen?.tipo === "extraordinaria"
-      ? "Convocatoria extraordinaria"
-      : "Examen de reserva"
+const examen = curso && examenesDe(curso).find((e) => e.slug === convocatoria)
+if (!curso || !examen) throw new Error(`Convocatoria desconocida: ${entrada.id}`)
 const cabecera = cabeceras[entrada.id]
+const nombre = nombreExamen(anio, examen)
 
-const titulo = `Examen de ${asignatura.nombre} ${nombre.toLowerCase()} ${anio} resuelto · PEvAU Andalucía`
+// Partes resueltas de este examen (una por tema) y resto de exámenes publicados.
+const ejercicios = (await getCollection("ejercicios")).filter(
+  (e) =>
+    e.data.asignatura === slug && e.data.anio === anio && e.data.convocatoria === convocatoria,
+)
+const resuelto = ejercicios.length > 0
+const temasResueltos = asignatura.temas.filter((t) => ejercicios.some((e) => e.data.tema === t.slug))
+const bloquesResueltos = temasResueltos.map((t) => t.termino ?? t.titulo).join(" y ")
+const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
+const publicado = (asig: string, a: number, conv: string) => publicados.has(`${asig}/${a}/${conv}`)
+
+const { publicado: fechaPublicacion, modificado } = fechas(
+  [entrada, ...ejercicios].map((e) => e.filePath ?? ""),
+)
+
+const titulo = `Examen ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio} ${examen.titulo.toLowerCase()}${resuelto ? " resuelto" : ""}`
 const descripcion =
   entrada.data.descripcion ??
-  `Enunciado y solución paso a paso del examen de ${asignatura.nombre} de la PEvAU de Andalucía, ${tipo.toLowerCase()} de ${nombre.toLowerCase()} de ${anio} (curso ${curso?.curso ?? anio}).`
+  (resuelto
+    ? `Examen de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre} resuelto: ${asignatura.resuelto}.`
+    : `Enunciado oficial del examen de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`)
 const url = new URL(Astro.url.pathname, Astro.site).href
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    name: `Examen de ${asignatura.nombre} ${nombre} ${anio} · PEvAU Andalucía`,
-    description: descripcion,
-    url,
-    inLanguage: "es",
-    learningResourceType: "Examen resuelto",
-    educationalLevel: "2.º de Bachillerato",
-    about: asignatura.nombre,
-    isAccessibleForFree: true,
-    educationalUse: "Preparación de la Prueba de Acceso a la Universidad (PEvAU)",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: Astro.site?.href },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: asignatura.nombre,
-        item: new URL(`/${asignatura.slug}/`, Astro.site).href,
-      },
-      { "@type": "ListItem", position: 3, name: `${nombre} ${anio}`, item: url },
-    ],
-  },
-]
+// Enlaces: anterior y siguiente en orden cronológico, la otra lengua, el año y los temas.
+const secuencia = [...cursos]
+  .reverse()
+  .flatMap((c) => examenesDe(c).map((e) => ({ anio: c.anio, examen: e })))
+  .filter((s) => publicado(slug, s.anio, s.examen.slug))
+const posicion = secuencia.findIndex((s) => s.anio === anio && s.examen.slug === convocatoria)
+const otra = otraLengua(asignatura)
+const enlaces: Enlace[] = []
+const anterior = secuencia[posicion - 1]
+const siguiente = secuencia[posicion + 1]
+if (anterior)
+  enlaces.push({
+    etiqueta: "Examen anterior",
+    texto: `${asignatura.nombre}, ${nombreExamen(anterior.anio, anterior.examen)}`,
+    href: rutaExamen(slug, anterior.anio, anterior.examen),
+  })
+if (siguiente)
+  enlaces.push({
+    etiqueta: "Examen siguiente",
+    texto: `${asignatura.nombre}, ${nombreExamen(siguiente.anio, siguiente.examen)}`,
+    href: rutaExamen(slug, siguiente.anio, siguiente.examen),
+  })
+if (otra && publicado(otra.slug, anio, convocatoria))
+  enlaces.push({
+    etiqueta: `Misma convocatoria en ${otra.nombre}`,
+    texto: `Examen de ${otra.nombre} de ${nombre} resuelto`,
+    href: rutaExamen(otra.slug, anio, examen),
+  })
+for (const tema of temasResueltos)
+  enlaces.push({
+    etiqueta: "Practicar por temas",
+    texto: `${tema.termino ?? tema.titulo} de ${asignatura.nombre}: los exámenes de ${anio}`,
+    href: rutaTema(slug, tema, anio),
+  })
+enlaces.push({
+  etiqueta: `Curso ${curso.curso}`,
+  texto: `Todos los exámenes de ${asignatura.nombre} de ${anio}`,
+  href: rutaAnio(slug, anio),
+})
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": ["Article", "LearningResource"],
+      "@id": `${url}#examen`,
+      headline: titulo,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL(`/og/${slug}.png`, Astro.site).href,
+      inLanguage: asignatura.idioma ? ["es", asignatura.idioma] : "es",
+      datePublished: fechaPublicacion,
+      dateModified: modificado,
+      author: referenciaEditor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      learningResourceType: resuelto ? "Examen resuelto" : "Examen",
+      educationalLevel: "2.º de Bachillerato",
+      educationalUse: "Preparación de la Prueba de Acceso a la Universidad (Selectividad)",
+      about: [
+        { "@type": "Thing", name: asignatura.nombre },
+        {
+          "@type": "Thing",
+          name: `Prueba de Acceso a la Universidad (${prueba(anio)}) de Andalucía`,
+        },
+      ],
+      ...(resuelto && { teaches: temasResueltos.map((t) => t.termino ?? t.titulo) }),
+      isPartOf: { "@type": "CollectionPage", url: new URL(rutaAnio(slug, anio), Astro.site).href },
+    },
+    migas(Astro.site, [
+      { nombre: asignatura.nombre, ruta: `/${slug}/` },
+      { nombre: String(anio), ruta: rutaAnio(slug, anio) },
+      { nombre: examen.titulo, ruta: Astro.url.pathname },
+    ]),
+  ],
+}
 ---
 
-<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+<Base
+  title={titulo}
+  description={descripcion}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+  type="article"
+  modified={modificado}
+  noindex={!asignatura.indexable}
+>
   <section class="hero exam-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Ruta">
         <a href="/">Inicio</a>
         <span aria-hidden="true">/</span>
-        <a href={`/${asignatura.slug}/`}>{asignatura.nombre}</a>
+        <a href={`/${slug}/`}>{asignatura.nombre}</a>
         <span aria-hidden="true">/</span>
-        <a href={`/${asignatura.slug}/#examenes`}>{anio}</a>
+        <a href={rutaAnio(slug, anio)}>{anio}</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">{nombre}</span>
+        <span aria-current="page">{examen.titulo}</span>
       </nav>
       <div class="eyebrow">
         <span class="eyebrow-dot"></span>
-        {asignatura.nombre} · Curso {curso?.curso ?? anio}
+        {tipoLargo(examen.tipo)} · Curso {curso.curso}
       </div>
       <h1>
-        {nombre} {anio}.
+        {asignatura.nombre}, {nombre}.
         <br />
-        <em>{tipo}.</em>
+        <em>Examen de Selectividad{resuelto && " resuelto"}.</em>
       </h1>
+      <p class="hero-lead">
+        {
+          resuelto
+            ? `Enunciado oficial completo de la ${prueba(anio)} de Andalucía, con las soluciones de ${bloquesResueltos} explicadas pregunta a pregunta. Intenta cada ejercicio antes de mirar su solución.`
+            : `Enunciado oficial completo de la ${prueba(anio)} de Andalucía. Las soluciones de este examen aún no están publicadas.`
+        }
+      </p>
+      <p class="exam-updated">
+        Revisado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
+      </p>
     </div>
   </section>
 
@@ -111,12 +204,17 @@ const jsonLd = [
     <div class="container">
       <article class="exam-sheet">
         {cabecera && <Cabecera cabecera={cabecera} />}
-        <div class={`official-statement official-statement--${entrada.data.formato}`}>
-          <Content components={{ Datos, Ecuacion, Ejercicio, Nuclido }} />
+        <div
+          class={`official-statement official-statement--${entrada.data.formato}`}
+          lang={asignatura.idioma}
+        >
+          <Content components={{ Bloque, Datos, Ecuacion, Ejercicio, Nuclido, Resuelto }} />
         </div>
       </article>
 
-      <a href={`/${asignatura.slug}/#examenes`} class="button button--dark exam-back">
+      <EnlacesRelacionados id="sigue-practicando" titulo="Sigue practicando" enlaces={enlaces} />
+
+      <a href={`/${slug}/#examenes`} class="button button--dark exam-back">
         Volver a los exámenes de {asignatura.nombre}
         <Icon name="arrow-up-right" />
       </a>

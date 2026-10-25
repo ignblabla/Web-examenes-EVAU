@@ -2,16 +2,34 @@
 import "../styles/global.css"
 import SiteFooter from "../components/SiteFooter.astro"
 import SiteHeader from "../components/SiteHeader.astro"
+import { sitio } from "../data/sitio"
 
 interface Props {
   title: string
   description: string
   // Datos estructurados (schema.org) de la página, si los tiene.
   jsonLd?: Record<string, unknown> | Record<string, unknown>[]
+  // Imagen para compartir (1200×630), relativa a la raíz de la web.
+  image?: string
+  // "article" en los exámenes y temas; "website" en el resto.
+  type?: "website" | "article"
+  // Fecha de la última revisión (AAAA-MM-DD), en los artículos.
+  modified?: string
+  // Páginas que no deben aparecer en Google (asignaturas sin resolver, 404).
+  noindex?: boolean
 }
 
-const { title, description, jsonLd } = Astro.props
+const {
+  title,
+  description,
+  jsonLd,
+  image = "/og/inicio.png",
+  type = "website",
+  modified,
+  noindex = false,
+} = Astro.props
 const canonical = new URL(Astro.url.pathname, Astro.site)
+const imageUrl = new URL(image, Astro.site)
 ---
 
 <!doctype html>
@@ -21,16 +39,46 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"}
+    />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <!-- La serifa es la del H1, que es lo primero que se pinta. -->
+    <link
+      rel="preload"
+      href="/fonts/instrument-serif-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/instrument-serif-latin-400-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="icon" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#f5f1e8" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="Selectividad resuelta" />
+    <meta property="og:site_name" content={sitio.nombre} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    {modified && <meta property="article:modified_time" content={modified} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>

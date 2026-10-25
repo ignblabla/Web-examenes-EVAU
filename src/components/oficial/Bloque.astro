@@ -1,0 +1,13 @@
+---
+// Rótulo de un bloque del examen ("BLOQUE A (Comprensión lectora)"). Es un encabezado,
+// para que el examen tenga estructura, pero conserva el aspecto del enunciado impreso.
+interface Props {
+  class?: string
+  nivel?: 2 | 3
+}
+
+const { class: clase, nivel = 2 } = Astro.props
+const Etiqueta = nivel === 2 ? "h2" : "h3"
+---
+
+<Etiqueta class:list={["official-block", clase]}><slot /></Etiqueta>

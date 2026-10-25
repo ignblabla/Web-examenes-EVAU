@@ -1,0 +1,160 @@
+---
+import { getCollection } from "astro:content"
+import EnlacesRelacionados, { type Enlace } from "../../../components/EnlacesRelacionados.astro"
+import Icon from "../../../components/Icon.astro"
+import { asignaturas, buscarAsignatura, otraLengua } from "../../../data/asignaturas"
+import {
+  cursos,
+  examenesDe,
+  nombreExamen,
+  prueba,
+  rutaAnio,
+  rutaExamen,
+  rutaTema,
+  tipoLargo,
+} from "../../../data/examenes"
+import { editor, migas, sitio } from "../../../data/sitio"
+import Base from "../../../layouts/Base.astro"
+
+// Una página por asignatura y año con todos los exámenes de ese curso y sus temas.
+export async function getStaticPaths() {
+  const examenes = await getCollection("examenes")
+  return asignaturas.flatMap((asignatura) =>
+    cursos
+      .filter((c) => examenes.some((e) => e.data.asignatura === asignatura.slug && e.data.anio === c.anio))
+      .map((c) => ({ params: { asignatura: asignatura.slug, anio: String(c.anio) } })),
+  )
+}
+
+const { asignatura: slug, anio: anioTexto } = Astro.params
+const anio = Number(anioTexto)
+const asignatura = buscarAsignatura(slug)
+const curso = cursos.find((c) => c.anio === anio)
+if (!curso) throw new Error(`Curso desconocido: ${anio}`)
+
+const examenes = await getCollection("examenes")
+const publicado = (asig: string, a: number, conv: string) =>
+  examenes.some((e) => e.id === `${asig}/${a}/${conv}`)
+const ejercicios = (await getCollection("ejercicios")).filter(
+  (e) => e.data.asignatura === slug && e.data.anio === anio,
+)
+const resuelto = (conv: string) => ejercicios.some((e) => e.data.convocatoria === conv)
+
+const convocatorias: Enlace[] = examenesDe(curso)
+  .filter((e) => publicado(slug, anio, e.slug))
+  .map((e) => ({
+    etiqueta: tipoLargo(e.tipo),
+    texto: `${asignatura.nombre}, ${nombreExamen(anio, e)}${resuelto(e.slug) ? " resuelto" : ""}`,
+    href: rutaExamen(slug, anio, e),
+  }))
+
+const temas: Enlace[] = asignatura.temas
+  .filter((t) => ejercicios.some((e) => e.data.tema === t.slug))
+  .map((t) => ({
+    etiqueta: t.titulo,
+    texto: `${t.termino ?? t.titulo} de ${asignatura.nombre} ${anio}: los ${convocatorias.length} exámenes`,
+    href: rutaTema(slug, t, anio),
+  }))
+
+const otra = otraLengua(asignatura)
+const otrosAnios: Enlace[] = [
+  ...cursos
+    .filter((c) => c.anio !== anio && examenes.some((e) => e.data.asignatura === slug && e.data.anio === c.anio))
+    .map((c) => ({
+      etiqueta: `Curso ${c.curso}`,
+      texto: `Exámenes de ${asignatura.nombre} de ${c.anio}`,
+      href: rutaAnio(slug, c.anio),
+    })),
+  ...(otra && examenes.some((e) => e.data.asignatura === otra.slug && e.data.anio === anio)
+    ? [
+        {
+          etiqueta: "Otra lengua",
+          texto: `Exámenes de ${otra.nombre} de ${anio}`,
+          href: rutaAnio(otra.slug, anio),
+        },
+      ]
+    : []),
+]
+
+const conSoluciones = ejercicios.length > 0
+const titulo = `Exámenes ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio}${conSoluciones ? " resueltos" : ""}`
+const descripcion = `Los ${convocatorias.length} exámenes de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}: ordinaria de junio, extraordinaria de julio y reservas${conSoluciones ? ", con las soluciones explicadas" : ""}.`
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": "CollectionPage",
+      "@id": url,
+      name: titulo,
+      description: descripcion,
+      url,
+      inLanguage: "es",
+      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      about: { "@type": "Thing", name: asignatura.nombre },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: convocatorias.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: c.texto,
+          url: new URL(c.href, Astro.site).href,
+        })),
+      },
+    },
+    migas(Astro.site, [
+      { nombre: asignatura.nombre, ruta: `/${slug}/` },
+      { nombre: String(anio), ruta: Astro.url.pathname },
+    ]),
+  ],
+}
+---
+
+<Base
+  title={titulo}
+  description={descripcion}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+  noindex={!asignatura.indexable}
+>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${slug}/`}>{asignatura.nombre}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{anio}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Selectividad ({prueba(anio)}) · Curso {curso.curso}
+      </div>
+      <h1>
+        {asignatura.nombre}, {anio}.
+        <br />
+        <em>Todos los exámenes{conSoluciones && " resueltos"}.</em>
+      </h1>
+      <p class="hero-lead">
+        Los exámenes de {asignatura.nombre} de la Selectividad de Andalucía de {anio}: la
+        convocatoria ordinaria de junio, la extraordinaria de julio y los exámenes de reserva, con
+        el enunciado oficial{conSoluciones && " y las soluciones explicadas"}.
+      </p>
+    </div>
+  </section>
+
+  <section class="exam-body">
+    <div class="container">
+      <EnlacesRelacionados id="convocatorias" titulo={`Convocatorias de ${anio}`} enlaces={convocatorias} />
+      <EnlacesRelacionados id="temas" titulo="Practica por temas" enlaces={temas} />
+      <EnlacesRelacionados id="otros-anios" titulo="Otros años" enlaces={otrosAnios} />
+
+      <a href={`/${slug}/#examenes`} class="button button--dark exam-back">
+        Volver a los exámenes de {asignatura.nombre}
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+</Base>

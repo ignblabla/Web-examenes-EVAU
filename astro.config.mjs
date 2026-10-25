@@ -4,6 +4,10 @@ import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import { asignaturas } from './src/data/asignaturas.ts'
+
+// Las asignaturas sin resolver llevan noindex y no entran en el sitemap.
+const ocultas = asignaturas.filter((a) => !a.indexable).map((a) => `/${a.slug}/`)
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +15,10 @@ export default defineConfig({
   site: 'https://selectividadresuelta.es',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({ filter: (page) => !ocultas.some((ruta) => new URL(page).pathname.startsWith(ruta)) }),
+  ],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],

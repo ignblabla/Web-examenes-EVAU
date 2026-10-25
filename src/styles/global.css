@@ -1,5 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
+
+/* Fuentes alojadas en la propia web (public/fonts, licencia SIL OFL), en lugar de Google Fonts:
+   evita la cadena de peticiones que bloqueaba el primer pintado. Solo el subconjunto latino,
+   que incluye todos los caracteres del español, el inglés y el francés. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+}
 
 :root {
   --ink: #172c27;
@@ -12,6 +62,8 @@
   --teal: #195c51;
   --blue: #d8e5ed;
   --coral: #ef725c;
+  /* Coral oscurecido para texto: el mismo tono con contraste 4,5:1 sobre crema y papel. */
+  --coral-text: #a94f40;
   --gold: #edc767;
   --rose: #e99887;
   --lilac: #c9bce8;
@@ -497,7 +549,7 @@
 .section-index {
   display: block;
   margin-bottom: 32px;
-  color: var(--coral);
+  color: var(--coral-text);
   font-family: var(--serif);
   font-size: 21px;
 }
@@ -675,7 +727,8 @@
   margin: 0 0 24px;
   font-size: 14px;
   line-height: 1.6;
-  opacity: 0.78;
+  /* Mínimo para un contraste de 4,5:1 sobre la tarjeta rosa, la más clara de tono. */
+  opacity: 0.86;
 }
 
 
@@ -686,7 +739,7 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  opacity: 0.68;
+  opacity: 0.86;
   text-transform: uppercase;
 }
 
@@ -761,6 +814,63 @@
   line-height: 1.65;
 }
 
+/* Portada: enlaces directos a los últimos exámenes, justo debajo de las asignaturas. */
+.section.latest {
+  padding-top: 0;
+}
+
+.latest .related {
+  max-width: none;
+  margin-top: 0;
+}
+
+.latest-note {
+  margin: 22px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.latest-note a,
+.faq-grid a {
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Portada: preguntas frecuentes sobre la prueba (texto visible, sin marcado FAQPage). */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+}
+
+.faq-grid article {
+  padding: 28px 0;
+  border-top: 1px solid var(--ink);
+}
+
+.faq-grid h3 {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.faq-grid p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .exams {
   background: var(--paper);
 }
@@ -822,6 +932,13 @@
   gap: 20px;
   color: var(--ink-soft);
   font-size: 11px;
+}
+
+.year-meta a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .year-row > svg {
@@ -899,6 +1016,19 @@ footer {
 
 .footer-inner > p:last-child {
   justify-self: end;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer-nav a:hover {
+  color: var(--lime);
 }
 
 @media (max-width: 900px) {
@@ -1050,7 +1180,7 @@ footer {
   }
 
   .year-row {
-    grid-template-columns: 55px 1fr 20px;
+    grid-template-columns: 55px auto 1fr;
     min-height: 100px;
   }
 
@@ -1059,6 +1189,11 @@ footer {
   }
 
   .year-meta {
+    justify-content: flex-end;
+    gap: 14px;
+  }
+
+  .year-row > svg {
     display: none;
   }
 
@@ -1071,11 +1206,18 @@ footer {
   }
 
   .footer-inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 32px;
   }
 
-  .footer-inner > p:first-of-type {
-    display: none;
+  .footer-nav {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .footer-inner > p:last-child {
+    justify-self: start;
   }
 }
 
@@ -1203,7 +1345,7 @@ footer {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.13em;
-  opacity: 0.7;
+  opacity: 0.86;
   text-transform: uppercase;
 }
 
@@ -1442,7 +1584,6 @@ footer {
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
-  opacity: 0.85;
   transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
@@ -1627,6 +1768,79 @@ footer {
   margin: 48px auto 0;
 }
 
+.exam-updated {
+  margin: -16px 0 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Enlaces relacionados: otros exámenes, la otra lengua y los temas. */
+.related {
+  max-width: 960px;
+  margin: 64px auto 0;
+}
+
+.related + .related {
+  margin-top: 48px;
+}
+
+.related-title {
+  margin: 0 0 22px;
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 20px 52px 20px 22px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.related-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.related-label {
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.related-text {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.related-card svg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+}
+
 /* Cabecera oficial: se imita el enunciado impreso (Arial, negro sobre blanco). */
 .official-header {
   color: #111;
@@ -1759,6 +1973,14 @@ footer {
 
 .official-statement h2:first-child {
   margin-top: 0;
+}
+
+/* Rótulos de bloque: son encabezados, pero se ven como el texto impreso del enunciado. */
+.official-statement .official-block {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: none;
 }
 
 .official-statement h3 {
@@ -2525,6 +2747,8 @@ footer {
 
 .topic-exam-head .text-link {
   align-items: center;
+  /* Tamaño mínimo de un objetivo táctil. */
+  min-height: 24px;
   white-space: nowrap;
 }
 

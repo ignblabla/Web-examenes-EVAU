@@ -2,13 +2,16 @@
 import "katex/dist/katex.min.css"
 import { getCollection, render } from "astro:content"
 import Icon from "../../../../components/Icon.astro"
+import BloqueTema from "../../../../components/oficial/BloqueTema.astro"
 import Datos from "../../../../components/oficial/Datos.astro"
 import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
 import { buscarAsignatura } from "../../../../data/asignaturas"
-import { cursos, rutaExamen } from "../../../../data/examenes"
+import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, tipoLargo } from "../../../../data/examenes"
+import { fechas } from "../../../../data/fechas"
+import { editor, migas, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
 
 // Una página por asignatura, tema y año con los ejercicios de todos los exámenes de ese curso.
@@ -30,7 +33,7 @@ const tema = asignatura.temas.find((t) => t.slug === temaSlug)
 if (!tema) throw new Error(`Tema desconocido: ${slug}/${temaSlug}`)
 
 const curso = cursos.find((c) => c.anio === anio)
-const examenes = [...(curso?.oficiales ?? []), ...(curso?.reservas ?? [])]
+const examenes = curso ? examenesDe(curso) : []
 
 // Los ejercicios se ordenan como las convocatorias: junio, julio y las reservas.
 const entradas = (await getCollection("ejercicios"))
@@ -48,12 +51,7 @@ const secciones = await Promise.all(
   entradas.map(async ({ entrada, examen }) => {
     const { Content } = await render(entrada)
     const nombre = examen?.titulo ?? entrada.data.convocatoria
-    const tipo =
-      examen?.tipo === "ordinaria"
-        ? "Convocatoria ordinaria"
-        : examen?.tipo === "extraordinaria"
-          ? "Convocatoria extraordinaria"
-          : "Examen de reserva"
+    const tipo = examen ? tipoLargo(examen.tipo) : ""
     const enlace =
       examen && examenesPublicados.has(`${slug}/${anio}/${examen.slug}`)
         ? rutaExamen(slug, anio, examen)
@@ -62,41 +60,68 @@ const secciones = await Promise.all(
   }),
 )
 
-const titulo = `${tema.titulo} · ${asignatura.nombre} ${anio} resuelto · PEvAU Andalucía`
-const descripcion = `Ejercicios de ${tema.titulo.toLowerCase()} de los exámenes de ${asignatura.nombre} de la PEvAU de Andalucía de ${anio} (curso ${curso?.curso ?? anio}), resueltos y explicados.`
+const termino = tema.termino ?? tema.titulo
+const { publicado, modificado } = fechas(entradas.map((e) => e.entrada.filePath ?? ""))
+
+// El title más completo que quepa en 60 caracteres.
+const opciones = [
+  `${termino} ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
+  `${termino} ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio} con soluciones`,
+  `${termino} ${asignatura.nombre} ${prueba(anio)} ${anio} con soluciones`,
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const descripcion = `${termino} de los ${entradas.length} exámenes de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}, con cada respuesta explicada y justificada.`
 const url = new URL(Astro.url.pathname, Astro.site).href
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    name: `${tema.titulo} · ${asignatura.nombre} ${anio} · PEvAU Andalucía`,
-    description: descripcion,
-    url,
-    inLanguage: "es",
-    learningResourceType: "Ejercicios resueltos",
-    educationalLevel: "2.º de Bachillerato",
-    about: `${asignatura.nombre}: ${tema.titulo}`,
-    isAccessibleForFree: true,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Inicio", item: Astro.site?.href },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: asignatura.nombre,
-        item: new URL(`/${slug}/`, Astro.site).href,
-      },
-      { "@type": "ListItem", position: 3, name: `${tema.titulo} ${anio}`, item: url },
-    ],
-  },
-]
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": ["Article", "LearningResource"],
+      "@id": `${url}#ejercicios`,
+      headline: titulo,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL(`/og/${slug}.png`, Astro.site).href,
+      inLanguage: asignatura.idioma ? ["es", asignatura.idioma] : "es",
+      datePublished: publicado,
+      dateModified: modificado,
+      author: referenciaEditor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      learningResourceType: "Ejercicios resueltos",
+      educationalLevel: "2.º de Bachillerato",
+      educationalUse: "Preparación de la Prueba de Acceso a la Universidad (Selectividad)",
+      about: [
+        { "@type": "Thing", name: asignatura.nombre },
+        {
+          "@type": "Thing",
+          name: `Prueba de Acceso a la Universidad (${prueba(anio)}) de Andalucía`,
+        },
+      ],
+      teaches: termino,
+    },
+    migas(Astro.site, [
+      { nombre: asignatura.nombre, ruta: `/${slug}/` },
+      { nombre: String(anio), ruta: rutaAnio(slug, anio) },
+      { nombre: tema.titulo, ruta: Astro.url.pathname },
+    ]),
+  ],
+}
 ---
 
-<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+<Base
+  title={titulo}
+  description={descripcion}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+  type="article"
+  modified={modificado}
+  noindex={!asignatura.indexable}
+>
   <section class="hero exam-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Ruta">
@@ -104,19 +129,20 @@ const jsonLd = [
         <span aria-hidden="true">/</span>
         <a href={`/${slug}/`}>{asignatura.nombre}</a>
         <span aria-hidden="true">/</span>
-        <a href={`/${slug}/#temas`}>{tema.titulo}</a>
+        <a href={rutaAnio(slug, anio)}>{anio}</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">{anio}</span>
+        <span aria-current="page">{tema.titulo}</span>
       </nav>
       <div class="eyebrow">
         <span class="eyebrow-dot"></span>
-        {asignatura.nombre} · Curso {curso?.curso ?? anio}
+        {tema.titulo} · Curso {curso?.curso ?? anio}
       </div>
       <h1>
-        {tema.titulo}.
+        {termino}.
         <br />
-        <em>Exámenes de {anio}.</em>
+        <em>{asignatura.nombre}, exámenes de {anio}.</em>
       </h1>
+      {tema.intro && <p class="hero-lead">{tema.intro}</p>}
     </div>
   </section>
 
@@ -146,8 +172,13 @@ const jsonLd = [
               </div>
             </summary>
             <div class="exam-sheet">
-              <div class={`official-statement official-statement--${entrada.data.formato}`}>
-                <Content components={{ Datos, Ecuacion, Ejercicio, Nuclido, Solucion }} />
+              <div
+                class={`official-statement official-statement--${entrada.data.formato}`}
+                lang={asignatura.idioma}
+              >
+                <Content
+                  components={{ Bloque: BloqueTema, Datos, Ecuacion, Ejercicio, Nuclido, Solucion }}
+                />
               </div>
             </div>
           </details>
