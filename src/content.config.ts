@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content"
 import { glob } from "astro/loaders"
 
 // Cada examen es un archivo .mdx en src/content/examenes/<asignatura>/<año>/<convocatoria>.mdx,
-// por ejemplo src/content/examenes/fisica/2026/junio.mdx → /fisica/2026/junio/
+// por ejemplo src/content/examenes/ingles/2026/junio.mdx → /ingles/2026/junio/
 const examenes = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/examenes" }),
   schema: z.object({

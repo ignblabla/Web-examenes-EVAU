@@ -36,38 +36,6 @@ function temas(datos: DatosTema[]): Tema[] {
 
 export const asignaturas: Asignatura[] = [
   {
-    slug: "fisica",
-    nombre: "Física",
-    titulo: "Exámenes de Física.",
-    simbolo: "atom",
-    color: "physics",
-    indexable: false,
-    temas: temas([
-      "Campo gravitatorio",
-      "Campo eléctrico y magnético",
-      "Ondas",
-      "Óptica geométrica",
-      "Física cuántica y nuclear",
-    ]),
-  },
-  {
-    slug: "matematicas-aplicadas",
-    nombre: "Matemáticas aplicadas",
-    titulo: "Matemáticas aplicadas.",
-    simbolo: "graph",
-    color: "math",
-    indexable: false,
-    temas: temas([
-      "Matrices y determinantes",
-      "Sistemas de ecuaciones lineales",
-      "Programación lineal",
-      "Funciones",
-      "Probabilidad",
-      "Teoría de muestras",
-      "Distribución binomial",
-    ]),
-  },
-  {
     slug: "ingles",
     nombre: "Inglés",
     titulo: "Exámenes de Inglés.",

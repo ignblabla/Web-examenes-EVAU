@@ -11,8 +11,6 @@ const imagenes = [
   { archivo: "inicio", titulo: "Exámenes de Selectividad", color: "#c8ef59", marca: "✓", pie: "Inglés y Francés · 2021–2026 · Junio, julio y reservas" },
   { archivo: "ingles", titulo: "Exámenes de Inglés", color: "#edc767", marca: "En", pie: "Reading · Use of English · Writing · 2021–2026" },
   { archivo: "frances", titulo: "Exámenes de Francés", color: "#e99887", marca: "Fr", pie: "Compréhension · Compétence linguistique · 2021–2026" },
-  { archivo: "fisica", titulo: "Exámenes de Física", color: "#195c51", marca: "∫", subtitulo: "de Andalucía.", pie: "Enunciados oficiales · 2021–2026" },
-  { archivo: "matematicas-aplicadas", titulo: "Matemáticas aplicadas", color: "#d8e5ed", marca: "Σ", subtitulo: "de Andalucía.", pie: "Selectividad · 2021–2026" },
 ]
 
 const escapar = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")
