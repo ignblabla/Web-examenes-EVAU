@@ -1,0 +1,210 @@
+---
+import { titular } from "../data/legal"
+import Legal from "../layouts/Legal.astro"
+
+// Cookies que puede instalar la web, por tipo. La duración es la máxima de cada cookie.
+const grupos = [
+  {
+    titulo: "Técnicas y de consentimiento",
+    descripcion:
+      "Son necesarias para que la web funcione y para recordar lo que has elegido en el aviso de cookies. No necesitan tu consentimiento.",
+    cookies: [
+      {
+        nombre: "FCCDCF, FCNEC",
+        proveedor: "Google (aviso de consentimiento)",
+        finalidad: "Guardar si has aceptado o rechazado cada tipo de cookie.",
+        duracion: "13 meses",
+      },
+      {
+        nombre: "__cf_bm, cf_clearance",
+        proveedor: "Cloudflare",
+        finalidad:
+          "Distinguir a las personas de los bots y proteger la web de ataques. Solo se instalan si Cloudflare detecta tráfico sospechoso.",
+        duracion: "30 minutos",
+      },
+    ],
+  },
+  {
+    titulo: "Analíticas",
+    descripcion:
+      "Permiten contar las visitas y saber qué páginas se consultan más, para mejorar la web. Solo se instalan si las aceptas.",
+    cookies: [
+      {
+        nombre: "_ga",
+        proveedor: "Google Analytics",
+        finalidad: "Distinguir a cada visitante de forma anónima.",
+        duracion: "2 años",
+      },
+      {
+        nombre: "_ga_<ID>",
+        proveedor: "Google Analytics",
+        finalidad: "Mantener el estado de la sesión de visita.",
+        duracion: "2 años",
+      },
+    ],
+  },
+  {
+    titulo: "Publicitarias",
+    descripcion:
+      "Permiten mostrar anuncios de Google AdSense, limitar cuántas veces ves el mismo, medir su rendimiento y evitar el fraude. Si aceptas la publicidad personalizada, también sirven para elegir anuncios según tus intereses. Solo se instalan si las aceptas.",
+    cookies: [
+      {
+        nombre: "__gads, __gpi",
+        proveedor: "Google AdSense",
+        finalidad: "Mostrar anuncios y medir cuántas veces se ven y se pulsan.",
+        duracion: "13 meses",
+      },
+      {
+        nombre: "__eoi",
+        proveedor: "Google AdSense",
+        finalidad: "Prevenir el fraude y el abuso en los anuncios.",
+        duracion: "6 meses",
+      },
+      {
+        nombre: "IDE, test_cookie",
+        proveedor: "Google (doubleclick.net)",
+        finalidad:
+          "Mostrar anuncios personalizados y comprobar si el navegador acepta cookies.",
+        duracion: "13 meses",
+      },
+    ],
+  },
+]
+---
+
+<Legal
+  nombre="Política de cookies"
+  ruta="/politica-de-cookies/"
+  description="Qué cookies usa Selectividad resuelta, para qué sirve cada una, cuánto duran y cómo aceptarlas, rechazarlas o cambiar tu elección."
+  lema="Qué guarda tu navegador."
+  actualizado="25 de octubre de 2026"
+>
+  <h2>1. Qué son las cookies</h2>
+  <p>
+    Las cookies son pequeños archivos que una web guarda en tu navegador para recordar
+    información entre visitas. Esta política explica cuáles usa Selectividad resuelta, de
+    acuerdo con el artículo 22.2 de la Ley 34/2002 (LSSI) y la guía sobre el uso de cookies de
+    la Agencia Española de Protección de Datos.
+  </p>
+  <p>
+    Las cookies técnicas se instalan siempre. Las analíticas y las publicitarias solo se
+    instalan si las aceptas en el aviso que aparece en tu primera visita, donde puedes
+    aceptarlas todas, rechazarlas todas con la misma facilidad o elegir para qué finalidades
+    las permites.
+  </p>
+
+  <h2>2. Cookies que usa esta web</h2>
+  <p>
+    Unas son propias, de selectividadresuelta.es, y otras de terceros, que instalan Google y
+    Cloudflare desde sus propios dominios. Los nombres y la duración exactos pueden variar
+    cuando esos proveedores cambian sus servicios.
+  </p>
+  {
+    grupos.map((g) => (
+      <>
+        <h3>{g.titulo}</h3>
+        <p>{g.descripcion}</p>
+        <div class="legal-table">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Cookie</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Finalidad</th>
+                <th scope="col">Duración</th>
+              </tr>
+            </thead>
+            <tbody>
+              {g.cookies.map((c) => (
+                <tr>
+                  <td><code>{c.nombre}</code></td>
+                  <td>{c.proveedor}</td>
+                  <td>{c.finalidad}</td>
+                  <td>{c.duracion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ))
+  }
+
+  <h3>Enlaces de afiliación de Amazon</h3>
+  <p>
+    Esta web no instala cookies de Amazon. Si entras en Amazon desde un enlace de afiliado, es
+    Amazon quien instala sus cookies en su web para atribuir la compra, según su
+    <a href="https://www.amazon.es/gp/help/customer/display.html?nodeId=201890250"
+      >aviso de cookies</a
+    >.
+  </p>
+
+  <h2 id="preferencias">3. Cómo cambiar tu elección</h2>
+  <p>
+    Puedes cambiar o retirar tu consentimiento en cualquier momento, tan fácilmente como lo
+    diste. Al retirarlo no se borran las cookies ya instaladas: para eso usa la configuración
+    de tu navegador.
+  </p>
+  <p>
+    <button type="button" class="button button--primary" data-preferencias>
+      Configurar cookies
+    </button>
+  </p>
+  <p class="legal-note" data-preferencias-aviso hidden>
+    El aviso de cookies no está disponible ahora mismo. Recarga la página o borra las cookies
+    desde tu navegador.
+  </p>
+  <p>También puedes bloquear o borrar las cookies desde tu navegador:</p>
+  <ul>
+    <li>
+      <a href="https://support.google.com/chrome/answer/95647?hl=es">Google Chrome</a>
+    </li>
+    <li>
+      <a href="https://support.mozilla.org/es/kb/Borrar%20cookies">Mozilla Firefox</a>
+    </li>
+    <li>
+      <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac">Safari</a>
+    </li>
+    <li>
+      <a
+        href="https://support.microsoft.com/es-es/edge/manage-cookies-in-microsoft-edge-view-allow-block-delete-and-use"
+        >Microsoft Edge</a
+      >
+    </li>
+  </ul>
+  <p>
+    Si bloqueas todas las cookies, puede que el aviso de cookies vuelva a aparecer en cada
+    visita.
+  </p>
+
+  <h2>4. Transferencias y perfiles</h2>
+  <p>
+    Google y Cloudflare pueden tratar los datos de sus cookies en Estados Unidos, con las
+    garantías que se explican en la <a href="/politica-de-privacidad/">política de privacidad</a>.
+    Si aceptas la publicidad personalizada, Google usa sus cookies para elaborar un perfil de
+    tus intereses y elegir qué anuncios mostrarte.
+  </p>
+
+  <h2>5. Contacto y cambios</h2>
+  <p>
+    Si tienes dudas sobre las cookies, escribe a
+    <a href={`mailto:${titular.email}`}>{titular.email}</a>. Esta política se actualizará
+    cuando cambien las cookies que usa la web; la versión vigente es la publicada en esta
+    página, con la fecha de su última actualización.
+  </p>
+</Legal>
+
+<script>
+  // Reabre el aviso de consentimiento de Google (CMP de AdSense) para cambiar la elección.
+  type Googlefc = { callbackQueue?: unknown[]; showRevocationMessage?: () => void }
+  const boton = document.querySelector<HTMLButtonElement>("[data-preferencias]")
+  const aviso = document.querySelector<HTMLElement>("[data-preferencias-aviso]")
+  boton?.addEventListener("click", () => {
+    const googlefc = (window as unknown as { googlefc?: Googlefc }).googlefc
+    if (googlefc?.showRevocationMessage) {
+      googlefc.showRevocationMessage()
+    } else if (aviso) {
+      aviso.hidden = false
+    }
+  })
+</script>

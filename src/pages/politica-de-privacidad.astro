@@ -1,0 +1,207 @@
+---
+import { titular } from "../data/legal"
+import Legal from "../layouts/Legal.astro"
+
+const correo = `mailto:${titular.email}`
+
+// Cada tratamiento de datos de la web, con la información que pide el artículo 13 del RGPD.
+const tratamientos = [
+  {
+    titulo: "Visitas a la web",
+    datos:
+      "Dirección IP, navegador y sistema operativo, página solicitada, fecha y hora de la visita.",
+    finalidad:
+      "Servir la web, mantenerla segura y protegerla de ataques y abusos. Lo hace Cloudflare, que aloja la web.",
+    base: "Interés legítimo en que la web funcione y sea segura (art. 6.1.f del RGPD).",
+    conservacion: "Los registros técnicos se borran de forma automática en pocos días.",
+  },
+  {
+    titulo: "Correo de contacto",
+    datos: "Tu dirección de correo, tu nombre si lo indicas y lo que escribas en el mensaje.",
+    finalidad: "Responder a tus dudas, avisos de errores o peticiones, como el ejercicio de tus derechos.",
+    base: "Tu consentimiento al escribir (art. 6.1.a del RGPD).",
+    conservacion:
+      "El tiempo necesario para atender tu mensaje y, después, hasta un año, salvo que una ley obligue a guardarlo más.",
+  },
+  {
+    titulo: "Estadísticas de visitas",
+    datos:
+      "Identificadores de cookies, páginas que visitas, tiempo en cada una, tipo de dispositivo, ubicación aproximada (país o ciudad) y página de procedencia.",
+    finalidad:
+      "Saber qué exámenes se consultan más y cómo se usa la web para mejorarla, con Google Analytics 4.",
+    base: "Tu consentimiento, que das o rechazas en el aviso de cookies (art. 6.1.a del RGPD).",
+    conservacion: "Google Analytics conserva los datos de cada usuario 2 meses.",
+  },
+  {
+    titulo: "Publicidad",
+    datos:
+      "Identificadores de cookies y del dispositivo, dirección IP, páginas que visitas e interacción con los anuncios.",
+    finalidad:
+      "Mostrar anuncios de Google AdSense, medir su rendimiento y prevenir el fraude. Si lo aceptas, los anuncios se personalizan según tus intereses; si no, se muestran anuncios no personalizados.",
+    base: "Tu consentimiento, que das o rechazas en el aviso de cookies (art. 6.1.a del RGPD).",
+    conservacion: "La que fija Google en su política de privacidad; las cookies, como máximo 13 meses.",
+  },
+]
+---
+
+<Legal
+  nombre="Política de privacidad"
+  ruta="/politica-de-privacidad/"
+  description="Qué datos personales trata Selectividad resuelta, para qué, con qué base legal, durante cuánto tiempo y cómo ejercer tus derechos."
+  lema="Tus datos, claros."
+  actualizado="25 de octubre de 2026"
+>
+  <p>
+    Esta política explica qué datos personales se tratan cuando visitas Selectividad resuelta,
+    de acuerdo con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018
+    de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD). La web no
+    tiene registro de usuarios, formularios ni zona privada: para usarla no tienes que darnos
+    ningún dato.
+  </p>
+
+  <h2>1. Responsable del tratamiento</h2>
+  <dl class="legal-data">
+    <div>
+      <dt>Responsable</dt>
+      <dd>{titular.nombre}</dd>
+    </div>
+    <div>
+      <dt>NIF</dt>
+      <dd>{titular.nif}</dd>
+    </div>
+    <div>
+      <dt>Domicilio</dt>
+      <dd>{titular.domicilio}</dd>
+    </div>
+    <div>
+      <dt>Correo electrónico</dt>
+      <dd><a href={correo}>{titular.email}</a></dd>
+    </div>
+  </dl>
+
+  <h2>2. Qué datos se tratan y para qué</h2>
+  {
+    tratamientos.map((t) => (
+      <>
+        <h3>{t.titulo}</h3>
+        <dl class="legal-data">
+          <div>
+            <dt>Datos</dt>
+            <dd>{t.datos}</dd>
+          </div>
+          <div>
+            <dt>Finalidad</dt>
+            <dd>{t.finalidad}</dd>
+          </div>
+          <div>
+            <dt>Base jurídica</dt>
+            <dd>{t.base}</dd>
+          </div>
+          <div>
+            <dt>Conservación</dt>
+            <dd>{t.conservacion}</dd>
+          </div>
+        </dl>
+      </>
+    ))
+  }
+
+  <h3>Enlaces de afiliación de Amazon</h3>
+  <p>
+    Algunos enlaces llevan a Amazon con un código de afiliado. Si compras a través de ellos, el
+    titular recibe una comisión, sin que te cueste más. Como Afiliado de Amazon, el titular
+    obtiene ingresos por las compras adscritas que cumplen los requisitos aplicables. El titular
+    solo recibe informes con el número de clics y de ventas, nunca quién ha comprado ni qué ha
+    comprado cada persona. Lo que ocurre dentro de Amazon lo trata Amazon como responsable,
+    según su <a href="https://www.amazon.es/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ"
+      >aviso de privacidad</a
+    >.
+  </p>
+
+  <h2>3. Quién más trata tus datos</h2>
+  <p>Tus datos no se venden ni se ceden a nadie, salvo obligación legal. Sí intervienen estos proveedores:</p>
+  <ul>
+    <li>
+      <strong>Cloudflare, Inc.</strong> aloja la web y reenvía el correo de contacto. Actúa como
+      encargado del tratamiento.
+    </li>
+    <li>
+      <strong>Google LLC</strong> gestiona el buzón de correo en el que se reciben los mensajes
+      (Gmail) y presta el servicio de estadísticas (Google Analytics), como encargado del
+      tratamiento.
+    </li>
+    <li>
+      <strong>Google</strong> también sirve los anuncios de AdSense. Para eso usa los datos como
+      responsable independiente, con sus propias finalidades. Puedes ver
+      <a href="https://policies.google.com/technologies/partner-sites?hl=es"
+        >cómo usa Google los datos de los sitios web que utilizan sus servicios</a
+      > y configurar tus anuncios en <a href="https://myadcenter.google.com/?hl=es"
+        >Mi Centro de Anuncios</a
+      >.
+    </li>
+    <li>
+      <strong>Amazon</strong>, solo si entras en su web desde un enlace de afiliado, como
+      responsable de lo que hagas allí.
+    </li>
+  </ul>
+
+  <h2>4. Transferencias internacionales</h2>
+  <p>
+    Cloudflare, Google y Amazon pueden tratar los datos fuera del Espacio Económico Europeo, en
+    particular en Estados Unidos. Las tres están adheridas al Marco de Privacidad de Datos UE-EE.
+    UU. (Data Privacy Framework), que la Comisión Europea considera que ofrece un nivel de
+    protección adecuado, y además aplican las cláusulas contractuales tipo aprobadas por la
+    Comisión.
+  </p>
+
+  <h2>5. Menores de edad</h2>
+  <p>
+    La web está pensada para alumnado de 2.º de Bachillerato. Según el artículo 7 de la LOPDGDD,
+    a partir de los 14 años puedes dar tu consentimiento por ti mismo, por ejemplo para aceptar
+    las cookies. Si eres menor de 14 años, necesitas el consentimiento de tu madre, padre o tutor.
+  </p>
+
+  <h2>6. Tus derechos</h2>
+  <p>Puedes ejercer en cualquier momento estos derechos sobre tus datos:</p>
+  <ul>
+    <li><strong>Acceso</strong>: saber si se tratan tus datos y cuáles.</li>
+    <li><strong>Rectificación</strong>: corregir los que sean inexactos.</li>
+    <li><strong>Supresión</strong>: pedir que se borren.</li>
+    <li><strong>Oposición</strong>: pedir que dejen de tratarse.</li>
+    <li><strong>Limitación</strong>: pedir que solo se conserven, sin usarlos.</li>
+    <li><strong>Portabilidad</strong>: recibirlos en un formato que puedas llevar a otro servicio.</li>
+    <li>
+      <strong>Retirar tu consentimiento</strong> para las estadísticas y la publicidad, desde la
+      <a href="/politica-de-cookies/#preferencias">configuración de cookies</a>, sin que eso
+      afecte a lo tratado antes.
+    </li>
+  </ul>
+  <p>
+    Para ejercerlos, escribe a <a href={correo}>{titular.email}</a> indicando qué derecho
+    quieres ejercer. Solo si hay dudas razonables sobre tu identidad se te pedirá que la
+    acredites. Recibirás respuesta en un plazo máximo de un mes.
+  </p>
+  <p>
+    Si crees que tus datos no se han tratado correctamente, puedes reclamar ante la
+    <a href="https://www.aepd.es">Agencia Española de Protección de Datos</a>.
+  </p>
+
+  <h2>7. Decisiones automatizadas</h2>
+  <p>
+    El titular no toma decisiones automatizadas sobre ti. Si aceptas la publicidad personalizada,
+    Google elabora un perfil de tus intereses para elegir qué anuncios mostrarte; puedes evitarlo
+    rechazándola en el aviso de cookies.
+  </p>
+
+  <h2>8. Seguridad</h2>
+  <p>
+    La web se sirve siempre por HTTPS y sus proveedores aplican medidas técnicas y organizativas
+    para proteger los datos frente a pérdidas, accesos no autorizados o alteraciones.
+  </p>
+
+  <h2>9. Cambios en esta política</h2>
+  <p>
+    Esta política puede cambiar si cambian los servicios de la web o la normativa. La versión
+    vigente es la publicada en esta página, con la fecha de su última actualización.
+  </p>
+</Legal>

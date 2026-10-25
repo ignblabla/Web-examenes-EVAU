@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro"
 import { asignaturas } from "../data/asignaturas"
+import { paginasLegales } from "../data/legal"
 
 const enlaces = asignaturas.filter((a) => a.indexable)
 ---
@@ -16,5 +17,8 @@ const enlaces = asignaturas.filter((a) => a.indexable)
       }
     </nav>
     <p>© {new Date().getFullYear()} · Exámenes resueltos de Selectividad de Andalucía</p>
+    <nav class="footer-legal" aria-label="Información legal">
+      {paginasLegales.map((p) => <a href={p.ruta}>{p.nombre}</a>)}
+    </nav>
   </div>
 </footer>

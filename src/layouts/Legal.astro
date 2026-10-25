@@ -1,0 +1,51 @@
+---
+import { migas } from "../data/sitio"
+import Base from "./Base.astro"
+
+// Página legal: cabecera con migas y fecha de actualización, y el texto en una hoja blanca.
+// No se indexa (ver paginasLegales en src/data/legal.ts).
+interface Props {
+  nombre: string
+  ruta: string
+  description: string
+  // Segunda línea del titular, en cursiva.
+  lema: string
+  // Fecha de la última actualización, escrita como se lee: "25 de octubre de 2026".
+  actualizado: string
+}
+
+const { nombre, ruta, description, lema, actualizado } = Astro.props
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  ...migas(Astro.site, [{ nombre, ruta }]),
+}
+---
+
+<Base title={`${nombre} · Selectividad resuelta`} description={description} jsonLd={jsonLd} noindex>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{nombre}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Información legal
+      </div>
+      <h1>
+        {nombre}.
+        <br />
+        <em>{lema}</em>
+      </h1>
+      <p class="hero-lead">Última actualización: {actualizado}.</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <article class="legal-sheet">
+      <slot />
+    </article>
+  </section>
+</Base>
