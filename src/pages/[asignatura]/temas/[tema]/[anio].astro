@@ -11,7 +11,7 @@ import Solucion from "../../../../components/Solucion.astro"
 import { buscarAsignatura } from "../../../../data/asignaturas"
 import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, tipoLargo } from "../../../../data/examenes"
 import { fechas } from "../../../../data/fechas"
-import { editor, migas, referenciaEditor } from "../../../../data/sitio"
+import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
 
 // Una página por asignatura, tema y año con los ejercicios de todos los exámenes de ese curso.
@@ -77,6 +77,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     editor(Astro.site),
+    persona(Astro.site),
     {
       "@type": ["Article", "LearningResource"],
       "@id": `${url}#ejercicios`,
@@ -89,7 +90,7 @@ const jsonLd = {
       inLanguage: asignatura.idioma ? ["es", asignatura.idioma] : "es",
       datePublished: publicado,
       dateModified: modificado,
-      author: referenciaEditor(Astro.site),
+      author: referenciaAutor(Astro.site),
       publisher: referenciaEditor(Astro.site),
       isAccessibleForFree: true,
       learningResourceType: "Ejercicios resueltos",
@@ -143,6 +144,9 @@ const jsonLd = {
         <em>{asignatura.nombre}, exámenes de {anio}.</em>
       </h1>
       {tema.intro && <p class="hero-lead">{tema.intro}</p>}
+      <p class="exam-updated">
+        Resuelto por <a href={autor.ruta}>{autor.nombre}</a>
+      </p>
     </div>
   </section>
 

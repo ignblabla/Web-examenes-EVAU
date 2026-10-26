@@ -1935,6 +1935,12 @@ footer {
   font-weight: 600;
 }
 
+.exam-updated a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Enlaces relacionados: otros exámenes, la otra lengua y los temas. */
 .related {
   max-width: 960px;

@@ -20,6 +20,7 @@ const TIPOS_SCHEMA = new Set([
   "Article",
   "LearningResource",
   "CollectionPage",
+  "ProfilePage",
   "ItemList",
   "ListItem",
   "BreadcrumbList",

@@ -21,6 +21,29 @@ export function referenciaEditor(site: URL | undefined) {
   return { "@id": new URL("/#editor", site).href }
 }
 
+// Autor de las soluciones: firma los exámenes resueltos y tiene su propia página.
+export const autor = {
+  nombre: "Ignacio Blanquero Blanco",
+  ruta: "/sobre-el-autor/",
+}
+
+// Nodo del autor, con el mismo @id en su página y en los exámenes que firma.
+export function persona(site: URL | undefined) {
+  return {
+    "@type": "Person",
+    "@id": new URL(`${autor.ruta}#autor`, site).href,
+    name: autor.nombre,
+    url: new URL(autor.ruta, site).href,
+    jobTitle: "Ingeniero de software",
+    knowsLanguage: ["es", "en", "fr"],
+    worksFor: referenciaEditor(site),
+  }
+}
+
+export function referenciaAutor(site: URL | undefined) {
+  return { "@id": new URL(`${autor.ruta}#autor`, site).href }
+}
+
 // BreadcrumbList con las mismas migas que se ven en la página, empezando por Inicio.
 export function migas(site: URL | undefined, niveles: { nombre: string; ruta: string }[]) {
   return {

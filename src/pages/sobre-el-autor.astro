@@ -1,0 +1,105 @@
+---
+import { titular } from "../data/legal"
+import { autor, editor, migas, persona } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+const nombre = "Sobre el autor"
+const url = new URL(autor.ruta, Astro.site).href
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": "ProfilePage",
+      "@id": `${url}#pagina`,
+      url,
+      name: `${nombre} · Selectividad resuelta`,
+      inLanguage: "es",
+      mainEntity: { "@id": `${url}#autor` },
+    },
+    migas(Astro.site, [{ nombre, ruta: autor.ruta }]),
+  ],
+}
+---
+
+<Base
+  title={`${autor.nombre}, autor · Selectividad resuelta`}
+  description="Quién resuelve los exámenes de Selectividad de Inglés y Francés de Andalucía de esta web y cómo sigue los criterios oficiales de corrección."
+  jsonLd={jsonLd}
+>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{nombre}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {nombre}
+      </div>
+      <h1>
+        {autor.nombre}.
+        <br />
+        <em>Quién resuelve los exámenes.</em>
+      </h1>
+      <p class="hero-lead">
+        Ingeniero de software con amplia formación en inglés y en francés. Resuelvo y explico los
+        exámenes de Selectividad de Andalucía para que puedas prepararlos por tu cuenta.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reutiliza la hoja blanca de las páginas legales. -->
+  <section class="legal-body">
+    <article class="legal-sheet">
+      <h2>Quién soy</h2>
+      <p>
+        Me llamo {autor.nombre} y soy ingeniero de software. Los idiomas me han acompañado
+        siempre: tengo una amplia formación en inglés, que completé viviendo una temporada en
+        Irlanda, y también en francés.
+      </p>
+
+      <h2>Por qué existe esta web</h2>
+      <p>
+        Cuando preparas la Selectividad, encontrar los exámenes de otros años es fácil. Lo difícil
+        es saber si tus respuestas son correctas y, sobre todo, por qué lo son. Creé Selectividad
+        resuelta para ayudar a los alumnos que se enfrentan a la prueba: que tengan los exámenes
+        oficiales resueltos, explicados y en un solo sitio, gratis y sin registrarse.
+      </p>
+
+      <h2>Cómo preparo las soluciones</h2>
+      <p>
+        Cada examen se resuelve siguiendo los <strong>criterios oficiales de corrección</strong>
+        que publica la Universidad para esa convocatoria, cuando ya están disponibles. Cuando los criterios dan una respuesta
+        concreta, la solución de la web la respeta: mismas líneas del texto, misma redacción y las
+        mismas partes opcionales.
+      </p>
+      <ul>
+        <li>
+          En las preguntas de comprensión, cito la línea del texto que justifica cada respuesta.
+        </li>
+        <li>
+          En las de gramática y vocabulario, explico en español la regla que se aplica, para que
+          sirva también en otros exámenes.
+        </li>
+        <li>
+          Cuando una respuesta admite variantes, lo indico y explico cuáles serían válidas.
+        </li>
+      </ul>
+
+      <h2>Si encuentras un error</h2>
+      <p>
+        Pongo mucho cuidado en cada solución, pero se me puede escapar algo. Si ves una
+        errata o una respuesta que no te convence, escríbeme a
+        <a href={`mailto:${titular.email}`}>{titular.email}</a> y la reviso.
+      </p>
+      <p class="legal-note">
+        Esta web no está vinculada a las universidades andaluzas ni a la Junta de Andalucía. Los
+        enunciados son los oficiales; las soluciones y explicaciones son mías.
+      </p>
+    </article>
+  </section>
+</Base>

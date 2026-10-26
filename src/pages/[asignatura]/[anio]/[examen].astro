@@ -23,7 +23,7 @@ import {
   tipoLargo,
 } from "../../../data/examenes"
 import { fechaLarga, fechas } from "../../../data/fechas"
-import { editor, migas, referenciaEditor } from "../../../data/sitio"
+import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
 export async function getStaticPaths() {
@@ -121,6 +121,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     editor(Astro.site),
+    persona(Astro.site),
     {
       "@type": ["Article", "LearningResource"],
       "@id": `${url}#examen`,
@@ -133,7 +134,7 @@ const jsonLd = {
       inLanguage: asignatura.idioma ? ["es", asignatura.idioma] : "es",
       datePublished: fechaPublicacion,
       dateModified: modificado,
-      author: referenciaEditor(Astro.site),
+      author: referenciaAutor(Astro.site),
       publisher: referenciaEditor(Astro.site),
       isAccessibleForFree: true,
       learningResourceType: resuelto ? "Examen resuelto" : "Examen",
@@ -195,6 +196,7 @@ const jsonLd = {
         }
       </p>
       <p class="exam-updated">
+        {resuelto && <>Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · </>}
         Revisado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
       </p>
     </div>
