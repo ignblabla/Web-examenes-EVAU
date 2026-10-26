@@ -37,6 +37,36 @@ const imageUrl = new URL(image, Astro.site)
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {
+      /* Google Analytics con Consent Mode v2: todo denegado hasta que el aviso de cookies
+         registre que el visitante lo acepta, así que sin consentimiento no instala cookies.
+         Solo en producción, para no contar las visitas de desarrollo. */
+      import.meta.env.PROD && (
+        <>
+          <script is:inline define:vars={{ id: sitio.analytics }}>
+            window.dataLayer = window.dataLayer || []
+            window.gtag = function () {
+              dataLayer.push(arguments)
+            }
+            gtag("consent", "default", {
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              analytics_storage: "denied",
+              wait_for_update: 500,
+            })
+            gtag("set", "ads_data_redaction", true)
+            gtag("js", new Date())
+            gtag("config", id)
+          </script>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${sitio.analytics}`}
+          />
+        </>
+      )
+    }
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta

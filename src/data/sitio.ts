@@ -4,6 +4,8 @@ export const sitio = {
   nombreAlternativo: "Selectividad Resuelta Andalucía",
   descripcion:
     "Exámenes de Selectividad (PAU, antes PEvAU) de Andalucía resueltos y explicados pregunta a pregunta.",
+  // ID de medición de Google Analytics 4.
+  analytics: "G-WH506NXFVM",
 }
 
 // Nodo del editor de la web, al que apuntan el resto de datos estructurados con su @id.
