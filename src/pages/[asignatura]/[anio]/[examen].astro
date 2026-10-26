@@ -229,4 +229,12 @@ const jsonLd = {
       </a>
     </div>
   </section>
+
+  <script>
+    // Al imprimir salen todas las soluciones, también las plegadas.
+    window.addEventListener("beforeprint", () => {
+      for (const solucion of document.querySelectorAll<HTMLDetailsElement>(".solution--plegable"))
+        solucion.open = true
+    })
+  </script>
 </Base>

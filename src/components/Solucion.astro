@@ -1,14 +1,33 @@
 ---
 // Solución de un ejercicio, intercalada en el enunciado justo después de la pregunta.
 // Va en español aunque el enunciado esté en inglés o en francés.
+// Plegable, empieza cerrada tras un botón; el texto sigue en el HTML para los buscadores.
 interface Props {
   titulo?: string
+  plegable?: boolean
 }
 
-const { titulo = "Solución" } = Astro.props
+const { titulo = "Solución", plegable = false } = Astro.props
 ---
 
-<div class="solution" lang="es">
-  <p class="solution-label">{titulo}</p>
-  <slot />
-</div>
+{
+  plegable ? (
+    <details class="solution solution--plegable" lang="es">
+      <summary class="solution-summary">
+        <span class="solution-label">{titulo}</span>
+        <span class="solution-toggle" aria-hidden="true">
+          <span class="solution-toggle-open">Mostrar</span>
+          <span class="solution-toggle-close">Ocultar</span>
+        </span>
+      </summary>
+      <div class="solution-body">
+        <slot />
+      </div>
+    </details>
+  ) : (
+    <div class="solution" lang="es">
+      <p class="solution-label">{titulo}</p>
+      <slot />
+    </div>
+  )
+}

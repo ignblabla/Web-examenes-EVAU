@@ -1,0 +1,10 @@
+---
+// La misma solución, plegada: la usa Resuelto en la página del examen completo.
+import Solucion from "./Solucion.astro"
+
+interface Props {
+  titulo?: string
+}
+---
+
+<Solucion {...Astro.props} plegable><slot /></Solucion>
