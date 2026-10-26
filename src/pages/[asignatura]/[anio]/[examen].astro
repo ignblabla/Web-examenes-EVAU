@@ -10,7 +10,7 @@ import Ecuacion from "../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../components/oficial/Nuclido.astro"
 import Resuelto from "../../../components/oficial/Resuelto.astro"
-import { buscarAsignatura, otraLengua } from "../../../data/asignaturas"
+import { buscarAsignatura, nombreSeo, otraLengua } from "../../../data/asignaturas"
 import { cabeceras } from "../../../data/cabeceras"
 import {
   cursos,
@@ -69,12 +69,19 @@ const { publicado: fechaPublicacion, modificado } = fechas(
   [entrada, ...ejercicios].map((e) => e.filePath ?? ""),
 )
 
-const titulo = `Examen ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio} ${examen.titulo.toLowerCase()}${resuelto ? " resuelto" : ""}`
+// El title más completo que quepa en 60 caracteres.
+const corto = nombreSeo(asignatura)
+const final = `${anio} ${examen.titulo.toLowerCase()}${resuelto ? " resuelto" : ""}`
+const opciones = [
+  `Examen ${corto} ${prueba(anio)} Andalucía ${final}`,
+  `Examen ${corto} ${prueba(anio)} ${final}`,
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 const descripcion =
   entrada.data.descripcion ??
   (resuelto
-    ? `Examen de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre} resuelto: ${asignatura.resuelto}.`
-    : `Enunciado oficial del examen de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`)
+    ? `Examen de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre} resuelto: ${asignatura.resuelto}.`
+    : `Enunciado oficial del examen de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`)
 const url = new URL(Astro.url.pathname, Astro.site).href
 
 // Enlaces: anterior y siguiente en orden cronológico, la otra lengua, el año y los temas.

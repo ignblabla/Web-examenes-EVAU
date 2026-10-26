@@ -2,15 +2,15 @@
 import { getCollection } from "astro:content"
 import Icon from "../../components/Icon.astro"
 import SubjectSymbol from "../../components/SubjectSymbol.astro"
-import { asignaturas, type Asignatura } from "../../data/asignaturas"
+import { asignaturas, nombreSeo, type Asignatura } from "../../data/asignaturas"
 import {
   cursos,
   examenesDe,
   primerAnio,
+  prueba,
   rutaAnio,
   rutaExamen,
   rutaTema,
-  totalExamenes,
   ultimoAnio,
   type Examen,
 } from "../../data/examenes"
@@ -30,6 +30,11 @@ interface Props {
 
 const { asignatura } = Astro.props
 const { slug, temas } = asignatura
+
+// Cursos de la asignatura: desde su primer año con exámenes hasta el último.
+const desde = asignatura.desde ?? primerAnio
+const cursosAsignatura = cursos.filter((c) => c.anio >= desde)
+const totalExamenes = cursosAsignatura.reduce((n, c) => n + examenesDe(c).length, 0)
 
 // Solo se enlazan los exámenes que ya están publicados; el resto se muestran sin enlace.
 const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
@@ -55,8 +60,21 @@ const filas = [
   { titulo: "Exámenes de reserva", nota: "Cuatro modelos por curso", campo: "reservas" },
 ] as const
 
-const titulo = `Exámenes de ${asignatura.nombre} de Selectividad Andalucía resueltos`
-const descripcion = `Todos los exámenes de ${asignatura.nombre} de Selectividad de Andalucía (PAU y PEvAU) de ${primerAnio} a ${ultimoAnio}: junio, julio y reservas, con las soluciones explicadas y por temas.`
+// El title más completo que quepa en 60 caracteres.
+const corto = nombreSeo(asignatura)
+const opciones = [
+  `Exámenes de ${corto} de Selectividad Andalucía resueltos`,
+  `Exámenes ${corto} Selectividad Andalucía resueltos`,
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const pruebas = prueba(desde) === "PAU" ? "PAU" : "PAU y PEvAU"
+// La descripción más completa que quepa en 160 caracteres.
+const inicio = `Todos los exámenes de ${corto} de Selectividad de Andalucía (${pruebas}) de ${desde} a ${ultimoAnio}`
+const descripciones = [
+  `${inicio}: junio, julio y reservas, con las soluciones explicadas y por temas.`,
+  `${inicio}: junio, julio y reservas, resueltos y por temas.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
 
 const jsonLd = {
@@ -100,7 +118,7 @@ const jsonLd = {
         <h1>
           {asignatura.titulo}
           <br />
-          <em>De {primerAnio} a {ultimoAnio}.</em>
+          <em>De {desde} a {ultimoAnio}.</em>
         </h1>
         <p class="hero-lead">
           {
@@ -111,7 +129,7 @@ const jsonLd = {
         <dl class="subject-stats">
           <div>
             <dt>Cursos</dt>
-            <dd>{cursos.length}</dd>
+            <dd>{cursosAsignatura.length}</dd>
           </div>
           <div>
             <dt>Exámenes</dt>
@@ -176,7 +194,7 @@ const jsonLd = {
                 <p>{fila.nota}</p>
               </header>
               <ul class="archive-list">
-                {cursos.map((c) => (
+                {cursosAsignatura.map((c) => (
                   <li>
                     <strong>
                       {examenesDe(c).some((e) => publicado(c.anio, e)) ? (
@@ -236,7 +254,7 @@ const jsonLd = {
               <span class="topic-number">Tema {i + 1}</span>
               <h3>{t.titulo}</h3>
               <div class="topic-years">
-                {cursos.map((c) =>
+                {cursosAsignatura.map((c) =>
                   temasPublicados.has(`${t.slug}/${c.anio}`) ? (
                     <a href={rutaTema(slug, t, c.anio)}>{c.anio}</a>
                   ) : (

@@ -180,6 +180,13 @@
   font-weight: 600;
 }
 
+/* Con cinco enlaces, el menú se aprieta antes de pasar al menú móvil. */
+@media (max-width: 1100px) {
+  .desktop-nav {
+    gap: 20px;
+  }
+}
+
 .desktop-nav a {
   position: relative;
 }
@@ -588,7 +595,7 @@
 
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -998,10 +1005,12 @@ footer {
 }
 
 .footer-inner {
-  min-height: 120px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
+  /* Fila del logo, la navegación y el copyright, centrada en su propia altura; debajo, la legal. */
+  grid-template-rows: minmax(110px, auto) auto;
   align-items: center;
+  column-gap: 32px;
 }
 
 .footer-inner .logo-mark {
@@ -1016,6 +1025,8 @@ footer {
 
 .footer-inner > p:last-of-type {
   justify-self: end;
+  max-width: 190px;
+  text-align: right;
 }
 
 /* Enlaces legales: una fila propia bajo el logo, la navegación y el copyright. */
@@ -1111,6 +1122,12 @@ footer {
 
   .subject-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Con un número impar de asignaturas, la última ocupa la fila entera. */
+  .subject-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    min-height: 380px;
   }
 
   .method-grid,
@@ -1223,6 +1240,7 @@ footer {
 
   .footer-inner {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     gap: 20px;
     padding-block: 32px;
   }
@@ -1234,6 +1252,8 @@ footer {
 
   .footer-inner > p:last-of-type {
     justify-self: start;
+    max-width: none;
+    text-align: left;
   }
 
   .footer-legal {
@@ -1935,6 +1955,11 @@ footer {
   font-weight: 600;
 }
 
+/* Sin entradilla (temas sin intro), la firma va directamente bajo el título. */
+.exam-hero h1 + .exam-updated {
+  margin-top: 28px;
+}
+
 .exam-updated a {
   color: inherit;
   text-decoration: underline;
@@ -2351,6 +2376,38 @@ footer {
   content: "";
   display: table;
   clear: both;
+}
+
+/* Formato "matematicas": rótulo de cada ejercicio y apartados a), b)… sangrados. */
+.official-statement--matematicas .official-block {
+  margin: 30px 0 10px;
+}
+
+.official-statement--matematicas .official-block:first-child {
+  margin-top: 0;
+}
+
+/* Rótulo de bloque recuadrado y centrado (curso 2024-2025: BLOQUE A, B, C y D). */
+.official-statement--matematicas .math-bloque {
+  font-weight: 700;
+  text-align: center;
+}
+
+.official-statement--matematicas .math-bloque span {
+  padding: 0 4px;
+  border: 1px solid #111;
+}
+
+.official-statement--matematicas .math-bloque + .official-block {
+  margin-top: 8px;
+}
+
+.official-statement--matematicas .math-sub {
+  padding-left: 22px;
+}
+
+.official-statement--matematicas .math-sub-2 {
+  padding-left: 40px;
 }
 
 /* Cabecera con serifa (curso 2020-2021). */
@@ -2892,6 +2949,52 @@ footer {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* Las fórmulas largas de las soluciones se desplazan en horizontal en el móvil. */
+.official-statement .solution .katex-display {
+  margin: 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 0;
+}
+
+.official-statement .solution ul {
+  margin: 0 0 8px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.official-statement .solution li + li {
+  margin-top: 2px;
+}
+
+.official-statement .solution table {
+  margin: 4px 0 10px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.official-statement .solution th,
+.official-statement .solution td {
+  padding: 4px 12px;
+  border: 1px solid rgba(23, 44, 39, 0.2);
+  text-align: center;
+}
+
+.official-statement .solution th {
+  font-weight: 700;
+}
+
+.solution-figure {
+  max-width: 420px;
+  margin: 12px auto;
+}
+
+.solution-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .official-statement .solution blockquote {

@@ -31,6 +31,16 @@ const subjects = [
     className: "subject-card subject-card--french",
     href: "/frances/",
   },
+  {
+    key: "03",
+    symbol: "graph",
+    title: "Matemáticas aplicadas",
+    description:
+      "Los exámenes desde 2024 resueltos paso a paso, con el planteamiento, los cálculos y las gráficas.",
+    detail: "Álgebra · Funciones · Probabilidad · Inferencia",
+    className: "subject-card subject-card--math",
+    href: "/matematicas-aplicadas/",
+  },
 ] as const
 
 const jsonLd = {
@@ -55,15 +65,15 @@ const jsonLd = {
   ],
 }
 
-// Últimos tres cursos con exámenes, cada uno enlazado a su página en las lenguas indexables.
+// Últimos tres cursos con exámenes, cada uno enlazado a su página en las asignaturas indexables.
 const examenes = await getCollection("examenes")
-const lenguas = asignaturas.filter((a) => a.idioma && a.indexable)
+const publicadas = asignaturas.filter((a) => a.indexable)
 const anios = cursos
   .filter((c) => examenes.some((e) => e.data.anio === c.anio))
   .slice(0, 3)
   .map((c) => ({
     anio: c.anio,
-    lenguas: lenguas.filter((a) =>
+    conExamenes: publicadas.filter((a) =>
       examenes.some((e) => e.data.asignatura === a.slug && e.data.anio === c.anio),
     ),
   }))
@@ -71,7 +81,7 @@ const anios = cursos
 // Exámenes oficiales (junio y julio) del último curso, enlazados directamente.
 const ultimo = cursos.find((c) => examenes.some((e) => e.data.anio === c.anio))
 const ultimosExamenes: Enlace[] = ultimo
-  ? lenguas.flatMap((a) =>
+  ? publicadas.flatMap((a) =>
       ultimo.oficiales
         .filter((e) => examenes.some((x) => x.id === `${a.slug}/${ultimo.anio}/${e.slug}`))
         .map((e) => ({
@@ -85,8 +95,8 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
 ---
 
 <Base
-  title="Exámenes Selectividad Andalucía resueltos: Inglés y Francés"
-  description="Exámenes de Inglés y Francés de Selectividad de Andalucía (PAU y PEvAU) de 2021 a 2026 resueltos: junio, julio y reservas, con cada respuesta explicada."
+  title="Selectividad Andalucía resuelta: Inglés, Francés y Mates"
+  description="Exámenes de Inglés, Francés y Matemáticas aplicadas de Selectividad de Andalucía (PAU y PEvAU) resueltos: junio, julio y reservas, con cada respuesta explicada."
   jsonLd={jsonLd}
 >
   <section class="hero">
@@ -103,8 +113,8 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
         </h1>
         <p class="hero-lead">
           Los exámenes de Inglés y Francés de la Selectividad de Andalucía (PAU, antes PEvAU) de
-          2021 a 2026, con el enunciado oficial y cada respuesta explicada para que entiendas el
-          porqué y no solo la solución.
+          2021 a 2026 y los de Matemáticas aplicadas de 2024 a 2026, con el enunciado oficial y
+          cada respuesta explicada para que entiendas el porqué y no solo la solución.
         </p>
         <div class="hero-actions">
           <a href="#asignaturas" class="button button--primary">
@@ -147,7 +157,7 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
           <p class="section-kicker">Elige tu asignatura</p>
         </div>
         <h2>
-          Dos idiomas.
+          Tres asignaturas.
           <br />
           <em>Un objetivo claro.</em>
         </h2>
@@ -192,10 +202,10 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
         ultimo && (
           <p class="latest-note">
             Y los {reservasUltimo} exámenes de reserva de {ultimo.anio} en{" "}
-            {lenguas.map((a, i) => (
+            {publicadas.map((a, i) => (
               <>
-                {i > 0 && " y "}
-                <a href={rutaAnio(a.slug, ultimo.anio)}>{`${a.nombre} ${ultimo.anio}`}</a>{i === lenguas.length - 1 && "."}
+                {i > 0 && (i === publicadas.length - 1 ? " y " : ", ")}
+                <a href={rutaAnio(a.slug, ultimo.anio)}>{`${a.nombre} ${ultimo.anio}`}</a>{i === publicadas.length - 1 && "."}
               </>
             ))}
           </p>
@@ -230,8 +240,8 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
           <div>
             <h3>Razonamiento visible</h3>
             <p>
-              Citamos la línea del texto que justifica cada respuesta y explicamos en español la
-              regla gramatical que se aplica.
+              En los idiomas citamos la línea del texto que justifica cada respuesta y explicamos en
+              español la regla gramatical; en Matemáticas, cada paso del planteamiento y del cálculo.
             </p>
           </div>
         </article>
@@ -269,12 +279,12 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
       </div>
       <div class="year-stack" aria-label="Convocatorias disponibles">
         {
-          anios.map(({ anio, lenguas }, index) => (
+          anios.map(({ anio, conExamenes }, index) => (
             <div class="year-row">
               <span class="year-status">{index === 0 ? "Última" : "Archivo"}</span>
               <strong>{anio}</strong>
               <div class="year-meta">
-                {lenguas.map((a) => (
+                {conExamenes.map((a) => (
                   <a href={rutaAnio(a.slug, anio)}>
                     {a.nombre} {anio}
                   </a>
@@ -298,7 +308,7 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
         <h2>
           La Selectividad de Andalucía,
           <br />
-          <em>en cuatro respuestas.</em>
+          <em>en cinco respuestas.</em>
         </h2>
         <p>Lo que conviene saber antes de ponerte con los exámenes.</p>
       </div>
@@ -334,6 +344,15 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
             2025 valían 4, 2 y 4 puntos, con una redacción de 80 a 120 palabras; desde 2026 valen 5, 2
             y 3, y la redacción es de 120 a 150. <a href="/frances/">Ver los exámenes de Francés
             resueltos</a>.
+          </p>
+        </article>
+        <article>
+          <h3>¿Cómo es el examen de Matemáticas aplicadas?</h3>
+          <p>
+            Dura hora y media y tiene cuatro ejercicios: álgebra o programación lineal (3 puntos),
+            funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos
+            opciones en algunos de ellos. En 2024 y 2025 eran cuatro bloques de 2.5 puntos.
+            <a href="/matematicas-aplicadas/">Ver los exámenes de Matemáticas aplicadas resueltos</a>.
           </p>
         </article>
       </div>

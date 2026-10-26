@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content"
 import EnlacesRelacionados, { type Enlace } from "../../../components/EnlacesRelacionados.astro"
 import Icon from "../../../components/Icon.astro"
-import { asignaturas, buscarAsignatura, otraLengua } from "../../../data/asignaturas"
+import { asignaturas, buscarAsignatura, nombreSeo, otraLengua } from "../../../data/asignaturas"
 import {
   cursos,
   examenesDe,
@@ -77,8 +77,16 @@ const otrosAnios: Enlace[] = [
 ]
 
 const conSoluciones = ejercicios.length > 0
-const titulo = `Exámenes ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio}${conSoluciones ? " resueltos" : ""}`
-const descripcion = `Los ${convocatorias.length} exámenes de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}: ordinaria de junio, extraordinaria de julio y reservas${conSoluciones ? ", con las soluciones explicadas" : ""}.`
+const corto = nombreSeo(asignatura)
+const titulo = `Exámenes ${corto} ${prueba(anio)} Andalucía ${anio}${conSoluciones ? " resueltos" : ""}`
+// La descripción más completa que quepa en 160 caracteres.
+const inicio = `Los ${convocatorias.length} exámenes de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}`
+const soluciones = conSoluciones ? ", con las soluciones explicadas" : ""
+const descripciones = [
+  `${inicio}: ordinaria de junio, extraordinaria de julio y reservas${soluciones}.`,
+  `${inicio}: junio, julio y reservas${soluciones}.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
 
 const jsonLd = {

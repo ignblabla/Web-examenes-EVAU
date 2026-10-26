@@ -8,7 +8,7 @@ import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
-import { buscarAsignatura } from "../../../../data/asignaturas"
+import { buscarAsignatura, nombreSeo } from "../../../../data/asignaturas"
 import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, tipoLargo } from "../../../../data/examenes"
 import { fechas } from "../../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
@@ -64,13 +64,16 @@ const termino = tema.termino ?? tema.titulo
 const { publicado, modificado } = fechas(entradas.map((e) => e.entrada.filePath ?? ""))
 
 // El title más completo que quepa en 60 caracteres.
+const corto = nombreSeo(asignatura)
 const opciones = [
-  `${termino} ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
-  `${termino} ${asignatura.nombre} ${prueba(anio)} Andalucía ${anio} con soluciones`,
-  `${termino} ${asignatura.nombre} ${prueba(anio)} ${anio} con soluciones`,
+  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
+  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio} con soluciones`,
+  `${termino} ${corto} ${prueba(anio)} ${anio} con soluciones`,
+  `${termino} ${corto} ${prueba(anio)} ${anio}`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
-const descripcion = `${termino} de los ${entradas.length} exámenes de ${asignatura.nombre} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}, con cada respuesta explicada y justificada.`
+const examenesTexto = entradas.length === 1 ? "del examen" : `de los ${entradas.length} exámenes`
+const descripcion = `${termino} ${examenesTexto} de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}, con cada respuesta explicada y justificada.`
 const url = new URL(Astro.url.pathname, Astro.site).href
 
 const jsonLd = {

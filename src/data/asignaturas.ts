@@ -15,6 +15,14 @@ export interface Asignatura {
   intro?: string
   // Qué incluye cada examen resuelto, para la meta descripción (ajustado a 140-160 caracteres).
   resuelto?: string
+  // Primer curso con exámenes, si la asignatura empieza después de primerAnio.
+  desde?: number
+  // Nombre para los title y las meta descripciones, si el nombre completo no cabe.
+  nombreCorto?: string
+}
+
+export function nombreSeo(asignatura: Asignatura) {
+  return asignatura.nombreCorto ?? asignatura.nombre
 }
 
 type DatosTema = string | Omit<Tema, "slug">
@@ -85,6 +93,28 @@ export const asignaturas: Asignatura[] = [
         intro:
           "La compétence linguistique vale 2 puntos: se eligen 4 transformaciones entre las propuestas (pronombres, tiempos verbales, voz activa y pasiva, negación, participio presente…). Cada respuesta explica en español la regla que se aplica.",
       },
+    ]),
+  },
+  {
+    slug: "matematicas-aplicadas",
+    nombre: "Matemáticas aplicadas",
+    titulo: "Matemáticas aplicadas.",
+    simbolo: "graph",
+    color: "math",
+    indexable: true,
+    desde: 2024,
+    nombreCorto: "Matemáticas CCSS",
+    intro:
+      "El examen de Matemáticas Aplicadas a las Ciencias Sociales II de la PAU de Andalucía dura 1 hora y 30 minutos. Desde 2026 tiene cuatro ejercicios: álgebra o programación lineal (3 puntos), funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos opciones, A) y B), en algunos de ellos. En 2024 y 2025 eran cuatro bloques y se elegía un ejercicio de 2.5 puntos en cada uno. Aquí tienes todas las convocatorias resueltas paso a paso, con las gráficas y siguiendo los criterios oficiales de corrección.",
+    resuelto: "todos los ejercicios paso a paso y justificados",
+    temas: temas([
+      "Matrices y determinantes",
+      "Sistemas de ecuaciones lineales",
+      "Programación lineal",
+      "Funciones",
+      "Probabilidad",
+      "Distribución binomial",
+      "Inferencia estadística",
     ]),
   },
 ]
