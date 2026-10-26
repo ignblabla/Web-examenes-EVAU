@@ -67,6 +67,21 @@ const imageUrl = new URL(image, Astro.site)
         </>
       )
     }
+    {
+      /* AdSense, después del consentimiento por defecto. También carga el aviso de cookies
+         que se configura en AdSense → Privacidad y mensajes, que actualiza ese consentimiento. */
+      import.meta.env.PROD && sitio.adsense && (
+        <>
+          <meta name="google-adsense-account" content={sitio.adsense} />
+          <script
+            is:inline
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${sitio.adsense}`}
+            crossorigin="anonymous"
+          />
+        </>
+      )
+    }
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta
