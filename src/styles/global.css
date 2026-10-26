@@ -1127,7 +1127,23 @@ footer {
   /* Con un número impar de asignaturas, la última ocupa la fila entera. */
   .subject-card:last-child:nth-child(odd) {
     grid-column: 1 / -1;
-    min-height: 380px;
+    min-height: 420px;
+  }
+
+  /* Con menos ancho el texto ocupa más líneas: el dibujo entra en el flujo para que el título no lo pise. */
+  .subject-symbol {
+    position: relative;
+    inset: auto;
+    height: 190px;
+    margin: 8px 0 20px;
+  }
+
+  /* Salvo en la tarjeta ancha, donde va a la mitad derecha. */
+  .subject-card:last-child:nth-child(odd) .subject-symbol {
+    position: absolute;
+    inset: 58px 0 auto 50%;
+    height: 220px;
+    margin: 0;
   }
 
   .method-grid,
@@ -1195,9 +1211,19 @@ footer {
     font-size: 49px;
   }
 
-  .subject-card {
-    min-height: 450px;
+  .subject-card,
+  .subject-card:last-child:nth-child(odd) {
+    min-height: 0;
     padding: 28px;
+  }
+
+  /* En móvil todas las tarjetas tienen una columna: el dibujo vuelve al flujo también en la última. */
+  .subject-symbol,
+  .subject-card:last-child:nth-child(odd) .subject-symbol {
+    position: relative;
+    inset: auto;
+    height: 190px;
+    margin: 8px 0 20px;
   }
 
   .subject-grid {
