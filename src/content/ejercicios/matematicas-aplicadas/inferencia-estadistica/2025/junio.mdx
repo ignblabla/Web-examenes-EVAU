@@ -1,0 +1,128 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+El tiempo de estudio semanal de los estudiantes andaluces, medido en horas, se distribuye según una ley Normal de media desconocida y desviación típica $5$ horas. A partir de una muestra de $81$ estudiantes se ha obtenido que el intervalo de confianza para la media poblacional es $(10.794,\ 13.206)$, con un nivel de confianza del $97\%$.
+
+a) **(0.5 puntos)** Obtenga el tiempo medio de estudio de esa muestra de estudiantes.
+
+<Solucion>
+
+El intervalo de confianza para la media es $(\bar{x} - E,\ \bar{x} + E)$, centrado en la media muestral. Por tanto, $\bar{x}$ es el punto medio:
+
+$$
+\bar{x} = \frac{10.794 + 13.206}{2} = \frac{24}{2} = 12 \text{ horas}
+$$
+
+Comprobación: el error es $E = 13.206 - 12 = 1.206$, y en efecto $2.17 \cdot \frac{5}{\sqrt{81}} \approx 1.206$ (el $z_{\alpha/2}$ del $97\%$ es $2.17$).
+
+</Solucion>
+
+b) **(0.5 puntos)** Si se amplía el tamaño de la muestra, razone si manteniendo el nivel de confianza, la amplitud del intervalo de confianza aumenta o disminuye.
+
+<Solucion>
+
+La amplitud del intervalo es
+
+$$
+2E = 2\,z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}
+$$
+
+Con el mismo nivel de confianza, $z_{\alpha/2}$ no cambia, y $\sigma$ tampoco. Si $n$ aumenta, $\sqrt{n}$ aumenta y la fracción $\frac{\sigma}{\sqrt{n}}$ disminuye. Por tanto, **la amplitud disminuye**: con más datos la estimación es más precisa.
+
+</Solucion>
+
+c) **(0.75 puntos)** Si se desea reducir la amplitud del intervalo de confianza, razone si manteniendo el tamaño muestral, ha de reducirse o aumentarse el nivel de confianza.
+
+<Solucion>
+
+Con $n$ y $\sigma$ fijos, la amplitud $2 z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$ solo depende de $z_{\alpha/2}$. Cuanto menor es el nivel de confianza, menor es $z_{\alpha/2}$ (por ejemplo, $2.17$ al $97\%$ y $1.96$ al $95\%$). Por tanto, para reducir la amplitud **hay que reducir el nivel de confianza**. El intervalo es más estrecho, pero se tiene menos seguridad de que contenga a la media.
+
+</Solucion>
+
+d) **(0.75 puntos)** Si la media de la población es de $10.2$ horas y sabiendo que la media muestral es de $12$ horas, calcule el tamaño máximo de la muestra para obtener un intervalo de confianza que contenga la media poblacional, manteniendo el $97\%$ de confianza.
+
+<Solucion>
+
+El intervalo $(12 - E,\ 12 + E)$ contiene a $10.2$ si su extremo inferior no supera $10.2$, es decir, si $E \ge 12 - 10.2 = 1.8$. Con $z_{\alpha/2} = 2.17$:
+
+$$
+2.17 \cdot \frac{5}{\sqrt{n}} \ge 1.8 \;\Rightarrow\; \sqrt{n} \le \frac{2.17 \cdot 5}{1.8} \approx 6.028 \;\Rightarrow\; n \le 36.33
+$$
+
+Al aumentar $n$ el error disminuye, así que hay un tamaño máximo.
+
+**Respuesta.** El tamaño máximo de la muestra es **36 estudiantes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 7</u></strong></Bloque>
+
+Los desajustes sobre el horario previsto de llegada de los trenes de alta velocidad, medidos en minutos, sigue una ley Normal con media $0$ y desviación típica $2.2$.
+
+a) **(0.5 puntos)** Calcule el porcentaje de trenes que tienen un desajuste máximo de un minuto.
+
+<Solucion>
+
+“Desajuste máximo de un minuto” es que el tren no llegue ni más de un minuto antes ni más de un minuto después: $-1 \le X \le 1$, con $X \sim N(0,\ 2.2)$.
+
+$$
+P(-1 \le X \le 1) = P\left(-\frac{1}{2.2} \le Z \le \frac{1}{2.2}\right) \approx P(-0.45 \le Z \le 0.45) = 2P(Z \le 0.45) - 1 = 2 \cdot 0.6736 - 1 = 0.3472
+$$
+
+**Respuesta.** Aproximadamente el **34.72 %** de los trenes.
+
+</Solucion>
+
+b) Elegidos al azar $15$ trenes de alta velocidad, los desajustes han sido:
+
+$$
+\begin{matrix}
+0, & 1.3, & -2.1, & -1.5, & 2, & 0.8, & 5, & 2.1,\\
+-3, & 1.8, & 3.1, & 4, & -0.7, & 1.6, & -5.4
+\end{matrix}
+$$
+
+<div class="math-sub">
+
+b1) **(1.25 puntos)** Calcule un intervalo de confianza, con un nivel de confianza del $96\%$, para la media poblacional. ¿Cuál es el error máximo que se comete en la estimación de esta media? Con este nivel de confianza y a partir de los datos obtenidos, ¿puede afirmarse que un tren tenga un retraso de $2$ minutos?
+
+</div>
+
+<Solucion>
+
+**Media muestral.** La suma de los 15 datos es $9$, así que $\bar{x} = \frac{9}{15} = 0.6$ minutos.
+
+**Valor crítico.** Para $1 - \alpha = 0.96$ buscamos $P(Z \le z_{\alpha/2}) = 0.98$. En la tabla está entre $0.9798$ ($2.05$) y $0.9803$ ($2.06$), más cerca del primero: $z_{\alpha/2} = 2.05$.
+
+**Error máximo e intervalo:**
+
+$$
+E = 2.05 \cdot \frac{2.2}{\sqrt{15}} \approx 1.1645, \qquad (0.6 - 1.1645,\ 0.6 + 1.1645) = (-0.5645,\ 1.7645)
+$$
+
+**Afirmación.** El intervalo estima el desajuste **medio**. Un retraso medio de $2$ minutos **no pertenece** al intervalo, así que, con un $96\%$ de confianza, **no puede afirmarse** que los trenes lleguen de media con 2 minutos de retraso.
+
+</Solucion>
+
+<div class="math-sub">
+
+b2) **(0.75 puntos)** Con un nivel de confianza del $98\%$, ¿cuántos trenes de alta velocidad deberían elegirse, como mínimo, para que la diferencia entre la media poblacional y su estimación muestral sea como máximo de $1.1$ minutos?
+
+</div>
+
+<Solucion>
+
+La diferencia máxima entre la media poblacional y la muestral es el error $E$. Para $1 - \alpha = 0.98$, $P(Z \le z_{\alpha/2}) = 0.99$, que está entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$.
+
+$$
+2.33 \cdot \frac{2.2}{\sqrt{n}} \le 1.1 \;\Rightarrow\; \sqrt{n} \ge \frac{2.33 \cdot 2.2}{1.1} = 4.66 \;\Rightarrow\; n \ge 21.72
+$$
+
+**Respuesta.** Deberían elegirse como mínimo **22 trenes**.
+
+</Solucion>

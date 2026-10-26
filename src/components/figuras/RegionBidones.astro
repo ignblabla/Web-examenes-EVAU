@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2024, ejercicio 2: región factible de los bidones de pintura
+// interior (x) y exterior (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={100}
+  yMax={170}
+  marcasX={[20, 40, 60, 80]}
+  marcasY={[40, 80, 120, 160]}
+  rectas={[
+    { desde: [0, 160], hasta: [100, 60], color: "#7a5b16", etiqueta: "x + y = 160", en: [42, 125] },
+    { desde: [0, 60], hasta: [60, 0], color: "#2f6fa3", etiqueta: "x + y = 60", en: [44, 22] },
+    { desde: [20, 0], hasta: [20, 168], color: "#b04a3a", etiqueta: "x = 20", en: [18, 160], ancla: "end" },
+    { desde: [0, 0], hasta: [100, 100], color: "#5b3f8c", etiqueta: "y = x", en: [92, 98], ancla: "end" },
+  ]}
+  region={[
+    [20, 40],
+    [30, 30],
+    [80, 80],
+    [20, 140],
+  ]}
+  vertices={[
+    { x: 20, y: 40, texto: "A", dx: -6, dy: 4 },
+    { x: 30, y: 30, texto: "B", dx: 6, dy: 12 },
+    { x: 80, y: 80, texto: "C", dx: 7, dy: 4 },
+    { x: 20, y: 140, texto: "D", dx: -6, dy: 4 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(20, 40), B(30, 30), C(80, 80) y D(20, 140), limitado por las rectas x = 20, x + y = 60, y = x y x + y = 160"
+/>

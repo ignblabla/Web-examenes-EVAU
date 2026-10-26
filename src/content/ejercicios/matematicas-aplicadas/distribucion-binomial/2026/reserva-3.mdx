@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-aplicadas
+tema: distribucion-binomial
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+**A)** La probabilidad de que Paco gane un partido de bádminton es $0.8$.
+
+<div class="math-sub">
+
+a) En un torneo participan $10$ jugadores (incluido Paco) y cada jugador juega un partido con cada uno de los restantes jugadores. Calcule la probabilidad de que Paco:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.5 puntos)** Gane exactamente $8$ partidos.
+
+</div>
+
+<Solucion>
+
+Paco juega un partido contra cada uno de los otros $9$ jugadores, así que juega $9$ partidos. Cada partido es independiente y lo gana con probabilidad $0.8$. El número de partidos que gana sigue una binomial $X \sim B(9,\ 0.8)$:
+
+$$
+P(X = 8) = \binom{9}{8} \cdot 0.8^8 \cdot 0.2 = 9 \cdot 0.16777 \cdot 0.2 \approx 0.3020
+$$
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.5 puntos)** Gane como mucho $8$ partidos.
+
+</div>
+
+<Solucion>
+
+“Como mucho 8” es todo salvo ganar los 9. Usamos el suceso contrario:
+
+$$
+P(X \le 8) = 1 - P(X = 9) = 1 - 0.8^9 = 1 - 0.1342 = 0.8658
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1 punto)** Si a lo largo de un año Paco juega $80$ partidos, ¿cuál es la probabilidad de que pierda más de $10$ pero menos de $20$ partidos ese año?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Ahora contamos los partidos que **pierde**. En cada uno pierde con probabilidad $1 - 0.8 = 0.2$, así que el número de derrotas es $Y \sim B(80,\ 0.2)$. Nos piden $P(10 < Y < 20)$, que con valores enteros es $P(11 \le Y \le 19)$. Calcularlo término a término es muy largo, así que aproximamos por una normal. Se puede porque
+
+$$
+np = 80 \cdot 0.2 = 16 > 5, \qquad nq = 80 \cdot 0.8 = 64 > 5
+$$
+
+**Desarrollo y cálculo.** La normal tiene $\mu = np = 16$ y $\sigma = \sqrt{npq} = \sqrt{80 \cdot 0.2 \cdot 0.8} = \sqrt{12.8} \approx 3.58$. Con la corrección por continuidad, cada entero $k$ pasa a ser el intervalo $[k - 0.5,\ k + 0.5]$:
+
+$$
+P(11 \le Y \le 19) \approx P(10.5 \le Y' \le 19.5), \qquad Y' \sim N(16,\ 3.58)
+$$
+
+Tipificando:
+
+$$
+\frac{10.5 - 16}{3.58} \approx -1.54, \qquad \frac{19.5 - 16}{3.58} \approx 0.98
+$$
+
+$$
+P(-1.54 \le Z \le 0.98) = P(Z \le 0.98) - \big(1 - P(Z \le 1.54)\big) = 0.8365 - (1 - 0.9382) = 0.8365 - 0.0618 = 0.7747
+$$
+
+**Respuesta.** La probabilidad de que pierda entre 11 y 19 partidos es aproximadamente **0.7747**.
+
+</Solucion>

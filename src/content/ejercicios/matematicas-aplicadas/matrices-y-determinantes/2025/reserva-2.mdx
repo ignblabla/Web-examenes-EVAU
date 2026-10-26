@@ -1,0 +1,29 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+b) **(0.75 puntos)** Dada la matriz $A = \begin{pmatrix} 1 & 0 & -1\\ -1 & 2 & 3\\ 1 & 2 & 1 \end{pmatrix}$, calcule el rango de $A$ y $A^2$.
+
+<Solucion>
+
+**Rango de $A$.**
+
+$$
+|A| = 1(2 - 6) - 0 + (-1)(-2 - 2) = -4 + 4 = 0
+$$
+
+Así que $\text{rg}(A) < 3$. El menor $\begin{vmatrix} 1 & 0\\ -1 & 2 \end{vmatrix} = 2 \ne 0$, luego **$\text{rg}(A) = 2$**.
+
+**Rango de $A^2$.**
+
+$$
+A^2 = \begin{pmatrix} 1 & 0 & -1\\ -1 & 2 & 3\\ 1 & 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & -1\\ -1 & 2 & 3\\ 1 & 2 & 1 \end{pmatrix} = \begin{pmatrix} 0 & -2 & -2\\ 0 & 10 & 10\\ 0 & 6 & 6 \end{pmatrix}
+$$
+
+Todas las filas son múltiplos de $(0, 1, 1)$ y la matriz no es nula, así que **$\text{rg}(A^2) = 1$**.
+
+</Solucion>

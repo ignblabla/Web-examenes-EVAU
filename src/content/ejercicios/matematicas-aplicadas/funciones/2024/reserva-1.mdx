@@ -1,0 +1,96 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RecintoParque from "../../../../../components/figuras/RecintoParque.astro"
+import RecintoReserva1de2024 from "../../../../../components/figuras/RecintoReserva1de2024.astro"
+
+La superficie de ampliación de un parque de atracciones, en decámetros cuadrados, coincide con el área de la región delimitada por las gráficas de las funciones $f(x) = -x^2 + 6x$ y $g(x) = \dfrac{x^2}{5}$.
+
+a) **(1 punto)** Represente gráficamente la superficie de ampliación del parque de atracciones.
+
+<Solucion>
+
+**Puntos de corte.** Igualamos las dos funciones:
+
+$$
+-x^2 + 6x = \frac{x^2}{5} \;\Rightarrow\; 6x - \frac{6x^2}{5} = 0 \;\Rightarrow\; 6x\left(1 - \frac{x}{5}\right) = 0 \;\Rightarrow\; x = 0 \ \text{ o } \ x = 5
+$$
+
+Las gráficas se cortan en $(0, 0)$ y $(5, 5)$.
+
+**Gráfica.** $f$ es una parábola hacia abajo con vértice en $(3, 9)$, y $g$ una parábola hacia arriba con vértice en el origen. Entre $x = 0$ y $x = 5$, $f$ queda por encima: por ejemplo, $f(1) = 5 > g(1) = 0.2$. La superficie es la región sombreada:
+
+<RecintoParque />
+
+</Solucion>
+
+b) **(1.5 puntos)** Si el coste para acondicionar el nuevo suelo es de $75$ €/$m^2$, calcule el área de ampliación del parque y el coste total del acondicionamiento.
+
+<Solucion>
+
+**Área.** Integramos la función de arriba menos la de abajo:
+
+$$
+A = \int_0^5 \left(-x^2 + 6x - \frac{x^2}{5}\right)dx = \int_0^5 \left(6x - \frac{6x^2}{5}\right)dx = \left[3x^2 - \frac{2x^3}{5}\right]_0^5 = 75 - 50 = 25
+$$
+
+La ampliación mide **25 dam²**. Como $1\ dam^2 = 100\ m^2$, son **2500 m²**.
+
+**Coste.** $2500\ m^2 \cdot 75$ €/m² $=$ **187 500 €**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se consideran las funciones
+
+$$
+f(x) = \begin{cases}
+2 - x^2 & \text{si } -1 \le x \le 1\\[4pt]
+(x - 2)^2 & \text{si } 1 < x \le 3
+\end{cases}; \qquad\qquad g(x) = 1 \quad \text{si } -1 \le x \le 3
+$$
+
+a) **(1 punto)** Estudie la continuidad y la derivabilidad de $f$ y $g$ en sus dominios.
+
+<Solucion>
+
+**Función $g$.** Es constante, así que es continua y derivable en todo $[-1, 3]$, con $g'(x) = 0$.
+
+**Función $f$.** Cada tramo es un polinomio. Estudiamos $x = 1$:
+
+- **Continuidad:** $f(1) = 2 - 1 = 1$ y $\lim_{x \to 1^+} (x - 2)^2 = 1$. Es **continua en $[-1, 3]$**.
+- **Derivabilidad:** $f'(x) = -2x$ a la izquierda y $f'(x) = 2(x - 2)$ a la derecha, así que $f'(1^-) = -2$ y $f'(1^+) = 2(1 - 2) = -2$. Coinciden, así que $f$ **es derivable en $x = 1$** y, por tanto, en $(-1, 3)$.
+
+</Solucion>
+
+b) **(1.5 puntos)** Represente el recinto limitado por las gráficas de ambas funciones y calcule su área.
+
+<Solucion>
+
+**Cortes de $f$ con $g$.** $2 - x^2 = 1 \Rightarrow x = \pm 1$, y $(x - 2)^2 = 1 \Rightarrow x = 1$ o $x = 3$. Entre $-1$ y $1$, $f \ge 1$ (en $x = 0$, $f = 2$), y entre $1$ y $3$, $f \le 1$ (en $x = 2$, $f = 0$). El recinto tiene dos partes que se tocan en $(1, 1)$:
+
+<RecintoReserva1de2024 />
+
+**Área.** En cada parte restamos la función de abajo a la de arriba:
+
+$$
+A = \int_{-1}^{1} \big((2 - x^2) - 1\big)\,dx + \int_{1}^{3} \big(1 - (x - 2)^2\big)\,dx
+$$
+
+$$
+\int_{-1}^{1} (1 - x^2)\,dx = \left[x - \frac{x^3}{3}\right]_{-1}^{1} = \frac{2}{3} + \frac{2}{3} = \frac{4}{3}, \qquad \int_{1}^{3} \big(1 - (x - 2)^2\big)\,dx = \left[x - \frac{(x - 2)^3}{3}\right]_{1}^{3} = \frac{8}{3} - \frac{4}{3} = \frac{4}{3}
+$$
+
+$$
+A = \frac{4}{3} + \frac{4}{3} = \frac{8}{3} \approx 2.67
+$$
+
+**Respuesta.** El área del recinto es $\dfrac{8}{3} \approx$ **2.67 unidades cuadradas**.
+
+</Solucion>

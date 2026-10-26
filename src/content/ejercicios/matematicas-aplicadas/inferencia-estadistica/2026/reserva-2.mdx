@@ -1,0 +1,143 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+**B)** Sea $X$ una variable aleatoria que sigue una distribución Normal de media $16$ y varianza $4$. Se pide:
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Calcule la probabilidad de que la variable aleatoria tome valores comprendidos entre $14.5$ y $16.2$.
+
+</div>
+
+<Solucion>
+
+La varianza es $4$, así que la desviación típica es $\sigma = \sqrt{4} = 2$ y $X \sim N(16, 2)$. Tipificamos con $Z = \dfrac{X - 16}{2}$:
+
+$$
+P(14.5 < X < 16.2) = P\left(\frac{14.5 - 16}{2} < Z < \frac{16.2 - 16}{2}\right) = P(-0.75 < Z < 0.1)
+$$
+
+$$
+= P(Z \le 0.1) - P(Z \le -0.75) = 0.5398 - (1 - 0.7734) = 0.5398 - 0.2266 = 0.3132
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Halle el valor de $a$ para el que $P[X \ge a] = 0.25$.
+
+</div>
+
+<Solucion>
+
+$P(X \ge a) = 0.25$ equivale a $P(X < a) = 0.75$. Tipificando:
+
+$$
+P\left(Z < \frac{a - 16}{2}\right) = 0.75
+$$
+
+En la tabla, $0.75$ está entre $0.7486$ ($z = 0.67$) y $0.7517$ ($z = 0.68$), más cerca del primero, así que tomamos $z = 0.67$:
+
+$$
+\frac{a - 16}{2} = 0.67 \;\Rightarrow\; a = 16 + 2 \cdot 0.67 = 17.34
+$$
+
+**Respuesta.** **$a = 17.34$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Se consideran muestras de tamaño $64$, ¿qué distribución sigue la variable media muestral? ¿Qué probabilidad hay de que, elegida una muestra al azar, la media sea superior a $16.3$?
+
+</div>
+
+<Solucion>
+
+**Distribución de la media.** Como $X$ es normal, la media muestral de tamaño $n = 64$ también lo es, con la misma media y desviación típica $\frac{\sigma}{\sqrt{n}} = \frac{2}{8} = 0.25$:
+
+$$
+\bar{X} \sim N(16,\ 0.25)
+$$
+
+**Probabilidad:**
+
+$$
+P(\bar{X} > 16.3) = P\left(Z > \frac{16.3 - 16}{0.25}\right) = P(Z > 1.2) = 1 - 0.8849 = 0.1151
+$$
+
+</Solucion>
+
+<Bloque><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Una comunidad autónoma está analizando el rendimiento de sus estudiantes en la última convocatoria de la Prueba de Acceso a la Universidad (PAU) en una determinada materia. De los $20000$ estudiantes presentados, $12000$ cursaron bachillerato en un centro público, $6000$ lo hicieron en un centro concertado y el resto en un centro privado no concertado. Para estimar la proporción de estudiantes que suspenden la materia en la PAU, se extrae una muestra aleatoria de $500$ estudiantes que han realizado el examen.
+
+<div class="math-sub">
+
+a) **(0.4 puntos)** Determine el tamaño de la muestra que se debe de tomar de cada tipo de centro para realizar un muestreo con afijación proporcional.
+
+</div>
+
+<Solucion>
+
+Con afijación proporcional, cada tipo de centro aporta a la muestra la misma fracción que tiene en la población. La muestra es $\frac{500}{20000} = \frac{1}{40}$ de la población, así que se toma $\frac{1}{40}$ de cada grupo:
+
+- Centro público: $12000 \cdot \frac{1}{40} =$ **300 estudiantes**.
+- Centro concertado: $6000 \cdot \frac{1}{40} =$ **150 estudiantes**.
+- Centro privado no concertado: hay $20000 - 12000 - 6000 = 2000$, así que $2000 \cdot \frac{1}{40} =$ **50 estudiantes**.
+
+En total, $300 + 150 + 50 = 500$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Tras realizar el muestreo se obtuvo que $200$ de los $500$ estudiantes seleccionados suspendieron la asignatura.
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(1 punto)** Calcule un intervalo de confianza al $99\%$, para determinar la proporción de estudiantes que suspenden la materia entre todos los presentados. Basándonos en este intervalo, ¿puede afirmarse que el porcentaje de estudiantes que suspenden el examen de esta materia en la PAU no es del $43\%$?
+
+</div>
+
+<Solucion>
+
+**Intervalo.** La proporción muestral de suspensos es $\hat{p} = \frac{200}{500} = 0.4$. Para $1 - \alpha = 0.99$, buscamos $P(Z \le z_{\alpha/2}) = 0.995$, que en la tabla está entre $0.9949$ ($2.57$) y $0.9951$ ($2.58$): tomamos $z_{\alpha/2} = 2.575$. El error es
+
+$$
+E = z_{\alpha/2} \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.575 \sqrt{\frac{0.4 \cdot 0.6}{500}} = 2.575 \cdot 0.0219 \approx 0.0564
+$$
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.4 - 0.0564,\ 0.4 + 0.0564) = (0.3436,\ 0.4564)
+$$
+
+**Respuesta a la pregunta.** El valor $0.43$ (el $43\%$) **está dentro** del intervalo. Por tanto, con un nivel de confianza del $99\%$, **no puede afirmarse** que el porcentaje de suspensos no sea del $43\%$: es un valor compatible con la muestra.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.6 puntos)** Con el mismo nivel de confianza y la misma proporción muestral, ¿cuántos estudiantes, como mínimo, habría que seleccionar de forma aleatoria para que el error de estimación fuese inferior al $4\%$?
+
+</div>
+
+<Solucion>
+
+Queremos $E < 0.04$ con $z_{\alpha/2} = 2.575$ y $\hat{p} = 0.4$:
+
+$$
+2.575 \sqrt{\frac{0.24}{n}} < 0.04 \;\Rightarrow\; \frac{0.24}{n} < \left(\frac{0.04}{2.575}\right)^2 \;\Rightarrow\; n > 0.24 \cdot \left(\frac{2.575}{0.04}\right)^2 = 0.24 \cdot 64.375^2 \approx 994.59
+$$
+
+**Respuesta.** Habría que seleccionar como mínimo **995 estudiantes**. Si se redondea el valor crítico a $2.58$, sale $n > 998.46$, es decir, $999$ estudiantes; los dos resultados son correctos si se justifica el valor de $z_{\alpha/2}$.
+
+</Solucion>

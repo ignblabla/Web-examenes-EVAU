@@ -1,0 +1,105 @@
+---
+asignatura: matematicas-aplicadas
+tema: distribucion-binomial
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Sean $A$ y $B$ dos sucesos asociados a un mismo experimento aleatorio de los que se sabe que
+
+$$
+P(A \cap B^c) = 0.3; \qquad P(A^c) = 0.35; \qquad P(B) = 0.55
+$$
+
+<div class="math-sub">
+
+a) Calcule la probabilidad de que:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.75 puntos)** Suceda al menos uno de ellos.
+
+</div>
+
+<Solucion>
+
+“Al menos uno” es la unión $A \cup B$. Primero, del suceso contrario, $P(A) = 1 - P(A^c) = 1 - 0.35 = 0.65$. Como $A$ se divide en la parte que está en $B$ y la que no:
+
+$$
+P(A) = P(A \cap B) + P(A \cap B^c) \;\Rightarrow\; P(A \cap B) = 0.65 - 0.3 = 0.35
+$$
+
+Entonces:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.65 + 0.55 - 0.35 = 0.85
+$$
+
+Es lo mismo que sumar $P(B)$ y la parte de $A$ que queda fuera de $B$: $0.55 + 0.3 = 0.85$.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.5 puntos)** Ocurra $B$, sabiendo que no ha ocurrido $A$.
+
+</div>
+
+<Solucion>
+
+Es la probabilidad condicionada $P(B/A^c)$. La parte de $B$ que queda fuera de $A$ es $P(B \cap A^c) = P(B) - P(A \cap B) = 0.55 - 0.35 = 0.2$. Por tanto:
+
+$$
+P(B/A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.2}{0.35} = \frac{4}{7} \approx 0.5714
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Se realiza este experimento aleatorio $11$ veces, calcule:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.5 puntos)** La probabilidad de que el suceso $B$ ocurra exactamente $8$ veces.
+
+</div>
+
+<Solucion>
+
+**La binomial.** Cada realización es independiente y en cada una $B$ ocurre con la misma probabilidad $p = 0.55$. Por eso la variable $X$, “número de veces que ocurre $B$ en las 11 realizaciones”, sigue una binomial:
+
+$$
+X \sim B(11,\ 0.55), \qquad P(X = k) = \binom{11}{k}\, 0.55^k \cdot 0.45^{11 - k}
+$$
+
+**La probabilidad.** Con $k = 8$, y $\binom{11}{8} = \frac{11 \cdot 10 \cdot 9}{3 \cdot 2 \cdot 1} = 165$:
+
+$$
+P(X = 8) = 165 \cdot 0.55^8 \cdot 0.45^3 = 165 \cdot 0.008373 \cdot 0.091125 \approx 0.1259
+$$
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.25 puntos)** El número esperado de veces que ocurre el suceso $B$.
+
+</div>
+
+<Solucion>
+
+El número esperado es la media (esperanza) de la binomial:
+
+$$
+E(X) = n \cdot p = 11 \cdot 0.55 = 6.05
+$$
+
+Si se repitiera muchas veces la serie de 11 realizaciones, $B$ ocurriría de media **6.05 veces** por serie.
+
+</Solucion>

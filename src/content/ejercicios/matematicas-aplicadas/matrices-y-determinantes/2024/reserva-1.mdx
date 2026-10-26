@@ -1,0 +1,61 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+P = \begin{pmatrix} 1 & 0 & 1\\ 0 & 1 & 0\\ 1 & -1 & -1 \end{pmatrix} \qquad\qquad J = \begin{pmatrix} 2 & 1 & 0\\ 0 & 2 & 0\\ 0 & 0 & -1 \end{pmatrix}
+$$
+
+a) **(1.5 puntos)** Halle la matriz $A$ que satisface la ecuación $P^{-1} \cdot A \cdot P = J$.
+
+<Solucion>
+
+**Despejar $A$.** Multiplicamos por $P$ a la izquierda y por $P^{-1}$ a la derecha:
+
+$$
+P^{-1} A P = J \;\Rightarrow\; P\,(P^{-1} A P)\,P^{-1} = P J P^{-1} \;\Rightarrow\; A = P J P^{-1}
+$$
+
+**Inversa de $P$.** $|P| = 1 \cdot (-1 - 0) - 0 + 1 \cdot (0 - 1) = -2 \ne 0$:
+
+$$
+P^{-1} = \frac{1}{|P|}\big(\text{Adj}(P)\big)^t = -\frac{1}{2}\begin{pmatrix} -1 & -1 & -1\\ 0 & -2 & 0\\ -1 & 1 & 1 \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\[2pt] 0 & 1 & 0\\[2pt] \frac{1}{2} & -\frac{1}{2} & -\frac{1}{2} \end{pmatrix}
+$$
+
+**Cálculo de $A$.** Primero $P J$ y después el producto por $P^{-1}$:
+
+$$
+P J = \begin{pmatrix} 2 & 1 & -1\\ 0 & 2 & 0\\ 2 & -1 & 1 \end{pmatrix}, \qquad
+A = (P J)\,P^{-1} = \begin{pmatrix} \frac{1}{2} & \frac{5}{2} & \frac{3}{2}\\[2pt] 0 & 2 & 0\\[2pt] \frac{3}{2} & -\frac{1}{2} & \frac{1}{2} \end{pmatrix}
+$$
+
+Se puede comprobar que $P^{-1} A P = J$.
+
+</Solucion>
+
+b) **(1 punto)** Compruebe que $A^3 = P \cdot J^3 \cdot P^{-1}$.
+
+<Solucion>
+
+Como $A = P J P^{-1}$ y $P^{-1}P = I$, los productos intermedios se simplifican:
+
+$$
+A^3 = (P J P^{-1})(P J P^{-1})(P J P^{-1}) = P J\,(P^{-1}P)\,J\,(P^{-1}P)\,J P^{-1} = P J^3 P^{-1}
+$$
+
+**Comprobación con números.** $J$ es triangular, y su cubo es fácil de calcular:
+
+$$
+J^3 = \begin{pmatrix} 8 & 12 & 0\\ 0 & 8 & 0\\ 0 & 0 & -1 \end{pmatrix}, \qquad
+P J^3 P^{-1} = \begin{pmatrix} \frac{7}{2} & \frac{33}{2} & \frac{9}{2}\\[2pt] 0 & 8 & 0\\[2pt] \frac{9}{2} & \frac{15}{2} & \frac{7}{2} \end{pmatrix}
+$$
+
+Multiplicando directamente $A \cdot A \cdot A$ con la matriz del apartado a) se obtiene la misma matriz, como había que comprobar.
+
+</Solucion>

@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+import RegionOlivar from "../../../../../components/figuras/RegionOlivar.astro"
+
+**(2.5 puntos)** Un agricultor posee una finca con un olivar intensivo de secano y desea transformar una parte de la misma en regadío, pero manteniendo un mínimo de $20$ hectáreas de cultivo de secano. Para ello, anualmente dispone de $30000\ m^3$ de agua, de $5500\ kg$ de abono y de $3000\ kg$ de productos fitosanitarios. Cada hectárea de olivar de regadío necesita $1500\ m^3$ de agua, $110\ kg$ de abono y $80\ kg$ de productos fitosanitarios; mientras que cada hectárea de olivar de secano precisa de $100\ kg$ de abono y $50\ kg$ de productos fitosanitarios. Se sabe que la producción anual por hectárea es de $5000\ kg$ en secano y de $10000\ kg$ en regadío. Determine el número de hectáreas de olivar de secano y de regadío que el agricultor debe cultivar para maximizar su producción, así como la producción máxima esperada.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las hectáreas de regadío e $y$ a las de secano. Hay que maximizar la producción, en kg,
+
+$$
+F(x, y) = 10000x + 5000y
+$$
+
+con las restricciones (simplificamos cada una dividiendo):
+
+$$
+\begin{cases}
+1500x \le 30000 \iff x \le 20 & \text{(agua)}\\
+110x + 100y \le 5500 \iff 11x + 10y \le 550 & \text{(abono)}\\
+80x + 50y \le 3000 \iff 8x + 5y \le 300 & \text{(fitosanitarios)}\\
+y \ge 20 & \text{(mínimo de secano)}\\
+x \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda por encima de $y = 20$, a la derecha del eje $OY$, a la izquierda de $x = 20$ y por debajo de las rectas del abono y de los fitosanitarios:
+
+<RegionOlivar />
+
+**Vértices:**
+
+- $A(0, 20)$ y $B(20, 20)$: la recta $y = 20$ con el eje y con $x = 20$.
+- $C$: $x = 20$ y $8x + 5y = 300$ $\Rightarrow$ $5y = 140$, $C(20, 28)$. Cumple $11 \cdot 20 + 10 \cdot 28 = 500 \le 550$.
+- $D$: $11x + 10y = 550$ y $8x + 5y = 300$. Restando el doble de la segunda a la primera, $-5x = -50 \Rightarrow x = 10$, $y = 44$: $D(10, 44)$.
+- $E(0, 55)$: la recta del abono con el eje $OY$. La de los fitosanitarios corta el eje más arriba, en $(0, 60)$, así que ahí manda el abono.
+
+**Resolución.**
+
+- $F(0, 20) = 100\,000$
+- $F(20, 20) = 300\,000$
+- $F(20, 28) = 200\,000 + 140\,000 = 340\,000$
+- $F(10, 44) = 100\,000 + 220\,000 = 320\,000$
+- $F(0, 55) = 275\,000$
+
+**Respuesta.** Debe cultivar **20 hectáreas de regadío y 28 de secano**, con una **producción máxima de 340 000 kg** de aceituna al año.
+
+</Solucion>

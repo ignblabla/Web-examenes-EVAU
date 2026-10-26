@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 0 & 1\\ 1 & 0 \end{pmatrix} \qquad B = \begin{pmatrix} 3 & 2\\ 2 & 0 \end{pmatrix} \qquad C = \begin{pmatrix} 1 & 0\\ 1 & 1 \end{pmatrix}
+$$
+
+a) **(1 punto)** Determine las matrices $X$ e $Y$ que satisfacen simultáneamente las ecuaciones
+
+$$
+2 \cdot X - Y = 4 \cdot A \qquad\qquad X + Y = B
+$$
+
+<Solucion>
+
+Es un sistema de dos ecuaciones matriciales, que se resuelve como uno de números. Sumando las dos ecuaciones se elimina $Y$:
+
+$$
+3X = 4A + B = \begin{pmatrix} 0 & 4\\ 4 & 0 \end{pmatrix} + \begin{pmatrix} 3 & 2\\ 2 & 0 \end{pmatrix} = \begin{pmatrix} 3 & 6\\ 6 & 0 \end{pmatrix} \;\Rightarrow\; X = \begin{pmatrix} 1 & 2\\ 2 & 0 \end{pmatrix}
+$$
+
+De la segunda ecuación:
+
+$$
+Y = B - X = \begin{pmatrix} 3 & 2\\ 2 & 0 \end{pmatrix} - \begin{pmatrix} 1 & 2\\ 2 & 0 \end{pmatrix} = \begin{pmatrix} 2 & 0\\ 0 & 0 \end{pmatrix}
+$$
+
+Comprobación: $2X - Y = \begin{pmatrix} 0 & 4\\ 4 & 0 \end{pmatrix} = 4A$.
+
+</Solucion>
+
+b) **(0.75 puntos)** Calcule la matriz $C^{2024}$.
+
+<Solucion>
+
+Calculamos las primeras potencias para ver el patrón:
+
+$$
+C^2 = \begin{pmatrix} 1 & 0\\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0\\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0\\ 2 & 1 \end{pmatrix}, \qquad C^3 = C^2 \cdot C = \begin{pmatrix} 1 & 0\\ 3 & 1 \end{pmatrix}
+$$
+
+Cada vez que se multiplica por $C$, el elemento de abajo a la izquierda aumenta en $1$ y el resto no cambia: $C^n = \begin{pmatrix} 1 & 0\\ n & 1 \end{pmatrix}$. Por tanto:
+
+$$
+C^{2024} = \begin{pmatrix} 1 & 0\\ 2024 & 1 \end{pmatrix}
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Si $D$ es una matriz de dimensión $2 \times 3$, razone si las siguientes operaciones se pueden realizar y, en aquellos casos en los que sea posible, indique la dimensión de la matriz resultante:
+
+$$
+A^t \cdot B + D \cdot D^t \qquad\qquad D \cdot B^t + A \qquad\qquad D^t \cdot A^t + D
+$$
+
+<Solucion>
+
+- **$A^t \cdot B + D \cdot D^t$: sí.** $A^t \cdot B$ es $(2 \times 2)(2 \times 2) = 2 \times 2$ y $D \cdot D^t$ es $(2 \times 3)(3 \times 2) = 2 \times 2$. Se pueden sumar, y el resultado es **$2 \times 2$**.
+- **$D \cdot B^t + A$: no.** $D$ tiene $3$ columnas y $B^t$ tiene $2$ filas, así que el producto $D \cdot B^t$ no existe.
+- **$D^t \cdot A^t + D$: no.** $D^t \cdot A^t$ sí existe, $(3 \times 2)(2 \times 2) = 3 \times 2$, pero no se puede sumar con $D$, que es $2 \times 3$.
+
+</Solucion>

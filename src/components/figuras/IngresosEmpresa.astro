@@ -1,0 +1,71 @@
+---
+// Matemáticas aplicadas, julio 2026, ejercicio 2 A) c): ingresos f(t) = −t³ + 21t²/2 − 30t + 80
+// en miles de euros para 1 ≤ t ≤ 6. El eje vertical empieza en 50 para que se vea la forma.
+const f = (t: number) => -(t ** 3) + 10.5 * t ** 2 - 30 * t + 80
+
+const base = 50
+const origen = { x: 44, y: 200 }
+const px = (t: number) => origen.x + t * 50
+const py = (y: number) => origen.y - (y - base) * 8
+
+const ts = Array.from({ length: 101 }, (_, i) => 1 + i / 20)
+const curva = ts.map((t, i) => `${i ? "L" : "M"}${px(t).toFixed(1)} ${py(f(t)).toFixed(1)}`).join("")
+
+const marcasX = [1, 2, 3, 4, 5, 6]
+const marcasY = [55, 60, 65, 70]
+const puntos = [
+  { t: 1, texto: "(1, 59.5)", dx: 0, dy: -9 },
+  { t: 2, texto: "Mínimo (2, 54)", dx: 0, dy: 16 },
+  { t: 3.5, texto: "P. inflexión (3.5, 60.75)", dx: 8, dy: 14 },
+  { t: 5, texto: "Máximo (5, 67.5)", dx: 0, dy: -9 },
+  { t: 6, texto: "(6, 62)", dx: 6, dy: 4 },
+]
+---
+
+<figure class="solution-figure">
+  <svg
+    viewBox="0 0 400 228"
+    role="img"
+    aria-label="Gráfica de los ingresos: bajan de 59.5 en t = 1 al mínimo de 54 en t = 2, suben pasando por el punto de inflexión (3.5, 60.75) hasta el máximo de 67.5 en t = 5 y bajan hasta 62 en t = 6"
+  >
+    <g fill="none" stroke="#111" stroke-width="1">
+      <path d={`M${px(0)} ${py(base)}H${px(6.8)}M${px(6.8) - 5} ${py(base) - 3}l5 3-5 3`} />
+      <path d={`M${px(0)} ${py(base)}V${py(72.5)}M${px(0) - 3} ${py(72.5) + 5}l3-5 3 5`} />
+      <!-- Corte del eje vertical: no empieza en 0. -->
+      <path d={`M${px(0) - 5} ${py(base) - 10}l10 -4M${px(0) - 5} ${py(base) - 6}l10 -4`} />
+      {marcasX.map((m) => <path d={`M${px(m)} ${py(base) - 3}v6`} />)}
+      {marcasY.map((m) => <path d={`M${px(0) - 3} ${py(m)}h6`} />)}
+      <path
+        d={`M${px(2)} ${py(base)}V${py(54)}M${px(3.5)} ${py(base)}V${py(60.75)}`}
+        stroke-dasharray="3 3"
+        stroke="#777"
+      />
+    </g>
+
+    <path d={curva} fill="none" stroke="#195c51" stroke-width="2.2" />
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      {marcasX.map((m) => <text x={px(m)} y={py(base) + 14} text-anchor="middle">{m}</text>)}
+      {marcasY.map((m) => <text x={px(0) - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
+      <text x={px(6.8)} y={py(base) - 7} text-anchor="end" font-style="italic">t (años)</text>
+      <text x={px(0) + 6} y={py(72.5) + 4}>f (miles de €)</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#195c51">
+      {
+        puntos.map((p) => (
+          <>
+            <circle cx={px(p.t)} cy={py(f(p.t))} r="3" />
+            <text
+              x={px(p.t) + p.dx}
+              y={py(f(p.t)) + p.dy}
+              text-anchor={p.dx < 0 ? "end" : p.dx === 0 ? "middle" : "start"}
+            >
+              {p.texto}
+            </text>
+          </>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

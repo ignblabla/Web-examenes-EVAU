@@ -1,0 +1,29 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2024, ejercicio 4 b): recinto entre la recta y = 2x (arriba)
+// y la parábola −x² + 2x (abajo), entre x = −1 y x = 1; se tocan en el origen.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x < 2 ? -(x ** 2) + 2 * x : x ** 2 - 2 * x)
+const recta = (x: number) => 2 * x
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={3.5}
+  yMin={-4}
+  yMax={4}
+  marcasX={[-1, 1, 2, 3]}
+  marcasY={[-3, -2, -1, 1, 2, 3]}
+  tramos={[
+    { f, desde: -1.6, hasta: 3.3 },
+    { f: recta, desde: -2, hasta: 2 },
+  ]}
+  recinto={{ arriba: recta, abajo: f, desde: -1, hasta: 1 }}
+  puntos={[
+    { x: -1, y: -2, texto: "(−1, −2)", dx: -6, dy: -4 },
+    { x: -1, y: -3, texto: "(−1, −3)", dx: 7, dy: 10 },
+    { x: 1, y: 2, texto: "(1, 2)", dx: -6, dy: -4 },
+    { x: 1, y: 1, texto: "(1, 1)", dx: -6, dy: 15 },
+  ]}
+  descripcion="Recinto sombreado entre la recta y = 2x, que queda por encima, y la parábola −x² + 2x, entre x = −1 y x = 1; las dos gráficas se tocan en el origen"
+/>

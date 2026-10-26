@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2025, ejercicio 2: región factible de las cajas
+// "El regalo de la tierra" (x) y "El tesoro de la huerta" (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={62}
+  yMax={58}
+  marcasX={[10, 20, 30, 50]}
+  marcasY={[10, 20, 30, 40, 50]}
+  rectas={[
+    { desde: [0, 52.5], hasta: [60, 0], color: "#7a5b16", etiqueta: "3.5x + 4y = 210", en: [42, 22] },
+    { desde: [12.67, 56], hasta: [50, 0], color: "#b04a3a", etiqueta: "3x + 2y = 150", en: [19.5, 50] },
+    { desde: [12, 0], hasta: [12, 56], color: "#5b3f8c", etiqueta: "x = 12", en: [11, 54], ancla: "end" },
+    { desde: [0, 15], hasta: [60, 15], color: "#2f6fa3", etiqueta: "y = 15", en: [52, 16.5] },
+  ]}
+  region={[
+    [12, 15],
+    [40, 15],
+    [36, 21],
+    [12, 42],
+  ]}
+  vertices={[
+    { x: 12, y: 15, texto: "A", dx: -6, dy: 13 },
+    { x: 40, y: 15, texto: "B", dx: 0, dy: 14 },
+    { x: 36, y: 21, texto: "C", dx: 6, dy: -4 },
+    { x: 12, y: 42, texto: "D", dx: -6, dy: -4 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(12, 15), B(40, 15), C(36, 21) y D(12, 42), limitado por las rectas x = 12, y = 15, 3x + 2y = 150 y 3.5x + 4y = 210"
+/>

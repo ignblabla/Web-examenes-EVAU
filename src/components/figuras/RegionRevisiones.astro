@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2025, ejercicio 2: región factible de las lavadoras (x)
+// y frigoríficos (y) revisados. El máximo está en todo el lado BC, sobre 2x + y = 32.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={18}
+  yMax={22}
+  marcasX={[4, 8, 12, 16]}
+  marcasY={[4, 8, 12, 16, 20]}
+  rectas={[
+    { desde: [5, 22], hasta: [16, 0], color: "#7a5b16", etiqueta: "2x + y = 32", en: [14.2, 6.5] },
+    { desde: [12, 0], hasta: [12, 21], color: "#b04a3a", etiqueta: "x = 12", en: [12.4, 20] },
+    { desde: [0, 16], hasta: [17, 16], color: "#2f6fa3", etiqueta: "y = 16", en: [13.5, 17] },
+  ]}
+  region={[
+    [0, 0],
+    [12, 0],
+    [12, 8],
+    [8, 16],
+    [0, 16],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -5, dy: 13 },
+    { x: 12, y: 0, texto: "A", dx: -6, dy: -5 },
+    { x: 12, y: 8, texto: "B", dx: 6, dy: 4 },
+    { x: 8, y: 16, texto: "C", dx: -4, dy: -7 },
+    { x: 0, y: 16, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: pentágono de vértices O(0, 0), A(12, 0), B(12, 8), C(8, 16) y D(0, 16), limitado por los ejes y las rectas x = 12, y = 16 y 2x + y = 32"
+/>

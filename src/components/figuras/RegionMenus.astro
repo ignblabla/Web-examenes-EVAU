@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2025, ejercicio 2: región factible de los menús
+// premium (x) y estándar (y) del catering.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={33}
+  yMax={23}
+  marcasX={[5, 10, 15, 20, 30]}
+  marcasY={[5, 10, 20]}
+  rectas={[
+    { desde: [14, 22], hasta: [25, 0], color: "#b04a3a", etiqueta: "2x + y = 50", en: [19, 15] },
+    { desde: [0, 58 / 3], hasta: [29, 0], color: "#7a5b16", etiqueta: "2x + 3y = 58", en: [27.5, 3.2] },
+    { desde: [0, 15], hasta: [33, 6.75], color: "#2f6fa3", etiqueta: "x + 4y = 60", en: [24.5, 10.3] },
+  ]}
+  region={[
+    [0, 0],
+    [25, 0],
+    [23, 4],
+    [10.4, 12.4],
+    [0, 15],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -5, dy: 13 },
+    { x: 25, y: 0, texto: "A", dx: 0, dy: 14 },
+    { x: 23, y: 4, texto: "B", dx: -7, dy: -3 },
+    { x: 10.4, y: 12.4, texto: "C", dx: -4, dy: -7 },
+    { x: 0, y: 15, texto: "D", dx: 6, dy: 14 },
+  ]}
+  descripcion="Región factible: pentágono de vértices O(0, 0), A(25, 0), B(23, 4), C(10.4, 12.4) y D(0, 15), limitado por los ejes y las rectas 2x + y = 50, 2x + 3y = 58 y x + 4y = 60"
+/>

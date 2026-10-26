@@ -1,0 +1,33 @@
+---
+// Matemáticas aplicadas, junio de 2024, ejercicio 2: región factible de las hectáreas de olivar
+// de regadío (x) y de secano (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={24}
+  yMax={64}
+  marcasX={[5, 10, 15]}
+  marcasY={[10, 30, 40, 50]}
+  rectas={[
+    { desde: [20, 0], hasta: [20, 62], color: "#b04a3a", etiqueta: "x = 20", en: [20.4, 59] },
+    { desde: [0, 55], hasta: [24, 28.6], color: "#7a5b16", etiqueta: "11x + 10y = 550", en: [14, 42] },
+    { desde: [0, 60], hasta: [24, 21.6], color: "#5b3f8c", etiqueta: "8x + 5y = 300", en: [9.3, 38], ancla: "end" },
+    { desde: [0, 20], hasta: [24, 20], color: "#2f6fa3", etiqueta: "y = 20", en: [20.6, 16.5] },
+  ]}
+  region={[
+    [0, 20],
+    [20, 20],
+    [20, 28],
+    [10, 44],
+    [0, 55],
+  ]}
+  vertices={[
+    { x: 0, y: 20, texto: "A", dx: 6, dy: 14 },
+    { x: 20, y: 20, texto: "B", dx: -6, dy: 14 },
+    { x: 20, y: 28, texto: "C", dx: 6, dy: 0 },
+    { x: 10, y: 44, texto: "D", dx: 0, dy: -9 },
+    { x: 0, y: 55, texto: "E", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: pentágono de vértices A(0, 20), B(20, 20), C(20, 28), D(10, 44) y E(0, 55), limitado por el eje OY y las rectas y = 20, x = 20, 8x + 5y = 300 y 11x + 10y = 550"
+/>

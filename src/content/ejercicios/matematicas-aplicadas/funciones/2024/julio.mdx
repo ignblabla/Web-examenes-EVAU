@@ -1,0 +1,123 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+import HiperbolaJulio2024 from "../../../../../components/figuras/HiperbolaJulio2024.astro"
+import RecintoJulio2024 from "../../../../../components/figuras/RecintoJulio2024.astro"
+
+Dada la función
+
+$$
+f(x) = \frac{2x - 6}{2 - x}
+$$
+
+a) **(0.75 puntos)** Estudie la continuidad y derivabilidad de dicha función. Calcule sus asíntotas.
+
+<Solucion>
+
+**Continuidad y derivabilidad.** Es un cociente de polinomios, así que es continua y derivable en todo su dominio, $\mathbb{R} \setminus \{2\}$, donde se anula el denominador. En $x = 2$ no está definida, así que no es continua ni derivable.
+
+**Asíntotas:**
+
+- **Vertical $x = 2$**: el numerador vale $-2$ en $x = 2$. $\lim_{x \to 2^-} f(x) = \frac{-2}{0^+} = -\infty$ y $\lim_{x \to 2^+} f(x) = \frac{-2}{0^-} = +\infty$.
+- **Horizontal $y = -2$**: $\lim_{x \to \pm\infty} \dfrac{2x - 6}{2 - x} = \dfrac{2}{-1} = -2$.
+- **Oblicuas:** no hay, porque tiene asíntota horizontal en $\pm\infty$.
+
+</Solucion>
+
+b) **(0.75 puntos)** Estudie los intervalos de crecimiento y decrecimiento, así como la existencia de extremos relativos.
+
+<Solucion>
+
+$$
+f'(x) = \frac{2(2 - x) - (2x - 6)(-1)}{(2 - x)^2} = \frac{4 - 2x + 2x - 6}{(2 - x)^2} = \frac{-2}{(2 - x)^2} < 0
+$$
+
+$f$ es **decreciente en $(-\infty, 2)$ y en $(2, +\infty)$**. Como $f'$ nunca se anula, **no tiene extremos relativos**.
+
+</Solucion>
+
+c) **(1 punto)** Halle los puntos de corte con los ejes de coordenadas y represente gráficamente la función.
+
+<Solucion>
+
+**Cortes.** Con el eje $OX$: $2x - 6 = 0 \Rightarrow (3, 0)$. Con el eje $OY$: $f(0) = \frac{-6}{2} = -3 \Rightarrow (0, -3)$.
+
+**Gráfica.** Es una hipérbola con asíntotas $x = 2$ e $y = -2$. La rama izquierda baja desde $y = -2$ hacia $-\infty$ y pasa por $(0, -3)$. La rama derecha baja desde $+\infty$ hacia $y = -2$ y pasa por $(3, 0)$:
+
+<HiperbolaJulio2024 />
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+-x^2 + 4x + 3 & \text{si } x < 4\\[4pt]
+2x - 5 & \text{si } x \ge 4
+\end{cases}
+$$
+
+a) **(0.75 puntos)** Estudie su continuidad y derivabilidad.
+
+<Solucion>
+
+Los dos tramos son polinomios, continuos y derivables. Estudiamos $x = 4$.
+
+**Continuidad:**
+
+$$
+\lim_{x \to 4^-} f(x) = -16 + 16 + 3 = 3, \qquad f(4) = \lim_{x \to 4^+} f(x) = 8 - 5 = 3
+$$
+
+$f$ es **continua en $\mathbb{R}$**.
+
+**Derivabilidad.** $f'(4^-) = -2 \cdot 4 + 4 = -4$ y $f'(4^+) = 2$. Son distintas, así que $f$ **no es derivable en $x = 4$** (hay un pico). Es derivable en $\mathbb{R} \setminus \{4\}$.
+
+</Solucion>
+
+b) **(0.75 puntos)** Estudie su monotonía y calcule sus extremos relativos.
+
+<Solucion>
+
+- Para $x < 4$: $f'(x) = -2x + 4 = 0$ en $x = 2$. Crece en $(-\infty, 2)$ y decrece en $(2, 4)$.
+- Para $x > 4$: $f'(x) = 2 > 0$, así que crece en $(4, +\infty)$.
+
+**Extremos relativos:**
+
+- **Máximo relativo en $(2, 7)$**, porque $f(2) = -4 + 8 + 3 = 7$.
+- **Mínimo relativo en $(4, 3)$**: $f$ es continua, decrece antes de $x = 4$ y crece después, aunque no sea derivable en ese punto.
+
+</Solucion>
+
+c) **(1 punto)** Represente la región del plano limitada por la gráfica de $f$, las rectas $x = 3$, $x = 5$ y el eje de abscisas. Calcule su área.
+
+<Solucion>
+
+**Gráfica.** Entre $x = 3$ y $x = 5$ la función es positiva: $f(3) = 6$, $f(4) = 3$ y $f(5) = 5$. La región es la sombreada:
+
+<RecintoJulio2024 />
+
+**Área.** Como la expresión cambia en $x = 4$, dividimos la integral en dos:
+
+$$
+\int_3^4 (-x^2 + 4x + 3)\,dx = \left[-\frac{x^3}{3} + 2x^2 + 3x\right]_3^4 = \left(-\frac{64}{3} + 44\right) - 18 = \frac{14}{3}
+$$
+
+$$
+\int_4^5 (2x - 5)\,dx = \left[x^2 - 5x\right]_4^5 = 0 - (-4) = 4
+$$
+
+$$
+A = \frac{14}{3} + 4 = \frac{26}{3} \approx 8.67
+$$
+
+**Respuesta.** El área es $\dfrac{26}{3} \approx$ **8.67 unidades cuadradas**.
+
+</Solucion>

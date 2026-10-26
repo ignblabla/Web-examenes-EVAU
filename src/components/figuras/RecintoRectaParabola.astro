@@ -1,0 +1,24 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2025, ejercicio 3 b): recinto entre la parábola
+// y = −x² + 5 (arriba) y la recta y = −x + 3 (abajo), entre x = −1 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-3.5}
+  xMax={4}
+  yMin={-3}
+  yMax={6.5}
+  marcasX={[-3, -2, -1, 1, 2, 3]}
+  marcasY={[-2, 2, 4]}
+  tramos={[
+    { f: (x) => -(x ** 2) + 5, desde: -3.5, hasta: 4 },
+    { f: (x) => -x + 3, desde: -3.5, hasta: 4 },
+  ]}
+  recinto={{ arriba: (x) => -(x ** 2) + 5, abajo: (x) => -x + 3, desde: -1, hasta: 2 }}
+  puntos={[
+    { x: -1, y: 4, texto: "(−1, 4)", dx: -8, dy: 14 },
+    { x: 2, y: 1, texto: "(2, 1)", dx: 7, dy: 2 },
+  ]}
+  descripcion="Recinto sombreado entre la parábola y = −x² + 5, que queda por encima, y la recta y = −x + 3, entre los puntos de corte (−1, 4) y (2, 1)"
+/>

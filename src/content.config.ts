@@ -15,7 +15,8 @@ const examenes = defineCollection({
     // como bloques sangrados, en letra estrecha.
     // "ingles": texto de comprensión con las líneas numeradas y opciones a dos columnas.
     // "frances": texto en párrafos justificados y preguntas sangradas por bloques (I, II y III).
-    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances"]).default("normal"),
+    // "matematicas": ejercicios con su rótulo subrayado (EJERCICIO 1…) y apartados sangrados.
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas"]).default("normal"),
     // Texto para la meta descripción; si falta se genera uno.
     descripcion: z.string().optional(),
   }),
@@ -32,7 +33,7 @@ const ejercicios = defineCollection({
     tema: z.string(),
     anio: z.number(),
     convocatoria: z.string(),
-    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances"]).default("normal"),
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas"]).default("normal"),
   }),
 })
 

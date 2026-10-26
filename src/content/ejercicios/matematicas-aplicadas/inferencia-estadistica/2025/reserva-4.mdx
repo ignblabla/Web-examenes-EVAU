@@ -1,0 +1,105 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se selecciona una muestra aleatoria de $600$ familias a las que se les pregunta si tienen mascota, resultando que $240$ de esas familias contestaron afirmativamente. Con un nivel de confianza del $95\%$,
+
+a) **(1.25 puntos)** Obtenga el correspondiente intervalo de confianza para estimar la proporción poblacional de familias que tienen mascota. ¿Puede suponerse que la mitad de las familias de esta población tiene mascota?
+
+<Solucion>
+
+**Intervalo.** La proporción muestral es $\hat{p} = \frac{240}{600} = 0.4$ y, al $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+E = 1.96\sqrt{\frac{0.4 \cdot 0.6}{600}} = 1.96 \cdot 0.02 = 0.0392, \qquad (0.4 - 0.0392,\ 0.4 + 0.0392) = (0.3608,\ 0.4392)
+$$
+
+**Respuesta a la pregunta.** La mitad es una proporción de $0.5$, que **no pertenece** al intervalo. Con un $95\%$ de confianza, **no puede suponerse** que la mitad de las familias tenga mascota: según la muestra, la proporción es menor.
+
+</Solucion>
+
+b) **(0.75 puntos)** ¿Qué tamaño muestral mínimo se debe tomar para que el error máximo al estimar esta proporción sea $0.025$?
+
+<Solucion>
+
+Con la misma proporción muestral y la misma confianza:
+
+$$
+1.96\sqrt{\frac{0.24}{n}} \le 0.025 \;\Rightarrow\; n \ge \frac{1.96^2 \cdot 0.24}{0.025^2} \approx 1475.17
+$$
+
+**Respuesta.** Como mínimo, **1476 familias**.
+
+</Solucion>
+
+c) **(0.5 puntos)** Explique razonadamente el efecto que tendría sobre la amplitud del intervalo de confianza de la proporción poblacional el aumento del tamaño de la muestra elegida.
+
+<Solucion>
+
+La amplitud es $2E = 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$. Con la misma confianza y una proporción muestral parecida, al aumentar $n$ el cociente bajo la raíz disminuye, así que **la amplitud del intervalo disminuye**: la estimación es más precisa.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 7</u></strong></Bloque>
+
+Se ha realizado un estudio para analizar el peso, en kilogramos, de las mochilas de los estudiantes de ESO de los institutos de una localidad. Para ello, se seleccionó una muestra aleatoria de $13$ mochilas, obteniéndose los siguientes datos:
+
+$$
+4.5, \quad 5.3, \quad 4.9, \quad 5.2, \quad 5.5, \quad 5.5, \quad 5.7, \quad 4.8, \quad 5.6, \quad 4.7, \quad 4.2, \quad 5.8, \quad 4.6
+$$
+
+El peso de las mochilas se distribuye según una ley Normal de desviación típica $0.9\ kg$ y media desconocida.
+
+a) **(1.25 puntos)** Halle un intervalo de confianza, con un nivel de confianza del $98.5\%$, para estimar el peso medio de las mochilas escolares.
+
+<Solucion>
+
+**Media muestral.** Los 13 datos suman $66.3$, así que $\bar{x} = \frac{66.3}{13} = 5.1$ kg.
+
+**Valor crítico.** Para el $98.5\%$, $P(Z \le z_{\alpha/2}) = 0.9925$, en la fila $2.4$ y la columna $0.03$: $z_{\alpha/2} = 2.43$.
+
+**Intervalo:**
+
+$$
+E = 2.43 \cdot \frac{0.9}{\sqrt{13}} \approx 0.6066, \qquad (5.1 - 0.6066,\ 5.1 + 0.6066) = (4.4934,\ 5.7066)
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Para el mismo nivel de confianza, ¿qué tamaño muestral mínimo se debería tomar para que el error cometido al estimar el peso medio de estas mochilas sea inferior al $10\%$?
+
+<Solucion>
+
+El enunciado no precisa a qué se refiere el $10\%$. La lectura más directa es un error inferior a $0.1$ kg:
+
+$$
+2.43 \cdot \frac{0.9}{\sqrt{n}} < 0.1 \;\Rightarrow\; \sqrt{n} > 21.87 \;\Rightarrow\; n > 478.30
+$$
+
+Harían falta como mínimo **479 mochilas**.
+
+Si el $10\%$ se entiende como el $10\%$ del peso medio estimado ($0.1 \cdot 5.1 = 0.51$ kg), sale $2.43 \cdot \frac{0.9}{\sqrt{n}} < 0.51 \Rightarrow n > 18.39$, es decir, **19 mochilas**. Lo importante es dejar claro qué error máximo se está imponiendo.
+
+</Solucion>
+
+c) **(0.5 puntos)** El peso medio de las mochilas de los estudiantes de ESO de esa localidad es de $4.9\ kg$ y tomando una muestra aleatoria de $36$ mochilas, ¿qué distribución sigue la variable que mide el peso medio de estas $36$ mochilas? ¿Cuál es la probabilidad de que el peso medio no supere los $5.2\ kg$?
+
+<Solucion>
+
+**Distribución.** La población es normal, así que la media de las muestras de tamaño $36$ también lo es, con la misma media y desviación típica $\frac{0.9}{\sqrt{36}} = 0.15$:
+
+$$
+\bar{X} \sim N(4.9,\ 0.15)
+$$
+
+**Probabilidad:**
+
+$$
+P(\bar{X} \le 5.2) = P\left(Z \le \frac{5.2 - 4.9}{0.15}\right) = P(Z \le 2) = 0.9772
+$$
+
+</Solucion>

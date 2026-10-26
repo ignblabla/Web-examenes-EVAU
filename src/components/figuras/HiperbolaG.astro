@@ -1,0 +1,27 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2026, ejercicio 2 A) b): g(x) = (x − 3)/(x − 1), con las
+// asíntotas x = 1 e y = 1 y los cortes con los ejes.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-6}
+  xMax={8}
+  yMin={-8}
+  yMax={8}
+  marcasX={[-4, -2, 2, 6]}
+  marcasY={[-6, -4, -2, 2, 4, 6]}
+  tramos={[
+    { f: (x) => (x - 3) / (x - 1), desde: -6, hasta: 0.8 },
+    { f: (x) => (x - 3) / (x - 1), desde: 1.2, hasta: 8 },
+  ]}
+  asintotas={[
+    { tipo: "v", valor: 1, etiqueta: "x = 1", arriba: true },
+    { tipo: "h", valor: 1, etiqueta: "y = 1" },
+  ]}
+  puntos={[
+    { x: 0, y: 3, texto: "(0, 3)", dx: -6, dy: -4 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: 6, dy: 14 },
+  ]}
+  descripcion="Gráfica de g(x) = (x − 3)/(x − 1): hipérbola creciente en cada rama, con asíntota vertical x = 1 y asíntota horizontal y = 1; corta al eje Y en (0, 3) y al eje X en (3, 0)"
+/>

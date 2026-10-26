@@ -1,0 +1,82 @@
+---
+asignatura: matematicas-aplicadas
+tema: sistemas-de-ecuaciones-lineales
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+**A)** En un festival de cine con tres sesiones se venden tres tipos de entradas: Estándar, Premium y VIP. En la sesión inaugural se vendieron $5$ entradas Premium, $20$ Estándar y $20$ VIP, obteniéndose una recaudación de $1800$€. En la sesión nocturna se vendieron $10$ VIP, $10$ Estándar y $5$ Premium, recaudándose $1000$€. El día de la proyección de clausura, el número de entradas Premium superó en $4$ al resto de entradas, que fueron $12$ VIP y $4$ Estándar, arrojando una recaudación de $1560$€.
+
+<div class="math-sub">
+
+a) **(2.25 puntos)** Calcule el precio de cada tipo de entrada y la recaudación total obtenida.
+
+</div>
+
+<Solucion>
+
+Llamamos $x$ al precio en euros de la entrada Estándar, $y$ al de la Premium y $z$ al de la VIP.
+
+**Planteamiento.** En la clausura las entradas que no son Premium son $12 + 4 = 16$, así que se vendieron $16 + 4 = 20$ Premium. Cada sesión da una ecuación (recaudación = número de entradas × precio):
+
+$$
+\begin{cases}
+20x + 5y + 20z = 1800\\
+10x + 5y + 10z = 1000\\
+4x + 20y + 12z = 1560
+\end{cases}
+\quad\Longrightarrow\quad
+\begin{cases}
+4x + y + 4z = 360\\
+2x + y + 2z = 200\\
+x + 5y + 3z = 390
+\end{cases}
+$$
+
+La segunda forma resulta de dividir las ecuaciones entre $5$, $5$ y $4$.
+
+**Resolución por Gauss.** Ponemos primero la ecuación que empieza por $x$, para tener un $1$ como pivote:
+
+$$
+\left(\begin{array}{ccc|c} 1 & 5 & 3 & 390\\ 2 & 1 & 2 & 200\\ 4 & 1 & 4 & 360 \end{array}\right)
+\xrightarrow[F_3 - 4F_1]{F_2 - 2F_1}
+\left(\begin{array}{ccc|c} 1 & 5 & 3 & 390\\ 0 & -9 & -4 & -580\\ 0 & -19 & -8 & -1200 \end{array}\right)
+$$
+
+$$
+\xrightarrow{F_3 - 2F_2}
+\left(\begin{array}{ccc|c} 1 & 5 & 3 & 390\\ 0 & -9 & -4 & -580\\ 0 & -1 & 0 & -40 \end{array}\right)
+$$
+
+El sistema es compatible determinado (tres ecuaciones independientes) y se resuelve de abajo arriba:
+
+- De la tercera fila: $-y = -40 \Rightarrow y = 40$.
+- De la segunda: $-9 \cdot 40 - 4z = -580 \Rightarrow -4z = -220 \Rightarrow z = 55$.
+- De la primera: $x = 390 - 5 \cdot 40 - 3 \cdot 55 = 390 - 200 - 165 = 25$.
+
+Comprobación en la sesión inaugural: $20 \cdot 25 + 5 \cdot 40 + 20 \cdot 55 = 500 + 200 + 1100 = 1800$ €.
+
+**Respuesta.** La entrada **Estándar cuesta 25 €**, la **Premium 40 €** y la **VIP 55 €**. La recaudación total de las tres sesiones es $1800 + 1000 + 1560 =$ **4360 €**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** Determine el tipo de entrada con la que se obtuvo una mayor recaudación y el valor de dicha recaudación.
+
+</div>
+
+<Solucion>
+
+Sumamos las entradas de cada tipo vendidas en las tres sesiones y las multiplicamos por su precio:
+
+- Estándar: $20 + 10 + 4 = 34$ entradas, $34 \cdot 25 = 850$ €.
+- Premium: $5 + 5 + 20 = 30$ entradas, $30 \cdot 40 = 1200$ €.
+- VIP: $20 + 10 + 12 = 42$ entradas, $42 \cdot 55 = 2310$ €.
+
+Las tres cantidades suman $850 + 1200 + 2310 = 4360$ €, la recaudación total del apartado a).
+
+**Respuesta.** La mayor recaudación se obtuvo con la entrada **VIP: 2310 €**.
+
+</Solucion>

@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2026, ejercicio 1: región factible de los productos
+// P1 (x) y P2 (y). El máximo se alcanza en todo el lado BC, sobre la recta 2x + y = 700.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={450}
+  yMax={760}
+  marcasX={[100, 200, 300, 400]}
+  marcasY={[100, 300, 500]}
+  rectas={[
+    { desde: [260, 0], hasta: [260, 740], color: "#b04a3a", etiqueta: "x = 260", en: [266, 720] },
+    { desde: [0, 700], hasta: [350, 0], color: "#7a5b16", etiqueta: "2x + y = 700", en: [312, 105] },
+    { desde: [0, 210], hasta: [420, 0], color: "#5b3f8c", etiqueta: "x + 2y = 420", en: [40, 120] },
+  ]}
+  region={[
+    [0, 210],
+    [0, 700],
+    [260, 180],
+    [260, 80],
+  ]}
+  vertices={[
+    { x: 0, y: 210, texto: "A", dx: 7, dy: 14 },
+    { x: 0, y: 700, texto: "B", dx: 7, dy: -3 },
+    { x: 260, y: 180, texto: "C", dx: -7, dy: -4 },
+    { x: 260, y: 80, texto: "D", dx: -7, dy: 14 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 210), B(0, 700), C(260, 180) y D(260, 80), limitado por el eje OY y las rectas x = 260, 2x + y = 700 y x + 2y = 420"
+/>

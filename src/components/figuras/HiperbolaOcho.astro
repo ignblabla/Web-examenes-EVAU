@@ -1,0 +1,26 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2026, ejercicio 2 B) c): f(x) = 8/(x + 2), con las
+// asíntotas x = −2 e y = 0.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-10}
+  xMax={8}
+  yMin={-10}
+  yMax={10}
+  marcasX={[-8, -6, -4, 2, 4, 6]}
+  marcasY={[-8, -4, 4, 8]}
+  tramos={[
+    { f: (x) => 8 / (x + 2), desde: -10, hasta: -2.4 },
+    { f: (x) => 8 / (x + 2), desde: -1.6, hasta: 8 },
+  ]}
+  asintotas={[{ tipo: "v", valor: -2, etiqueta: "x = −2" }]}
+  puntos={[
+    { x: 0, y: 4, texto: "(0, 4)", dx: 6, dy: -4 },
+    { x: 2, y: 2 },
+    { x: -4, y: -4, texto: "(−4, −4)", dx: -6, dy: 12 },
+    { x: -6, y: -2 },
+  ]}
+  descripcion="Gráfica de f(x) = 8/(x + 2): hipérbola con asíntota vertical x = −2 y asíntota horizontal y = 0; la rama de la derecha está por encima del eje X y pasa por (0, 4); la de la izquierda está por debajo y pasa por (−4, −4)"
+/>

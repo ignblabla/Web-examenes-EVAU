@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+Una empresa de transporte contrata una consultora para optimizar sus recursos. La consultora estudia la distancia en kilómetros que recorren en cada viaje los camiones de la empresa, sabiendo que la variable que mide dicha distancia se distribuye según una Normal de varianza $225\ km^2$ y media desconocida. Para ello, toma aleatoriamente una muestra de $49$ viajes y obtiene una media de $325\ km$ recorridos por viaje.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Calcule un intervalo de confianza al $97\%$ para que la consultora pueda estimar la distancia media que recorren por viaje los camiones de la empresa.
+
+</div>
+
+<Solucion>
+
+**Datos.** La distancia $X$ sigue una $N(\mu, \sigma)$ con $\sigma = \sqrt{225} = 15$ km. La muestra tiene $n = 49$ viajes y media $\bar{x} = 325$ km.
+
+**Valor crítico.** Para un nivel de confianza $1 - \alpha = 0.97$ tenemos $\alpha = 0.03$ y $\frac{\alpha}{2} = 0.015$, así que buscamos $z_{\alpha/2}$ tal que
+
+$$
+P(Z \le z_{\alpha/2}) = 1 - 0.015 = 0.985
+$$
+
+En la tabla, $0.9850$ aparece en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+**Error máximo:**
+
+$$
+E = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} = 2.17 \cdot \frac{15}{\sqrt{49}} = 2.17 \cdot \frac{15}{7} = 4.65
+$$
+
+**Intervalo:**
+
+$$
+\left(\bar{x} - E,\ \bar{x} + E\right) = (325 - 4.65;\ 325 + 4.65) = (320.35;\ 329.65)
+$$
+
+**Respuesta.** Con una confianza del $97\%$, la distancia media por viaje está entre **320.35 km y 329.65 km**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** A la vista del intervalo obtenido, razone si la consultora puede considerar que los camiones de la empresa recorren por término medio $310\ km$ por viaje que realizan.
+
+</div>
+
+<Solucion>
+
+El intervalo del apartado a) contiene los valores de la media $\mu$ que son compatibles con la muestra, con una confianza del $97\%$. El valor $310$ km **no pertenece** al intervalo $(320.35;\ 329.65)$: queda por debajo de su extremo inferior.
+
+**Respuesta.** **No**: con un nivel de confianza del $97\%$, la consultora no puede considerar que los camiones recorran por término medio $310$ km por viaje. Según la muestra, la media es mayor.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** ¿Cuántos viajes, como mínimo, tendría que seleccionar aleatoriamente la consultora para estimar la distancia media que recorren por viaje los camiones de la empresa mediante un intervalo de confianza del $99\%$ que tuviera una amplitud inferior a $4\ km$?
+
+</div>
+
+<Solucion>
+
+**Valor crítico.** Para $1 - \alpha = 0.99$, $\frac{\alpha}{2} = 0.005$ y buscamos $P(Z \le z_{\alpha/2}) = 0.995$. En la tabla, $0.995$ está justo entre $0.9949$ ($z = 2.57$) y $0.9951$ ($z = 2.58$), así que tomamos el punto medio, $z_{\alpha/2} = 2.575$.
+
+**Planteamiento.** La amplitud del intervalo es el doble del error, $2E$. Que sea menor que $4$ km equivale a $E < 2$:
+
+$$
+2.575 \cdot \frac{15}{\sqrt{n}} < 2 \;\Rightarrow\; \sqrt{n} > \frac{2.575 \cdot 15}{2} = 19.3125 \;\Rightarrow\; n > 19.3125^2 \approx 372.97
+$$
+
+Como $n$ tiene que ser un número entero mayor que $372.97$, el menor valor posible es $373$.
+
+**Respuesta.** La consultora tendría que seleccionar como mínimo **373 viajes**.
+
+Si se redondea el valor crítico a $z_{\alpha/2} = 2.58$, sale $n > 374.42$, es decir, $375$ viajes. Ambos resultados son correctos siempre que se justifique de dónde sale el valor de $z_{\alpha/2}$.
+
+</Solucion>

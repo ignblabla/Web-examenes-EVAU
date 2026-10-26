@@ -1,0 +1,53 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionAbonos from "../../../../../components/figuras/RegionAbonos.astro"
+
+**(2.5 puntos)** Un fabricante produce mensualmente dos tipos de abonos ecológicos, $A$ y $B$, que vende en su totalidad, obteniendo unos beneficios de $15$ y $10$ euros por kilogramo ($kg$), respectivamente. La producción de abono del tipo $A$ no puede superar los $200\ kg$; el doble de la producción de $B$ menos el triple de la producción de $A$ es a lo sumo $100\ kg$. Además, la producción de $A$ más el doble de la producción de $B$ es como mucho de $500\ kg$. Obtenga las cantidades que este fabricante debe producir de sendos abonos para obtener el máximo beneficio e indique el valor de este beneficio.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los kilos de abono $A$ e $y$ a los de abono $B$ producidos al mes. Hay que maximizar
+
+$$
+F(x, y) = 15x + 10y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x \le 200\\
+2y - 3x \le 100\\
+x + 2y \le 500\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** El origen cumple las tres desigualdades, así que la región queda del lado del origen de las rectas $x = 200$, $2y - 3x = 100$ (por $(0, 50)$ y $(100, 200)$) y $x + 2y = 500$ (por $(0, 250)$ y $(200, 150)$), en el primer cuadrante:
+
+<RegionAbonos />
+
+**Vértices:**
+
+- $O(0, 0)$ y $A(200, 0)$.
+- $B$: $x = 200$ y $x + 2y = 500$ $\Rightarrow$ $y = 150$, $B(200, 150)$.
+- $C$: $x + 2y = 500$ y $2y - 3x = 100$. Restando, $4x = 400 \Rightarrow x = 100$, $y = 200$: $C(100, 200)$.
+- $D(0, 50)$: corte de $2y - 3x = 100$ con el eje $OY$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(200, 0) = 3000$
+- $F(200, 150) = 3000 + 1500 = 4500$
+- $F(100, 200) = 1500 + 2000 = 3500$
+- $F(0, 50) = 500$
+
+**Respuesta.** Debe producir **200 kg de abono A y 150 kg de abono B** al mes, con un **beneficio máximo de 4500 €**.
+
+</Solucion>

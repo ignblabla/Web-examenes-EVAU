@@ -1,0 +1,107 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+Una agencia ha realizado un estudio acerca de la siniestralidad de los vehículos de una región. Se ha dividido a los conductores en dos grupos: *jóvenes* los menores de $30$ años y *sénior* el resto de conductores. Asimismo, también se ha dividido a los vehículos en dos grupos: *nuevos* los que tienen menos de $5$ años de antigüedad y *viejos* el resto de vehículos. De los $54$ siniestros registrados, en $19$ de ellos el vehículo implicado era *nuevo* y en $29$ los conductores eran *jóvenes*. Finalmente, $21$ de los siniestros se dieron con vehículos *viejos* y conductores *jóvenes*. Se escoge uno de estos siniestros al azar.
+
+<Solucion titulo="Planteamiento común">
+
+Completamos una tabla de contingencia con los datos. Los marcados con negrita vienen en el enunciado; el resto sale por diferencia:
+
+| | Nuevo | Viejo | Total |
+|---|---|---|---|
+| Joven | $29 - 21 = 8$ | **21** | **29** |
+| Sénior | $19 - 8 = 11$ | $35 - 21 = 14$ | $54 - 29 = 25$ |
+| Total | **19** | $54 - 19 = 35$ | **54** |
+
+Cada probabilidad es el número de casos favorables entre los $54$ siniestros (regla de Laplace).
+
+</Solucion>
+
+a) **(1 punto)** Calcule la probabilidad de que el conductor sea *sénior* y el vehículo *viejo*.
+
+<Solucion>
+
+$$
+P(\text{Sénior} \cap \text{Viejo}) = \frac{14}{54} = \frac{7}{27} \approx 0.2593
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule la probabilidad de que el conductor sea *joven* sabiendo que el vehículo es *viejo*.
+
+<Solucion>
+
+Nos restringimos a los $35$ siniestros con vehículo viejo:
+
+$$
+P(\text{Joven} / \text{Viejo}) = \frac{21}{35} = 0.6
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Determine razonadamente si la siguiente afirmación es cierta: "Los siniestros de este estudio menos probables son aquellos en los que el conductor es *sénior* y el vehículo es *nuevo*".
+
+<Solucion>
+
+Las cuatro combinaciones tienen estas probabilidades:
+
+$$
+P(J \cap N) = \frac{8}{54} \approx 0.148, \quad P(J \cap V) = \frac{21}{54} \approx 0.389, \quad P(S \cap N) = \frac{11}{54} \approx 0.204, \quad P(S \cap V) = \frac{14}{54} \approx 0.259
+$$
+
+**La afirmación es falsa.** Los siniestros menos probables son los de **conductor joven con vehículo nuevo** (8 de 54), no los de conductor sénior con vehículo nuevo (11 de 54).
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Un grupo de turistas programa una visita a la Geoda de Pulpí. El $42\%$ de los turistas del grupo proceden de Andalucía, el $32\%$ de otras comunidades autónomas y el resto del extranjero. Son mayores de edad el $65\%$ de los visitantes que proceden de Andalucía y el $75\%$ de los que proceden de otras comunidades autónomas. Son menores de edad el $20\%$ de los visitantes extranjeros. Elegido un turista de este grupo al azar, halle la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $An$, $O$ y $Ex$ a proceder de Andalucía, de otra comunidad o del extranjero, y $M$ a ser mayor de edad:
+
+- $P(An) = 0.42$, con $P(M/An) = 0.65$.
+- $P(O) = 0.32$, con $P(M/O) = 0.75$.
+- $P(Ex) = 1 - 0.42 - 0.32 = 0.26$, con $P(M/Ex) = 1 - 0.2 = 0.8$.
+
+</Solucion>
+
+a) **(1 punto)** Sea mayor de edad.
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(M) = 0.42 \cdot 0.65 + 0.32 \cdot 0.75 + 0.26 \cdot 0.8 = 0.273 + 0.24 + 0.208 = 0.721
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Proceda de Andalucía y sea menor de edad.
+
+<Solucion>
+
+$$
+P(An \cap \overline{M}) = P(An) \cdot P(\overline{M}/An) = 0.42 \cdot 0.35 = 0.147
+$$
+
+</Solucion>
+
+c) **(1 punto)** Sea extranjero sabiendo que es menor de edad.
+
+<Solucion>
+
+Por el teorema de Bayes, con $P(\overline{M}) = 1 - 0.721 = 0.279$:
+
+$$
+P(Ex/\overline{M}) = \frac{P(Ex) \cdot P(\overline{M}/Ex)}{P(\overline{M})} = \frac{0.26 \cdot 0.2}{0.279} = \frac{0.052}{0.279} \approx 0.1864
+$$
+
+</Solucion>

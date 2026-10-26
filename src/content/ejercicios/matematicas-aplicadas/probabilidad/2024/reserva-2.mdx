@@ -1,0 +1,114 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Una tienda vende ropa de tallas $M$, $L$ y $XL$. Se sabe que el $65\%$ de sus clientes son mujeres. El $50\%$ de las mujeres que compran ropa en esa tienda usan la talla $M$ y el $10\%$ la talla $XL$. De los hombres, el $40\%$ usan la talla $L$ y el $45\%$ la $XL$.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $Mu$ y $H$ a ser mujer u hombre. Completamos el reparto de tallas en cada grupo, porque las tres tallas suman el $100\%$:
+
+- Mujeres, $P(Mu) = 0.65$: talla $M$ $0.5$, talla $XL$ $0.1$ y talla $L$ $1 - 0.5 - 0.1 = 0.4$.
+- Hombres, $P(H) = 0.35$: talla $L$ $0.4$, talla $XL$ $0.45$ y talla $M$ $1 - 0.4 - 0.45 = 0.15$.
+
+</Solucion>
+
+a) **(1 punto)** ¿Qué porcentaje de mujeres que compran ropa en esa tienda no usan la talla $XL$?
+
+<Solucion>
+
+$$
+P(\overline{XL}/Mu) = 1 - P(XL/Mu) = 1 - 0.1 = 0.9
+$$
+
+El **90 %** de las mujeres no usa la talla $XL$.
+
+</Solucion>
+
+b) **(0.75 puntos)** Halle el porcentaje de clientes que no usan la talla $L$.
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(L) = 0.65 \cdot 0.4 + 0.35 \cdot 0.4 = 0.4 \;\Rightarrow\; P(\overline{L}) = 1 - 0.4 = 0.6
+$$
+
+El **60 %** de los clientes no usa la talla $L$.
+
+</Solucion>
+
+c) **(0.75 puntos)** De los clientes que usan la talla $M$, ¿qué porcentaje son mujeres?
+
+<Solucion>
+
+Por el teorema de Bayes, con $P(M) = 0.65 \cdot 0.5 + 0.35 \cdot 0.15 = 0.325 + 0.0525 = 0.3775$:
+
+$$
+P(Mu/M) = \frac{0.65 \cdot 0.5}{0.3775} = \frac{0.325}{0.3775} \approx 0.8609
+$$
+
+Aproximadamente el **86.09 %** de los clientes de talla $M$ son mujeres.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+El $75\%$ de los estudiantes de un centro aprueba la asignatura $A$ y un $55\%$ aprueba la asignatura $B$. Además, un $35\%$ del total de estudiantes aprueba ambas. Elegido un estudiante al azar de este centro, calcule las siguientes probabilidades:
+
+a) **(1 punto)** No apruebe $B$ sabiendo que ha aprobado $A$.
+
+<Solucion>
+
+Los que aprueban $A$ pero no $B$ son $P(A \cap \overline{B}) = 0.75 - 0.35 = 0.4$:
+
+$$
+P(\overline{B}/A) = \frac{P(A \cap \overline{B})}{P(A)} = \frac{0.4}{0.75} = \frac{8}{15} \approx 0.5333
+$$
+
+</Solucion>
+
+b) **(0.25 puntos)** Aprueba alguna de estas asignaturas.
+
+<Solucion>
+
+$$
+P(A \cup B) = 0.75 + 0.55 - 0.35 = 0.95
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** No apruebe ni $A$ ni $B$.
+
+<Solucion>
+
+$$
+P(\overline{A} \cap \overline{B}) = 1 - P(A \cup B) = 1 - 0.95 = 0.05
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Haya aprobado $A$ si se sabe que ha aprobado alguna de estas dos asignaturas.
+
+<Solucion>
+
+Como $A$ está contenido en $A \cup B$, $P(A \cap (A \cup B)) = P(A)$:
+
+$$
+P(A/A \cup B) = \frac{P(A)}{P(A \cup B)} = \frac{0.75}{0.95} = \frac{15}{19} \approx 0.7895
+$$
+
+</Solucion>
+
+e) **(0.25 puntos)** Estudie si los sucesos “aprobar $A$” y “aprobar $B$” son independientes.
+
+<Solucion>
+
+$P(A) \cdot P(B) = 0.75 \cdot 0.55 = 0.4125 \ne 0.35 = P(A \cap B)$: **no son independientes**.
+
+</Solucion>

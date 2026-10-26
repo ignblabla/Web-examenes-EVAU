@@ -1,0 +1,128 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RecintoReserva2de2024 from "../../../../../components/figuras/RecintoReserva2de2024.astro"
+
+Se desea analizar la evolución de la población de una localidad. Se conoce que la función $f$ aproxima el número de habitantes que tiene la población para cada tiempo $t$, medido en meses, con $t \in [0, 60]$. El crecimiento de esta población viene dado por la siguiente expresión:
+
+$$
+f'(t) = 400 + 30\sqrt{t}
+$$
+
+También se sabe que la población en la actualidad, $t = 0$, es de $90000$ habitantes.
+
+a) **(1.25 puntos)** ¿Cuál será la población dentro de $9$ meses?
+
+<Solucion>
+
+**Obtener $f$.** Integramos $f'$, con $\sqrt{t} = t^{1/2}$:
+
+$$
+f(t) = \int \left(400 + 30\,t^{1/2}\right)dt = 400t + 30 \cdot \frac{t^{3/2}}{3/2} + K = 400t + 20\,t^{3/2} + K
+$$
+
+Como $f(0) = 90000$, la constante es $K = 90000$:
+
+$$
+f(t) = 400t + 20\,t\sqrt{t} + 90000
+$$
+
+**Población a los 9 meses:**
+
+$$
+f(9) = 3600 + 20 \cdot 27 + 90000 = 94\,140
+$$
+
+**Respuesta.** Dentro de 9 meses habrá **94 140 habitantes**.
+
+</Solucion>
+
+b) **(0.75 puntos)** Calcule $\displaystyle\int_9^{16} f'(t)\,dt$ e interprete el resultado.
+
+<Solucion>
+
+Por la regla de Barrow, la integral de $f'$ es la diferencia de valores de $f$:
+
+$$
+\int_9^{16} f'(t)\,dt = f(16) - f(9) = (6400 + 20 \cdot 64 + 90000) - 94\,140 = 97\,680 - 94\,140 = 3540
+$$
+
+**Interpretación.** Entre el mes 9 y el mes 16 la población aumenta en **3540 habitantes**.
+
+</Solucion>
+
+c) **(0.5 puntos)** Si se entrega una ayuda de $150$ € por cada nuevo habitante durante los tres primeros años, calcule la cuantía total aproximada de la ayuda que recibirá la localidad.
+
+<Solucion>
+
+Los tres primeros años son $36$ meses. Los nuevos habitantes en ese periodo son
+
+$$
+f(36) - f(0) = \int_0^{36} f'(t)\,dt = 400 \cdot 36 + 20 \cdot 36\sqrt{36} = 14\,400 + 4320 = 18\,720
+$$
+
+**Respuesta.** La ayuda total es de $18\,720 \cdot 150 =$ **2 808 000 €**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+3 + e^x & \text{si } x < 1\\[4pt]
+x^2 + ax + 2 & \text{si } x \ge 1
+\end{cases}
+$$
+
+a) **(1 punto)** Determine el valor de $a$ para que la función $f$ sea continua en $\mathbb{R}$. Para ese valor de $a$, ¿es $f$ derivable?
+
+<Solucion>
+
+**Continuidad.** Los dos tramos son continuos. En $x = 1$:
+
+$$
+\lim_{x \to 1^-} f(x) = 3 + e, \qquad f(1) = \lim_{x \to 1^+} f(x) = 1 + a + 2 = 3 + a
+$$
+
+Igualando, **$a = e$**.
+
+**Derivabilidad.** Con $a = e$, las derivadas laterales en $x = 1$ son $f'(1^-) = e^1 = e$ y $f'(1^+) = 2 \cdot 1 + a = 2 + e$. Son distintas, así que $f$ **no es derivable en $x = 1$** (sí en el resto de $\mathbb{R}$).
+
+</Solucion>
+
+b) **(0.5 puntos)** Para $a = -3$, calcule la recta tangente a la gráfica de $f$ en el punto de abscisa $x = 0$.
+
+<Solucion>
+
+En $x = 0 < 1$ se usa el primer tramo, que no depende de $a$: $f(0) = 3 + 1 = 4$ y $f'(x) = e^x$, así que $f'(0) = 1$. La tangente es
+
+$$
+y - 4 = 1 \cdot (x - 0) \;\Rightarrow\; y = x + 4
+$$
+
+</Solucion>
+
+c) **(1 punto)** Para $a = -3$, represente la región limitada por la gráfica de $f$, las rectas $x = 2$, $x = 4$ y el eje de abscisas. Calcule el área de dicha región.
+
+<Solucion>
+
+**Gráfica.** Para $x \ge 1$ la función es $x^2 - 3x + 2 = (x - 1)(x - 2)$, que corta el eje en $x = 1$ y $x = 2$ y es positiva para $x > 2$. Entre $x = 2$ y $x = 4$ la región queda por encima del eje:
+
+<RecintoReserva2de2024 />
+
+**Área:**
+
+$$
+A = \int_2^4 (x^2 - 3x + 2)\,dx = \left[\frac{x^3}{3} - \frac{3x^2}{2} + 2x\right]_2^4 = \left(\frac{64}{3} - 16\right) - \left(\frac{8}{3} - 2\right) = \frac{56}{3} - 14 = \frac{14}{3}
+$$
+
+**Respuesta.** El área es $\dfrac{14}{3} \approx$ **4.67 unidades cuadradas**.
+
+</Solucion>

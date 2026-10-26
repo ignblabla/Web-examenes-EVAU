@@ -1,0 +1,99 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+A partir de un estudio muestral se sabe que, con un nivel de confianza del $95\%$, la proporción de estudiantes de una universidad que tienen carnet de conducir pertenece al intervalo $(0.5616,\ 0.7184)$.
+
+a) **(0.5 puntos)** Calcule la proporción muestral de estudiantes que tienen carnet de conducir.
+
+<Solucion>
+
+El intervalo es $(\hat{p} - E,\ \hat{p} + E)$, centrado en la proporción muestral:
+
+$$
+\hat{p} = \frac{0.5616 + 0.7184}{2} = \frac{1.28}{2} = 0.64
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule el error máximo cometido en la estimación de la proporción poblacional.
+
+<Solucion>
+
+El error es la mitad de la amplitud del intervalo:
+
+$$
+E = \frac{0.7184 - 0.5616}{2} = 0.0784
+$$
+
+</Solucion>
+
+c) **(1 punto)** Calcule el tamaño de la muestra seleccionada.
+
+<Solucion>
+
+Para el $95\%$, $z_{\alpha/2} = 1.96$, porque $P(Z \le 1.96) = 0.975$. Despejamos $n$ de la fórmula del error:
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \;\Rightarrow\; 0.0784 = 1.96\sqrt{\frac{0.64 \cdot 0.36}{n}} \;\Rightarrow\; \sqrt{\frac{0.2304}{n}} = 0.04 \;\Rightarrow\; n = \frac{0.2304}{0.0016} = 144
+$$
+
+**Respuesta.** La muestra tenía **144 estudiantes**.
+
+</Solucion>
+
+d) **(0.5 puntos)** Razone qué efecto producirá sobre la amplitud del intervalo un aumento del tamaño muestral.
+
+<Solucion>
+
+La amplitud es $2E = 2 z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$, y $n$ está en el denominador. Si $n$ aumenta (con el mismo nivel de confianza y una proporción parecida), la raíz disminuye y **la amplitud del intervalo disminuye**: la estimación es más precisa.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 7</u></strong></Bloque>
+
+El tiempo de adaptación a la guardería, en días, de los menores de dos años andaluces, sigue una distribución Normal de media $10.5$ días y desviación típica $1.5$ días.
+
+a) **(1.25 puntos)** Se toma una muestra aleatoria de $25$ menores de estas características. ¿Qué distribución sigue la media muestral del tiempo de adaptación? ¿Cuál es la probabilidad de que el tiempo medio de adaptación de esta muestra supere los $10$ días?
+
+<Solucion>
+
+**Distribución.** Como la población es normal, la media de las muestras de tamaño $n = 25$ también lo es, con la misma media y desviación típica $\frac{1.5}{\sqrt{25}} = 0.3$:
+
+$$
+\bar{X} \sim N(10.5,\ 0.3)
+$$
+
+**Probabilidad:**
+
+$$
+P(\bar{X} > 10) = P\left(Z > \frac{10 - 10.5}{0.3}\right) \approx P(Z > -1.67) = P(Z < 1.67) = 0.9525
+$$
+
+usando la simetría de la normal.
+
+</Solucion>
+
+b) **(1.25 puntos)** ¿Qué porcentaje de muestras de tamaño $25$ nos proporcionará un tiempo medio de adaptación entre $8$ y $11$ días?
+
+<Solucion>
+
+Con la misma distribución $\bar{X} \sim N(10.5,\ 0.3)$:
+
+$$
+P(8 < \bar{X} < 11) = P\left(\frac{8 - 10.5}{0.3} < Z < \frac{11 - 10.5}{0.3}\right) \approx P(-8.33 < Z < 1.67)
+$$
+
+$P(Z < -8.33)$ es prácticamente $0$, porque la tabla llega a $z = 4$ con probabilidad $0.99997$. Por tanto:
+
+$$
+P(-8.33 < Z < 1.67) = P(Z < 1.67) - P(Z < -8.33) \approx 0.9525 - 0 = 0.9525
+$$
+
+**Respuesta.** Aproximadamente el **95.25 %** de las muestras.
+
+</Solucion>

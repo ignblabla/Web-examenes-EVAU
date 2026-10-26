@@ -1,0 +1,96 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+En un invernadero de Almería se realiza un estudio sobre dos de sus productos, melones y sandías.
+
+a) **(1 punto)** De los $4000$ melones recolectados en un determinado periodo, $1420$ son de la variedad $A$, $980$ de la $B$, $720$ de la $C$ y el resto de la $D$. Si se selecciona una muestra de $200$ de estos melones, ¿cuál debe ser la composición que debe tener dicha muestra si se realiza mediante muestreo aleatorio estratificado con afijación proporcional?
+
+<Solucion>
+
+Con afijación proporcional, de cada variedad se toma la misma fracción que la muestra representa sobre el total: $\frac{200}{4000} = \frac{1}{20}$. La variedad $D$ tiene $4000 - 1420 - 980 - 720 = 880$ melones.
+
+| Variedad | $A$ | $B$ | $C$ | $D$ | Total |
+|---|---|---|---|---|---|
+| Población | 1420 | 980 | 720 | 880 | 4000 |
+| Muestra ($\frac{1}{20}$) | **71** | **49** | **36** | **44** | **200** |
+
+</Solucion>
+
+b) El peso de las sandías sigue una distribución Normal de media $3.85\ kg$ y desviación típica $1.32\ kg$. Se selecciona, de forma aleatoria, una muestra de $121$ sandías.
+
+<div class="math-sub">
+
+b.1) **(0.5 puntos)** Indique la distribución que sigue la media muestral del peso de las sandías.
+
+</div>
+
+<Solucion>
+
+Como la población es normal, la media muestral también lo es, con la misma media y desviación típica $\frac{1.32}{\sqrt{121}} = \frac{1.32}{11} = 0.12$:
+
+$$
+\bar{X} \sim N(3.85,\ 0.12)
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b.2) **(1 punto)** Calcule la probabilidad de que el peso medio de la muestra esté comprendido entre $3.6\ kg$ y $4\ kg$.
+
+</div>
+
+<Solucion>
+
+$$
+P(3.6 < \bar{X} < 4) = P\left(\frac{3.6 - 3.85}{0.12} < Z < \frac{4 - 3.85}{0.12}\right) \approx P(-2.08 < Z < 1.25)
+$$
+
+$$
+= P(Z < 1.25) - \big(1 - P(Z < 2.08)\big) = 0.8944 - (1 - 0.9812) = 0.8756
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Una empresa farmacéutica desea revisar la efectividad de un nuevo medicamento antipirético (reduce la fiebre). Se conoce que el tiempo en el que este medicamento comienza a hacer efecto sigue una ley Normal de media desconocida y desviación típica de $5$ minutos. Para estimar la media poblacional, se ha seleccionado una muestra aleatoria de $10$ individuos con fiebre y tras administrarse el medicamento, se han anotado los tiempos en los que comienza a remitir. Los tiempos obtenidos, en minutos, fueron:
+
+$$
+20, \quad 25, \quad 30, \quad 35, \quad 35, \quad 20, \quad 20, \quad 25, \quad 30, \quad 30
+$$
+
+a) **(1.5 puntos)** Determine un intervalo, con un nivel de confianza del $98\%$, para estimar el tiempo medio de respuesta de este medicamento. Según el intervalo obtenido, razone si puede admitirse que el tiempo medio en el que el medicamento comienza a hacer efecto es superior a $35$ minutos.
+
+<Solucion>
+
+**Media muestral.** Los 10 tiempos suman $270$, así que $\bar{x} = 27$ minutos.
+
+**Valor crítico.** Para el $98\%$, $P(Z \le z_{\alpha/2}) = 0.99$, entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$.
+
+**Intervalo:**
+
+$$
+E = 2.33 \cdot \frac{5}{\sqrt{10}} \approx 3.684, \qquad (27 - 3.684,\ 27 + 3.684) = (23.316,\ 30.684)
+$$
+
+**¿Más de 35 minutos?** Todo el intervalo está por debajo de $35$. Con un $98\%$ de confianza, **no puede admitirse** que el tiempo medio supere los 35 minutos.
+
+</Solucion>
+
+b) **(1 punto)** Un estudio posterior ha revelado que el tiempo de respuesta a este medicamento sigue una ley Normal de media $27.2$ minutos y desviación típica de $5$ minutos. Determine la probabilidad de que a un paciente con fiebre que ha ingerido el medicamento no le haya hecho efecto hasta pasados $20$ minutos.
+
+<Solucion>
+
+“No le hace efecto hasta pasados 20 minutos” es que el tiempo de respuesta sea mayor que $20$. Con $X \sim N(27.2,\ 5)$:
+
+$$
+P(X > 20) = P\left(Z > \frac{20 - 27.2}{5}\right) = P(Z > -1.44) = P(Z < 1.44) = 0.9251
+$$
+
+</Solucion>

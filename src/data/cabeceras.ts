@@ -51,6 +51,47 @@ const frances2025: Cabecera = {
   curso: "CURSO 2024-2025",
 }
 
+const matematicasAplicadas2026: Cabecera = {
+  ...comun2026,
+  asignatura: ["MATEMÁTICAS", "APLICADAS A LAS", "CIENCIAS SOCIALES II"],
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Esta prueba consta de 4 ejercicios.",
+    "c) En algunos ejercicios se da la posibilidad de elegir entre los apartados A) o B). Responda solo el apartado que elija. En caso contrario, solo se corregirá el que aparezca en primer lugar.",
+    "d) En cada ejercicio o apartado se indica la puntuación máxima asignada.",
+    "e) Todos los resultados deben estar suficientemente justificados.",
+    "f) Se permitirá el uso de calculadoras que no sean programables, gráficas ni con capacidad para almacenar o transmitir datos. Si obtiene resultados directamente con la calculadora, explique con detalle los pasos.",
+    "g) La valoración de la corrección gramatical, léxica y ortográfica, así como la presentación del texto no será superior al 10 %.",
+  ],
+}
+
+// Curso 2024-2025: cuatro bloques (A, B, C y D) y un ejercicio de cada uno.
+const matematicasAplicadas2025: Cabecera = {
+  ...matematicasAplicadas2026,
+  curso: "CURSO 2024-2025",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Debe resolver 4 ejercicios, uno de cada bloque. Elija solo un ejercicio en los tres bloques donde tiene posibilidad de elección. En caso de responder a dos ejercicios de un mismo bloque, se corregirá solo el que aparezca en primer lugar.",
+    "c) En cada ejercicio, parte o apartado se indica la puntuación máxima asignada.",
+    "d) Todos los resultados deben estar suficientemente justificados.",
+    "e) Se permitirá el uso de calculadoras que no sean programables, gráficas ni con capacidad para almacenar o transmitir datos. Si obtiene resultados directamente con la calculadora, explique con detalle los pasos necesarios para su obtención sin el uso de la misma.",
+  ],
+}
+
+// Curso 2023-2024 (PEvAU): cuatro bloques con dos ejercicios cada uno.
+const matematicasAplicadas2024: Cabecera = {
+  ...matematicasAplicadas2026,
+  titulo: ["PRUEBA DE EVALUACIÓN DE BACHILLERATO PARA EL", "ACCESO A LA UNIVERSIDAD Y PRUEBAS DE ADMISIÓN"],
+  curso: "CURSO 2023-2024",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Elija un único ejercicio de cada bloque. En caso de responder a dos ejercicios de un mismo bloque, se corregirá solo el que aparezca en primer lugar.",
+    "c) En cada ejercicio, parte o apartado se indica la puntuación máxima asignada.",
+    "d) Todos los resultados deben estar suficientemente justificados.",
+    "e) Se permitirá el uso de calculadoras que no sean programables, gráficas ni con capacidad para almacenar o transmitir datos. Si obtiene resultados directamente con la calculadora, explique con detalle los pasos necesarios para su obtención sin el uso de la misma.",
+  ],
+}
+
 const ingles2025: Cabecera = {
   ...ingles2026,
   titulo: ["PRUEBA DE ACCESO A LA UNIVERSIDAD", "Y PRUEBA DE ADMISIÓN"],
@@ -241,4 +282,22 @@ export const cabeceras: Record<string, Cabecera> = {
   "frances/2026/reserva-2": frances2026,
   "frances/2026/reserva-3": frances2026,
   "frances/2026/reserva-4": frances2026,
+  "matematicas-aplicadas/2024/junio": matematicasAplicadas2024,
+  "matematicas-aplicadas/2024/julio": matematicasAplicadas2024,
+  "matematicas-aplicadas/2024/reserva-1": matematicasAplicadas2024,
+  "matematicas-aplicadas/2024/reserva-2": matematicasAplicadas2024,
+  "matematicas-aplicadas/2024/reserva-3": matematicasAplicadas2024,
+  "matematicas-aplicadas/2024/reserva-4": matematicasAplicadas2024,
+  "matematicas-aplicadas/2025/junio": matematicasAplicadas2025,
+  "matematicas-aplicadas/2025/julio": matematicasAplicadas2025,
+  "matematicas-aplicadas/2025/reserva-1": matematicasAplicadas2025,
+  "matematicas-aplicadas/2025/reserva-2": matematicasAplicadas2025,
+  "matematicas-aplicadas/2025/reserva-3": matematicasAplicadas2025,
+  "matematicas-aplicadas/2025/reserva-4": matematicasAplicadas2025,
+  "matematicas-aplicadas/2026/junio": matematicasAplicadas2026,
+  "matematicas-aplicadas/2026/julio": matematicasAplicadas2026,
+  "matematicas-aplicadas/2026/reserva-1": matematicasAplicadas2026,
+  "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
+  "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
+  "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
 }

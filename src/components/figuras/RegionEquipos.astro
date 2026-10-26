@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2024, ejercicio 2: región factible de los equipos de tipo 1 (x)
+// y de tipo 2 (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={44}
+  yMax={32}
+  marcasX={[10, 20, 30, 40]}
+  marcasY={[10, 20, 30]}
+  rectas={[
+    { desde: [0, 25], hasta: [44, 31 / 3], color: "#7a5b16", etiqueta: "x + 3y = 75", en: [30, 17] },
+    { desde: [0, 30], hasta: [40, 0], color: "#b04a3a", etiqueta: "3x + 4y = 120", en: [3, 30.5] },
+    { desde: [0, 6], hasta: [44, 6], color: "#2f6fa3", etiqueta: "y = 6", en: [36, 3.5] },
+  ]}
+  region={[
+    [0, 6],
+    [32, 6],
+    [12, 21],
+    [0, 25],
+  ]}
+  vertices={[
+    { x: 0, y: 6, texto: "A", dx: 6, dy: 14 },
+    { x: 32, y: 6, texto: "B", dx: 0, dy: 15 },
+    { x: 12, y: 21, texto: "C", dx: 6, dy: -6 },
+    { x: 0, y: 25, texto: "D", dx: 6, dy: 14 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 6), B(32, 6), C(12, 21) y D(0, 25), limitado por el eje OY y las rectas y = 6, 3x + 4y = 120 y x + 3y = 75"
+/>

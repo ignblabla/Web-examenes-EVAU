@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, julio de 2024, ejercicio 2: región factible de los anuncios de radio (x)
+// y de televisión (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={34}
+  yMax={23}
+  marcasX={[5, 15, 20, 25, 30]}
+  marcasY={[5, 15, 20]}
+  rectas={[
+    { desde: [0, 65 / 3], hasta: [32.5, 0], color: "#7a5b16", etiqueta: "2x + 3y = 65", en: [24, 7.3] },
+    { desde: [10, 0], hasta: [33, 23], color: "#b04a3a", etiqueta: "x − y = 10", en: [21.5, 13], ancla: "end" },
+    { desde: [0, 10], hasta: [13, 23], color: "#5b3f8c", etiqueta: "y − x = 10", en: [10.5, 22], ancla: "end" },
+    { desde: [0, 10], hasta: [10, 0], color: "#2f6fa3", etiqueta: "x + y = 10", en: [1, 3] },
+  ]}
+  region={[
+    [10, 0],
+    [19, 9],
+    [7, 17],
+    [0, 10],
+  ]}
+  vertices={[
+    { x: 10, y: 0, texto: "A", dx: 0, dy: 14 },
+    { x: 19, y: 9, texto: "B", dx: 7, dy: 4 },
+    { x: 7, y: 17, texto: "C", dx: 0, dy: -9 },
+    { x: 0, y: 10, texto: "D", dx: 6, dy: 4 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(10, 0), B(19, 9), C(7, 17) y D(0, 10), limitado por las rectas x + y = 10, x − y = 10, 2x + 3y = 65 e y − x = 10"
+/>

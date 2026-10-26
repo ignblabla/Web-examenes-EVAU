@@ -1,0 +1,80 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionPentagono from "../../../../../components/figuras/RegionPentagono.astro"
+
+**B)** Consideremos el recinto definido por las siguientes inecuaciones:
+
+$$
+3x - 4y \le 6; \qquad x + y \le 9; \qquad x + 4y \le 24; \qquad 3x + 2y \ge 6; \qquad x \ge 0
+$$
+
+<div class="math-sub">
+
+a) **(1.75 puntos)** Represente gráficamente el recinto y calcule sus vértices.
+
+</div>
+
+<Solucion>
+
+**Representación.** Dibujamos las rectas y, para cada una, elegimos el semiplano probando con el origen $(0, 0)$:
+
+- $3x - 4y = 6$, por $(2, 0)$ y $(6, 3)$. El origen cumple $0 \le 6$: semiplano del origen.
+- $x + y = 9$, por $(9, 0)$ y $(0, 9)$. El origen cumple $0 \le 9$: semiplano del origen.
+- $x + 4y = 24$, por $(0, 6)$ y $(24, 0)$. El origen cumple $0 \le 24$: semiplano del origen.
+- $3x + 2y = 6$, por $(2, 0)$ y $(0, 3)$. El origen **no** cumple $0 \ge 6$: semiplano contrario al origen.
+- $x \ge 0$: a la derecha del eje $OY$.
+
+El recinto es el pentágono sombreado:
+
+<RegionPentagono />
+
+**Vértices:**
+
+- $A(0, 3)$: $3x + 2y = 6$ con $x = 0$.
+- $B$: $3x + 2y = 6$ y $3x - 4y = 6$. Restando, $6y = 0 \Rightarrow y = 0$, $x = 2$: $B(2, 0)$.
+- $C$: $3x - 4y = 6$ y $x + y = 9$. Con $x = 9 - y$: $27 - 7y = 6 \Rightarrow y = 3$, $x = 6$: $C(6, 3)$.
+- $D$: $x + y = 9$ y $x + 4y = 24$. Restando, $3y = 15 \Rightarrow y = 5$, $x = 4$: $D(4, 5)$.
+- $E(0, 6)$: $x + 4y = 24$ con $x = 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Indique razonadamente si los puntos $P(3, 0.9)$ y $Q(1, 5.9)$ pertenecen al recinto.
+
+</div>
+
+<Solucion>
+
+Un punto pertenece al recinto si cumple **todas** las inecuaciones.
+
+- **$P(3, 0.9)$:** $3 \cdot 3 - 4 \cdot 0.9 = 5.4 \le 6$ ✓; $3 + 0.9 = 3.9 \le 9$ ✓; $3 + 3.6 = 6.6 \le 24$ ✓; $9 + 1.8 = 10.8 \ge 6$ ✓; $3 \ge 0$ ✓. **$P$ pertenece al recinto.**
+- **$Q(1, 5.9)$:** $1 + 4 \cdot 5.9 = 24.6 > 24$, así que no cumple $x + 4y \le 24$. **$Q$ no pertenece al recinto**, aunque cumpla las demás.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Obtenga el valor máximo y mínimo de la función objetivo $F(x, y) = 2x + 3y - 2$ en el recinto anterior, así como los puntos donde se alcanzan.
+
+</div>
+
+<Solucion>
+
+El recinto es un polígono acotado, así que el máximo y el mínimo se alcanzan en vértices. Evaluamos $F$:
+
+- $F(0, 3) = 9 - 2 = 7$
+- $F(2, 0) = 4 - 2 = 2$
+- $F(6, 3) = 12 + 9 - 2 = 19$
+- $F(4, 5) = 8 + 15 - 2 = 21$
+- $F(0, 6) = 18 - 2 = 16$
+
+**Respuesta.** El **máximo es 21**, en el punto **$(4, 5)$**, y el **mínimo es 2**, en el punto **$(2, 0)$**.
+
+</Solucion>

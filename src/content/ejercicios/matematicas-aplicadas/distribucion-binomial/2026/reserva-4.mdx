@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-aplicadas
+tema: distribucion-binomial
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+**A)** El tiempo, en minutos, que tardan los autobuses de cierta ciudad en recorrer la ruta principal, sigue una distribución Normal de media $40$ y desviación típica $5$. La empresa clasifica un viaje como "rápido" si el autobús tarda menos de $33.6$ minutos en recorrer el trayecto.
+
+<div class="math-sub">
+
+a) **(0.5 puntos)** Calcule la probabilidad de que un viaje sea "rápido".
+
+</div>
+
+<Solucion>
+
+El tiempo es $T \sim N(40, 5)$. Tipificamos:
+
+$$
+P(T < 33.6) = P\left(Z < \frac{33.6 - 40}{5}\right) = P(Z < -1.28) = 1 - P(Z \le 1.28) = 1 - 0.8997 = 0.1003
+$$
+
+El valor $0.8997$ se lee en la fila $1.2$ y la columna $0.08$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** Calcule la probabilidad de que al menos $3$ de $5$ trayectos seleccionados de esta ruta hayan sido "rápidos".
+
+</div>
+
+<Solucion>
+
+Cada trayecto es rápido o no, de forma independiente, con $p = 0.1003$. El número de trayectos rápidos entre $5$ es $X \sim B(5,\ 0.1003)$, con $q = 0.8997$:
+
+$$
+P(X \ge 3) = \binom{5}{3} p^3 q^2 + \binom{5}{4} p^4 q + \binom{5}{5} p^5
+$$
+
+$$
+= 10 \cdot 0.1003^3 \cdot 0.8997^2 + 5 \cdot 0.1003^4 \cdot 0.8997 + 0.1003^5 \approx 0.00817 + 0.00046 + 0.00001 \approx 0.0086
+$$
+
+Es muy poco probable: los viajes rápidos son solo el 10 % y aquí se piden al menos 3 de 5.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Seleccionados $80$ trayectos de esta ruta, calcule la probabilidad de que a lo sumo $15$ sean "rápidos".
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Ahora $Y \sim B(80,\ 0.1003)$ y nos piden $P(Y \le 15)$. Aproximamos por una normal, porque
+
+$$
+np = 80 \cdot 0.1003 = 8.024 > 5, \qquad nq = 80 \cdot 0.8997 = 71.976 > 5
+$$
+
+con $\mu = 8.024$ y $\sigma = \sqrt{80 \cdot 0.1003 \cdot 0.8997} \approx 2.687$. Con la corrección por continuidad, “a lo sumo 15” llega hasta $15.5$:
+
+$$
+P(Y \le 15) \approx P(Y' \le 15.5) = P\left(Z \le \frac{15.5 - 8.024}{2.687}\right) = P(Z \le 2.78) = 0.99728
+$$
+
+**Respuesta.** La probabilidad de que a lo sumo 15 de los 80 trayectos sean rápidos es aproximadamente **0.9973**.
+
+</Solucion>

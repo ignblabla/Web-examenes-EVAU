@@ -1,0 +1,90 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+**B)** Sean $A$ y $B$ dos sucesos de un mismo espacio muestral tales que:
+
+$$
+P(A) = 0.4, \qquad P(B^c) = 0.7, \qquad P(A \cup B) = 0.58
+$$
+
+<div class="math-sub">
+
+a) **(0.5 puntos)** ¿Son $A$ y $B$ independientes? ¿Son incompatibles?
+
+</div>
+
+<Solucion>
+
+Primero, $P(B) = 1 - P(B^c) = 1 - 0.7 = 0.3$. De la fórmula de la unión despejamos la intersección:
+
+$$
+P(A \cap B) = P(A) + P(B) - P(A \cup B) = 0.4 + 0.3 - 0.58 = 0.12
+$$
+
+- **Independencia.** $P(A) \cdot P(B) = 0.4 \cdot 0.3 = 0.12 = P(A \cap B)$, así que **sí son independientes**.
+- **Incompatibilidad.** Serían incompatibles si no pudieran ocurrir a la vez, es decir, si $P(A \cap B) = 0$. Como $P(A \cap B) = 0.12 \ne 0$, **no son incompatibles**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcule la probabilidad de que:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.5 puntos)** Ocurra alguno de los sucesos contrarios.
+
+</div>
+
+<Solucion>
+
+“Alguno de los contrarios” es $A^c \cup B^c$, que por las leyes de De Morgan es el contrario de $A \cap B$:
+
+$$
+P(A^c \cup B^c) = 1 - P(A \cap B) = 1 - 0.12 = 0.88
+$$
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.5 puntos)** Ocurra $B$ sabiendo que no ha ocurrido $A$.
+
+</div>
+
+<Solucion>
+
+Es la probabilidad condicionada $P(B/A^c)$. La parte de $B$ fuera de $A$ es $P(B \cap A^c) = P(B) - P(A \cap B) = 0.3 - 0.12 = 0.18$, y $P(A^c) = 1 - 0.4 = 0.6$:
+
+$$
+P(B/A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.18}{0.6} = 0.3
+$$
+
+Coincide con $P(B)$, como tiene que pasar con sucesos independientes: saber que no ha ocurrido $A$ no cambia la probabilidad de $B$.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+iii) **(0.5 puntos)** Ocurra uno y solo uno de los dos sucesos.
+
+</div>
+
+<Solucion>
+
+Es que ocurra al menos uno, pero no los dos a la vez: la unión menos la intersección.
+
+$$
+P(\text{solo uno}) = P(A \cup B) - P(A \cap B) = 0.58 - 0.12 = 0.46
+$$
+
+También se obtiene sumando las dos partes: $P(A \cap B^c) + P(B \cap A^c) = (0.4 - 0.12) + 0.18 = 0.28 + 0.18 = 0.46$.
+
+</Solucion>

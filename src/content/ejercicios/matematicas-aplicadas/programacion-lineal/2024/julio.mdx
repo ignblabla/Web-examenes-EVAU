@@ -1,0 +1,52 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+import RegionAnuncios from "../../../../../components/figuras/RegionAnuncios.astro"
+
+**(2.5 puntos)** Una empresa tiene un presupuesto de $78000$€ para promocionar un producto y quiere contratar la emisión de anuncios por radio y televisión. El coste de emisión de un anuncio de radio es de $2400$€ y de un anuncio de televisión de $3600$€. La empresa quiere que la diferencia entre el número de anuncios emitidos de cada tipo no sea mayor que $10$ y que se emitan un mínimo de $10$ anuncios en total. Si la emisión de un anuncio de radio llega a $34000$ personas y de un anuncio de televisión a $72000$ personas, ¿cuántas emisiones de cada tipo debe contratar para que la audiencia sea la mayor posible? ¿A cuánto ascendería dicha audiencia?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los anuncios de radio e $y$ a los de televisión. Hay que maximizar la audiencia
+
+$$
+F(x, y) = 34000x + 72000y
+$$
+
+con las restricciones. Que la diferencia no supere $10$, sea cual sea el tipo con más anuncios, son dos desigualdades:
+
+$$
+\begin{cases}
+2400x + 3600y \le 78000 \iff 2x + 3y \le 65 & \text{(presupuesto)}\\
+x - y \le 10, \quad y - x \le 10 & \text{(diferencia)}\\
+x + y \ge 10 & \text{(mínimo de anuncios)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda entre las rectas paralelas $x - y = 10$ e $y - x = 10$, por debajo de la del presupuesto y por encima de $x + y = 10$:
+
+<RegionAnuncios />
+
+**Vértices:**
+
+- $A$: $x + y = 10$ y $x - y = 10$ $\Rightarrow$ $A(10, 0)$.
+- $B$: $x - y = 10$ y $2x + 3y = 65$. Con $x = y + 10$: $5y + 20 = 65 \Rightarrow y = 9$, $B(19, 9)$.
+- $C$: $y - x = 10$ y $2x + 3y = 65$. Con $y = x + 10$: $5x + 30 = 65 \Rightarrow x = 7$, $C(7, 17)$.
+- $D$: $x + y = 10$ e $y - x = 10$ $\Rightarrow$ $D(0, 10)$.
+
+**Resolución.**
+
+- $F(10, 0) = 340\,000$
+- $F(19, 9) = 646\,000 + 648\,000 = 1\,294\,000$
+- $F(7, 17) = 238\,000 + 1\,224\,000 = 1\,462\,000$
+- $F(0, 10) = 720\,000$
+
+**Respuesta.** Debe contratar **7 anuncios de radio y 17 de televisión**, que gastan exactamente los 78 000 € ($2400 \cdot 7 + 3600 \cdot 17$). La audiencia máxima es de **1 462 000 personas**.
+
+</Solucion>

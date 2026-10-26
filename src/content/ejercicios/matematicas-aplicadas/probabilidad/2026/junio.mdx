@@ -1,0 +1,160 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+**A)**
+
+<div class="math-sub">
+
+a) **(1 punto)** Dada la población $\{-5, -2, 13, 18, 20\}$, se consideran todas las muestras de tamaño $3$ obtenidas mediante muestreo aleatorio simple. Calcule la media y la varianza de la distribución de la variable media muestral.
+
+</div>
+
+<Solucion>
+
+En el muestreo aleatorio simple las extracciones son independientes (con reemplazamiento), así que hay $5^3 = 125$ muestras posibles. No hace falta escribirlas: la media muestral $\bar{X}$ cumple siempre
+
+$$
+E(\bar{X}) = \mu, \qquad Var(\bar{X}) = \frac{\sigma^2}{n}
+$$
+
+donde $\mu$ y $\sigma^2$ son la media y la varianza de la población, y $n = 3$ el tamaño de las muestras.
+
+**Media de la población:**
+
+$$
+\mu = \frac{-5 - 2 + 13 + 18 + 20}{5} = \frac{44}{5} = 8.8
+$$
+
+**Varianza de la población** (media de los cuadrados menos el cuadrado de la media):
+
+$$
+\sigma^2 = \frac{25 + 4 + 169 + 324 + 400}{5} - 8.8^2 = \frac{922}{5} - 77.44 = 184.4 - 77.44 = 106.96
+$$
+
+**Respuesta.** La media de la distribución de la media muestral es **$E(\bar{X}) = 8.8$** y su varianza es **$Var(\bar{X}) = \dfrac{106.96}{3} \approx 35.65$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1 punto)** Dados dos sucesos $A$ y $B$ de un mismo espacio muestral, se sabe que $P(A) = 0.75$, $P(B^c) = 0.8$ y $P(A/B) = 0.6$. Calcule las siguientes probabilidades:
+
+</div>
+
+$$
+P(A \cap B), \qquad P(B - A), \qquad P(A \cup B), \qquad P(A^c - B)
+$$
+
+<Solucion>
+
+Del suceso contrario, $P(B) = 1 - P(B^c) = 1 - 0.8 = 0.2$.
+
+- **$P(A \cap B)$.** Por la definición de probabilidad condicionada, $P(A \cap B) = P(B) \cdot P(A/B) = 0.2 \cdot 0.6 =$ **$0.12$**.
+- **$P(B - A)$.** Es que ocurra $B$ pero no $A$: $P(B - A) = P(B) - P(A \cap B) = 0.2 - 0.12 =$ **$0.08$**.
+- **$P(A \cup B)$.** $P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.75 + 0.2 - 0.12 =$ **$0.83$**.
+- **$P(A^c - B)$.** Es que no ocurra $A$ y tampoco $B$, es decir, $A^c \cap B^c$, que por las leyes de De Morgan es el contrario de $A \cup B$: $P(A^c - B) = P(A^c \cap B^c) = 1 - P(A \cup B) = 1 - 0.83 =$ **$0.17$**.
+
+</Solucion>
+
+**B)** Sean $A$ y $B$ dos sucesos del espacio muestral asociado a un experimento aleatorio. Se sabe que $P(A)$ es el doble de $P(B)$, $P(B^c/A) = 0.75$ y $P(A \cap B) = 0.2$.
+
+<div class="math-sub">
+
+a) **(0.5 puntos)** Calcule la probabilidad de que ocurra $B$.
+
+</div>
+
+<Solucion>
+
+Condicionado a $A$, los sucesos $B$ y $B^c$ son contrarios, así que $P(B/A) = 1 - P(B^c/A) = 1 - 0.75 = 0.25$. Por la definición de probabilidad condicionada:
+
+$$
+P(B/A) = \frac{P(A \cap B)}{P(A)} \;\Rightarrow\; 0.25 = \frac{0.2}{P(A)} \;\Rightarrow\; P(A) = \frac{0.2}{0.25} = 0.8
+$$
+
+Como $P(A)$ es el doble de $P(B)$: $P(B) = \dfrac{0.8}{2} =$ **$0.4$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Calcule la probabilidad de que no ocurra ni $A$ ni $B$. ¿Son los sucesos $A^c$ y $B^c$ incompatibles?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** “No ocurre ni $A$ ni $B$” es $A^c \cap B^c$, que por De Morgan es el contrario de $A \cup B$:
+
+$$
+P(A^c \cap B^c) = 1 - P(A \cup B) = 1 - \big(P(A) + P(B) - P(A \cap B)\big) = 1 - (0.8 + 0.4 - 0.2) = 1 - 1 = 0
+$$
+
+**Respuesta.** La probabilidad de que no ocurra ni $A$ ni $B$ es **$0$**. Por tanto, **$A^c$ y $B^c$ son incompatibles**: no pueden ocurrir a la vez, porque $P(A^c \cap B^c) = 0$. Dicho de otro modo, $P(A \cup B) = 1$: en cada realización del experimento ocurre siempre $A$ o $B$.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) Si el experimento se realiza $1350$ veces de forma independiente:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.25 puntos)** Determine la distribución de la variable aleatoria $X$: "Número de veces que ocurre $B$".
+
+</div>
+
+<Solucion>
+
+Cada realización es una prueba con dos resultados (ocurre $B$ o no ocurre), con la misma probabilidad de éxito $p = P(B) = 0.4$, y las $1350$ realizaciones son independientes. $X$ cuenta los éxitos, así que sigue una **distribución binomial $X \sim B(1350;\ 0.4)$**.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.75 puntos)** Calcule la probabilidad de que $B$ ocurra a lo sumo $580$ veces, pero más de $499$ veces.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Nos piden $P(499 < X \le 580)$. Como $X$ solo toma valores enteros, es lo mismo que $P(500 \le X \le 580)$. Calcularlo con la binomial supondría sumar 81 términos, así que la aproximamos por una normal. Se puede porque $n$ es grande y
+
+$$
+np = 1350 \cdot 0.4 = 540 > 5, \qquad nq = 1350 \cdot 0.6 = 810 > 5
+$$
+
+La normal tiene la misma media y desviación típica que la binomial:
+
+$$
+\mu = np = 540, \qquad \sigma = \sqrt{npq} = \sqrt{1350 \cdot 0.4 \cdot 0.6} = \sqrt{324} = 18
+$$
+
+Así que $X$ se aproxima por $Y \sim N(540, 18)$. Al pasar de una variable discreta a una continua aplicamos la corrección por continuidad: cada valor entero $k$ se convierte en el intervalo $[k - 0.5,\ k + 0.5]$.
+
+$$
+P(500 \le X \le 580) \approx P(499.5 \le Y \le 580.5)
+$$
+
+**Resultado.** Tipificamos con $Z = \dfrac{Y - 540}{18}$:
+
+$$
+\frac{499.5 - 540}{18} = -2.25, \qquad \frac{580.5 - 540}{18} = 2.25
+$$
+
+$$
+P(-2.25 \le Z \le 2.25) = P(Z \le 2.25) - P(Z \le -2.25) = 2P(Z \le 2.25) - 1 = 2 \cdot 0.9878 - 1 = 0.9756
+$$
+
+El valor $P(Z \le 2.25) = 0.9878$ se lee en la tabla, en la fila $2.2$ y la columna $0.05$.
+
+**Respuesta.** La probabilidad de que $B$ ocurra más de $499$ veces y a lo sumo $580$ es aproximadamente **$0.9756$**.
+
+</Solucion>

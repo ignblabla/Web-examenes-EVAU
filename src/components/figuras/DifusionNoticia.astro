@@ -1,0 +1,21 @@
+---
+// Matemáticas aplicadas, junio de 2025, ejercicio 2 b): N(t) = 500 000 (1 − e^(−0.2t)),
+// dibujada en miles de personas, con la asíntota horizontal y = 500.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-1.5}
+  xMax={32}
+  yMin={-40}
+  yMax={580}
+  marcasX={[5, 10, 15, 20, 25, 30]}
+  marcasY={[100, 200, 300, 400, 500]}
+  tramos={[{ f: (t) => 500 * (1 - Math.exp(-0.2 * t)), desde: 0, hasta: 32 }]}
+  asintotas={[{ tipo: "h", valor: 500, etiqueta: "y = 500 (500 000 personas)" }]}
+  puntos={[
+    { x: 5, y: 316.06, texto: "(5, 316)", dx: 8, dy: 10 },
+    { x: 11.51, y: 450, texto: "(11.5, 450)", dx: 8, dy: 12 },
+  ]}
+  descripcion="Gráfica de N en miles de personas: parte de 0, crece deprisa al principio y cada vez más despacio, y se acerca a la asíntota horizontal de 500 000 personas"
+/>

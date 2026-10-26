@@ -1,0 +1,33 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+b) **(1 punto)** Dadas las matrices $A = \begin{pmatrix} 1 & -1\\ 2 & 3 \end{pmatrix}$ y $B = \begin{pmatrix} 0 & 1\\ 2 & 1 \end{pmatrix}$, compruebe si la inversa de la suma de dichas matrices coincide con la suma de las inversas de cada una.
+
+<Solucion>
+
+Para una matriz $2 \times 2$ con determinante no nulo, $\begin{pmatrix} a & b\\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b\\ -c & a \end{pmatrix}$.
+
+**Inversa de la suma.**
+
+$$
+A + B = \begin{pmatrix} 1 & 0\\ 4 & 4 \end{pmatrix}, \quad |A + B| = 4 \;\Rightarrow\; (A + B)^{-1} = \frac{1}{4}\begin{pmatrix} 4 & 0\\ -4 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0\\ -1 & \frac{1}{4} \end{pmatrix}
+$$
+
+**Suma de las inversas.** $|A| = 3 + 2 = 5$ y $|B| = 0 - 2 = -2$:
+
+$$
+A^{-1} = \frac{1}{5}\begin{pmatrix} 3 & 1\\ -2 & 1 \end{pmatrix}, \qquad B^{-1} = -\frac{1}{2}\begin{pmatrix} 1 & -1\\ -2 & 0 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2} & \frac{1}{2}\\[2pt] 1 & 0 \end{pmatrix}
+$$
+
+$$
+A^{-1} + B^{-1} = \begin{pmatrix} \frac{3}{5} - \frac{1}{2} & \frac{1}{5} + \frac{1}{2}\\[2pt] -\frac{2}{5} + 1 & \frac{1}{5} \end{pmatrix} = \begin{pmatrix} \frac{1}{10} & \frac{7}{10}\\[2pt] \frac{3}{5} & \frac{1}{5} \end{pmatrix}
+$$
+
+**Respuesta.** **No coinciden**: $(A + B)^{-1} \ne A^{-1} + B^{-1}$. En general, la inversa de una suma no es la suma de las inversas.
+
+</Solucion>

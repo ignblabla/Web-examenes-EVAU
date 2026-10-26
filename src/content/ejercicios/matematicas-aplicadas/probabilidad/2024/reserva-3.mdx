@@ -1,0 +1,115 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Un grupo de $15$ amigas se van a pasar un fin de semana a una casa rural. Al llegar reparten las tareas: $3$ irán al mercado, $2$ a comprar leña y el resto se quedarán en la casa. Para realizar el reparto de las tareas se introducen $15$ papeletas en una urna de las que $3$ tienen la palabra “mercado”, $2$ la palabra “leña” y el resto la palabra “casa”. Cada una coge una papeleta de forma ordenada y sin reposición. Calcule la probabilidad de los siguientes sucesos:
+
+<Solucion titulo="Planteamiento común">
+
+Hay $3$ papeletas de mercado ($M$), $2$ de leña ($L$) y $10$ de casa ($C$). Como se extraen **sin reposición**, cada extracción cambia la composición de la urna: tras sacar una papeleta quedan $14$.
+
+</Solucion>
+
+a) **(0.75 puntos)** Las dos primeras papeletas extraídas tienen escrita la palabra “mercado”.
+
+<Solucion>
+
+$$
+P(M_1 \cap M_2) = P(M_1) \cdot P(M_2/M_1) = \frac{3}{15} \cdot \frac{2}{14} = \frac{1}{35} \approx 0.0286
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Las dos primeras papeletas extraídas no tienen escrita la palabra “casa”.
+
+<Solucion>
+
+Hay $5$ papeletas que no dicen “casa” (3 de mercado y 2 de leña):
+
+$$
+P(\overline{C_1} \cap \overline{C_2}) = \frac{5}{15} \cdot \frac{4}{14} = \frac{2}{21} \approx 0.0952
+$$
+
+</Solucion>
+
+c) **(1 punto)** Si la segunda papeleta extraída tiene escrita “leña”, ¿cuál es la probabilidad de que la primera también tenga escrita “leña”?
+
+<Solucion>
+
+**Probabilidad de que la segunda sea leña.** Por la probabilidad total, según lo que salga primero:
+
+$$
+P(L_2) = \frac{2}{15} \cdot \frac{1}{14} + \frac{13}{15} \cdot \frac{2}{14} = \frac{2 + 26}{210} = \frac{2}{15}
+$$
+
+Es la misma probabilidad que para la primera, como cabía esperar por simetría.
+
+**Bayes:**
+
+$$
+P(L_1/L_2) = \frac{P(L_1 \cap L_2)}{P(L_2)} = \frac{\frac{2}{15} \cdot \frac{1}{14}}{\frac{2}{15}} = \frac{1}{14} \approx 0.0714
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Una empresa ha instalado $50$ alarmas de las que $30$ son de tipo básico y el resto de tipo superior. Se sabe que el $80\%$ de todas las alarmas no presentan incidencias y que de las de tipo básico un $30\%$ presentan alguna incidencia. Se elige al azar una de estas alarmas. Calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Pasamos los datos a número de alarmas en una tabla:
+
+| | Con incidencias | Sin incidencias | Total |
+|---|---|---|---|
+| Básico | $30\% \cdot 30 = 9$ | $21$ | **30** |
+| Superior | $10 - 9 = 1$ | $19$ | **20** |
+| Total | $10$ | $80\% \cdot 50 = 40$ | **50** |
+
+</Solucion>
+
+a) **(1 punto)** Sea de tipo básico y no presente incidencias.
+
+<Solucion>
+
+$$
+P(\text{Básico} \cap \text{sin incidencias}) = \frac{21}{50} = 0.42
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** No presente incidencias siendo de tipo superior.
+
+<Solucion>
+
+$$
+P(\text{sin incidencias}/\text{Superior}) = \frac{19}{20} = 0.95
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Teniendo incidencias sea de tipo básico.
+
+<Solucion>
+
+$$
+P(\text{Básico}/\text{con incidencias}) = \frac{9}{10} = 0.9
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Sea de "tipo básico y tenga incidencias" o sea de "tipo superior y no tenga incidencias".
+
+<Solucion>
+
+Los dos sucesos son incompatibles (una alarma no puede ser de los dos tipos), así que se suman:
+
+$$
+P = \frac{9}{50} + \frac{19}{50} = \frac{28}{50} = 0.56
+$$
+
+</Solucion>

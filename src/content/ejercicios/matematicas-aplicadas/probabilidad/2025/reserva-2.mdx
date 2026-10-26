@@ -1,0 +1,61 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Una encuesta realizada a personas que utilizan productos de cosmética arroja los siguientes datos: el $66\%$ de las personas encuestadas son mujeres y, de estas, el $71\%$ utilizan cosmética natural. Además, se sabe que el $17.86\%$ son hombres que no utilizan cosmética natural. Se selecciona una de estas personas al azar.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $M$ a ser mujer, $H$ a ser hombre y $N$ a usar cosmética natural. Los datos son $P(M) = 0.66$, $P(N/M) = 0.71$ y $P(H \cap \overline{N}) = 0.1786$. De ahí:
+
+- $P(H) = 1 - 0.66 = 0.34$.
+- $P(M \cap N) = 0.66 \cdot 0.71 = 0.4686$ y $P(M \cap \overline{N}) = 0.66 - 0.4686 = 0.1914$.
+- $P(H \cap N) = 0.34 - 0.1786 = 0.1614$.
+- $P(N) = 0.4686 + 0.1614 = 0.63$ y $P(\overline{N}) = 0.37$.
+
+</Solucion>
+
+a) **(0.75 puntos)** Calcule la probabilidad de que sea mujer o use cosmética natural.
+
+<Solucion>
+
+$$
+P(M \cup N) = P(M) + P(N) - P(M \cap N) = 0.66 + 0.63 - 0.4686 = 0.8214
+$$
+
+Es lo mismo que el contrario de “hombre que no usa cosmética natural”: $1 - 0.1786 = 0.8214$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule la probabilidad de que sea hombre y utilice cosmética natural.
+
+<Solucion>
+
+$$
+P(H \cap N) = P(H) - P(H \cap \overline{N}) = 0.34 - 0.1786 = 0.1614
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Sabiendo que no usa cosmética natural, calcule la probabilidad de que sea hombre.
+
+<Solucion>
+
+$$
+P(H/\overline{N}) = \frac{P(H \cap \overline{N})}{P(\overline{N})} = \frac{0.1786}{0.37} \approx 0.4827
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** ¿Son sucesos incompatibles "utilizar cosmética natural" y "ser mujer"? ¿Son independientes?
+
+<Solucion>
+
+- **Incompatibilidad.** $P(M \cap N) = 0.4686 \ne 0$: hay mujeres que usan cosmética natural, así que **no son incompatibles**.
+- **Independencia.** $P(M) \cdot P(N) = 0.66 \cdot 0.63 = 0.4158 \ne 0.4686 = P(M \cap N)$: **no son independientes**. De hecho, $P(N/M) = 0.71$ es mayor que $P(N) = 0.63$: entre las mujeres, el uso de cosmética natural es más frecuente.
+
+</Solucion>

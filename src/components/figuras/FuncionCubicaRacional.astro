@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2026, ejercicio 2 A) iii): f(x) = x³ − 6x² + 9x si x < 3
+// y f(x) = (−6x + 18)/(x + 1) si x ≥ 3, con la asíntota horizontal y = −6.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-1.5}
+  xMax={16}
+  yMin={-7.5}
+  yMax={5.5}
+  marcasX={[1, 3, 5, 10, 15]}
+  marcasY={[2, 4]}
+  tramos={[
+    { f: (x) => x ** 3 - 6 * x ** 2 + 9 * x, desde: -1.5, hasta: 3 },
+    { f: (x) => (-6 * x + 18) / (x + 1), desde: 3, hasta: 16 },
+  ]}
+  asintotas={[{ tipo: "h", valor: -6, etiqueta: "y = −6" }]}
+  puntos={[
+    { x: 1, y: 4, texto: "Máximo (1, 4)", dx: 8, dy: -2 },
+    { x: 0, y: 0 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: la rama cúbica sube desde menos infinito, pasa por (0, 0), alcanza el máximo (1, 4) y baja hasta (3, 0); desde ahí la rama racional sigue bajando y se acerca a la asíntota y = −6"
+/>

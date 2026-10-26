@@ -1,0 +1,98 @@
+---
+// Región factible de un problema de programación lineal: ejes, rectas de las restricciones,
+// polígono sombreado y vértices. Las coordenadas van en unidades del problema; los
+// desplazamientos de las etiquetas de los vértices (dx, dy), en píxeles.
+type Punto = readonly [number, number]
+
+interface Recta {
+  desde: Punto
+  hasta: Punto
+  color: string
+  etiqueta: string
+  // Dónde va la etiqueta de la recta y hacia qué lado crece el texto.
+  en: Punto
+  ancla?: "start" | "middle" | "end"
+}
+
+interface Vertice {
+  x: number
+  y: number
+  texto: string
+  dx: number
+  dy: number
+}
+
+interface Props {
+  xMax: number
+  yMax: number
+  marcasX: number[]
+  marcasY: number[]
+  rectas: Recta[]
+  region: Punto[]
+  vertices: Vertice[]
+  descripcion: string
+}
+
+const { xMax, yMax, marcasX, marcasY, rectas, region, vertices, descripcion } = Astro.props
+
+const ancho = 285
+const alto = 225
+const origen = { x: 44, y: 236 }
+const px = (x: number) => origen.x + (x / xMax) * ancho
+const py = (y: number) => origen.y - (y / yMax) * alto
+const punto = ([x, y]: Punto) => `${px(x)},${py(y)}`
+const poligono = region.map(punto).join(" ")
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 345 262" role="img" aria-label={descripcion}>
+    <polygon points={poligono} fill="rgba(25, 92, 81, 0.18)" />
+
+    <g fill="none" stroke="#111" stroke-width="1">
+      <path d={`M${px(0)} ${py(0)}H${px(xMax)}M${px(xMax) - 5} ${py(0) - 3}l5 3-5 3`} />
+      <path d={`M${px(0)} ${py(0)}V${py(yMax)}M${px(0) - 3} ${py(yMax) + 5}l3-5 3 5`} />
+      {marcasX.map((m) => <path d={`M${px(m)} ${py(0) - 3}v6`} />)}
+      {marcasY.map((m) => <path d={`M${px(0) - 3} ${py(m)}h6`} />)}
+    </g>
+
+    <g fill="none" stroke-width="1.4">
+      {rectas.map((r) => <path d={`M${punto(r.desde)}L${punto(r.hasta)}`} stroke={r.color} />)}
+    </g>
+
+    <polygon points={poligono} fill="none" stroke="#195c51" stroke-width="2" />
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      {marcasX.map((m) => <text x={px(m)} y={py(0) + 14} text-anchor="middle">{m}</text>)}
+      {marcasY.map((m) => <text x={px(0) - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
+      <text x={px(xMax)} y={py(0) + 14} text-anchor="end" font-style="italic">x</text>
+      <text x={px(0) + 6} y={py(yMax) + 4} font-style="italic">y</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10">
+      {
+        rectas.map((r) => (
+          <text x={px(r.en[0])} y={py(r.en[1])} fill={r.color} text-anchor={r.ancla ?? "start"}>
+            {r.etiqueta}
+          </text>
+        ))
+      }
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#195c51">
+      {
+        vertices.map((v) => (
+          <>
+            <circle cx={px(v.x)} cy={py(v.y)} r="3" />
+            <text
+              x={px(v.x) + v.dx}
+              y={py(v.y) + v.dy}
+              text-anchor={v.dx < 0 ? "end" : v.dx === 0 ? "middle" : "start"}
+            >
+              {v.texto}
+            </text>
+          </>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

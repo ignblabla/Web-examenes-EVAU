@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2025, ejercicio 2: región factible de los kilos de abono
+// A (x) y B (y) producidos al mes.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={330}
+  yMax={290}
+  marcasX={[100, 200, 300]}
+  marcasY={[100, 200]}
+  rectas={[
+    { desde: [200, 0], hasta: [200, 280], color: "#b04a3a", etiqueta: "x = 200", en: [205, 270] },
+    { desde: [0, 50], hasta: [160, 290], color: "#5b3f8c", etiqueta: "2y − 3x = 100", en: [125, 250], ancla: "end" },
+    { desde: [0, 250], hasta: [330, 85], color: "#7a5b16", etiqueta: "x + 2y = 500", en: [245, 140] },
+  ]}
+  region={[
+    [0, 0],
+    [200, 0],
+    [200, 150],
+    [100, 200],
+    [0, 50],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -5, dy: 13 },
+    { x: 200, y: 0, texto: "A", dx: 6, dy: -5 },
+    { x: 200, y: 150, texto: "B", dx: -7, dy: 14 },
+    { x: 100, y: 200, texto: "C", dx: 0, dy: 15 },
+    { x: 0, y: 50, texto: "D", dx: 6, dy: 12 },
+  ]}
+  descripcion="Región factible: pentágono de vértices O(0, 0), A(200, 0), B(200, 150), C(100, 200) y D(0, 50), limitado por los ejes y las rectas x = 200, 2y − 3x = 100 y x + 2y = 500"
+/>

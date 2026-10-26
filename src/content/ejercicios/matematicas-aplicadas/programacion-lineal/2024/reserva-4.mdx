@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionPulseras from "../../../../../components/figuras/RegionPulseras.astro"
+
+**(2.5 puntos)** Un joyero desea fabricar dos tipos de pulseras, $A$ y $B$, y para ello dispone de $50\ g$ de oro, $40\ g$ de platino y $25\ g$ de plata. Para fabricar las del tipo $A$ necesita $1\ g$ de oro y $2\ g$ de platino, mientras que para las del tipo $B$ requiere $2\ g$ de oro, $1\ g$ de platino y $1\ g$ de plata. Cada pulsera del tipo $A$ se vende por $150$ € y cada una del tipo $B$ por $200$ €. Si se vende toda la producción, ¿cuántas pulseras de cada tipo debe fabricar para maximizar los ingresos y a cuánto ascienden éstos? ¿Qué cantidad de cada metal sobrará cuando se fabrique el número de joyas que proporciona el máximo beneficio?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las pulseras de tipo $A$ e $y$ a las de tipo $B$. Hay que maximizar los ingresos
+
+$$
+F(x, y) = 150x + 200y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + 2y \le 50 & \text{(oro)}\\
+2x + y \le 40 & \text{(platino)}\\
+y \le 25 & \text{(plata)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** El origen cumple todas las desigualdades, así que la región queda en el primer cuadrante, por debajo de las tres rectas. La recta de la plata, $y = 25$, solo toca la región en el punto $(0, 25)$, donde también corta la del oro:
+
+<RegionPulseras />
+
+**Vértices:**
+
+- $O(0, 0)$ y $A(20, 0)$: la recta del platino con el eje $OX$.
+- $B$: $x + 2y = 50$ y $2x + y = 40$. Con $x = 50 - 2y$: $100 - 3y = 40 \Rightarrow y = 20$, $x = 10$: $B(10, 20)$.
+- $C(0, 25)$: la recta del oro con el eje $OY$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(20, 0) = 3000$
+- $F(10, 20) = 1500 + 4000 = 5500$
+- $F(0, 25) = 5000$
+
+**Respuesta.** Debe fabricar **10 pulseras de tipo A y 20 de tipo B**, con unos **ingresos máximos de 5500 €**.
+
+**Metal sobrante.**
+
+- Oro: $50 - (10 + 2 \cdot 20) = 0$ g. **No sobra nada.**
+- Platino: $40 - (2 \cdot 10 + 20) = 0$ g. **No sobra nada.**
+- Plata: $25 - 20 = 5$. **Sobran 5 g.**
+
+</Solucion>

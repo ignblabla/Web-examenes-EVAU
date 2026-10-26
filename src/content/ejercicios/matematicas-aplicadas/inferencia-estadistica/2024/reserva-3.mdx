@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Una tienda decide evaluar a su empresa de transporte para determinar si está cumpliendo con sus estándares de calidad. Para ello, se analizan $400$ de sus envíos y se comprueba que $370$ han sido entregados a tiempo.
+
+a) **(1.5 puntos)** Si los estándares de calidad de dicha empresa requieren que al menos el $88\%$ de los envíos sean entregados a tiempo, estime, mediante un intervalo de confianza al $93\%$, si la empresa de transporte cumple con los estándares de calidad.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{370}{400} = 0.925$.
+
+**Valor crítico.** Para el $93\%$, $\frac{\alpha}{2} = 0.035$ y buscamos $P(Z \le z_{\alpha/2}) = 0.965$. En la tabla está entre $0.9649$ ($1.81$) y $0.9656$ ($1.82$), más cerca del primero: $z_{\alpha/2} = 1.81$.
+
+**Intervalo:**
+
+$$
+E = 1.81\sqrt{\frac{0.925 \cdot 0.075}{400}} \approx 1.81 \cdot 0.01317 \approx 0.0238, \qquad (0.925 - 0.0238,\ 0.925 + 0.0238) = (0.9012,\ 0.9488)
+$$
+
+**Conclusión.** Todo el intervalo está por encima de $0.88$: incluso su extremo inferior, el $90.12\%$, supera el $88\%$. Con un $93\%$ de confianza, **la empresa cumple los estándares de calidad**.
+
+</Solucion>
+
+b) **(1 punto)** Si se mantiene la misma proporción muestral y se aumenta el nivel de confianza al $95\%$, ¿cuántos envíos, como mínimo, habrá que analizar para que la amplitud del intervalo de confianza sea inferior a $0.03$?
+
+<Solucion>
+
+La amplitud es $2E$, así que hay que conseguir $E < 0.015$. Al $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+1.96\sqrt{\frac{0.925 \cdot 0.075}{n}} < 0.015 \;\Rightarrow\; n > \frac{1.96^2 \cdot 0.069375}{0.015^2} \approx 1184.49
+$$
+
+**Respuesta.** Habría que analizar como mínimo **1185 envíos**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+a) **(1.25 puntos)** El tiempo que un carpintero necesita para fabricar una mesa sigue una distribución Normal de media $60$ minutos y desviación típica de $30$ minutos. Si en un mes ese carpintero ha fabricado $100$ mesas, calcule la probabilidad de que el tiempo medio de fabricación de las mesas de esa muestra sea superior a $54$ minutos.
+
+<Solucion>
+
+La media de muestras de tamaño $100$ sigue una $N\left(60,\ \frac{30}{\sqrt{100}}\right) = N(60,\ 3)$. Tipificando:
+
+$$
+P(\bar{X} > 54) = P\left(Z > \frac{54 - 60}{3}\right) = P(Z > -2) = P(Z < 2) = 0.9772
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** El tiempo que un carpintero necesita para fabricar una puerta sigue una distribución Normal de media desconocida y desviación típica de $20$ minutos. En un mes ese carpintero ha fabricado $25$ puertas, obteniendo un tiempo medio de fabricación de $40$ minutos. Halle un intervalo de confianza para el tiempo medio de fabricación de una puerta con un nivel de confianza del $97\%$. Determine el error máximo cometido al realizar la estimación.
+
+<Solucion>
+
+Para el $97\%$, $z_{\alpha/2} = 2.17$ (probabilidad $0.985$ en la tabla):
+
+$$
+E = 2.17 \cdot \frac{20}{\sqrt{25}} = 2.17 \cdot 4 = 8.68, \qquad (40 - 8.68,\ 40 + 8.68) = (31.32,\ 48.68)
+$$
+
+**Respuesta.** El intervalo es **$(31.32,\ 48.68)$** minutos y el **error máximo es de 8.68 minutos**.
+
+</Solucion>

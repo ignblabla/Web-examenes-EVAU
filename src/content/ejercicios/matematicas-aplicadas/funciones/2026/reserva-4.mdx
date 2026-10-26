@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Una nueva plataforma de streaming realiza una prueba de funcionamiento durante un trimestre (13 semanas). Se estima que el índice de aceptación de esta plataforma evolucionará de acuerdo con la función
+
+$$
+I(t) = \frac{1}{100} \cdot 2^t; \qquad 0 \le t \le 13
+$$
+
+siendo $t$ el tiempo transcurrido (en semanas) desde su inicio.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Obtenga el intervalo en el que el índice va aumentando.
+
+</div>
+
+<Solucion>
+
+La derivada de $a^t$ es $a^t \ln a$, así que
+
+$$
+I'(t) = \frac{1}{100} \cdot 2^t \ln 2
+$$
+
+Como $2^t > 0$ para todo $t$ y $\ln 2 > 0$, $I'(t) > 0$ siempre. El índice **aumenta durante todo el trimestre**, en el intervalo $[0, 13]$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** ¿En cuántas semanas se obtendrá un índice de aceptación de $10.24$?
+
+</div>
+
+<Solucion>
+
+$$
+\frac{2^t}{100} = 10.24 \;\Rightarrow\; 2^t = 1024 = 2^{10} \;\Rightarrow\; t = 10
+$$
+
+**Respuesta.** El índice llega a $10.24$ a las **10 semanas**.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Calcule la tasa de crecimiento instantánea transcurridas $5$ semanas.
+
+</div>
+
+<Solucion>
+
+La tasa de crecimiento instantánea es la derivada en ese momento:
+
+$$
+I'(5) = \frac{1}{100} \cdot 2^5 \ln 2 = 0.32 \ln 2 \approx 0.2218
+$$
+
+**Respuesta.** A las 5 semanas, el índice crece a un ritmo de unos **0.22 puntos por semana**.
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.75 puntos)** ¿Es posible alcanzar un índice de aceptación de $90$ durante el trimestre?
+
+</div>
+
+<Solucion>
+
+Como $I$ es creciente (apartado a), su valor más alto en $[0, 13]$ es el del final del trimestre:
+
+$$
+I(13) = \frac{2^{13}}{100} = \frac{8192}{100} = 81.92
+$$
+
+**Respuesta.** **No**: el índice máximo durante el trimestre es $81.92 < 90$.
+
+</Solucion>

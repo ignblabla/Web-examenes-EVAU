@@ -1,0 +1,63 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+En un estudio sobre la presencia de mujeres en las empresas tecnológicas se observa que el $20\%$ de los operarios, el $40\%$ de los ingenieros y el $30\%$ de los directivos son mujeres. Se sabe que en estas empresas el $20\%$ de las plantillas son directivos, el $35\%$ son ingenieros y el resto son operarios. Se elige un trabajador al azar de una de estas empresas.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $O$, $I$ y $D$ a ser operario, ingeniero o directivo, y $M$ y $H$ a ser mujer u hombre:
+
+- $P(D) = 0.2$, con $P(M/D) = 0.3$.
+- $P(I) = 0.35$, con $P(M/I) = 0.4$.
+- $P(O) = 1 - 0.2 - 0.35 = 0.45$, con $P(M/O) = 0.2$.
+
+</Solucion>
+
+a) **(1 punto)** ¿Cuál es la probabilidad de que no sea un operario y sea mujer?
+
+<Solucion>
+
+“No ser operario” es ser ingeniero o directivo, así que sumamos esas dos ramas:
+
+$$
+P(\overline{O} \cap M) = P(I) \cdot P(M/I) + P(D) \cdot P(M/D) = 0.35 \cdot 0.4 + 0.2 \cdot 0.3 = 0.14 + 0.06 = 0.2
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Si el trabajador elegido no es un operario, ¿cuál es la probabilidad de que sea mujer?
+
+<Solucion>
+
+Con $P(\overline{O}) = 1 - 0.45 = 0.55$:
+
+$$
+P(M/\overline{O}) = \frac{P(\overline{O} \cap M)}{P(\overline{O})} = \frac{0.2}{0.55} = \frac{4}{11} \approx 0.3636
+$$
+
+</Solucion>
+
+c) **(1 punto)** Si el trabajador elegido es hombre, ¿a qué colectivo es más probable que pertenezca?
+
+<Solucion>
+
+Primero, la probabilidad de ser hombre por cada rama (el contrario de ser mujer en cada colectivo):
+
+$$
+P(O \cap H) = 0.45 \cdot 0.8 = 0.36, \qquad P(I \cap H) = 0.35 \cdot 0.6 = 0.21, \qquad P(D \cap H) = 0.2 \cdot 0.7 = 0.14
+$$
+
+y $P(H) = 0.36 + 0.21 + 0.14 = 0.71$. Por el teorema de Bayes:
+
+$$
+P(O/H) = \frac{0.36}{0.71} \approx 0.5070, \qquad P(I/H) = \frac{0.21}{0.71} \approx 0.2958, \qquad P(D/H) = \frac{0.14}{0.71} \approx 0.1972
+$$
+
+**Respuesta.** Si es hombre, lo más probable es que sea **operario**, con una probabilidad de $0.5070$.
+
+</Solucion>

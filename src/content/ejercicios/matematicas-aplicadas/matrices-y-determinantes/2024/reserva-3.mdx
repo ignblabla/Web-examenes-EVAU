@@ -1,0 +1,60 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+M = \begin{pmatrix} 1 & 0 & 1\\ 2 & 1 & 0\\ 1 & 1 & 1 \end{pmatrix} \qquad N = \begin{pmatrix} 3 & 2 & 2\\ 5 & 2 & 1\\ 7 & 4 & 0 \end{pmatrix} \qquad V = \begin{pmatrix} 5 - a^2\\ a - 1\\ a^2 \end{pmatrix}, \quad \text{siendo } a \text{ un número real.}
+$$
+
+a) **(0.75 puntos)** Halle el valor de $a$ para que se verifique que $M^t \cdot V = (5 \ \ 1 \ \ 5)^t$.
+
+<Solucion>
+
+$$
+M^t \cdot V = \begin{pmatrix} 1 & 2 & 1\\ 0 & 1 & 1\\ 1 & 0 & 1 \end{pmatrix}\begin{pmatrix} 5 - a^2\\ a - 1\\ a^2 \end{pmatrix} = \begin{pmatrix} 5 - a^2 + 2(a - 1) + a^2\\ a - 1 + a^2\\ 5 - a^2 + a^2 \end{pmatrix} = \begin{pmatrix} 2a + 3\\ a^2 + a - 1\\ 5 \end{pmatrix}
+$$
+
+Igualando a $(5, 1, 5)^t$:
+
+- Primera componente: $2a + 3 = 5 \Rightarrow a = 1$.
+- Segunda componente: $a^2 + a - 1 = 1 \Rightarrow a^2 + a - 2 = 0 \Rightarrow a = 1$ o $a = -2$.
+- Tercera componente: $5 = 5$, que se cumple siempre.
+
+El único valor que cumple las tres a la vez es **$a = 1$**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Calcule $M^{-1}$ y resuelva la ecuación matricial $X \cdot M - I_3 = N$.
+
+<Solucion>
+
+**Inversa.** $|M| = 1(1 - 0) - 0 + 1(2 - 1) = 2 \ne 0$:
+
+$$
+M^{-1} = \frac{1}{2}\big(\text{Adj}(M)\big)^t = \frac{1}{2}\begin{pmatrix} 1 & 1 & -1\\ -2 & 0 & 2\\ 1 & -1 & 1 \end{pmatrix}
+$$
+
+**Despejar $X$.** $X M = N + I$, y multiplicando por $M^{-1}$ por la **derecha**, $X = (N + I)\,M^{-1}$:
+
+$$
+X = \begin{pmatrix} 4 & 2 & 2\\ 5 & 3 & 1\\ 7 & 4 & 1 \end{pmatrix} \cdot \frac{1}{2}\begin{pmatrix} 1 & 1 & -1\\ -2 & 0 & 2\\ 1 & -1 & 1 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 2 & 2 & 2\\ 0 & 4 & 2\\ 0 & 6 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 1 & 1\\ 0 & 2 & 1\\ 0 & 3 & 1 \end{pmatrix}
+$$
+
+Se puede comprobar que $X M - I = N$.
+
+</Solucion>
+
+c) **(0.5 puntos)** Razone si las operaciones $2 \cdot V \cdot N^t$ y $(N + M^t) \cdot V$ se pueden realizar y, en aquellos casos en que sea posible, indique la dimensión de la matriz resultante.
+
+<Solucion>
+
+- **$2 \cdot V \cdot N^t$: no se puede.** $V$ es $3 \times 1$ y $N^t$ es $3 \times 3$. Para multiplicar, el número de columnas de $V$ (1) tendría que coincidir con el de filas de $N^t$ (3).
+- **$(N + M^t) \cdot V$: sí se puede.** $N$ y $M^t$ son $3 \times 3$, así que se pueden sumar. El resultado, $3 \times 3$, se multiplica por $V$, que es $3 \times 1$, y da una matriz de dimensión **$3 \times 1$**.
+
+</Solucion>

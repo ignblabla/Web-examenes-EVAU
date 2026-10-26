@@ -1,0 +1,50 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionDecoracion from "../../../../../components/figuras/RegionDecoracion.astro"
+
+**(2.5 puntos)** A una tienda de decoración le han encargado decorar las mesas de un salón de celebraciones con centros florales y candelabros. En el salón se montan siempre entre $12$ y $40$ mesas. En cada mesa solo se puede colocar un centro floral o un candelabro y, además, el número de candelabros no puede ser superior a una tercera parte de los centros florales. Si el precio de cada centro floral es de $32$ € y el de cada candelabro de $35$ €, ¿cuántos artículos de cada tipo debe seleccionar la tienda para maximizar sus ingresos? ¿A cuánto ascenderán dichos ingresos?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los centros florales e $y$ a los candelabros. Cada mesa lleva un artículo, así que el número de mesas es $x + y$. Hay que maximizar los ingresos
+
+$$
+F(x, y) = 32x + 35y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+12 \le x + y \le 40 & \text{(número de mesas)}\\
+y \le \dfrac{x}{3} \iff x \ge 3y & \text{(candelabros)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda entre las rectas $x + y = 12$ y $x + y = 40$, por debajo de la recta $x = 3y$ y por encima del eje $OX$:
+
+<RegionDecoracion />
+
+**Vértices:**
+
+- $A(12, 0)$ y $B(40, 0)$: las rectas $x + y = 12$ y $x + y = 40$ con el eje $OX$.
+- $C$: $x = 3y$ y $x + y = 40$ $\Rightarrow$ $4y = 40$, $C(30, 10)$.
+- $D$: $x = 3y$ y $x + y = 12$ $\Rightarrow$ $4y = 12$, $D(9, 3)$.
+
+**Resolución.**
+
+- $F(12, 0) = 384$
+- $F(40, 0) = 1280$
+- $F(30, 10) = 960 + 350 = 1310$
+- $F(9, 3) = 288 + 105 = 393$
+
+**Respuesta.** La tienda debe seleccionar **30 centros florales y 10 candelabros**, para 40 mesas, con unos **ingresos máximos de 1310 €**.
+
+</Solucion>

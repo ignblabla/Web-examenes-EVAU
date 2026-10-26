@@ -1,0 +1,87 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sean $A$ y $B$ dos sucesos de un mismo espacio muestral que verifican:
+
+<div class="math-sub">
+
+\- La probabilidad de que ocurra el suceso $A$ es $0.6$.<br />
+\- La probabilidad de que no ocurra ninguno de los dos es $0.15$.<br />
+\- La probabilidad de que ocurra el suceso $B$ sabiendo que ha ocurrido el suceso $A$ es $0.3$.
+
+</div>
+
+<Solucion titulo="Planteamiento común">
+
+Los datos son $P(A) = 0.6$, $P(A^c \cap B^c) = 0.15$ y $P(B/A) = 0.3$.
+
+</Solucion>
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Calcule la probabilidad de que ocurra alguno de los dos sucesos.
+
+</div>
+
+<Solucion>
+
+“Alguno” es $A \cup B$, el contrario de “ninguno”, $A^c \cap B^c$ (leyes de De Morgan):
+
+$$
+P(A \cup B) = 1 - P(A^c \cap B^c) = 1 - 0.15 = 0.85
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Calcule la probabilidad de que ocurran los dos sucesos a la vez.
+
+</div>
+
+<Solucion>
+
+Por la definición de probabilidad condicionada:
+
+$$
+P(A \cap B) = P(A) \cdot P(B/A) = 0.6 \cdot 0.3 = 0.18
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.5 puntos)** Calcule la probabilidad de que ocurra uno y solo uno de los sucesos.
+
+</div>
+
+<Solucion>
+
+Es que ocurra alguno, pero no los dos:
+
+$$
+P(\text{solo uno}) = P(A \cup B) - P(A \cap B) = 0.85 - 0.18 = 0.67
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.25 puntos)** ¿Son dependientes los sucesos $A$ y $B$?
+
+</div>
+
+<Solucion>
+
+Calculamos $P(B)$ con la fórmula de la unión: $P(B) = P(A \cup B) - P(A) + P(A \cap B) = 0.85 - 0.6 + 0.18 = 0.43$.
+
+Si fueran independientes, saber que ha ocurrido $A$ no cambiaría la probabilidad de $B$. Pero $P(B/A) = 0.3 \ne 0.43 = P(B)$. Lo mismo se ve con el producto: $P(A) \cdot P(B) = 0.6 \cdot 0.43 = 0.258 \ne 0.18 = P(A \cap B)$.
+
+**Respuesta.** **Sí, $A$ y $B$ son dependientes.**
+
+</Solucion>

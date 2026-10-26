@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+En una casa con trastero viven tres personas y cada una tiene un llavero con las llaves de la casa. El primer llavero contiene $7$ llaves, el segundo $8$ y el tercero $5$. En cada uno de los llaveros hay una única llave que abre el trastero. Otra persona necesita abrir el trastero y, para ello, selecciona un llavero al azar y, de este, elige una llave aleatoriamente e intenta abrirlo. Calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $L_1$, $L_2$ y $L_3$ a elegir cada llavero y $T$ a que la llave abra el trastero. Se elige el llavero al azar, $P(L_1) = P(L_2) = P(L_3) = \frac{1}{3}$, y en cada uno solo una llave abre:
+
+$$
+P(T/L_1) = \frac{1}{7}, \qquad P(T/L_2) = \frac{1}{8}, \qquad P(T/L_3) = \frac{1}{5}
+$$
+
+Por el teorema de la probabilidad total, la probabilidad de acertar es
+
+$$
+P(T) = \frac{1}{3} \cdot \frac{1}{7} + \frac{1}{3} \cdot \frac{1}{8} + \frac{1}{3} \cdot \frac{1}{5} = \frac{1}{3} \cdot \frac{40 + 35 + 56}{280} = \frac{131}{840} \approx 0.1560
+$$
+
+</Solucion>
+
+a) **(1 punto)** No haya acertado con la llave seleccionada.
+
+<Solucion>
+
+Es el suceso contrario de $T$:
+
+$$
+P(\overline{T}) = 1 - \frac{131}{840} = \frac{709}{840} \approx 0.8440
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** El llavero sea el tercero y la llave abra el trastero.
+
+<Solucion>
+
+Es una intersección, así que se usa la regla del producto:
+
+$$
+P(L_3 \cap T) = P(L_3) \cdot P(T/L_3) = \frac{1}{3} \cdot \frac{1}{5} = \frac{1}{15} \approx 0.0667
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Sabiendo que la llave elegida abre el trastero, esta pertenezca al primer o al tercer llavero.
+
+<Solucion>
+
+Por el teorema de Bayes, sumando las dos ramas (los sucesos $L_1$ y $L_3$ son incompatibles):
+
+$$
+P(L_1 \cup L_3 / T) = \frac{P(L_1 \cap T) + P(L_3 \cap T)}{P(T)} = \frac{\frac{1}{21} + \frac{1}{15}}{\frac{131}{840}} = \frac{\frac{40}{840} + \frac{56}{840}}{\frac{131}{840}} = \frac{96}{131} \approx 0.7328
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Si la llave no abre el trastero, esta no pertenezca al primer llavero.
+
+<Solucion>
+
+Calculamos primero la probabilidad de que la llave sea del primer llavero sabiendo que no abre, y luego la del contrario. Con $P(L_1 \cap \overline{T}) = \frac{1}{3} \cdot \frac{6}{7} = \frac{2}{7} = \frac{240}{840}$:
+
+$$
+P(L_1 / \overline{T}) = \frac{P(L_1 \cap \overline{T})}{P(\overline{T})} = \frac{\frac{240}{840}}{\frac{709}{840}} = \frac{240}{709}
+$$
+
+$$
+P(\overline{L_1} / \overline{T}) = 1 - \frac{240}{709} = \frac{469}{709} \approx 0.6615
+$$
+
+</Solucion>

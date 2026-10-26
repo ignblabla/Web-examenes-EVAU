@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+**A)** De dos sucesos $A$ y $B$ de un mismo espacio muestral se sabe que:
+
+<div class="math-sub">
+
+\- La probabilidad de que ocurra alguno de ellos es $0.82$.<br />
+\- La probabilidad de que ocurran simultáneamente es $0.38$.<br />
+\- La probabilidad de que no ocurra $A$ es $0.35$.
+
+</div>
+
+<Solucion titulo="Planteamiento común">
+
+Traducimos los datos: $P(A \cup B) = 0.82$, $P(A \cap B) = 0.38$ y $P(A^c) = 0.35$, así que $P(A) = 1 - 0.35 = 0.65$. De la fórmula de la unión despejamos $P(B)$:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) \;\Rightarrow\; P(B) = 0.82 - 0.65 + 0.38 = 0.55
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Calcule la probabilidad de que ocurra $B$ sabiendo que no ocurre $A$.
+
+</div>
+
+<Solucion>
+
+Es la probabilidad condicionada $P(B/A^c)$. La parte de $B$ fuera de $A$ es $P(B \cap A^c) = P(B) - P(A \cap B) = 0.55 - 0.38 = 0.17$:
+
+$$
+P(B/A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.17}{0.35} = \frac{17}{35} \approx 0.4857
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Calcule la probabilidad de que ocurra solo uno de los dos sucesos.
+
+</div>
+
+<Solucion>
+
+Que ocurra solo uno es que ocurra alguno, pero no los dos:
+
+$$
+P(\text{solo uno}) = P(A \cup B) - P(A \cap B) = 0.82 - 0.38 = 0.44
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Si repetimos el experimento en $10$ ocasiones, halle la probabilidad de que el suceso $A$ ocurra al menos $2$ veces.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Las $10$ repeticiones son independientes y en cada una $A$ ocurre con probabilidad $p = 0.65$. El número de veces que ocurre $A$ sigue una binomial $X \sim B(10,\ 0.65)$. “Al menos 2” es más corto de calcular con el suceso contrario, “0 o 1 veces”:
+
+$$
+P(X \ge 2) = 1 - P(X = 0) - P(X = 1)
+$$
+
+**Cálculo.**
+
+$$
+P(X = 0) = 0.35^{10} \approx 0.0000276, \qquad P(X = 1) = \binom{10}{1} \cdot 0.65 \cdot 0.35^9 \approx 0.0005123
+$$
+
+$$
+P(X \ge 2) = 1 - 0.0000276 - 0.0005123 \approx 0.9995
+$$
+
+</Solucion>

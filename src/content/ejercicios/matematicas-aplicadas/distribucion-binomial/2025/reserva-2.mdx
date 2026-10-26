@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-aplicadas
+tema: distribucion-binomial
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Un tratamiento experimental para tratar una determinada intolerancia alimentaria mejora al $60\%$ de los pacientes a los que se les suministra. Cinco pacientes deciden someterse a dicho tratamiento.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Indique la distribución que sigue la variable “número de pacientes de entre los 5 que mejoran con este tratamiento”. ¿Cuál es la probabilidad de que mejoren cuatro pacientes gracias al tratamiento?
+
+</div>
+
+<Solucion>
+
+Cada paciente mejora o no, de forma independiente, con probabilidad $p = 0.6$. El número de pacientes que mejoran entre los $5$ sigue una **binomial $X \sim B(5,\ 0.6)$**:
+
+$$
+P(X = 4) = \binom{5}{4} \cdot 0.6^4 \cdot 0.4 = 5 \cdot 0.1296 \cdot 0.4 = 0.2592
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** Calcule la probabilidad de que al menos dos pacientes experimenten mejoría tras someterse al tratamiento.
+
+</div>
+
+<Solucion>
+
+Con el suceso contrario, “0 o 1 pacientes”:
+
+$$
+P(X \ge 2) = 1 - P(X = 0) - P(X = 1) = 1 - 0.4^5 - 5 \cdot 0.6 \cdot 0.4^4 = 1 - 0.01024 - 0.0768 = 0.91296
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.5 puntos)** ¿Cuántos pacientes se espera que mejoren al someterse a ese tratamiento?
+
+</div>
+
+<Solucion>
+
+$$
+E(X) = n \cdot p = 5 \cdot 0.6 = 3
+$$
+
+Se espera que mejoren **3 pacientes**.
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.5 puntos)** ¿Cuántos pacientes deberían someterse al tratamiento para que el número esperado de pacientes que mejoren sea mayor o igual a $12$?
+
+</div>
+
+<Solucion>
+
+$$
+0.6n \ge 12 \;\Rightarrow\; n \ge 20
+$$
+
+Deberían someterse al tratamiento **al menos 20 pacientes**.
+
+</Solucion>

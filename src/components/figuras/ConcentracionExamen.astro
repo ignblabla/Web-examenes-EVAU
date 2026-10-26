@@ -1,0 +1,26 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2025, ejercicio 4 b): nivel de concentración durante el
+// examen, f(t) = −t² + 2t + 10 hasta t = 2.5 y t² − 8t + 22.5 después.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.4}
+  xMax={5.5}
+  yMin={0}
+  yMax={12.5}
+  marcasX={[1, 2, 3, 4, 5]}
+  marcasY={[2, 4, 6, 8, 10, 12]}
+  tramos={[
+    { f: (t) => -(t ** 2) + 2 * t + 10, desde: 0, hasta: 2.5 },
+    { f: (t) => t ** 2 - 8 * t + 22.5, desde: 2.5, hasta: 5 },
+  ]}
+  puntos={[
+    { x: 0, y: 10, texto: "(0, 10)", dx: 6, dy: 12 },
+    { x: 1, y: 11, texto: "Máximo (1, 11)", dx: 0, dy: -8 },
+    { x: 2.5, y: 8.75, texto: "(2.5, 8.75)", dx: 7, dy: -2 },
+    { x: 4, y: 6.5, texto: "Mínimo (4, 6.5)", dx: 0, dy: 15 },
+    { x: 5, y: 7.5, texto: "(5, 7.5)", dx: 0, dy: -8 },
+  ]}
+  descripcion="Gráfica de la concentración: empieza en 10, sube hasta el máximo de 11 a la hora, baja hasta el mínimo de 6.5 a las 4 horas y sube a 7.5 al terminar, a las 5 horas"
+/>

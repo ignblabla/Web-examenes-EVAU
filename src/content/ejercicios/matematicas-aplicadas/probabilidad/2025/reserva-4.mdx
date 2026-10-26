@@ -1,0 +1,97 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Una empresa de tecnología fabrica tres modelos de teléfonos móviles: *Básico*, *Intermedio* y *Premium*. Cada modelo puede estar fabricado con uno de los siguientes tipos de pantalla: $A$ o $B$. El $35\%$ de los móviles fabricados por esta empresa son del modelo *Básico*, el $45\%$ son del *Intermedio* y el resto son *Premium*. Se sabe que el $80\%$ de los móviles fabricados del modelo *Básico* tienen una pantalla del tipo $A$, mientras que en el modelo *Premium* solo un $5\%$ dispone de esta pantalla. Finalmente, el $53\%$ de los teléfonos producidos tienen pantalla del tipo $A$. Se selecciona un teléfono al azar de la línea de producción. Determine la probabilidad de que:
+
+a) **(1.5 puntos)** Tenga una pantalla del tipo $A$ sabiendo que es del modelo *Intermedio*.
+
+<Solucion>
+
+**Datos.** Llamamos $Ba$, $I$ y $P$ a los modelos y $A$ a tener pantalla de tipo $A$:
+
+- $P(Ba) = 0.35$, con $P(A/Ba) = 0.8$.
+- $P(I) = 0.45$, con $P(A/I) = x$, que es lo que nos piden.
+- $P(P) = 1 - 0.35 - 0.45 = 0.2$, con $P(A/P) = 0.05$.
+- En total, $P(A) = 0.53$.
+
+**Respuesta.** Por el teorema de la probabilidad total:
+
+$$
+0.53 = 0.35 \cdot 0.8 + 0.45\,x + 0.2 \cdot 0.05 = 0.28 + 0.45\,x + 0.01 \;\Rightarrow\; 0.45\,x = 0.24 \;\Rightarrow\; x = \frac{0.24}{0.45} = \frac{8}{15} \approx 0.5333
+$$
+
+</Solucion>
+
+b) **(1 punto)** Sea del modelo *Intermedio* sabiendo que tiene pantalla del tipo $A$.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(I/A) = \frac{P(I) \cdot P(A/I)}{P(A)} = \frac{0.45 \cdot \frac{8}{15}}{0.53} = \frac{0.24}{0.53} \approx 0.4528
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 5</u></strong></Bloque>
+
+El $20\%$ de los estudiantes de danza de una localidad andaluza están matriculados en la escuela $A$ y el resto en la $B$. En estas escuelas se practica danza clásica y moderna y cada estudiante solo se puede matricular en una de estas dos especialidades. De los matriculados en $A$, el $70\%$ practica danza clásica y el resto danza moderna. Se sabe también que el $32\%$ de los estudiantes de danza son de la escuela $B$ y practican danza clásica. Elegido al azar un estudiante de danza de la localidad, calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $A$ y $B$ a las escuelas, $C$ a danza clásica y $M$ a danza moderna:
+
+- $P(A) = 0.2$, con $P(C/A) = 0.7$, así que $P(A \cap C) = 0.14$ y $P(A \cap M) = 0.06$.
+- $P(B) = 0.8$, con $P(B \cap C) = 0.32$, así que $P(B \cap M) = 0.8 - 0.32 = 0.48$.
+
+</Solucion>
+
+a) **(1 punto)** Practique danza clásica.
+
+<Solucion>
+
+$$
+P(C) = P(A \cap C) + P(B \cap C) = 0.14 + 0.32 = 0.46
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Practique danza moderna si es de la escuela $B$.
+
+<Solucion>
+
+$$
+P(M/B) = \frac{P(B \cap M)}{P(B)} = \frac{0.48}{0.8} = 0.6
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Estudie en la escuela $B$ si resulta ser un estudiante de danza moderna.
+
+<Solucion>
+
+Con $P(M) = 1 - 0.46 = 0.54$:
+
+$$
+P(B/M) = \frac{P(B \cap M)}{P(M)} = \frac{0.48}{0.54} = \frac{8}{9} \approx 0.8889
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Sea de la escuela $A$, practique danza clásica y realice un Máster, sabiendo que el $80\%$ de los estudiantes de danza clásica de la escuela $A$ realiza un Máster.
+
+<Solucion>
+
+Llamando $Ma$ a realizar un Máster, $P(Ma / A \cap C) = 0.8$. Multiplicamos a lo largo de la rama del árbol:
+
+$$
+P(A \cap C \cap Ma) = P(A) \cdot P(C/A) \cdot P(Ma/A \cap C) = 0.2 \cdot 0.7 \cdot 0.8 = 0.112
+$$
+
+</Solucion>

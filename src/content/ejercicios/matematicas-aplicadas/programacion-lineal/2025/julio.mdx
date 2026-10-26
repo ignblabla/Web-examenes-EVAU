@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+import RegionLechugas from "../../../../../components/figuras/RegionLechugas.astro"
+
+**(2.5 puntos)** Un agricultor cultiva dos tipos de lechuga: iceberg y romana. Por razones de demanda, en cada ciclo de cultivo, la cantidad de iceberg debe ser al menos la mitad de la de romana, pero no puede superar las $1500$ unidades. Además, deben cultivarse en total entre $900$ y $2400$ lechugas. El cultivo de iceberg requiere $15$ litros de agua por unidad, mientras que el de romana necesita $18$ litros de agua por unidad. ¿Cuántas unidades de cada tipo de lechuga deben cultivarse para minimizar el consumo total de agua?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las lechugas iceberg e $y$ a las romanas. Hay que **minimizar** el consumo de agua, en litros,
+
+$$
+F(x, y) = 15x + 18y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x \ge \dfrac{y}{2} \iff y \le 2x & \text{(iceberg, al menos la mitad de romana)}\\[6pt]
+x \le 1500 & \text{(máximo de iceberg)}\\
+900 \le x + y \le 2400 & \text{(total de lechugas)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Dibujamos las rectas $y = 2x$, $x = 1500$, $x + y = 900$ y $x + y = 2400$. La región está por debajo de $y = 2x$, a la izquierda de $x = 1500$, entre las dos rectas $x + y = 900$ y $x + y = 2400$, y por encima del eje $OX$:
+
+<RegionLechugas />
+
+**Vértices:**
+
+- $A(900, 0)$: $x + y = 900$ con $y = 0$.
+- $B(1500, 0)$: $x = 1500$ con $y = 0$. La recta $x + y = 2400$ corta el eje en $x = 2400$, fuera de la región.
+- $C$: $x = 1500$ y $x + y = 2400$ $\Rightarrow$ $C(1500, 900)$.
+- $D$: $y = 2x$ y $x + y = 2400$ $\Rightarrow$ $3x = 2400$, $D(800, 1600)$.
+- $E$: $y = 2x$ y $x + y = 900$ $\Rightarrow$ $3x = 900$, $E(300, 600)$.
+
+**Resolución.** Evaluamos el consumo en los vértices:
+
+- $F(900, 0) = 13\,500$
+- $F(1500, 0) = 22\,500$
+- $F(1500, 900) = 22\,500 + 16\,200 = 38\,700$
+- $F(800, 1600) = 12\,000 + 28\,800 = 40\,800$
+- $F(300, 600) = 4500 + 10\,800 = 15\,300$
+
+**Respuesta.** El consumo mínimo, **13 500 litros**, se obtiene cultivando **900 lechugas iceberg y ninguna romana**. Es lógico: cada iceberg gasta menos agua que una romana, y basta con cultivar el mínimo de 900 lechugas. Además, esta solución cumple que la cantidad de iceberg ($900$) es al menos la mitad de la de romana ($0$).
+
+</Solucion>

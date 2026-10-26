@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+**A)** Sea $X$ una variable aleatoria que sigue una ley Normal de media desconocida y desviación típica $2$.
+
+<div class="math-sub">
+
+a) **(1 punto)** Se selecciona una muestra de tamaño $81$ resultando una media de $20$. Calcule un intervalo de confianza al $98.5\%$ para estimar la media poblacional. ¿Qué error máximo se comete en la estimación?
+
+</div>
+
+<Solucion>
+
+**Datos.** $X \sim N(\mu, 2)$, con una muestra de $n = 81$ y media $\bar{x} = 20$.
+
+**Valor crítico.** Para $1 - \alpha = 0.985$, $\alpha = 0.015$ y $\frac{\alpha}{2} = 0.0075$, así que buscamos
+
+$$
+P(Z \le z_{\alpha/2}) = 1 - 0.0075 = 0.9925
+$$
+
+En la tabla, $0.9925$ aparece en la fila $2.4$ y la columna $0.03$: $z_{\alpha/2} = 2.43$.
+
+**Error máximo:**
+
+$$
+E = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} = 2.43 \cdot \frac{2}{\sqrt{81}} = 2.43 \cdot \frac{2}{9} = 0.54
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (20 - 0.54,\ 20 + 0.54) = (19.46,\ 20.54)
+$$
+
+**Respuesta.** El intervalo de confianza al $98.5\%$ es **$(19.46,\ 20.54)$** y el **error máximo es $0.54$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** Manteniendo el mismo nivel de confianza, ¿qué tamaño mínimo debería tener una nueva muestra para que la amplitud del intervalo para la media fuese inferior a $2.16$?
+
+</div>
+
+<Solucion>
+
+La amplitud del intervalo es $2E$, así que tiene que ser $E < \frac{2.16}{2} = 1.08$. Con el mismo $z_{\alpha/2} = 2.43$:
+
+$$
+2.43 \cdot \frac{2}{\sqrt{n}} < 1.08 \;\Rightarrow\; \sqrt{n} > \frac{4.86}{1.08} = 4.5 \;\Rightarrow\; n > 20.25
+$$
+
+**Respuesta.** La nueva muestra debe tener como mínimo **21 elementos**.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.25 puntos)** Razone qué efecto produciría sobre la amplitud del intervalo una disminución del nivel de confianza.
+
+</div>
+
+<Solucion>
+
+La amplitud es $2E = 2 z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$. Si el nivel de confianza $1 - \alpha$ **disminuye**, el valor crítico $z_{\alpha/2}$ es menor (por ejemplo, $2.43$ al $98.5\%$ frente a $1.96$ al $95\%$). Con $\sigma$ y $n$ fijos, el error y la **amplitud del intervalo disminuyen**: el intervalo es más estrecho y preciso, a cambio de tener menos confianza en que contenga a la media.
+
+</Solucion>

@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-aplicadas
+tema: distribucion-binomial
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Una empresa de alquiler de patinetes eléctricos quiere analizar el comportamiento de sus usuarios durante la hora punta de la mañana en una determinada ciudad. La duración del trayecto de cada usuario (en minutos) se distribuye según una ley Normal con media $18$ y desviación típica $4$.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** ¿Cuál es la probabilidad de que un usuario tarde menos de $15$ minutos en hacer su trayecto?
+
+</div>
+
+<Solucion>
+
+La duración es $X \sim N(18, 4)$. Tipificamos con $Z = \dfrac{X - 18}{4}$:
+
+$$
+P(X < 15) = P\left(Z < \frac{15 - 18}{4}\right) = P(Z < -0.75)
+$$
+
+La tabla solo da valores positivos de $z$. Por la simetría de la normal:
+
+$$
+P(Z < -0.75) = 1 - P(Z \le 0.75) = 1 - 0.7734 = 0.2266
+$$
+
+El valor $0.7734$ se lee en la fila $0.7$ y la columna $0.05$.
+
+**Respuesta.** La probabilidad de que un usuario tarde menos de 15 minutos es **0.2266**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1.25 puntos)** Se sabe que cada usuario que desbloquea un patinete tiene una probabilidad de $0.9$ de completar su trayecto sin incidencias. Si $120$ usuarios desbloquean un patinete para moverse por la ciudad, ¿cuál es la probabilidad de que al menos $110$ completen el trayecto sin incidencias?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Sea $Y$ el número de usuarios, de los $120$, que completan el trayecto sin incidencias. Cada usuario es una prueba independiente con probabilidad de éxito $p = 0.9$, así que
+
+$$
+Y \sim B(120,\ 0.9)
+$$
+
+y nos piden $P(Y \ge 110)$. Sumar los términos de la binomial desde $110$ hasta $120$ sería muy largo, así que la aproximamos por una normal. Se puede porque
+
+$$
+np = 120 \cdot 0.9 = 108 > 5, \qquad nq = 120 \cdot 0.1 = 12 > 5
+$$
+
+**Desarrollo.** La normal tiene la misma media y desviación típica que la binomial:
+
+$$
+\mu = np = 108, \qquad \sigma = \sqrt{npq} = \sqrt{120 \cdot 0.9 \cdot 0.1} = \sqrt{10.8} \approx 3.29
+$$
+
+Así que $Y$ se aproxima por $Y' \sim N(108,\ 3.29)$. Al pasar de una variable discreta a una continua aplicamos la corrección por continuidad: el valor $110$ empieza en $109.5$.
+
+$$
+P(Y \ge 110) \approx P(Y' \ge 109.5) = P\left(Z \ge \frac{109.5 - 108}{3.29}\right) = P(Z \ge 0.46)
+$$
+
+$$
+P(Z \ge 0.46) = 1 - P(Z \le 0.46) = 1 - 0.6772 = 0.3228
+$$
+
+**Respuesta.** La probabilidad de que al menos 110 usuarios completen el trayecto sin incidencias es aproximadamente **0.3228**.
+
+</Solucion>

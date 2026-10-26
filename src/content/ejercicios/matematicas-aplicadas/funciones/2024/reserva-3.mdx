@@ -1,0 +1,108 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RecintoReserva3de2024 from "../../../../../components/figuras/RecintoReserva3de2024.astro"
+
+Se considera la función $f(x) = 1 - \dfrac{4}{3 + x}$
+
+a) **(0.75 puntos)** Halle el dominio de $f$ y los puntos de corte de su gráfica con los ejes de coordenadas.
+
+<Solucion>
+
+**Dominio.** Solo falla donde se anula el denominador: $\text{Dom}(f) = \mathbb{R} \setminus \{-3\}$.
+
+**Cortes con los ejes.**
+
+- Eje $OY$: $f(0) = 1 - \frac{4}{3} = -\frac{1}{3}$, el punto $\left(0, -\frac{1}{3}\right)$.
+- Eje $OX$: $1 - \frac{4}{3 + x} = 0 \Rightarrow 3 + x = 4 \Rightarrow x = 1$, el punto $(1, 0)$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule las asíntotas de la función $f$.
+
+<Solucion>
+
+- **Vertical $x = -3$**: $\lim_{x \to -3^-} f(x) = 1 - \frac{4}{0^-} = +\infty$ y $\lim_{x \to -3^+} f(x) = 1 - \frac{4}{0^+} = -\infty$.
+- **Horizontal $y = 1$**: $\lim_{x \to \pm\infty} \left(1 - \frac{4}{3 + x}\right) = 1 - 0 = 1$.
+- **Oblicuas:** no hay, porque tiene asíntota horizontal.
+
+</Solucion>
+
+c) **(0.75 puntos)** Obtenga los puntos donde la recta tangente a la gráfica de $f$ tiene pendiente $1$.
+
+<Solucion>
+
+$$
+f'(x) = \frac{4}{(3 + x)^2} = 1 \;\Rightarrow\; (3 + x)^2 = 4 \;\Rightarrow\; 3 + x = \pm 2 \;\Rightarrow\; x = -1 \ \text{ o } \ x = -5
+$$
+
+Con $f(-1) = 1 - 2 = -1$ y $f(-5) = 1 - \frac{4}{-2} = 3$, los puntos son **$(-1, -1)$ y $(-5, 3)$**.
+
+</Solucion>
+
+d) **(0.5 puntos)** Estudie la curvatura de la función $f$.
+
+<Solucion>
+
+$$
+f''(x) = \frac{-8}{(3 + x)^3}
+$$
+
+- Si $x < -3$, $(3 + x)^3 < 0$ y $f''(x) > 0$: $f$ es **convexa** en $(-\infty, -3)$.
+- Si $x > -3$, $f''(x) < 0$: $f$ es **cóncava** en $(-3, +\infty)$.
+
+La curvatura cambia en $x = -3$, pero ese punto no está en el dominio, así que **no hay puntos de inflexión**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+-x^2 + 2x & \text{si } x < 2\\[4pt]
+x^2 - 2x & \text{si } x \ge 2
+\end{cases}
+$$
+
+a) **(1 punto)** Estudie la continuidad y derivabilidad de $f$.
+
+<Solucion>
+
+Los dos tramos son polinomios. Estudiamos $x = 2$.
+
+**Continuidad:** $\lim_{x \to 2^-} f(x) = -4 + 4 = 0$ y $f(2) = \lim_{x \to 2^+} f(x) = 4 - 4 = 0$. $f$ es **continua en $\mathbb{R}$**.
+
+**Derivabilidad:** $f'(2^-) = -2 \cdot 2 + 2 = -2$ y $f'(2^+) = 2 \cdot 2 - 2 = 2$. Son distintas, así que $f$ **no es derivable en $x = 2$**. Es derivable en $\mathbb{R} \setminus \{2\}$.
+
+</Solucion>
+
+b) **(1.5 puntos)** Represente el recinto limitado por las rectas $y = 2x$, $x = -1$, $x = 1$ y la gráfica de $f$. Calcule su área.
+
+<Solucion>
+
+**Posición relativa.** Entre $x = -1$ y $x = 1$ la función es $f(x) = -x^2 + 2x$, y
+
+$$
+2x - f(x) = 2x - (-x^2 + 2x) = x^2 \ge 0
+$$
+
+así que la recta $y = 2x$ queda **por encima** de la parábola (las dos se tocan en el origen):
+
+<RecintoReserva3de2024 />
+
+**Área:**
+
+$$
+A = \int_{-1}^{1} \big(2x - (-x^2 + 2x)\big)\,dx = \int_{-1}^{1} x^2\,dx = \left[\frac{x^3}{3}\right]_{-1}^{1} = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+$$
+
+**Respuesta.** El área del recinto es $\dfrac{2}{3}$ **unidades cuadradas**.
+
+</Solucion>

@@ -1,0 +1,214 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import FuncionCubicaRacional from "../../../../../components/figuras/FuncionCubicaRacional.astro"
+import HiperbolaOcho from "../../../../../components/figuras/HiperbolaOcho.astro"
+
+**A)** Sea $f$ la función definida por
+
+$$
+f(x) = \begin{cases}
+x^3 + ax^2 + 9x & \text{si } x < 3\\[6pt]
+\dfrac{bx + 18}{x + 1} & \text{si } x \ge 3
+\end{cases}
+$$
+
+siendo $a$ y $b$ números reales.
+
+<div class="math-sub">
+
+a) **(1 punto)** Determine los valores de $a$ y $b$ para que $f$ sea continua en su dominio y su gráfica pase por el punto $(2, 2)$.
+
+</div>
+
+<Solucion>
+
+**Continuidad en los intervalos.** Para $x < 3$, $f$ es un polinomio, que es continuo. Para $x \ge 3$ es un cociente de polinomios, continuo salvo donde se anula el denominador, $x = -1$, que no está en $[3, +\infty)$. Solo queda estudiar $x = 3$.
+
+**Valor de $a$.** El punto $(2, 2)$ está en el primer tramo, porque $2 < 3$:
+
+$$
+f(2) = 8 + 4a + 18 = 2 \;\Rightarrow\; 4a = -24 \;\Rightarrow\; a = -6
+$$
+
+**Valor de $b$.** En $x = 3$, con $a = -6$, los límites laterales y el valor de la función tienen que coincidir:
+
+$$
+\lim_{x \to 3^-} f(x) = 27 - 54 + 27 = 0, \qquad \lim_{x \to 3^+} f(x) = f(3) = \frac{3b + 18}{4}
+$$
+
+$$
+\frac{3b + 18}{4} = 0 \;\Rightarrow\; b = -6
+$$
+
+**Respuesta.** **$a = -6$ y $b = -6$**, justo los valores del apartado b).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = b = -6$:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.5 puntos)** Determine las asíntotas de $f$, en el caso de que existan.
+
+</div>
+
+<Solucion>
+
+La función queda $f(x) = x^3 - 6x^2 + 9x$ si $x < 3$ y $f(x) = \dfrac{-6x + 18}{x + 1}$ si $x \ge 3$.
+
+- **Verticales.** El primer tramo es un polinomio, que no tiene. El segundo solo podría tenerla en $x = -1$, pero ese valor no está en $[3, +\infty)$: **no hay asíntotas verticales**.
+- **Horizontales.** Hacia $-\infty$ manda el primer tramo, y $\lim_{x \to -\infty} (x^3 - 6x^2 + 9x) = -\infty$: no hay. Hacia $+\infty$ manda el segundo:
+
+$$
+\lim_{x \to +\infty} \frac{-6x + 18}{x + 1} = -6
+$$
+
+Hay una **asíntota horizontal $y = -6$** cuando $x \to +\infty$.
+
+- **Oblicuas.** Hacia $+\infty$ no puede haberla, porque ya hay una horizontal. Hacia $-\infty$ tampoco: $\frac{f(x)}{x} = x^2 - 6x + 9 \to +\infty$.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.75 puntos)** Estudie la monotonía de $f$ y calcule sus extremos relativos.
+
+</div>
+
+<Solucion>
+
+Derivamos cada tramo:
+
+$$
+f'(x) = \begin{cases}
+3x^2 - 12x + 9 = 3(x - 1)(x - 3) & \text{si } x < 3\\[6pt]
+\dfrac{-6(x + 1) - (-6x + 18)}{(x + 1)^2} = \dfrac{-24}{(x + 1)^2} & \text{si } x > 3
+\end{cases}
+$$
+
+- Para $x < 3$, $f'$ se anula en $x = 1$. En $(-\infty, 1)$, por ejemplo $f'(0) = 9 > 0$: **creciente**. En $(1, 3)$, por ejemplo $f'(2) = -3 < 0$: **decreciente**.
+- Para $x > 3$, $f'(x) = \dfrac{-24}{(x + 1)^2} < 0$ siempre: **decreciente**.
+
+En $x = 3$, $f$ es continua y decrece a ambos lados, así que no hay extremo (además no es derivable ahí: $f'(3^-) = 0$ y $f'(3^+) = -\frac{24}{16} = -1.5$).
+
+**Respuesta.** $f$ es **creciente en $(-\infty, 1)$** y **decreciente en $(1, +\infty)$**. Tiene un **máximo relativo en $(1, 4)$**, porque $f(1) = 1 - 6 + 9 = 4$, y ningún mínimo relativo.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+iii) **(0.75 puntos)** Esboce la gráfica de $f$.
+
+</div>
+
+<Solucion>
+
+- **Primera rama** ($x < 3$): $f(x) = x(x - 3)^2$, que corta el eje en $x = 0$ y toca el eje en $x = 3$. Viene de $-\infty$, crece hasta el máximo $(1, 4)$ y baja hasta $(3, 0)$. Pasa por $(2, 2)$.
+- **Segunda rama** ($x \ge 3$): empieza en $(3, 0)$ y decrece siempre, acercándose a la asíntota $y = -6$. Por ejemplo, $f(5) = -2$ y $f(9) = -3.6$.
+
+<FuncionCubicaRacional />
+
+</Solucion>
+
+**B)** Se considera la función $f(x) = 1 - \dfrac{x - 6}{2 + x}$.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Halle su dominio y determine sus asíntotas.
+
+</div>
+
+<Solucion>
+
+Conviene simplificar primero la expresión, poniendo denominador común:
+
+$$
+f(x) = \frac{(2 + x) - (x - 6)}{x + 2} = \frac{8}{x + 2}
+$$
+
+**Dominio.** Solo falla donde se anula el denominador: $\text{Dom}(f) = \mathbb{R} \setminus \{-2\}$.
+
+**Asíntotas:**
+
+- **Vertical $x = -2$**, porque el numerador no se anula ahí: $\lim_{x \to -2^-} f(x) = -\infty$ y $\lim_{x \to -2^+} f(x) = +\infty$.
+- **Horizontal $y = 0$**, porque $\lim_{x \to \pm\infty} \dfrac{8}{x + 2} = 0$.
+- **Oblicuas:** no hay, porque ya tiene asíntota horizontal en $\pm\infty$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1 punto)** Estudie la monotonía y la curvatura, calculando los extremos relativos y los puntos de inflexión.
+
+</div>
+
+<Solucion>
+
+**Monotonía y extremos.**
+
+$$
+f'(x) = \frac{-8}{(x + 2)^2} < 0 \quad \text{para todo } x \ne -2
+$$
+
+$f$ es **decreciente en $(-\infty, -2)$ y en $(-2, +\infty)$**. Como $f'$ nunca se anula, **no tiene extremos relativos**.
+
+**Curvatura y puntos de inflexión.**
+
+$$
+f''(x) = \frac{16}{(x + 2)^3}
+$$
+
+- Si $x < -2$, $(x + 2)^3 < 0$ y $f''(x) < 0$: $f$ es **cóncava** en $(-\infty, -2)$.
+- Si $x > -2$, $f''(x) > 0$: $f$ es **convexa** en $(-2, +\infty)$.
+
+La curvatura cambia en $x = -2$, pero ese punto no está en el dominio, así que **no hay puntos de inflexión**.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.5 puntos)** Represente gráficamente $f$.
+
+</div>
+
+<Solucion>
+
+Es una hipérbola con asíntotas $x = -2$ e $y = 0$:
+
+- **Rama de la derecha** ($x > -2$): por encima del eje $OX$, decreciente y convexa. Pasa por $(0, 4)$ y $(2, 2)$.
+- **Rama de la izquierda** ($x < -2$): por debajo del eje $OX$, decreciente y cóncava. Pasa por $(-4, -4)$ y $(-6, -2)$.
+
+<HiperbolaOcho />
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.75 puntos)** Determine la ecuación de la recta tangente a la gráfica de $f$ en todos aquellos puntos donde la pendiente de dicha recta vale $-8$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La pendiente de la tangente en $x = x_0$ es $f'(x_0)$, así que buscamos los puntos con $f'(x) = -8$:
+
+$$
+\frac{-8}{(x + 2)^2} = -8 \iff (x + 2)^2 = 1 \iff x + 2 = \pm 1 \iff x = -1 \ \text{ o } \ x = -3
+$$
+
+**Tangentes.** Usamos la ecuación $y - f(x_0) = f'(x_0)(x - x_0)$:
+
+- En $x_0 = -1$: $f(-1) = 8$, así que $y - 8 = -8(x + 1)$, es decir, **$y = -8x$**.
+- En $x_0 = -3$: $f(-3) = -8$, así que $y + 8 = -8(x + 3)$, es decir, **$y = -8x - 32$**.
+
+</Solucion>

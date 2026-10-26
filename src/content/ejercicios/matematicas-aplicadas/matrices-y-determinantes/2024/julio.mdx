@@ -1,0 +1,47 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+**(2.5 puntos)** Dada la matriz $A = \begin{pmatrix} 1 & 2 & 0\\ 0 & -1 & 2\\ -2 & 0 & 1 \end{pmatrix}$, resuelva la ecuación $\quad A^2 \cdot X + A^4 = A$.
+
+<Solucion>
+
+**Despejar $X$.** Pasamos $A^4$ al otro lado: $A^2 X = A - A^4$. Si $A$ tiene inversa, también la tiene $A^2$, con $(A^2)^{-1} = (A^{-1})^2$. Multiplicando por la izquierda:
+
+$$
+X = (A^{-1})^2 (A - A^4) = A^{-2}A - A^{-2}A^4 = A^{-1} - A^2
+$$
+
+Así basta con calcular $A^{-1}$ y $A^2$.
+
+**¿Es invertible $A$?** Desarrollando por la primera fila:
+
+$$
+|A| = 1(-1 - 0) - 2(0 + 4) + 0 = -9 \ne 0
+$$
+
+**Inversa de $A$:**
+
+$$
+A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t = -\frac{1}{9}\begin{pmatrix} -1 & -2 & 4\\ -4 & 1 & -2\\ -2 & -4 & -1 \end{pmatrix} = \frac{1}{9}\begin{pmatrix} 1 & 2 & -4\\ 4 & -1 & 2\\ 2 & 4 & 1 \end{pmatrix}
+$$
+
+**Cuadrado de $A$:**
+
+$$
+A^2 = \begin{pmatrix} 1 & 2 & 0\\ 0 & -1 & 2\\ -2 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 2 & 0\\ 0 & -1 & 2\\ -2 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 4\\ -4 & 1 & 0\\ -4 & -4 & 1 \end{pmatrix}
+$$
+
+**Cálculo de $X$:**
+
+$$
+X = A^{-1} - A^2 = \frac{1}{9}\begin{pmatrix} 1 & 2 & -4\\ 4 & -1 & 2\\ 2 & 4 & 1 \end{pmatrix} - \begin{pmatrix} 1 & 0 & 4\\ -4 & 1 & 0\\ -4 & -4 & 1 \end{pmatrix} = \frac{1}{9}\begin{pmatrix} -8 & 2 & -40\\ 40 & -10 & 2\\ 38 & 40 & -8 \end{pmatrix}
+$$
+
+Se puede comprobar que $A^2 X + A^4 = A$.
+
+</Solucion>

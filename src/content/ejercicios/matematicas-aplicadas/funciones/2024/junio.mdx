@@ -1,0 +1,122 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+import VientoSierraNevada from "../../../../../components/figuras/VientoSierraNevada.astro"
+
+a) **(1.5 puntos)** Calcule la derivada de las funciones siguientes:
+
+$$
+f(x) = (x^2 + 2)^3 \cdot e^{-2x} \qquad\qquad g(x) = \frac{\ln(1 - x^3)}{(1 - 2x^2)^2}
+$$
+
+<Solucion>
+
+**Derivada de $f$.** Regla del producto. La derivada de $(x^2 + 2)^3$ es $3(x^2 + 2)^2 \cdot 2x$ y la de $e^{-2x}$ es $-2e^{-2x}$:
+
+$$
+f'(x) = 6x(x^2 + 2)^2 e^{-2x} - 2(x^2 + 2)^3 e^{-2x} = 2(x^2 + 2)^2 e^{-2x}\big(3x - x^2 - 2\big)
+$$
+
+Se puede escribir también como $f'(x) = -2(x^2 + 2)^2(x - 1)(x - 2)\,e^{-2x}$.
+
+**Derivada de $g$.** Regla del cociente, con $\big(\ln(1 - x^3)\big)' = \dfrac{-3x^2}{1 - x^3}$ y $\big((1 - 2x^2)^2\big)' = 2(1 - 2x^2)(-4x)$:
+
+$$
+g'(x) = \frac{\dfrac{-3x^2}{1 - x^3}(1 - 2x^2)^2 + 8x(1 - 2x^2)\ln(1 - x^3)}{(1 - 2x^2)^4} = \frac{\dfrac{-3x^2(1 - 2x^2)}{1 - x^3} + 8x\ln(1 - x^3)}{(1 - 2x^2)^3}
+$$
+
+En el último paso se simplifica el factor $(1 - 2x^2)$, que está en el numerador y en el denominador.
+
+</Solucion>
+
+b) **(1 punto)** Halle los valores de $a$ y $b$ para que sea horizontal la recta tangente a la gráfica de la función $h(x) = x^3 + ax^2 + 3x + b$ en el punto $P(1, 2)$.
+
+<Solucion>
+
+Hay dos condiciones:
+
+- **Tangente horizontal en $x = 1$:** la pendiente es $0$, es decir, $h'(1) = 0$. Como $h'(x) = 3x^2 + 2ax + 3$: $3 + 2a + 3 = 0 \Rightarrow a = -3$.
+- **La gráfica pasa por $P(1, 2)$:** $h(1) = 2$, es decir, $1 + a + 3 + b = 2$. Con $a = -3$: $1 + b = 2 \Rightarrow b = 1$.
+
+**Respuesta.** **$a = -3$ y $b = 1$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+La velocidad media del viento en la zona de Sierra Nevada, prevista para cierto día, viene dada por la función $v(t)$ expresada en $km/h$, donde $t$ es el tiempo expresado en horas:
+
+$$
+v(t) = \begin{cases}
+t^2 - 8t + 60 & \text{si } 0 \le t \le 10\\
+-t^2 + 32t - 140 & \text{si } 10 < t \le 24
+\end{cases}
+$$
+
+a) **(0.75 puntos)** Compruebe que la función $v$ es continua y derivable.
+
+<Solucion>
+
+Los dos tramos son polinomios, continuos y derivables en sus intervalos. Solo hay que estudiar $t = 10$.
+
+**Continuidad:**
+
+$$
+v(10) = \lim_{t \to 10^-} v(t) = 100 - 80 + 60 = 80, \qquad \lim_{t \to 10^+} v(t) = -100 + 320 - 140 = 80
+$$
+
+**Derivabilidad.** Con $v'(t) = 2t - 8$ a la izquierda y $v'(t) = -2t + 32$ a la derecha:
+
+$$
+v'(10^-) = 20 - 8 = 12, \qquad v'(10^+) = -20 + 32 = 12
+$$
+
+Coinciden, así que $v$ **es continua y derivable en $[0, 24]$**.
+
+</Solucion>
+
+b) **(1 punto)** Represente gráficamente la función, estudiando previamente la monotonía y calculando los extremos absolutos.
+
+<Solucion>
+
+**Monotonía.**
+
+- Primer tramo: $v'(t) = 2t - 8 = 0$ en $t = 4$. Decrece en $(0, 4)$ y crece en $(4, 10)$.
+- Segundo tramo: $v'(t) = -2t + 32 = 0$ en $t = 16$. Crece en $(10, 16)$ y decrece en $(16, 24)$.
+
+Por tanto, $v$ **decrece en $(0, 4)$, crece en $(4, 16)$ y decrece en $(16, 24)$**.
+
+**Extremos absolutos.** Comparamos los extremos relativos con los valores en los extremos del intervalo:
+
+$$
+v(0) = 60, \qquad v(4) = 16 - 32 + 60 = 44, \qquad v(16) = -256 + 512 - 140 = 116, \qquad v(24) = -576 + 768 - 140 = 52
+$$
+
+El **máximo absoluto es de 116 km/h, a las 16 horas**, y el **mínimo absoluto, de 44 km/h, a las 4 horas**.
+
+**Gráfica:**
+
+<VientoSierraNevada />
+
+</Solucion>
+
+c) **(0.75 puntos)** La Agencia Estatal de Meteorología emite avisos de alerta por vientos siguiendo el código de colores: naranja para vientos entre $100$ y $140\ km/h$, y rojo para vientos de más de $140\ km/h$. Según la previsión, indique si se debe emitir alguna alerta naranja en Sierra Nevada ese día y durante qué horas estaría activa. ¿Se emitiría alerta roja?
+
+<Solucion>
+
+**Aviso naranja.** En el primer tramo el viento no pasa de $80$ km/h, así que solo puede llegar a $100$ en el segundo:
+
+$$
+-t^2 + 32t - 140 = 100 \;\Rightarrow\; t^2 - 32t + 240 = 0 \;\Rightarrow\; t = \frac{32 \pm \sqrt{1024 - 960}}{2} = \frac{32 \pm 8}{2}
+$$
+
+Es decir, $t = 12$ y $t = 20$. Entre esos dos momentos la velocidad está por encima de $100$ km/h, con el máximo de $116$ a las 16 horas. **Sí se debe emitir aviso naranja, activo de las 12:00 a las 20:00.**
+
+**Aviso rojo.** La velocidad máxima del día es de $116$ km/h, por debajo de $140$: **no se emitiría alerta roja**.
+
+</Solucion>

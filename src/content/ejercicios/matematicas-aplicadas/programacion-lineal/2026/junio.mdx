@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+import RegionTableros from "../../../../../components/figuras/RegionTableros.astro"
+
+**B)** **(3 puntos)** Una empresa maderera fabrica tableros de dos tipos, DM y aglomerado, a partir de madera triturada. Para producir $1\ m^2$ de tablero DM se consumen $10\ m^3$ de madera triturada y se obtiene un beneficio de $10$€. Para producir $1\ m^2$ de tablero aglomerado se consumen $30\ m^3$ de madera triturada y se obtiene un beneficio de $20$€. La empresa puede fabricar diariamente como máximo $12\ m^2$ de tableros DM y $18\ m^2$ de tableros de aglomerado. Además, la capacidad total de la empresa limita la producción conjunta a $26\ m^2$ diarios y dispone de $600\ m^3$ de madera triturada al día. Determine cuántos metros cuadrados de cada tipo de tablero deben producirse diariamente para maximizar el beneficio total y calcule cuál es ese beneficio.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los m² de tablero DM e $y$ a los m² de aglomerado que se fabrican al día. Hay que maximizar el beneficio
+
+$$
+F(x, y) = 10x + 20y
+$$
+
+sujeto a las restricciones:
+
+$$
+\begin{cases}
+x \le 12 & \text{(máximo de DM)}\\
+y \le 18 & \text{(máximo de aglomerado)}\\
+x + y \le 26 & \text{(producción conjunta)}\\
+10x + 30y \le 600 \iff x + 3y \le 60 & \text{(madera triturada)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Representación.** Dibujamos las rectas $x = 12$, $y = 18$, $x + y = 26$ (pasa por $(26, 0)$ y $(0, 26)$) y $x + 3y = 60$ (pasa por $(60, 0)$ y $(0, 20)$). El origen $(0, 0)$ cumple todas las desigualdades, así que de cada recta nos quedamos con el semiplano que contiene al origen, y con $x, y \ge 0$ nos quedamos en el primer cuadrante. La región factible es el polígono sombreado:
+
+<RegionTableros />
+
+**Vértices.** Además de $O(0, 0)$, $A(12, 0)$ y $E(0, 18)$, que salen directamente de los ejes, calculamos los cortes:
+
+- $B$: $x = 12$ y $x + y = 26$ $\Rightarrow$ $y = 14$, $B(12, 14)$. Cumple $x + 3y = 54 \le 60$.
+- $C$: $x + y = 26$ y $x + 3y = 60$. Restando, $2y = 34 \Rightarrow y = 17$, $x = 9$: $C(9, 17)$. Cumple $x \le 12$ e $y \le 18$.
+- $D$: $y = 18$ y $x + 3y = 60$ $\Rightarrow$ $x = 6$, $D(6, 18)$. Cumple $x + y = 24 \le 26$.
+
+**Resolución.** La región es un polígono cerrado y acotado, así que el máximo de la función objetivo se alcanza en uno de sus vértices. Evaluamos $F(x, y) = 10x + 20y$ en todos ellos:
+
+- $F(0, 0) = 0$
+- $F(12, 0) = 120$
+- $F(12, 14) = 120 + 280 = 400$
+- $F(9, 17) = 90 + 340 = 430$
+- $F(6, 18) = 60 + 360 = 420$
+- $F(0, 18) = 360$
+
+**Respuesta.** Deben producirse **9 m² de tablero DM y 17 m² de aglomerado** al día, con un **beneficio máximo de 430 €**.
+
+</Solucion>

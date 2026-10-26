@@ -1,0 +1,178 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import HiperbolaG from "../../../../../components/figuras/HiperbolaG.astro"
+
+**A)**
+
+<div class="math-sub">
+
+a) **(1 punto)** Calcule los valores de $a$ y $b$ para que la función
+
+$$
+f(x) = \begin{cases}
+\dfrac{x - a}{x - 1} & \text{si } x \le 0\\[6pt]
+x^2 + bx + 3 & \text{si } x > 0
+\end{cases}
+$$
+
+sea continua y derivable en $x = 0$.
+
+</div>
+
+<Solucion>
+
+**Obtener $a$ (continuidad en $x = 0$).** Los límites laterales y el valor de la función deben coincidir:
+
+$$
+f(0) = \lim_{x \to 0^-} f(x) = \frac{0 - a}{0 - 1} = a, \qquad \lim_{x \to 0^+} f(x) = 0 + 0 + 3 = 3
+$$
+
+Así que **$a = 3$**.
+
+**Obtener $b$ (derivabilidad en $x = 0$).** Las derivadas laterales deben coincidir. Derivamos cada tramo:
+
+$$
+\left(\frac{x - a}{x - 1}\right)' = \frac{(x - 1) - (x - a)}{(x - 1)^2} = \frac{a - 1}{(x - 1)^2}, \qquad (x^2 + bx + 3)' = 2x + b
+$$
+
+Con $a = 3$, en $x = 0$: $f'(0^-) = \dfrac{3 - 1}{(0 - 1)^2} = 2$ y $f'(0^+) = b$. Igualando, **$b = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1.25 puntos)** Dada la función $g(x) = \dfrac{x - 3}{x - 1}$, calcule las asíntotas, los puntos de corte con los ejes, estudie la monotonía y esboce la gráfica de la función.
+
+</div>
+
+<Solucion>
+
+El dominio es $\mathbb{R} \setminus \{1\}$.
+
+**Puntos de corte.** Con el eje $OX$: $g(x) = 0 \iff x = 3$, el punto $(3, 0)$. Con el eje $OY$: $g(0) = \frac{-3}{-1} = 3$, el punto $(0, 3)$.
+
+**Asíntotas:**
+
+- **Vertical $x = 1$**: el denominador se anula y el numerador vale $-2$. $\lim_{x \to 1^-} g(x) = \frac{-2}{0^-} = +\infty$ y $\lim_{x \to 1^+} g(x) = \frac{-2}{0^+} = -\infty$.
+- **Horizontal $y = 1$**: $\lim_{x \to \pm\infty} \dfrac{x - 3}{x - 1} = 1$.
+- **Oblicuas:** no hay, porque tiene asíntota horizontal en $\pm\infty$.
+
+**Monotonía.**
+
+$$
+g'(x) = \frac{(x - 1) - (x - 3)}{(x - 1)^2} = \frac{2}{(x - 1)^2} > 0 \quad \text{para todo } x \ne 1
+$$
+
+$g$ es **creciente en $(-\infty, 1)$ y en $(1, +\infty)$** y no tiene extremos.
+
+**Gráfica.** Es una hipérbola. La rama izquierda sube desde $y = 1$ hacia $+\infty$ al acercarse a $x = 1$, y pasa por $(0, 3)$. La rama derecha sube desde $-\infty$ hacia $y = 1$, y pasa por $(3, 0)$:
+
+<HiperbolaG />
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Calcule el área del recinto acotado limitado por el eje de abscisas y la gráfica de la función $h(x) = x^2 - x - 6$.
+
+</div>
+
+<Solucion>
+
+La parábola corta el eje $OX$ donde $x^2 - x - 6 = 0$, es decir, en $x = -2$ y $x = 3$, porque $x^2 - x - 6 = (x - 3)(x + 2)$. Entre esos puntos la parábola, que abre hacia arriba, queda **por debajo** del eje: por ejemplo, $h(0) = -6$. Por eso el área es la integral cambiada de signo:
+
+$$
+\int_{-2}^{3} (x^2 - x - 6)\,dx = \left[\frac{x^3}{3} - \frac{x^2}{2} - 6x\right]_{-2}^{3} = \left(9 - \frac{9}{2} - 18\right) - \left(-\frac{8}{3} - 2 + 12\right) = -\frac{27}{2} - \frac{22}{3} = -\frac{125}{6}
+$$
+
+**Respuesta.** El área del recinto es $\dfrac{125}{6} \approx$ **20.83 unidades cuadradas**.
+
+</Solucion>
+
+**B)** Sea $f$ la función definida por
+
+$$
+f(x) = \begin{cases}
+x^3 - 3x + 2 & \text{si } 0 < x \le 3\\[6pt]
+\dfrac{10}{a - x} & \text{si } x > 3
+\end{cases}
+$$
+
+siendo $a$ un número real.
+
+<div class="math-sub">
+
+a) **(0.5 puntos)** Determine el valor de $a$ para el que $f$ es continua en $x = 3$.
+
+</div>
+
+<Solucion>
+
+En $x = 3$ deben coincidir el valor de la función y los límites laterales:
+
+$$
+f(3) = \lim_{x \to 3^-} f(x) = 27 - 9 + 2 = 20, \qquad \lim_{x \to 3^+} f(x) = \frac{10}{a - 3}
+$$
+
+$$
+\frac{10}{a - 3} = 20 \;\Rightarrow\; a - 3 = \frac{1}{2} \;\Rightarrow\; a = 3.5
+$$
+
+**Respuesta.** $f$ es continua en $x = 3$ para **$a = 3.5$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = 4$:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(1 punto)** Determine las ecuaciones de las asíntotas de $f$, si existen.
+
+</div>
+
+<Solucion>
+
+Con $a = 4$, el dominio es $(0, +\infty)$ menos $x = 4$, donde se anula el denominador del segundo tramo.
+
+- **Vertical $x = 4$**: $\lim_{x \to 4^-} \dfrac{10}{4 - x} = +\infty$ y $\lim_{x \to 4^+} \dfrac{10}{4 - x} = -\infty$. En el primer tramo no hay asíntotas verticales, porque es un polinomio: cuando $x \to 0^+$, $f(x) \to 2$.
+- **Horizontal $y = 0$**: $\lim_{x \to +\infty} \dfrac{10}{4 - x} = 0$. Hacia $-\infty$ no tiene sentido estudiarla, porque la función solo está definida para $x > 0$.
+- **Oblicuas:** no hay, porque tiene asíntota horizontal en $+\infty$.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(1.5 puntos)** Estudie la derivabilidad y monotonía de $f$.
+
+</div>
+
+<Solucion>
+
+**Derivabilidad.** Cada tramo es derivable en su intervalo abierto: el polinomio en $(0, 3)$ y el cociente en $(3, 4)$ y en $(4, +\infty)$. Falta estudiar $x = 3$. Con $a = 4$, $f(3) = 20$, pero $\lim_{x \to 3^+} f(x) = \frac{10}{4 - 3} = 10$: $f$ **no es continua en $x = 3$** (hay un salto), y por tanto **tampoco es derivable** ahí. En $x = 4$ no está definida. Así, $f$ es derivable en $(0, 3) \cup (3, 4) \cup (4, +\infty)$, con
+
+$$
+f'(x) = \begin{cases}
+3x^2 - 3 = 3(x - 1)(x + 1) & \text{si } 0 < x < 3\\[6pt]
+\dfrac{10}{(4 - x)^2} & \text{si } x > 3,\ x \ne 4
+\end{cases}
+$$
+
+**Monotonía.**
+
+- En $(0, 1)$: $f'(x) < 0$, por ejemplo $f'(0.5) = -2.25$. $f$ es **decreciente**.
+- En $(1, 3)$: $f'(x) > 0$, por ejemplo $f'(2) = 9$. $f$ es **creciente**.
+- En $(3, 4)$ y en $(4, +\infty)$: $f'(x) = \frac{10}{(4 - x)^2} > 0$. $f$ es **creciente**.
+
+En $x = 1$ hay un **mínimo relativo**, $(1, 0)$, porque $f(1) = 1 - 3 + 2 = 0$. Además, en $x = 3$ hay un **máximo relativo**, $(3, 20)$: a la izquierda $f$ crece hasta $20$ y a la derecha salta a valores cercanos a $10$, menores que $20$.
+
+</Solucion>

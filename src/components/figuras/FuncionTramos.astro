@@ -1,0 +1,70 @@
+---
+// Matemáticas aplicadas, junio 2026, ejercicio 2 b): gráfica de f para a = 26 y b = −3/10,
+// con el recinto que limita con el eje OX sombreado.
+const f = (x: number) => (x < 20 ? x ** 2 / 20 : x < 50 ? 26 - (3 * x) / 10 : 36 - x ** 2 / 100)
+
+const origen = { x: 40, y: 200 }
+const px = (x: number) => origen.x + x * 5
+const py = (y: number) => origen.y - y * 8
+
+const xs = Array.from({ length: 121 }, (_, i) => i / 2)
+const curva = xs.map((x, i) => `${i ? "L" : "M"}${px(x).toFixed(1)} ${py(f(x)).toFixed(1)}`).join("")
+const recinto = `${curva}L${px(60)} ${py(0)}Z`
+
+const marcasX = [10, 20, 30, 40, 50, 60]
+const marcasY = [5, 10, 15, 20]
+const puntos = [
+  { x: 0, y: 0, texto: "(0, 0)", dx: 4, dy: 14 },
+  { x: 20, y: 20, texto: "(20, 20)", dx: 0, dy: -9 },
+  { x: 50, y: 11, texto: "(50, 11)", dx: 6, dy: -6 },
+  { x: 60, y: 0, texto: "(60, 0)", dx: 6, dy: -6 },
+]
+---
+
+<figure class="solution-figure">
+  <svg
+    viewBox="0 0 390 228"
+    role="img"
+    aria-label="Gráfica de f: crece como una parábola desde (0, 0) hasta el máximo (20, 20), baja en línea recta hasta (50, 11) y sigue bajando como una parábola hasta (60, 0)"
+  >
+    <path d={recinto} fill="rgba(25, 92, 81, 0.16)" />
+
+    <g fill="none" stroke="#111" stroke-width="1">
+      <path d={`M${px(0)} ${py(0)}H${px(64)}M${px(64) - 5} ${py(0) - 3}l5 3-5 3`} />
+      <path d={`M${px(0)} ${py(0)}V${py(23.5)}M${px(0) - 3} ${py(23.5) + 5}l3-5 3 5`} />
+      {marcasX.map((m) => <path d={`M${px(m)} ${py(0) - 3}v6`} />)}
+      {marcasY.map((m) => <path d={`M${px(0) - 3} ${py(m)}h6`} />)}
+      <path
+        d={`M${px(20)} ${py(0)}V${py(20)}M${px(50)} ${py(0)}V${py(11)}`}
+        stroke-dasharray="3 3"
+        stroke="#777"
+      />
+    </g>
+
+    <path d={curva} fill="none" stroke="#195c51" stroke-width="2.2" />
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      {marcasX.map((m) => <text x={px(m)} y={py(0) + 14} text-anchor="middle">{m}</text>)}
+      {marcasY.map((m) => <text x={px(0) - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
+      <text x={px(64)} y={py(0) + 14} text-anchor="end" font-style="italic">x</text>
+      <text x={px(0) + 6} y={py(23.5) + 4} font-style="italic">y</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#195c51">
+      {
+        puntos.map((p) => (
+          <>
+            <circle cx={px(p.x)} cy={py(p.y)} r="3" />
+            <text
+              x={px(p.x) + p.dx}
+              y={py(p.y) + p.dy}
+              text-anchor={p.dx < 0 ? "end" : p.dx === 0 ? "middle" : "start"}
+            >
+              {p.texto}
+            </text>
+          </>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

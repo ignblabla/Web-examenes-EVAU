@@ -1,0 +1,83 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+import CapitalTrinidad from "../../../../../components/figuras/CapitalTrinidad.astro"
+
+Trinidad, una persona ahorradora, deposita $5000$€ en un fondo de inversión y el capital final que obtiene cuando transcurren $t$ años viene dado por la siguiente función:
+
+$$
+f(t) = \begin{cases}
+5000 \cdot (1 + 0.05t) & 0 \le t \le 1\\
+5000 \cdot 1.05^t & t > 1
+\end{cases}
+$$
+
+a) **(0.75 puntos)** ¿Cuánto tiempo debe mantener invertido el dinero si el capital final que se obtiene es de $5931.10$€?
+
+<Solucion>
+
+En el primer año el capital crece de $f(0) = 5000$ a $f(1) = 5250$ €, así que $5931.10$ € se alcanza en el segundo tramo, con $t > 1$:
+
+$$
+5000 \cdot 1.05^t = 5931.10 \;\Rightarrow\; 1.05^t = 1.18622 \;\Rightarrow\; t = \frac{\ln 1.18622}{\ln 1.05} \approx 3.5
+$$
+
+**Respuesta.** Debe mantener el dinero invertido **3.5 años** (tres años y medio).
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule los intereses que obtiene Trinidad entre el año $2$ y el año $4$, si se conoce que los intereses que genera esta inversión entre el año $t_1$ y el año $t_2$ vienen dados por $I = f(t_2) - f(t_1)$.
+
+<Solucion>
+
+Los dos instantes están en el segundo tramo:
+
+$$
+I = f(4) - f(2) = 5000 \cdot 1.05^4 - 5000 \cdot 1.05^2 = 6077.53 - 5512.50 = 565.03
+$$
+
+**Respuesta.** Entre el año 2 y el 4 obtiene **565.03 €** de intereses.
+
+</Solucion>
+
+c) **(0.75 puntos)** Estudie la continuidad y derivabilidad de la función $f$.
+
+<Solucion>
+
+**Continuidad.** Cada tramo es continuo en su intervalo: el primero es un polinomio y el segundo una exponencial. En el punto de unión, $t = 1$:
+
+$$
+f(1) = \lim_{t \to 1^-} f(t) = 5000 \cdot 1.05 = 5250, \qquad \lim_{t \to 1^+} f(t) = 5000 \cdot 1.05^1 = 5250
+$$
+
+Coinciden, así que $f$ es **continua en $[0, +\infty)$**.
+
+**Derivabilidad.** Derivamos cada tramo:
+
+$$
+f'(t) = \begin{cases}
+5000 \cdot 0.05 = 250 & 0 < t < 1\\
+5000 \cdot 1.05^t \ln 1.05 & t > 1
+\end{cases}
+$$
+
+En $t = 1$ las derivadas laterales son $f'(1^-) = 250$ y $f'(1^+) = 5250 \ln 1.05 \approx 256.15$. Son distintas, así que $f$ **no es derivable en $t = 1$**. Es derivable en $(0, 1) \cup (1, +\infty)$.
+
+</Solucion>
+
+d) **(0.5 puntos)** Estudie la monotonía de la función $f$ y esboce su gráfica.
+
+<Solucion>
+
+**Monotonía.** En los dos tramos la derivada es positiva: $250 > 0$, y $5000 \cdot 1.05^t \ln 1.05 > 0$ porque $\ln 1.05 > 0$. Como además $f$ es continua, es **creciente en $[0, +\infty)$**: el capital siempre aumenta.
+
+**Gráfica.** Es un segmento de recta de $(0, 5000)$ a $(1, 5250)$ y, a partir de ahí, una exponencial creciente que pasa por $(2,\ 5512.50)$ y $(3.5,\ 5931.10)$. El eje vertical empieza en 4800 € para que se vea mejor:
+
+<CapitalTrinidad />
+
+</Solucion>

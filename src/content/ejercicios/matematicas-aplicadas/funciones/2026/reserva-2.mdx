@@ -1,0 +1,89 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+El peso en kilogramos ($kg$) de una persona que inicia un determinado régimen alimenticio viene dado por la función:
+
+$$
+P(t) = 75 - \frac{15t}{t + 120}; \qquad t \ge 0
+$$
+
+siendo $t$ el tiempo, en días, que lleva haciendo la dieta.
+
+<div class="math-sub">
+
+a) **(1 punto)** Compruebe que, si la persona sigue de manera continuada el régimen alimenticio, irá reduciendo peso paulatinamente. ¿Cuál es el peso mínimo que podría llegar a alcanzar si pudiera seguir la dieta indefinidamente?
+
+</div>
+
+<Solucion>
+
+**Decrecimiento.** Derivamos con la regla del cociente:
+
+$$
+P'(t) = -\frac{15(t + 120) - 15t \cdot 1}{(t + 120)^2} = -\frac{1800}{(t + 120)^2}
+$$
+
+Para todo $t \ge 0$ el denominador es positivo, así que $P'(t) < 0$: **el peso disminuye continuamente** mientras sigue la dieta.
+
+**Valor asintótico.** Si la dieta se sigue indefinidamente:
+
+$$
+\lim_{t \to +\infty} P(t) = 75 - \lim_{t \to +\infty} \frac{15t}{t + 120} = 75 - 15 = 60
+$$
+
+**Significado.** $P$ tiene una asíntota horizontal $y = 60$. El peso se va acercando cada vez más a **60 kg**, pero nunca llega a alcanzarlos ni a bajar de ahí, porque $\frac{15t}{t + 120} < 15$ para todo $t$. Así, 60 kg es la cota inferior del peso.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** ¿Cuántos días debe hacer de régimen para llegar a un peso de $64\ kg$?
+
+</div>
+
+<Solucion>
+
+**Resolver la ecuación** $P(t) = 64$:
+
+$$
+75 - \frac{15t}{t + 120} = 64 \;\Rightarrow\; \frac{15t}{t + 120} = 11 \;\Rightarrow\; 15t = 11t + 1320 \;\Rightarrow\; 4t = 1320 \;\Rightarrow\; t = 330
+$$
+
+**Interpretación.** Debe seguir el régimen **330 días** para llegar a pesar 64 kg.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(1.25 puntos)** El índice de masa corporal viene dado por la función $i(t) = \dfrac{P(t)}{h^2}$, siendo $h$ la estatura, en metros, de la persona. Se considera que la persona tiene sobrepeso si el índice de masa corporal es superior a $25\ kg/m^2$. Si la persona mide $1.68\ m$, determine si ha tenido sobrepeso durante la dieta, y en caso afirmativo, calcule los días que han de transcurrir para dejar de tenerlo.
+
+</div>
+
+<Solucion>
+
+Con $h = 1.68$ m, $h^2 = 2.8224$. Tener sobrepeso es $i(t) > 25$, es decir, $P(t) > 25 \cdot 2.8224 = 70.56$ kg.
+
+**¿Ha tenido sobrepeso?** Al empezar la dieta, $P(0) = 75$ kg, así que
+
+$$
+i(0) = \frac{75}{2.8224} \approx 26.57 > 25
+$$
+
+**Sí ha tenido sobrepeso**, al menos al principio de la dieta.
+
+**¿Cuándo deja de tenerlo?** Como $P$ es decreciente (apartado a), el sobrepeso desaparece cuando el peso baja a $70.56$ kg:
+
+$$
+75 - \frac{15t}{t + 120} = 70.56 \;\Rightarrow\; \frac{15t}{t + 120} = 4.44 \;\Rightarrow\; 15t = 4.44t + 532.8 \;\Rightarrow\; 10.56t = 532.8 \;\Rightarrow\; t \approx 50.45
+$$
+
+Antes de ese momento $i(t) > 25$ y después $i(t) < 25$.
+
+**Respuesta.** La persona deja de tener sobrepeso a los **50.45 días** aproximadamente, es decir, a partir del **día 51** de dieta.
+
+</Solucion>

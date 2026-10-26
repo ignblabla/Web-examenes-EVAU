@@ -1,0 +1,89 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+En una encuesta realizada en una librería se ha determinado que el $45\%$ de sus clientes compran novelas históricas, mientras que el $40\%$ no compra novelas de fantasía. Además, de los clientes que compran novelas de fantasía, sólo el $30\%$ compran también novelas históricas. Elegido un cliente al azar, calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $H$ a comprar novelas históricas y $F$ a comprar novelas de fantasía: $P(H) = 0.45$, $P(\overline{F}) = 0.4$ (así que $P(F) = 0.6$) y $P(H/F) = 0.3$.
+
+</Solucion>
+
+a) **(0.75 puntos)** Compre novelas históricas y de fantasía.
+
+<Solucion>
+
+$$
+P(H \cap F) = P(F) \cdot P(H/F) = 0.6 \cdot 0.3 = 0.18
+$$
+
+</Solucion>
+
+b) **(1 punto)** No compre novelas históricas y tampoco de fantasía.
+
+<Solucion>
+
+“Ni una ni otra” es el contrario de $H \cup F$ (leyes de De Morgan):
+
+$$
+P(\overline{H} \cap \overline{F}) = 1 - P(H \cup F) = 1 - (0.45 + 0.6 - 0.18) = 1 - 0.87 = 0.13
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Compre una novela de fantasía, sabiendo que no ha comprado ninguna novela histórica.
+
+<Solucion>
+
+La parte de $F$ fuera de $H$ es $P(F \cap \overline{H}) = 0.6 - 0.18 = 0.42$, y $P(\overline{H}) = 0.55$:
+
+$$
+P(F/\overline{H}) = \frac{0.42}{0.55} = \frac{42}{55} \approx 0.7636
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Una fábrica dispone de $3$ máquinas $A$, $B$ y $C$ para la fabricación de una cierta pieza. El $25\%$ de las piezas son fabricadas por la máquina $A$, el $35\%$ por $B$ y el resto por $C$. Tras un estudio se determina que el $2.05\%$ del total de las piezas fabricadas son defectuosas y que el $1\%$ de las piezas fabricadas por $B$ son defectuosas.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $D$ a que la pieza sea defectuosa. Los datos son $P(A) = 0.25$, $P(B) = 0.35$, $P(C) = 0.4$, $P(D) = 0.0205$ y $P(D/B) = 0.01$.
+
+</Solucion>
+
+a) **(1.25 puntos)** Se selecciona una pieza al azar y resulta no ser defectuosa, ¿qué probabilidad hay de que fuera fabricada por la máquina $B$?
+
+<Solucion>
+
+Por el teorema de Bayes, con $P(\overline{D}/B) = 0.99$ y $P(\overline{D}) = 1 - 0.0205 = 0.9795$:
+
+$$
+P(B/\overline{D}) = \frac{P(B) \cdot P(\overline{D}/B)}{P(\overline{D})} = \frac{0.35 \cdot 0.99}{0.9795} = \frac{0.3465}{0.9795} \approx 0.3538
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Si $A$ y $C$ tienen la misma probabilidad de fabricar una pieza defectuosa, ¿cuál es la probabilidad de que una pieza sea fabricada por $A$ sabiendo que es defectuosa?
+
+<Solucion>
+
+**Probabilidad común.** Llamamos $p = P(D/A) = P(D/C)$. Por el teorema de la probabilidad total:
+
+$$
+0.0205 = 0.25p + 0.35 \cdot 0.01 + 0.4p = 0.65p + 0.0035 \;\Rightarrow\; p = \frac{0.017}{0.65} \approx 0.02615
+$$
+
+**Bayes:**
+
+$$
+P(A/D) = \frac{P(A) \cdot p}{P(D)} = \frac{0.25 \cdot 0.02615}{0.0205} \approx 0.3189
+$$
+
+</Solucion>

@@ -1,0 +1,99 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+En cierta localidad el $30\%$ de los habitantes profesan la religión $A$ y el $50\%$ profesan otras religiones diferentes de $A$. De los que profesan la religión $A$ el $40\%$ son mujeres. De las mujeres el $25\%$ profesa la religión $A$. Se elige un habitante al azar de esa localidad. Calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $A$ a profesar la religión $A$ y $M$ a ser mujer. Los datos son $P(A) = 0.3$, $P(\text{otra}) = 0.5$, $P(M/A) = 0.4$ y $P(A/M) = 0.25$.
+
+</Solucion>
+
+a) **(0.5 puntos)** No profese ninguna religión.
+
+<Solucion>
+
+Profesar $A$, profesar otra y no profesar ninguna son sucesos incompatibles que cubren a toda la población:
+
+$$
+P(\text{ninguna}) = 1 - 0.3 - 0.5 = 0.2
+$$
+
+</Solucion>
+
+b) **(1 punto)** Sea hombre.
+
+<Solucion>
+
+La intersección $A \cap M$ se puede escribir de dos formas, y así se despeja $P(M)$:
+
+$$
+P(A \cap M) = P(A) \cdot P(M/A) = 0.3 \cdot 0.4 = 0.12, \qquad P(A \cap M) = P(M) \cdot P(A/M) \;\Rightarrow\; P(M) = \frac{0.12}{0.25} = 0.48
+$$
+
+$$
+P(\text{hombre}) = 1 - 0.48 = 0.52
+$$
+
+</Solucion>
+
+c) **(1 punto)** Solo verifique uno de los siguientes sucesos: "profesa la religión $A$"; "es mujer".
+
+<Solucion>
+
+Es que ocurra uno de los dos, pero no los dos a la vez:
+
+$$
+P(\text{solo uno}) = P(A) + P(M) - 2P(A \cap M) = 0.3 + 0.48 - 2 \cdot 0.12 = 0.54
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+En una empresa, el $30\%$ de los empleados ejercen de economistas y el $25\%$ ejercen de abogados. El $75\%$ de los economistas y el $60\%$ de los abogados ocupan puestos directivos, mientras que, de los empleados que no ejercen ni de economistas ni de abogados, el $15\%$ ocupa un puesto directivo.
+
+Seleccionado un empleado al azar de esta empresa, calcule la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $E$, $Ab$ y $O$ a ser economista, abogado u otra profesión, y $D$ a ocupar un puesto directivo:
+
+- $P(E) = 0.3$, con $P(D/E) = 0.75$.
+- $P(Ab) = 0.25$, con $P(D/Ab) = 0.6$.
+- $P(O) = 1 - 0.3 - 0.25 = 0.45$, con $P(D/O) = 0.15$.
+
+</Solucion>
+
+a) **(1.5 puntos)** No ocupe un puesto directivo.
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(D) = 0.3 \cdot 0.75 + 0.25 \cdot 0.6 + 0.45 \cdot 0.15 = 0.225 + 0.15 + 0.0675 = 0.4425
+$$
+
+$$
+P(\overline{D}) = 1 - 0.4425 = 0.5575
+$$
+
+</Solucion>
+
+b) **(1 punto)** Ejerza de economista sabiendo que ocupa un puesto directivo.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(E/D) = \frac{P(E) \cdot P(D/E)}{P(D)} = \frac{0.225}{0.4425} \approx 0.5085
+$$
+
+</Solucion>

@@ -1,0 +1,82 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionCuadrilatero from "../../../../../components/figuras/RegionCuadrilatero.astro"
+
+**B)** Se considera la función $f(x, y) = 2x + y$ cuando $(x, y)$ pertenece a la región factible delimitada por las inecuaciones:
+
+$$
+4x + 2y \ge 5; \qquad 2x + 5y \le 9; \qquad x + y \le 3; \qquad y \ge 0
+$$
+
+<div class="math-sub">
+
+a) **(1.5 puntos)** Dibuje la región factible y obtenga sus vértices.
+
+</div>
+
+<Solucion>
+
+**Región.** Dibujamos las rectas:
+
+- $4x + 2y = 5$, que pasa por $(1.25, 0)$ y $(0, 2.5)$. El origen no cumple $0 \ge 5$, así que nos quedamos con el semiplano que **no** contiene al origen.
+- $2x + 5y = 9$, que pasa por $(0, 1.8)$ y $(4.5, 0)$. El origen cumple $0 \le 9$: semiplano del origen.
+- $x + y = 3$, que pasa por $(3, 0)$ y $(0, 3)$. El origen cumple $0 \le 3$: semiplano del origen.
+- $y \ge 0$: por encima del eje $OX$.
+
+La región factible es el cuadrilátero sombreado:
+
+<RegionCuadrilatero />
+
+**Vértices:**
+
+- $A$: $4x + 2y = 5$ con $y = 0$ $\Rightarrow$ $x = \frac{5}{4}$, $A\left(\frac{5}{4}, 0\right)$.
+- $B$: $x + y = 3$ con $y = 0$ $\Rightarrow$ $B(3, 0)$.
+- $C$: $x + y = 3$ y $2x + 5y = 9$. Sustituyendo $x = 3 - y$: $6 - 2y + 5y = 9 \Rightarrow y = 1$, $x = 2$: $C(2, 1)$.
+- $D$: $4x + 2y = 5$ y $2x + 5y = 9$. Multiplicando la segunda por $2$ y restando la primera: $8y = 13 \Rightarrow y = \frac{13}{8}$, y entonces $4x = 5 - \frac{13}{4} = \frac{7}{4}$, $x = \frac{7}{16}$: $D\left(\frac{7}{16}, \frac{13}{8}\right)$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** Obtenga algún punto de la región factible con abscisa $x = 1$.
+
+</div>
+
+<Solucion>
+
+Sustituimos $x = 1$ en las inecuaciones y vemos qué valores de $y$ las cumplen todas:
+
+$$
+4 + 2y \ge 5 \Rightarrow y \ge 0.5; \qquad 2 + 5y \le 9 \Rightarrow y \le 1.4; \qquad 1 + y \le 3 \Rightarrow y \le 2; \qquad y \ge 0
+$$
+
+Vale cualquier $y$ entre $0.5$ y $1.4$. Por ejemplo, **$(1, 1)$** es un punto de la región factible.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(1 punto)** ¿Para qué valores de $x$ e $y$ se alcanza el máximo de la función $f$? ¿Cuánto vale dicho máximo? Análogamente para el mínimo.
+
+</div>
+
+<Solucion>
+
+**Valoración en los vértices.** La región es un polígono acotado, así que el máximo y el mínimo se alcanzan en vértices (o en un lado entero):
+
+- $f\left(\frac{5}{4}, 0\right) = \frac{5}{2} = 2.5$
+- $f(3, 0) = 6$
+- $f(2, 1) = 5$
+- $f\left(\frac{7}{16}, \frac{13}{8}\right) = \frac{7}{8} + \frac{13}{8} = \frac{20}{8} = 2.5$
+
+**Máximo.** Se alcanza en **$x = 3$, $y = 0$** y vale **$6$**.
+
+**Mínimo.** Vale **$2.5$** y se alcanza a la vez en $A$ y en $D$. Ocurre porque $f$ es paralela a la recta $4x + 2y = 5$ (que es lo mismo que $2x + y = 2.5$). Por tanto, el mínimo se alcanza en **todos los puntos del segmento $AD$**: los $(x, y)$ con $4x + 2y = 5$ y $\frac{7}{16} \le x \le \frac{5}{4}$.
+
+</Solucion>

@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, julio de 2024, ejercicio 4 c): f es la parábola −x² + 4x + 3 hasta
+// x = 4 y la recta 2x − 5 después; recinto con el eje entre x = 3 y x = 5.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x < 4 ? -(x ** 2) + 4 * x + 3 : 2 * x - 5)
+---
+
+<GraficaFuncion
+  xMin={-1}
+  xMax={6.5}
+  yMin={-2.5}
+  yMax={8.5}
+  marcasX={[1, 2, 3, 4, 5, 6]}
+  marcasY={[2, 4, 6, 8]}
+  tramos={[{ f, desde: -0.6, hasta: 6.3 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 3, hasta: 5 }}
+  puntos={[
+    { x: 2, y: 7, texto: "Máximo (2, 7)", dx: 0, dy: -9 },
+    { x: 3, y: 6, texto: "(3, 6)", dx: 7, dy: -2 },
+    { x: 4, y: 3, texto: "Mínimo (4, 3)", dx: 6, dy: 14 },
+    { x: 5, y: 5, texto: "(5, 5)", dx: -7, dy: -4 },
+  ]}
+  descripcion="Gráfica de f: parábola con máximo en (2, 7) hasta x = 4, donde enlaza con un pico en (4, 3) con la recta 2x − 5; el recinto entre la gráfica y el eje X desde x = 3 hasta x = 5 está sombreado"
+/>

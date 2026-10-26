@@ -1,0 +1,58 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se consideran las matrices $A = \begin{pmatrix} 1 & -1 & 1\\ -2 & 1 & 0 \end{pmatrix}$, $B = \begin{pmatrix} 0 & -1\\ 1 & 0\\ -1 & 2 \end{pmatrix}$ y $C = \begin{pmatrix} 1 & 3 & 2\\ 1 & 1 & 1\\ 0 & 3 & 1 \end{pmatrix}$.
+
+a) **(2 puntos)** Resuelva la siguiente ecuación $\quad A \cdot B \cdot X \cdot C = \begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0 \end{pmatrix}$.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $M$ a la matriz de la derecha. $A \cdot B$ es $2 \times 2$, así que $X$ tiene que ser $2 \times 3$ para que $(AB)\,X\,C$ sea $2 \times 3$. Si $AB$ y $C$ tienen inversa, multiplicamos por $(AB)^{-1}$ a la izquierda y por $C^{-1}$ a la derecha:
+
+$$
+X = (AB)^{-1} \cdot M \cdot C^{-1}
+$$
+
+**Inversa de $AB$:**
+
+$$
+AB = \begin{pmatrix} 1 & -1 & 1\\ -2 & 1 & 0 \end{pmatrix}\begin{pmatrix} 0 & -1\\ 1 & 0\\ -1 & 2 \end{pmatrix} = \begin{pmatrix} -2 & 1\\ 1 & 2 \end{pmatrix}, \quad |AB| = -5, \quad (AB)^{-1} = -\frac{1}{5}\begin{pmatrix} 2 & -1\\ -1 & -2 \end{pmatrix} = \begin{pmatrix} -\frac{2}{5} & \frac{1}{5}\\[2pt] \frac{1}{5} & \frac{2}{5} \end{pmatrix}
+$$
+
+**Inversa de $C$.** $|C| = 1(1 - 3) - 3(1 - 0) + 2(3 - 0) = 1 \ne 0$:
+
+$$
+C^{-1} = \big(\text{Adj}(C)\big)^t = \begin{pmatrix} -2 & 3 & 1\\ -1 & 1 & 1\\ 3 & -3 & -2 \end{pmatrix}
+$$
+
+**Cálculo de $X$.** Primero $(AB)^{-1} M$, que se queda con las dos primeras columnas de $(AB)^{-1}$ y añade una de ceros, y después el producto por $C^{-1}$:
+
+$$
+(AB)^{-1} M = \begin{pmatrix} -\frac{2}{5} & \frac{1}{5} & 0\\[2pt] \frac{1}{5} & \frac{2}{5} & 0 \end{pmatrix}, \qquad
+X = \begin{pmatrix} -\frac{2}{5} & \frac{1}{5} & 0\\[2pt] \frac{1}{5} & \frac{2}{5} & 0 \end{pmatrix}\begin{pmatrix} -2 & 3 & 1\\ -1 & 1 & 1\\ 3 & -3 & -2 \end{pmatrix} = \begin{pmatrix} \frac{3}{5} & -1 & -\frac{1}{5}\\[2pt] -\frac{4}{5} & 1 & \frac{3}{5} \end{pmatrix}
+$$
+
+Se puede comprobar que $A \cdot B \cdot X \cdot C = M$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Halle las dimensiones de las matrices $D$ y $E$ para que tenga sentido la igualdad
+
+$$
+A \cdot D = E \cdot B
+$$
+
+<Solucion>
+
+- $A$ es $2 \times 3$, así que $D$ debe tener $3$ filas: si $D$ es $3 \times n$, $A \cdot D$ es $2 \times n$.
+- $B$ es $3 \times 2$, así que $E$ debe tener $3$ columnas: si $E$ es $m \times 3$, $E \cdot B$ es $m \times 2$.
+- Para que sean iguales, $2 \times n = m \times 2$, es decir, $m = 2$ y $n = 2$.
+
+**Respuesta.** **$D$ es $3 \times 2$ y $E$ es $2 \times 3$.**
+
+</Solucion>

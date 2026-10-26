@@ -1,0 +1,87 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+a) **(1.25 puntos)** Para estimar la proporción de mujeres matriculadas en carreras STEM en Andalucía, se realiza una encuesta a $2000$ universitarias andaluzas elegidas al azar y se obtiene que $710$ de ellas están matriculadas en carreras STEM. Con un nivel de confianza del $96.5\%$, calcule un intervalo de confianza para estimar la proporción de mujeres matriculadas en carreras STEM en Andalucía.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{710}{2000} = 0.355$.
+
+**Valor crítico.** Para el $96.5\%$, $\frac{\alpha}{2} = 0.0175$ y buscamos $P(Z \le z_{\alpha/2}) = 0.9825$. En la tabla está entre $0.9821$ ($2.10$) y $0.9826$ ($2.11$), más cerca del segundo: $z_{\alpha/2} = 2.11$.
+
+**Intervalo:**
+
+$$
+E = 2.11\sqrt{\frac{0.355 \cdot 0.645}{2000}} \approx 2.11 \cdot 0.0107 \approx 0.0226, \qquad (0.355 - 0.0226,\ 0.355 + 0.0226) = (0.3324,\ 0.3776)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** En otra comunidad autónoma, al seleccionar una muestra de universitarias, se observa que el porcentaje de mujeres matriculadas en carreras STEM es del $37\%$. Con un nivel de confianza del $98\%$, calcule el tamaño mínimo de esa nueva muestra para que el error máximo cometido sea del $1.5\%$.
+
+<Solucion>
+
+Para el $98\%$, $P(Z \le z_{\alpha/2}) = 0.99$, entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$. Con $\hat{p} = 0.37$ y $E \le 0.015$:
+
+$$
+2.33\sqrt{\frac{0.37 \cdot 0.63}{n}} \le 0.015 \;\Rightarrow\; n \ge \frac{2.33^2 \cdot 0.2331}{0.015^2} \approx 5624.34
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **5625 universitarias**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+La cuota mensual de las hipotecas en una ciudad es una variable aleatoria que sigue una distribución Normal de media desconocida y desviación típica igual a $140$ €.
+
+a) **(1 punto)** Se toma una muestra aleatoria de hipotecas en dicha ciudad y se obtiene que el intervalo de confianza al $95\%$ para la media de las cuotas mensuales es $(517.65,\ 551.95)$. Calcule el valor de la media muestral y el tamaño de la muestra elegida.
+
+<Solucion>
+
+**Media muestral.** Es el centro del intervalo:
+
+$$
+\bar{x} = \frac{517.65 + 551.95}{2} = 534.80 \text{ euros}
+$$
+
+**Tamaño.** El error es la mitad de la amplitud, $E = \frac{551.95 - 517.65}{2} = 17.15$. Al $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+1.96 \cdot \frac{140}{\sqrt{n}} = 17.15 \;\Rightarrow\; \sqrt{n} = \frac{274.4}{17.15} = 16 \;\Rightarrow\; n = 256
+$$
+
+**Respuesta.** La media muestral es de **534.80 €** y la muestra tenía **256 hipotecas**.
+
+</Solucion>
+
+b) **(0.5 puntos)** Escogida otra muestra de $78$ hipotecas en esa ciudad y con un nivel de confianza del $97\%$, calcule el error máximo cometido para estimar la cuota mensual media.
+
+<Solucion>
+
+Para el $97\%$, $z_{\alpha/2} = 2.17$ (probabilidad $0.985$ en la tabla):
+
+$$
+E = 2.17 \cdot \frac{140}{\sqrt{78}} \approx 34.40
+$$
+
+El error máximo es de unos **34.40 €**.
+
+</Solucion>
+
+c) **(1 punto)** Si en otra ciudad la cuota mensual de las hipotecas sigue una distribución Normal de media $540$ € y desviación típica de $150$ €, calcule la probabilidad de que la cuota de una hipoteca elegida al azar en dicha ciudad esté comprendida entre $600$ y $700$ euros.
+
+<Solucion>
+
+Con $X \sim N(540, 150)$, tipificamos:
+
+$$
+P(600 < X < 700) = P\left(\frac{60}{150} < Z < \frac{160}{150}\right) \approx P(0.40 < Z < 1.07) = 0.8577 - 0.6554 = 0.2023
+$$
+
+</Solucion>

@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2026, ejercicio 1: región factible de los kilos de
+// orégano (x) y de pimienta (y) que se producen a la semana.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={85}
+  yMax={42}
+  marcasX={[20, 40, 60, 80]}
+  marcasY={[10, 20, 30]}
+  rectas={[
+    { desde: [40, 40], hasta: [60, 0], color: "#b04a3a", etiqueta: "2x + y = 120", en: [44, 37] },
+    { desde: [0, 32], hasta: [80, 0], color: "#7a5b16", etiqueta: "2x + 5y = 160", en: [63, 9] },
+    { desde: [0, 35], hasta: [35, 0], color: "#5b3f8c", etiqueta: "x + y = 35", en: [5, 14] },
+  ]}
+  region={[
+    [35, 0],
+    [60, 0],
+    [55, 10],
+    [5, 30],
+  ]}
+  vertices={[
+    { x: 35, y: 0, texto: "A", dx: -6, dy: -5 },
+    { x: 60, y: 0, texto: "B", dx: 6, dy: -5 },
+    { x: 55, y: 10, texto: "C", dx: 6, dy: -4 },
+    { x: 5, y: 30, texto: "D", dx: 6, dy: -7 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(35, 0), B(60, 0), C(55, 10) y D(5, 30), limitado por el eje OX y las rectas 2x + y = 120, 2x + 5y = 160 y x + y = 35"
+/>

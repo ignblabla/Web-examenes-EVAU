@@ -1,0 +1,52 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionEspecias from "../../../../../components/figuras/RegionEspecias.astro"
+
+**(3 puntos)** Una empresa comercializa dos especias a granel: orégano y pimienta. Para elaborar un kilo de orégano se requieren $2$ horas de secado y $2$ horas de envasado, mientras que para elaborar un kilo de pimienta se requieren $1$ hora de secado y $5$ horas de envasado. La empresa dispone de un horno para secado que funciona $24$ horas al día de lunes a viernes. Para el envasado hay $4$ empleados que trabajan $40$ horas a la semana como máximo cada uno. La empresa tiene el compromiso contractual de producir a la semana al menos $35$ kilogramos contabilizando ambas especias. El precio de venta del orégano es de $50$€ el kilogramo y el de la pimienta es de $70$€ el kilogramo. Sabiendo que el coste de producción de cada kilogramo de orégano y pimienta es de $5$€ y $7$€ respectivamente, ¿cuántos kilogramos de cada especia deben producirse semanalmente para obtener el máximo beneficio? ¿Cuál sería dicho beneficio?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los kilos de orégano e $y$ a los kilos de pimienta que se producen a la semana. El beneficio por kilo es el precio menos el coste: $50 - 5 = 45$ € el orégano y $70 - 7 = 63$ € la pimienta. Hay que maximizar
+
+$$
+F(x, y) = 45x + 63y
+$$
+
+con estas restricciones. El horno funciona $24 \cdot 5 = 120$ horas a la semana y el envasado dispone de $4 \cdot 40 = 160$ horas:
+
+$$
+\begin{cases}
+2x + y \le 120 & \text{(secado)}\\
+2x + 5y \le 160 & \text{(envasado)}\\
+x + y \ge 35 & \text{(producción mínima)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Representación.** Dibujamos las rectas $2x + y = 120$ (pasa por $(60, 0)$ y $(0, 120)$), $2x + 5y = 160$ (pasa por $(80, 0)$ y $(0, 32)$) y $x + y = 35$ (pasa por $(35, 0)$ y $(0, 35)$). El origen cumple las dos primeras desigualdades, así que nos quedamos con los semiplanos que lo contienen. No cumple $x + y \ge 35$, así que de esa recta nos quedamos con el lado contrario. La región factible es el cuadrilátero sombreado:
+
+<RegionEspecias />
+
+**Resolución.** Calculamos los vértices:
+
+- $A(35, 0)$: corte de $x + y = 35$ con el eje $OX$.
+- $B(60, 0)$: corte de $2x + y = 120$ con el eje $OX$.
+- $C$: $2x + y = 120$ y $2x + 5y = 160$. Restando, $4y = 40 \Rightarrow y = 10$, $x = 55$: $C(55, 10)$.
+- $D$: $x + y = 35$ y $2x + 5y = 160$. Con $x = 35 - y$: $70 + 3y = 160 \Rightarrow y = 30$, $x = 5$: $D(5, 30)$.
+
+La región no llega al eje $OY$: con $x = 0$ habría que tener $y \ge 35$ e $y \le 32$ a la vez. Evaluamos el beneficio en los vértices:
+
+- $F(35, 0) = 1575$
+- $F(60, 0) = 2700$
+- $F(55, 10) = 2475 + 630 = 3105$
+- $F(5, 30) = 225 + 1890 = 2115$
+
+**Respuesta.** Deben producirse **55 kg de orégano y 10 kg de pimienta** a la semana, con un **beneficio máximo de 3105 €**.
+
+</Solucion>

@@ -1,0 +1,67 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+**B)** Para estimar en Andalucía la proporción de personas que practican natación como hábito deportivo, se ha seleccionado una muestra de $400$ personas, de las que $106$ practican natación.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Con un nivel de confianza del $98.5\%$, calcule un intervalo de confianza para estimar la proporción de personas que practican natación como hábito deportivo en Andalucía.
+
+</div>
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{106}{400} = 0.265$.
+
+**Valor crítico.** Para $1 - \alpha = 0.985$, $\frac{\alpha}{2} = 0.0075$ y buscamos $P(Z \le z_{\alpha/2}) = 0.9925$. En la tabla aparece en la fila $2.4$ y la columna $0.03$: $z_{\alpha/2} = 2.43$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2} \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.43 \sqrt{\frac{0.265 \cdot 0.735}{400}} = 2.43 \cdot 0.02207 \approx 0.0536
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.265 - 0.0536,\ 0.265 + 0.0536) = (0.2114,\ 0.3186)
+$$
+
+Con una confianza del $98.5\%$, entre el **21.14 %** y el **31.86 %** de las personas practican natación.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** A la vista del intervalo obtenido, razone si se puede admitir que en Andalucía el $4\%$ de las personas practican natación como hábito deportivo.
+
+</div>
+
+<Solucion>
+
+El $4\%$ es una proporción de $0.04$, que **no pertenece** al intervalo $(0.2114,\ 0.3186)$: queda muy por debajo de su extremo inferior. Por tanto, con un nivel de confianza del $98.5\%$, **no se puede admitir** que solo el $4\%$ de los andaluces practique natación.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.75 puntos)** Si mantenemos la misma proporción muestral, ¿cuántas personas, como mínimo, tendrían que formar parte de la muestra seleccionada para que, con un nivel de confianza del $97\%$, el error cometido en la estimación de la proporción poblacional de quienes practican natación como hábito deportivo en Andalucía fuese como máximo del $3\%$?
+
+</div>
+
+<Solucion>
+
+Para $1 - \alpha = 0.97$ buscamos $P(Z \le z_{\alpha/2}) = 0.985$, que está en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$. Queremos $E \le 0.03$ con $\hat{p} = 0.265$:
+
+$$
+2.17 \sqrt{\frac{0.265 \cdot 0.735}{n}} \le 0.03 \;\Rightarrow\; n \ge \left(\frac{2.17}{0.03}\right)^2 \cdot 0.194775 \approx 1019.08
+$$
+
+**Respuesta.** La muestra tendría que tener como mínimo **1020 personas**.
+
+</Solucion>

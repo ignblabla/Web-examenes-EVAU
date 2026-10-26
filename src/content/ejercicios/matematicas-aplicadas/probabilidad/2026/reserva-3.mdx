@@ -1,0 +1,86 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Sean $A$ y $B$ dos sucesos de un mismo espacio muestral que verifican:
+
+<div class="math-sub">
+
+\- La probabilidad de que ocurra el suceso $A$ es $0.5$.<br />
+\- La probabilidad de que ocurra $A$ y no ocurra $B$ es $0.35$.<br />
+\- La probabilidad de que no ocurra ninguno de los dos es $0.35$.
+
+</div>
+
+<Solucion titulo="Planteamiento común">
+
+Los datos son $P(A) = 0.5$, $P(A \cap B^c) = 0.35$ y $P(A^c \cap B^c) = 0.35$.
+
+</Solucion>
+
+<div class="math-sub">
+
+a) **(0.6 puntos)** Calcule la probabilidad de que ocurran los dos sucesos a la vez.
+
+</div>
+
+<Solucion>
+
+$A$ se divide en la parte que está en $B$ y la que no: $P(A) = P(A \cap B) + P(A \cap B^c)$. Por tanto:
+
+$$
+P(A \cap B) = 0.5 - 0.35 = 0.15
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.6 puntos)** Calcule la probabilidad de que ocurra $B$ sabiendo que $A$ no ha ocurrido.
+
+</div>
+
+<Solucion>
+
+Es $P(B/A^c)$. Primero, $P(A^c) = 1 - 0.5 = 0.5$. Dentro de $A^c$, la parte en $B$ es lo que queda al quitar la parte sin $B$: $P(A^c \cap B) = P(A^c) - P(A^c \cap B^c) = 0.5 - 0.35 = 0.15$. Entonces:
+
+$$
+P(B/A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.15}{0.5} = 0.3
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.4 puntos)** Calcule la probabilidad de que ocurra uno y solo uno de los dos.
+
+</div>
+
+<Solucion>
+
+Es que ocurra $A$ sin $B$ o $B$ sin $A$, dos sucesos incompatibles entre sí:
+
+$$
+P(\text{solo uno}) = P(A \cap B^c) + P(A^c \cap B) = 0.35 + 0.15 = 0.5
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.4 puntos)** ¿Son dependientes los sucesos $A$ y $B$? ¿Son incompatibles?
+
+</div>
+
+<Solucion>
+
+Necesitamos $P(B) = P(A \cap B) + P(A^c \cap B) = 0.15 + 0.15 = 0.3$.
+
+- **Independencia.** $P(A) \cdot P(B) = 0.5 \cdot 0.3 = 0.15 = P(A \cap B)$, así que $A$ y $B$ son **independientes**, es decir, **no son dependientes**. Por eso en b) salió $P(B/A^c) = P(B) = 0.3$.
+- **Compatibilidad.** $P(A \cap B) = 0.15 \ne 0$: pueden ocurrir a la vez, así que **no son incompatibles** (son compatibles).
+
+</Solucion>

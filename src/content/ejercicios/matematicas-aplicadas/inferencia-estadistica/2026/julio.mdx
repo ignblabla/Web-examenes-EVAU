@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+**B)** Con el propósito de estudiar el precio medio del litro de gasoil en una provincia andaluza un determinado día, se seleccionan al azar $16$ estaciones de servicio, obteniéndose que el precio medio del litro de gasoil es $1.458$ €. Se sabe que el precio del litro de gasoil en esa provincia sigue una distribución Normal de media desconocida y desviación típica $0.08$ €.
+
+<div class="math-sub">
+
+a) **(1 punto)** Calcule un intervalo con un nivel de confianza del $97.5\%$ para estimar el precio medio del litro de gasoil en dicha provincia. ¿Qué error máximo de estimación se obtiene?
+
+</div>
+
+<Solucion>
+
+**Datos.** El precio $X$ sigue una $N(\mu, 0.08)$. La muestra tiene $n = 16$ estaciones y media $\bar{x} = 1.458$ €.
+
+**Valor crítico.** Para $1 - \alpha = 0.975$, $\alpha = 0.025$ y $\frac{\alpha}{2} = 0.0125$, así que buscamos
+
+$$
+P(Z \le z_{\alpha/2}) = 1 - 0.0125 = 0.9875
+$$
+
+En la tabla, $0.9875$ aparece en la fila $2.2$ y la columna $0.04$: $z_{\alpha/2} = 2.24$.
+
+**Error máximo de estimación:**
+
+$$
+E = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} = 2.24 \cdot \frac{0.08}{\sqrt{16}} = 2.24 \cdot 0.02 = 0.0448 \text{ euros}
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (1.458 - 0.0448,\ 1.458 + 0.0448) = (1.4132,\ 1.5028)
+$$
+
+**Respuesta.** Con una confianza del $97.5\%$, el precio medio del litro de gasoil está entre **1.4132 € y 1.5028 €**. El **error máximo de estimación es 0.0448 €**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1 punto)** Suponiendo que el precio medio del litro de gasoil en esa provincia es de $1.44$ € y considerando muestras aleatorias de $7$ estaciones de servicio, ¿qué distribución de probabilidad sigue la variable aleatoria precio medio muestral del litro de gasoil? ¿Cuál es la probabilidad de que el precio medio muestral del litro de gasoil en esa provincia esté comprendido entre $1.383$ € y $1.4523$ €?
+
+</div>
+
+<Solucion>
+
+**Distribución de la media muestral.** Si la población es normal, $X \sim N(\mu, \sigma)$, la media de las muestras de tamaño $n$ también es normal, con la misma media y desviación típica $\frac{\sigma}{\sqrt{n}}$. Con $\mu = 1.44$, $\sigma = 0.08$ y $n = 7$:
+
+$$
+\bar{X} \sim N\!\left(1.44,\ \frac{0.08}{\sqrt{7}}\right) \approx N(1.44,\ 0.0302)
+$$
+
+**Probabilidad.** Tipificamos con $Z = \dfrac{\bar{X} - 1.44}{0.0302}$, redondeando $z$ a dos decimales para usar la tabla:
+
+$$
+\frac{1.383 - 1.44}{0.0302} \approx -1.89, \qquad \frac{1.4523 - 1.44}{0.0302} \approx 0.41
+$$
+
+$$
+P(1.383 < \bar{X} < 1.4523) = P(-1.89 < Z < 0.41) = P(Z \le 0.41) - P(Z \le -1.89)
+$$
+
+La tabla solo da valores positivos de $z$. Por la simetría de la normal, $P(Z \le -1.89) = 1 - P(Z \le 1.89) = 1 - 0.9706 = 0.0294$. Entonces:
+
+$$
+P(-1.89 < Z < 0.41) = 0.6591 - 0.0294 = 0.6297
+$$
+
+**Respuesta.** La media muestral sigue una **$N(1.44,\ 0.0302)$**, y la probabilidad de que esté entre 1.383 € y 1.4523 € es aproximadamente **0.6297**.
+
+</Solucion>

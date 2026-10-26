@@ -1,0 +1,80 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionProductos from "../../../../../components/figuras/RegionProductos.astro"
+
+Una empresa fabrica dos productos, $P_1$ y $P_2$, a partir de tres recursos productivos: mano de obra, energía y capital. La disponibilidad anual de energía y de capital son $3500$ unidades y $1300$ unidades respectivamente. Para poder optar a una ayuda del gobierno para el fomento del empleo, la empresa va a contratar, al menos, $4200$ horas anuales. Cada unidad de $P_1$ necesita para su fabricación $10$ horas de mano de obra, $10$ unidades de energía y $5$ unidades de capital; siendo el precio de cada unidad de $P_1$ $800$ euros. Cada unidad de $P_2$ necesita para su fabricación $20$ horas de mano de obra y $5$ unidades de energía; vendiéndose a $400$ euros la unidad de $P_2$.
+
+La empresa vende todo lo que produce y quiere maximizar sus ingresos anuales por la venta de los dos productos.
+
+<div class="math-sub">
+
+a) **(2.5 puntos)** ¿Cuántas unidades de cada producto han de fabricarse anualmente para maximizar los ingresos? ¿Cuál es dicho ingreso óptimo?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las unidades de $P_1$ e $y$ a las unidades de $P_2$ que se fabrican al año. Como se vende todo, hay que maximizar los ingresos
+
+$$
+F(x, y) = 800x + 400y
+$$
+
+sujeto a las restricciones:
+
+$$
+\begin{cases}
+10x + 5y \le 3500 \iff 2x + y \le 700 & \text{(energía)}\\
+5x \le 1300 \iff x \le 260 & \text{(capital)}\\
+10x + 20y \ge 4200 \iff x + 2y \ge 420 & \text{(mano de obra, al menos 4200 h)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Dibujamos las rectas $2x + y = 700$ (pasa por $(0, 700)$ y $(350, 0)$), $x = 260$ y $x + 2y = 420$ (pasa por $(0, 210)$ y $(420, 0)$). El origen cumple $2x + y \le 700$ y $x \le 260$, así que esos semiplanos contienen al origen; en cambio, no cumple $x + 2y \ge 420$, así que de esa recta nos quedamos con el lado contrario al origen. Con $x, y \ge 0$, la región factible es el cuadrilátero sombreado:
+
+<RegionProductos />
+
+**Vértices:**
+
+- $A(0, 210)$: corte de $x + 2y = 420$ con el eje $OY$.
+- $B(0, 700)$: corte de $2x + y = 700$ con el eje $OY$.
+- $C$: $x = 260$ y $2x + y = 700$ $\Rightarrow$ $y = 700 - 520 = 180$, $C(260, 180)$.
+- $D$: $x = 260$ y $x + 2y = 420$ $\Rightarrow$ $2y = 160$, $y = 80$, $D(260, 80)$.
+
+**Obtención de los extremos.** La región es un polígono acotado, así que el máximo se alcanza en un vértice o en un lado entero. Evaluamos $F$:
+
+- $F(0, 210) = 84\,000$
+- $F(0, 700) = 280\,000$
+- $F(260, 180) = 208\,000 + 72\,000 = 280\,000$
+- $F(260, 80) = 208\,000 + 32\,000 = 240\,000$
+
+El máximo, $280\,000$ €, se alcanza a la vez en $B$ y en $C$. Eso ocurre porque la función objetivo es paralela a la restricción de energía: $F(x, y) = 800x + 400y = 400(2x + y)$. Por tanto, **todos los puntos del segmento $BC$** dan el mismo ingreso máximo, es decir, los puntos con
+
+$$
+2x + y = 700, \qquad 0 \le x \le 260
+$$
+
+**Respuesta.** El ingreso máximo es de **280 000 €** y hay infinitas soluciones: cualquier producción que gaste toda la energía disponible ($2x + y = 700$) con a lo sumo 260 unidades de $P_1$. Por ejemplo, **260 unidades de $P_1$ y 180 de $P_2$**, o **0 de $P_1$ y 700 de $P_2$**. Como se fabrican unidades enteras, valen las parejas con $x$ entero entre 0 y 260 e $y = 700 - 2x$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.5 puntos)** ¿Es posible alcanzar el máximo elaborando un único producto?
+
+</div>
+
+<Solucion>
+
+**Sí.** El vértice $B(0, 700)$ es una de las soluciones óptimas: fabricando solo **700 unidades de $P_2$** (y ninguna de $P_1$) se obtiene el ingreso máximo de $400 \cdot 700 = 280\,000$ €. Cumple todas las restricciones: gasta exactamente las $3500$ unidades de energía ($5 \cdot 700$), no usa capital y emplea $20 \cdot 700 = 14\,000 \ge 4200$ horas.
+
+En cambio, fabricando solo $P_1$ no se puede: con $y = 0$ habría que cumplir $x \ge 420$ (mano de obra) y $x \le 260$ (capital) a la vez, y eso es imposible.
+
+</Solucion>

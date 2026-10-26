@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2025, ejercicio 4 c): f es una recta hasta x = −2, la
+// parábola x² + 1 entre −2 y 2 y otra recta desde x = 2. Recinto con el eje entre −4 y 4.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x <= -2 ? 10 + 2.5 * x : x < 2 ? x ** 2 + 1 : 10 - 2.5 * x)
+---
+
+<GraficaFuncion
+  xMin={-5.5}
+  xMax={5.5}
+  yMin={-2.5}
+  yMax={7}
+  marcasX={[-2, 2]}
+  marcasY={[2, 4, 6]}
+  tramos={[{ f, desde: -5.5, hasta: 5.5 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: -4, hasta: 4 }}
+  puntos={[
+    { x: -4, y: 0, texto: "(−4, 0)", dx: -6, dy: -6 },
+    { x: -2, y: 5, texto: "(−2, 5)", dx: -6, dy: -4 },
+    { x: 2, y: 5, texto: "(2, 5)", dx: 6, dy: -4 },
+    { x: 4, y: 0, texto: "(4, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: sube en línea recta desde (−4, 0) hasta (−2, 5), sigue la parábola x² + 1 con mínimo en (0, 1) hasta (2, 5) y baja en línea recta hasta (4, 0); el recinto entre la gráfica y el eje X está sombreado"
+/>

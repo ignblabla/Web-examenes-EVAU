@@ -1,0 +1,103 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 2 & m & 0\\ -1 & m & 2\\ 0 & m & 1 \end{pmatrix}, \quad
+B = \begin{pmatrix} 1 & 0 & 2\\ 0 & 1 & 1\\ 1 & 0 & 1 \end{pmatrix}, \quad
+C = \begin{pmatrix} 3\\ 1\\ -1 \end{pmatrix}
+$$
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Calcule los valores de $m$ para que el rango de la matriz $A$ sea $3$.
+
+</div>
+
+<Solucion>
+
+Una matriz cuadrada de orden $3$ tiene rango $3$ si y solo si su determinante es distinto de cero. Desarrollamos por la primera fila:
+
+$$
+|A| = 2 \begin{vmatrix} m & 2\\ m & 1 \end{vmatrix} - m \begin{vmatrix} -1 & 2\\ 0 & 1 \end{vmatrix} + 0 = 2(m - 2m) - m(-1 - 0) = -2m + m = -m
+$$
+
+$|A| = 0 \iff m = 0$.
+
+**Respuesta.** El rango de $A$ es $3$ para **cualquier $m \ne 0$**. Para $m = 0$ la segunda columna es nula y el rango es menor que $3$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1.75 puntos)** Para $m = 1$, resuelva la ecuación matricial $A^t \cdot X - B^2 = 2 \cdot X$.
+
+</div>
+
+<Solucion>
+
+**Despejar $X$.** Pasamos los términos con $X$ a un lado. Como $2X = 2I \cdot X$, podemos sacar $X$ factor común por la derecha:
+
+$$
+A^t X - 2X = B^2 \;\Rightarrow\; (A^t - 2I)\,X = B^2 \;\Rightarrow\; X = (A^t - 2I)^{-1} B^2
+$$
+
+siempre que $M = A^t - 2I$ tenga inversa. Hay que mantener el orden: la inversa multiplica por la izquierda, porque $M$ está a la izquierda de $X$.
+
+**La matriz $M$.** Para $m = 1$:
+
+$$
+A^t = \begin{pmatrix} 2 & -1 & 0\\ 1 & 1 & 1\\ 0 & 2 & 1 \end{pmatrix}, \qquad
+M = A^t - 2I = \begin{pmatrix} 0 & -1 & 0\\ 1 & -1 & 1\\ 0 & 2 & -1 \end{pmatrix}
+$$
+
+**Inversa de $M$.** Desarrollando por la primera fila, $|M| = -(-1)\begin{vmatrix} 1 & 1\\ 0 & -1 \end{vmatrix} = -1 \ne 0$, así que $M$ tiene inversa. Calculamos los adjuntos y la matriz adjunta:
+
+$$
+\text{Adj}(M) = \begin{pmatrix} -1 & 1 & 2\\ -1 & 0 & 0\\ -1 & 0 & 1 \end{pmatrix}
+\;\Rightarrow\;
+M^{-1} = \frac{1}{|M|}\,\big(\text{Adj}(M)\big)^t = -\begin{pmatrix} -1 & -1 & -1\\ 1 & 0 & 0\\ 2 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 & 1\\ -1 & 0 & 0\\ -2 & 0 & -1 \end{pmatrix}
+$$
+
+Se puede comprobar que $M \cdot M^{-1} = I$.
+
+**El producto $B^2$:**
+
+$$
+B^2 = \begin{pmatrix} 1 & 0 & 2\\ 0 & 1 & 1\\ 1 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & 2\\ 0 & 1 & 1\\ 1 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 3 & 0 & 4\\ 1 & 1 & 2\\ 2 & 0 & 3 \end{pmatrix}
+$$
+
+**Resultado:**
+
+$$
+X = M^{-1} B^2 = \begin{pmatrix} 1 & 1 & 1\\ -1 & 0 & 0\\ -2 & 0 & -1 \end{pmatrix}\begin{pmatrix} 3 & 0 & 4\\ 1 & 1 & 2\\ 2 & 0 & 3 \end{pmatrix} = \begin{pmatrix} 6 & 1 & 9\\ -3 & 0 & -4\\ -8 & 0 & -11 \end{pmatrix}
+$$
+
+Comprobación: $M \cdot X$ vuelve a dar $B^2$. Por ejemplo, la primera fila de $M$ es $(0, -1, 0)$, así que la primera fila de $MX$ es la segunda de $X$ cambiada de signo, $(3, 0, 4)$, que es la primera fila de $B^2$.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(0.5 puntos)** ¿Es posible encontrar una matriz $D$ que satisfaga $C^t \cdot A = B \cdot D$?
+
+</div>
+
+<Solucion>
+
+Comparamos las dimensiones de los dos lados:
+
+- $C^t$ es $1 \times 3$ y $A$ es $3 \times 3$, así que $C^t \cdot A$ es una matriz $1 \times 3$: tiene **una fila**.
+- $B$ es $3 \times 3$. Para que $B \cdot D$ exista, $D$ tiene que tener $3$ filas, digamos $3 \times n$, y entonces $B \cdot D$ es $3 \times n$: tiene **tres filas**.
+
+Dos matrices con distinto número de filas nunca pueden ser iguales.
+
+**Respuesta.** **No**: no existe ninguna matriz $D$ que cumpla la igualdad, sea cual sea el valor de $m$.
+
+</Solucion>

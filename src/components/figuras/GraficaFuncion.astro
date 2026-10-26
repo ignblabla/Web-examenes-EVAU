@@ -1,0 +1,183 @@
+---
+// Gráfica de una función (o de varios tramos) con sus asíntotas y puntos destacados.
+// Las coordenadas van en unidades de la función; los desplazamientos de las etiquetas
+// (dx, dy), en píxeles. Lo que se sale de la ventana [xMin, xMax] × [yMin, yMax] se recorta.
+interface Tramo {
+  f: (x: number) => number
+  desde: number
+  hasta: number
+}
+
+interface Asintota {
+  // "v": recta x = valor; "h": recta y = valor.
+  tipo: "v" | "h"
+  valor: number
+  etiqueta: string
+  // Etiqueta de una asíntota vertical arriba en vez de abajo, si abajo pasa la curva.
+  arriba?: boolean
+  // Etiqueta de una asíntota horizontal debajo de la recta en vez de encima.
+  debajo?: boolean
+}
+
+// Recinto sombreado entre dos curvas (o entre una curva y el eje, con abajo = () => 0).
+interface Recinto {
+  arriba: (x: number) => number
+  abajo: (x: number) => number
+  desde: number
+  hasta: number
+}
+
+interface PuntoDestacado {
+  x: number
+  y: number
+  texto?: string
+  dx?: number
+  dy?: number
+}
+
+interface Props {
+  xMin: number
+  xMax: number
+  yMin: number
+  yMax: number
+  marcasX: number[]
+  marcasY: number[]
+  tramos: Tramo[]
+  asintotas?: Asintota[]
+  puntos?: PuntoDestacado[]
+  recinto?: Recinto
+  descripcion: string
+}
+
+const {
+  xMin,
+  xMax,
+  yMin,
+  yMax,
+  marcasX,
+  marcasY,
+  tramos,
+  asintotas = [],
+  puntos = [],
+  recinto,
+  descripcion,
+} = Astro.props
+
+const ancho = 320
+const alto = 220
+const margen = { izquierda: 24, arriba: 14 }
+const px = (x: number) => margen.izquierda + ((x - xMin) / (xMax - xMin)) * ancho
+const py = (y: number) => margen.arriba + ((yMax - y) / (yMax - yMin)) * alto
+const ejeX = py(Math.min(Math.max(0, yMin), yMax))
+const ejeY = px(Math.min(Math.max(0, xMin), xMax))
+
+// Cada tramo se dibuja con 240 puntos; los valores no finitos cortan la línea.
+const curvas = tramos.map(({ f, desde, hasta }) => {
+  let d = ""
+  let nuevo = true
+  for (let i = 0; i <= 240; i++) {
+    const x = desde + ((hasta - desde) * i) / 240
+    const y = f(x)
+    if (!Number.isFinite(y)) {
+      nuevo = true
+      continue
+    }
+    const yRecortada = Math.min(Math.max(y, yMin - 1), yMax + 1)
+    d += `${nuevo ? "M" : "L"}${px(x).toFixed(1)} ${py(yRecortada).toFixed(1)}`
+    nuevo = false
+  }
+  return d
+})
+
+// El recinto se recorre por la curva de arriba de izquierda a derecha y vuelve por la de abajo.
+const sombra =
+  recinto &&
+  (() => {
+    const xs = Array.from(
+      { length: 121 },
+      (_, i) => recinto.desde + ((recinto.hasta - recinto.desde) * i) / 120,
+    )
+    const ida = xs.map((x) => `${px(x).toFixed(1)},${py(recinto.arriba(x)).toFixed(1)}`)
+    const vuelta = [...xs].reverse().map((x) => `${px(x).toFixed(1)},${py(recinto.abajo(x)).toFixed(1)}`)
+    return [...ida, ...vuelta].join(" ")
+  })()
+
+const id = `recorte-${Math.round(Math.random() * 1e9)}`
+---
+
+<figure class="solution-figure">
+  <svg viewBox={`0 0 ${ancho + margen.izquierda + 24} ${alto + margen.arriba + 22}`} role="img" aria-label={descripcion}>
+    <defs>
+      <clipPath id={id}>
+        <rect x={px(xMin)} y={py(yMax)} width={ancho} height={alto} />
+      </clipPath>
+    </defs>
+
+    {sombra && <polygon points={sombra} fill="rgba(25, 92, 81, 0.18)" />}
+
+    <g fill="none" stroke="#111" stroke-width="1">
+      <path d={`M${px(xMin)} ${ejeX}H${px(xMax) + 6}M${px(xMax) + 1} ${ejeX - 3}l5 3-5 3`} />
+      <path d={`M${ejeY} ${py(yMin)}V${py(yMax) - 6}M${ejeY - 3} ${py(yMax) - 1}l3-5 3 5`} />
+      {marcasX.map((m) => <path d={`M${px(m)} ${ejeX - 3}v6`} />)}
+      {marcasY.map((m) => <path d={`M${ejeY - 3} ${py(m)}h6`} />)}
+    </g>
+
+    <g fill="none" stroke="#b04a3a" stroke-width="1.2" stroke-dasharray="5 4">
+      {
+        asintotas.map((a) =>
+          a.tipo === "v" ? (
+            <path d={`M${px(a.valor)} ${py(yMin)}V${py(yMax)}`} />
+          ) : (
+            <path d={`M${px(xMin)} ${py(a.valor)}H${px(xMax)}`} />
+          ),
+        )
+      }
+    </g>
+
+    <g clip-path={`url(#${id})`} fill="none" stroke="#195c51" stroke-width="2.2">
+      {curvas.map((d) => <path d={d} />)}
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      {marcasX.map((m) => <text x={px(m)} y={ejeX + 14} text-anchor="middle">{m}</text>)}
+      {marcasY.map((m) => <text x={ejeY - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
+      <text x={px(xMax) + 6} y={ejeX - 6} text-anchor="end" font-style="italic">x</text>
+      <text x={ejeY + 7} y={py(yMax) + 2} font-style="italic">y</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#b04a3a">
+      {
+        asintotas.map((a) =>
+          a.tipo === "v" ? (
+            <text x={px(a.valor) + 4} y={a.arriba ? py(yMax) + 10 : py(yMin) - 6}>
+              {a.etiqueta}
+            </text>
+          ) : (
+            <text x={px(xMax) - 2} y={py(a.valor) + (a.debajo ? 12 : -4)} text-anchor="end">
+              {a.etiqueta}
+            </text>
+          ),
+        )
+      }
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#195c51">
+      {
+        puntos.map((p) => (
+          <>
+            <circle cx={px(p.x)} cy={py(p.y)} r="3" />
+            {p.texto && (
+              <text
+                x={px(p.x) + (p.dx ?? 0)}
+                y={py(p.y) + (p.dy ?? -8)}
+                text-anchor={(p.dx ?? 0) < 0 ? "end" : (p.dx ?? 0) === 0 ? "middle" : "start"}
+              >
+                {p.texto}
+              </text>
+            )}
+          </>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2026, ejercicio 1 B): región factible de
+// 4x + 2y ≥ 5, 2x + 5y ≤ 9, x + y ≤ 3, y ≥ 0. El mínimo de 2x + y está en todo el lado AD.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={3.5}
+  yMax={2.5}
+  marcasX={[1, 2, 3]}
+  marcasY={[1, 2]}
+  rectas={[
+    { desde: [0, 2.5], hasta: [1.25, 0], color: "#5b3f8c", etiqueta: "4x + 2y = 5", en: [0.12, 0.45] },
+    { desde: [0, 1.8], hasta: [3.4, 0.44], color: "#7a5b16", etiqueta: "2x + 5y = 9", en: [2.45, 1.1] },
+    { desde: [0.5, 2.5], hasta: [3, 0], color: "#b04a3a", etiqueta: "x + y = 3", en: [1.05, 2.15] },
+  ]}
+  region={[
+    [1.25, 0],
+    [3, 0],
+    [2, 1],
+    [0.4375, 1.625],
+  ]}
+  vertices={[
+    { x: 1.25, y: 0, texto: "A", dx: -6, dy: -5 },
+    { x: 3, y: 0, texto: "B", dx: 6, dy: -5 },
+    { x: 2, y: 1, texto: "C", dx: 6, dy: -4 },
+    { x: 0.4375, y: 1.625, texto: "D", dx: -6, dy: -4 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(5/4, 0), B(3, 0), C(2, 1) y D(7/16, 13/8), limitado por el eje OX y las rectas 4x + 2y = 5, 2x + 5y = 9 y x + y = 3"
+/>

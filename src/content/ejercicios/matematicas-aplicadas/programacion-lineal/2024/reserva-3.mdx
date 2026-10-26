@@ -1,0 +1,51 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionEquipos from "../../../../../components/figuras/RegionEquipos.astro"
+
+**(2.5 puntos)** Para un proyecto de software libre se dispone de $150$ desarrolladores de Javascript y $120$ de Python. Es necesario formar equipos de trabajo de dos tipos. El primer tipo estará compuesto por $2$ desarrolladores de Javascript y $3$ de Python, y el segundo tipo por $6$ de Javascript y $4$ de Python. Se requieren al menos $6$ equipos del segundo tipo. Determine cuántos equipos de cada tipo se podrán formar para obtener el mayor número de equipos posible. En tal caso, ¿cuántos desarrolladores de Javascript y Python se utilizarán?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los equipos del primer tipo e $y$ a los del segundo. Hay que maximizar el número de equipos
+
+$$
+F(x, y) = x + y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+2x + 6y \le 150 \iff x + 3y \le 75 & \text{(Javascript)}\\
+3x + 4y \le 120 & \text{(Python)}\\
+y \ge 6 & \text{(mínimo del segundo tipo)}\\
+x \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda por encima de $y = 6$, a la derecha del eje $OY$ y por debajo de las rectas de Javascript y Python:
+
+<RegionEquipos />
+
+**Vértices:**
+
+- $A(0, 6)$ y $D(0, 25)$: la recta $y = 6$ y la de Javascript con el eje $OY$. La de Python corta el eje más arriba, en $(0, 30)$.
+- $B$: $y = 6$ y $3x + 4y = 120$ $\Rightarrow$ $3x = 96$, $B(32, 6)$.
+- $C$: $x + 3y = 75$ y $3x + 4y = 120$. Con $x = 75 - 3y$: $225 - 5y = 120 \Rightarrow y = 21$, $x = 12$: $C(12, 21)$.
+
+**Resolución.**
+
+- $F(0, 6) = 6$
+- $F(32, 6) = 38$
+- $F(12, 21) = 33$
+- $F(0, 25) = 25$
+
+**Respuesta.** Se forman **32 equipos del primer tipo y 6 del segundo**, en total **38 equipos**. Se utilizan $2 \cdot 32 + 6 \cdot 6 =$ **100 desarrolladores de Javascript** (sobran 50) y $3 \cdot 32 + 4 \cdot 6 =$ **120 de Python** (todos).
+
+</Solucion>

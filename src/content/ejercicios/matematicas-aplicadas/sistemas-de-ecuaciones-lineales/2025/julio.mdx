@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-aplicadas
+tema: sistemas-de-ecuaciones-lineales
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+a) **(1.75 puntos)** Un fabricante de paneles fotovoltaicos está analizando la eficiencia de tres modelos de placas (A, B y C). En un día determinado se realizaron tres pruebas. En la primera, utilizando $2$ placas del modelo A, $1$ placa del modelo B y $3$ placas del modelo C, se generó una potencia efectiva total de $2960W$. En la segunda, al combinar $1$ placa del modelo A, $3$ placas del modelo B y $2$ placas del modelo C, se obtuvo una potencia efectiva total de $2990W$. En la tercera, una configuración con $3$ placas del modelo A, $2$ placas del modelo B y $1$ placa del modelo C produjo una potencia efectiva total de $2870W$. Exprese el problema en forma matricial y discuta, a partir de la matriz del sistema, si se puede obtener la potencia efectiva que generó individualmente cada modelo de placa fotovoltaica. En caso afirmativo, obtenga dichas potencias efectivas.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$, $y$, $z$ a la potencia efectiva (en W) de una placa de los modelos A, B y C. Cada prueba da una ecuación, y en forma matricial $M \cdot X = P$:
+
+$$
+\begin{pmatrix} 2 & 1 & 3\\ 1 & 3 & 2\\ 3 & 2 & 1 \end{pmatrix}\begin{pmatrix} x\\ y\\ z \end{pmatrix} = \begin{pmatrix} 2960\\ 2990\\ 2870 \end{pmatrix}
+$$
+
+**Discusión.** El determinante de la matriz del sistema es
+
+$$
+|M| = 2(3 - 4) - 1(1 - 6) + 3(2 - 9) = -2 + 5 - 21 = -18 \ne 0
+$$
+
+Así que $M$ tiene inversa y el sistema tiene **solución única** (es compatible determinado): **sí** se puede obtener la potencia de cada modelo, y es $X = M^{-1} P$.
+
+**Resolución.** La matriz adjunta de $M$ (que en este caso coincide con su traspuesta, porque $M$ es simétrica) da la inversa:
+
+$$
+M^{-1} = \frac{1}{|M|}\,\big(\text{Adj}(M)\big)^t = -\frac{1}{18}\begin{pmatrix} -1 & 5 & -7\\ 5 & -7 & -1\\ -7 & -1 & 5 \end{pmatrix}
+$$
+
+$$
+X = M^{-1} P = -\frac{1}{18}\begin{pmatrix} -2960 + 14\,950 - 20\,090\\ 14\,800 - 20\,930 - 2870\\ -20\,720 - 2990 + 14\,350 \end{pmatrix} = -\frac{1}{18}\begin{pmatrix} -8100\\ -9000\\ -9360 \end{pmatrix} = \begin{pmatrix} 450\\ 500\\ 520 \end{pmatrix}
+$$
+
+**Respuesta.** Cada placa del modelo **A genera 450 W**, la del **B, 500 W** y la del **C, 520 W**. Comprobación en la primera prueba: $2 \cdot 450 + 500 + 3 \cdot 520 = 2960$ W.
+
+</Solucion>

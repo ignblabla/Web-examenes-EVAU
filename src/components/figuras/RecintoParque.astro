@@ -1,0 +1,28 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2024, ejercicio 3 a): recinto entre la parábola
+// f(x) = −x² + 6x (arriba) y g(x) = x²/5 (abajo), entre x = 0 y x = 5.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => -(x ** 2) + 6 * x
+const g = (x: number) => x ** 2 / 5
+---
+
+<GraficaFuncion
+  xMin={-1}
+  xMax={7}
+  yMin={-2}
+  yMax={11}
+  marcasX={[1, 2, 3, 4, 5, 6]}
+  marcasY={[2, 4, 6, 8, 10]}
+  tramos={[
+    { f, desde: -0.3, hasta: 6.3 },
+    { f: g, desde: -1, hasta: 7 },
+  ]}
+  recinto={{ arriba: f, abajo: g, desde: 0, hasta: 5 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: -6, dy: 14 },
+    { x: 3, y: 9, texto: "f", dx: 0, dy: -9 },
+    { x: 5, y: 5, texto: "(5, 5)", dx: 8, dy: 0 },
+  ]}
+  descripcion="Recinto sombreado entre la parábola f(x) = −x² + 6x, que queda por encima con vértice en (3, 9), y la parábola g(x) = x²/5, entre los puntos de corte (0, 0) y (5, 5)"
+/>

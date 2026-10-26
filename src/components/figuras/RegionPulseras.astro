@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2024, ejercicio 2: región factible de las pulseras de tipo A (x)
+// y de tipo B (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={30}
+  yMax={42}
+  marcasX={[10, 20]}
+  marcasY={[10, 20, 30, 40]}
+  rectas={[
+    { desde: [0, 25], hasta: [30, 10], color: "#7a5b16", etiqueta: "x + 2y = 50", en: [21, 17] },
+    { desde: [1, 38], hasta: [20, 0], color: "#b04a3a", etiqueta: "2x + y = 40", en: [4, 37] },
+    { desde: [0, 25], hasta: [30, 25], color: "#2f6fa3", etiqueta: "y = 25", en: [24, 26.5] },
+  ]}
+  region={[
+    [0, 0],
+    [20, 0],
+    [10, 20],
+    [0, 25],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -5, dy: 13 },
+    { x: 20, y: 0, texto: "A", dx: 6, dy: -5 },
+    { x: 10, y: 20, texto: "B", dx: 6, dy: -6 },
+    { x: 0, y: 25, texto: "C", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices O(0, 0), A(20, 0), B(10, 20) y C(0, 25), limitado por los ejes y las rectas 2x + y = 40 y x + 2y = 50; la recta y = 25 solo toca la región en C"
+/>

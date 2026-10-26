@@ -1,0 +1,24 @@
+---
+// Matemáticas aplicadas, julio de 2025, ejercicio 3 d): capital de Trinidad, una recta entre
+// t = 0 y t = 1 y una exponencial después. El eje vertical empieza en 4800 €.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.5}
+  xMax={8}
+  yMin={4800}
+  yMax={7600}
+  marcasX={[1, 2, 3, 4, 5, 6, 7]}
+  marcasY={[5000, 5500, 6000, 6500, 7000, 7500]}
+  tramos={[
+    { f: (t) => 5000 * (1 + 0.05 * t), desde: 0, hasta: 1 },
+    { f: (t) => 5000 * 1.05 ** t, desde: 1, hasta: 8 },
+  ]}
+  puntos={[
+    { x: 0, y: 5000, texto: "(0, 5000)", dx: 6, dy: 12 },
+    { x: 1, y: 5250, texto: "(1, 5250)", dx: 6, dy: 12 },
+    { x: 3.5, y: 5931.1, texto: "(3.5, 5931.10)", dx: -6, dy: -6 },
+  ]}
+  descripcion="Gráfica del capital: sube en línea recta de 5000 a 5250 euros durante el primer año y después crece de forma exponencial, cada vez más deprisa"
+/>

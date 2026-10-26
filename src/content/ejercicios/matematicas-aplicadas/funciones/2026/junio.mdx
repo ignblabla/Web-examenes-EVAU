@@ -1,0 +1,158 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+import FuncionTramos from "../../../../../components/figuras/FuncionTramos.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+\dfrac{x^2}{20} & \text{si } 0 \le x < 20\\[6pt]
+a + bx & \text{si } 20 \le x < 50\\[6pt]
+36 - \dfrac{x^2}{100} & \text{si } 50 \le x \le 60
+\end{cases}
+$$
+
+siendo $a$ y $b$ números reales.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Determine los valores de $a$ y $b$ para que la función $f$ sea continua en todo su dominio.
+
+</div>
+
+<Solucion>
+
+Cada tramo es un polinomio, así que $f$ es continua dentro de cada intervalo. Solo hay que estudiar los puntos donde cambia la expresión, $x = 20$ y $x = 50$: en cada uno, los límites laterales tienen que coincidir con el valor de la función.
+
+**En $x = 20$:**
+
+$$
+\lim_{x \to 20^-} f(x) = \frac{20^2}{20} = 20, \qquad \lim_{x \to 20^+} f(x) = f(20) = a + 20b
+$$
+
+**En $x = 50$:**
+
+$$
+\lim_{x \to 50^-} f(x) = a + 50b, \qquad \lim_{x \to 50^+} f(x) = f(50) = 36 - \frac{50^2}{100} = 36 - 25 = 11
+$$
+
+Igualando, obtenemos el sistema
+
+$$
+\begin{cases}
+a + 20b = 20\\
+a + 50b = 11
+\end{cases}
+$$
+
+Restando la primera ecuación a la segunda: $30b = -9 \Rightarrow b = -\dfrac{3}{10}$. Entonces $a = 20 - 20b = 20 + 6 = 26$.
+
+**Respuesta.** $f$ es continua en todo su dominio para **$a = 26$ y $b = -\dfrac{3}{10}$**, justo los valores que se usan en el apartado b).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = 26$ y $b = -\dfrac{3}{10}$:
+
+</div>
+
+<div class="math-sub-2">
+
+i) **(0.75 puntos)** Calcule los extremos relativos de $f$.
+
+</div>
+
+<Solucion>
+
+Con estos valores la función queda $f(x) = 26 - \dfrac{3x}{10}$ en el tramo central y, por el apartado a), es continua en $[0, 60]$. Derivamos cada tramo:
+
+$$
+f'(x) = \begin{cases}
+\dfrac{x}{10} & \text{si } 0 < x < 20\\[6pt]
+-\dfrac{3}{10} & \text{si } 20 < x < 50\\[6pt]
+-\dfrac{x}{50} & \text{si } 50 < x < 60
+\end{cases}
+$$
+
+En $x = 20$ las derivadas laterales son $\frac{20}{10} = 2$ y $-\frac{3}{10}$, distintas, así que $f$ no es derivable ahí. En $x = 50$ tampoco: $-\frac{3}{10}$ por la izquierda y $-\frac{50}{50} = -1$ por la derecha. La derivada no se anula en ningún punto interior de los tramos ($\frac{x}{10} = 0$ y $-\frac{x}{50} = 0$ solo para $x = 0$, que no está en esos intervalos abiertos).
+
+**Monotonía:**
+
+- En $(0, 20)$, $f'(x) = \frac{x}{10} > 0$: $f$ es **creciente**.
+- En $(20, 50)$, $f'(x) = -\frac{3}{10} < 0$: $f$ es **decreciente**.
+- En $(50, 60)$, $f'(x) = -\frac{x}{50} < 0$: $f$ es **decreciente**.
+
+**Extremos relativos:**
+
+- En $x = 20$ la función es continua y pasa de crecer a decrecer: hay un **máximo relativo en $(20, 20)$**, aunque $f$ no sea derivable en ese punto.
+- En $x = 50$ la función decrece a ambos lados, así que no hay extremo.
+- El dominio es el intervalo cerrado $[0, 60]$, así que también hay que mirar sus extremos. $f(0) = 0$ y $f$ crece a la derecha de $0$: **mínimo relativo en $(0, 0)$**. $f(60) = 36 - \frac{3600}{100} = 0$ y $f$ decrece hasta llegar a $60$: **mínimo relativo en $(60, 0)$**.
+
+**Respuesta.** Máximo relativo en $(20, 20)$ y mínimos relativos en $(0, 0)$ y $(60, 0)$.
+
+</Solucion>
+
+<div class="math-sub-2">
+
+ii) **(0.5 puntos)** Represente gráficamente $f$.
+
+</div>
+
+<Solucion>
+
+Con lo calculado en i) y unos pocos valores más, dibujamos cada tramo:
+
+- En $[0, 20)$, la parábola $y = \frac{x^2}{20}$, convexa ($f''(x) = \frac{1}{10} > 0$): pasa por $(0, 0)$, $(10, 5)$ y llega a $(20, 20)$.
+- En $[20, 50)$, el segmento de recta $y = 26 - \frac{3x}{10}$, de $(20, 20)$ a $(50, 11)$.
+- En $[50, 60]$, la parábola $y = 36 - \frac{x^2}{100}$, cóncava ($f''(x) = -\frac{1}{50} < 0$): pasa por $(50, 11)$, $(55;\ 5.75)$ y termina en $(60, 0)$.
+
+<FuncionTramos />
+
+</Solucion>
+
+<div class="math-sub-2">
+
+iii) **(1 punto)** Calcule el área del recinto acotado limitado por el eje $OX$ y la gráfica de la función $f$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La gráfica solo toca el eje $OX$ en $x = 0$ y $x = 60$, y entre esos puntos $f(x) > 0$ (como se ve en la gráfica: el mínimo de $f$ en $[0, 60]$ es $0$). Por tanto, el recinto es el que queda entre la gráfica y el eje en $[0, 60]$, y su área es la integral de $f$, dividida en los tres tramos:
+
+$$
+A = \int_0^{20} \frac{x^2}{20}\,dx + \int_{20}^{50} \left(26 - \frac{3x}{10}\right) dx + \int_{50}^{60} \left(36 - \frac{x^2}{100}\right) dx
+$$
+
+**Cálculos.** Con la regla de Barrow:
+
+$$
+\int_0^{20} \frac{x^2}{20}\,dx = \left[\frac{x^3}{60}\right]_0^{20} = \frac{8000}{60} = \frac{400}{3}
+$$
+
+$$
+\int_{20}^{50} \left(26 - \frac{3x}{10}\right) dx = \left[26x - \frac{3x^2}{20}\right]_{20}^{50} = (1300 - 375) - (520 - 60) = 925 - 460 = 465
+$$
+
+$$
+\int_{50}^{60} \left(36 - \frac{x^2}{100}\right) dx = \left[36x - \frac{x^3}{300}\right]_{50}^{60} = (2160 - 720) - \left(1800 - \frac{1250}{3}\right) = 1440 - \frac{4150}{3} = \frac{170}{3}
+$$
+
+Sumando:
+
+$$
+A = \frac{400}{3} + 465 + \frac{170}{3} = \frac{570}{3} + 465 = 190 + 465 = 655
+$$
+
+El tramo central es un trapecio de bases $20$ y $11$ y altura $30$: $\frac{20 + 11}{2} \cdot 30 = 465$, lo que confirma la segunda integral.
+
+**Respuesta.** El área del recinto es **655 unidades cuadradas**.
+
+</Solucion>

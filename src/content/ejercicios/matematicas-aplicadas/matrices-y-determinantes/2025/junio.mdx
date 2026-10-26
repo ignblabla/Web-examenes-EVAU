@@ -1,0 +1,56 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+a) **(1.75 puntos)** Plantee y resuelva el siguiente problema de forma matricial:
+
+El gerente de una empresa de productos hospitalarios desea introducir un nuevo producto en el mercado nacional. Para ello contrata a $3$ vendedores que se han encargado de las zonas A, B y C del país, respectivamente. El vendedor de la zona A ha trabajado $40$ horas, ha realizado $10$ demostraciones y $5$ viajes para dicha promoción. El vendedor de la zona $B$ ha trabajado el doble de horas que el de la zona A, realizando $15$ demostraciones y $8$ viajes. En cuanto al vendedor de la zona C, ha trabajado $100$ horas, ha realizado $25$ demostraciones y $10$ viajes. El gerente debe abonarles $75$€ por hora trabajada, $300$€ por demostración y $250$€ por viaje realizado. Teniendo en cuenta que, además, debe aplicárseles una retención en concepto del impuesto del IRPF del $15\%$ si la cantidad a abonar al vendedor es menor de diez mil euros y del $18\%$ en caso contrario, determine la cantidad final que cobrará cada vendedor.
+
+<Solucion>
+
+**Matrices del planteamiento.** Ponemos en una matriz $M$ el trabajo de cada vendedor: una fila por zona y una columna por concepto (horas, demostraciones y viajes). El vendedor B trabajó $2 \cdot 40 = 80$ horas. En una matriz columna $P$ ponemos lo que se paga por cada concepto:
+
+$$
+M = \begin{pmatrix} 40 & 10 & 5\\ 80 & 15 & 8\\ 100 & 25 & 10 \end{pmatrix} \begin{matrix} \leftarrow \text{A}\\ \leftarrow \text{B}\\ \leftarrow \text{C} \end{matrix}, \qquad
+P = \begin{pmatrix} 75\\ 300\\ 250 \end{pmatrix} \begin{matrix} \leftarrow \text{euros/hora}\\ \leftarrow \text{euros/demostración}\\ \leftarrow \text{euros/viaje} \end{matrix}
+$$
+
+**Cantidad bruta.** El producto $M \cdot P$ da lo que hay que abonar a cada vendedor antes de la retención:
+
+$$
+M \cdot P = \begin{pmatrix} 40 \cdot 75 + 10 \cdot 300 + 5 \cdot 250\\ 80 \cdot 75 + 15 \cdot 300 + 8 \cdot 250\\ 100 \cdot 75 + 25 \cdot 300 + 10 \cdot 250 \end{pmatrix} = \begin{pmatrix} 7250\\ 12\,500\\ 17\,500 \end{pmatrix}
+$$
+
+**Retención.** A cobra menos de 10 000 €, así que se le retiene el $15\%$ y cobra el $85\%$. A B y a C se les retiene el $18\%$ y cobran el $82\%$. Lo expresamos con una matriz diagonal $R$:
+
+$$
+R \cdot (M \cdot P) = \begin{pmatrix} 0.85 & 0 & 0\\ 0 & 0.82 & 0\\ 0 & 0 & 0.82 \end{pmatrix}\begin{pmatrix} 7250\\ 12\,500\\ 17\,500 \end{pmatrix} = \begin{pmatrix} 6162.5\\ 10\,250\\ 14\,350 \end{pmatrix}
+$$
+
+**Matriz solución.** El vendedor de la zona **A cobrará 6162.50 €**, el de la zona **B, 10 250 €** y el de la zona **C, 14 350 €**.
+
+</Solucion>
+
+b) **(0.75 puntos)** Sea $A = \begin{pmatrix} -2 & 2 & 1\\ 3 & a - 1 & 2\\ 4 & 0 & 3 \end{pmatrix}$ ¿Para qué valores de $a$ es la matriz $A$ invertible?
+
+<Solucion>
+
+Una matriz cuadrada es invertible si y solo si su determinante no es cero. Desarrollamos por la tercera fila, que tiene un cero:
+
+$$
+|A| = 4 \begin{vmatrix} 2 & 1\\ a - 1 & 2 \end{vmatrix} + 3 \begin{vmatrix} -2 & 2\\ 3 & a - 1 \end{vmatrix} = 4\big(4 - (a - 1)\big) + 3\big(-2(a - 1) - 6\big)
+$$
+
+$$
+= 4(5 - a) + 3(-2a - 4) = 20 - 4a - 6a - 12 = 8 - 10a
+$$
+
+$|A| = 0 \iff a = \frac{8}{10} = 0.8$.
+
+**Respuesta.** $A$ es invertible para **todo $a \ne 0.8$** (es decir, $a \ne \frac{4}{5}$).
+
+</Solucion>

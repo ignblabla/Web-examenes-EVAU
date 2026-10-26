@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-aplicadas
+tema: sistemas-de-ecuaciones-lineales
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+a) **(1.75 puntos)** En un festival gastronómico gaditano se han vendido entradas para tres eventos culinarios. Concretamente, $120$ entradas para un taller de repostería, $50$ para una demostración de cocina gourmet y $150$ para una cata de vinos de la tierra de Cádiz. El total recaudado por la venta de entradas ha sido de $6460$€. Se sabe que el precio de $10$ entradas para el taller de repostería coincide con el coste de la suma de $2$ entradas para la cata de vinos y $1$ entrada para la demostración de cocina gourmet. Además, el coste de $2$ entradas para el taller y $1$ entrada para la cata de vinos supera en $6$€ al de $2$ entradas para la demostración de cocina gourmet. ¿Cuánto cuesta la entrada de cada evento?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$, $y$, $z$ al precio en euros de la entrada del taller, de la demostración gourmet y de la cata. Cada dato da una ecuación:
+
+$$
+\begin{cases}
+120x + 50y + 150z = 6460\\
+10x = 2z + y\\
+2x + z = 2y + 6
+\end{cases}
+$$
+
+**Resolución.** Despejamos $y$ en la segunda ecuación, $y = 10x - 2z$, y lo llevamos a la tercera:
+
+$$
+2x + z = 2(10x - 2z) + 6 \;\Rightarrow\; 5z = 18x + 6 \;\Rightarrow\; z = \frac{18x + 6}{5}
+$$
+
+Entonces $y = 10x - 2 \cdot \frac{18x + 6}{5} = \frac{14x - 12}{5}$. Sustituyendo $y$ y $z$ en la primera ecuación:
+
+$$
+120x + 50 \cdot \frac{14x - 12}{5} + 150 \cdot \frac{18x + 6}{5} = 6460 \;\Rightarrow\; 120x + 140x - 120 + 540x + 180 = 6460 \;\Rightarrow\; 800x = 6400
+$$
+
+Así que $x = 8$, $z = \frac{144 + 6}{5} = 30$ e $y = \frac{112 - 12}{5} = 20$.
+
+**Respuesta.** La entrada del **taller de repostería cuesta 8 €**, la de la **demostración gourmet, 20 €** y la de la **cata de vinos, 30 €**. Comprobación: $120 \cdot 8 + 50 \cdot 20 + 150 \cdot 30 = 960 + 1000 + 4500 = 6460$ €.
+
+</Solucion>

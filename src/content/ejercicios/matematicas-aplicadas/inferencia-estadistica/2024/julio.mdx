@@ -1,0 +1,83 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+La altura de un cierto tipo de plantas de maíz sigue una distribución Normal de media $145\ cm$ y desviación típica $22\ cm$.
+
+a) **(1 punto)** ¿Qué porcentaje de plantas tiene una altura comprendida entre $135\ cm$ y $155\ cm$?
+
+<Solucion>
+
+Con $X \sim N(145, 22)$, tipificamos. El intervalo es simétrico respecto a la media:
+
+$$
+P(135 < X < 155) = P\left(-\frac{10}{22} < Z < \frac{10}{22}\right) \approx P(-0.45 < Z < 0.45) = 2 \cdot 0.6736 - 1 = 0.3472
+$$
+
+**Respuesta.** Aproximadamente el **34.72 %** de las plantas.
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Qué altura, como mínimo, debe tener una planta para estar entre el $50\%$ de las más altas?
+
+<Solucion>
+
+La normal es simétrica respecto a su media, así que la mitad de las plantas mide más de $145$ cm: $P(X \ge 145) = 0.5$.
+
+**Respuesta.** Debe medir como mínimo **145 cm**, la media.
+
+</Solucion>
+
+c) **(1 punto)** Se selecciona una muestra aleatoria de $16$ plantas. Halle la probabilidad de que la altura media de las plantas de esta muestra esté comprendida entre $140\ cm$ y $151\ cm$.
+
+<Solucion>
+
+La media de muestras de tamaño $16$ de una población normal sigue una $N\left(145,\ \frac{22}{\sqrt{16}}\right) = N(145,\ 5.5)$. Tipificando:
+
+$$
+P(140 < \bar{X} < 151) = P\left(\frac{-5}{5.5} < Z < \frac{6}{5.5}\right) \approx P(-0.91 < Z < 1.09)
+$$
+
+$$
+= P(Z < 1.09) - \big(1 - P(Z < 0.91)\big) = 0.8621 - (1 - 0.8186) = 0.6807
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se desea estimar la proporción de personas que viajan en tren con su mascota. Para ello, se selecciona una muestra aleatoria de $300$ viajeros, obteniéndose que $12$ de ellos viajan con su mascota.
+
+a) **(1.25 puntos)** Obtenga un intervalo, con un nivel de confianza del $97\%$, para estimar la proporción de personas que viajan en tren con su mascota.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{12}{300} = 0.04$. Para el $97\%$, $z_{\alpha/2} = 2.17$ (fila $2.1$, columna $0.07$ de la tabla, con probabilidad $0.985$):
+
+$$
+E = 2.17\sqrt{\frac{0.04 \cdot 0.96}{300}} \approx 2.17 \cdot 0.0113 \approx 0.0246
+$$
+
+$$
+(0.04 - 0.0246,\ 0.04 + 0.0246) = (0.0154,\ 0.0646)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Manteniendo la misma proporción muestral y con un nivel de confianza del $95\%$, ¿cuántas personas que viajan en tren deberán seleccionarse aleatoriamente como mínimo para que la proporción muestral difiera de la proporción poblacional a lo sumo en un $2\%$?
+
+<Solucion>
+
+Queremos $E \le 0.02$ con $z_{\alpha/2} = 1.96$:
+
+$$
+1.96\sqrt{\frac{0.04 \cdot 0.96}{n}} \le 0.02 \;\Rightarrow\; n \ge \frac{1.96^2 \cdot 0.0384}{0.02^2} \approx 368.79
+$$
+
+**Respuesta.** Como mínimo, **369 viajeros**.
+
+</Solucion>

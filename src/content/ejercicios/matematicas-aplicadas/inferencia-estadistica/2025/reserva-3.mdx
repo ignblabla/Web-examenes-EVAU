@@ -1,0 +1,82 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Una industria conservera envasa latas de anchoas cuyo peso en gramos sigue una distribución Normal con media poblacional desconocida y desviación típica $1\ g$. Para estimar la media poblacional, se selecciona al azar una muestra de $30$ latas que dan un peso total de $2404.5\ g$.
+
+a) **(1 punto)** Determine un intervalo de confianza, con un nivel de confianza del $99\%$, para estimar el peso medio de las latas envasadas por la conservera.
+
+<Solucion>
+
+**Media muestral:** $\bar{x} = \frac{2404.5}{30} = 80.15$ g.
+
+**Valor crítico.** Para el $99\%$, $P(Z \le z_{\alpha/2}) = 0.995$, entre $0.9949$ ($2.57$) y $0.9951$ ($2.58$): tomamos $z_{\alpha/2} = 2.575$.
+
+**Intervalo:**
+
+$$
+E = 2.575 \cdot \frac{1}{\sqrt{30}} \approx 0.470, \qquad (80.15 - 0.470,\ 80.15 + 0.470) = (79.68,\ 80.62)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule el tamaño mínimo de una nueva muestra para que, manteniendo el mismo nivel de confianza, el error máximo de estimación de la media poblacional sea menor que $0.3\ g$.
+
+<Solucion>
+
+$$
+2.575 \cdot \frac{1}{\sqrt{n}} < 0.3 \;\Rightarrow\; \sqrt{n} > \frac{2.575}{0.3} \approx 8.583 \;\Rightarrow\; n > 73.67
+$$
+
+**Respuesta.** La nueva muestra debe tener como mínimo **74 latas**. Con $z_{\alpha/2} = 2.58$ sale $n > 73.96$, así que la respuesta es la misma.
+
+</Solucion>
+
+c) **(0.5 puntos)** Explique, razonadamente, el efecto que tendría sobre el error máximo de estimación un aumento del número de latas seleccionadas en la muestra, manteniendo el mismo nivel de confianza, y explique también qué ocurriría con dicho error si se aumentara el nivel de confianza manteniendo el mismo tamaño muestral.
+
+<Solucion>
+
+El error es $E = z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$.
+
+- **Más latas, misma confianza.** $z_{\alpha/2}$ y $\sigma$ no cambian y $\sqrt{n}$ crece, así que **el error disminuye**: con más datos la estimación es más precisa.
+- **Más confianza, mismo tamaño.** $z_{\alpha/2}$ aumenta (por ejemplo, de $1.96$ al $95\%$ a $2.575$ al $99\%$), así que **el error aumenta**: para estar más seguros hay que dar un intervalo más ancho.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 7</u></strong></Bloque>
+
+a) **(1.25 puntos)** Dada la población $\{-4, -2, 1, 4, 6\}$, calcule la varianza de la distribución de las medias muestrales de tamaño $2$ obtenidas mediante muestreo aleatorio simple.
+
+<Solucion>
+
+En el muestreo aleatorio simple (extracciones independientes, con reemplazamiento) la media muestral cumple $Var(\bar{X}) = \frac{\sigma^2}{n}$, así que basta con la varianza de la población.
+
+$$
+\mu = \frac{-4 - 2 + 1 + 4 + 6}{5} = 1, \qquad \sigma^2 = \frac{16 + 4 + 1 + 16 + 36}{5} - 1^2 = \frac{73}{5} - 1 = 13.6
+$$
+
+$$
+Var(\bar{X}) = \frac{13.6}{2} = 6.8
+$$
+
+**Respuesta.** La varianza de la distribución de las medias muestrales de tamaño 2 es **6.8**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Una empresa multinacional con $10000$ empleados desea realizar un estudio sobre la brecha salarial de género en su organización. La empresa está dividida en tres niveles jerárquicos, en los que se tiene $1000$ empleados de nivel ejecutivo, siendo el $30\%$ mujeres, $3000$ empleados de nivel medio, de los cuales el $55\%$ son hombres, y el resto empleados de nivel operativo, de los que el $55\%$ son mujeres. Se quiere seleccionar una muestra estratificada de $2000$ empleados, manteniendo la proporción de cada nivel jerárquico y la distribución de género dentro de cada nivel. ¿Cuántos empleados deben seleccionarse en cada nivel jerárquico? y dentro de cada uno, ¿cuántos hombres y cuántas mujeres deben seleccionarse?
+
+<Solucion>
+
+La muestra es $\frac{2000}{10000} = \frac{1}{5}$ de la plantilla, así que de cada nivel se toma la quinta parte (afijación proporcional). Dentro de cada nivel se mantiene el porcentaje de cada género:
+
+- **Ejecutivo:** $1000 \cdot \frac{1}{5} =$ **200 empleados**, de los que $30\% \cdot 200 =$ **60 mujeres** y **140 hombres**.
+- **Medio:** $3000 \cdot \frac{1}{5} =$ **600 empleados**, de los que $55\% \cdot 600 =$ **330 hombres** y **270 mujeres**.
+- **Operativo:** quedan $10000 - 1000 - 3000 = 6000$ empleados, así que $6000 \cdot \frac{1}{5} =$ **1200 empleados**, de los que $55\% \cdot 1200 =$ **660 mujeres** y **540 hombres**.
+
+En total, $200 + 600 + 1200 = 2000$ empleados.
+
+</Solucion>

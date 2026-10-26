@@ -1,0 +1,51 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionBidones from "../../../../../components/figuras/RegionBidones.astro"
+
+**(2.5 puntos)** Un centro de bricolaje, que almacena bidones de pintura de interior y de exterior, cuenta con una capacidad máxima de almacenaje de $160$ bidones. Por una cuestión logística, en el almacén deben mantenerse al menos $60$ bidones, siendo como mínimo $20$ bidones de pintura interior. Además, el número de bidones de pintura exterior almacenados no podrá ser inferior al de pintura interior. Se sabe que el gasto diario por almacenar cada bidón de pintura interior es de $1.50$€ y por cada bidón de pintura exterior es de $0.90$€. Calcule cuántos bidones de cada tipo se deben almacenar para que el gasto diario sea mínimo e indique cuánto supone ese gasto mínimo.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los bidones de pintura interior e $y$ a los de exterior. Hay que **minimizar** el gasto diario
+
+$$
+F(x, y) = 1.5x + 0.9y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+60 \le x + y \le 160 & \text{(capacidad y mínimo almacenado)}\\
+x \ge 20 & \text{(mínimo de pintura interior)}\\
+y \ge x & \text{(exterior no inferior a interior)}
+\end{cases}
+$$
+
+**Región factible.** Queda entre las rectas $x + y = 60$ y $x + y = 160$, a la derecha de $x = 20$ y por encima de la recta $y = x$:
+
+<RegionBidones />
+
+**Vértices:**
+
+- $A$: $x = 20$ y $x + y = 60$ $\Rightarrow$ $A(20, 40)$.
+- $B$: $y = x$ y $x + y = 60$ $\Rightarrow$ $B(30, 30)$.
+- $C$: $y = x$ y $x + y = 160$ $\Rightarrow$ $C(80, 80)$.
+- $D$: $x = 20$ y $x + y = 160$ $\Rightarrow$ $D(20, 140)$.
+
+**Resolución.**
+
+- $F(20, 40) = 30 + 36 = 66$
+- $F(30, 30) = 45 + 27 = 72$
+- $F(80, 80) = 120 + 72 = 192$
+- $F(20, 140) = 30 + 126 = 156$
+
+**Respuesta.** Deben almacenarse **20 bidones de pintura interior y 40 de exterior**, con un **gasto diario mínimo de 66 €**.
+
+</Solucion>

@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2025, ejercicio 4: ventas V(t) = 4t³ − 24t² + 36t + 100
+// en [0, 6], con el recinto bajo la gráfica sombreado (apartado c).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const V = (t: number) => 4 * t ** 3 - 24 * t ** 2 + 36 * t + 100
+---
+
+<GraficaFuncion
+  xMin={-0.4}
+  xMax={6.6}
+  yMin={0}
+  yMax={345}
+  marcasX={[1, 2, 3, 4, 5, 6]}
+  marcasY={[50, 100, 150, 200, 250, 300]}
+  tramos={[{ f: V, desde: 0, hasta: 6 }]}
+  recinto={{ arriba: V, abajo: () => 0, desde: 0, hasta: 6 }}
+  puntos={[
+    { x: 0, y: 100, texto: "(0, 100)", dx: 6, dy: 16 },
+    { x: 1, y: 116, texto: "Máximo relativo (1, 116)", dx: 6, dy: -9 },
+    { x: 3, y: 100, texto: "Mínimo relativo (3, 100)", dx: 0, dy: 16 },
+    { x: 6, y: 316, texto: "(6, 316)", dx: -6, dy: 0 },
+  ]}
+  descripcion="Gráfica de las ventas: empiezan en 100, suben hasta un máximo relativo de 116 al año, bajan hasta un mínimo relativo de 100 a los 3 años y después crecen hasta 316 a los 6 años; el área bajo la curva está sombreada"
+/>

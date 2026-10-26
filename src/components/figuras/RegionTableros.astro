@@ -1,0 +1,90 @@
+---
+// Matemáticas aplicadas, junio 2026, ejercicio 1 B): región factible de los tableros DM (x)
+// y aglomerado (y), con las rectas de las restricciones y los vértices.
+const escala = 10
+const origen = { x: 44, y: 236 }
+const px = (x: number) => origen.x + x * escala
+const py = (y: number) => origen.y - y * escala
+const punto = (x: number, y: number) => `${px(x)},${py(y)}`
+
+const region = [
+  [0, 0],
+  [12, 0],
+  [12, 14],
+  [9, 17],
+  [6, 18],
+  [0, 18],
+] as const
+
+const vertices = [
+  { x: 0, y: 0, texto: "O", dx: -5, dy: 13 },
+  { x: 12, y: 0, texto: "A", dx: -5, dy: -6 },
+  { x: 12, y: 14, texto: "B", dx: -6, dy: 5 },
+  { x: 9, y: 17, texto: "C", dx: -5, dy: 13 },
+  { x: 6, y: 18, texto: "D", dx: 0, dy: 15 },
+  { x: 0, y: 18, texto: "E", dx: 6, dy: 15 },
+]
+
+const marcas = [6, 12, 18, 24]
+---
+
+<figure class="solution-figure">
+  <svg
+    viewBox="0 0 340 262"
+    role="img"
+    aria-label="Región factible: polígono de vértices (0, 0), (12, 0), (12, 14), (9, 17), (6, 18) y (0, 18), limitado por las rectas x = 12, y = 18, x + y = 26 y x + 3y = 60"
+  >
+    <polygon points={region.map(([x, y]) => punto(x, y)).join(" ")} fill="rgba(25, 92, 81, 0.18)" />
+
+    <g fill="none" stroke="#111" stroke-width="1">
+      <path d={`M${px(0)} ${py(0)}H${px(28.5)}M${px(28.5) - 5} ${py(0) - 3}l5 3-5 3`} />
+      <path d={`M${px(0)} ${py(0)}V${py(22.5)}M${px(0) - 3} ${py(22.5) + 5}l3-5 3 5`} />
+      {marcas.map((m) => <path d={`M${px(m)} ${py(0) - 3}v6M${px(0) - 3} ${py(m)}h6`} />)}
+    </g>
+
+    <g fill="none" stroke-width="1.4">
+      <path d={`M${punto(12, 0)}L${punto(12, 22)}`} stroke="#b04a3a" />
+      <path d={`M${punto(0, 18)}L${punto(28, 18)}`} stroke="#2f6fa3" />
+      <path d={`M${punto(4, 22)}L${punto(26, 0)}`} stroke="#7a5b16" />
+      <path d={`M${punto(0, 20)}L${punto(28, 32 / 3)}`} stroke="#5b3f8c" />
+    </g>
+
+    <polygon
+      points={region.map(([x, y]) => punto(x, y)).join(" ")}
+      fill="none"
+      stroke="#195c51"
+      stroke-width="2"
+    />
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      {marcas.map((m) => <text x={px(m)} y={py(0) + 14} text-anchor="middle">{m}</text>)}
+      {marcas.map((m) => <text x={px(0) - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
+      <text x={px(28.5)} y={py(0) + 14} text-anchor="end" font-style="italic">x</text>
+      <text x={px(0) + 6} y={py(22.5) + 4} font-style="italic">y</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10">
+      <text x={px(12) + 4} y={py(21.5)} fill="#b04a3a">x = 12</text>
+      <text x={px(23)} y={py(18) - 4} fill="#2f6fa3">y = 18</text>
+      <text x={px(21)} y={py(6.5)} fill="#7a5b16">x + y = 26</text>
+      <text x={px(19)} y={py(14.8)} fill="#5b3f8c">x + 3y = 60</text>
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#195c51">
+      {
+        vertices.map((v) => (
+          <>
+            <circle cx={px(v.x)} cy={py(v.y)} r="3" />
+            <text
+              x={px(v.x) + v.dx}
+              y={py(v.y) + v.dy}
+              text-anchor={v.dx < 0 ? "end" : v.dx === 0 ? "middle" : "start"}
+            >
+              {v.texto}
+            </text>
+          </>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

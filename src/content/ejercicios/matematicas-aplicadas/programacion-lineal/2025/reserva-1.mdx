@@ -1,0 +1,52 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2025
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionMenus from "../../../../../components/figuras/RegionMenus.astro"
+
+**(2.5 puntos)** Una empresa de catering dispone semanalmente de $58$ horas de cocina, $50$ horas de empaquetado y $60\ dm^3$ de almacenamiento en cámaras frigoríficas para elaborar dos tipos de menús: *premium* y *estándar*. Ambos menús requieren tiempo, tanto de preparación como de empaquetado, y espacio de almacenamiento en frigoríficos. Concretamente, el menú *premium* requiere de $2$ horas de cocina, $2$ horas de empaquetado y ocupa $1\ dm^3$ en frigoríficos. Por su parte, el menú *estándar* requiere de $3$ horas de cocina, $1$ hora de empaquetado y ocupa $4\ dm^3$ en frigoríficos. El beneficio obtenido por cada menú *premium* es de $10.50$€ y por cada menú *estándar* es de $5.50$€. La empresa sabe que venderá todos los menús producidos. Determine cuántos menús de cada tipo deben elaborarse semanalmente para maximizar el beneficio total y a cuánto asciende este beneficio.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a los menús premium e $y$ a los estándar que se elaboran a la semana. Hay que maximizar el beneficio
+
+$$
+F(x, y) = 10.5x + 5.5y
+$$
+
+sujeto a:
+
+$$
+\begin{cases}
+2x + 3y \le 58 & \text{(cocina)}\\
+2x + y \le 50 & \text{(empaquetado)}\\
+x + 4y \le 60 & \text{(frigoríficos)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Las tres rectas son $2x + 3y = 58$ (por $(29, 0)$ y $(0, 19.3)$), $2x + y = 50$ (por $(25, 0)$ y $(0, 50)$) y $x + 4y = 60$ (por $(60, 0)$ y $(0, 15)$). El origen cumple las tres desigualdades, así que la región es la parte del primer cuadrante que queda por debajo de las tres rectas:
+
+<RegionMenus />
+
+**Vértices:**
+
+- $O(0, 0)$, $A(25, 0)$ (corte de $2x + y = 50$ con el eje $OX$) y $D(0, 15)$ (corte de $x + 4y = 60$ con el eje $OY$).
+- $B$: $2x + y = 50$ y $2x + 3y = 58$. Restando, $2y = 8 \Rightarrow y = 4$, $x = 23$: $B(23, 4)$.
+- $C$: $2x + 3y = 58$ y $x + 4y = 60$. Con $x = 60 - 4y$: $120 - 5y = 58 \Rightarrow y = 12.4$, $x = 10.4$: $C(10.4,\ 12.4)$.
+
+**Resolución.** Evaluamos el beneficio:
+
+- $F(0, 0) = 0$
+- $F(25, 0) = 262.5$
+- $F(23, 4) = 241.5 + 22 = 263.5$
+- $F(10.4,\ 12.4) = 109.2 + 68.2 = 177.4$
+- $F(0, 15) = 82.5$
+
+**Respuesta.** Deben elaborarse **23 menús premium y 4 estándar** a la semana, con un **beneficio máximo de 263.50 €**.
+
+</Solucion>

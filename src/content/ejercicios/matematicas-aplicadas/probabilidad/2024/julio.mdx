@@ -1,0 +1,106 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+El $7\%$ de los habitantes de una ciudad no tienen ni coche ni moto. De entre los que tienen coche el $36\%$ tienen moto y de entre los que no tienen coche el $28\%$ no tienen moto. Se elige al azar un habitante de esa ciudad:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $C$ a tener coche y $M$ a tener moto. Los datos son $P(\overline{C} \cap \overline{M}) = 0.07$, $P(M/C) = 0.36$ y $P(\overline{M}/\overline{C}) = 0.28$.
+
+De $P(\overline{C} \cap \overline{M}) = P(\overline{C}) \cdot P(\overline{M}/\overline{C})$ sale $P(\overline{C}) = \frac{0.07}{0.28} = 0.25$, así que $P(C) = 0.75$. Con eso completamos las cuatro intersecciones:
+
+- $P(C \cap M) = 0.75 \cdot 0.36 = 0.27$ y $P(C \cap \overline{M}) = 0.75 \cdot 0.64 = 0.48$.
+- $P(\overline{C} \cap M) = 0.25 \cdot 0.72 = 0.18$ y $P(\overline{C} \cap \overline{M}) = 0.07$.
+
+</Solucion>
+
+a) **(1 punto)** Calcule la probabilidad de que solo tenga uno de los dos vehículos.
+
+<Solucion>
+
+$$
+P(\text{solo uno}) = P(C \cap \overline{M}) + P(\overline{C} \cap M) = 0.48 + 0.18 = 0.66
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule la probabilidad de que al menos tenga uno de los dos vehículos.
+
+<Solucion>
+
+Es el contrario de no tener ninguno:
+
+$$
+P(C \cup M) = 1 - P(\overline{C} \cap \overline{M}) = 1 - 0.07 = 0.93
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Si tiene coche, ¿cuál es la probabilidad de que no tenga moto?
+
+<Solucion>
+
+$$
+P(\overline{M}/C) = 1 - P(M/C) = 1 - 0.36 = 0.64
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** ¿Son independientes los sucesos "tener coche" y "no tener moto"? ¿Son incompatibles?
+
+<Solucion>
+
+Con $P(\overline{M}) = 0.48 + 0.07 = 0.55$:
+
+- **Independencia.** $P(C) \cdot P(\overline{M}) = 0.75 \cdot 0.55 = 0.4125 \ne 0.48 = P(C \cap \overline{M})$: **no son independientes**.
+- **Incompatibilidad.** $P(C \cap \overline{M}) = 0.48 \ne 0$: hay quien tiene coche y no moto, así que **no son incompatibles**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Se ha realizado un estudio a personas que están teletrabajando actualmente. De estos, el $72\%$ trabajan por cuenta ajena con contrato indefinido, el $11\%$ lo hacen por cuenta ajena con contrato temporal y el resto trabajan por cuenta propia. El $87\%$ de los que tienen contrato indefinido y el $86\%$ de los que trabajan por cuenta propia piensan que el teletrabajo mejora la conciliación familiar. Además, este estudio ha revelado que el $12.51\%$ de los trabajadores opinan que el teletrabajo no mejora la conciliación familiar. Seleccionado un teletrabajador al azar, determine la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $I$, $T$ y $P$ a contrato indefinido, contrato temporal y cuenta propia, y $S$ a pensar que el teletrabajo mejora la conciliación:
+
+- $P(I) = 0.72$, con $P(S/I) = 0.87$.
+- $P(T) = 0.11$, con $P(S/T)$ desconocida.
+- $P(P) = 1 - 0.72 - 0.11 = 0.17$, con $P(S/P) = 0.86$.
+- $P(\overline{S}) = 0.1251$, así que $P(S) = 0.8749$.
+
+</Solucion>
+
+a) **(1.5 puntos)** Opine que el teletrabajo sí mejora la conciliación familiar sabiendo que tiene un contrato temporal.
+
+<Solucion>
+
+Despejamos $P(S/T)$ del teorema de la probabilidad total:
+
+$$
+0.8749 = 0.72 \cdot 0.87 + 0.11 \cdot P(S/T) + 0.17 \cdot 0.86 = 0.6264 + 0.11 \cdot P(S/T) + 0.1462
+$$
+
+$$
+0.11 \cdot P(S/T) = 0.1023 \;\Rightarrow\; P(S/T) = 0.93
+$$
+
+</Solucion>
+
+b) **(1 punto)** No esté trabajando por cuenta propia sabiendo que opina que el teletrabajo mejora la conciliación familiar.
+
+<Solucion>
+
+Por el teorema de Bayes, $P(P/S) = \dfrac{0.17 \cdot 0.86}{0.8749} = \dfrac{0.1462}{0.8749} \approx 0.1671$. Lo que se pide es el suceso contrario:
+
+$$
+P(\overline{P}/S) = 1 - 0.1671 = 0.8329
+$$
+
+</Solucion>

@@ -1,0 +1,186 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+import IngresosEmpresa from "../../../../../components/figuras/IngresosEmpresa.astro"
+
+**A)** Los ingresos (en miles de euros) de una empresa que opera en mercados financieros en los últimos años vienen dados por la función
+
+$$
+f(t) = -t^3 + \frac{21}{2}t^2 - 30t + 80; \qquad 1 \le t \le 6
+$$
+
+siendo $t$ el tiempo medido en años.
+
+<div class="math-sub">
+
+a) **(0.75 puntos)** Determine los intervalos de tiempo en los que los ingresos aumentaron y los intervalos en los que disminuyeron.
+
+</div>
+
+<Solucion>
+
+Los ingresos aumentan donde $f'(t) > 0$ y disminuyen donde $f'(t) < 0$. Derivamos y buscamos dónde se anula la derivada:
+
+$$
+f'(t) = -3t^2 + 21t - 30 = -3(t^2 - 7t + 10) = -3(t - 2)(t - 5)
+$$
+
+$f'(t) = 0$ para $t = 2$ y $t = 5$, que dividen el dominio $[1, 6]$ en tres intervalos. Estudiamos el signo con un valor de cada uno:
+
+- En $(1, 2)$: $f'(1.5) = -3(-0.5)(-3.5) = -5.25 < 0$.
+- En $(2, 5)$: $f'(3) = -3(1)(-2) = 6 > 0$.
+- En $(5, 6)$: $f'(5.5) = -3(3.5)(0.5) = -5.25 < 0$.
+
+**Respuesta.** Los ingresos **disminuyeron entre el año 1 y el 2** y **entre el año 5 y el 6**, y **aumentaron entre el año 2 y el 5**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(0.75 puntos)** Calcule los momentos en los que la empresa obtuvo el mayor y el menor ingreso, así como los valores correspondientes.
+
+</div>
+
+<Solucion>
+
+$f$ es continua en el intervalo cerrado $[1, 6]$, así que alcanza su máximo y su mínimo absolutos, y lo hace en los puntos donde $f' = 0$ o en los extremos del intervalo. Por el apartado a), en $t = 2$ hay un mínimo relativo (pasa de decrecer a crecer) y en $t = 5$ un máximo relativo (pasa de crecer a decrecer). Comparamos los cuatro valores:
+
+$$
+f(1) = -1 + 10.5 - 30 + 80 = 59.5 \qquad f(2) = -8 + 42 - 60 + 80 = 54
+$$
+
+$$
+f(5) = -125 + 262.5 - 150 + 80 = 67.5 \qquad f(6) = -216 + 378 - 180 + 80 = 62
+$$
+
+**Respuesta.** El **mayor ingreso** se obtuvo a los **5 años**: **67.5 miles de euros** (67 500 €). El **menor ingreso** se obtuvo a los **2 años**: **54 miles de euros** (54 000 €).
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(1.5 puntos)** Estudie la evolución de los ingresos de la empresa, obteniendo sus puntos de inflexión, realizando su gráfica e interpretándola.
+
+</div>
+
+<Solucion>
+
+**Puntos de inflexión.** Son los puntos donde cambia la curvatura, es decir, el signo de $f''$:
+
+$$
+f''(t) = -6t + 21 = 0 \;\Rightarrow\; t = 3.5
+$$
+
+Para $t < 3.5$, $f''(t) > 0$ ($f$ es convexa) y para $t > 3.5$, $f''(t) < 0$ ($f$ es cóncava). Como cambia de signo, hay un **punto de inflexión en $t = 3.5$**, con
+
+$$
+f(3.5) = -42.875 + 128.625 - 105 + 80 = 60.75
+$$
+
+**Interpretación del punto de inflexión.** A los 3.5 años los ingresos crecen más deprisa que en cualquier otro momento: $f'$ alcanza ahí su máximo, $f'(3.5) = -3(1.5)(-1.5) = 6.75$ miles de euros por año. Antes de ese momento el crecimiento se iba acelerando; después se va frenando, hasta pararse en $t = 5$.
+
+**Gráfica.** Con los puntos calculados, $(1, 59.5)$, $(2, 54)$, $(3.5, 60.75)$, $(5, 67.5)$ y $(6, 62)$, y la monotonía y la curvatura:
+
+<IngresosEmpresa />
+
+**Interpretación.** Al empezar el periodo estudiado, la empresa ingresaba 59 500 €. Durante el primer año los ingresos bajaron hasta su mínimo, 54 000 €, a los 2 años. A partir de ahí se recuperaron: crecieron cada vez más rápido hasta los 3.5 años (60 750 €) y luego cada vez más despacio, hasta su máximo, 67 500 €, a los 5 años. En el último año volvieron a bajar y terminaron en 62 000 €.
+
+</Solucion>
+
+**B)** El coste en euros de producción de $x$ toneladas de un determinado producto en una factoría es
+
+$$
+C(x) = 0.2x^2 + 40x + 5000
+$$
+
+El ingreso por venta es de $150$ euros por tonelada. Se vende todo lo que se produce.
+
+<div class="math-sub">
+
+a) **(0.25 puntos)** Calcule la función $B(x)$ que expresa el beneficio obtenido al vender $x$ toneladas del producto.
+
+</div>
+
+<Solucion>
+
+El beneficio es el ingreso menos el coste. Como se vende todo lo producido, el ingreso por $x$ toneladas es $150x$:
+
+$$
+B(x) = 150x - (0.2x^2 + 40x + 5000) = -0.2x^2 + 110x - 5000, \qquad x \ge 0
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **(1 punto)** Halle la cantidad de toneladas de producto que debe venderse para maximizar el beneficio. Obtenga dicho beneficio.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Buscamos el máximo de $B$ con la derivada:
+
+$$
+B'(x) = -0.4x + 110 = 0 \;\Rightarrow\; x = \frac{110}{0.4} = 275
+$$
+
+Como $B''(x) = -0.4 < 0$, en $x = 275$ hay un máximo. Además, $B$ es una parábola hacia abajo, así que ese máximo es el absoluto.
+
+$$
+B(275) = -0.2 \cdot 275^2 + 110 \cdot 275 - 5000 = -15\,125 + 30\,250 - 5000 = 10\,125
+$$
+
+**Interpretación.** Deben venderse **275 toneladas**, con un **beneficio máximo de 10 125 €**.
+
+</Solucion>
+
+<div class="math-sub">
+
+c) **(1.25 puntos)** Obtenga el beneficio cuando no hay producción y calcule para qué valores de la producción el beneficio es positivo. ¿Para qué producción se obtiene un beneficio de $4000$€?
+
+</div>
+
+<Solucion>
+
+**Sin producción:** $B(0) = -5000$ €. Son pérdidas de 5000 €, que corresponden a los costes fijos de la factoría, porque no hay ingresos.
+
+**Beneficio positivo.** Resolvemos $B(x) > 0$. Primero buscamos dónde se anula, dividiendo entre $-0.2$:
+
+$$
+-0.2x^2 + 110x - 5000 = 0 \iff x^2 - 550x + 25\,000 = 0 \;\Rightarrow\; x = \frac{550 \pm \sqrt{302\,500 - 100\,000}}{2} = \frac{550 \pm 450}{2}
+$$
+
+Es decir, $x = 50$ y $x = 500$. $B$ es una parábola hacia abajo, así que es positiva entre sus dos raíces: el beneficio es **positivo si se producen más de 50 y menos de 500 toneladas**.
+
+**Beneficio de 4000 €:**
+
+$$
+-0.2x^2 + 110x - 5000 = 4000 \iff x^2 - 550x + 45\,000 = 0 \;\Rightarrow\; x = \frac{550 \pm \sqrt{302\,500 - 180\,000}}{2} = \frac{550 \pm 350}{2}
+$$
+
+Se obtiene un beneficio de 4000 € con una producción de **100 toneladas** o de **450 toneladas**. Las dos soluciones son válidas, una a cada lado del máximo en $x = 275$.
+
+</Solucion>
+
+<div class="math-sub">
+
+d) **(0.5 puntos)** Estudie cuándo los beneficios van aumentando y cuándo van disminuyendo.
+
+</div>
+
+<Solucion>
+
+**Monotonía.** Con la derivada del apartado b), $B'(x) = -0.4x + 110$:
+
+- $B'(x) > 0$ si $0 \le x < 275$: $B$ es creciente.
+- $B'(x) < 0$ si $x > 275$: $B$ es decreciente.
+
+**En términos de producción.** Los beneficios **aumentan mientras la producción es menor de 275 toneladas** y **disminuyen cuando la producción supera las 275 toneladas**. A partir de ese punto, cada tonelada adicional cuesta más de lo que se ingresa por ella.
+
+</Solucion>

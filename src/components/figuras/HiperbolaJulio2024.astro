@@ -1,0 +1,29 @@
+---
+// Matemáticas aplicadas, julio de 2024, ejercicio 3 c): f(x) = (2x − 6)/(2 − x), con las
+// asíntotas x = 2 e y = −2 y los cortes con los ejes.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (2 * x - 6) / (2 - x)
+---
+
+<GraficaFuncion
+  xMin={-6}
+  xMax={9}
+  yMin={-10}
+  yMax={6}
+  marcasX={[-4, -2, 4, 6, 8]}
+  marcasY={[-8, -6, -4, 2, 4]}
+  tramos={[
+    { f, desde: -6, hasta: 1.8 },
+    { f, desde: 2.2, hasta: 9 },
+  ]}
+  asintotas={[
+    { tipo: "v", valor: 2, etiqueta: "x = 2" },
+    { tipo: "h", valor: -2, etiqueta: "y = −2", debajo: true },
+  ]}
+  puntos={[
+    { x: 0, y: -3, texto: "(0, −3)", dx: -6, dy: 12 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f(x) = (2x − 6)/(2 − x): hipérbola decreciente en cada rama, con asíntota vertical x = 2 y asíntota horizontal y = −2; corta al eje Y en (0, −3) y al eje X en (3, 0)"
+/>

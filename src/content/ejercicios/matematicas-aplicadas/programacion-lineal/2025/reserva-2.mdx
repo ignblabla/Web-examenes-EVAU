@@ -1,0 +1,52 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionRevisiones from "../../../../../components/figuras/RegionRevisiones.astro"
+
+**(2.5 puntos)** Un servicio técnico recibe un encargo para revisar lavadoras y frigoríficos de una empresa de apartahoteles. La revisión de cada lavadora requiere $100$ minutos de trabajo, mientras que cada frigorífico requiere $50$ minutos. El servicio técnico dispone de $26$ horas y $40$ minutos para hacer las revisiones. Por política de empresa, no se aceptan encargos de más de $12$ lavadoras ni de más de $16$ frigoríficos. Sabiendo que las revisiones se pagan a $50$€ la hora, en ambos tipos de electrodomésticos, ¿cuántos electrodomésticos de cada clase debe revisar el servicio técnico para maximizar el ingreso con el encargo? ¿A cuánto asciende este ingreso máximo?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las lavadoras e $y$ a los frigoríficos revisados. El tiempo disponible es $26 \cdot 60 + 40 = 1600$ minutos. Las revisiones se pagan a $50$ € la hora, es decir, $\frac{50}{60} = \frac{5}{6}$ € el minuto, así que cada lavadora deja $100 \cdot \frac{5}{6} = \frac{250}{3}$ € y cada frigorífico $\frac{125}{3}$ €. Hay que maximizar
+
+$$
+F(x, y) = \frac{250}{3}x + \frac{125}{3}y = \frac{125}{3}(2x + y)
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+100x + 50y \le 1600 \iff 2x + y \le 32 & \text{(tiempo)}\\
+x \le 12 & \text{(lavadoras)}\\
+y \le 16 & \text{(frigoríficos)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible y vértices.** El origen cumple todas las desigualdades, así que la región queda por debajo de las tres rectas, en el primer cuadrante:
+
+<RegionRevisiones />
+
+- $O(0, 0)$, $A(12, 0)$ y $D(0, 16)$.
+- $B$: $x = 12$ y $2x + y = 32$ $\Rightarrow$ $y = 8$, $B(12, 8)$.
+- $C$: $y = 16$ y $2x + y = 32$ $\Rightarrow$ $x = 8$, $C(8, 16)$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(12, 0) = 1000$
+- $F(12, 8) = \frac{125}{3} \cdot 32 \approx 1333.33$
+- $F(8, 16) = \frac{125}{3} \cdot 32 \approx 1333.33$
+- $F(0, 16) \approx 666.67$
+
+El máximo se alcanza a la vez en $B$ y en $C$, porque la función objetivo es proporcional a $2x + y$, paralela a la restricción del tiempo. Por tanto, el ingreso es máximo en **todo el segmento $BC$**: en cualquier reparto que ocupe los 1600 minutos ($2x + y = 32$) con $8 \le x \le 12$. Como se revisan electrodomésticos enteros, las soluciones son $(8, 16)$, $(9, 14)$, $(10, 12)$, $(11, 10)$ y $(12, 8)$.
+
+**Respuesta.** El ingreso máximo es de **1333.33 €**, el pago de las 26 horas y 40 minutos completas. Se obtiene, por ejemplo, revisando **12 lavadoras y 8 frigoríficos** u **8 lavadoras y 16 frigoríficos**, o cualquiera de los repartos intermedios anteriores.
+
+</Solucion>

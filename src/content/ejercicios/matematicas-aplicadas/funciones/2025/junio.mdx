@@ -1,0 +1,154 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+import DifusionNoticia from "../../../../../components/figuras/DifusionNoticia.astro"
+
+Un periódico digital ha publicado una noticia de última hora. El número de personas que han visto la noticia $t$ horas después de su lanzamiento viene modelado por la función:
+
+$$
+N(t) = 500\,000 \cdot \left(1 - e^{-0.2t}\right); \qquad t > 0
+$$
+
+a) **(0.8 puntos)** Estudie la monotonía y curvatura de la función $N$.
+
+<Solucion>
+
+**Monotonía.** La derivada de $e^{-0.2t}$ es $-0.2\,e^{-0.2t}$, así que
+
+$$
+N'(t) = 500\,000 \cdot 0.2\,e^{-0.2t} = 100\,000\,e^{-0.2t} > 0
+$$
+
+porque la exponencial siempre es positiva. $N$ es **creciente en $(0, +\infty)$**: el número de lectores no deja de aumentar.
+
+**Curvatura.**
+
+$$
+N''(t) = 100\,000 \cdot (-0.2)\,e^{-0.2t} = -20\,000\,e^{-0.2t} < 0
+$$
+
+$N$ es **cóncava en $(0, +\infty)$**. No tiene extremos ni puntos de inflexión.
+
+</Solucion>
+
+b) **(0.7 puntos)** Represente gráficamente la función $N$ y describa su tendencia a lo largo del tiempo.
+
+<Solucion>
+
+Además de crecer y ser cóncava, necesitamos los extremos del recorrido:
+
+$$
+\lim_{t \to 0^+} N(t) = 500\,000(1 - 1) = 0, \qquad \lim_{t \to +\infty} N(t) = 500\,000(1 - 0) = 500\,000
+$$
+
+Hay una **asíntota horizontal $y = 500\,000$**. Con algunos valores, como $N(5) \approx 316\,060$ y $N(10) \approx 432\,332$, la gráfica queda así (eje vertical en miles de personas):
+
+<DifusionNoticia />
+
+**Tendencia.** Al principio la noticia se difunde muy deprisa: en 5 horas ya la han visto más de 300 000 personas. Después el ritmo se va frenando, y el número de lectores se acerca cada vez más a **500 000 personas**, sin llegar a alcanzarlas.
+
+</Solucion>
+
+c) **(0.5 puntos)** ¿Cuánto tiempo ha debido de pasar para que la noticia haya sido vista por $450\,000$ personas?
+
+<Solucion>
+
+$$
+500\,000\left(1 - e^{-0.2t}\right) = 450\,000 \;\Rightarrow\; 1 - e^{-0.2t} = 0.9 \;\Rightarrow\; e^{-0.2t} = 0.1
+$$
+
+Tomando logaritmos neperianos:
+
+$$
+-0.2t = \ln 0.1 \;\Rightarrow\; t = \frac{\ln 0.1}{-0.2} = 5 \ln 10 \approx 11.51
+$$
+
+**Respuesta.** Tienen que pasar unas **11.51 horas** (unas 11 horas y media).
+
+</Solucion>
+
+d) **(0.5 puntos)** La velocidad de difusión de la noticia (número de personas por hora que han visto la publicación) es $N'(t)$. ¿Qué conclusión se obtiene al comparar $N'(t)$ en los instantes $t = 1$ y $t = 10$?
+
+<Solucion>
+
+Con la derivada del apartado a):
+
+$$
+N'(1) = 100\,000\,e^{-0.2} \approx 81\,873 \text{ personas/hora}, \qquad N'(10) = 100\,000\,e^{-2} \approx 13\,534 \text{ personas/hora}
+$$
+
+**Conclusión.** La velocidad de difusión es mucho menor a las 10 horas que a la primera hora: unas 6 veces menor. La noticia se sigue viendo, pero cada vez se difunde más despacio, como corresponde a una función creciente y cóncava ($N'$ es decreciente).
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3</u></strong></Bloque>
+
+A un paciente con diabetes se le monitoriza durante un día completo, suministrándole un medicamento a mediodía para observar su reacción. La función que aproxima la cantidad de glucosa en sangre ($mg/dl$) del paciente, en cada instante $t$ (horas), es:
+
+$$
+f(t) = \begin{cases}
+\dfrac{5}{6}\left(\dfrac{t^3}{3} - 12t^2 + 108t + 108\right) & 0 \le t \le 12\\[10pt]
+t^2 - 40t + 546 & 12 < t \le 24
+\end{cases}
+$$
+
+a) **(0.75 puntos)** Halle en qué periodos de tiempo el nivel de glucosa va aumentando.
+
+<Solucion>
+
+Derivamos cada tramo:
+
+$$
+f'(t) = \begin{cases}
+\dfrac{5}{6}\left(t^2 - 24t + 108\right) = \dfrac{5}{6}(t - 6)(t - 18) & 0 < t < 12\\[10pt]
+2t - 40 & 12 < t < 24
+\end{cases}
+$$
+
+- **Primer tramo.** $f'$ se anula en $t = 6$ ($t = 18$ queda fuera del tramo). En $(0, 6)$, por ejemplo $f'(0) = 90 > 0$: crece. En $(6, 12)$, por ejemplo $f'(10) = \frac{5}{6}(4)(-8) < 0$: decrece.
+- **Segundo tramo.** $f'$ se anula en $t = 20$. En $(12, 20)$, $f' < 0$: decrece. En $(20, 24)$, $f' > 0$: crece.
+
+En $t = 12$ la función es continua, porque los dos tramos valen $210$, y decrece a ambos lados.
+
+**Respuesta.** El nivel de glucosa **aumenta entre las 0 y las 6 horas** y **entre las 20 y las 24 horas**.
+
+</Solucion>
+
+b) **(1 punto)** ¿En qué momentos del día el paciente tiene los niveles más alto y más bajo de glucosa en sangre y a cuánto ascienden?
+
+<Solucion>
+
+$f$ es continua en $[0, 24]$, así que el máximo y el mínimo absolutos están entre los extremos relativos ($t = 6$, máximo; $t = 20$, mínimo) y los extremos del intervalo ($t = 0$ y $t = 24$):
+
+$$
+f(0) = \frac{5}{6} \cdot 108 = 90, \qquad f(6) = \frac{5}{6}(72 - 432 + 648 + 108) = \frac{5}{6} \cdot 396 = 330
+$$
+
+$$
+f(20) = 400 - 800 + 546 = 146, \qquad f(24) = 576 - 960 + 546 = 162
+$$
+
+**Respuesta.** El nivel **más alto** es de **330 mg/dl, a las 6 de la mañana** ($t = 6$), y el **más bajo**, de **90 mg/dl, al comenzar el día** ($t = 0$, medianoche).
+
+</Solucion>
+
+c) **(0.75 puntos)** ¿En qué momentos, después del mediodía, el paciente tiene $155\ mg/dl$?
+
+<Solucion>
+
+Después del mediodía ($12 < t \le 24$) se usa el segundo tramo:
+
+$$
+t^2 - 40t + 546 = 155 \;\Rightarrow\; t^2 - 40t + 391 = 0 \;\Rightarrow\; t = \frac{40 \pm \sqrt{1600 - 1564}}{2} = \frac{40 \pm 6}{2}
+$$
+
+Es decir, $t = 17$ y $t = 23$, los dos dentro de $(12, 24]$.
+
+**Respuesta.** El paciente tiene 155 mg/dl a las **17:00** y a las **23:00**. La primera vez, la glucosa está bajando hacia el mínimo de las 20:00; la segunda, ya vuelve a subir.
+
+</Solucion>

@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2024, ejercicio 4 b): recinto entre f (2 − x² hasta x = 1 y
+// (x − 2)² después) y la recta g(x) = 1, en [−1, 3]. Son dos trozos que se tocan en (1, 1).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x <= 1 ? 2 - x ** 2 : (x - 2) ** 2)
+const g = () => 1
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={4}
+  yMin={-0.8}
+  yMax={2.8}
+  marcasX={[-1, 1, 3]}
+  marcasY={[1, 2]}
+  tramos={[
+    { f, desde: -1, hasta: 3 },
+    { f: g, desde: -1, hasta: 3 },
+  ]}
+  recinto={{ arriba: (x) => Math.max(f(x), 1), abajo: (x) => Math.min(f(x), 1), desde: -1, hasta: 3 }}
+  puntos={[
+    { x: -1, y: 1, texto: "(−1, 1)", dx: -6, dy: -6 },
+    { x: 0, y: 2, texto: "(0, 2)", dx: 6, dy: -6 },
+    { x: 1, y: 1, texto: "(1, 1)", dx: 6, dy: -6 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 0, dy: 14 },
+    { x: 3, y: 1, texto: "(3, 1)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Recinto entre f y la recta y = 1 en [−1, 3]: de −1 a 1 la parábola 2 − x² queda por encima de la recta y de 1 a 3 la parábola (x − 2)² queda por debajo; los dos trozos se tocan en (1, 1)"
+/>

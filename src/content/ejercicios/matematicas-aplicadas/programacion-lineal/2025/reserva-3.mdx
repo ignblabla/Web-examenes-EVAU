@@ -1,0 +1,52 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionCajas from "../../../../../components/figuras/RegionCajas.astro"
+
+**(2.5 puntos)** Una agricultora vende en su tienda *online* frutas y hortalizas envasándolas en cajas de dos tipos diferentes. La caja "El regalo de la tierra" la vende a $19.75$€ y contiene $3\ kg$ de frutas y $3.5\ kg$ de hortalizas. La caja "El tesoro de la huerta" contiene $2\ kg$ de frutas y $4\ kg$ de hortalizas y la vende a $18.50$€. La agricultora dispone semanalmente de $210\ kg$ de hortalizas y $150\ kg$ de frutas. Debe vender al menos $12$ cajas de "El regalo de la tierra" y no menos de $15$ cajas de "El tesoro de la huerta". ¿Cuántas cajas de cada tipo debe vender a la semana para que el ingreso por la venta sea máximo? ¿A cuánto asciende este ingreso?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las cajas "El regalo de la tierra" e $y$ a las cajas "El tesoro de la huerta" vendidas a la semana. Hay que maximizar el ingreso
+
+$$
+F(x, y) = 19.75x + 18.5y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+3.5x + 4y \le 210 & \text{(hortalizas)}\\
+3x + 2y \le 150 & \text{(frutas)}\\
+x \ge 12 & \text{(mínimo de "El regalo")}\\
+y \ge 15 & \text{(mínimo de "El tesoro")}
+\end{cases}
+$$
+
+**Región factible.** Queda por debajo de las rectas $3.5x + 4y = 210$ y $3x + 2y = 150$ (el origen cumple esas desigualdades), a la derecha de $x = 12$ y por encima de $y = 15$:
+
+<RegionCajas />
+
+**Vértices:**
+
+- $A(12, 15)$: $x = 12$ e $y = 15$.
+- $B$: $y = 15$ y $3x + 2y = 150$ $\Rightarrow$ $3x = 120$, $B(40, 15)$.
+- $C$: $3.5x + 4y = 210$ y $3x + 2y = 150$. Restando la primera del doble de la segunda, $2.5x = 90 \Rightarrow x = 36$, $y = 21$: $C(36, 21)$.
+- $D$: $x = 12$ y $3.5x + 4y = 210$ $\Rightarrow$ $4y = 168$, $D(12, 42)$.
+
+**Resolución.**
+
+- $F(12, 15) = 237 + 277.5 = 514.5$
+- $F(40, 15) = 790 + 277.5 = 1067.5$
+- $F(36, 21) = 711 + 388.5 = 1099.5$
+- $F(12, 42) = 237 + 777 = 1014$
+
+**Respuesta.** Debe vender **36 cajas de "El regalo de la tierra" y 21 de "El tesoro de la huerta"** a la semana, con un **ingreso máximo de 1099.50 €**.
+
+</Solucion>
