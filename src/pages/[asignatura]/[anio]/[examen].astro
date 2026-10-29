@@ -61,7 +61,13 @@ const ejercicios = (await getCollection("ejercicios")).filter(
 )
 const resuelto = ejercicios.length > 0
 const temasResueltos = asignatura.temas.filter((t) => ejercicios.some((e) => e.data.tema === t.slug))
-const bloquesResueltos = temasResueltos.map((t) => t.termino ?? t.titulo).join(" y ")
+// "A, B y C", con "e" en vez de "y" si el último empieza por i- o hi- (Inferencia estadística).
+const nombresResueltos = temasResueltos.map((t) => t.termino ?? t.titulo)
+const ultimoResuelto = nombresResueltos.at(-1) ?? ""
+const bloquesResueltos =
+  nombresResueltos.length > 1
+    ? `${nombresResueltos.slice(0, -1).join(", ")} ${/^h?i(?![aeiouáéíóú])/i.test(ultimoResuelto) ? "e" : "y"} ${ultimoResuelto}`
+    : ultimoResuelto
 const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
 const publicado = (asig: string, a: number, conv: string) => publicados.has(`${asig}/${a}/${conv}`)
 
