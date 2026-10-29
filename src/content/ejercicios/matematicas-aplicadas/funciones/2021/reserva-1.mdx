@@ -1,0 +1,141 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import FuncionReserva1de2021 from "../../../../../components/figuras/FuncionReserva1de2021.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+-2x + 2a & \text{si } -4 \le x \le -2\\
+-2x^2 - 4a & \text{si } -2 < x \le 2\\
+-8x + b & \text{si } 2 < x \le 3
+\end{cases}
+$$
+
+a) **(1 punto)** Calcule los valores $a$ y $b$ para que la función sea continua en su dominio. Para esos valores, ¿es $f$ derivable?
+
+<Solucion>
+
+**Continuidad.** El dominio es $[-4, 3]$ y cada tramo es un polinomio, continuo en su intervalo. Solo hay que imponer la continuidad en los puntos de unión:
+
+- En $x = -2$: $f(-2) = 4 + 2a$ y $\displaystyle\lim_{x \to -2^+} (-2x^2 - 4a) = -8 - 4a$. Han de coincidir: $4 + 2a = -8 - 4a \Rightarrow 6a = -12 \Rightarrow a = -2$.
+- En $x = 2$: $f(2) = -8 - 4a$ y $\displaystyle\lim_{x \to 2^+} (-8x + b) = -16 + b$. Con $a = -2$, $f(2) = 0$, así que $-16 + b = 0 \Rightarrow b = 16$.
+
+**Respuesta.** $f$ es continua en su dominio para **$a = -2$ y $b = 16$**. Entonces
+
+$$
+f(x) = \begin{cases}
+-2x - 4 & \text{si } -4 \le x \le -2\\
+-2x^2 + 8 & \text{si } -2 < x \le 2\\
+-8x + 16 & \text{si } 2 < x \le 3
+\end{cases}
+\qquad
+f'(x) = \begin{cases}
+-2 & \text{si } -4 < x < -2\\
+-4x & \text{si } -2 < x < 2\\
+-8 & \text{si } 2 < x < 3
+\end{cases}
+$$
+
+**Derivabilidad** en los puntos de unión, donde $f$ ya es continua:
+
+- En $x = -2$: $f'(-2^-) = -2$ y $f'(-2^+) = 8$. **No es derivable**.
+- En $x = 2$: $f'(2^-) = -8$ y $f'(2^+) = -8$. **Es derivable**, con $f'(2) = -8$.
+
+**Respuesta.** $f$ **no es derivable** en todo su dominio: es derivable en $(-4, 3)$ salvo en $x = -2$.
+
+</Solucion>
+
+b) **(0.8 puntos)** Para $a = -2$ y $b = 16$, estudie la monotonía de la función $f$ y calcule sus extremos relativos y absolutos.
+
+<Solucion>
+
+**Monotonía**, con la derivada del apartado a):
+
+- En $(-4, -2)$, $f'(x) = -2 < 0$: **decreciente**.
+- En $(-2, 2)$, $f'(x) = -4x$ se anula en $x = 0$; es positiva en $(-2, 0)$ (**creciente**) y negativa en $(0, 2)$ (**decreciente**).
+- En $(2, 3)$, $f'(x) = -8 < 0$: **decreciente**.
+
+Así que $f$ es **decreciente en $(-4, -2)$, creciente en $(-2, 0)$ y decreciente en $(0, 3)$**.
+
+<FuncionReserva1de2021 />
+
+**Extremos relativos.**
+
+- **Mínimo relativo en $(-2, 0)$**: $f$ es continua en $x = -2$ y pasa de decrecer a crecer (aunque no sea derivable ahí).
+- **Máximo relativo en $(0, 8)$**: $f'(0) = 0$ y pasa de crecer a decrecer.
+
+**Extremos absolutos.** $f$ es continua en $[-4, 3]$; comparamos los extremos relativos con los valores en los bordes, $f(-4) = 8 - 4 = 4$ y $f(3) = -24 + 16 = -8$:
+
+- **Máximo absoluto en $(0, 8)$**.
+- **Mínimo absoluto en $(3, -8)$**.
+
+</Solucion>
+
+c) **(0.7 puntos)** Para $a = -2$ y $b = 16$, calcule el área del recinto limitado por la gráfica de $f$, el eje $OX$ y las rectas $x = -2$ y $x = 2$.
+
+<Solucion>
+
+En $[-2, 2]$, $f(x) = -2x^2 + 8 = 2(4 - x^2) \ge 0$, que vale $0$ justo en $x = \pm 2$: la gráfica queda **por encima** del eje (es el recinto sombreado):
+
+$$
+\text{Área} = \int_{-2}^{2} (-2x^2 + 8)\,dx = \left[-\frac{2x^3}{3} + 8x\right]_{-2}^{2} = \left(-\frac{16}{3} + 16\right) - \left(\frac{16}{3} - 16\right) = 32 - \frac{32}{3} = \frac{64}{3}\ u^2 \approx 21.33\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+a) **(1 punto)** Calcule la derivada de las siguientes funciones:
+
+$$
+f(x) = (5x^3 + 4x - 2)^4 \cdot \ln(2x^5 - 4x^3 + x) \qquad g(x) = \frac{e^{3x^2 - 5x}}{(6x^2 + 2)^3}
+$$
+
+<Solucion>
+
+**Derivada de $f$.** Regla del producto, con la regla de la cadena en cada factor:
+
+$$
+f'(x) = 4(5x^3 + 4x - 2)^3(15x^2 + 4)\ln(2x^5 - 4x^3 + x) + (5x^3 + 4x - 2)^4 \cdot \frac{10x^4 - 12x^2 + 1}{2x^5 - 4x^3 + x}
+$$
+
+**Derivada de $g$.** Regla del cociente, con $\left(e^{3x^2 - 5x}\right)' = (6x - 5)\,e^{3x^2 - 5x}$ y $\left((6x^2 + 2)^3\right)' = 3(6x^2 + 2)^2 \cdot 12x = 36x(6x^2 + 2)^2$:
+
+$$
+g'(x) = \frac{(6x - 5)\,e^{3x^2 - 5x}(6x^2 + 2)^3 - e^{3x^2 - 5x} \cdot 36x(6x^2 + 2)^2}{(6x^2 + 2)^6}
+$$
+
+Simplificando $(6x^2 + 2)^2$ y sacando factor común la exponencial:
+
+$$
+g'(x) = \frac{e^{3x^2 - 5x}\big[(6x - 5)(6x^2 + 2) - 36x\big]}{(6x^2 + 2)^4} = \frac{e^{3x^2 - 5x}\,(36x^3 - 30x^2 - 24x - 10)}{(6x^2 + 2)^4}
+$$
+
+</Solucion>
+
+b) **(1.5 puntos)** Halle la función $h(x)$, sabiendo que su derivada es $h'(x) = 4x^3 + x^2 - 4x - 1$ y que $h(2) = \frac{11}{3}$.
+
+<Solucion>
+
+**Primitivas.** $h$ es una primitiva de $h'$:
+
+$$
+h(x) = \int (4x^3 + x^2 - 4x - 1)\,dx = x^4 + \frac{x^3}{3} - 2x^2 - x + C
+$$
+
+**Constante.** Imponemos $h(2) = \frac{11}{3}$:
+
+$$
+16 + \frac{8}{3} - 8 - 2 + C = \frac{26}{3} + C = \frac{11}{3} \;\Rightarrow\; C = -5
+$$
+
+**Respuesta.** $h(x) = x^4 + \dfrac{x^3}{3} - 2x^2 - x - 5$.
+
+</Solucion>

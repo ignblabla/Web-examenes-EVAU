@@ -1,0 +1,97 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Una empresa dedicada a la fabricación de coches lanza al mercado un nuevo modelo que fabrica en tres plantas diferentes, $A$, $B$ y $C$. La planta $A$ produce el $45\%$ de los vehículos, la planta $B$ el $21\%$ y el resto los produce la planta $C$. Se ha detectado un defecto en la colocación del airbag, que afecta al $1\%$ de los coches procedentes de la planta $A$, al $3\%$ de los procedentes de la planta $B$ y al $2\%$ de los de la planta $C$. Se selecciona un coche al azar de este nuevo modelo.
+
+a) **(1.25 puntos)** ¿Cuál es la probabilidad de que no sea defectuoso y proceda de la planta $C$?
+
+<Solucion>
+
+**Sucesos.** $A$, $B$ y $C$: el coche procede de cada planta; $D$: es defectuoso. La planta $C$ produce el $100 - 45 - 21 = 34\%$:
+
+$$
+P(A) = 0.45, \qquad P(B) = 0.21, \qquad P(C) = 0.34
+$$
+
+$$
+P(D \mid A) = 0.01, \qquad P(D \mid B) = 0.03, \qquad P(D \mid C) = 0.02
+$$
+
+**No defectuoso y de la planta $C$:**
+
+$$
+P(C \cap \overline{D}) = P(C) \cdot P(\overline{D} \mid C) = 0.34 \cdot 0.98 = 0.3332
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Si el coche elegido no es defectuoso, ¿cuál es la probabilidad de que proceda de la planta $A$?
+
+<Solucion>
+
+**Probabilidad total** de no ser defectuoso:
+
+$$
+P(\overline{D}) = 0.45 \cdot 0.99 + 0.21 \cdot 0.97 + 0.34 \cdot 0.98 = 0.4455 + 0.2037 + 0.3332 = 0.9824
+$$
+
+**Teorema de Bayes:**
+
+$$
+P(A \mid \overline{D}) = \frac{P(A) \cdot P(\overline{D} \mid A)}{P(\overline{D})} = \frac{0.4455}{0.9824} \approx 0.4535
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+La probabilidad de que una persona sana se contagie de otra enferma por un virus es del $80\%$ si coinciden en una reunión.
+
+a) **(1 punto)** Si una persona enferma se reúne con dos personas sanas, teniendo en cuenta que contagiar a distintas personas son sucesos independientes entre sí, ¿cuál es la probabilidad de que se contagien las dos personas a la vez? ¿Cuál es la probabilidad de que se contagie alguna de ellas?
+
+<Solucion>
+
+**Sucesos.** $C_1$ y $C_2$: se contagia cada una de las dos personas sanas, con $P(C_1) = P(C_2) = 0.8$ e independientes.
+
+**Las dos a la vez:**
+
+$$
+P(C_1 \cap C_2) = P(C_1) \cdot P(C_2) = 0.8 \cdot 0.8 = 0.64
+$$
+
+**Alguna de ellas.** Es lo contrario de que no se contagie ninguna; como los complementarios también son independientes:
+
+$$
+P(C_1 \cup C_2) = 1 - P(\overline{C_1}) \cdot P(\overline{C_2}) = 1 - 0.2 \cdot 0.2 = 0.96
+$$
+
+</Solucion>
+
+b) **(1.5 puntos)** Una prueba para detectar la enfermedad da el resultado correcto en el $90\%$ de los casos cuando se le aplica a personas contagiadas y da falsos positivos en el $5\%$ de los casos cuando se aplica a personas sanas. Si una persona sana se reúne con una enferma y resulta positivo en una prueba posterior, ¿qué probabilidad hay de que se haya contagiado en la reunión?
+
+<Solucion>
+
+**Sucesos.** $C$: la persona se contagia en la reunión; $T$: la prueba da positivo. Los datos son
+
+$$
+P(C) = 0.8, \qquad P(T \mid C) = 0.9, \qquad P(T \mid \overline{C}) = 0.05
+$$
+
+**Probabilidad total** de dar positivo:
+
+$$
+P(T) = 0.8 \cdot 0.9 + 0.2 \cdot 0.05 = 0.72 + 0.01 = 0.73
+$$
+
+**Teorema de Bayes:**
+
+$$
+P(C \mid T) = \frac{P(C) \cdot P(T \mid C)}{P(T)} = \frac{0.72}{0.73} = \frac{72}{73} \approx 0.9863
+$$
+
+</Solucion>

@@ -1,0 +1,33 @@
+---
+// Matemáticas aplicadas, julio de 2022, ejercicio 2: región no acotada por debajo de las rectas
+// y − 2x = 7, −x + 3y = 21, x + 2y = 19 y x + y = 14, con vértices A(0, 7), B(3, 8) y C(9, 5).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const r1 = (x: number) => 2 * x + 7
+const r2 = (x: number) => (x + 21) / 3
+const r3 = (x: number) => (19 - x) / 2
+const r4 = (x: number) => 14 - x
+const techo = (x: number) => Math.min(r1(x), r2(x), r3(x), r4(x))
+---
+
+<GraficaFuncion
+  xMin={-6}
+  xMax={16}
+  yMin={-4}
+  yMax={12}
+  marcasX={[-4, -2, 2, 4, 6, 8, 10, 12, 14]}
+  marcasY={[-2, 2, 4, 6, 8, 10]}
+  tramos={[
+    { f: r1, desde: -6, hasta: 3, color: "#b04a3a", etiqueta: { texto: "y − 2x = 7", x: -2.6, y: 4.6, ancla: "end" } },
+    { f: r2, desde: -6, hasta: 16, color: "#2f6fa3", etiqueta: { texto: "−x + 3y = 21", x: 15.8, y: 10, ancla: "end" } },
+    { f: r3, desde: -6, hasta: 16, color: "#7a5b16", etiqueta: { texto: "x + 2y = 19", x: 10.5, y: 5.2 } },
+    { f: r4, desde: 1.5, hasta: 16, color: "#5b3f8c", etiqueta: { texto: "x + y = 14", x: 3.3, y: 11.2 } },
+  ]}
+  recinto={{ arriba: techo, abajo: () => -4, desde: -5.5, hasta: 16 }}
+  puntos={[
+    { x: 0, y: 7, texto: "A(0, 7)", dx: 6, dy: 14 },
+    { x: 3, y: 8, texto: "B(3, 8)", dx: 0, dy: -8 },
+    { x: 9, y: 5, texto: "C(9, 5)", dx: -6, dy: 14 },
+  ]}
+  descripcion="Región no acotada, sombreada por debajo de las rectas y − 2x = 7, −x + 3y = 21, x + 2y = 19 y x + y = 14; su borde superior tiene los vértices A(0, 7), B(3, 8) y C(9, 5) y se extiende sin límite hacia abajo"
+/>

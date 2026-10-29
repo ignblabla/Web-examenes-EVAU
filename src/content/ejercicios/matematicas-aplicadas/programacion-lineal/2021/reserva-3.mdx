@@ -1,0 +1,56 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionReserva3de2021 from "../../../../../components/figuras/RegionReserva3de2021.astro"
+
+**(2.5 puntos)** La Agencia Espacial Europea contará con un presupuesto de $2.4$ millones de euros para financiar misiones sobre Observación de la Tierra y para financiar programas de Transporte Espacial. Cada misión supone una inversión de $200\,000$ euros y cada programa, $100\,000$ euros. Teniendo en cuenta que en la decisión final deben superarse los $2$ millones de euros de inversión y el número de misiones debe ser al menos $4$, pero no más de la mitad del número de programas, ¿cuántas misiones y cuántos programas se deben llevar a cabo para obtener el máximo de la función $F(x, y) = 0.6x + 0.4y$, con $x$ misiones e $y$ programas?
+
+<Solucion>
+
+**Planteamiento.** Con $x$ misiones e $y$ programas, la inversión es $200\,000x + 100\,000y$ euros; dividiendo entre $100\,000$, hay que maximizar
+
+$$
+F(x, y) = 0.6x + 0.4y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+2x + y \le 24 & \text{(presupuesto de 2.4 millones)}\\
+2x + y > 20 & \text{(superar los 2 millones)}\\
+x \ge 4 & \text{(al menos 4 misiones)}\\
+x \le \frac{y}{2} \iff y \ge 2x & \text{(no más de la mitad de los programas)}
+\end{cases}
+$$
+
+con $x$ e $y$ enteros (las restricciones ya obligan a que sean positivos).
+
+**Región factible.** Queda entre las rectas paralelas $2x + y = 20$ y $2x + y = 24$, a la derecha de $x = 4$ y por encima de $y = 2x$. Como la segunda desigualdad es estricta, el lado sobre $2x + y = 20$ no pertenece a la región:
+
+<RegionReserva3de2021 />
+
+**Vértices:**
+
+- $A$: $x = 4$ y $2x + y = 20$ $\Rightarrow$ $y = 12$: $A(4, 12)$.
+- $B$: $y = 2x$ y $2x + y = 20$ $\Rightarrow$ $4x = 20$, $x = 5$, $y = 10$: $B(5, 10)$.
+- $C$: $y = 2x$ y $2x + y = 24$ $\Rightarrow$ $4x = 24$, $x = 6$, $y = 12$: $C(6, 12)$.
+- $D$: $x = 4$ y $2x + y = 24$ $\Rightarrow$ $y = 16$: $D(4, 16)$.
+
+**Solución óptima.**
+
+- $F(4, 12) = 2.4 + 4.8 = 7.2$
+- $F(5, 10) = 3 + 4 = 7$
+- $F(6, 12) = 3.6 + 4.8 = 8.4$
+- $F(4, 16) = 2.4 + 6.4 = 8.8$
+
+El máximo está en $D(4, 16)$, que sí pertenece a la región (cumple $2 \cdot 4 + 16 = 24 > 20$). Que $A$ y $B$ no estén incluidos no afecta, porque en ellos $F$ es menor.
+
+**Respuesta.** Se deben llevar a cabo **4 misiones y 16 programas**, con un valor máximo de **$F = 8.8$** y una inversión de $0.8 + 1.6 = 2.4$ millones de euros.
+
+</Solucion>

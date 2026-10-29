@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+import RegionJulio2022 from "../../../../../components/figuras/RegionJulio2022.astro"
+
+Se considera el recinto definido por las siguientes inecuaciones:
+
+$$
+y - 2x \le 7; \qquad -x + 3y \le 21; \qquad x + 2y \le 19; \qquad x + y \le 14
+$$
+
+a) **(1.4 puntos)** Represente dicho recinto y determine sus vértices.
+
+<Solucion>
+
+**Rectas frontera.** Despejando $y$, las cuatro inecuaciones dicen que el recinto queda **por debajo** de cada recta:
+
+- $y \le 2x + 7$: recta por $(0, 7)$ y $(1, 9)$.
+- $y \le \frac{x + 21}{3}$: recta por $(0, 7)$ y $(3, 8)$.
+- $y \le \frac{19 - x}{2}$: recta por $(3, 8)$ y $(9, 5)$.
+- $y \le 14 - x$: recta por $(9, 5)$ y $(14, 0)$.
+
+El origen las cumple todas ($0 \le 7$, $0 \le 21$, $0 \le 19$, $0 \le 14$). El enunciado no incluye $x \ge 0$ ni $y \ge 0$, así que el recinto **no está acotado**: se extiende sin límite hacia abajo.
+
+<RegionJulio2022 />
+
+**Vértices.** Son los puntos donde el borde superior cambia de recta:
+
+- $A$: $y = 2x + 7$ y $3y = x + 21$ $\Rightarrow$ $6x + 21 = x + 21 \Rightarrow x = 0$, $y = 7$: $A(0, 7)$.
+- $B$: $-x + 3y = 21$ y $x + 2y = 19$. Sumando, $5y = 40 \Rightarrow y = 8$, $x = 3$: $B(3, 8)$.
+- $C$: $x + 2y = 19$ y $x + y = 14$. Restando, $y = 5$, $x = 9$: $C(9, 5)$.
+
+Cada vértice cumple las otras dos inecuaciones; por ejemplo, $B$: $8 - 6 = 2 \le 7$ y $3 + 8 = 11 \le 14$.
+
+</Solucion>
+
+b) **(0.6 puntos)** Calcule los valores máximo y mínimo de la función $F(x, y) = x + 4y$ en el recinto anterior, así como los puntos donde se alcanzan.
+
+<Solucion>
+
+**Valores en los vértices:**
+
+- $F(0, 7) = 28$
+- $F(3, 8) = 3 + 32 = 35$
+- $F(9, 5) = 9 + 20 = 29$
+
+**Máximo.** Hay que comprobar también qué pasa en los lados que se van al infinito:
+
+- A la izquierda de $A$, sobre $y = 2x + 7$: $F = x + 4(2x + 7) = 9x + 28$, que **disminuye** al alejarse hacia la izquierda.
+- A la derecha de $C$, sobre $y = 14 - x$: $F = x + 4(14 - x) = 56 - 3x$, que también **disminuye** al alejarse.
+
+Además, dentro del recinto $F$ aumenta al subir ($y$ lleva coeficiente positivo), así que el valor más alto está en el borde superior. **El máximo es $35$ y se alcanza en $B(3, 8)$**.
+
+**Mínimo.** Bajando en vertical desde cualquier punto, seguimos en el recinto y $F = x + 4y$ disminuye sin límite: por ejemplo, $F(0, y) = 4y$ con $y$ tan negativo como queramos. **$F$ no tiene mínimo** en el recinto.
+
+</Solucion>
+
+c) **(0.5 puntos)** ¿Podría tomar la función objetivo $F$ el valor $40$ en algún punto de la región factible? ¿Y el valor $20$? Justifique las respuestas.
+
+<Solucion>
+
+**Valor 40: no.** El máximo de $F$ en el recinto es $35$, así que nunca llega a $40$.
+
+**Valor 20: sí.** $20$ está por debajo del máximo y $F$ no tiene mínimo, así que la recta $x + 4y = 20$ atraviesa el recinto. Por ejemplo, el punto $(0, 5)$ cumple las cuatro inecuaciones ($5 \le 7$, $15 \le 21$, $10 \le 19$, $5 \le 14$) y $F(0, 5) = 20$.
+
+</Solucion>

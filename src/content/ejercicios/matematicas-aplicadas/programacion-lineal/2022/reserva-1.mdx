@@ -1,0 +1,53 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionLotes from "../../../../../components/figuras/RegionLotes.astro"
+
+**(2.5 puntos)** Una papelería quiere vender $400$ cuadernos de vacaciones y $300$ estuches de lápices de colores. Para ello ha preparado dos lotes de esos productos a precios especiales. Los lotes de tipo A contienen $2$ cuadernos y $2$ estuches; los lotes de tipo B contienen $3$ cuadernos y $1$ estuche. No es posible vender más de $100$ lotes de tipo B. Cada lote de tipo A se vende a $35$ € y cada lote de tipo B a $45$ €. Calcule cuántos lotes de cada tipo debe vender la papelería para conseguir el máximo valor de ventas. ¿A cuánto asciende dicho valor?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de lotes de tipo A e $y$ a los de tipo B. Hay que maximizar el valor de las ventas, en euros,
+
+$$
+F(x, y) = 35x + 45y
+$$
+
+con las restricciones (los cuadernos y estuches de que dispone son el máximo que puede poner en los lotes):
+
+$$
+\begin{cases}
+2x + 3y \le 400 & \text{(cuadernos)}\\
+2x + y \le 300 & \text{(estuches)}\\
+y \le 100 & \text{(lotes de tipo B)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda en el primer cuadrante, por debajo de $y = 100$ y de las rectas de los cuadernos y los estuches:
+
+<RegionLotes />
+
+**Vértices:**
+
+- $O(0, 0)$ y $A(150, 0)$: el eje $OX$ con el eje $OY$ y con la recta de los estuches.
+- $B$: $2x + y = 300$ y $2x + 3y = 400$. Restando, $2y = 100 \Rightarrow y = 50$, $x = 125$: $B(125, 50)$.
+- $C$: $y = 100$ y $2x + 3y = 400$ $\Rightarrow$ $2x = 100$, $C(50, 100)$. Cumple $100 + 100 = 200 \le 300$.
+- $D(0, 100)$: la recta $y = 100$ con el eje $OY$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(150, 0) = 5250$
+- $F(125, 50) = 4375 + 2250 = 6625$
+- $F(50, 100) = 1750 + 4500 = 6250$
+- $F(0, 100) = 4500$
+
+**Respuesta.** Debe vender **125 lotes de tipo A y 50 de tipo B**, con un **valor máximo de ventas de 6625 €**. Con ellos se agotan los $400$ cuadernos y los $300$ estuches.
+
+</Solucion>

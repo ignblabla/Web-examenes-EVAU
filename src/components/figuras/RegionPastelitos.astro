@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, junio de 2022, ejercicio 1: región factible de las cajas de pastelitos
+// del primer tipo (x) y del segundo (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={45}
+  yMax={34}
+  marcasX={[10, 20, 30, 40]}
+  marcasY={[5, 10, 15, 20, 25, 30]}
+  rectas={[
+    { desde: [0, 30], hasta: [40, 0], color: "#b04a3a", etiqueta: "3x + 4y = 120", en: [3, 29.5] },
+    { desde: [0, 25], hasta: [45, 10], color: "#7a5b16", etiqueta: "x + 3y = 75", en: [28, 19.5] },
+    { desde: [0, 9], hasta: [45, 9], color: "#2f6fa3", etiqueta: "y = 9", en: [39, 6.5] },
+  ]}
+  region={[
+    [0, 9],
+    [28, 9],
+    [12, 21],
+    [0, 25],
+  ]}
+  vertices={[
+    { x: 0, y: 9, texto: "A", dx: 6, dy: 14 },
+    { x: 28, y: 9, texto: "B", dx: 2, dy: 16 },
+    { x: 12, y: 21, texto: "C", dx: 4, dy: -8 },
+    { x: 0, y: 25, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 9), B(28, 9), C(12, 21) y D(0, 25), limitado por el eje OY y las rectas y = 9, 3x + 4y = 120 y x + 3y = 75"
+/>

@@ -1,0 +1,66 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Se considera la ecuación matricial $(10\,I_3 - A) \cdot X = B$, donde
+
+$$
+A = \begin{pmatrix} 2 & 1 & 0\\ 4 & 2 & 0\\ 2 & 2 & 5 \end{pmatrix}
+$$
+
+y $B$ es una matriz con tres filas y una columna.
+
+a) **(0.5 puntos)** Razone qué dimensión ha de tener la matriz $X$.
+
+<Solucion>
+
+$10\,I_3 - A$ es una matriz $3 \times 3$. Para que el producto $(10\,I_3 - A) \cdot X$ exista, $X$ ha de tener $3$ filas, y el resultado tiene tantas columnas como $X$. Como el resultado es $B$, de dimensión $3 \times 1$, $X$ ha de tener $1$ columna.
+
+**Respuesta.** $X$ ha de ser de dimensión **$3 \times 1$**.
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Tiene solución la ecuación matricial anterior para cualquier matriz $B$ de orden $3 \times 1$? ¿Por qué?
+
+<Solucion>
+
+Llamamos $M = 10\,I_3 - A$:
+
+$$
+M = \begin{pmatrix} 10 & 0 & 0\\ 0 & 10 & 0\\ 0 & 0 & 10 \end{pmatrix} - \begin{pmatrix} 2 & 1 & 0\\ 4 & 2 & 0\\ 2 & 2 & 5 \end{pmatrix} = \begin{pmatrix} 8 & -1 & 0\\ -4 & 8 & 0\\ -2 & -2 & 5 \end{pmatrix}
+$$
+
+Desarrollando por la tercera columna:
+
+$$
+|M| = 5 \cdot \begin{vmatrix} 8 & -1\\ -4 & 8 \end{vmatrix} = 5\,(64 - 4) = 300 \ne 0
+$$
+
+**Respuesta.** **Sí**: $M$ tiene inversa, así que para cualquier $B$ de orden $3 \times 1$ la ecuación tiene solución, y es única: $X = M^{-1} B$.
+
+</Solucion>
+
+c) **(1.5 puntos)** Resuelva dicha ecuación matricial si $B = \begin{pmatrix} 5 & 20 & -3 \end{pmatrix}^t$.
+
+<Solucion>
+
+**Inversa de $M$.** Con $M^{-1} = \frac{1}{|M|}\big(\text{Adj}(M)\big)^t$:
+
+$$
+\text{Adj}(M) = \begin{pmatrix} 40 & 20 & 24\\ 5 & 40 & 18\\ 0 & 0 & 60 \end{pmatrix}, \qquad
+M^{-1} = \frac{1}{300}\begin{pmatrix} 40 & 5 & 0\\ 20 & 40 & 0\\ 24 & 18 & 60 \end{pmatrix}
+$$
+
+**Cálculo de $X$:**
+
+$$
+X = M^{-1} B = \frac{1}{300}\begin{pmatrix} 40 & 5 & 0\\ 20 & 40 & 0\\ 24 & 18 & 60 \end{pmatrix}\begin{pmatrix} 5\\ 20\\ -3 \end{pmatrix} = \frac{1}{300}\begin{pmatrix} 300\\ 900\\ 300 \end{pmatrix} = \begin{pmatrix} 1\\ 3\\ 1 \end{pmatrix}
+$$
+
+**Comprobación:** $M \cdot X = \begin{pmatrix} 8 - 3\\ -4 + 24\\ -2 - 6 + 5 \end{pmatrix} = \begin{pmatrix} 5\\ 20\\ -3 \end{pmatrix} = B$.
+
+</Solucion>

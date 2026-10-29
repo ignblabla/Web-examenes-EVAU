@@ -1,0 +1,150 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+import DiagnosticadosCovid from "../../../../../components/figuras/DiagnosticadosCovid.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+2^{x+1} & \text{si } x < 0\\
+x^2 - 2x & \text{si } x \ge 0
+\end{cases}
+$$
+
+a) **(1 punto)** Estudie la continuidad y derivabilidad de la función $f$ en su dominio.
+
+<Solucion>
+
+**Continuidad.** Cada tramo es continuo (una exponencial y un polinomio), así que $f$ es continua en $\mathbb{R} \setminus \{0\}$. En $x = 0$:
+
+$$
+\lim_{x \to 0^-} 2^{x+1} = 2^1 = 2, \qquad \lim_{x \to 0^+} (x^2 - 2x) = 0 = f(0)
+$$
+
+Los límites laterales son distintos: $f$ tiene en $x = 0$ una **discontinuidad de salto finito**.
+
+**Derivabilidad.** Fuera de $x = 0$ es derivable, con
+
+$$
+f'(x) = \begin{cases}
+2^{x+1}\ln 2 & \text{si } x < 0\\
+2x - 2 & \text{si } x > 0
+\end{cases}
+$$
+
+En $x = 0$ **no es derivable**, porque no es continua.
+
+**Respuesta.** $f$ es continua y derivable en $\mathbb{R} \setminus \{0\}$; en $x = 0$ no es ni continua ni derivable.
+
+</Solucion>
+
+b) **(0.8 puntos)** Estudie la monotonía de la función $f$ y calcule el mínimo.
+
+<Solucion>
+
+**Monotonía.**
+
+- Para $x < 0$, $f'(x) = 2^{x+1}\ln 2 > 0$: $f$ es **creciente** en $(-\infty, 0)$.
+- Para $x > 0$, $f'(x) = 2x - 2 = 0 \iff x = 1$. En $(0, 1)$, $f'(0.5) = -1 < 0$: **decreciente**; en $(1, +\infty)$, $f'(2) = 2 > 0$: **creciente**.
+
+**Mínimo.** En $x = 1$ la función pasa de decrecer a crecer: **mínimo en $(1, -1)$**, ya que $f(1) = 1 - 2 = -1$. Es también el mínimo absoluto: para $x < 0$, $f(x) = 2^{x+1} > 0$, y para $x \ge 0$, $x^2 - 2x = (x - 1)^2 - 1 \ge -1$.
+
+</Solucion>
+
+c) **(0.7 puntos)** Calcule $\displaystyle\int_{-2}^{2} f(x)\,dx$.
+
+<Solucion>
+
+**Integrales indefinidas** de cada tramo:
+
+$$
+\int 2^{x+1}\,dx = \frac{2^{x+1}}{\ln 2} + C, \qquad \int (x^2 - 2x)\,dx = \frac{x^3}{3} - x^2 + C
+$$
+
+**Integral definida.** Partimos el intervalo en $x = 0$, donde cambia la expresión:
+
+$$
+\int_{-2}^{0} 2^{x+1}\,dx = \left[\frac{2^{x+1}}{\ln 2}\right]_{-2}^{0} = \frac{2 - \frac{1}{2}}{\ln 2} = \frac{3}{2\ln 2}
+$$
+
+$$
+\int_{0}^{2} (x^2 - 2x)\,dx = \left[\frac{x^3}{3} - x^2\right]_{0}^{2} = \frac{8}{3} - 4 = -\frac{4}{3}
+$$
+
+$$
+\int_{-2}^{2} f(x)\,dx = \frac{3}{2\ln 2} - \frac{4}{3} \approx 2.1640 - 1.3333 = 0.8307
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+El número de diagnosticados de COVID-19 por PCR en Andalucía, medido en miles de personas, se aproxima por la siguiente función:
+
+$$
+f(t) = \begin{cases}
+-t^2 + 2t - 0.3 & \text{si } 0.2 \le t \le 1.8\\
+0.1\,t - 0.12 & \text{si } 1.8 < t \le 5\\
+-0.5\,t^2 + 8.3\,t - 28.62 & \text{si } 5 < t \le 10
+\end{cases}
+$$
+
+donde $t$ es el tiempo, medido en meses, a partir del inicio de conteo en el mes de marzo de 2020.
+
+a) **(1.5 puntos)** Estudie la continuidad y derivabilidad de la función $f$ en su dominio.
+
+<Solucion>
+
+El dominio es $[0.2, 10]$. Los tres tramos son polinomios, continuos y derivables en sus intervalos; solo hay que estudiar los puntos de unión, $t = 1.8$ y $t = 5$.
+
+**Continuidad.**
+
+- En $t = 1.8$: $f(1.8) = -3.24 + 3.6 - 0.3 = 0.06$ y $\displaystyle\lim_{t \to 1.8^+} (0.1t - 0.12) = 0.18 - 0.12 = 0.06$. Es **continua**.
+- En $t = 5$: $f(5) = 0.5 - 0.12 = 0.38$ y $\displaystyle\lim_{t \to 5^+} (-0.5t^2 + 8.3t - 28.62) = -12.5 + 41.5 - 28.62 = 0.38$. Es **continua**.
+
+Así que $f$ es continua en todo $[0.2, 10]$.
+
+**Derivabilidad.** Las derivadas de los tramos son
+
+$$
+f'(t) = \begin{cases}
+-2t + 2 & \text{si } 0.2 < t < 1.8\\
+0.1 & \text{si } 1.8 < t < 5\\
+-t + 8.3 & \text{si } 5 < t < 10
+\end{cases}
+$$
+
+- En $t = 1.8$: $f'(1.8^-) = -3.6 + 2 = -1.6$ y $f'(1.8^+) = 0.1$. **No es derivable**.
+- En $t = 5$: $f'(5^-) = 0.1$ y $f'(5^+) = -5 + 8.3 = 3.3$. **No es derivable**.
+
+**Respuesta.** $f$ es continua en $[0.2, 10]$ y derivable en $(0.2, 10)$ salvo en $t = 1.8$ y $t = 5$.
+
+</Solucion>
+
+b) **(1 punto)** ¿En qué instante o instantes es máximo el número de diagnosticados? ¿Cuál es ese número?
+
+<Solucion>
+
+Buscamos el máximo absoluto de $f$, continua en $[0.2, 10]$, entre los puntos críticos, los de unión y los extremos del intervalo.
+
+- **Primer tramo:** $f'(t) = -2t + 2 = 0 \iff t = 1$, con $f(1) = -1 + 2 - 0.3 = 0.7$ (máximo relativo; la parábola se abre hacia abajo). En los bordes, $f(0.2) = 0.06$ y $f(1.8) = 0.06$.
+- **Segundo tramo:** $f'(t) = 0.1 > 0$, crece de $0.06$ a $f(5) = 0.38$.
+- **Tercer tramo:** $f'(t) = -t + 8.3 = 0 \iff t = 8.3$, con
+
+$$
+f(8.3) = -0.5 \cdot 68.89 + 8.3 \cdot 8.3 - 28.62 = -34.445 + 68.89 - 28.62 = 5.825
+$$
+
+En el tercer tramo, $f$ crece en $(5, 8.3)$ y decrece en $(8.3, 10)$, hasta $f(10) = -50 + 83 - 28.62 = 4.38$.
+
+<DiagnosticadosCovid />
+
+**Respuesta.** El número de diagnosticados es máximo en un único instante, **$t = 8.3$ meses** (a principios de noviembre de 2020), y ese máximo es de **$5.825$ miles, es decir, $5825$ personas**.
+
+</Solucion>

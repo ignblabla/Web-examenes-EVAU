@@ -1,0 +1,136 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+a) **(1.5 puntos)** Calcule la ecuación de la recta tangente a la gráfica de cada una de las siguientes funciones en el punto de abscisa $x = 0$:
+
+$$
+f(x) = \frac{3x^2 + 5x - 2}{-3x + 7} \qquad\qquad g(x) = \ln\left(\frac{1}{3x + 1}\right)
+$$
+
+<Solucion>
+
+La recta tangente en $x = 0$ es $y - h(0) = h'(0)(x - 0)$.
+
+**Tangente a $f$.** $f(0) = \frac{-2}{7}$. Por la regla del cociente:
+
+$$
+f'(x) = \frac{(6x + 5)(-3x + 7) - (3x^2 + 5x - 2)(-3)}{(-3x + 7)^2}, \qquad f'(0) = \frac{5 \cdot 7 - (-2)(-3)}{7^2} = \frac{35 - 6}{49} = \frac{29}{49}
+$$
+
+$$
+y + \frac{2}{7} = \frac{29}{49}x \;\Rightarrow\; y = \frac{29}{49}x - \frac{2}{7}
+$$
+
+**Tangente a $g$.** Por las propiedades del logaritmo, $g(x) = \ln 1 - \ln(3x + 1) = -\ln(3x + 1)$. Así, $g(0) = -\ln 1 = 0$ y
+
+$$
+g'(x) = \frac{-3}{3x + 1}, \qquad g'(0) = -3
+$$
+
+$$
+y - 0 = -3(x - 0) \;\Rightarrow\; y = -3x
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule las integrales definidas siguientes:
+
+$$
+\int_{-2}^{-1} \frac{5}{3x^4}\,dx \qquad\qquad \int_{-3}^{0} \frac{e^{\frac{x}{3}}}{5}\,dx
+$$
+
+<Solucion>
+
+**Primera integral.** Escribimos $\frac{5}{3x^4} = \frac{5}{3}x^{-4}$, cuya primitiva es $\frac{5}{3} \cdot \frac{x^{-3}}{-3} = -\frac{5}{9x^3}$:
+
+$$
+\int_{-2}^{-1} \frac{5}{3x^4}\,dx = \left[-\frac{5}{9x^3}\right]_{-2}^{-1} = -\frac{5}{9 \cdot (-1)} - \left(-\frac{5}{9 \cdot (-8)}\right) = \frac{5}{9} - \frac{5}{72} = \frac{35}{72} \approx 0.4861
+$$
+
+**Segunda integral.** La primitiva de $e^{\frac{x}{3}}$ es $3e^{\frac{x}{3}}$, porque al derivarla sale $3 \cdot \frac{1}{3}e^{\frac{x}{3}}$:
+
+$$
+\int_{-3}^{0} \frac{e^{\frac{x}{3}}}{5}\,dx = \left[\frac{3}{5}e^{\frac{x}{3}}\right]_{-3}^{0} = \frac{3}{5}\left(e^0 - e^{-1}\right) = \frac{3}{5}\left(1 - \frac{1}{e}\right) \approx 0.3793
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+x^3 + 2x^2 - 3 & x \le 1\\
+1 + \dfrac{1}{x - 2} & x > 1
+\end{cases}
+$$
+
+a) **(1 punto)** Estudie la continuidad de $f$. Si la función no es continua en algún punto, indique el tipo de discontinuidad que presenta.
+
+<Solucion>
+
+**Cada tramo.** El primero es un polinomio, continuo en $(-\infty, 1)$. El segundo es continuo salvo donde se anula su denominador, $x = 2$, que sí está en el tramo $x > 1$.
+
+**En $x = 1$:**
+
+$$
+f(1) = \lim_{x \to 1^-} f(x) = 1 + 2 - 3 = 0, \qquad \lim_{x \to 1^+} f(x) = 1 + \frac{1}{1 - 2} = 1 - 1 = 0
+$$
+
+Coinciden, así que $f$ **es continua en $x = 1$**.
+
+**En $x = 2$:** $f(2)$ no existe y
+
+$$
+\lim_{x \to 2^-} \left(1 + \frac{1}{x - 2}\right) = -\infty, \qquad \lim_{x \to 2^+} \left(1 + \frac{1}{x - 2}\right) = +\infty
+$$
+
+**Respuesta.** $f$ es continua en $\mathbb{R} - \{2\}$. En $x = 2$ tiene una **discontinuidad inevitable de salto infinito** (asintótica).
+
+</Solucion>
+
+b) **(0.75 puntos)** Estudie la derivabilidad de $f$.
+
+<Solucion>
+
+En $x = 2$ no es derivable, porque no es continua. Fuera de $x = 1$ y $x = 2$, la derivada es:
+
+$$
+f'(x) = \begin{cases}
+3x^2 + 4x & x < 1\\
+\dfrac{-1}{(x - 2)^2} & x > 1,\ x \ne 2
+\end{cases}
+$$
+
+**En $x = 1$** (donde $f$ es continua) comparamos las derivadas laterales:
+
+$$
+f'(1^-) = 3 + 4 = 7, \qquad f'(1^+) = \frac{-1}{(1 - 2)^2} = -1
+$$
+
+No coinciden: la gráfica tiene un pico en $(1, 0)$.
+
+**Respuesta.** $f$ es derivable en $\mathbb{R} - \{1, 2\}$.
+
+</Solucion>
+
+c) **(0.75 puntos)** Determine las asíntotas de $f$.
+
+<Solucion>
+
+**Verticales.** El primer tramo es un polinomio y no tiene. En el segundo, por el apartado a), los límites laterales en $x = 2$ son infinitos: **asíntota vertical $x = 2$**.
+
+**Horizontales.**
+
+- Hacia $+\infty$ se usa el segundo tramo: $\displaystyle\lim_{x \to +\infty} \left(1 + \frac{1}{x - 2}\right) = 1$. **Asíntota horizontal $y = 1$** por la derecha.
+- Hacia $-\infty$ se usa el polinomio: $\displaystyle\lim_{x \to -\infty} (x^3 + 2x^2 - 3) = -\infty$. No hay asíntota horizontal por la izquierda.
+
+**Oblicuas.** Por la derecha ya hay horizontal. Por la izquierda, $\frac{f(x)}{x} = x^2 + 2x - \frac{3}{x} \to +\infty$, así que tampoco hay oblicua.
+
+</Solucion>

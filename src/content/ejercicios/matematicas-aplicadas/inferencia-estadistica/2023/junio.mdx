@@ -1,0 +1,102 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+a) **(1.25 puntos)** Una población está dividida en cuatro estratos de $250$, $300$, $400$ y $350$ individuos. Realizado un muestreo aleatorio estratificado con afijación proporcional se han seleccionado $20$ individuos del primer estrato. Determine el tamaño de la población, el tamaño de la muestra y el número de individuos seleccionados de los tres restantes estratos.
+
+<Solucion>
+
+**Tamaño de la población:** $N = 250 + 300 + 400 + 350 = 1300$ individuos.
+
+Con afijación proporcional se toma **la misma fracción de todos los estratos**. Del primero, con $250$ individuos, se han tomado $20$:
+
+$$
+\frac{20}{250} = 0.08
+$$
+
+**Tamaño de la muestra:** $n = 1300 \cdot 0.08 = 104$ individuos.
+
+**Resto de estratos:**
+
+| | $E_1$ | $E_2$ | $E_3$ | $E_4$ | Total |
+|---|---|---|---|---|---|
+| Población | 250 | 300 | 400 | 350 | 1300 |
+| Muestra ($\cdot\,0.08$) | 20 | 24 | 32 | 28 | 104 |
+
+</Solucion>
+
+b) En un centro de enseñanza la calificación media de los estudiantes fue de $6.4$ puntos con una desviación típica de $0.7$ puntos. Se seleccionó aleatoriamente una muestra de $49$ estudiantes.
+
+b1) **(0.25 puntos)** Indique la distribución que sigue la media de las muestras de tamaño $49$.
+
+<Solucion>
+
+El tamaño de la muestra es grande ($n = 49 \ge 30$), así que, por el teorema central del límite, la media muestral sigue (aproximadamente) una distribución normal de media $\mu$ y desviación típica $\frac{\sigma}{\sqrt{n}}$:
+
+$$
+\bar{X} \sim N\left(6.4,\ \frac{0.7}{\sqrt{49}}\right) = N(6.4,\ 0.1)
+$$
+
+</Solucion>
+
+b2) **(1 punto)** Calcule la probabilidad de que la media de las calificaciones de los estudiantes de una de esas muestras esté comprendida entre $6.3$ y $6.8$ puntos.
+
+<Solucion>
+
+Tipificamos con $Z = \frac{\bar{X} - 6.4}{0.1}$:
+
+$$
+P(6.3 \le \bar{X} \le 6.8) = P\left(\frac{6.3 - 6.4}{0.1} \le Z \le \frac{6.8 - 6.4}{0.1}\right) = P(-1 \le Z \le 4)
+$$
+
+$$
+= P(Z \le 4) - P(Z \le -1) = P(Z \le 4) - \big(1 - P(Z \le 1)\big) = 1 - (1 - 0.8413) = 0.8413
+$$
+
+Se toma $P(Z \le 4) \approx 1$, porque $4$ queda fuera de la tabla, que llega hasta $3.99$ con $P \approx 1$.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se desea estimar la proporción de donantes de sangre en una universidad. Para ello se toma una muestra aleatoria de $400$ personas de esa universidad, resultando que $64$ son donantes de sangre.
+
+a) **(1.25 puntos)** Calcule un intervalo de confianza, con un nivel del $98\%$, para estimar la proporción poblacional de donantes de sangre.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{64}{400} = 0.16$.
+
+**Valor crítico.** Para el $98\%$, $P(Z \le z_{\alpha/2}) = 0.99$, entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.33\sqrt{\frac{0.16 \cdot 0.84}{400}} \approx 2.33 \cdot 0.01833 \approx 0.0427
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.16 - 0.0427,\ 0.16 + 0.0427) = (0.1173,\ 0.2027)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Si el nivel de confianza es del $95\%$, calcule el error máximo cometido. Razone si este error será mayor o menor al disminuir el nivel de confianza.
+
+<Solucion>
+
+Para el $95\%$, $P(Z \le z_{\alpha/2}) = 0.975$, que está en la tabla en $1.96$: $z_{\alpha/2} = 1.96$.
+
+$$
+E = 1.96\sqrt{\frac{0.16 \cdot 0.84}{400}} \approx 1.96 \cdot 0.01833 \approx 0.0359
+$$
+
+**Si disminuye el nivel de confianza**, disminuye $z_{\alpha/2}$ (como se ve al pasar del $98\%$ al $95\%$: de $2.33$ a $1.96$) y, con la misma muestra, **el error es menor**: se gana precisión a cambio de tener menos confianza en que el intervalo contenga la proporción real.
+
+</Solucion>

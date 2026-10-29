@@ -1,0 +1,24 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2023, ejercicio 3 b): recinto entre la parábola
+// y = −x² + 2x + 3 (arriba) y la recta y = −2x + 6 (abajo), entre x = 1 y x = 3.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-1.8}
+  xMax={4.5}
+  yMin={-3}
+  yMax={7}
+  marcasX={[-1, 2, 4]}
+  marcasY={[-2, 2, 6]}
+  tramos={[
+    { f: (x) => -(x ** 2) + 2 * x + 3, desde: -1.8, hasta: 4.5 },
+    { f: (x) => -2 * x + 6, desde: -1.8, hasta: 4.5 },
+  ]}
+  recinto={{ arriba: (x) => -(x ** 2) + 2 * x + 3, abajo: (x) => -2 * x + 6, desde: 1, hasta: 3 }}
+  puntos={[
+    { x: 1, y: 4, texto: "(1, 4)", dx: 0, dy: -9 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: 7, dy: -6 },
+  ]}
+  descripcion="Recinto sombreado entre la parábola y = −x² + 2x + 3, que queda por encima, y la recta y = −2x + 6, entre los puntos de corte (1, 4) y (3, 0)"
+/>

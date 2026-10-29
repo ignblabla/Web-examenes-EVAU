@@ -1,0 +1,105 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+a) **(1 punto)** En una población constituida por los números naturales del $1$ al $9$, ¿cuántas muestras de tamaño $2$ se pueden formar por muestreo aleatorio simple? Si se elige al azar una de esas muestras, ¿cuál es la probabilidad de que el valor medio de los dos números de esa muestra sea $5$?
+
+<Solucion>
+
+**Número de muestras.** En el muestreo aleatorio simple se elige con reemplazamiento: cada uno de los dos elementos puede ser cualquiera de los $9$ números, así que hay
+
+$$
+9^2 = 81 \text{ muestras}
+$$
+
+**Media igual a $5$.** La media de dos números es $5$ si suman $10$. Las muestras que lo cumplen son
+
+$$
+(1, 9),\ (2, 8),\ (3, 7),\ (4, 6),\ (5, 5),\ (6, 4),\ (7, 3),\ (8, 2),\ (9, 1)
+$$
+
+$9$ de las $81$, todas igual de probables:
+
+$$
+P(\bar{x} = 5) = \frac{9}{81} = \frac{1}{9} \approx 0.1111
+$$
+
+</Solucion>
+
+b) **(1.5 puntos)** Para estimar la proporción de andaluces contagiados por una enfermedad infecciosa en un momento determinado, se ha tomado una muestra de $10\,000$ personas, resultando que $500$ de ellas estaban infectadas.
+
+<div class="math-sub">
+
+1. Con ese dato, establezca un intervalo, al $97\%$ de confianza, para la proporción real de infectados en la población andaluza.
+2. A la vista del intervalo obtenido, razone si se podría aceptar que el $6\%$ de la población andaluza estaba infectada.
+3. Se toma una nueva muestra de mayor tamaño y resulta que hay la misma proporción de positivos en la nueva muestra. Con estos nuevos datos, razone si el nuevo intervalo al $97\%$ de confianza contiene al intervalo anterior o está contenido en él.
+
+</div>
+
+<Solucion>
+
+**1. Intervalo.** La proporción muestral es $\hat{p} = \frac{500}{10\,000} = 0.05$. Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, que está en la tabla exactamente para $z_{\alpha/2} = 2.17$.
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.17\sqrt{\frac{0.05 \cdot 0.95}{10\,000}} = 2.17\sqrt{0.00000475} \approx 2.17 \cdot 0.00218 \approx 0.0047
+$$
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.05 - 0.0047,\ 0.05 + 0.0047) = (0.0453,\ 0.0547)
+$$
+
+**2. ¿Un 6 %?** **No**: $0.06$ queda fuera del intervalo, por encima de su extremo superior, $0.0547$. Con una confianza del $97\%$, no se puede aceptar que el $6\%$ de la población estuviera infectada.
+
+**3. Nuevo intervalo.** Con la misma proporción $\hat{p} = 0.05$ y el mismo nivel de confianza, el nuevo intervalo tiene el mismo centro, $0.05$. El error $E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$ disminuye al aumentar $n$, así que el nuevo intervalo es más estrecho: **está contenido en el anterior**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El tiempo, en horas, que los alumnos de un instituto dedican a estudiar para los exámenes finales, se distribuye siguiendo una ley Normal de media desconocida y varianza $81$. Se toma una muestra aleatoria de $16$ alumnos de dicho instituto, obteniéndose los siguientes tiempos:
+
+$$
+30 \quad 42 \quad 38 \quad 45 \quad 52 \quad 60 \quad 21 \quad 26 \quad 33 \quad 44 \quad 28 \quad 49 \quad 32 \quad 51 \quad 49 \quad 40
+$$
+
+a) **(1.5 puntos)** Obtenga un intervalo, con un $95\%$ de confianza, para estimar el tiempo medio de estudio de los alumnos de ese instituto.
+
+<Solucion>
+
+**Media muestral.** Los $16$ tiempos suman $640$:
+
+$$
+\bar{x} = \frac{640}{16} = 40 \text{ horas}
+$$
+
+**Desviación típica.** La varianza es $81$, así que $\sigma = 9$, y la de la media muestral es $\frac{\sigma}{\sqrt{n}} = \frac{9}{4} = 2.25$.
+
+**Valor crítico.** Para el $95\%$, $P(Z \le z_{\alpha/2}) = 0.975$, que está en la tabla para $z_{\alpha/2} = 1.96$.
+
+**Intervalo.** $E = 1.96 \cdot 2.25 = 4.41$:
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (40 - 4.41,\ 40 + 4.41) = (35.59,\ 44.41)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule el mínimo tamaño de la muestra que se ha de tomar, para estimar el tiempo medio de estudio de esos alumnos con un error inferior a $2$ horas y un nivel de confianza del $98\%$.
+
+<Solucion>
+
+**Valor crítico.** Para el $98\%$, $P(Z \le z_{\alpha/2}) = 0.99$, entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$.
+
+**Tamaño.** Queremos $E < 2$:
+
+$$
+2.33 \cdot \frac{9}{\sqrt{n}} < 2 \;\Rightarrow\; \sqrt{n} > \frac{2.33 \cdot 9}{2} = 10.485 \;\Rightarrow\; n > 10.485^2 \approx 109.94
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **110 alumnos**.
+
+</Solucion>

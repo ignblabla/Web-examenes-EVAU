@@ -1,0 +1,66 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+a) **(1.25 puntos)** Un agricultor vende la producción de tres tipos de uva, Tempranillo, Garnacha y Macabeo, de dos de sus fincas. La matriz $Q = \begin{pmatrix} 50 & 40 & 35\\ 0 & 60 & 55 \end{pmatrix}$ recoge la producción, en miles de kilogramos, de estos tipos de uva en cada finca. El precio de venta por kilogramo, en céntimos de euro, según el tipo de uva y la finca, viene dado por la matriz $P = \begin{pmatrix} 40 & 38 & 42\\ 34 & 37 & 40 \end{pmatrix}$.
+
+Calcule el producto $Q \cdot P^t$ y explique el significado económico de los elementos de la diagonal principal del resultado. Indique también la cantidad total de dinero que ha obtenido el agricultor por la venta de la cosecha de las dos fincas.
+
+<Solucion>
+
+En las dos matrices, cada fila es una finca y cada columna, un tipo de uva (Tempranillo, Garnacha y Macabeo).
+
+**Producto.** $Q$ es $2 \times 3$ y $P^t$ es $3 \times 2$, así que $Q \cdot P^t$ es $2 \times 2$:
+
+$$
+Q \cdot P^t = \begin{pmatrix} 50 & 40 & 35\\ 0 & 60 & 55 \end{pmatrix}\begin{pmatrix} 40 & 34\\ 38 & 37\\ 42 & 40 \end{pmatrix} = \begin{pmatrix} 2000 + 1520 + 1470 & 1700 + 1480 + 1400\\ 0 + 2280 + 2310 & 0 + 2220 + 2200 \end{pmatrix} = \begin{pmatrix} 4990 & 4580\\ 4590 & 4420 \end{pmatrix}
+$$
+
+**Significado de la diagonal.** El elemento $(i, i)$ multiplica lo que produce la finca $i$ de cada tipo de uva por el precio de esa uva **en la misma finca** y lo suma: es lo que ingresa la finca $i$ por la venta de su cosecha. Las unidades son miles de kilogramos por céntimos el kilogramo, es decir, **miles de céntimos** ($1000$ céntimos son $10$ euros):
+
+- $4990$ miles de céntimos: la primera finca ingresa **49 900 euros**.
+- $4420$ miles de céntimos: la segunda finca ingresa **44 200 euros**.
+
+Los elementos fuera de la diagonal no tienen sentido económico: combinan la producción de una finca con los precios de la otra.
+
+**Total.** La suma de la diagonal es $4990 + 4420 = 9410$ miles de céntimos: el agricultor obtiene **94 100 euros** por la cosecha de las dos fincas.
+
+</Solucion>
+
+b) Dada la siguiente ecuación matricial $M \cdot X + N = V$:
+
+b1) **(0.5 puntos)** Suponiendo que $M$ sea invertible, despeje la matriz $X$ en la ecuación anterior.
+
+<Solucion>
+
+Restamos $N$ y multiplicamos por $M^{-1}$ por la **izquierda**, que es donde está $M$:
+
+$$
+M \cdot X = V - N \;\Rightarrow\; X = M^{-1}(V - N)
+$$
+
+</Solucion>
+
+b2) **(0.75 puntos)** Para $M = \begin{pmatrix} 1 & 0\\ 1 & 1 \end{pmatrix}$, $N = \begin{pmatrix} 5 & 4\\ 3 & 2 \end{pmatrix}$ y $V = \begin{pmatrix} 8 & 7\\ 6 & 5 \end{pmatrix}$, calcule la matriz $X$.
+
+<Solucion>
+
+**Inversa de $M$.** $|M| = 1 \ne 0$, así que tiene inversa:
+
+$$
+M^{-1} = \frac{1}{1}\begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix}
+$$
+
+**Cálculo.**
+
+$$
+V - N = \begin{pmatrix} 3 & 3\\ 3 & 3 \end{pmatrix}, \qquad X = \begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix}\begin{pmatrix} 3 & 3\\ 3 & 3 \end{pmatrix} = \begin{pmatrix} 3 & 3\\ 0 & 0 \end{pmatrix}
+$$
+
+Comprobación: $M \cdot X = \begin{pmatrix} 3 & 3\\ 3 & 3 \end{pmatrix}$ y, sumando $N$, $\begin{pmatrix} 8 & 7\\ 6 & 5 \end{pmatrix} = V$.
+
+</Solucion>

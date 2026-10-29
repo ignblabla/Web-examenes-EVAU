@@ -1,0 +1,80 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+Dadas las matrices
+
+$$
+A = \begin{pmatrix} a & 1 & 0\\ 0 & a & 2\\ 0 & 1 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 2 & -1\\ a & -1 \end{pmatrix}, \quad C = \begin{pmatrix} 2 & -1\\ 1 & -1\\ 2 & 0 \end{pmatrix}
+$$
+
+a) **(1 punto)** Calcule los valores del parámetro $a$ para los que tanto $A$ como $B$ admitan inversa.
+
+<Solucion>
+
+Una matriz cuadrada tiene inversa si y solo si su determinante no es $0$.
+
+**Determinante de $A$.** Desarrollamos por la primera columna, que solo tiene un elemento no nulo:
+
+$$
+|A| = a \cdot \begin{vmatrix} a & 2\\ 1 & 1 \end{vmatrix} = a(a - 2)
+$$
+
+$|A| = 0 \iff a = 0$ o $a = 2$.
+
+**Determinante de $B$:**
+
+$$
+|B| = 2 \cdot (-1) - (-1) \cdot a = a - 2
+$$
+
+$|B| = 0 \iff a = 2$.
+
+**Respuesta.** $A$ y $B$ tienen inversa a la vez para **todo $a \ne 0$ y $a \ne 2$**.
+
+</Solucion>
+
+b) **(1.5 puntos)** Para $a = 1$, halle una matriz $X$ que satisfaga $A \cdot X \cdot B = C$.
+
+<Solucion>
+
+**Despejar $X$.** Para $a = 1$, $|A| = -1$ y $|B| = -1$, así que las dos tienen inversa. Multiplicamos por $A^{-1}$ por la **izquierda** y por $B^{-1}$ por la **derecha**:
+
+$$
+A \cdot X \cdot B = C \;\Rightarrow\; X = A^{-1} \cdot C \cdot B^{-1}
+$$
+
+Como $A$ es $3 \times 3$, $C$ es $3 \times 2$ y $B$ es $2 \times 2$, $X$ es una matriz $3 \times 2$.
+
+**Inversa de $A$.** Con $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+A = \begin{pmatrix} 1 & 1 & 0\\ 0 & 1 & 2\\ 0 & 1 & 1 \end{pmatrix}, \quad
+\text{Adj}(A) = \begin{pmatrix} -1 & 0 & 0\\ -1 & 1 & -1\\ 2 & -2 & 1 \end{pmatrix}, \quad
+A^{-1} = \frac{1}{-1}\begin{pmatrix} -1 & -1 & 2\\ 0 & 1 & -2\\ 0 & -1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 & -2\\ 0 & -1 & 2\\ 0 & 1 & -1 \end{pmatrix}
+$$
+
+**Inversa de $B$:**
+
+$$
+B = \begin{pmatrix} 2 & -1\\ 1 & -1 \end{pmatrix}, \qquad
+B^{-1} = \frac{1}{-1}\begin{pmatrix} -1 & 1\\ -1 & 2 \end{pmatrix} = \begin{pmatrix} 1 & -1\\ 1 & -2 \end{pmatrix}
+$$
+
+**Cálculo.**
+
+$$
+A^{-1} \cdot C = \begin{pmatrix} 1 & 1 & -2\\ 0 & -1 & 2\\ 0 & 1 & -1 \end{pmatrix}\begin{pmatrix} 2 & -1\\ 1 & -1\\ 2 & 0 \end{pmatrix} = \begin{pmatrix} -1 & -2\\ 3 & 1\\ -1 & -1 \end{pmatrix}
+$$
+
+$$
+X = \begin{pmatrix} -1 & -2\\ 3 & 1\\ -1 & -1 \end{pmatrix}\begin{pmatrix} 1 & -1\\ 1 & -2 \end{pmatrix} = \begin{pmatrix} -3 & 5\\ 4 & -5\\ -2 & 3 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot X = \begin{pmatrix} 1 & 0\\ 0 & 1\\ 2 & -2 \end{pmatrix}$ y, multiplicando por $B$, $\begin{pmatrix} 2 & -1\\ 1 & -1\\ 2 & 0 \end{pmatrix} = C$.
+
+</Solucion>

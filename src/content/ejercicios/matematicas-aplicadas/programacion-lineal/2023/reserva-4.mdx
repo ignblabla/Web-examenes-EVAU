@@ -1,0 +1,53 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionPinturas from "../../../../../components/figuras/RegionPinturas.astro"
+
+**(2.5 puntos)** Una empresa de pinturas quiere elaborar botes de pintura de dos colores nuevos: Júpiter y Minerva. Para ello, dispone de $1000\ kg$ de pintura de color verde, $800\ kg$ de color morado y $300\ kg$ de color naranja. Para elaborar un bote de color Júpiter se necesitan $10\ kg$ de pintura verde, $5\ kg$ de morada y $5\ kg$ de naranja. Para elaborar un bote de color Minerva se necesitan $5\ kg$ de pintura verde y $5\ kg$ de morada. Sabiendo que se obtiene un beneficio de $30$ € por cada bote de pintura Júpiter y $20$ € por un bote de pintura Minerva, ¿cuántos botes de cada tipo deberá fabricar la empresa para obtener un beneficio máximo? ¿Cuál será el valor de ese beneficio?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de botes Júpiter e $y$ al de botes Minerva. Hay que maximizar el beneficio, en euros,
+
+$$
+F(x, y) = 30x + 20y
+$$
+
+con las restricciones (simplificamos cada una dividiendo):
+
+$$
+\begin{cases}
+10x + 5y \le 1000 \iff 2x + y \le 200 & \text{(verde)}\\
+5x + 5y \le 800 \iff x + y \le 160 & \text{(morada)}\\
+5x \le 300 \iff x \le 60 & \text{(naranja)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda en el primer cuadrante, a la izquierda de $x = 60$ y por debajo de las rectas de la pintura verde y la morada:
+
+<RegionPinturas />
+
+**Vértices:**
+
+- $O(0, 0)$ y $A(60, 0)$: el eje $OX$ con el eje $OY$ y con $x = 60$.
+- $B$: $x = 60$ y $2x + y = 200$ $\Rightarrow$ $B(60, 80)$. Cumple $60 + 80 = 140 \le 160$.
+- $C$: $2x + y = 200$ y $x + y = 160$. Restando, $x = 40$, $y = 120$: $C(40, 120)$.
+- $D(0, 160)$: la recta de la morada con el eje $OY$. La de la verde lo corta más arriba, en $(0, 200)$, así que ahí manda la morada.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(60, 0) = 1800$
+- $F(60, 80) = 1800 + 1600 = 3400$
+- $F(40, 120) = 1200 + 2400 = 3600$
+- $F(0, 160) = 3200$
+
+**Respuesta.** Debe fabricar **40 botes Júpiter y 120 botes Minerva**, con un **beneficio máximo de 3600 €**.
+
+</Solucion>

@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2022, ejercicio 1: cuadrilátero de vértices A(1, 3),
+// B(3, 2), C(4, 4) y D(2, 7).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={6.5}
+  yMax={8.5}
+  marcasX={[1, 2, 3, 4, 5, 6]}
+  marcasY={[1, 2, 3, 4, 5, 6, 7, 8]}
+  rectas={[
+    { desde: [0, 3.5], hasta: [6.5, 0.25], color: "#2f6fa3", etiqueta: "x + 2y = 7", en: [3.4, 0.55] },
+    { desde: [2, 0], hasta: [6.25, 8.5], color: "#b04a3a", etiqueta: "2x − y = 4", en: [5.3, 6.0] },
+    { desde: [0.25, 0], hasta: [2.375, 8.5], color: "#5b3f8c", etiqueta: "4x − y = 1", en: [2.45, 8.0] },
+    { desde: [1, 8.5], hasta: [6.5, 0.25], color: "#7a5b16", etiqueta: "3x + 2y = 20", en: [5.0, 2.6] },
+  ]}
+  region={[
+    [1, 3],
+    [3, 2],
+    [4, 4],
+    [2, 7],
+  ]}
+  vertices={[
+    { x: 1, y: 3, texto: "A", dx: -14, dy: 4 },
+    { x: 3, y: 2, texto: "B", dx: 6, dy: 12 },
+    { x: 4, y: 4, texto: "C", dx: 7, dy: 4 },
+    { x: 2, y: 7, texto: "D", dx: -14, dy: -2 },
+  ]}
+  descripcion="Región: cuadrilátero de vértices A(1, 3), B(3, 2), C(4, 4) y D(2, 7), limitado por las rectas x + 2y = 7, 2x − y = 4, 3x + 2y = 20 y 4x − y = 1"
+/>

@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+import RegionJulio2021 from "../../../../../components/figuras/RegionJulio2021.astro"
+
+Se consideran las siguientes inecuaciones:
+
+$$
+5x - 4y \le -19 \qquad 3x - 4y \le -13 \qquad x \ge -7 \qquad -x - y \ge 2
+$$
+
+a) **(1.5 puntos)** Represente la región factible definida por las inecuaciones anteriores y determine sus vértices.
+
+<Solucion>
+
+**Semiplanos.** Despejamos $y$ en cada inecuación:
+
+- $5x - 4y \le -19 \iff y \ge \frac{5x + 19}{4}$: por encima de la recta $5x - 4y = -19$.
+- $3x - 4y \le -13 \iff y \ge \frac{3x + 13}{4}$: por encima de la recta $3x - 4y = -13$.
+- $x \ge -7$: a la derecha de la recta $x = -7$.
+- $-x - y \ge 2 \iff y \le -x - 2$: por debajo de la recta $x + y = -2$.
+
+**Cortes de las rectas.**
+
+- $5x - 4y = -19$ y $3x - 4y = -13$: restando, $2x = -6$, así que $x = -3$, $y = 1$. El punto $(-3, 1)$ cumple también $x + y = -2$: **las tres rectas pasan por $(-3, 1)$**.
+- $x = -7$ con $3x - 4y = -13$: $-4y = 8$, $y = -2$: $(-7, -2)$.
+- $x = -7$ con $x + y = -2$: $y = 5$: $(-7, 5)$.
+- $x = -7$ con $5x - 4y = -19$: $y = -4$, el punto $(-7, -4)$, que no cumple $3x - 4y \le -13$ ($-21 + 16 = -5 > -13$), así que no es vértice.
+
+**Región factible.** Para $x < -3$, la recta $3x - 4y = -13$ va por encima de $5x - 4y = -19$ (tiene menos pendiente y se cortan en $x = -3$), así que la primera restricción no limita; para $x > -3$, $y \ge \frac{5x + 19}{4} > 1$ choca con $y \le -x - 2 < 1$ y no hay puntos. La región es el **triángulo** entre $x = -7$, $3x - 4y = -13$ y $x + y = -2$; la recta $5x - 4y = -19$ solo lo toca en el vértice $C$:
+
+<RegionJulio2021 />
+
+**Vértices:** $A(-7, -2)$, $B(-7, 5)$ y $C(-3, 1)$.
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Cuáles son los puntos en los que se alcanzan el mínimo y el máximo de la función $G(x, y) = -\frac{1}{5}x + \frac{5}{2}y$ en la citada región factible? ¿Cuál es su valor?
+
+<Solucion>
+
+La región es acotada, así que $G$ alcanza su máximo y su mínimo en los vértices:
+
+- $G(-7, -2) = \frac{7}{5} - 5 = -\frac{18}{5} = -3.6$
+- $G(-7, 5) = \frac{7}{5} + \frac{25}{2} = \frac{139}{10} = 13.9$
+- $G(-3, 1) = \frac{3}{5} + \frac{5}{2} = \frac{31}{10} = 3.1$
+
+**Respuesta.** El **mínimo** se alcanza en **$A(-7, -2)$** y vale **$-3.6$**; el **máximo**, en **$B(-7, 5)$** y vale **$13.9$**.
+
+</Solucion>
+
+c) **(0.5 puntos)** Responda de forma razonada si la función $G(x, y) = -\frac{1}{5}x + \frac{5}{2}y$ puede alcanzar el valor $\frac{47}{3}$ en la región factible hallada.
+
+<Solucion>
+
+Por el apartado b), en la región factible $-3.6 \le G(x, y) \le 13.9$, y
+
+$$
+\frac{47}{3} \approx 15.67 > 13.9
+$$
+
+**Respuesta.** **No puede**: $\frac{47}{3}$ es mayor que el máximo de $G$ en la región.
+
+</Solucion>

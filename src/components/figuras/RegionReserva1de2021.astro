@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2021, ejercicio 1 b): región por encima de x + 4y = 5 y
+// x + 2y = 4, por debajo de 7x + 5y = 35 y a la derecha del eje OY.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={7.5}
+  yMax={8}
+  marcasX={[1, 2, 3, 4, 5, 6, 7]}
+  marcasY={[1, 2, 3, 4, 5, 6, 7]}
+  rectas={[
+    { desde: [0, 1.25], hasta: [5, 0], color: "#2f6fa3", etiqueta: "x + 4y = 5", en: [5.5, 0.95], ancla: "start" },
+    { desde: [0, 2], hasta: [4, 0], color: "#7a5b16", etiqueta: "x + 2y = 4", en: [0.25, 2.55], ancla: "start" },
+    { desde: [0, 7], hasta: [5, 0], color: "#b04a3a", etiqueta: "7x + 5y = 35", en: [3.4, 3.6], ancla: "start" },
+  ]}
+  region={[
+    [0, 2],
+    [3, 0.5],
+    [5, 0],
+    [0, 7],
+  ]}
+  vertices={[
+    { x: 0, y: 2, texto: "A", dx: 8, dy: 14 },
+    { x: 3, y: 0.5, texto: "B", dx: -2, dy: -8 },
+    { x: 5, y: 0, texto: "C", dx: 4, dy: -8 },
+    { x: 0, y: 7, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 2), B(3, 0.5), C(5, 0) y D(0, 7), limitado por el eje OY y las rectas x + 2y = 4, x + 4y = 5 y 7x + 5y = 35"
+/>

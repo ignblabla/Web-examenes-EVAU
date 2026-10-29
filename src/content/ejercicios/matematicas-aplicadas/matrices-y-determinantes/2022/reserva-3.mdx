@@ -1,0 +1,74 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considere la matriz
+
+$$
+A = \begin{pmatrix} 2 & -3 & -a - 1\\ -1 & a & a + 1\\ 1 & -3 & -a \end{pmatrix}
+$$
+
+donde $a$ es un número real. Determine de manera justificada:
+
+a) **(0.75 puntos)** Los valores de $a$ para los que la matriz $A$ tiene inversa.
+
+<Solucion>
+
+$A$ tiene inversa si y solo si $|A| \ne 0$. Desarrollamos por la primera fila:
+
+$$
+|A| = 2\big(-a^2 + 3(a + 1)\big) + 3\big(a - (a + 1)\big) + (-a - 1)(3 - a)
+$$
+
+$$
+= -2a^2 + 6a + 6 - 3 + (a^2 - 2a - 3) = -a^2 + 4a = a(4 - a)
+$$
+
+$|A| = 0 \iff a = 0$ o $a = 4$.
+
+**Respuesta.** $A$ tiene inversa para **todo $a \ne 0$ y $a \ne 4$**.
+
+</Solucion>
+
+b) **(0.75 puntos)** Las matrices $A^2$, $A^3$ y $A^{2022}$ para $a = 4$.
+
+<Solucion>
+
+Para $a = 4$:
+
+$$
+A^2 = \begin{pmatrix} 2 & -3 & -5\\ -1 & 4 & 5\\ 1 & -3 & -4 \end{pmatrix}\begin{pmatrix} 2 & -3 & -5\\ -1 & 4 & 5\\ 1 & -3 & -4 \end{pmatrix} = \begin{pmatrix} 4 + 3 - 5 & -6 - 12 + 15 & -10 - 15 + 20\\ -2 - 4 + 5 & 3 + 16 - 15 & 5 + 20 - 20\\ 2 + 3 - 4 & -3 - 12 + 12 & -5 - 15 + 16 \end{pmatrix} = \begin{pmatrix} 2 & -3 & -5\\ -1 & 4 & 5\\ 1 & -3 & -4 \end{pmatrix}
+$$
+
+Es decir, **$A^2 = A$**. Entonces cada potencia vuelve a dar $A$:
+
+$$
+A^3 = A^2 \cdot A = A \cdot A = A^2 = A, \qquad A^4 = A^3 \cdot A = A \cdot A = A, \ \ldots
+$$
+
+**Respuesta.** $A^2 = A^3 = A^{2022} = A = \begin{pmatrix} 2 & -3 & -5\\ -1 & 4 & 5\\ 1 & -3 & -4 \end{pmatrix}$.
+
+</Solucion>
+
+c) **(1 punto)** La matriz $X$ que verifica que $X \cdot A = I_3$ para $a = 3$.
+
+<Solucion>
+
+Si $X \cdot A = I_3$, entonces $X$ es la inversa de $A$. Para $a = 3$, $|A| = 3 \cdot (4 - 3) = 3 \ne 0$, así que existe:
+
+$$
+A = \begin{pmatrix} 2 & -3 & -4\\ -1 & 3 & 4\\ 1 & -3 & -3 \end{pmatrix}, \qquad
+\text{Adj}(A) = \begin{pmatrix} 3 & 1 & 0\\ 3 & -2 & 3\\ 0 & -4 & 3 \end{pmatrix}
+$$
+
+$$
+X = A^{-1} = \frac{1}{3}\begin{pmatrix} 3 & 3 & 0\\ 1 & -2 & -4\\ 0 & 3 & 3 \end{pmatrix} = \begin{pmatrix} 1 & 1 & 0\\ \frac{1}{3} & -\frac{2}{3} & -\frac{4}{3}\\ 0 & 1 & 1 \end{pmatrix}
+$$
+
+Comprobación: $X \cdot A = I_3$.
+
+</Solucion>

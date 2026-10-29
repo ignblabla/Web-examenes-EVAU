@@ -1,0 +1,74 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} a & 1 & 0\\ 0 & a & 1\\ 3 & 4 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 2 & -1 & 0 \end{pmatrix}, \quad C = \begin{pmatrix} 1 & 3 & -1 \end{pmatrix}
+$$
+
+donde $a$ es un número real.
+
+a) **(0.75 puntos)** Halle los valores del parámetro $a$ para que la matriz $A$ tenga inversa.
+
+<Solucion>
+
+$A$ tiene inversa si y solo si $|A| \ne 0$. Desarrollamos por la primera fila:
+
+$$
+|A| = a \cdot \begin{vmatrix} a & 1\\ 4 & 1 \end{vmatrix} - 1 \cdot \begin{vmatrix} 0 & 1\\ 3 & 1 \end{vmatrix} + 0 = a(a - 4) - (0 - 3) = a^2 - 4a + 3
+$$
+
+$$
+a^2 - 4a + 3 = 0 \iff a = \frac{4 \pm \sqrt{16 - 12}}{2} = \frac{4 \pm 2}{2} \iff a = 1 \text{ o } a = 3
+$$
+
+**Respuesta.** $A$ tiene inversa para **todo $a \ne 1$ y $a \ne 3$**.
+
+</Solucion>
+
+b) **(0.75 puntos)** Para $a = 2$, calcule la matriz inversa de $A$.
+
+<Solucion>
+
+Para $a = 2$, $|A| = 4 - 8 + 3 = -1 \ne 0$. Con $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+A = \begin{pmatrix} 2 & 1 & 0\\ 0 & 2 & 1\\ 3 & 4 & 1 \end{pmatrix}, \quad
+\text{Adj}(A) = \begin{pmatrix} -2 & 3 & -6\\ -1 & 2 & -5\\ 1 & -2 & 4 \end{pmatrix}, \quad
+A^{-1} = \frac{1}{-1}\begin{pmatrix} -2 & -1 & 1\\ 3 & 2 & -2\\ -6 & -5 & 4 \end{pmatrix} = \begin{pmatrix} 2 & 1 & -1\\ -3 & -2 & 2\\ 6 & 5 & -4 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot A^{-1} = I_3$.
+
+</Solucion>
+
+c) **(1 punto)** Para $a = 2$, resuelva la ecuación matricial $X \cdot A + I_3 = B^t \cdot C$.
+
+<Solucion>
+
+**Despejar $X$.** Restamos $I_3$ y multiplicamos por $A^{-1}$ por la **derecha**, que es donde está $A$:
+
+$$
+X \cdot A = B^t C - I_3 \;\Rightarrow\; X = (B^t C - I_3)\,A^{-1}
+$$
+
+**Cálculo.** $B^t$ es $3 \times 1$ y $C$ es $1 \times 3$, así que $B^t C$ es $3 \times 3$:
+
+$$
+B^t C = \begin{pmatrix} 2\\ -1\\ 0 \end{pmatrix}\begin{pmatrix} 1 & 3 & -1 \end{pmatrix} = \begin{pmatrix} 2 & 6 & -2\\ -1 & -3 & 1\\ 0 & 0 & 0 \end{pmatrix}, \qquad
+B^t C - I_3 = \begin{pmatrix} 1 & 6 & -2\\ -1 & -4 & 1\\ 0 & 0 & -1 \end{pmatrix}
+$$
+
+$$
+X = \begin{pmatrix} 1 & 6 & -2\\ -1 & -4 & 1\\ 0 & 0 & -1 \end{pmatrix}\begin{pmatrix} 2 & 1 & -1\\ -3 & -2 & 2\\ 6 & 5 & -4 \end{pmatrix} = \begin{pmatrix} -28 & -21 & 19\\ 16 & 12 & -11\\ -6 & -5 & 4 \end{pmatrix}
+$$
+
+Comprobación: $X \cdot A = \begin{pmatrix} 1 & 6 & -2\\ -1 & -4 & 1\\ 0 & 0 & -1 \end{pmatrix}$ y, sumando $I_3$, se obtiene $B^t C$.
+
+</Solucion>

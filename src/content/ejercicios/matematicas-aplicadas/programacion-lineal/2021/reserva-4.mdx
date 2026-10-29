@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionReserva4de2021 from "../../../../../components/figuras/RegionReserva4de2021.astro"
+
+**(2.5 puntos)** Un laboratorio farmacéutico tiene una línea de producción con dos medicamentos $A$ y $B$, con marca comercial y genérico respectivamente, de los cuales, entre los dos como máximo puede fabricar $10$ unidades a la hora. Desde el punto de vista del rendimiento, se han de producir al menos $4$ unidades por hora entre los dos y por motivos de política sanitaria, la producción de $A$ ha de ser como mucho $2$ unidades más que la de $B$.
+
+Cada unidad de tipo $A$ que vende le produce un beneficio de $60$ euros, mientras que cada unidad de tipo $B$ le produce un beneficio de $25$ euros. Si se vende todo lo que se produce, determine las unidades de cada medicamento que deberá fabricar por hora para maximizar su beneficio y obtenga el valor de dicho beneficio.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las unidades del medicamento $A$ e $y$ a las del $B$ fabricadas por hora. Hay que maximizar el beneficio, en euros,
+
+$$
+F(x, y) = 60x + 25y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + y \le 10 & \text{(máximo por hora)}\\
+x + y \ge 4 & \text{(rendimiento mínimo)}\\
+x \le y + 2 \iff x - y \le 2 & \text{(A, como mucho 2 más que B)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda entre las rectas paralelas $x + y = 4$ y $x + y = 10$, a la derecha del eje $OY$ y por encima de la recta $x - y = 2$:
+
+<RegionReserva4de2021 />
+
+**Vértices:**
+
+- $A(0, 4)$: $x + y = 4$ con el eje $OY$.
+- $B$: $x + y = 4$ y $x - y = 2$. Sumando, $2x = 6$, así que $x = 3$, $y = 1$: $B(3, 1)$. La recta $x + y = 4$ corta al eje $OX$ en $(4, 0)$, que no cumple $x - y \le 2$, así que la región no llega al eje $OX$.
+- $C$: $x + y = 10$ y $x - y = 2$. Sumando, $2x = 12$, así que $x = 6$, $y = 4$: $C(6, 4)$.
+- $D(0, 10)$: $x + y = 10$ con el eje $OY$.
+
+**Solución óptima.**
+
+- $F(0, 4) = 100$
+- $F(3, 1) = 180 + 25 = 205$
+- $F(6, 4) = 360 + 100 = 460$
+- $F(0, 10) = 250$
+
+**Respuesta.** Debe fabricar **6 unidades de $A$ y 4 de $B$** por hora, con un beneficio máximo de **460 euros** por hora.
+
+</Solucion>

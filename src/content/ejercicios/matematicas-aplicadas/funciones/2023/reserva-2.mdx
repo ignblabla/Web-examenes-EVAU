@@ -1,0 +1,134 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RecintoReserva2de2023 from "../../../../../components/figuras/RecintoReserva2de2023.astro"
+import TemperaturaRefrigerador from "../../../../../components/figuras/TemperaturaRefrigerador.astro"
+
+a) **(1.5 puntos)** Calcule las derivadas de las siguientes funciones:
+
+$$
+f(x) = (-7 + x^2)^3 \cdot e^{5 - x} \qquad\qquad g(x) = \frac{\ln(x^4 - 2x^2)}{8 - x^3}
+$$
+
+<Solucion>
+
+**Derivada de $f$.** Regla del producto. La derivada de $(x^2 - 7)^3$ es $3(x^2 - 7)^2 \cdot 2x$ y la de $e^{5 - x}$ es $-e^{5 - x}$:
+
+$$
+f'(x) = 6x(x^2 - 7)^2 e^{5 - x} - (x^2 - 7)^3 e^{5 - x} = (x^2 - 7)^2 e^{5 - x}\big(6x - x^2 + 7\big)
+$$
+
+Se puede escribir también como $f'(x) = -(x^2 - 7)^2(x - 7)(x + 1)\,e^{5 - x}$.
+
+**Derivada de $g$.** Regla del cociente, con $\big(\ln(x^4 - 2x^2)\big)' = \dfrac{4x^3 - 4x}{x^4 - 2x^2}$ y $(8 - x^3)' = -3x^2$:
+
+$$
+g'(x) = \frac{\dfrac{4x^3 - 4x}{x^4 - 2x^2}(8 - x^3) + 3x^2\ln(x^4 - 2x^2)}{(8 - x^3)^2}
+$$
+
+La fracción del numerador se puede simplificar: $\dfrac{4x^3 - 4x}{x^4 - 2x^2} = \dfrac{4x(x^2 - 1)}{x^2(x^2 - 2)} = \dfrac{4(x^2 - 1)}{x(x^2 - 2)}$.
+
+</Solucion>
+
+b) **(1 punto)** Represente gráficamente la región acotada comprendida entre la recta $y = -2x + 6$ y la parábola $y = -x^2 + 2x + 3$ y calcule su área.
+
+<Solucion>
+
+**Puntos de corte:**
+
+$$
+-x^2 + 2x + 3 = -2x + 6 \;\Rightarrow\; x^2 - 4x + 3 = 0 \;\Rightarrow\; x = 1,\ x = 3
+$$
+
+Los puntos son $(1, 4)$ y $(3, 0)$.
+
+**Gráfica.** La parábola abre hacia abajo, con vértice en $x = 1$, es decir, en $(1, 4)$, y corta al eje $OX$ en $x = -1$ y $x = 3$. La recta pasa por $(0, 6)$ y $(3, 0)$. Entre $1$ y $3$ la parábola va por encima: en $x = 2$, la parábola vale $3$ y la recta, $2$.
+
+<RecintoReserva2de2023 />
+
+**Área:**
+
+$$
+\int_1^3 \big(-x^2 + 2x + 3 - (-2x + 6)\big)\,dx = \int_1^3 (-x^2 + 4x - 3)\,dx = \left[-\frac{x^3}{3} + 2x^2 - 3x\right]_1^3
+$$
+
+$$
+= (-9 + 18 - 9) - \left(-\frac{1}{3} + 2 - 3\right) = 0 + \frac{4}{3} = \frac{4}{3}\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+La temperatura en el interior de un equipo de refrigeración durante un día que sufrió un corte de energía viene dada por la función $f$ expresada en grados centígrados y el tiempo $t$ en horas:
+
+$$
+f(t) = \begin{cases}
+-9 & 0 \le t \le 1\\
+-t^2 + 12t - 20 & 1 < t < 11\\
+-9 & 11 \le t \le 24
+\end{cases}
+$$
+
+a) **(0.75 puntos)** Estudie la continuidad de $f$.
+
+<Solucion>
+
+Los tres tramos son polinomios (dos de ellos constantes), continuos en sus intervalos. Solo hay que estudiar $t = 1$ y $t = 11$.
+
+**En $t = 1$:**
+
+$$
+f(1) = \lim_{t \to 1^-} f(t) = -9, \qquad \lim_{t \to 1^+} f(t) = -1 + 12 - 20 = -9
+$$
+
+**En $t = 11$:**
+
+$$
+\lim_{t \to 11^-} f(t) = -121 + 132 - 20 = -9, \qquad f(11) = \lim_{t \to 11^+} f(t) = -9
+$$
+
+En los dos puntos coinciden los límites laterales y el valor de la función, así que $f$ **es continua en $[0, 24]$**.
+
+</Solucion>
+
+b) **(0.75 puntos)** Represente gráficamente la función $f$.
+
+<Solucion>
+
+Los tramos de los extremos son rectas horizontales en $-9$. El central es un arco de parábola que abre hacia abajo:
+
+- **Vértice:** $t = \frac{-12}{2 \cdot (-1)} = 6$, con $f(6) = -36 + 72 - 20 = 16$: el punto $(6, 16)$.
+- **Cortes con el eje:** $-t^2 + 12t - 20 = 0 \iff t^2 - 12t + 20 = 0 \iff t = 2$ o $t = 10$.
+- **Extremos del tramo:** $(1, -9)$ y $(11, -9)$, como se ha visto en el apartado a).
+
+<TemperaturaRefrigerador />
+
+</Solucion>
+
+c) **(0.5 puntos)** Conteste razonadamente a qué hora se produjo el corte de energía y cuánto duró dicho corte.
+
+<Solucion>
+
+Mientras el equipo funciona, la temperatura se mantiene constante en $-9$ °C. El corte empieza cuando la temperatura comienza a subir, en **$t = 1$, es decir, a la 1:00**.
+
+Sin energía, la temperatura sube. Cuando vuelve la energía, el equipo enfría y la temperatura baja. Por eso el corte termina en el máximo, **$t = 6$**: hasta ahí la temperatura crece ($f'(t) = -2t + 12 > 0$ en $(1, 6)$) y desde ahí decrece. Después, el equipo tarda hasta $t = 11$ en recuperar los $-9$ °C.
+
+**Respuesta.** El corte se produjo **a la 1:00** y duró **5 horas**, hasta las 6:00.
+
+</Solucion>
+
+d) **(0.5 puntos)** El equipo de refrigeración se utiliza para conservar sueros y vacunas. Los sueros se estropean si se alcanzan temperaturas de $20$ °C en algún momento. Las vacunas se estropean si están por encima de $0$ °C durante más de seis horas. Razone si alguno de esos productos se estropeó ese día.
+
+<Solucion>
+
+**Sueros.** La temperatura máxima del día es de $16$ °C, en $t = 6$ (el vértice de la parábola; el resto del día está a $-9$ °C). Nunca se llega a $20$ °C: **los sueros no se estropearon**.
+
+**Vacunas.** La temperatura está por encima de $0$ °C cuando $-t^2 + 12t - 20 > 0$, es decir, entre los cortes con el eje, $t = 2$ y $t = 10$. Son $10 - 2 = 8$ horas, más de seis: **las vacunas sí se estropearon**.
+
+</Solucion>

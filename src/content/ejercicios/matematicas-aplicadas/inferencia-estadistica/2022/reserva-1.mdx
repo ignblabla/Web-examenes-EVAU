@@ -1,0 +1,93 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Un taller desea estimar el grado de satisfacción de sus clientes. Para ello, a $120$ clientes seleccionados al azar, les pregunta si volverían a solicitar sus servicios en caso de necesitarlo, de los que $96$ respondieron que sí lo harían.
+
+a) **(1.25 puntos)** Determine, con un nivel de confianza del $95\%$, un intervalo de confianza para estimar la proporción de clientes de este taller que volverían a solicitar sus servicios.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{96}{120} = 0.8$ y, al $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+E = 1.96\sqrt{\frac{0.8 \cdot 0.2}{120}} \approx 1.96 \cdot 0.03651 \approx 0.0716
+$$
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.8 - 0.0716,\ 0.8 + 0.0716) = (0.7284,\ 0.8716)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Mediante una nueva muestra queremos estimar la proporción de clientes de ese taller que volverían a solicitar sus servicios con un error máximo del $5\%$ y un nivel de confianza del $97\%$. Suponiendo que se mantiene la proporción muestral, ¿qué tamaño mínimo debe tener dicha muestra?
+
+<Solucion>
+
+Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$. Queremos $E \le 0.05$:
+
+$$
+2.17\sqrt{\frac{0.8 \cdot 0.2}{n}} \le 0.05 \;\Rightarrow\; n \ge \frac{2.17^2 \cdot 0.16}{0.05^2} = \frac{0.753424}{0.0025} \approx 301.37
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **302 clientes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El consumo de energía eléctrica mensual por vivienda medido en kilovatios hora (kWh) sigue una distribución Normal con varianza $4225\ (kWh)^2$.
+
+<Solucion titulo="Planteamiento común">
+
+La desviación típica es la raíz de la varianza: $\sigma = \sqrt{4225} = 65$ kWh.
+
+</Solucion>
+
+a) **(1 punto)** Se toma una muestra aleatoria de $100$ viviendas, obteniéndose un consumo total de $26830$ kWh. Calcule un intervalo de confianza al $92\%$ para estimar el consumo medio poblacional.
+
+<Solucion>
+
+El dato es el consumo **total**; la media muestral es $\bar{x} = \frac{26830}{100} = 268.3$ kWh.
+
+**Valor crítico.** Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$.
+
+$$
+E = 1.75 \cdot \frac{65}{\sqrt{100}} = 1.75 \cdot 6.5 = 11.375
+$$
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (268.3 - 11.375,\ 268.3 + 11.375) = (256.925,\ 279.675)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule el tamaño mínimo de la muestra necesario para estimar el consumo medio de energía eléctrica mensual por vivienda, con un error máximo de $5$ kWh y con un nivel de confianza del $98\%$.
+
+<Solucion>
+
+Para el $98\%$, $P(Z \le z_{\alpha/2}) = 0.99$, entre $0.9898$ ($2.32$) y $0.9901$ ($2.33$), más cerca del segundo: $z_{\alpha/2} = 2.33$. Queremos $E \le 5$:
+
+$$
+2.33 \cdot \frac{65}{\sqrt{n}} \le 5 \;\Rightarrow\; \sqrt{n} \ge \frac{2.33 \cdot 65}{5} = 30.29 \;\Rightarrow\; n \ge 30.29^2 \approx 917.48
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **918 viviendas**.
+
+</Solucion>
+
+c) **(0.5 puntos)** Tras una campaña para incentivar el ahorro energético se toma una nueva muestra y el intervalo de confianza para el consumo medio que se obtiene es $(224.08, 255.92)$. Calcule la media del consumo de energía eléctrica mensual por vivienda para dicha muestra.
+
+<Solucion>
+
+El intervalo es $(\bar{x} - E,\ \bar{x} + E)$, centrado en la media muestral, así que esta es el punto medio:
+
+$$
+\bar{x} = \frac{224.08 + 255.92}{2} = \frac{480}{2} = 240\ \text{kWh}
+$$
+
+</Solucion>

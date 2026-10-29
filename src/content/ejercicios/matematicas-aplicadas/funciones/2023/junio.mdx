@@ -1,0 +1,157 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+import CubicaJunio2023 from "../../../../../components/figuras/CubicaJunio2023.astro"
+
+Se considera la función $f(x) = x^3 - 3x^2 + 2x$.
+
+a) **(1 punto)** Halle los puntos de corte con los ejes, los intervalos de crecimiento y decrecimiento, los extremos relativos de $f$ y su curvatura.
+
+<Solucion>
+
+**Cortes con los ejes.**
+
+- Eje $OY$: $f(0) = 0$, el punto $(0, 0)$.
+- Eje $OX$: $x^3 - 3x^2 + 2x = x(x^2 - 3x + 2) = x(x - 1)(x - 2) = 0$, así que $x = 0$, $x = 1$ y $x = 2$: los puntos $(0, 0)$, $(1, 0)$ y $(2, 0)$.
+
+**Monotonía.** $f'(x) = 3x^2 - 6x + 2 = 0$:
+
+$$
+x = \frac{6 \pm \sqrt{36 - 24}}{6} = 1 \pm \frac{\sqrt{3}}{3}, \qquad x_1 \approx 0.42, \quad x_2 \approx 1.58
+$$
+
+$f'$ es una parábola hacia arriba, positiva fuera de las raíces y negativa entre ellas:
+
+- $f$ **crece** en $\left(-\infty, 1 - \frac{\sqrt{3}}{3}\right) \cup \left(1 + \frac{\sqrt{3}}{3}, +\infty\right)$.
+- $f$ **decrece** en $\left(1 - \frac{\sqrt{3}}{3}, 1 + \frac{\sqrt{3}}{3}\right)$.
+
+**Extremos relativos.** Pasa de crecer a decrecer en $x_1$ y de decrecer a crecer en $x_2$. Para calcular las ordenadas conviene escribir $x = 1 + h$, con $h = \pm\frac{\sqrt{3}}{3}$: $f(1 + h) = (1 + h)\,h\,(h - 1) = h(h^2 - 1)$ y, como $h^2 = \frac{1}{3}$, $f = -\frac{2}{3}h$.
+
+- **Máximo relativo** en $\left(1 - \frac{\sqrt{3}}{3}, \frac{2\sqrt{3}}{9}\right) \approx (0.42,\ 0.38)$.
+- **Mínimo relativo** en $\left(1 + \frac{\sqrt{3}}{3}, -\frac{2\sqrt{3}}{9}\right) \approx (1.58,\ -0.38)$.
+
+**Curvatura.** $f''(x) = 6x - 6 = 0$ en $x = 1$.
+
+- Si $x < 1$, $f''(x) < 0$: $f$ es **cóncava** en $(-\infty, 1)$.
+- Si $x > 1$, $f''(x) > 0$: $f$ es **convexa** en $(1, +\infty)$.
+
+Como $f''$ cambia de signo, hay un **punto de inflexión en $(1, 0)$**.
+
+</Solucion>
+
+b) **(0.5 puntos)** Represente gráficamente la función $f$.
+
+<Solucion>
+
+Con los cortes, los extremos y el punto de inflexión del apartado anterior, y sabiendo que $f(x) \to -\infty$ cuando $x \to -\infty$ y $f(x) \to +\infty$ cuando $x \to +\infty$:
+
+<CubicaJunio2023 />
+
+</Solucion>
+
+c) **(1 punto)** Calcule el área del recinto acotado, limitado por la gráfica de $f$ y el eje de abscisas.
+
+<Solucion>
+
+La gráfica corta al eje en $0$, $1$ y $2$. Entre $0$ y $1$ queda **por encima** del eje y entre $1$ y $2$, **por debajo**, así que hay que integrar por separado y tomar el valor absoluto de la segunda integral. Una primitiva es
+
+$$
+G(x) = \frac{x^4}{4} - x^3 + x^2
+$$
+
+$$
+\int_0^1 f(x)\,dx = G(1) - G(0) = \frac{1}{4} - 1 + 1 = \frac{1}{4}
+$$
+
+$$
+\int_1^2 f(x)\,dx = G(2) - G(1) = (4 - 8 + 4) - \frac{1}{4} = -\frac{1}{4}
+$$
+
+$$
+\text{Área} = \frac{1}{4} + \left|-\frac{1}{4}\right| = \frac{1}{2}\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se desea analizar el valor de las acciones de una empresa en un día. La función $v(t)$ nos indica el valor, en euros, de cada acción de la empresa en función del tiempo $t$, medido en horas, a partir de la hora de apertura del mercado. De la función $v(t)$ se conoce que su variación instantánea es
+
+$$
+v'(t) = t^2 - 5t + 6, \quad t \in [0, 6]
+$$
+
+a) **(0.75 puntos)** Determine los intervalos de crecimiento y decrecimiento de la función $v$.
+
+<Solucion>
+
+La variación instantánea es la derivada, así que estudiamos su signo:
+
+$$
+v'(t) = t^2 - 5t + 6 = (t - 2)(t - 3) = 0 \;\Rightarrow\; t = 2,\ t = 3
+$$
+
+- En $(0, 2)$, por ejemplo $v'(1) = 2 > 0$: $v$ **crece**.
+- En $(2, 3)$, por ejemplo $v'(2.5) = -0.25 < 0$: $v$ **decrece**.
+- En $(3, 6)$, por ejemplo $v'(4) = 2 > 0$: $v$ **crece**.
+
+**Respuesta.** $v$ crece en $(0, 2) \cup (3, 6)$ y decrece en $(2, 3)$.
+
+</Solucion>
+
+b) **(0.75 puntos)** Si en el momento de la apertura del mercado se conoce que $v(0) = 10$, halle la función $v$.
+
+<Solucion>
+
+$v$ es una primitiva de $v'$:
+
+$$
+v(t) = \int (t^2 - 5t + 6)\,dt = \frac{t^3}{3} - \frac{5t^2}{2} + 6t + K
+$$
+
+Con $v(0) = K = 10$:
+
+$$
+v(t) = \frac{t^3}{3} - \frac{5t^2}{2} + 6t + 10, \quad t \in [0, 6]
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Si un inversor compró $3000$ de estas acciones en el instante $t = 2$ y posteriormente las vendió en el instante $t = 4$, indique a cuánto ascendió la ganancia o la pérdida que obtuvo el inversor con esta gestión.
+
+<Solucion>
+
+$$
+v(2) = \frac{8}{3} - 10 + 12 + 10 = \frac{50}{3} \approx 16.67, \qquad v(4) = \frac{64}{3} - 40 + 24 + 10 = \frac{46}{3} \approx 15.33
+$$
+
+Cada acción se vendió por $\frac{46}{3} - \frac{50}{3} = -\frac{4}{3}$ euros respecto a lo que costó. Con $3000$ acciones:
+
+$$
+3000 \cdot \left(-\frac{4}{3}\right) = -4000
+$$
+
+**Respuesta.** El inversor tuvo una **pérdida de 4000 euros**.
+
+</Solucion>
+
+d) **(0.5 puntos)** ¿En qué momentos debería haber realizado este inversor las gestiones de compra y de venta para que la ganancia hubiese sido máxima? Justifique su respuesta.
+
+<Solucion>
+
+La ganancia es máxima si compra cuando la acción vale **lo mínimo** y vende después, cuando vale **lo máximo**. Por el apartado a), los candidatos son los extremos relativos y los extremos del intervalo $[0, 6]$:
+
+$$
+v(0) = 10, \qquad v(2) = \frac{50}{3} \approx 16.67, \qquad v(3) = 9 - \frac{45}{2} + 18 + 10 = 14.5, \qquad v(6) = 72 - 90 + 36 + 10 = 28
+$$
+
+El mínimo absoluto es $10$, en $t = 0$, y el máximo absoluto es $28$, en $t = 6$. Como el mínimo es anterior al máximo, se puede comprar en el primero y vender en el segundo.
+
+**Respuesta.** Debería haber **comprado en la apertura ($t = 0$) y vendido a las 6 horas ($t = 6$)**. Ganaría $28 - 10 = 18$ euros por acción, es decir, $3000 \cdot 18 = 54\,000$ euros.
+
+</Solucion>

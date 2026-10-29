@@ -1,0 +1,27 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2022, ejercicio 4: f(x) = (x − 3) entre (x + 2), con
+// asíntotas x = −2 e y = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-10}
+  xMax={8}
+  yMin={-7}
+  yMax={9}
+  marcasX={[-8, -6, -4, -2, 2, 4, 6]}
+  marcasY={[-6, -4, -2, 2, 4, 6, 8]}
+  tramos={[
+    { f: (x) => (x - 3) / (x + 2), desde: -10, hasta: -2.01 },
+    { f: (x) => (x - 3) / (x + 2), desde: -1.99, hasta: 8 },
+  ]}
+  asintotas={[
+    { tipo: "v", valor: -2, etiqueta: "x = −2", arriba: true },
+    { tipo: "h", valor: 1, etiqueta: "y = 1" },
+  ]}
+  puntos={[
+    { x: 0, y: -1.5, texto: "(0, −1.5)", dx: 6, dy: 4 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: -6, dy: -6 },
+  ]}
+  descripcion="Hipérbola f(x) = (x − 3) entre (x + 2), creciente en sus dos ramas, con asíntota vertical x = −2 y asíntota horizontal y = 1; corta a los ejes en (0, −1.5) y (3, 0)"
+/>

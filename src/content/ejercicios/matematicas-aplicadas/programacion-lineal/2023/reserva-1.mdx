@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionCadenas from "../../../../../components/figuras/RegionCadenas.astro"
+
+**(2.5 puntos)** Una empresa de material informático dispone de dos cadenas de fabricación, $A$ y $B$, en las que quiere aumentar su producción realizando horas extraordinarias.
+
+En una hora extraordinaria de trabajo, la cadena $A$ prepara $15$ portátiles y $6$ tablets, y la cadena $B$ prepara $10$ portátiles y $10$ tablets. Los costes de producción por hora extraordinaria de $A$ y $B$ son de $300$ € y $600$ € respectivamente por hora extraordinaria. La cadena $B$ puede realizar, como máximo, el triple de horas extraordinarias que la cadena $A$. Si para la próxima semana se debe producir adicionalmente un máximo de $360$ portátiles y al menos $216$ tablets, formule y resuelva el problema que permita obtener la planificación de la empresa que minimice los costes de producción. ¿A cuánto ascienden dichos costes?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ a las horas extraordinarias de la cadena $A$ e $y$ a las de la cadena $B$. Hay que minimizar el coste, en euros,
+
+$$
+F(x, y) = 300x + 600y
+$$
+
+con las restricciones (simplificamos dividiendo):
+
+$$
+\begin{cases}
+15x + 10y \le 360 \iff 3x + 2y \le 72 & \text{(portátiles)}\\
+6x + 10y \ge 216 \iff 3x + 5y \ge 108 & \text{(tablets)}\\
+y \le 3x & \text{(horas de } B\text{)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda por debajo de $3x + 2y = 72$, por encima de $3x + 5y = 108$ y por debajo de $y = 3x$ (a la derecha de esa recta):
+
+<RegionCadenas />
+
+**Vértices:**
+
+- $P$: $y = 3x$ y $3x + 5y = 108$ $\Rightarrow$ $3x + 15x = 108 \Rightarrow x = 6$, $y = 18$: $P(6, 18)$.
+- $Q$: $3x + 2y = 72$ y $3x + 5y = 108$. Restando, $3y = 36 \Rightarrow y = 12$, $x = 16$: $Q(16, 12)$.
+- $R$: $y = 3x$ y $3x + 2y = 72$ $\Rightarrow$ $9x = 72 \Rightarrow x = 8$, $y = 24$: $R(8, 24)$.
+
+La región no llega al eje $OX$: en $y = 0$, la recta de las tablets pide $x \ge 36$ y la de los portátiles, $x \le 24$.
+
+**Resolución.**
+
+- $F(6, 18) = 1800 + 10\,800 = 12\,600$
+- $F(16, 12) = 4800 + 7200 = 12\,000$
+- $F(8, 24) = 2400 + 14\,400 = 16\,800$
+
+**Respuesta.** La empresa debe hacer **16 horas extraordinarias en la cadena $A$ y 12 en la cadena $B$**, con un **coste mínimo de 12 000 €**.
+
+</Solucion>

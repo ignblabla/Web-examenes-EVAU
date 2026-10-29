@@ -1,0 +1,22 @@
+---
+// Matemáticas aplicadas, julio de 2022, ejercicio 4: beneficio B(x) = −0.02x² + 1.3x − 15 para
+// x ≥ 0, con cortes en x = 15 y x = 50 y máximo en (32.5, 6.125).
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-3}
+  xMax={72}
+  yMin={-26}
+  yMax={12}
+  marcasX={[10, 20, 30, 40, 60, 70]}
+  marcasY={[-20, -10, 5, 10]}
+  tramos={[{ f: (x) => -0.02 * x ** 2 + 1.3 * x - 15, desde: 0, hasta: 72 }]}
+  puntos={[
+    { x: 0, y: -15, texto: "(0, −15)", dx: 6, dy: 4 },
+    { x: 15, y: 0, texto: "(15, 0)", dx: -6, dy: -6 },
+    { x: 32.5, y: 6.125, texto: "Máximo (32.5, 6.125)", dx: 0, dy: -8 },
+    { x: 50, y: 0, texto: "(50, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica del beneficio: parábola que parte de (0, −15), corta al eje OX en x = 15, alcanza el máximo (32.5, 6.125), vuelve a cortar el eje en x = 50 y después baja"
+/>

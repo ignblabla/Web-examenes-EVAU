@@ -1,0 +1,64 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} a & 2 & 0\\ 8 & a & 0\\ 0 & 0 & a \end{pmatrix} \quad \text{y} \quad B = \begin{pmatrix} 1\\ -2\\ 10 \end{pmatrix}, \quad \text{donde } a \text{ es un número real.}
+$$
+
+a) **(0.75 puntos)** Determine los valores de $a$ para que la matriz $A$ sea no invertible.
+
+<Solucion>
+
+$A$ no es invertible si y solo si $|A| = 0$. Desarrollamos por la tercera columna, que solo tiene un elemento no nulo:
+
+$$
+|A| = a \cdot \begin{vmatrix} a & 2\\ 8 & a \end{vmatrix} = a(a^2 - 16)
+$$
+
+$$
+a(a^2 - 16) = 0 \iff a = 0, \ a = 4 \text{ o } a = -4
+$$
+
+**Respuesta.** $A$ no es invertible para **$a = 0$, $a = 4$ y $a = -4$**.
+
+</Solucion>
+
+b) **(1 punto)** Para $a = 5$, calcule la inversa de la matriz $A$.
+
+<Solucion>
+
+Para $a = 5$, $|A| = 5 \cdot (25 - 16) = 45 \ne 0$. Con $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+A = \begin{pmatrix} 5 & 2 & 0\\ 8 & 5 & 0\\ 0 & 0 & 5 \end{pmatrix}, \qquad
+\text{Adj}(A) = \begin{pmatrix} 25 & -40 & 0\\ -10 & 25 & 0\\ 0 & 0 & 9 \end{pmatrix}
+$$
+
+$$
+A^{-1} = \frac{1}{45}\begin{pmatrix} 25 & -10 & 0\\ -40 & 25 & 0\\ 0 & 0 & 9 \end{pmatrix} = \begin{pmatrix} \frac{5}{9} & -\frac{2}{9} & 0\\ -\frac{8}{9} & \frac{5}{9} & 0\\ 0 & 0 & \frac{1}{5} \end{pmatrix}
+$$
+
+Comprobación: $A \cdot A^{-1} = I_3$.
+
+</Solucion>
+
+c) **(0.75 puntos)** Para $a = 5$, resuelva la ecuación matricial $A \cdot X = B$.
+
+<Solucion>
+
+Multiplicamos por $A^{-1}$ por la **izquierda**: $X = A^{-1}B$, que es $3 \times 1$.
+
+$$
+X = \frac{1}{45}\begin{pmatrix} 25 & -10 & 0\\ -40 & 25 & 0\\ 0 & 0 & 9 \end{pmatrix}\begin{pmatrix} 1\\ -2\\ 10 \end{pmatrix} = \frac{1}{45}\begin{pmatrix} 25 + 20\\ -40 - 50\\ 90 \end{pmatrix} = \begin{pmatrix} 1\\ -2\\ 2 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot X = \begin{pmatrix} 5 - 4\\ 8 - 10\\ 10 \end{pmatrix} = \begin{pmatrix} 1\\ -2\\ 10 \end{pmatrix} = B$.
+
+</Solucion>

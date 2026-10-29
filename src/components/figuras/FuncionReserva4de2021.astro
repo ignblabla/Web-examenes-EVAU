@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2021, ejercicio 3: f(x) = (x + 1)² en [−2, 0) y (x − 1)² en
+// [0, 2], con el recinto entre la gráfica y el eje OX de x = −1 a x = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f1 = (x: number) => (x + 1) ** 2
+const f2 = (x: number) => (x - 1) ** 2
+const f = (x: number) => (x < 0 ? f1(x) : f2(x))
+---
+
+<GraficaFuncion
+  xMin={-2.5}
+  xMax={2.6}
+  yMin={-0.5}
+  yMax={1.5}
+  marcasX={[-2, -1, 1, 2]}
+  marcasY={[0.5, 1]}
+  tramos={[
+    { f: f1, desde: -2, hasta: 0 },
+    { f: f2, desde: 0, hasta: 2 },
+  ]}
+  recinto={{ arriba: f, abajo: () => 0, desde: -1, hasta: 1 }}
+  puntos={[
+    { x: -2, y: 1, texto: "(−2, 1)", dx: -6, dy: -6 },
+    { x: -1, y: 0, texto: "Mín (−1, 0)", dx: 0, dy: 28 },
+    { x: 0, y: 1, texto: "Máx (0, 1)", dx: 6, dy: -6 },
+    { x: 1, y: 0, texto: "Mín (1, 0)", dx: 0, dy: 28 },
+    { x: 2, y: 1, texto: "(2, 1)", dx: -6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: dos parábolas, (x + 1)² en [−2, 0) y (x − 1)² en [0, 2], que se unen en el pico (0, 1) y tocan el eje OX en x = −1 y x = 1; el recinto entre la gráfica y el eje, de −1 a 1, está sombreado"
+/>

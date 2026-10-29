@@ -1,0 +1,103 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Una empresa de transporte dispone de tres tipos de camiones, $A$, $B$ y $C$. El $30\%$ de los transportes son realizados por camiones de tipo $A$; el $20\%$ por camiones de tipo $B$ y el resto por camiones de tipo $C$. Se sabe que los transportes tienen una probabilidad de $0.02$ de sufrir algún tipo de incidencia si son realizados en camiones de tipo $A$; de $0.01$ si son realizados en camiones de tipo $B$ y de $0.05$ si son realizados en camiones de tipo $C$. Se elige un transporte de esta empresa al azar.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $A$, $B$ y $C$ al tipo de camión e $I$ a sufrir alguna incidencia:
+
+- $P(A) = 0.3$, con $P(I/A) = 0.02$.
+- $P(B) = 0.2$, con $P(I/B) = 0.01$.
+- $P(C) = 1 - 0.3 - 0.2 = 0.5$, con $P(I/C) = 0.05$.
+
+</Solucion>
+
+a) **(1 punto)** Calcule la probabilidad de que no haya sufrido ningún tipo de incidencia.
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(I) = 0.3 \cdot 0.02 + 0.2 \cdot 0.01 + 0.5 \cdot 0.05 = 0.006 + 0.002 + 0.025 = 0.033
+$$
+
+$$
+P(\overline{I}) = 1 - 0.033 = 0.967
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule la probabilidad de que lo haya realizado un camión de tipo $C$ si se sabe que sufrió algún tipo de incidencia.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(C/I) = \frac{P(C) \cdot P(I/C)}{P(I)} = \frac{0.025}{0.033} = \frac{25}{33} \approx 0.7576
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Si además se conoce que el $40\%$ de las incidencias sufridas por los camiones de tipo $A$ fueron debidas a la lluvia, calcule la probabilidad de que el transporte haya sido realizado por un camión de tipo $A$, haya sufrido una incidencia y también esta sea debida a la lluvia.
+
+<Solucion>
+
+Llamamos $Ll$ a que la incidencia se deba a la lluvia; el dato es $P(Ll/A \cap I) = 0.4$. Encadenamos las tres ramas del diagrama de árbol:
+
+$$
+P(A \cap I \cap Ll) = P(A) \cdot P(I/A) \cdot P(Ll/A \cap I) = 0.3 \cdot 0.02 \cdot 0.4 = 0.0024
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Una tienda vende caramelos con sabor a frutas (naranja o limón) y a menta. El $60\%$ son azucarados y de estos el $25\%$ son de limón. De los no azucarados, el $40\%$ son de naranja, el $30\%$ son de limón y el resto de menta. Además, el $40\%$ de todos los caramelos son de naranja. Se escoge un caramelo al azar de esa tienda.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $Az$ a que sea azucarado y $N$, $L$ y $M$ a que sea de naranja, de limón o de menta. Completamos una tabla de contingencia con las probabilidades; las marcadas en negrita salen directamente del enunciado y el resto, por diferencia:
+
+- $P(L \cap Az) = 0.6 \cdot 0.25 = 0.15$.
+- $P(N \cap \overline{Az}) = 0.4 \cdot 0.4 = 0.16$, $P(L \cap \overline{Az}) = 0.4 \cdot 0.3 = 0.12$ y $P(M \cap \overline{Az}) = 0.4 \cdot 0.3 = 0.12$.
+
+| | Azucarado | No azucarado | Total |
+|---|---|---|---|
+| Naranja | $0.40 - 0.16 = 0.24$ | $0.16$ | **0.40** |
+| Limón | $0.15$ | $0.12$ | $0.27$ |
+| Menta | $0.60 - 0.24 - 0.15 = 0.21$ | $0.12$ | $0.33$ |
+| Total | **0.60** | $0.40$ | $1$ |
+
+</Solucion>
+
+a) **(1.5 puntos)** Calcule la probabilidad de que sea de naranja sabiendo que es azucarado.
+
+<Solucion>
+
+$$
+P(N/Az) = \frac{P(N \cap Az)}{P(Az)} = \frac{0.24}{0.6} = 0.4
+$$
+
+</Solucion>
+
+b) **(1 punto)** Razone si es más probable que sea de sabor a frutas o a menta.
+
+<Solucion>
+
+Por el teorema de la probabilidad total (la última fila de la tabla):
+
+$$
+P(M) = 0.21 + 0.12 = 0.33, \qquad P(\text{frutas}) = P(N) + P(L) = 0.40 + 0.27 = 0.67 = 1 - P(M)
+$$
+
+**Es más probable que sea de sabor a frutas** ($0.67$ frente a $0.33$ de menta).
+
+</Solucion>

@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2023, ejercicio 4: temperatura del refrigerador, −9 °C
+// salvo entre t = 1 y t = 11, donde sigue la parábola −t² + 12t − 20 con máximo en (6, 16).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (t: number) => (t <= 1 || t >= 11 ? -9 : -(t ** 2) + 12 * t - 20)
+---
+
+<GraficaFuncion
+  xMin={-1}
+  xMax={25}
+  yMin={-12}
+  yMax={19}
+  marcasX={[5, 15, 20, 24]}
+  marcasY={[-5, 5, 10, 15]}
+  tramos={[{ f, desde: 0, hasta: 24 }]}
+  puntos={[
+    { x: 1, y: -9, texto: "(1, −9)", dx: 4, dy: 15 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: -6, dy: -5 },
+    { x: 6, y: 16, texto: "(6, 16)", dx: 0, dy: -8 },
+    { x: 10, y: 0, texto: "(10, 0)", dx: 6, dy: -5 },
+    { x: 11, y: -9, texto: "(11, −9)", dx: 0, dy: 15 },
+  ]}
+  descripcion="Gráfica de la temperatura: −9 grados hasta la hora 1, sube por un arco de parábola que corta el eje en t = 2, llega al máximo de 16 grados en t = 6, vuelve a cortar el eje en t = 10, baja a −9 en t = 11 y se mantiene en −9 hasta las 24 horas"
+/>

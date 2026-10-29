@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, julio de 2021, ejercicio 4: diagnosticados de COVID-19 (miles) en función
+// de los meses desde marzo de 2020, en tres tramos, con el máximo en t = 8.3.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f1 = (t: number) => -(t ** 2) + 2 * t - 0.3
+const f2 = (t: number) => 0.1 * t - 0.12
+const f3 = (t: number) => -0.5 * t ** 2 + 8.3 * t - 28.62
+---
+
+<GraficaFuncion
+  xMin={-0.4}
+  xMax={10.6}
+  yMin={-0.6}
+  yMax={6.6}
+  marcasX={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  marcasY={[1, 2, 3, 4, 5, 6]}
+  tramos={[
+    { f: f1, desde: 0.2, hasta: 1.8 },
+    { f: f2, desde: 1.8, hasta: 5 },
+    { f: f3, desde: 5, hasta: 10 },
+  ]}
+  puntos={[
+    { x: 1, y: 0.7, texto: "(1, 0.7)", dx: 0, dy: -8 },
+    { x: 1.8, y: 0.06 },
+    { x: 5, y: 0.38, texto: "(5, 0.38)", dx: -6, dy: -8 },
+    { x: 8.3, y: 5.825, texto: "Máx (8.3, 5.825)", dx: -6, dy: -8 },
+    { x: 10, y: 4.38, texto: "(10, 4.38)", dx: -6, dy: 16 },
+  ]}
+  descripcion="Gráfica de los diagnosticados f(t), en miles, para t entre 0.2 y 10 meses: una parábola pequeña con máximo relativo en (1, 0.7), un tramo recto casi plano de t = 1.8 a t = 5 y una parábola que sube hasta el máximo absoluto en (8.3, 5.825) y baja hasta (10, 4.38)"
+/>

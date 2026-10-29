@@ -102,10 +102,10 @@ export const asignaturas: Asignatura[] = [
     simbolo: "graph",
     color: "math",
     indexable: true,
-    desde: 2024,
+    desde: 2021,
     nombreCorto: "Matemáticas CCSS",
     intro:
-      "El examen de Matemáticas Aplicadas a las Ciencias Sociales II de la PAU de Andalucía dura 1 hora y 30 minutos. Desde 2026 tiene cuatro ejercicios: álgebra o programación lineal (3 puntos), funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos opciones, A) y B), en algunos de ellos. En 2024 y 2025 eran cuatro bloques y se elegía un ejercicio de 2.5 puntos en cada uno. Aquí tienes todas las convocatorias resueltas paso a paso, con las gráficas y siguiendo los criterios oficiales de corrección.",
+      "El examen de Matemáticas Aplicadas a las Ciencias Sociales II de la PAU de Andalucía dura 1 hora y 30 minutos. Desde 2026 tiene cuatro ejercicios: álgebra o programación lineal (3 puntos), funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos opciones, A) y B), en algunos de ellos. En 2024 y 2025 eran cuatro bloques y se elegía un ejercicio de 2.5 puntos en cada uno; de 2021 a 2023, cuatro de los ocho ejercicios, de al menos tres bloques. Aquí tienes todas las convocatorias resueltas paso a paso, con las gráficas y siguiendo los criterios oficiales de corrección.",
     resuelto: "todos los ejercicios paso a paso y justificados",
     temas: temas([
       "Matrices y determinantes",

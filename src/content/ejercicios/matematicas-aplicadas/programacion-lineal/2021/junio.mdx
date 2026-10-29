@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+import RegionBaterias from "../../../../../components/figuras/RegionBaterias.astro"
+
+**(2.5 puntos)** Una empresa de recambios industriales produce dos tipos de baterías, $A$ y $B$. Su producción semanal debe ser de al menos $10$ baterías en total y el número de baterías de tipo $B$ no puede superar en más de $10$ unidades a las fabricadas de tipo $A$. Cada batería de tipo $A$ tiene unos gastos de producción de $150$ euros y cada batería de tipo $B$ de $100$ euros, disponiendo de un máximo de $6000$ euros a la semana para el coste total de producción.
+
+Si la empresa vende todo lo que produce y cada batería de tipo $A$ genera un beneficio de $130$ euros y la de tipo $B$ de $140$ euros, ¿cuántas baterías de cada tipo tendrán que producir a la semana para que el beneficio total sea máximo? ¿Cuál es ese beneficio?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de baterías de tipo $A$ e $y$ al de tipo $B$ fabricadas a la semana. Hay que maximizar el beneficio, en euros,
+
+$$
+F(x, y) = 130x + 140y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + y \ge 10 & \text{(producción mínima)}\\
+y \le x + 10 & \text{(B no supera en más de 10 a A)}\\
+150x + 100y \le 6000 \iff 3x + 2y \le 120 & \text{(coste)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda por encima del eje $OX$ y de la recta $x + y = 10$, por debajo de $y = x + 10$ y por debajo de la recta del coste:
+
+<RegionBaterias />
+
+**Vértices:**
+
+- $A(10, 0)$: $x + y = 10$ con el eje $OX$.
+- $B(40, 0)$: $3x + 2y = 120$ con el eje $OX$.
+- $C$: $3x + 2y = 120$ e $y = x + 10$ $\Rightarrow$ $3x + 2x + 20 = 120 \Rightarrow x = 20$, $y = 30$: $C(20, 30)$.
+- $D(0, 10)$: las rectas $x + y = 10$ e $y = x + 10$ se cortan en el eje $OY$.
+
+**Resolución.**
+
+- $F(10, 0) = 1300$
+- $F(40, 0) = 5200$
+- $F(20, 30) = 2600 + 4200 = 6800$
+- $F(0, 10) = 1400$
+
+**Respuesta.** Tienen que producir **20 baterías de tipo $A$ y 30 de tipo $B$** a la semana, y el beneficio máximo es de **6800 euros**.
+
+</Solucion>

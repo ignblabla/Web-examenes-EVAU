@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, julio de 2022, ejercicio 3 b): g(x) = −x³ − x² + x + 1 = −(x + 1)²(x − 1)
+// y el recinto con el eje OX entre x = −1 y x = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const g = (x: number) => -(x ** 3) - x ** 2 + x + 1
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={1.8}
+  yMin={-1.2}
+  yMax={1.8}
+  marcasX={[0.5, 1.5]}
+  marcasY={[-1, 0.5, 1.5]}
+  tramos={[{ f: g, desde: -2, hasta: 1.8 }]}
+  recinto={{ arriba: g, abajo: () => 0, desde: -1, hasta: 1 }}
+  puntos={[
+    { x: -1, y: 0, texto: "Mínimo (−1, 0)", dx: 0, dy: 15 },
+    { x: 0, y: 1, texto: "(0, 1)", dx: -6, dy: -4 },
+    { x: 1 / 3, y: 32 / 27, texto: "Máximo (⅓, 32⁄27)", dx: 6, dy: -6 },
+    { x: 1, y: 0, texto: "(1, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de g(x) = −x³ − x² + x + 1: toca el eje OX en x = −1, donde tiene un mínimo, sube hasta el máximo (1 tercio, 32 veintisieteavos), corta al eje OY en (0, 1) y al eje OX en (1, 0); el recinto entre −1 y 1 está sombreado"
+/>

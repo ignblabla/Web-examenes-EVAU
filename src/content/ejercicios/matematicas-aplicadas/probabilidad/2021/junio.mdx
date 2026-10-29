@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+Se desea probar la eficacia de dos tipos de vacunas, $A$ y $B$, contra un virus determinado. Para ello, se seleccionan $5000$ voluntarios sin anticuerpos para este virus, a los que se les administra una de las vacunas o un placebo, resultando que $3000$ reciben la vacuna $A$, $1500$ la $B$ y el resto el placebo. Se comprueba que el $90\%$ de los vacunados con la $A$ y el $95\%$ de los vacunados con la $B$ generan anticuerpos, no generando anticuerpos los que han recibido el placebo. Se selecciona uno de esos voluntarios al azar.
+
+a) **(1.5 puntos)** ¿Cuál es la probabilidad de que haya generado anticuerpos?
+
+<Solucion>
+
+**Sucesos.** $A$, $B$ y $P$: haber recibido la vacuna $A$, la $B$ o el placebo; $G$: generar anticuerpos. El placebo lo reciben $5000 - 3000 - 1500 = 500$ voluntarios, así que
+
+$$
+P(A) = \frac{3000}{5000} = 0.6, \qquad P(B) = \frac{1500}{5000} = 0.3, \qquad P(P) = \frac{500}{5000} = 0.1
+$$
+
+$$
+P(G \mid A) = 0.9, \qquad P(G \mid B) = 0.95, \qquad P(G \mid P) = 0
+$$
+
+**Probabilidad total:**
+
+$$
+P(G) = 0.6 \cdot 0.9 + 0.3 \cdot 0.95 + 0.1 \cdot 0 = 0.54 + 0.285 = 0.825
+$$
+
+</Solucion>
+
+b) **(1 punto)** Si dicho voluntario no ha generado anticuerpos, ¿qué probabilidad hay de que se le haya administrado placebo?
+
+<Solucion>
+
+$P(\overline{G}) = 1 - 0.825 = 0.175$ y, como ningún voluntario con placebo genera anticuerpos, $P(\overline{G} \mid P) = 1$. Por el teorema de Bayes:
+
+$$
+P(P \mid \overline{G}) = \frac{P(P) \cdot P(\overline{G} \mid P)}{P(\overline{G})} = \frac{0.1 \cdot 1}{0.175} = \frac{4}{7} \approx 0.5714
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+De las compras realizadas en el último período de rebajas del pasado año, el $55\%$ se dedicaron a productos electrónicos, el $72\%$ se hicieron a través de Internet y, de las compras que se hicieron por Internet, el $64\%$ fueron de productos electrónicos. Se elige una compra al azar.
+
+a) **(1 punto)** Calcule la probabilidad de que haya sido de productos electrónicos y se haya realizado por Internet.
+
+<Solucion>
+
+**Sucesos.** $E$: la compra es de productos electrónicos; $I$: se hizo por Internet. Los datos son $P(E) = 0.55$, $P(I) = 0.72$ y $P(E \mid I) = 0.64$:
+
+$$
+P(E \cap I) = P(I) \cdot P(E \mid I) = 0.72 \cdot 0.64 = 0.4608
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Calcule la probabilidad de que la compra se haya realizado por Internet o que se hayan comprado productos electrónicos.
+
+<Solucion>
+
+$$
+P(I \cup E) = P(I) + P(E) - P(E \cap I) = 0.72 + 0.55 - 0.4608 = 0.8092
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Calcule la probabilidad de que sabiendo que no se compraron productos electrónicos, la compra no se hiciera a través de Internet.
+
+<Solucion>
+
+Por las leyes de De Morgan, $P(\overline{E} \cap \overline{I}) = P(\overline{E \cup I}) = 1 - 0.8092 = 0.1908$, y $P(\overline{E}) = 1 - 0.55 = 0.45$:
+
+$$
+P(\overline{I} \mid \overline{E}) = \frac{P(\overline{I} \cap \overline{E})}{P(\overline{E})} = \frac{0.1908}{0.45} = 0.424
+$$
+
+</Solucion>

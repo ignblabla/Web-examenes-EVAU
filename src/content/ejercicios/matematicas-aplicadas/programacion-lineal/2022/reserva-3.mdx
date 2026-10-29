@@ -1,0 +1,51 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionSastreria from "../../../../../components/figuras/RegionSastreria.astro"
+
+**(2.5 puntos)** Una sastrería dispone de $70\ m^2$ de tela de lino y de $150\ m^2$ de tela de algodón. En la confección de un traje se emplea $1\ m^2$ de tela de lino y $3\ m^2$ de tela de algodón, y en un vestido se necesitan $2\ m^2$ de tela de cada tipo. Se obtienen $60$ euros de beneficio por cada traje y $70$ euros por cada vestido. Determine el número de trajes y vestidos que se deben confeccionar para obtener el máximo beneficio, así como dicho beneficio máximo.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de trajes e $y$ al de vestidos. Hay que maximizar el beneficio, en euros,
+
+$$
+F(x, y) = 60x + 70y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + 2y \le 70 & \text{(lino)}\\
+3x + 2y \le 150 & \text{(algodón)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda en el primer cuadrante, por debajo de las dos rectas:
+
+<RegionSastreria />
+
+**Vértices:**
+
+- $O(0, 0)$.
+- $A(50, 0)$: la recta del algodón con el eje $OX$. La del lino lo corta más lejos, en $(70, 0)$.
+- $B$: $x + 2y = 70$ y $3x + 2y = 150$. Restando, $2x = 80 \Rightarrow x = 40$, $y = 15$: $B(40, 15)$.
+- $C(0, 35)$: la recta del lino con el eje $OY$. La del algodón lo corta más arriba, en $(0, 75)$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(50, 0) = 3000$
+- $F(40, 15) = 2400 + 1050 = 3450$
+- $F(0, 35) = 2450$
+
+**Respuesta.** Deben confeccionarse **40 trajes y 15 vestidos**, con un **beneficio máximo de 3450 euros**.
+
+</Solucion>

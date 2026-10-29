@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2023, ejercicio 1: región factible de los aficionados
+// locales (x) y visitantes (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={11500}
+  yMax={4400}
+  marcasX={[2000, 4000, 6000, 8000, 10000]}
+  marcasY={[1000, 2000, 3000, 4000]}
+  rectas={[
+    { desde: [0, 0], hasta: [8600, 4300], color: "#5b3f8c", etiqueta: "x = 2y", en: [8800, 4150] },
+    { desde: [0, 0], hasta: [11400, 2850], color: "#2f6fa3", etiqueta: "x = 4y", en: [10200, 2150] },
+    { desde: [0, 3000], hasta: [11400, 3000], color: "#b04a3a", etiqueta: "y = 3000", en: [200, 3150] },
+    { desde: [5700, 4300], hasta: [10000, 0], color: "#7a5b16", etiqueta: "x + y = 10000", en: [5500, 4150], ancla: "end" },
+  ]}
+  region={[
+    [0, 0],
+    [8000, 2000],
+    [7000, 3000],
+    [6000, 3000],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -10, dy: 14 },
+    { x: 8000, y: 2000, texto: "C", dx: 8, dy: 14 },
+    { x: 7000, y: 3000, texto: "B", dx: 4, dy: -8 },
+    { x: 6000, y: 3000, texto: "A", dx: -14, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices O(0, 0), A(6000, 3000), B(7000, 3000) y C(8000, 2000), limitado por las rectas x = 2y, y = 3000, x + y = 10000 y x = 4y"
+/>

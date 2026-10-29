@@ -1,0 +1,128 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+import CubicaJulio2022 from "../../../../../components/figuras/CubicaJulio2022.astro"
+import BeneficioAceitunas from "../../../../../components/figuras/BeneficioAceitunas.astro"
+
+a) **(1 punto)** Se considera la función $f(x) = x^3 + bx^2 + cx - 1$ donde $b$ y $c$ son números reales. Determine el valor de $b$ y $c$ para que la función $f$ presente un extremo en el punto de abscisa $x = \frac{1}{3}$ y además la gráfica de la función $f$ pase por el punto $(-2, -3)$.
+
+<Solucion>
+
+La derivada es $f'(x) = 3x^2 + 2bx + c$. Hay dos condiciones:
+
+- **Pasa por $(-2, -3)$:** $f(-2) = -8 + 4b - 2c - 1 = -3 \Rightarrow 4b - 2c = 6 \Rightarrow c = 2b - 3$.
+- **Extremo en $x = \frac{1}{3}$:** $f$ es derivable, así que $f'\left(\frac{1}{3}\right) = 0$: $\frac{1}{3} + \frac{2b}{3} + c = 0 \Rightarrow 1 + 2b + 3c = 0$.
+
+Sustituyendo la primera en la segunda:
+
+$$
+1 + 2b + 3(2b - 3) = 0 \;\Rightarrow\; 8b = 8 \;\Rightarrow\; b = 1, \qquad c = 2 - 3 = -1
+$$
+
+**Respuesta.** **$b = 1$ y $c = -1$**.
+
+</Solucion>
+
+b) **(1.5 puntos)** Dada la función $g(x) = -x^3 - x^2 + x + 1$, realice el esbozo de su gráfica, estudiando los puntos de corte con los ejes coordenados y su monotonía. Determine el área del recinto acotado, limitado por la gráfica de la función $g$ y el eje de abscisas.
+
+<Solucion>
+
+**Cortes con los ejes.**
+
+- Eje $OY$: $g(0) = 1$, el punto $(0, 1)$.
+- Eje $OX$: sacando factor común por grupos,
+
+$$
+g(x) = -x^2(x + 1) + (x + 1) = (x + 1)(1 - x^2) = -(x + 1)^2(x - 1)
+$$
+
+Corta al eje en $(1, 0)$ y lo toca en $(-1, 0)$ (raíz doble).
+
+**Monotonía.** $g'(x) = -3x^2 - 2x + 1 = 0 \iff 3x^2 + 2x - 1 = 0 \iff x = -1$ o $x = \frac{1}{3}$.
+
+- En $(-\infty, -1)$, por ejemplo $g'(-2) = -7 < 0$: **decrece**.
+- En $\left(-1, \frac{1}{3}\right)$, por ejemplo $g'(0) = 1 > 0$: **crece**.
+- En $\left(\frac{1}{3}, +\infty\right)$, por ejemplo $g'(1) = -4 < 0$: **decrece**.
+
+Hay un **mínimo relativo en $(-1, 0)$** y un **máximo relativo en $\left(\frac{1}{3}, \frac{32}{27}\right)$**, porque $g\left(\frac{1}{3}\right) = -\frac{1}{27} - \frac{1}{9} + \frac{1}{3} + 1 = \frac{32}{27} \approx 1.19$.
+
+<CubicaJulio2022 />
+
+**Área.** Entre $-1$ y $1$, $(x + 1)^2 \ge 0$ y $x - 1 < 0$, así que $g \ge 0$: la gráfica va por encima del eje.
+
+$$
+\int_{-1}^{1} (-x^3 - x^2 + x + 1)\,dx = \left[-\frac{x^4}{4} - \frac{x^3}{3} + \frac{x^2}{2} + x\right]_{-1}^{1} = \frac{11}{12} - \left(-\frac{5}{12}\right) = \frac{16}{12} = \frac{4}{3}\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+El beneficio, en miles de euros, que se obtiene en una pequeña finca familiar por la venta de aceitunas, en miles de kilogramos, viene dado por la siguiente función:
+
+$$
+B(x) = -0.02x^2 + 1.3x - 15, \quad x \ge 0
+$$
+
+a) **(0.75 puntos)** Represente la función beneficio y calcule los puntos de corte con el eje $OX$.
+
+<Solucion>
+
+**Cortes con el eje $OX$:**
+
+$$
+-0.02x^2 + 1.3x - 15 = 0 \;\Rightarrow\; x = \frac{-1.3 \pm \sqrt{1.69 - 1.2}}{-0.04} = \frac{-1.3 \pm 0.7}{-0.04} \;\Rightarrow\; x = 15,\ x = 50
+$$
+
+Los puntos de corte son **$(15, 0)$ y $(50, 0)$**.
+
+**Gráfica.** Es una parábola que abre hacia abajo, con el vértice en $x = \frac{-1.3}{2 \cdot (-0.02)} = 32.5$, donde $B(32.5) = 6.125$. Empieza en $B(0) = -15$:
+
+<BeneficioAceitunas />
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Para qué valores de $x$ la finca no tiene pérdidas?
+
+<Solucion>
+
+No tiene pérdidas cuando $B(x) \ge 0$. La parábola abre hacia abajo, así que está por encima del eje entre sus raíces.
+
+**Respuesta.** Para **$15 \le x \le 50$**, es decir, vendiendo entre $15\,000$ y $50\,000$ kg de aceitunas.
+
+</Solucion>
+
+c) **(0.5 puntos)** ¿Para qué número de kilogramos el beneficio será máximo? ¿Cuánto vale dicho beneficio?
+
+<Solucion>
+
+$B'(x) = -0.04x + 1.3 = 0 \iff x = 32.5$, y $B''(x) = -0.04 < 0$, así que es un máximo:
+
+$$
+B(32.5) = -0.02 \cdot 1056.25 + 42.25 - 15 = -21.125 + 27.25 = 6.125
+$$
+
+**Respuesta.** El beneficio es máximo vendiendo **32 500 kg** de aceitunas, y vale **6125 euros**.
+
+</Solucion>
+
+d) **(0.75 puntos)** ¿Cuántos kilogramos debe vender para obtener un beneficio de $5000$ €?
+
+<Solucion>
+
+$5000$ euros son $5$ miles de euros:
+
+$$
+-0.02x^2 + 1.3x - 15 = 5 \;\Rightarrow\; -0.02x^2 + 1.3x - 20 = 0 \;\Rightarrow\; x = \frac{-1.3 \pm \sqrt{1.69 - 1.6}}{-0.04} = \frac{-1.3 \pm 0.3}{-0.04}
+$$
+
+Es decir, $x = 25$ o $x = 40$.
+
+**Respuesta.** Obtiene $5000$ euros de beneficio vendiendo **25 000 kg o 40 000 kg** de aceitunas.
+
+</Solucion>

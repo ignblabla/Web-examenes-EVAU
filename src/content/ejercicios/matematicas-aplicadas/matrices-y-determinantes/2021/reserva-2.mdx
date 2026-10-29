@@ -1,0 +1,84 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se considera la matriz
+
+$$
+A = \begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix}.
+$$
+
+a) **(0.7 puntos)** Calcule $A^{40}$ y $(A^t)^{30}$.
+
+<Solucion>
+
+**Potencias de $A$.** Calculamos las primeras:
+
+$$
+A^2 = \begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0\\ -1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0\\ -2 & 1 \end{pmatrix}, \qquad
+A^3 = A^2 \cdot A = \begin{pmatrix} 1 & 0\\ -3 & 1 \end{pmatrix}
+$$
+
+Cada vez que se multiplica por $A$, el término de abajo a la izquierda disminuye en $1$: si $A^n = \begin{pmatrix} 1 & 0\\ -n & 1 \end{pmatrix}$, entonces $A^{n+1} = \begin{pmatrix} 1 & 0\\ -n - 1 & 1 \end{pmatrix}$. Por tanto:
+
+$$
+A^{40} = \begin{pmatrix} 1 & 0\\ -40 & 1 \end{pmatrix}
+$$
+
+**Potencias de $A^t$.** Como $(A^t)^n = (A^n)^t$:
+
+$$
+(A^t)^{30} = (A^{30})^t = \begin{pmatrix} 1 & 0\\ -30 & 1 \end{pmatrix}^t = \begin{pmatrix} 1 & -30\\ 0 & 1 \end{pmatrix}
+$$
+
+</Solucion>
+
+b) **(0.6 puntos)** Calcule $(A^{-1} + A)^2$.
+
+<Solucion>
+
+**Inversa.** $|A| = 1 \ne 0$, así que $A$ tiene inversa:
+
+$$
+A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t = \begin{pmatrix} 1 & 0\\ 1 & 1 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot A^{-1} = I_2$.
+
+**Matriz pedida:**
+
+$$
+A^{-1} + A = \begin{pmatrix} 2 & 0\\ 0 & 2 \end{pmatrix} = 2I_2, \qquad (A^{-1} + A)^2 = (2I_2)^2 = 4I_2 = \begin{pmatrix} 4 & 0\\ 0 & 4 \end{pmatrix}
+$$
+
+</Solucion>
+
+c) **(1.2 puntos)** Resuelva la ecuación matricial $(A^t + I_2) \cdot X = A^t - I_2$.
+
+<Solucion>
+
+**Matrices de la ecuación:**
+
+$$
+A^t + I_2 = \begin{pmatrix} 2 & -1\\ 0 & 2 \end{pmatrix}, \qquad A^t - I_2 = \begin{pmatrix} 0 & -1\\ 0 & 0 \end{pmatrix}
+$$
+
+**Despejar $X$.** $|A^t + I_2| = 4 \ne 0$, así que tiene inversa, y multiplicamos por ella por la **izquierda**:
+
+$$
+X = (A^t + I_2)^{-1}(A^t - I_2), \qquad (A^t + I_2)^{-1} = \frac{1}{4}\begin{pmatrix} 2 & 1\\ 0 & 2 \end{pmatrix}
+$$
+
+**Cálculo:**
+
+$$
+X = \frac{1}{4}\begin{pmatrix} 2 & 1\\ 0 & 2 \end{pmatrix}\begin{pmatrix} 0 & -1\\ 0 & 0 \end{pmatrix} = \frac{1}{4}\begin{pmatrix} 0 & -2\\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -\frac{1}{2}\\ 0 & 0 \end{pmatrix}
+$$
+
+Comprobación: $\begin{pmatrix} 2 & -1\\ 0 & 2 \end{pmatrix}\begin{pmatrix} 0 & -\frac{1}{2}\\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -1\\ 0 & 0 \end{pmatrix} = A^t - I_2$.
+
+</Solucion>

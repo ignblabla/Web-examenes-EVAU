@@ -1,0 +1,125 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+import CubicaJunio2021 from "../../../../../components/figuras/CubicaJunio2021.astro"
+import ParabolaJunio2021 from "../../../../../components/figuras/ParabolaJunio2021.astro"
+
+Se considera la función $f(x) = x^3 - 4x^2 + 4x$.
+
+a) **(1 punto)** Estudie su monotonía y calcule sus extremos.
+
+<Solucion>
+
+**Derivada.** $f$ es un polinomio, derivable en $\mathbb{R}$:
+
+$$
+f'(x) = 3x^2 - 8x + 4 = 0 \iff x = \frac{8 \pm \sqrt{64 - 48}}{6} = \frac{8 \pm 4}{6} \iff x = \frac{2}{3} \text{ o } x = 2
+$$
+
+**Monotonía.** Estudiamos el signo de $f'$ en cada intervalo:
+
+- En $\left(-\infty, \frac{2}{3}\right)$, $f'(0) = 4 > 0$: $f$ es **creciente**.
+- En $\left(\frac{2}{3}, 2\right)$, $f'(1) = -1 < 0$: $f$ es **decreciente**.
+- En $(2, +\infty)$, $f'(3) = 7 > 0$: $f$ es **creciente**.
+
+**Extremos.** Como $f(x) = x(x - 2)^2$:
+
+- **Máximo relativo** en $x = \frac{2}{3}$: $f\left(\frac{2}{3}\right) = \frac{2}{3}\cdot\frac{16}{9} = \frac{32}{27}$, el punto $\left(\frac{2}{3}, \frac{32}{27}\right)$.
+- **Mínimo relativo** en $x = 2$: $f(2) = 0$, el punto $(2, 0)$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Represente gráficamente la función.
+
+<Solucion>
+
+Además de los extremos, $f(x) = x(x - 2)^2$ corta al eje $OX$ en $x = 0$ y lo toca en $x = 2$ (raíz doble); el corte con el eje $OY$ es el origen. Para $x < 0$ es negativa, por ejemplo $f(-0.5) = -3.125$, y $f(3) = 3$:
+
+<CubicaJunio2021 />
+
+</Solucion>
+
+c) **(0.5 puntos)** Calcule $\displaystyle\int f(x)\,dx$.
+
+<Solucion>
+
+Integramos término a término:
+
+$$
+\int (x^3 - 4x^2 + 4x)\,dx = \frac{x^4}{4} - \frac{4x^3}{3} + 2x^2 + C
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Calcule el área del recinto acotado limitado por la gráfica de $f$ y el eje de abscisas.
+
+<Solucion>
+
+La gráfica corta al eje en $x = 0$ y en $x = 2$, y entre ambos $f(x) = x(x - 2)^2 \ge 0$, así que queda **por encima** del eje (es el recinto sombreado en la gráfica). Con la primitiva del apartado c), $F(x) = \frac{x^4}{4} - \frac{4x^3}{3} + 2x^2$:
+
+$$
+\text{Área} = \int_0^2 f(x)\,dx = F(2) - F(0) = 4 - \frac{32}{3} + 8 = \frac{4}{3}\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+a) **(1 punto)** Calcule la derivada de las siguientes funciones:
+
+$$
+f(x) = \ln\left(\frac{x - 1}{x + 1}\right) \qquad g(x) = x^3 \cdot e^{2x^2}
+$$
+
+<Solucion>
+
+**Derivada de $f$.** Por la regla de la cadena, $\big(\ln u\big)' = \frac{u'}{u}$, con $u = \frac{x - 1}{x + 1}$:
+
+$$
+u' = \frac{(x + 1) - (x - 1)}{(x + 1)^2} = \frac{2}{(x + 1)^2}, \qquad f'(x) = \frac{2}{(x + 1)^2}\cdot\frac{x + 1}{x - 1} = \frac{2}{(x + 1)(x - 1)} = \frac{2}{x^2 - 1}
+$$
+
+**Derivada de $g$.** Por la regla del producto, con $\left(e^{2x^2}\right)' = 4x\,e^{2x^2}$:
+
+$$
+g'(x) = 3x^2 e^{2x^2} + x^3 \cdot 4x\,e^{2x^2} = (4x^4 + 3x^2)\,e^{2x^2}
+$$
+
+</Solucion>
+
+b) **(0.7 puntos)** Represente gráficamente la parábola $h(x) = x^2 + x + 1$, indicando el vértice y los puntos de corte con los ejes coordenados.
+
+<Solucion>
+
+- **Vértice:** $x_v = -\frac{b}{2a} = -\frac{1}{2}$, $h\left(-\frac{1}{2}\right) = \frac{1}{4} - \frac{1}{2} + 1 = \frac{3}{4}$: $V\left(-\frac{1}{2}, \frac{3}{4}\right)$. Como $a = 1 > 0$, es un mínimo y la parábola se abre hacia arriba.
+- **Corte con $OY$:** $h(0) = 1$, el punto $(0, 1)$.
+- **Corte con $OX$:** $x^2 + x + 1 = 0$ tiene discriminante $1 - 4 = -3 < 0$, así que **no corta** al eje de abscisas.
+
+Otros puntos: $h(-1) = 1$, $h(1) = 3$ y $h(-2) = 3$.
+
+<ParabolaJunio2021 />
+
+</Solucion>
+
+c) **(0.8 puntos)** Calcule el área del recinto limitado por la gráfica de $h(x) = x^2 + x + 1$, el eje de abscisas y las rectas $x = -\frac{1}{2}$ y $x = 0$.
+
+<Solucion>
+
+**Planteamiento.** Por el apartado b), $h(x) > 0$ para todo $x$, así que en $\left[-\frac{1}{2}, 0\right]$ la parábola está por encima del eje y el área es la integral de $h$ (el recinto sombreado):
+
+$$
+\text{Área} = \int_{-1/2}^{0} (x^2 + x + 1)\,dx = \left[\frac{x^3}{3} + \frac{x^2}{2} + x\right]_{-1/2}^{0}
+$$
+
+**Cálculo:**
+
+$$
+\text{Área} = 0 - \left(-\frac{1}{24} + \frac{1}{8} - \frac{1}{2}\right) = -\frac{-1 + 3 - 12}{24} = \frac{10}{24} = \frac{5}{12}\ u^2 \approx 0.42\ u^2
+$$
+
+</Solucion>

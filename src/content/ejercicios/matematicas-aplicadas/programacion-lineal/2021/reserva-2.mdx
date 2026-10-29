@@ -1,0 +1,66 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionReserva2de2021 from "../../../../../components/figuras/RegionReserva2de2021.astro"
+
+Se consideran las siguientes inecuaciones:
+
+$$
+5x - 3y \ge -9 \qquad x + y \le 11 \qquad 6x + y \le 36 \qquad x + 2y \ge 6
+$$
+
+a) **(1.5 puntos)** Represente la región factible definida por las inecuaciones anteriores y determine sus vértices.
+
+<Solucion>
+
+**Semiplanos.** Despejando $y$:
+
+- $5x - 3y \ge -9 \iff y \le \frac{5x + 9}{3}$: por debajo de la recta $5x - 3y = -9$.
+- $x + y \le 11$: por debajo de $x + y = 11$.
+- $6x + y \le 36$: por debajo de $6x + y = 36$.
+- $x + 2y \ge 6$: por encima de $x + 2y = 6$.
+
+<RegionReserva2de2021 />
+
+**Vértices**, cortando las rectas que limitan la región de dos en dos:
+
+- $A$: $5x - 3y = -9$ y $x + 2y = 6$. Con $x = 6 - 2y$, $30 - 13y = -9 \Rightarrow y = 3$, $x = 0$: $A(0, 3)$.
+- $B$: $5x - 3y = -9$ y $x + y = 11$. Con $y = 11 - x$, $8x - 33 = -9 \Rightarrow x = 3$, $y = 8$: $B(3, 8)$.
+- $C$: $x + y = 11$ y $6x + y = 36$. Restando, $5x = 25$, así que $x = 5$, $y = 6$: $C(5, 6)$.
+- $D$: $6x + y = 36$ y $x + 2y = 6$. Con $y = 36 - 6x$, $x + 72 - 12x = 6 \Rightarrow x = 6$, $y = 0$: $D(6, 0)$.
+
+Los cuatro cumplen las otras dos inecuaciones; por ejemplo, $B$: $6 \cdot 3 + 8 = 26 \le 36$ y $3 + 16 = 19 \ge 6$.
+
+</Solucion>
+
+b) **(0.25 puntos)** ¿Pertenece el punto $(5, 7)$ a la región factible anterior?
+
+<Solucion>
+
+Comprobamos las inecuaciones: $5 \cdot 5 - 3 \cdot 7 = 4 \ge -9$ sí, pero $5 + 7 = 12 > 11$ no cumple $x + y \le 11$.
+
+**Respuesta.** **No pertenece** a la región factible.
+
+</Solucion>
+
+c) **(0.75 puntos)** Calcule los valores máximo y mínimo de la función $F(x, y) = 10x - 6y$ en la región anterior y determine los puntos en los que se alcanzan.
+
+<Solucion>
+
+La región es acotada; evaluamos $F$ en los vértices:
+
+- $F(0, 3) = -18$
+- $F(3, 8) = 30 - 48 = -18$
+- $F(5, 6) = 50 - 36 = 14$
+- $F(6, 0) = 60$
+
+**Máximo:** $60$, en el punto **$D(6, 0)$**.
+
+**Mínimo:** $-18$, que se alcanza en $A$ y en $B$ y, por tanto, en **todos los puntos del segmento $AB$**. Se ve también porque $F(x, y) = 10x - 6y = 2(5x - 3y)$, y sobre la recta $5x - 3y = -9$ vale $2 \cdot (-9) = -18$.
+
+</Solucion>

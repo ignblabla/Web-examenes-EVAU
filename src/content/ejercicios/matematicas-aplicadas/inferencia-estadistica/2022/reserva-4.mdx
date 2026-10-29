@@ -1,0 +1,95 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se desea estimar la proporción de jóvenes de una localidad que están suscritos a una determinada plataforma de televisión. Para ello, se toma una muestra aleatoria de $100$ jóvenes de los que $36$ afirman estar suscritos a dicha plataforma.
+
+a) **(1.5 puntos)** Determine un intervalo de confianza, con un nivel del $92\%$, para la proporción de jóvenes que están suscritos a esta plataforma.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{36}{100} = 0.36$.
+
+**Valor crítico.** Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$.
+
+**Error:**
+
+$$
+E = 1.75\sqrt{\frac{0.36 \cdot 0.64}{100}} = 1.75 \cdot \frac{0.6 \cdot 0.8}{10} = 1.75 \cdot 0.048 = 0.084
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.36 - 0.084,\ 0.36 + 0.084) = (0.276,\ 0.444)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Suponiendo que se mantiene la misma proporción muestral y el mismo nivel de confianza del apartado anterior, determine el tamaño muestral mínimo que se debería tomar si se quisiera que el error máximo fuera $0.025$.
+
+<Solucion>
+
+Queremos $E \le 0.025$:
+
+$$
+1.75\sqrt{\frac{0.36 \cdot 0.64}{n}} \le 0.025 \;\Rightarrow\; n \ge \frac{1.75^2 \cdot 0.2304}{0.025^2} = \frac{0.7056}{0.000625} = 1128.96
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **1129 jóvenes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+La vida útil de un determinado modelo de teléfono móvil (en meses) se distribuye según una ley Normal de varianza $9.61$ meses$^2$. En una muestra de $10$ teléfonos, la vida útil de los mismos ha sido:
+
+$$
+30.6 \quad 30 \quad 31.3 \quad 29.7 \quad 32.3 \quad 32 \quad 32.8 \quad 31.5 \quad 31.2 \quad 30.5
+$$
+
+<Solucion titulo="Planteamiento común">
+
+La desviación típica es la raíz de la varianza: $\sigma = \sqrt{9.61} = 3.1$ meses. La media de la muestra es:
+
+$$
+\bar{x} = \frac{30.6 + 30 + 31.3 + 29.7 + 32.3 + 32 + 32.8 + 31.5 + 31.2 + 30.5}{10} = \frac{311.9}{10} = 31.19\ \text{meses}
+$$
+
+</Solucion>
+
+a) **(1.5 puntos)** Determine un intervalo de confianza para estimar la vida útil de este modelo de teléfono móvil con un nivel de confianza del $97\%$.
+
+<Solucion>
+
+Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+$$
+E = 2.17 \cdot \frac{3.1}{\sqrt{10}} \approx 2.17 \cdot 0.9803 \approx 2.1273
+$$
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (31.19 - 2.1273,\ 31.19 + 2.1273) = (29.0627,\ 33.3173)
+$$
+
+La vida útil media está entre **29.06 y 33.32 meses**, con una confianza del $97\%$.
+
+</Solucion>
+
+b) **(1 punto)** Determine el tamaño mínimo muestral para que, con el mismo nivel de confianza, el error que se comete al estimar la duración media de la vida útil de este modelo de teléfono móvil sea inferior a $0.15$ meses.
+
+<Solucion>
+
+Queremos $E < 0.15$:
+
+$$
+2.17 \cdot \frac{3.1}{\sqrt{n}} < 0.15 \;\Rightarrow\; \sqrt{n} > \frac{2.17 \cdot 3.1}{0.15} \approx 44.847 \;\Rightarrow\; n > 44.847^2 \approx 2011.22
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **2012 teléfonos**.
+
+</Solucion>

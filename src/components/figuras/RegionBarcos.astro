@@ -1,0 +1,33 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2023, ejercicio 2: región factible de los viajes del
+// barco B1 (x) y del barco B2 (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={27}
+  yMax={27}
+  marcasX={[5, 10, 15, 20, 25]}
+  marcasY={[5, 10, 15, 20, 25]}
+  rectas={[
+    { desde: [14, 0], hasta: [14, 26], color: "#2f6fa3", etiqueta: "x = 14", en: [14.5, 24.5] },
+    { desde: [0, 0], hasta: [26, 26], color: "#5b3f8c", etiqueta: "y = x", en: [22, 25] },
+    { desde: [0, 10], hasta: [10, 0], color: "#b04a3a", etiqueta: "x + y = 10", en: [0.5, 11] },
+    { desde: [0, 24], hasta: [24, 0], color: "#7a5b16", etiqueta: "x + y = 24", en: [18.5, 7] },
+  ]}
+  region={[
+    [10, 0],
+    [14, 0],
+    [14, 10],
+    [12, 12],
+    [5, 5],
+  ]}
+  vertices={[
+    { x: 10, y: 0, texto: "A", dx: 5, dy: -7 },
+    { x: 14, y: 0, texto: "B", dx: 6, dy: -6 },
+    { x: 14, y: 10, texto: "C", dx: 7, dy: 4 },
+    { x: 12, y: 12, texto: "D", dx: -4, dy: -9 },
+    { x: 5, y: 5, texto: "E", dx: -14, dy: 0 },
+  ]}
+  descripcion="Región factible: pentágono de vértices A(10, 0), B(14, 0), C(14, 10), D(12, 12) y E(5, 5), limitado por el eje OX y las rectas x + y = 10, x = 14, x + y = 24 e y = x"
+/>

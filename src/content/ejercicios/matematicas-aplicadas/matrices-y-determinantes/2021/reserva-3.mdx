@@ -1,0 +1,72 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 1 & 0 & 1\\ 0 & 1 & 0\\ 1 & 0 & 1 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 0 & 2\\ 1 & 1 & -1\\ 2 & 1 & 0 \end{pmatrix} \quad \text{y} \quad C = \begin{pmatrix} 1\\ -3\\ 1 \end{pmatrix}.
+$$
+
+a) **(1 punto)** Calcule $A^2$, $A^3$, $A^4$ y deduzca la expresión de $A^n$, con $n$ un número natural.
+
+<Solucion>
+
+**Potencias:**
+
+$$
+A^2 = \begin{pmatrix} 1 & 0 & 1\\ 0 & 1 & 0\\ 1 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & 1\\ 0 & 1 & 0\\ 1 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 0 & 2\\ 0 & 1 & 0\\ 2 & 0 & 2 \end{pmatrix}
+$$
+
+$$
+A^3 = A^2 \cdot A = \begin{pmatrix} 4 & 0 & 4\\ 0 & 1 & 0\\ 4 & 0 & 4 \end{pmatrix}, \qquad A^4 = A^3 \cdot A = \begin{pmatrix} 8 & 0 & 8\\ 0 & 1 & 0\\ 8 & 0 & 8 \end{pmatrix}
+$$
+
+**Expresión general.** Cada vez que se multiplica por $A$, los cuatro términos de las esquinas se duplican ($2 \to 4 \to 8$) y el central sigue valiendo $1$. Como en $A$ las esquinas valen $1 = 2^0$:
+
+$$
+A^n = \begin{pmatrix} 2^{n-1} & 0 & 2^{n-1}\\ 0 & 1 & 0\\ 2^{n-1} & 0 & 2^{n-1} \end{pmatrix}
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Razone si existe la inversa de la matriz $B$.
+
+<Solucion>
+
+$B$ tiene inversa si y solo si $|B| \ne 0$. Desarrollando por la primera fila:
+
+$$
+|B| = 1 \cdot \begin{vmatrix} 1 & -1\\ 1 & 0 \end{vmatrix} - 0 + 2 \cdot \begin{vmatrix} 1 & 1\\ 2 & 1 \end{vmatrix} = 1 \cdot 1 + 2 \cdot (-1) = -1 \ne 0
+$$
+
+**Respuesta.** **Sí existe** la inversa de $B$.
+
+</Solucion>
+
+c) **(1 punto)** Razone si la ecuación matricial $B \cdot X = C$ tiene solución y resuélvala en caso de que sea posible.
+
+<Solucion>
+
+**Existencia.** Como $B$ tiene inversa, multiplicando por $B^{-1}$ por la izquierda la ecuación tiene **solución única**, $X = B^{-1} C$, de dimensión $3 \times 1$.
+
+**Inversa.** Con $B^{-1} = \frac{1}{|B|}\big(\text{Adj}(B)\big)^t$:
+
+$$
+\text{Adj}(B) = \begin{pmatrix} 1 & -2 & -1\\ 2 & -4 & -1\\ -2 & 3 & 1 \end{pmatrix}, \qquad
+B^{-1} = \frac{1}{-1}\begin{pmatrix} 1 & 2 & -2\\ -2 & -4 & 3\\ -1 & -1 & 1 \end{pmatrix} = \begin{pmatrix} -1 & -2 & 2\\ 2 & 4 & -3\\ 1 & 1 & -1 \end{pmatrix}
+$$
+
+**Solución:**
+
+$$
+X = B^{-1} C = \begin{pmatrix} -1 & -2 & 2\\ 2 & 4 & -3\\ 1 & 1 & -1 \end{pmatrix}\begin{pmatrix} 1\\ -3\\ 1 \end{pmatrix} = \begin{pmatrix} -1 + 6 + 2\\ 2 - 12 - 3\\ 1 - 3 - 1 \end{pmatrix} = \begin{pmatrix} 7\\ -13\\ -3 \end{pmatrix}
+$$
+
+Comprobación: $B \cdot X = \begin{pmatrix} 7 - 6\\ 7 - 13 + 3\\ 14 - 13 \end{pmatrix} = \begin{pmatrix} 1\\ -3\\ 1 \end{pmatrix} = C$.
+
+</Solucion>

@@ -1,0 +1,111 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Una empresa fabrica piezas cuyo diámetro sigue una distribución Normal de media desconocida y varianza $9\ mm^2$.
+
+<Solucion titulo="Planteamiento común">
+
+La desviación típica es la raíz de la varianza: $\sigma = \sqrt{9} = 3$ mm.
+
+</Solucion>
+
+a) **(0.75 puntos)** Se seleccionan al azar $144$ piezas obteniéndose un diámetro medio de $81\ mm$. Determine un intervalo de confianza al $98.5\%$ para estimar el diámetro medio de las piezas fabricadas por la empresa.
+
+<Solucion>
+
+**Valor crítico.** Para el $98.5\%$, $P(Z \le z_{\alpha/2}) = 0.9925$, que está en la tabla en la fila $2.4$ y la columna $0.03$: $z_{\alpha/2} = 2.43$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 2.43 \cdot \frac{3}{\sqrt{144}} = 2.43 \cdot 0.25 = 0.6075
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (81 - 0.6075,\ 81 + 0.6075) = (80.3925,\ 81.6075)
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Con el mismo nivel de confianza del apartado anterior, ¿de qué tamaño mínimo habría que tomar la muestra para obtener un intervalo de confianza con una amplitud máxima de $0.9$?
+
+<Solucion>
+
+La amplitud del intervalo es el doble del error, así que queremos $2E \le 0.9$, es decir, $E \le 0.45$:
+
+$$
+2.43 \cdot \frac{3}{\sqrt{n}} \le 0.45 \;\Rightarrow\; \sqrt{n} \ge \frac{2.43 \cdot 3}{0.45} = 16.2 \;\Rightarrow\; n \ge 16.2^2 = 262.44
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **263 piezas**.
+
+</Solucion>
+
+c) **(1 punto)** Suponiendo que la media poblacional es de $80.4\ mm$ y tomando muestras aleatorias de $64$ piezas, ¿qué distribución de probabilidad sigue la variable aleatoria diámetro medio muestral? ¿Cuál es la probabilidad de que el diámetro medio muestral esté comprendido entre $79.5\ mm$ y $80.7\ mm$?
+
+<Solucion>
+
+**Distribución.** Como la población es normal, la media muestral también lo es:
+
+$$
+\bar{X} \sim N\left(80.4,\ \frac{3}{\sqrt{64}}\right) = N(80.4,\ 0.375)
+$$
+
+**Probabilidad.** Tipificamos:
+
+$$
+P(79.5 \le \bar{X} \le 80.7) = P\left(\frac{79.5 - 80.4}{0.375} \le Z \le \frac{80.7 - 80.4}{0.375}\right) = P(-2.4 \le Z \le 0.8)
+$$
+
+$$
+= P(Z \le 0.8) - \big(1 - P(Z \le 2.4)\big) = 0.7881 - (1 - 0.9918) = 0.7881 - 0.0082 = 0.7799
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se selecciona una muestra aleatoria de $300$ habitantes de una ciudad, a los que se les pregunta si creen que llevan una dieta saludable. De las personas encuestadas, $180$ han contestado afirmativamente, mientras que el resto ha respondido que no.
+
+a) **(1.25 puntos)** Calcule un intervalo de confianza al $95\%$ para la proporción de personas que creen seguir una dieta saludable.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{180}{300} = 0.6$ y, al $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+E = 1.96\sqrt{\frac{0.6 \cdot 0.4}{300}} \approx 1.96 \cdot 0.02828 \approx 0.0554
+$$
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.6 - 0.0554,\ 0.6 + 0.0554) = (0.5446,\ 0.6554)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** ¿Cuál sería el número de habitantes mínimo necesario en este estudio de opinión para que se reduzca a un tercio del error cometido en el intervalo $(0.54, 0.66)$ con el mismo nivel de confianza?
+
+<Solucion>
+
+**Error del intervalo dado.** Es la mitad de su amplitud:
+
+$$
+E = \frac{0.66 - 0.54}{2} = 0.06
+$$
+
+Un tercio es $0.02$. El centro del intervalo es la proporción muestral, $\hat{p} = 0.6$. Con $z_{\alpha/2} = 1.96$:
+
+$$
+1.96\sqrt{\frac{0.6 \cdot 0.4}{n}} \le 0.02 \;\Rightarrow\; n \ge \frac{1.96^2 \cdot 0.24}{0.02^2} = \frac{0.921984}{0.0004} = 2304.96
+$$
+
+**Respuesta.** Harían falta como mínimo **2305 habitantes**.
+
+</Solucion>

@@ -1,0 +1,23 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2021, ejercicio 4: la derivada f′(x) = 8 − x²⁄2, parábola
+// con vértice en (0, 8) que corta al eje OX en x = −4 y x = 4.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const d = (x: number) => 8 - x ** 2 / 2
+---
+
+<GraficaFuncion
+  xMin={-6}
+  xMax={6}
+  yMin={-6}
+  yMax={10}
+  marcasX={[-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]}
+  marcasY={[-4, -2, 2, 4, 6, 8]}
+  tramos={[{ f: d, desde: -6, hasta: 6 }]}
+  puntos={[
+    { x: -4, y: 0, texto: "(−4, 0)", dx: -6, dy: -6 },
+    { x: 0, y: 8, texto: "V(0, 8)", dx: 6, dy: -6 },
+    { x: 4, y: 0, texto: "(4, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de la derivada f′(x) = 8 − x²⁄2: parábola abierta hacia abajo con vértice en (0, 8), positiva entre x = −4 y x = 4 y negativa fuera de ese intervalo"
+/>

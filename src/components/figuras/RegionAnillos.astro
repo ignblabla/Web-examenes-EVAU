@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, julio de 2023, ejercicio 2: región factible de los anillos del primer
+// tipo (x) y del segundo (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={85}
+  yMax={80}
+  marcasX={[10, 20, 30, 40, 50, 60, 70]}
+  marcasY={[10, 20, 30, 40, 50, 60, 70]}
+  rectas={[
+    { desde: [20, 0], hasta: [20, 78], color: "#2f6fa3", etiqueta: "x = 20", en: [21, 75] },
+    { desde: [0, 66.67], hasta: [85, 38.33], color: "#7a5b16", etiqueta: "x + 3y = 200", en: [84, 33], ancla: "end" },
+    { desde: [35, 80], hasta: [75, 0], color: "#5b3f8c", etiqueta: "2x + y = 150", en: [42, 72] },
+    { desde: [0, 38], hasta: [85, 4], color: "#b04a3a", etiqueta: "2x + 5y = 190", en: [24, 14] },
+  ]}
+  region={[
+    [20, 30],
+    [70, 10],
+    [50, 50],
+    [20, 60],
+  ]}
+  vertices={[
+    { x: 20, y: 30, texto: "A", dx: -14, dy: 12 },
+    { x: 70, y: 10, texto: "B", dx: -4, dy: 16 },
+    { x: 50, y: 50, texto: "C", dx: 6, dy: -8 },
+    { x: 20, y: 60, texto: "D", dx: -14, dy: -4 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(20, 30), B(70, 10), C(50, 50) y D(20, 60), limitado por las rectas x = 20, 2x + 5y = 190, 2x + y = 150 y x + 3y = 200"
+/>

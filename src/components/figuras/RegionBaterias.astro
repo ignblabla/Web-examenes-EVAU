@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, junio de 2021, ejercicio 1: región factible de las baterías de tipo A (x)
+// y de tipo B (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={46}
+  yMax={64}
+  marcasX={[10, 20, 30, 40]}
+  marcasY={[10, 20, 30, 40, 50, 60]}
+  rectas={[
+    { desde: [0, 10], hasta: [10, 0], color: "#2f6fa3", etiqueta: "x + y = 10", en: [5, 9], ancla: "start" },
+    { desde: [0, 10], hasta: [46, 56], color: "#7a5b16", etiqueta: "y = x + 10", en: [33, 48], ancla: "end" },
+    { desde: [0, 60], hasta: [40, 0], color: "#b04a3a", etiqueta: "3x + 2y = 120", en: [31, 18], ancla: "start" },
+  ]}
+  region={[
+    [10, 0],
+    [40, 0],
+    [20, 30],
+    [0, 10],
+  ]}
+  vertices={[
+    { x: 10, y: 0, texto: "A", dx: 6, dy: -6 },
+    { x: 40, y: 0, texto: "B", dx: 6, dy: -6 },
+    { x: 20, y: 30, texto: "C", dx: -14, dy: -6 },
+    { x: 0, y: 10, texto: "D", dx: 6, dy: 16 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(10, 0), B(40, 0), C(20, 30) y D(0, 10), limitado por el eje OX y las rectas x + y = 10, y = x + 10 y 3x + 2y = 120"
+/>

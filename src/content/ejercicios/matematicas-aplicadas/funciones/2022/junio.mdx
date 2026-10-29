@@ -1,0 +1,95 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+import CubicaJunio2022 from "../../../../../components/figuras/CubicaJunio2022.astro"
+
+a) **(1.25 puntos)** Se considera la función $f(x) = x^3 + ax^2 + bx + c$, con $a$, $b$ y $c$ números reales. Calcule los valores $a$, $b$ y $c$, sabiendo que la gráfica de $f$ posee un extremo relativo en el punto de abscisa $x = 3$ y que la pendiente de la recta tangente a la gráfica de $f$ en el punto $P(0, 18)$ es $-3$.
+
+<Solucion>
+
+La derivada es $f'(x) = 3x^2 + 2ax + b$. Hay tres condiciones:
+
+- **La gráfica pasa por $P(0, 18)$:** $f(0) = c = 18$.
+- **Pendiente $-3$ en $x = 0$:** $f'(0) = b = -3$.
+- **Extremo relativo en $x = 3$:** $f$ es derivable, así que $f'(3) = 0$: $27 + 6a + b = 0 \Rightarrow 6a = -24 \Rightarrow a = -4$.
+
+**Respuesta.** **$a = -4$, $b = -3$ y $c = 18$**, es decir, $f(x) = x^3 - 4x^2 - 3x + 18$.
+
+</Solucion>
+
+b) **(1.25 puntos)** Calcule el área del recinto acotado, limitado por la gráfica de la función $g(x) = x^3 - 4x^2 - 3x + 18$ y el eje de abscisas.
+
+<Solucion>
+
+**Cortes con el eje.** Probando divisores de $18$, $g(3) = 27 - 36 - 9 + 18 = 0$. Dividiendo por $x - 3$ (Ruffini):
+
+$$
+g(x) = (x - 3)(x^2 - x - 6) = (x - 3)(x - 3)(x + 2) = (x - 3)^2(x + 2)
+$$
+
+Corta al eje en $x = -2$ y lo toca en $x = 3$ (raíz doble). Entre $-2$ y $3$, $(x - 3)^2 > 0$ y $x + 2 > 0$, así que $g$ está **por encima** del eje:
+
+<CubicaJunio2022 />
+
+**Área.** Una primitiva es $G(x) = \frac{x^4}{4} - \frac{4x^3}{3} - \frac{3x^2}{2} + 18x$:
+
+$$
+G(3) = \frac{81}{4} - 36 - \frac{27}{2} + 54 = \frac{99}{4}, \qquad G(-2) = 4 + \frac{32}{3} - 6 - 36 = -\frac{82}{3}
+$$
+
+$$
+\text{Área} = \int_{-2}^{3} g(x)\,dx = \frac{99}{4} + \frac{82}{3} = \frac{297 + 328}{12} = \frac{625}{12}\ u^2 \approx 52.08\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+a) **(1.25 puntos)** Se considera la función
+
+$$
+f(x) = \begin{cases}
+6x - 3 & x \le 1\\
+ax^2 + bx + 2 & x > 1
+\end{cases}
+$$
+
+con $a$ y $b$ números reales. Determine los valores de $a$ y $b$ para que $f$ sea continua y derivable en todo su dominio.
+
+<Solucion>
+
+Los dos tramos son polinomios, continuos y derivables en sus intervalos. Solo hay que imponer las condiciones en $x = 1$:
+
+- **Continuidad:** $f(1) = \lim_{x \to 1^+} f(x)$, es decir, $6 - 3 = a + b + 2 \Rightarrow a + b = 1$.
+- **Derivabilidad:** con $f'(x) = 6$ a la izquierda y $f'(x) = 2ax + b$ a la derecha, $f'(1^-) = f'(1^+)$, es decir, $6 = 2a + b$.
+
+Restando las dos ecuaciones, $a = 5$, y entonces $b = 1 - 5 = -4$.
+
+**Respuesta.** **$a = 5$ y $b = -4$**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Calcule el área del recinto acotado, limitado por el eje $OX$ y la gráfica de la función $g(x) = -2x^2 + 8x - 6$.
+
+<Solucion>
+
+**Planteamiento.** Es una parábola que abre hacia abajo. Sus cortes con el eje son:
+
+$$
+-2x^2 + 8x - 6 = 0 \iff x^2 - 4x + 3 = 0 \iff x = 1 \text{ o } x = 3
+$$
+
+Entre ellos la parábola está por encima del eje (por ejemplo, $g(2) = 2 > 0$), así que el área es la integral entre $1$ y $3$.
+
+**Cálculo:**
+
+$$
+\int_1^3 (-2x^2 + 8x - 6)\,dx = \left[-\frac{2x^3}{3} + 4x^2 - 6x\right]_1^3 = (-18 + 36 - 18) - \left(-\frac{2}{3} + 4 - 6\right) = 0 + \frac{8}{3} = \frac{8}{3}\ u^2
+$$
+
+</Solucion>

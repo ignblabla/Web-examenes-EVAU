@@ -1,0 +1,29 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2022, ejercicio 3: parábola 4x² + 16x + 17 hasta x = −1,
+// recta (10 − 5x) entre 3 hasta x = 2 y constante 3⁄2 después, con salto en x = 2. Recinto con el
+// eje OX entre x = −2 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x < -1 ? 4 * x ** 2 + 16 * x + 17 : x <= 2 ? (10 - 5 * x) / 3 : 1.5)
+---
+
+<GraficaFuncion
+  xMin={-3.3}
+  xMax={4.2}
+  yMin={-0.8}
+  yMax={6.2}
+  marcasX={[-3, -2, -1, 1, 3, 4]}
+  marcasY={[1, 2, 3, 4, 5]}
+  tramos={[
+    { f: (x) => 4 * x ** 2 + 16 * x + 17, desde: -3.3, hasta: -1 },
+    { f: (x) => (10 - 5 * x) / 3, desde: -1, hasta: 2 },
+    { f: () => 1.5, desde: 2.04, hasta: 4.2, etiqueta: { texto: "y = 1.5 si x > 2", x: 2.3, y: 1.8 } },
+  ]}
+  recinto={{ arriba: f, abajo: () => 0, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: 1, texto: "(−2, 1)", dx: -6, dy: 4 },
+    { x: -1, y: 5, texto: "(−1, 5)", dx: 6, dy: -4 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 0, dy: 15 },
+  ]}
+  descripcion="Gráfica de f: parábola con mínimo en (−2, 1) hasta (−1, 5), donde forma un pico; recta decreciente de (−1, 5) a (2, 0); y, tras un salto, la recta horizontal y = 1.5 para x > 2; el recinto con el eje OX entre −2 y 2 está sombreado"
+/>

@@ -1,0 +1,27 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2021, ejercicio 3 d): f con a = 0 y b = ½, y el recinto
+// bajo la gráfica entre x = 0 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x < 1 ? 0.5 : x ** 2 - x / 2)
+---
+
+<GraficaFuncion
+  xMin={-0.6}
+  xMax={2.6}
+  yMin={-0.4}
+  yMax={4.2}
+  marcasX={[1, 2]}
+  marcasY={[1, 2, 3, 4]}
+  tramos={[
+    { f: () => 0.5, desde: -0.6, hasta: 1 },
+    { f: (x) => x ** 2 - x / 2, desde: 1, hasta: 2.4 },
+  ]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 0, y: 0.5, texto: "(0, ½)", dx: 6, dy: -6 },
+    { x: 1, y: 0.5, texto: "(1, ½)", dx: 6, dy: 2 },
+    { x: 2, y: 3, texto: "(2, 3)", dx: -6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f con a = 0 y b = ½: la recta horizontal y = ½ hasta x = 1 y la parábola x² − x⁄2 desde (1, ½) hasta (2, 3); el recinto entre la gráfica y el eje OX, de x = 0 a x = 2, está sombreado"
+/>

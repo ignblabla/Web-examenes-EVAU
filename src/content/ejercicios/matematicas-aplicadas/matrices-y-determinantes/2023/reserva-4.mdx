@@ -1,0 +1,92 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 5 & -7 & 6\\ 7 & 0 & 4\\ 0 & 3 & -1 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 2 & -9\\ -2 & 0 & 11\\ 0 & 4 & -7 \end{pmatrix}, \quad C = \begin{pmatrix} 1\\ 2\\ -1 \end{pmatrix}
+$$
+
+a) **(0.5 puntos)** Halle las dimensiones de las siguientes matrices $C^tAC$, $ACC^tB$.
+
+<Solucion>
+
+$A$ y $B$ son $3 \times 3$, $C$ es $3 \times 1$ y $C^t$ es $1 \times 3$. En cada producto, las columnas de una matriz coinciden con las filas de la siguiente, y el resultado tiene las filas de la primera y las columnas de la última:
+
+- $C^t A C$: $(1 \times 3)(3 \times 3)(3 \times 1)$ $\Rightarrow$ **$1 \times 1$**.
+- $A C C^t B$: $(3 \times 3)(3 \times 1)(1 \times 3)(3 \times 3)$ $\Rightarrow$ **$3 \times 3$**.
+
+</Solucion>
+
+b) **(1 punto)** Calcule, en caso de existir, las inversas de las matrices $A$ y $B$.
+
+<Solucion>
+
+Una matriz cuadrada tiene inversa si y solo si su determinante no es $0$.
+
+**Matriz $B$.** Desarrollamos por la primera fila:
+
+$$
+|B| = 1 \cdot (0 - 44) - 2 \cdot (14 - 0) + (-9) \cdot (-8 - 0) = -44 - 28 + 72 = 0
+$$
+
+**$B$ no tiene inversa.**
+
+**Matriz $A$.** Desarrollamos por la primera fila:
+
+$$
+|A| = 5 \cdot (0 - 12) - (-7) \cdot (-7 - 0) + 6 \cdot (21 - 0) = -60 - 49 + 126 = 17 \ne 0
+$$
+
+Tiene inversa, $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+\text{Adj}(A) = \begin{pmatrix} -12 & 7 & 21\\ 11 & -5 & -15\\ -28 & 22 & 49 \end{pmatrix}, \qquad
+A^{-1} = \frac{1}{17}\begin{pmatrix} -12 & 11 & -28\\ 7 & -5 & 22\\ 21 & -15 & 49 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot \begin{pmatrix} -12 & 11 & -28\\ 7 & -5 & 22\\ 21 & -15 & 49 \end{pmatrix} = \begin{pmatrix} 17 & 0 & 0\\ 0 & 17 & 0\\ 0 & 0 & 17 \end{pmatrix}$, que dividido entre $17$ es la identidad.
+
+</Solucion>
+
+c) **(1 punto)** Resuelva el siguiente sistema matricial
+
+$$
+\begin{cases}
+2X + 3Y = A\\
+-3X + 4Y = B
+\end{cases}
+$$
+
+<Solucion>
+
+Se resuelve por reducción, como un sistema de números: las matrices se pueden sumar y multiplicar por números.
+
+**Matriz $X$.** Multiplicamos la primera ecuación por $4$ y la segunda por $3$, y restamos para eliminar $Y$:
+
+$$
+8X + 12Y = 4A, \quad -9X + 12Y = 3B \;\Rightarrow\; 17X = 4A - 3B
+$$
+
+$$
+4A - 3B = \begin{pmatrix} 20 & -28 & 24\\ 28 & 0 & 16\\ 0 & 12 & -4 \end{pmatrix} - \begin{pmatrix} 3 & 6 & -27\\ -6 & 0 & 33\\ 0 & 12 & -21 \end{pmatrix} = \begin{pmatrix} 17 & -34 & 51\\ 34 & 0 & -17\\ 0 & 0 & 17 \end{pmatrix} \;\Rightarrow\; X = \begin{pmatrix} 1 & -2 & 3\\ 2 & 0 & -1\\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+**Matriz $Y$.** Multiplicamos la primera por $3$ y la segunda por $2$, y sumamos para eliminar $X$:
+
+$$
+6X + 9Y = 3A, \quad -6X + 8Y = 2B \;\Rightarrow\; 17Y = 3A + 2B
+$$
+
+$$
+3A + 2B = \begin{pmatrix} 15 & -21 & 18\\ 21 & 0 & 12\\ 0 & 9 & -3 \end{pmatrix} + \begin{pmatrix} 2 & 4 & -18\\ -4 & 0 & 22\\ 0 & 8 & -14 \end{pmatrix} = \begin{pmatrix} 17 & -17 & 0\\ 17 & 0 & 34\\ 0 & 17 & -17 \end{pmatrix} \;\Rightarrow\; Y = \begin{pmatrix} 1 & -1 & 0\\ 1 & 0 & 2\\ 0 & 1 & -1 \end{pmatrix}
+$$
+
+Comprobación: $2X + 3Y = \begin{pmatrix} 5 & -7 & 6\\ 7 & 0 & 4\\ 0 & 3 & -1 \end{pmatrix} = A$ y $-3X + 4Y = \begin{pmatrix} 1 & 2 & -9\\ -2 & 0 & 11\\ 0 & 4 & -7 \end{pmatrix} = B$.
+
+</Solucion>

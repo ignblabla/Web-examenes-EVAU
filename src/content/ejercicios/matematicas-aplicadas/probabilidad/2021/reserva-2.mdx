@@ -1,0 +1,84 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Una determinada ciudad tiene en la plantilla del ayuntamiento $1000$ agentes de la policía local, $600$ bomberos y $400$ funcionarios de protección civil. En esta plantilla, el $42\%$ de policías, el $20\%$ de bomberos y el $50\%$ de funcionarios de protección civil son mujeres. Se elige una persona al azar de la plantilla.
+
+a) **(1.5 puntos)** ¿Cuál es la probabilidad de que sea mujer?
+
+<Solucion>
+
+**Sucesos.** $P$, $B$ y $C$: la persona es policía, bombero o de protección civil; $M$: es mujer; $H$: es hombre. La plantilla tiene $1000 + 600 + 400 = 2000$ personas:
+
+$$
+P(P) = \frac{1000}{2000} = 0.5, \qquad P(B) = \frac{600}{2000} = 0.3, \qquad P(C) = \frac{400}{2000} = 0.2
+$$
+
+$$
+P(M \mid P) = 0.42, \qquad P(M \mid B) = 0.2, \qquad P(M \mid C) = 0.5
+$$
+
+**Probabilidad total:**
+
+$$
+P(M) = 0.5 \cdot 0.42 + 0.3 \cdot 0.2 + 0.2 \cdot 0.5 = 0.21 + 0.06 + 0.1 = 0.37
+$$
+
+</Solucion>
+
+b) **(1 punto)** Si la persona elegida es hombre, ¿cuál es la probabilidad de que sea bombero?
+
+<Solucion>
+
+$P(H) = 1 - 0.37 = 0.63$ y $P(H \mid B) = 1 - 0.2 = 0.8$. Por el teorema de Bayes:
+
+$$
+P(B \mid H) = \frac{P(B) \cdot P(H \mid B)}{P(H)} = \frac{0.3 \cdot 0.8}{0.63} = \frac{0.24}{0.63} = \frac{8}{21} \approx 0.381
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Una urna $A$ contiene $4$ bolas rojas y $5$ verdes y otra urna $B$ contiene $6$ bolas rojas y $3$ verdes. Lanzamos dos dados y si la suma es mayor o igual a $9$, extraemos una bola de la urna $A$ y en caso contrario, la extraemos de la urna $B$.
+
+a) **(1.5 puntos)** Calcule la probabilidad de que la bola extraída sea verde y de la urna $B$.
+
+<Solucion>
+
+**Elección de la urna.** Al lanzar dos dados hay $36$ resultados igual de probables. La suma es mayor o igual que $9$ en $10$ de ellos:
+
+- Suma $9$: $(3, 6), (4, 5), (5, 4), (6, 3)$
+- Suma $10$: $(4, 6), (5, 5), (6, 4)$
+- Suma $11$: $(5, 6), (6, 5)$
+- Suma $12$: $(6, 6)$
+
+Así que, llamando $A$ y $B$ a extraer de cada urna,
+
+$$
+P(A) = \frac{10}{36} = \frac{5}{18}, \qquad P(B) = 1 - \frac{5}{18} = \frac{13}{18}
+$$
+
+**Verde y de la urna $B$.** La urna $B$ tiene $3$ verdes de $9$ bolas, $P(V \mid B) = \frac{3}{9} = \frac{1}{3}$:
+
+$$
+P(B \cap V) = P(B) \cdot P(V \mid B) = \frac{13}{18} \cdot \frac{1}{3} = \frac{13}{54} \approx 0.2407
+$$
+
+</Solucion>
+
+b) **(1 punto)** Halle la probabilidad de que la bola extraída sea roja.
+
+<Solucion>
+
+Con $P(R \mid A) = \frac{4}{9}$ y $P(R \mid B) = \frac{6}{9}$, por la probabilidad total:
+
+$$
+P(R) = \frac{5}{18} \cdot \frac{4}{9} + \frac{13}{18} \cdot \frac{6}{9} = \frac{20}{162} + \frac{78}{162} = \frac{98}{162} = \frac{49}{81} \approx 0.6049
+$$
+
+</Solucion>

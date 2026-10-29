@@ -1,0 +1,33 @@
+---
+// Matemáticas aplicadas, junio de 2023, ejercicio 1: región R, pentágono limitado por el
+// eje OX y las rectas 9x − y = 0, x + y = 5, 4x + y = 9 y 2x − 3y = 1.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={3.5}
+  yMax={6.6}
+  marcasX={[0.5, 1, 1.5, 2, 2.5, 3]}
+  marcasY={[1, 2, 3, 4, 5]}
+  rectas={[
+    { desde: [0, 0], hasta: [0.6667, 6], color: "#2f6fa3", etiqueta: "9x − y = 0", en: [0.4, 6.2] },
+    { desde: [0, 5], hasta: [3.5, 1.5], color: "#7a5b16", etiqueta: "x + y = 5", en: [2.3, 2.85] },
+    { desde: [0.875, 5.5], hasta: [2.25, 0], color: "#5b3f8c", etiqueta: "4x + y = 9", en: [2.2, 0.35] },
+    { desde: [0.5, 0], hasta: [3.5, 2], color: "#b04a3a", etiqueta: "2x − 3y = 1", en: [3.45, 0.9], ancla: "end" },
+  ]}
+  region={[
+    [0, 0],
+    [0.5, 0],
+    [2, 1],
+    [1.3333, 3.6667],
+    [0.5, 4.5],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -10, dy: 14 },
+    { x: 0.5, y: 0, texto: "P", dx: 8, dy: -6 },
+    { x: 2, y: 1, texto: "Q", dx: 8, dy: 4 },
+    { x: 1.3333, y: 3.6667, texto: "R", dx: 8, dy: -4 },
+    { x: 0.5, y: 4.5, texto: "S", dx: -14, dy: 0 },
+  ]}
+  descripcion="Región R: pentágono de vértices O(0, 0), P(0.5, 0), Q(2, 1), R(4 entre 3, 11 entre 3) y S(0.5, 4.5), limitado por el eje OX y las rectas 9x − y = 0, x + y = 5, 4x + y = 9 y 2x − 3y = 1"
+/>

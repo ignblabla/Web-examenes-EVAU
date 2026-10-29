@@ -1,0 +1,70 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RegionReserva1de2021 from "../../../../../components/figuras/RegionReserva1de2021.astro"
+
+a) **(1 punto)** Una frutería vende dos tipos de surtidos de frutos rojos, $A$ y $B$. El surtido de tipo $A$ contiene $75$ g de arándanos, $100$ g de frambuesas y se vende a $2.40$ euros, mientras que el de tipo $B$ contiene $75$ g de arándanos, $50$ g de frambuesas y se vende a $1.80$ euros. La frutería dispone de un total de $3.75$ kg de arándanos y $4$ kg de frambuesas y el número de surtidos que vende del tipo $A$, siempre es menor o igual al doble de los del tipo $B$.
+
+Formule, <u>sin resolver</u>, el problema que permite obtener el número de surtidos de cada tipo que debe vender para que el beneficio sea máximo.
+
+<Solucion>
+
+**Variables.** $x$: número de surtidos de tipo $A$; $y$: número de surtidos de tipo $B$.
+
+**Función objetivo.** El enunciado solo da el precio de venta de cada surtido, así que el beneficio, en euros, es lo que se ingresa por ellos:
+
+$$
+F(x, y) = 2.4x + 1.8y \quad \text{(maximizar)}
+$$
+
+**Restricciones.** Pasamos los kilos a gramos: $3.75$ kg $= 3750$ g de arándanos y $4$ kg $= 4000$ g de frambuesas.
+
+$$
+\begin{cases}
+75x + 75y \le 3750 \iff x + y \le 50 & \text{(arándanos)}\\
+100x + 50y \le 4000 \iff 2x + y \le 80 & \text{(frambuesas)}\\
+x \le 2y & \text{(A no supera el doble de B)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+con $x$ e $y$ números enteros.
+
+</Solucion>
+
+b) **(1.5 puntos)** Represente el recinto limitado por las siguientes restricciones, calculando sus vértices:
+
+$$
+x + 4y \ge 5 \qquad x + 2y \ge 4 \qquad 7x + 5y \le 35 \qquad x \ge 0
+$$
+
+¿En qué punto de la región anterior la función $F(x, y) = 2x + y$ alcanza el mínimo y cuál es dicho valor?
+
+<Solucion>
+
+**Región.** Queda a la derecha del eje $OY$, por encima de las rectas $x + 4y = 5$ y $x + 2y = 4$ y por debajo de $7x + 5y = 35$. Las dos primeras se cortan en $x = 3$: a su izquierda manda $x + 2y = 4$ (va por encima) y a su derecha, $x + 4y = 5$:
+
+<RegionReserva1de2021 />
+
+**Vértices:**
+
+- $A(0, 2)$: $x + 2y = 4$ con el eje $OY$. La recta $x + 4y = 5$ corta al eje más abajo, en $\left(0, \frac{5}{4}\right)$, que no cumple $x + 2y \ge 4$.
+- $B$: $x + 4y = 5$ y $x + 2y = 4$. Restando, $2y = 1$, así que $y = 0.5$ y $x = 3$: $B(3, 0.5)$.
+- $C$: $x + 4y = 5$ y $7x + 5y = 35$. Con $x = 5 - 4y$, $35 - 28y + 5y = 35 \Rightarrow y = 0$, $x = 5$: $C(5, 0)$.
+- $D(0, 7)$: $7x + 5y = 35$ con el eje $OY$.
+
+**Mínimo.** La región es acotada, así que evaluamos $F$ en los vértices:
+
+- $F(0, 2) = 2$
+- $F(3, 0.5) = 6.5$
+- $F(5, 0) = 10$
+- $F(0, 7) = 7$
+
+**Respuesta.** El mínimo se alcanza en el punto **$A(0, 2)$** y vale **$2$**.
+
+</Solucion>

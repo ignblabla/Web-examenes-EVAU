@@ -1,0 +1,24 @@
+---
+// Matemáticas aplicadas, junio de 2022, ejercicio 3 b): g(x) = x³ − 4x² − 3x + 18 = (x − 3)²(x + 2)
+// y el recinto con el eje OX entre x = −2 y x = 3.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const g = (x: number) => x ** 3 - 4 * x ** 2 - 3 * x + 18
+---
+
+<GraficaFuncion
+  xMin={-3}
+  xMax={4.6}
+  yMin={-8}
+  yMax={22}
+  marcasX={[-1, 1, 2, 4]}
+  marcasY={[5, 10, 15, 20]}
+  tramos={[{ f: g, desde: -3, hasta: 4.6 }]}
+  recinto={{ arriba: g, abajo: () => 0, desde: -2, hasta: 3 }}
+  puntos={[
+    { x: -2, y: 0, texto: "(−2, 0)", dx: -6, dy: 14 },
+    { x: 0, y: 18, texto: "(0, 18)", dx: 6, dy: -6 },
+    { x: 3, y: 0, texto: "(3, 0)", dx: 0, dy: 15 },
+  ]}
+  descripcion="Gráfica de g(x) = x³ − 4x² − 3x + 18: corta al eje OX en x = −2 y toca el eje en x = 3, donde tiene un mínimo; el recinto entre la gráfica y el eje, de −2 a 3, está sombreado"
+/>

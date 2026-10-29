@@ -1,0 +1,21 @@
+---
+// Matemáticas aplicadas, julio de 2023, ejercicio 4: beneficios f(t) = (12t − 24) entre (t + 3)
+// para t ≥ 0, creciente y cóncava, con asíntota horizontal y = 12.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={40}
+  yMin={-10}
+  yMax={15}
+  marcasX={[10, 20, 30]}
+  marcasY={[-8, -4, 4, 8, 12]}
+  tramos={[{ f: (t) => (12 * t - 24) / (t + 3), desde: 0, hasta: 40 }]}
+  asintotas={[{ tipo: "h", valor: 12, etiqueta: "y = 12" }]}
+  puntos={[
+    { x: 0, y: -8, texto: "(0, −8)", dx: 8, dy: 4 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 6, dy: 14 },
+  ]}
+  descripcion="Gráfica de los beneficios: parte de (0, −8), corta al eje en (2, 0) y crece cada vez más despacio acercándose por debajo a la asíntota horizontal y = 12"
+/>

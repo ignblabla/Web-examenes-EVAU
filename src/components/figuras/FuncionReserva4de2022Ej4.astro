@@ -1,0 +1,27 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2022, ejercicio 4: parábola −x² + x + 2 hasta x = 1 y
+// 4 entre (x + 1) después, con el recinto entre la parábola y el eje OX de x = −1 a x = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const parabola = (x: number) => -(x ** 2) + x + 2
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={7}
+  yMin={-1.5}
+  yMax={3}
+  marcasX={[-1, 2, 3, 4, 5, 6]}
+  marcasY={[-1, 1, 2]}
+  tramos={[
+    { f: parabola, desde: -2, hasta: 1 },
+    { f: (x) => 4 / (x + 1), desde: 1, hasta: 7 },
+  ]}
+  recinto={{ arriba: parabola, abajo: () => 0, desde: -1, hasta: 1 }}
+  puntos={[
+    { x: -1, y: 0, texto: "(−1, 0)", dx: -6, dy: -6 },
+    { x: 0.5, y: 2.25, texto: "(0.5, 2.25)", dx: -6, dy: -6 },
+    { x: 1, y: 2, texto: "(1, 2)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: parábola −x² + x + 2 con máximo en (0.5, 2.25) hasta (1, 2), y después la rama de hipérbola 4 entre (x + 1), decreciente hacia el eje OX; el recinto entre la parábola y el eje, de −1 a 1, está sombreado"
+/>

@@ -1,0 +1,67 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+Se considera la matriz
+
+$$
+A = \begin{pmatrix} 1 & 0 & 0\\ 0 & 2 & 0\\ 0 & -1 & 1 \end{pmatrix}
+$$
+
+a) **(1.5 puntos)** Pruebe que se verifica que $A^{-1} = \frac{1}{2}(A^2 - 4A + 5I_3)$.
+
+<Solucion>
+
+Calculamos la matriz de la derecha y comprobamos que, multiplicada por $A$, da la identidad: entonces es la inversa de $A$.
+
+**Cuadrado de $A$:**
+
+$$
+A^2 = \begin{pmatrix} 1 & 0 & 0\\ 0 & 2 & 0\\ 0 & -1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & 0\\ 0 & 2 & 0\\ 0 & -1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0\\ 0 & 4 & 0\\ 0 & -3 & 1 \end{pmatrix}
+$$
+
+**Matriz de la derecha:**
+
+$$
+A^2 - 4A + 5I_3 = \begin{pmatrix} 1 - 4 + 5 & 0 & 0\\ 0 & 4 - 8 + 5 & 0\\ 0 & -3 + 4 & 1 - 4 + 5 \end{pmatrix} = \begin{pmatrix} 2 & 0 & 0\\ 0 & 1 & 0\\ 0 & 1 & 2 \end{pmatrix}
+$$
+
+$$
+M = \frac{1}{2}(A^2 - 4A + 5I_3) = \begin{pmatrix} 1 & 0 & 0\\ 0 & \frac{1}{2} & 0\\ 0 & \frac{1}{2} & 1 \end{pmatrix}
+$$
+
+**Comprobación:**
+
+$$
+A \cdot M = \begin{pmatrix} 1 & 0 & 0\\ 0 & 2 & 0\\ 0 & -1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & 0\\ 0 & \frac{1}{2} & 0\\ 0 & \frac{1}{2} & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & -\frac{1}{2} + \frac{1}{2} & 1 \end{pmatrix} = I_3
+$$
+
+Como $A \cdot M = I_3$ (y $A$ es cuadrada), **$M = A^{-1}$**, que es lo que había que probar.
+
+</Solucion>
+
+b) **(1 punto)** Dada la ecuación matricial $X^t A = \begin{pmatrix} 1 & 2 & 0\\ 3 & -1 & 1 \end{pmatrix}$, determine la dimensión de $X$ y resuelva la ecuación.
+
+<Solucion>
+
+**Dimensión.** Llamamos $C$ a la matriz de la derecha, que es $2 \times 3$. Como $A$ es $3 \times 3$, para que $X^t A$ exista y sea $2 \times 3$, $X^t$ tiene que ser $2 \times 3$. Por tanto, **$X$ es $3 \times 2$**.
+
+**Resolución.** Multiplicamos por $A^{-1}$ por la **derecha**, que es donde está $A$:
+
+$$
+X^t = C \cdot A^{-1} = \begin{pmatrix} 1 & 2 & 0\\ 3 & -1 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & 0\\ 0 & \frac{1}{2} & 0\\ 0 & \frac{1}{2} & 1 \end{pmatrix} = \begin{pmatrix} 1 & 1 & 0\\ 3 & 0 & 1 \end{pmatrix}
+$$
+
+Trasponiendo:
+
+$$
+X = \begin{pmatrix} 1 & 3\\ 1 & 0\\ 0 & 1 \end{pmatrix}
+$$
+
+Comprobación: $\begin{pmatrix} 1 & 1 & 0\\ 3 & 0 & 1 \end{pmatrix} A = \begin{pmatrix} 1 & 2 & 0\\ 3 & -1 & 1 \end{pmatrix}$.
+
+</Solucion>

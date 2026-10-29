@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2021, ejercicio 2: cuadrilátero de vértices A(0, 3), B(3, 8),
+// C(5, 6) y D(6, 0).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={8.5}
+  yMax={11.5}
+  marcasX={[1, 2, 3, 4, 5, 6, 7, 8]}
+  marcasY={[2, 4, 6, 8, 10]}
+  rectas={[
+    { desde: [0, 3], hasta: [4.2, 10], color: "#b04a3a", etiqueta: "5x − 3y = −9", en: [2.3, 7.7], ancla: "end" },
+    { desde: [0, 11], hasta: [8.5, 2.5], color: "#2f6fa3", etiqueta: "x + y = 11", en: [6.2, 6.4], ancla: "start" },
+    { desde: [4.4, 9.6], hasta: [6, 0], color: "#7a5b16", etiqueta: "6x + y = 36", en: [6.5, 1.6], ancla: "start" },
+    { desde: [0, 3], hasta: [6, 0], color: "#5b3f8c", etiqueta: "x + 2y = 6", en: [0.6, 1.2], ancla: "start" },
+  ]}
+  region={[
+    [0, 3],
+    [3, 8],
+    [5, 6],
+    [6, 0],
+  ]}
+  vertices={[
+    { x: 0, y: 3, texto: "A", dx: 6, dy: 14 },
+    { x: 3, y: 8, texto: "B", dx: -4, dy: -8 },
+    { x: 5, y: 6, texto: "C", dx: 6, dy: -4 },
+    { x: 6, y: 0, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 3), B(3, 8), C(5, 6) y D(6, 0), limitado por las rectas 5x − 3y = −9, x + y = 11, 6x + y = 36 y x + 2y = 6"
+/>

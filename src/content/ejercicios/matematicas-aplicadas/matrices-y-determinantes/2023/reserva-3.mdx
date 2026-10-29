@@ -1,0 +1,62 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+a) Se considera la matriz
+
+$$
+A = \begin{pmatrix} 1 & -1 & 0\\ 0 & m & -2\\ 1 & m & 4 \end{pmatrix}
+$$
+
+a1) **(0.5 puntos)** Obtenga para qué valores de $m$ la matriz $A$ tiene inversa.
+
+<Solucion>
+
+$A$ tiene inversa si y solo si $|A| \ne 0$. Desarrollamos por la primera fila:
+
+$$
+|A| = 1 \cdot \begin{vmatrix} m & -2\\ m & 4 \end{vmatrix} - (-1) \cdot \begin{vmatrix} 0 & -2\\ 1 & 4 \end{vmatrix} + 0 = (4m + 2m) + (0 + 2) = 6m + 2
+$$
+
+$|A| = 0 \iff m = -\frac{1}{3}$.
+
+**Respuesta.** $A$ tiene inversa para **todo $m \ne -\frac{1}{3}$**.
+
+</Solucion>
+
+a2) **(1 punto)** Calcule, en caso de existir, la inversa de $A$ para $m = 1$.
+
+<Solucion>
+
+Para $m = 1$, $|A| = 6 + 2 = 8 \ne 0$, así que existe. Con $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+A = \begin{pmatrix} 1 & -1 & 0\\ 0 & 1 & -2\\ 1 & 1 & 4 \end{pmatrix}, \qquad
+\text{Adj}(A) = \begin{pmatrix} 6 & -2 & -1\\ 4 & 4 & -2\\ 2 & 2 & 1 \end{pmatrix}
+$$
+
+$$
+A^{-1} = \frac{1}{8}\begin{pmatrix} 6 & 4 & 2\\ -2 & 4 & 2\\ -1 & -2 & 1 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot \begin{pmatrix} 6 & 4 & 2\\ -2 & 4 & 2\\ -1 & -2 & 1 \end{pmatrix} = \begin{pmatrix} 8 & 0 & 0\\ 0 & 8 & 0\\ 0 & 0 & 8 \end{pmatrix}$, que dividido entre $8$ es la identidad.
+
+</Solucion>
+
+b) **(1 punto)** Despeje y simplifique $X$ en la ecuación $X \cdot B - B^2 + B = 0$, sabiendo que la matriz $B$ es invertible.
+
+<Solucion>
+
+Dejamos $X \cdot B$ solo y multiplicamos por $B^{-1}$ por la **derecha**, que es donde está $B$:
+
+$$
+X \cdot B = B^2 - B \;\Rightarrow\; X = (B^2 - B)\,B^{-1} = B^2 B^{-1} - B\,B^{-1} = B - I
+$$
+
+**Respuesta.** $X = B - I$, donde $I$ es la matriz identidad del mismo orden que $B$.
+
+</Solucion>

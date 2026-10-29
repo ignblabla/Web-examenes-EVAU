@@ -1,0 +1,114 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Durante la pasada temporada, una tenista ganó el $90\%$ de los partidos que jugó sobre tierra y la mitad cuando lo hizo sobre otro tipo de superficie. De los $40$ partidos que jugó la temporada pasada, $25$ lo hizo sobre tierra. Elegido al azar un partido de la temporada pasada de esta tenista, halle la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $T$ a jugar sobre tierra, $O$ a jugar sobre otra superficie y $G$ a ganar:
+
+- $P(T) = \frac{25}{40} = 0.625$, con $P(G/T) = 0.9$.
+- $P(O) = \frac{15}{40} = 0.375$, con $P(G/O) = 0.5$.
+
+</Solucion>
+
+a) **(1.25 puntos)** Ganase el partido.
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(G) = 0.625 \cdot 0.9 + 0.375 \cdot 0.5 = 0.5625 + 0.1875 = 0.75
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** No ganase sabiendo que jugó sobre tierra.
+
+<Solucion>
+
+Es el contrario de ganar, dentro de los partidos sobre tierra:
+
+$$
+P(\overline{G}/T) = 1 - P(G/T) = 1 - 0.9 = 0.1
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Jugase sobre tierra sabiendo que ganó.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(T/G) = \frac{P(T) \cdot P(G/T)}{P(G)} = \frac{0.5625}{0.75} = 0.75
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+El $32\%$ de las microempresas tiene página web y el $64.6\%$ ni tiene página web ni realiza ventas por comercio electrónico. De las microempresas que tienen página web, el $30\%$ realiza ventas por comercio electrónico. Se selecciona al azar una microempresa.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $W$ a tener página web y $E$ a vender por comercio electrónico. Los datos son:
+
+$$
+P(W) = 0.32, \qquad P(\overline{W} \cap \overline{E}) = 0.646, \qquad P(E/W) = 0.3
+$$
+
+De la condicionada, $P(W \cap E) = P(W) \cdot P(E/W) = 0.32 \cdot 0.3 = 0.096$.
+
+</Solucion>
+
+a) **(1 punto)** Calcule la probabilidad de que tenga página web o realice ventas por comercio electrónico.
+
+<Solucion>
+
+"Ni web ni comercio electrónico" es el contrario de la unión (leyes de De Morgan: $\overline{W} \cap \overline{E} = \overline{W \cup E}$):
+
+$$
+P(W \cup E) = 1 - P(\overline{W} \cap \overline{E}) = 1 - 0.646 = 0.354
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule la probabilidad de que realice ventas por comercio electrónico.
+
+<Solucion>
+
+De la fórmula de la unión, $P(W \cup E) = P(W) + P(E) - P(W \cap E)$:
+
+$$
+0.354 = 0.32 + P(E) - 0.096 \;\Rightarrow\; P(E) = 0.13
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Calcule la probabilidad de que no tenga página web y realice ventas por comercio electrónico.
+
+<Solucion>
+
+$$
+P(\overline{W} \cap E) = P(E) - P(W \cap E) = 0.13 - 0.096 = 0.034
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Razone si son independientes los sucesos "Tener página web" y "Realizar ventas por comercio electrónico". ¿Son incompatibles?
+
+<Solucion>
+
+**Independencia.** $P(W) \cdot P(E) = 0.32 \cdot 0.13 = 0.0416 \ne 0.096 = P(W \cap E)$, así que **no son independientes**. Se ve también en que $P(E/W) = 0.3$ es distinta de $P(E) = 0.13$: tener web hace más probable vender por internet.
+
+**Incompatibilidad.** $P(W \cap E) = 0.096 \ne 0$: hay microempresas que hacen las dos cosas, así que **no son incompatibles**.
+
+</Solucion>

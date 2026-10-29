@@ -1,0 +1,26 @@
+---
+// Matemáticas aplicadas, junio de 2023, ejercicio 3: f(x) = x³ − 3x² + 2x, con sus extremos,
+// el punto de inflexión y el recinto con el eje OX entre x = 0 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 3 - 3 * x ** 2 + 2 * x
+---
+
+<GraficaFuncion
+  xMin={-0.6}
+  xMax={2.6}
+  yMin={-0.8}
+  yMax={0.8}
+  marcasX={[0.5, 1.5]}
+  marcasY={[-0.5, 0.5]}
+  tramos={[{ f, desde: -0.6, hasta: 2.6 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: -6, dy: 14 },
+    { x: 0.4226, y: 0.3849, texto: "(0.42, 0.38)", dx: 6, dy: -10 },
+    { x: 1, y: 0, texto: "(1, 0)", dx: 6, dy: -6 },
+    { x: 1.5774, y: -0.3849, texto: "(1.58, −0.38)", dx: 0, dy: 18 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 6, dy: 14 },
+  ]}
+  descripcion="Gráfica de f(x) = x³ − 3x² + 2x: corta al eje OX en 0, 1 y 2, tiene un máximo relativo en (0.42, 0.38), un mínimo relativo en (1.58, −0.38) y el punto de inflexión en (1, 0); los dos recintos con el eje entre 0 y 2 están sombreados"
+/>

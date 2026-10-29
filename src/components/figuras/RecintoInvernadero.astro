@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, julio de 2023, ejercicio 3: zona quemada del invernadero, entre la
+// recta g(x) = 5 − 2x (arriba) y la parábola f(x) = (x − 1)² (abajo), de x = −2 a x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-3.5}
+  xMax={4}
+  yMin={-2}
+  yMax={11}
+  marcasX={[-3, -2, -1, 2, 3]}
+  marcasY={[2, 4, 6, 8, 10]}
+  tramos={[
+    { f: (x) => (x - 1) ** 2, desde: -3.5, hasta: 4 },
+    { f: (x) => 5 - 2 * x, desde: -3.5, hasta: 4 },
+  ]}
+  recinto={{ arriba: (x) => 5 - 2 * x, abajo: (x) => (x - 1) ** 2, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: 9, texto: "(−2, 9)", dx: 8, dy: 4 },
+    { x: 2, y: 1, texto: "(2, 1)", dx: 8, dy: 4 },
+    { x: 1, y: 0, texto: "(1, 0)", dx: 0, dy: 15 },
+  ]}
+  descripcion="Zona quemada sombreada entre la recta g(x) = 5 − 2x, que queda por encima, y la parábola f(x) = (x − 1)² con vértice en (1, 0), entre los puntos de corte (−2, 9) y (2, 1)"
+/>

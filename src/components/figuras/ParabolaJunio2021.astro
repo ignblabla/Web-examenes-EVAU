@@ -1,0 +1,23 @@
+---
+// Matemáticas aplicadas, junio de 2021, ejercicio 4: h(x) = x² + x + 1, con el recinto entre la
+// parábola y el eje OX de x = −½ a x = 0.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const h = (x: number) => x ** 2 + x + 1
+---
+
+<GraficaFuncion
+  xMin={-2.5}
+  xMax={1.6}
+  yMin={-0.6}
+  yMax={4}
+  marcasX={[-2, -1, 1]}
+  marcasY={[1, 2, 3]}
+  tramos={[{ f: h, desde: -2.5, hasta: 1.6 }]}
+  recinto={{ arriba: h, abajo: () => 0, desde: -0.5, hasta: 0 }}
+  puntos={[
+    { x: -0.5, y: 0.75, texto: "V(−½, ¾)", dx: -62, dy: 4 },
+    { x: 0, y: 1, texto: "(0, 1)", dx: 6, dy: 12 },
+  ]}
+  descripcion="Parábola h(x) = x² + x + 1, abierta hacia arriba, con vértice en (−½, ¾), que corta al eje OY en (0, 1) y no corta al eje OX; el recinto bajo la parábola entre x = −½ y x = 0 está sombreado"
+/>

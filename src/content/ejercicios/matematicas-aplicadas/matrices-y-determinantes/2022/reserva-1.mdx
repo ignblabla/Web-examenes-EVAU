@@ -1,0 +1,72 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 1 & 0 & 1\\ -1 & -1 & 1\\ 2 & -1 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & -1 & 1\\ -1 & -1 & -1\\ 1 & -1 & 1 \end{pmatrix}, \quad C = \begin{pmatrix} 3\\ -7\\ -2 \end{pmatrix}
+$$
+
+a) **(1 punto)** Razone si se pueden efectuar las siguientes operaciones y realice las que sean posibles:
+
+$$
+C \cdot A, \qquad A + B, \qquad C^t \cdot B^t.
+$$
+
+<Solucion>
+
+$A$ y $B$ son $3 \times 3$ y $C$ es $3 \times 1$.
+
+**$C \cdot A$: no se puede.** Para multiplicar, las columnas de $C$ ($1$) tienen que coincidir con las filas de $A$ ($3$).
+
+**$A + B$: sí se puede**, porque las dos matrices tienen la misma dimensión:
+
+$$
+A + B = \begin{pmatrix} 2 & -1 & 2\\ -2 & -2 & 0\\ 3 & -2 & 1 \end{pmatrix}
+$$
+
+**$C^t \cdot B^t$: sí se puede.** $C^t$ es $1 \times 3$ y $B^t$ es $3 \times 3$, así que el producto es $1 \times 3$. $B$ es simétrica ($B^t = B$):
+
+$$
+C^t \cdot B^t = \begin{pmatrix} 3 & -7 & -2 \end{pmatrix}\begin{pmatrix} 1 & -1 & 1\\ -1 & -1 & -1\\ 1 & -1 & 1 \end{pmatrix} = \begin{pmatrix} 3 + 7 - 2 & -3 + 7 + 2 & 3 + 7 - 2 \end{pmatrix} = \begin{pmatrix} 8 & 6 & 8 \end{pmatrix}
+$$
+
+</Solucion>
+
+b) **(1.5 puntos)** Resuelva la ecuación matricial $A \cdot X = B \cdot X + C$.
+
+<Solucion>
+
+**Despejar $X$.** Pasamos $B \cdot X$ al primer miembro y sacamos $X$ factor común **por la derecha**:
+
+$$
+A X - B X = C \;\Rightarrow\; (A - B)\,X = C \;\Rightarrow\; X = (A - B)^{-1} C
+$$
+
+Como $C$ es $3 \times 1$, $X$ también es $3 \times 1$.
+
+**Inversa de $A - B$:**
+
+$$
+A - B = \begin{pmatrix} 0 & 1 & 0\\ 0 & 0 & 2\\ 1 & 0 & -1 \end{pmatrix}, \qquad |A - B| = -1 \cdot \begin{vmatrix} 0 & 2\\ 1 & -1 \end{vmatrix} = -1 \cdot (0 - 2) = 2 \ne 0
+$$
+
+$$
+\text{Adj}(A - B) = \begin{pmatrix} 0 & 2 & 0\\ 1 & 0 & 1\\ 2 & 0 & 0 \end{pmatrix}, \qquad
+(A - B)^{-1} = \frac{1}{2}\begin{pmatrix} 0 & 1 & 2\\ 2 & 0 & 0\\ 0 & 1 & 0 \end{pmatrix}
+$$
+
+**Cálculo:**
+
+$$
+X = \frac{1}{2}\begin{pmatrix} 0 & 1 & 2\\ 2 & 0 & 0\\ 0 & 1 & 0 \end{pmatrix}\begin{pmatrix} 3\\ -7\\ -2 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} -11\\ 6\\ -7 \end{pmatrix} = \begin{pmatrix} -\frac{11}{2}\\ 3\\ -\frac{7}{2} \end{pmatrix}
+$$
+
+Comprobación: $(A - B)\,X = \begin{pmatrix} 3\\ 2 \cdot \left(-\frac{7}{2}\right)\\ -\frac{11}{2} + \frac{7}{2} \end{pmatrix} = \begin{pmatrix} 3\\ -7\\ -2 \end{pmatrix} = C$.
+
+</Solucion>

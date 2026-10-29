@@ -1,0 +1,26 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2022, ejercicio 3 b): f(x) = (x + 1)² en [−3, 1] y
+// x² + 2 en (1, 2], con un salto en x = 1. Recinto con el eje OX entre x = −2 y x = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-3.6}
+  xMax={2.8}
+  yMin={-0.8}
+  yMax={6.8}
+  marcasX={[-3, -2, 1, 2]}
+  marcasY={[1, 2, 3, 4, 5, 6]}
+  tramos={[
+    { f: (x) => (x + 1) ** 2, desde: -3, hasta: 1 },
+    { f: (x) => x ** 2 + 2, desde: 1.02, hasta: 2 },
+  ]}
+  recinto={{ arriba: (x) => (x + 1) ** 2, abajo: () => 0, desde: -2, hasta: 1 }}
+  puntos={[
+    { x: -3, y: 4, texto: "(−3, 4)", dx: 6, dy: -4 },
+    { x: -1, y: 0, texto: "(−1, 0)", dx: 0, dy: 15 },
+    { x: 1, y: 4, texto: "(1, 4)", dx: -6, dy: -6 },
+    { x: 2, y: 6, texto: "(2, 6)", dx: -6, dy: -4 },
+  ]}
+  descripcion="Gráfica de f: parábola (x + 1)² con vértice en (−1, 0), de (−3, 4) a (1, 4); después, tras un salto, el arco de x² + 2 que va de (1, 3), sin incluir, a (2, 6); el recinto con el eje OX entre −2 y 1 está sombreado"
+/>

@@ -1,0 +1,109 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+Para estimar la proporción de residentes británicos en España que están a favor de la salida del Reino Unido de la Unión Europea (UE), se toma una muestra aleatoria de $250$ de estos residentes, obteniéndose que $115$ estaban a favor de dejar de pertenecer a la UE.
+
+a) **(1.5 puntos)** Calcule un intervalo de confianza al $99.5\%$, para estimar la proporción real de esos residentes que está a favor de la salida del Reino Unido de la UE.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{115}{250} = 0.46$.
+
+**Valor crítico.** Para el $99.5\%$, $\alpha = 0.005$ y $P(Z \le z_{\alpha/2}) = 1 - 0.0025 = 0.9975$, entre $0.99744$ ($2.80$) y $0.99752$ ($2.81$), más cerca del segundo: $z_{\alpha/2} = 2.81$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 2.81\sqrt{\frac{0.46 \cdot 0.54}{250}} = 2.81\sqrt{0.0009936} \approx 2.81 \cdot 0.03152 \approx 0.0886
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.46 - 0.0886,\ 0.46 + 0.0886) = (0.3714,\ 0.5486)
+$$
+
+Con una confianza del $99.5\%$, la proporción de residentes a favor de la salida está entre **0.3714 y 0.5486**.
+
+</Solucion>
+
+b) **(1 punto)** Manteniendo la misma proporción muestral y el mismo nivel de confianza del apartado anterior, determine el tamaño mínimo necesario de la muestra, para estimar la proporción de residentes británicos en España que están a favor de la salida del Reino Unido de la UE, con un error inferior al $5\%$.
+
+<Solucion>
+
+Un error del $5\%$ en una proporción es $0.05$. Con $z_{\alpha/2} = 2.81$ y $\hat{p} = 0.46$, queremos $E < 0.05$:
+
+$$
+2.81\sqrt{\frac{0.46 \cdot 0.54}{n}} < 0.05 \;\Rightarrow\; n > \frac{2.81^2 \cdot 0.2484}{0.05^2} = \frac{7.8961 \cdot 0.2484}{0.0025} \approx 784.56
+$$
+
+**Respuesta.** Hace falta una muestra de como mínimo **785 residentes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Sea $X$ una variable aleatoria que sigue una ley Normal de media poblacional desconocida y desviación típica $4$.
+
+a) **(0.5 puntos)** ¿Cuál es la desviación típica de la distribución de las medias de las muestras de tamaño $12$ de la variable aleatoria $X$?
+
+<Solucion>
+
+Si $X \sim N(\mu, 4)$, la media de las muestras de tamaño $n$ sigue $\bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$. Con $n = 12$:
+
+$$
+\sigma_{\bar{X}} = \frac{4}{\sqrt{12}} = \frac{4}{2\sqrt{3}} = \frac{2}{\sqrt{3}} \approx 1.1547
+$$
+
+</Solucion>
+
+b) **(1 punto)** Para estimar la media poblacional de la variable $X$, se toma una muestra aleatoria de tamaño $12$, obteniéndose los siguientes resultados:
+
+$$
+11.8 \quad 10 \quad 9.8 \quad 12 \quad 9.7 \quad 10.8 \quad 9.6 \quad 11.3 \quad 10.4 \quad 12.2 \quad 9.1 \quad 10.5
+$$
+
+Con los datos obtenidos de la muestra, determine un intervalo de confianza al $97\%$ para estimar la media poblacional.
+
+<Solucion>
+
+**Media muestral.** Los datos suman $127.2$:
+
+$$
+\bar{x} = \frac{127.2}{12} = 10.6
+$$
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 1 - 0.015 = 0.985$, que está en la tabla exactamente para $z_{\alpha/2} = 2.17$.
+
+**Error**, con el apartado a):
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 2.17 \cdot \frac{4}{\sqrt{12}} \approx 2.17 \cdot 1.1547 \approx 2.5057
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (10.6 - 2.5057,\ 10.6 + 2.5057) = (8.0943,\ 13.1057)
+$$
+
+</Solucion>
+
+c) **(1 punto)** Calcule el tamaño mínimo que debe tener una muestra, para que, con el mismo nivel de confianza, el error cometido al estimar la media poblacional sea menor que $1.2$.
+
+<Solucion>
+
+Con $z_{\alpha/2} = 2.17$, queremos $E < 1.2$:
+
+$$
+2.17 \cdot \frac{4}{\sqrt{n}} < 1.2 \;\Rightarrow\; \sqrt{n} > \frac{2.17 \cdot 4}{1.2} = 7.2\overline{3} \;\Rightarrow\; n > 7.2\overline{3}^2 \approx 52.32
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **53 elementos**.
+
+</Solucion>

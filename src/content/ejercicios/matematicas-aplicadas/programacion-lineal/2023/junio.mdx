@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+import RegionJunio2023 from "../../../../../components/figuras/RegionJunio2023.astro"
+
+Sean la función $F(x, y) = 5x - 3y$ y la región del plano $R$ definida mediante las inecuaciones
+
+$$
+2x - 3y \le 1; \qquad 4x + y \le 9; \qquad x + y \le 5; \qquad 9x - y \ge 0; \qquad y \ge 0
+$$
+
+a) **(1.3 puntos)** Dibuje la región $R$ y calcule sus vértices.
+
+<Solucion>
+
+**Rectas frontera.** Cada inecuación es un semiplano limitado por una recta. Para saber qué lado vale, probamos un punto que no esté en la recta:
+
+- $2x - 3y = 1$, por $(0.5, 0)$ y $(2, 1)$. El origen cumple $0 \le 1$: lado de **arriba** de la recta.
+- $4x + y = 9$, por $(2.25, 0)$ y $(1, 5)$. El origen cumple $0 \le 9$: lado de **abajo**.
+- $x + y = 5$, por $(5, 0)$ y $(0, 5)$. El origen cumple $0 \le 5$: lado de **abajo**.
+- $9x - y = 0$, es decir, $y = 9x$, por $(0, 0)$ y $(0.5, 4.5)$. El punto $(1, 0)$ cumple $9 \ge 0$: lado **derecho** de la recta.
+- $y \ge 0$: por encima del eje $OX$.
+
+**Región.** Es el pentágono sombreado:
+
+<RegionJunio2023 />
+
+**Vértices.** Cada uno es el corte de dos rectas frontera:
+
+- $O$: $y = 9x$ e $y = 0$ $\Rightarrow$ $O(0, 0)$.
+- $P$: $2x - 3y = 1$ e $y = 0$ $\Rightarrow$ $2x = 1$, $P\left(\frac{1}{2}, 0\right)$.
+- $Q$: $2x - 3y = 1$ y $4x + y = 9$. De la segunda, $y = 9 - 4x$; sustituyendo, $2x - 27 + 12x = 1 \Rightarrow 14x = 28 \Rightarrow x = 2$, $y = 1$: $Q(2, 1)$.
+- $R$: $4x + y = 9$ y $x + y = 5$. Restando, $3x = 4 \Rightarrow x = \frac{4}{3}$, $y = 5 - \frac{4}{3} = \frac{11}{3}$: $R\left(\frac{4}{3}, \frac{11}{3}\right)$.
+- $S$: $x + y = 5$ e $y = 9x$ $\Rightarrow$ $10x = 5 \Rightarrow x = \frac{1}{2}$, $y = \frac{9}{2}$: $S\left(\frac{1}{2}, \frac{9}{2}\right)$.
+
+Cada vértice cumple las otras tres inecuaciones; por ejemplo, $R$: $2 \cdot \frac{4}{3} - 3 \cdot \frac{11}{3} = -\frac{25}{3} \le 1$ y $9 \cdot \frac{4}{3} - \frac{11}{3} = \frac{25}{3} \ge 0$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Indique razonadamente si los puntos $A(2, 2)$ y $B(1, 3.5)$ pertenecen a la región $R$.
+
+<Solucion>
+
+Un punto pertenece a $R$ si cumple **todas** las inecuaciones.
+
+**$A(2, 2)$:** $4 \cdot 2 + 2 = 10 > 9$. No cumple la segunda inecuación, así que **$A$ no pertenece a $R$**.
+
+**$B(1, 3.5)$:**
+
+$$
+2 - 10.5 = -8.5 \le 1; \quad 4 + 3.5 = 7.5 \le 9; \quad 1 + 3.5 = 4.5 \le 5; \quad 9 - 3.5 = 5.5 \ge 0; \quad 3.5 \ge 0
+$$
+
+Cumple las cinco, así que **$B$ pertenece a $R$**.
+
+</Solucion>
+
+c) **(0.7 puntos)** Obtenga los puntos de la región $R$ donde $F$ alcanza el máximo y el mínimo y calcule sus correspondientes valores.
+
+<Solucion>
+
+La región es acotada, así que $F$ alcanza el máximo y el mínimo en vértices. Evaluamos $F(x, y) = 5x - 3y$ en cada uno:
+
+- $F(0, 0) = 0$
+- $F\left(\frac{1}{2}, 0\right) = \frac{5}{2} = 2.5$
+- $F(2, 1) = 10 - 3 = 7$
+- $F\left(\frac{4}{3}, \frac{11}{3}\right) = \frac{20}{3} - 11 = -\frac{13}{3} \approx -4.33$
+- $F\left(\frac{1}{2}, \frac{9}{2}\right) = \frac{5}{2} - \frac{27}{2} = -11$
+
+**Respuesta.** El **máximo es $7$, en el punto $Q(2, 1)$**, y el **mínimo es $-11$, en el punto $S\left(\frac{1}{2}, \frac{9}{2}\right)$**.
+
+</Solucion>

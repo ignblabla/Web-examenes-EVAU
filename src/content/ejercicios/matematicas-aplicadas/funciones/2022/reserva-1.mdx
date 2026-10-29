@@ -1,0 +1,126 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import FuncionReserva1de2022 from "../../../../../components/figuras/FuncionReserva1de2022.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+4x^2 + 16x + 17 & x < -1\\[1mm]
+\dfrac{1}{3}(10 - 5x) & -1 \le x \le 2\\[2mm]
+\dfrac{3}{2} & x > 2
+\end{cases}
+$$
+
+a) **(1.25 puntos)** Estudie la continuidad y derivabilidad de $f$.
+
+<Solucion>
+
+**Continuidad.** Los tres tramos son polinomios, continuos en sus intervalos. Estudiamos los puntos de unión:
+
+- **En $x = -1$:** $\displaystyle\lim_{x \to -1^-} f(x) = 4 - 16 + 17 = 5$ y $f(-1) = \lim_{x \to -1^+} f(x) = \frac{10 + 5}{3} = 5$. **Es continua.**
+- **En $x = 2$:** $f(2) = \lim_{x \to 2^-} f(x) = \frac{10 - 10}{3} = 0$, pero $\displaystyle\lim_{x \to 2^+} f(x) = \frac{3}{2}$. Los límites laterales son finitos y distintos: **discontinuidad de salto finito**.
+
+$f$ es continua en $\mathbb{R} - \{2\}$.
+
+**Derivabilidad.** En $x = 2$ no es derivable, porque no es continua. Fuera de los puntos de unión:
+
+$$
+f'(x) = \begin{cases}
+8x + 16 & x < -1\\[1mm]
+-\dfrac{5}{3} & -1 < x < 2\\[2mm]
+0 & x > 2
+\end{cases}
+$$
+
+En $x = -1$: $f'(-1^-) = -8 + 16 = 8$ y $f'(-1^+) = -\frac{5}{3}$. No coinciden, así que no es derivable.
+
+$f$ es derivable en $\mathbb{R} - \{-1, 2\}$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Represente gráficamente la función $f$.
+
+<Solucion>
+
+- **Primer tramo:** parábola que abre hacia arriba con el vértice en $x = \frac{-16}{8} = -2$, es decir, en $(-2, 1)$. Llega a $(-1, 5)$.
+- **Segundo tramo:** la recta $y = \frac{10 - 5x}{3}$, de $(-1, 5)$ a $(2, 0)$.
+- **Tercer tramo:** la recta horizontal $y = \frac{3}{2}$ para $x > 2$. El punto $\left(2, \frac{3}{2}\right)$ no es de la gráfica (en $x = 2$ la función vale $0$).
+
+<FuncionReserva1de2022 />
+
+</Solucion>
+
+c) **(0.75 puntos)** Calcule el área de la región limitada por la gráfica de $f$ y el eje de abscisas entre $x = -2$ y $x = 2$.
+
+<Solucion>
+
+**Planteamiento.** Entre $-2$ y $2$ la función no es negativa (la parábola tiene su mínimo en $1$ y la recta baja hasta $0$ en $x = 2$). Cambia de expresión en $x = -1$, así que separamos la integral:
+
+$$
+\int_{-2}^{-1} (4x^2 + 16x + 17)\,dx = \left[\frac{4x^3}{3} + 8x^2 + 17x\right]_{-2}^{-1} = \left(-\frac{4}{3} + 8 - 17\right) - \left(-\frac{32}{3} + 32 - 34\right) = -\frac{31}{3} + \frac{38}{3} = \frac{7}{3}
+$$
+
+$$
+\int_{-1}^{2} \frac{10 - 5x}{3}\,dx = \frac{1}{3}\left[10x - \frac{5x^2}{2}\right]_{-1}^{2} = \frac{1}{3}\big((20 - 10) - (-10 - 2.5)\big) = \frac{22.5}{3} = \frac{15}{2}
+$$
+
+El segundo es el área de un triángulo de base $3$ y altura $5$: $\frac{3 \cdot 5}{2} = 7.5$.
+
+$$
+\text{Área} = \frac{7}{3} + \frac{15}{2} = \frac{14 + 45}{6} = \frac{59}{6}\ u^2 \approx 9.83\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función $f(x) = 3x^3 - 6x^2 + 5$.
+
+a) **(1.5 puntos)** Obtenga las ecuaciones de las rectas tangentes a $f$ que sean paralelas a la recta de ecuación $y = -3x + 1$.
+
+<Solucion>
+
+**Planteamiento.** Las rectas paralelas tienen la misma pendiente, $-3$. Buscamos los puntos donde $f'(x) = -3$:
+
+$$
+f'(x) = 9x^2 - 12x = -3 \;\Rightarrow\; 9x^2 - 12x + 3 = 0 \;\Rightarrow\; 3x^2 - 4x + 1 = 0 \;\Rightarrow\; x = 1 \text{ o } x = \frac{1}{3}
+$$
+
+**Tangente en $x = 1$.** $f(1) = 3 - 6 + 5 = 2$:
+
+$$
+y - 2 = -3(x - 1) \;\Rightarrow\; y = -3x + 5
+$$
+
+**Tangente en $x = \frac{1}{3}$.** $f\left(\frac{1}{3}\right) = \frac{3}{27} - \frac{6}{9} + 5 = \frac{1 - 6 + 45}{9} = \frac{40}{9}$:
+
+$$
+y - \frac{40}{9} = -3\left(x - \frac{1}{3}\right) \;\Rightarrow\; y = -3x + \frac{49}{9}
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule la función $F$ que verifique que $F'(x) = f(x)$ y $F(2) = 4$.
+
+<Solucion>
+
+$F$ es una primitiva de $f$:
+
+$$
+F(x) = \int (3x^3 - 6x^2 + 5)\,dx = \frac{3x^4}{4} - 2x^3 + 5x + K
+$$
+
+Con $F(2) = 12 - 16 + 10 + K = 6 + K = 4$, $K = -2$:
+
+$$
+F(x) = \frac{3x^4}{4} - 2x^3 + 5x - 2
+$$
+
+</Solucion>

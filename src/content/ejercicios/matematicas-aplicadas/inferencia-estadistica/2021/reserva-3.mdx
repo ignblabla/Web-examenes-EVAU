@@ -1,0 +1,89 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Para un estudio acerca del uso del transporte público en una ciudad, se selecciona una muestra aleatoria de $500$ individuos, obteniéndose que $175$ de ellos lo usan.
+
+a) **(1.5 puntos)** Halle un intervalo de confianza al $94\%$ para estimar la proporción real de individuos que usan el transporte público en esa ciudad.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{175}{500} = 0.35$.
+
+**Valor crítico.** Para el $94\%$, $P(Z \le z_{\alpha/2}) = 0.97$, entre $0.9699$ ($1.88$) y $0.9706$ ($1.89$), más cerca del primero: $z_{\alpha/2} = 1.88$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 1.88\sqrt{\frac{0.35 \cdot 0.65}{500}} = 1.88\sqrt{0.000455} \approx 1.88 \cdot 0.02133 \approx 0.0401
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.35 - 0.0401,\ 0.35 + 0.0401) = (0.3099,\ 0.3901)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Manteniendo la proporción muestral, ¿cuántos individuos se deberían seleccionar como mínimo, para que, con un nivel de confianza del $97\%$, la proporción muestral difiera de la proporción real a lo sumo en un $2\%$?
+
+<Solucion>
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, que está en la tabla exactamente para $z_{\alpha/2} = 2.17$.
+
+**Tamaño.** Que la diferencia sea a lo sumo de un $2\%$ es pedir $E \le 0.02$:
+
+$$
+2.17\sqrt{\frac{0.35 \cdot 0.65}{n}} \le 0.02 \;\Rightarrow\; n \ge \frac{2.17^2 \cdot 0.2275}{0.02^2} = \frac{4.7089 \cdot 0.2275}{0.0004} \approx 2678.19
+$$
+
+**Respuesta.** Habría que seleccionar como mínimo **2679 individuos**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+La estatura de las mujeres de una población sigue una ley Normal de media desconocida y desviación típica $7$ cm.
+
+a) **(1.5 puntos)** Se toma una muestra aleatoria de $300$ mujeres de esta población, que da una estatura media de $168$ cm. Construya un intervalo de confianza al $97\%$ para estimar la estatura media de las mujeres de esta población.
+
+<Solucion>
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, que está en la tabla exactamente para $z_{\alpha/2} = 2.17$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 2.17 \cdot \frac{7}{\sqrt{300}} \approx 2.17 \cdot 0.4041 \approx 0.877
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (168 - 0.877,\ 168 + 0.877) = (167.123,\ 168.877)
+$$
+
+La estatura media está entre **167.123 y 168.877 cm**, con una confianza del $97\%$.
+
+</Solucion>
+
+b) **(1 punto)** Calcule el tamaño mínimo que debe tener una muestra de esta población para que, con un nivel de confianza del $94\%$, el error máximo cometido al estimar la estatura media de las mujeres de esa población sea inferior a $1.2$ cm.
+
+<Solucion>
+
+**Valor crítico.** Para el $94\%$, $P(Z \le z_{\alpha/2}) = 0.97$, más cerca de $0.9699$ ($1.88$) que de $0.9706$ ($1.89$): $z_{\alpha/2} = 1.88$.
+
+**Tamaño.** Queremos $E < 1.2$:
+
+$$
+1.88 \cdot \frac{7}{\sqrt{n}} < 1.2 \;\Rightarrow\; \sqrt{n} > \frac{1.88 \cdot 7}{1.2} \approx 10.967 \;\Rightarrow\; n > 10.967^2 \approx 120.27
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **121 mujeres**.
+
+</Solucion>

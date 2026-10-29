@@ -1,0 +1,112 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+Disponemos de una moneda trucada en la que la probabilidad de obtener cara, al lanzarla, es el doble de la de obtener cruz.
+
+a) **(0.5 puntos)** Halle la probabilidad de que, al lanzar la moneda, se obtenga cara.
+
+<Solucion>
+
+Llamamos $C$ a sacar cara y $X$ a sacar cruz. Son sucesos contrarios, así que $P(C) + P(X) = 1$, y además $P(C) = 2P(X)$:
+
+$$
+2P(X) + P(X) = 1 \;\Rightarrow\; P(X) = \frac{1}{3}, \qquad P(C) = \frac{2}{3}
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Halle la probabilidad de que, al lanzar dos veces la moneda, se obtenga una cara y una cruz sin importar el orden.
+
+<Solucion>
+
+Los dos lanzamientos son independientes. Una cara y una cruz puede salir de dos formas, $CX$ o $XC$:
+
+$$
+P(CX) + P(XC) = \frac{2}{3} \cdot \frac{1}{3} + \frac{1}{3} \cdot \frac{2}{3} = \frac{4}{9} \approx 0.4444
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Halle la probabilidad de que, al lanzar dos veces la moneda, se obtenga al menos una cara.
+
+<Solucion>
+
+El suceso contrario de "al menos una cara" es "dos cruces":
+
+$$
+P(\text{al menos una cara}) = 1 - P(XX) = 1 - \left(\frac{1}{3}\right)^2 = \frac{8}{9} \approx 0.8889
+$$
+
+</Solucion>
+
+d) **(0.75 puntos)** Si al lanzar la moneda dos veces observamos que ha salido al menos una cara, halle la probabilidad de que se obtengan dos caras.
+
+<Solucion>
+
+Es una probabilidad condicionada. Si salen dos caras, ha salido al menos una, así que la intersección es el suceso $CC$, con $P(CC) = \left(\frac{2}{3}\right)^2 = \frac{4}{9}$:
+
+$$
+P(CC / \text{al menos una cara}) = \frac{P(CC)}{P(\text{al menos una cara})} = \frac{4/9}{8/9} = \frac{1}{2} = 0.5
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+En una base de datos de correos electrónicos se ha observado que el $20\%$ de los correos recibidos son spam. Además, se ha observado que la palabra "*lottery*" ha aparecido en el $40\%$ de los correos que son spam y en el $0.6\%$ de los correos que no lo son.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $S$ a que el correo sea spam y $L$ a que aparezca la palabra "*lottery*":
+
+- $P(S) = 0.2$, con $P(L/S) = 0.4$ y $P(\overline{L}/S) = 0.6$.
+- $P(\overline{S}) = 0.8$, con $P(L/\overline{S}) = 0.006$ y $P(\overline{L}/\overline{S}) = 0.994$.
+
+Por el teorema de la probabilidad total:
+
+$$
+P(L) = 0.2 \cdot 0.4 + 0.8 \cdot 0.006 = 0.08 + 0.0048 = 0.0848, \qquad P(\overline{L}) = 1 - 0.0848 = 0.9152
+$$
+
+</Solucion>
+
+a) **(1.25 puntos)** Halle la probabilidad de que en un correo elegido al azar en el que aparezca la palabra "*lottery*" sea spam.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(S/L) = \frac{P(S) \cdot P(L/S)}{P(L)} = \frac{0.08}{0.0848} = \frac{50}{53} \approx 0.9434
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Halle la probabilidad de que un correo elegido al azar en el que no aparezca la palabra "*lottery*" no sea spam.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(\overline{S}/\overline{L}) = \frac{P(\overline{S}) \cdot P(\overline{L}/\overline{S})}{P(\overline{L})} = \frac{0.8 \cdot 0.994}{0.9152} = \frac{0.7952}{0.9152} \approx 0.8689
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Si un correo se etiqueta como spam si aparece la palabra "*lottery*" y como no spam si esta palabra no aparece, calcule la probabilidad de que un correo se etiquete incorrectamente.
+
+<Solucion>
+
+Hay dos formas de equivocarse, incompatibles entre sí: que sea spam y no aparezca la palabra (se etiqueta como no spam), o que no sea spam y aparezca (se etiqueta como spam):
+
+$$
+P(S \cap \overline{L}) + P(\overline{S} \cap L) = 0.2 \cdot 0.6 + 0.8 \cdot 0.006 = 0.12 + 0.0048 = 0.1248
+$$
+
+</Solucion>

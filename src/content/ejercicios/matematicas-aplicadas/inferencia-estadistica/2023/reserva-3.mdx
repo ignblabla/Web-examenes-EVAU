@@ -1,0 +1,87 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+El peso de la gamba roja de Garrucha, en gramos, sigue una distribución Normal de media poblacional desconocida y desviación típica $5$ gramos.
+
+a) **(1.25 puntos)** Se elige una muestra aleatoria de $100$ gambas obteniéndose una media de $53$ gramos. Calcule un intervalo de confianza al $97.5\%$ para estimar el peso medio de la gamba roja.
+
+<Solucion>
+
+**Valor crítico.** Para el $97.5\%$, $P(Z \le z_{\alpha/2}) = 0.9875$, que está en la tabla en la fila $2.2$ y la columna $0.04$: $z_{\alpha/2} = 2.24$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 2.24 \cdot \frac{5}{\sqrt{100}} = 2.24 \cdot 0.5 = 1.12
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (53 - 1.12,\ 53 + 1.12) = (51.88,\ 54.12)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Sabiendo que la media poblacional es $53$ gramos y escogiendo una muestra aleatoria de $64$ gambas, calcule la probabilidad de que el peso medio de la muestra sea superior a $53.25$ gramos.
+
+<Solucion>
+
+Como la población es normal, la media muestral también lo es:
+
+$$
+\bar{X} \sim N\left(53,\ \frac{5}{\sqrt{64}}\right) = N(53,\ 0.625)
+$$
+
+Tipificamos:
+
+$$
+P(\bar{X} > 53.25) = P\left(Z > \frac{53.25 - 53}{0.625}\right) = P(Z > 0.4) = 1 - P(Z \le 0.4) = 1 - 0.6554 = 0.3446
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se desea estimar la proporción de clientes de una compañía de seguros que han requerido el servicio de asistencia en carretera. Para ello, se ha recogido una muestra aleatoria de $300$ asegurados resultando que $90$ han requerido este servicio.
+
+a) **(1.25 puntos)** Obtenga un intervalo de confianza al $97\%$ para estimar la proporción de asegurados que han solicitado este servicio.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{90}{300} = 0.3$.
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+**Error:**
+
+$$
+E = 2.17\sqrt{\frac{0.3 \cdot 0.7}{300}} \approx 2.17 \cdot 0.02646 \approx 0.0574
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.3 - 0.0574,\ 0.3 + 0.0574) = (0.2426,\ 0.3574)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Con la proporción muestral facilitada y con un nivel de confianza del $95\%$, ¿cuál es el número mínimo de asegurados que se deberán seleccionar aleatoriamente para que la proporción muestral y la poblacional no difieran en más de un $3\%$?
+
+<Solucion>
+
+Que no difieran en más de un $3\%$ es que el error sea $E \le 0.03$. Para el $95\%$, $z_{\alpha/2} = 1.96$:
+
+$$
+1.96\sqrt{\frac{0.3 \cdot 0.7}{n}} \le 0.03 \;\Rightarrow\; n \ge \frac{1.96^2 \cdot 0.21}{0.03^2} = \frac{0.806736}{0.0009} \approx 896.37
+$$
+
+**Respuesta.** Hay que seleccionar como mínimo **897 asegurados**.
+
+</Solucion>

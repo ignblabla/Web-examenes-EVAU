@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2023, ejercicio 1: región factible de los botes de
+// pintura Júpiter (x) y Minerva (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={115}
+  yMax={210}
+  marcasX={[20, 40, 60, 80, 100]}
+  marcasY={[40, 80, 120, 160, 200]}
+  rectas={[
+    { desde: [60, 0], hasta: [60, 205], color: "#2f6fa3", etiqueta: "x = 60", en: [62, 196] },
+    { desde: [0, 200], hasta: [100, 0], color: "#b04a3a", etiqueta: "2x + y = 200", en: [80, 47] },
+    { desde: [0, 160], hasta: [115, 45], color: "#7a5b16", etiqueta: "x + y = 160", en: [72, 110] },
+  ]}
+  region={[
+    [0, 0],
+    [60, 0],
+    [60, 80],
+    [40, 120],
+    [0, 160],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -10, dy: 14 },
+    { x: 60, y: 0, texto: "A", dx: 6, dy: -6 },
+    { x: 60, y: 80, texto: "B", dx: 7, dy: 4 },
+    { x: 40, y: 120, texto: "C", dx: 6, dy: -6 },
+    { x: 0, y: 160, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: pentágono de vértices O(0, 0), A(60, 0), B(60, 80), C(40, 120) y D(0, 160), limitado por los ejes y las rectas x = 60, 2x + y = 200 y x + y = 160"
+/>

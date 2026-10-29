@@ -1,0 +1,124 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+import RecintoInvernadero from "../../../../../components/figuras/RecintoInvernadero.astro"
+import BeneficiosEmpresa from "../../../../../components/figuras/BeneficiosEmpresa.astro"
+
+El área quemada de la región plana de la cubierta de plástico de un invernadero, coincide con el área de la región acotada delimitada por las gráficas de las funciones $f(x) = (x - 1)^2$ y $g(x) = 5 - 2x$ donde $x$ está expresado en metros.
+
+a) **(1 punto)** Represente gráficamente la zona deteriorada.
+
+<Solucion>
+
+**Parábola $f(x) = (x - 1)^2$.** Abre hacia arriba y tiene el vértice en $(1, 0)$. Corta al eje $OY$ en $(0, 1)$.
+
+**Recta $g(x) = 5 - 2x$.** Pasa por $(0, 5)$ y $(2.5, 0)$.
+
+**Puntos de corte:**
+
+$$
+(x - 1)^2 = 5 - 2x \;\Rightarrow\; x^2 - 2x + 1 = 5 - 2x \;\Rightarrow\; x^2 = 4 \;\Rightarrow\; x = \pm 2
+$$
+
+Los puntos son $(-2, 9)$ y $(2, 1)$. Entre ellos la recta va por encima: en $x = 0$, $g(0) = 5 > f(0) = 1$.
+
+<RecintoInvernadero />
+
+</Solucion>
+
+b) **(1.5 puntos)** Para reparar la región quemada, se ha de utilizar plástico cuyo coste es de $15$ euros por metro cuadrado. Si en el trabajo de reparación se desperdicia la tercera parte del plástico adquirido, ¿cuánto costará el plástico comprado?
+
+<Solucion>
+
+**Área quemada.** Entre $-2$ y $2$ la recta está por encima de la parábola:
+
+$$
+g(x) - f(x) = 5 - 2x - (x^2 - 2x + 1) = 4 - x^2
+$$
+
+$$
+\text{Área} = \int_{-2}^{2} (4 - x^2)\,dx = \left[4x - \frac{x^3}{3}\right]_{-2}^{2} = \left(8 - \frac{8}{3}\right) - \left(-8 + \frac{8}{3}\right) = \frac{32}{3}\ m^2 \approx 10.67\ m^2
+$$
+
+**Plástico comprado.** Si se desperdicia un tercio del plástico, se aprovechan los $\frac{2}{3}$, y eso es lo que cubre la zona quemada. Llamando $P$ a los metros cuadrados comprados:
+
+$$
+\frac{2}{3}P = \frac{32}{3} \;\Rightarrow\; P = 16\ m^2
+$$
+
+**Coste:** $16 \cdot 15 = 240$.
+
+**Respuesta.** El plástico comprado costará **240 euros**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Sea la función $f(t) = \dfrac{12t - 24}{t + 3}$; $t \ge 0$.
+
+a) **(1.5 puntos)** Represente gráficamente la función $f$, determinando los puntos de corte con los ejes coordenados y las ecuaciones de las asíntotas, y estudiando la monotonía y la curvatura de $f$.
+
+<Solucion>
+
+**Cortes con los ejes.**
+
+- Eje $OY$: $f(0) = \frac{-24}{3} = -8$, el punto $(0, -8)$.
+- Eje $OX$: $12t - 24 = 0 \Rightarrow t = 2$, el punto $(2, 0)$.
+
+**Asíntotas.**
+
+- **Vertical:** el denominador se anula en $t = -3$, que no está en el dominio ($t \ge 0$). **No tiene asíntotas verticales.**
+- **Horizontal:**
+
+$$
+\lim_{t \to +\infty} \frac{12t - 24}{t + 3} = 12
+$$
+
+**Asíntota horizontal $y = 12$.** Como $f(t) - 12 = \frac{12t - 24 - 12t - 36}{t + 3} = \frac{-60}{t + 3} < 0$, la gráfica se acerca a ella **por debajo**.
+
+**Monotonía:**
+
+$$
+f'(t) = \frac{12(t + 3) - (12t - 24)}{(t + 3)^2} = \frac{60}{(t + 3)^2} > 0
+$$
+
+$f$ es **creciente en todo su dominio $[0, +\infty)$** y no tiene extremos relativos.
+
+**Curvatura:**
+
+$$
+f''(t) = \frac{-120}{(t + 3)^3} < 0 \quad \text{para } t \ge 0
+$$
+
+$f$ es **cóncava en $(0, +\infty)$** y no tiene puntos de inflexión.
+
+**Gráfica:**
+
+<BeneficiosEmpresa />
+
+</Solucion>
+
+b) Si la función $f$ representa los beneficios de una empresa, en millones de euros, donde $t$ indica los años de vida de la empresa:
+
+b-1) **(0.5 puntos)** ¿A partir de qué año la empresa deja de tener pérdidas? Justifique la respuesta.
+
+<Solucion>
+
+Hay pérdidas cuando $f(t) < 0$. Como $t + 3 > 0$, el signo de $f$ es el de $12t - 24$: negativo si $t < 2$, cero en $t = 2$ y positivo si $t > 2$. Lo confirma el apartado a): $f$ es creciente y corta al eje en $t = 2$.
+
+**Respuesta.** La empresa deja de tener pérdidas **a partir del segundo año** ($t = 2$).
+
+</Solucion>
+
+b-2) **(0.5 puntos)** A medida que pasan los años, ¿están limitados los beneficios? En caso afirmativo, ¿cuál es su límite y por qué?
+
+<Solucion>
+
+**Sí, están limitados.** Aunque $f$ crece siempre, tiende a la asíntota horizontal $y = 12$ sin llegar a alcanzarla, porque $f(t) - 12 = \frac{-60}{t + 3} < 0$. Los beneficios se acercan cada vez más a **12 millones de euros**, pero nunca los superan.
+
+</Solucion>

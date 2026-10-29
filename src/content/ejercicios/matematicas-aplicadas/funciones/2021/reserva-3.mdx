@@ -1,0 +1,152 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import FuncionReserva3de2021 from "../../../../../components/figuras/FuncionReserva3de2021.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+ax + b & \text{si } x < 1\\
+x^2 - bx + a & \text{si } x \ge 1
+\end{cases}
+$$
+
+a) **(0.5 puntos)** Halle el valor de $b$ para que $f$ sea continua en $\mathbb{R}$.
+
+<Solucion>
+
+Los dos tramos son polinomios, continuos en sus intervalos; solo hay que estudiar $x = 1$:
+
+$$
+\lim_{x \to 1^-} (ax + b) = a + b, \qquad f(1) = \lim_{x \to 1^+} (x^2 - bx + a) = 1 - b + a
+$$
+
+$$
+a + b = 1 - b + a \iff 2b = 1 \iff b = \frac{1}{2}
+$$
+
+**Respuesta.** $f$ es continua en $\mathbb{R}$ para **$b = \frac{1}{2}$**, sea cual sea $a$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Para $b = \frac{1}{2}$, halle el valor de $a$ para que $f$ sea derivable en $\mathbb{R}$.
+
+<Solucion>
+
+Con $b = \frac{1}{2}$, $f$ es continua, y fuera de $x = 1$ es derivable:
+
+$$
+f'(x) = \begin{cases}
+a & \text{si } x < 1\\
+2x - \frac{1}{2} & \text{si } x > 1
+\end{cases}
+$$
+
+En $x = 1$, las derivadas laterales son $f'(1^-) = a$ y $f'(1^+) = 2 - \frac{1}{2} = \frac{3}{2}$. Han de coincidir:
+
+**Respuesta.** $f$ es derivable en $\mathbb{R}$ para **$a = \frac{3}{2}$**.
+
+</Solucion>
+
+c) **(0.7 puntos)** Para $a < 0$ y $b = \frac{1}{2}$, estudie el crecimiento y halle las abscisas de los extremos de la función $f$.
+
+<Solucion>
+
+**Monotonía.**
+
+- Para $x < 1$, $f'(x) = a < 0$: $f$ es **decreciente** en $(-\infty, 1)$.
+- Para $x > 1$, $f'(x) = 2x - \frac{1}{2} > 2 - \frac{1}{2} > 0$: $f$ es **creciente** en $(1, +\infty)$.
+
+**Extremos.** Con $b = \frac{1}{2}$, $f$ es continua en $x = 1$ y pasa ahí de decrecer a crecer, así que tiene un **mínimo en $x = 1$** (aunque no sea derivable en ese punto, porque $a \ne \frac{3}{2}$). No tiene más extremos: $f'$ no se anula en ningún intervalo.
+
+</Solucion>
+
+d) **(0.8 puntos)** Para $a = 0$ y $b = \frac{1}{2}$, represente la región del plano delimitada por la gráfica de $f$, el eje de abscisas y las rectas $x = 0$ y $x = 2$. Calcule el área de dicha región.
+
+<Solucion>
+
+**Función.** Con $a = 0$ y $b = \frac{1}{2}$:
+
+$$
+f(x) = \begin{cases}
+\frac{1}{2} & \text{si } x < 1\\
+x^2 - \frac{x}{2} & \text{si } x \ge 1
+\end{cases}
+$$
+
+Hasta $x = 1$ es la recta horizontal $y = \frac{1}{2}$; desde ahí, la parábola $x^2 - \frac{x}{2} = x\left(x - \frac{1}{2}\right)$, que pasa por $\left(1, \frac{1}{2}\right)$ y $(2, 3)$ y es positiva para $x \ge 1$. En $[0, 2]$ la gráfica queda por encima del eje:
+
+<FuncionReserva3de2021 />
+
+**Integrales indefinidas** de cada tramo:
+
+$$
+\int \frac{1}{2}\,dx = \frac{x}{2} + C, \qquad \int \left(x^2 - \frac{x}{2}\right)dx = \frac{x^3}{3} - \frac{x^2}{4} + C
+$$
+
+**Área**, partiendo en $x = 1$:
+
+$$
+\text{Área} = \int_0^1 \frac{1}{2}\,dx + \int_1^2 \left(x^2 - \frac{x}{2}\right)dx = \frac{1}{2} + \left[\left(\frac{8}{3} - 1\right) - \left(\frac{1}{3} - \frac{1}{4}\right)\right] = \frac{1}{2} + \frac{5}{3} - \frac{1}{12} = \frac{25}{12}\ u^2 \approx 2.08\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+La cotización en bolsa de una empresa en un determinado día viene expresada, en euros, por la función $c(t)$, con $t \in [0, 24]$, medido en horas.
+
+La variación instantánea de esta función es la derivada de $c$, que viene dada por $c'(t) = 0.03t^2 - 0.9t + 6$, con $t \in (0, 24)$.
+
+a) **(1.25 puntos)** Estudie los intervalos en los que la función $c$ es creciente.
+
+<Solucion>
+
+**Ceros de la derivada.** Multiplicando por $\frac{100}{3}$:
+
+$$
+0.03t^2 - 0.9t + 6 = 0 \iff t^2 - 30t + 200 = 0 \iff t = \frac{30 \pm \sqrt{900 - 800}}{2} = \frac{30 \pm 10}{2} \iff t = 10 \text{ o } t = 20
+$$
+
+**Signo de $c'$.** Es una parábola abierta hacia arriba, positiva fuera de sus raíces y negativa entre ellas:
+
+- En $(0, 10)$, $c'(1) = 5.13 > 0$: **creciente**.
+- En $(10, 20)$, $c'(15) = -0.75 < 0$: decreciente.
+- En $(20, 24)$, $c'(22) = 0.72 > 0$: **creciente**.
+
+**Respuesta.** $c$ es creciente en **$(0, 10) \cup (20, 24)$** y decreciente en $(10, 20)$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Analice los puntos críticos de la función $c$, indicando en cuáles se alcanza el máximo y el mínimo relativos.
+
+<Solucion>
+
+Los puntos críticos son $t = 10$ y $t = 20$, donde $c'(t) = 0$. Por el apartado a):
+
+- En **$t = 10$** la función pasa de crecer a decrecer: **máximo relativo**.
+- En **$t = 20$** pasa de decrecer a crecer: **mínimo relativo**.
+
+</Solucion>
+
+c) **(0.75 puntos)** Halle la expresión analítica de la función $c$, sabiendo que la cotización en bolsa de la empresa era de $50$ euros en el instante inicial.
+
+<Solucion>
+
+**Primitivas** de $c'$:
+
+$$
+c(t) = \int (0.03t^2 - 0.9t + 6)\,dt = 0.01t^3 - 0.45t^2 + 6t + C
+$$
+
+**Constante.** En el instante inicial, $c(0) = C = 50$.
+
+**Respuesta.** $c(t) = 0.01t^3 - 0.45t^2 + 6t + 50$, con $t \in [0, 24]$. Con ella, el máximo relativo vale $c(10) = 75$ euros y el mínimo relativo, $c(20) = 70$ euros.
+
+</Solucion>

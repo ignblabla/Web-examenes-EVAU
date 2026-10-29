@@ -1,0 +1,129 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+Una caja contiene $3$ fichas verdes, $2$ fichas azules y $4$ fichas rojas. Un juego consiste en realizar dos extracciones, sin reemplazamiento, de tal manera que el jugador que saque dos fichas azules gana el primer premio, el jugador que saque dos fichas verdes gana el segundo premio y el jugador que, de las dos fichas, una sea azul y otra de un color diferente gana el tercer premio.
+
+<Solucion titulo="Planteamiento común">
+
+Hay $9$ fichas. Como no hay reemplazamiento, en la segunda extracción quedan $8$ y la probabilidad cambia según lo que salió en la primera. Llamamos $A$, $V$ y $R$ a sacar azul, verde y roja, y $\overline{A}$ a sacar una ficha que no sea azul (hay $7$). Llamamos $P_1$, $P_2$ y $P_3$ a ganar el primer, el segundo y el tercer premio.
+
+</Solucion>
+
+a) **(0.75 puntos)** Calcule la probabilidad de que un jugador consiga el primer o el segundo premio.
+
+<Solucion>
+
+$$
+P(P_1) = P(A_1 \cap A_2) = \frac{2}{9} \cdot \frac{1}{8} = \frac{2}{72} = \frac{1}{36}
+$$
+
+$$
+P(P_2) = P(V_1 \cap V_2) = \frac{3}{9} \cdot \frac{2}{8} = \frac{6}{72} = \frac{1}{12}
+$$
+
+Los dos premios son incompatibles (no se pueden sacar a la vez dos azules y dos verdes), así que se suman:
+
+$$
+P(P_1 \cup P_2) = \frac{1}{36} + \frac{3}{36} = \frac{4}{36} = \frac{1}{9} \approx 0.1111
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** Calcule la probabilidad de que un jugador gane el tercer premio.
+
+<Solucion>
+
+Una azul y otra de distinto color puede salir en dos órdenes, azul primero o azul segunda:
+
+$$
+P(P_3) = P(A_1 \cap \overline{A}_2) + P(\overline{A}_1 \cap A_2) = \frac{2}{9} \cdot \frac{7}{8} + \frac{7}{9} \cdot \frac{2}{8} = \frac{28}{72} = \frac{7}{18} \approx 0.3889
+$$
+
+</Solucion>
+
+c) **(1 punto)** Sabiendo que un jugador ha obtenido premio, ¿cuál es la probabilidad de que haya ganado el tercer premio?
+
+<Solucion>
+
+Los tres premios son incompatibles entre sí, así que:
+
+$$
+P(\text{premio}) = \frac{1}{9} + \frac{7}{18} = \frac{2}{18} + \frac{7}{18} = \frac{9}{18} = \frac{1}{2}
+$$
+
+Ganar el tercer premio implica tener premio, así que la intersección es el propio tercer premio:
+
+$$
+P(P_3 / \text{premio}) = \frac{P(P_3)}{P(\text{premio})} = \frac{7/18}{1/2} = \frac{7}{9} \approx 0.7778
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Dados dos sucesos $A$ y $B$ de un experimento aleatorio, se sabe que $P(A) = 0.6$, $P(B) = 0.3$ y $P(A/B) = 0.6$. Se pide:
+
+<Solucion titulo="Planteamiento común">
+
+De la probabilidad condicionada sacamos la intersección, que hace falta en todos los apartados:
+
+$$
+P(A \cap B) = P(B) \cdot P(A/B) = 0.3 \cdot 0.6 = 0.18
+$$
+
+</Solucion>
+
+a) **(0.5 puntos)** $P(A \cup B)$
+
+<Solucion>
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.6 + 0.3 - 0.18 = 0.72
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** $P(A - B) + P(B - A)$
+
+<Solucion>
+
+$A - B$ es "ocurre $A$ y no $B$", y $B - A$, "ocurre $B$ y no $A$":
+
+$$
+P(A - B) = P(A) - P(A \cap B) = 0.6 - 0.18 = 0.42, \qquad P(B - A) = P(B) - P(A \cap B) = 0.3 - 0.18 = 0.12
+$$
+
+$$
+P(A - B) + P(B - A) = 0.42 + 0.12 = 0.54
+$$
+
+Es la probabilidad de que ocurra exactamente uno de los dos sucesos; también se obtiene como $P(A \cup B) - P(A \cap B) = 0.72 - 0.18$.
+
+</Solucion>
+
+c) **(0.75 puntos)** $P(B/A^c)$
+
+<Solucion>
+
+$B \cap A^c$ es el suceso $B - A$ del apartado anterior, y $P(A^c) = 1 - 0.6 = 0.4$:
+
+$$
+P(B/A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.12}{0.4} = 0.3
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Razone si los sucesos $A$ y $B$ son independientes. ¿Son incompatibles?
+
+<Solucion>
+
+**Independencia.** $P(A) \cdot P(B) = 0.6 \cdot 0.3 = 0.18 = P(A \cap B)$, así que **$A$ y $B$ son independientes**. Se ve también en el enunciado: $P(A/B) = 0.6 = P(A)$, saber que ha ocurrido $B$ no cambia la probabilidad de $A$.
+
+**Incompatibilidad.** Son incompatibles si no pueden ocurrir a la vez, es decir, si $P(A \cap B) = 0$. Como $P(A \cap B) = 0.18 \ne 0$, **no son incompatibles**.
+
+</Solucion>

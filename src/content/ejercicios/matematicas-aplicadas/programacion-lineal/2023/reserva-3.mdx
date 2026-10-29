@@ -1,0 +1,55 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RegionEstadio from "../../../../../components/figuras/RegionEstadio.astro"
+
+**(2.5 puntos)** El aforo de un campo de fútbol es de $10000$ personas. Según el reglamento establecido por la federación de fútbol, como máximo deben ponerse a la venta $3000$ entradas para los aficionados del equipo visitante y por cada aficionado visitante debe haber dos aficionados locales como mínimo y cuatro aficionados locales como máximo.
+
+Si el precio de la entrada es de $50$ € pero el aficionado local tiene un descuento del $20\%$, ¿cuántos aficionados locales y visitantes deben asistir para obtener el mayor importe con la venta de las entradas?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de aficionados locales e $y$ al de visitantes. El local paga $50 \cdot 0.8 = 40$ euros y el visitante, $50$. Hay que maximizar el importe, en euros,
+
+$$
+F(x, y) = 40x + 50y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + y \le 10000 & \text{(aforo)}\\
+y \le 3000 & \text{(entradas de visitantes)}\\
+x \ge 2y & \text{(al menos dos locales por visitante)}\\
+x \le 4y & \text{(como mucho cuatro locales por visitante)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda entre las rectas $x = 2y$ (por debajo de ella) y $x = 4y$ (por encima), por debajo de $y = 3000$ y de la recta del aforo:
+
+<RegionEstadio />
+
+**Vértices:**
+
+- $O(0, 0)$: las rectas $x = 2y$ y $x = 4y$ se cortan en el origen.
+- $A$: $x = 2y$ e $y = 3000$ $\Rightarrow$ $A(6000, 3000)$.
+- $B$: $y = 3000$ y $x + y = 10000$ $\Rightarrow$ $B(7000, 3000)$.
+- $C$: $x = 4y$ y $x + y = 10000$ $\Rightarrow$ $5y = 10000$, $y = 2000$, $C(8000, 2000)$.
+
+**Resolución.**
+
+- $F(0, 0) = 0$
+- $F(6000, 3000) = 240\,000 + 150\,000 = 390\,000$
+- $F(7000, 3000) = 280\,000 + 150\,000 = 430\,000$
+- $F(8000, 2000) = 320\,000 + 100\,000 = 420\,000$
+
+**Respuesta.** Deben asistir **7000 aficionados locales y 3000 visitantes**, con un **importe máximo de 430 000 €**.
+
+</Solucion>

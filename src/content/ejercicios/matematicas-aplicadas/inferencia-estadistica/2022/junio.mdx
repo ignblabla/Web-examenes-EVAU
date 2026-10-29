@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+La resistencia media a la ruptura de una nueva gama de herramientas sigue una distribución Normal de desviación típica $15\ MPa$ (megapascales). Se seleccionan al azar $100$ herramientas forjadas en la misma máquina durante el mismo proceso de producción, obteniéndose una resistencia media de $800\ MPa$.
+
+a) **(1.25 puntos)** Realizando la estimación con un nivel de confianza del $92\%$, ¿entre qué valores se estima la resistencia media poblacional de esta gama de herramientas?
+
+<Solucion>
+
+**Valor crítico.** Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 1.75 \cdot \frac{15}{\sqrt{100}} = 1.75 \cdot 1.5 = 2.625
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (800 - 2.625,\ 800 + 2.625) = (797.375,\ 802.625)
+$$
+
+La resistencia media está entre **797.375 y 802.625 MPa**, con una confianza del $92\%$.
+
+</Solucion>
+
+b) **(1.25 puntos)** Manteniendo el mismo nivel de confianza, ¿cuál debe ser el tamaño mínimo de una nueva muestra para que el error máximo en la estimación de la resistencia media a la ruptura sea menor que $2\ MPa$?
+
+<Solucion>
+
+Con $z_{\alpha/2} = 1.75$, queremos $E < 2$:
+
+$$
+1.75 \cdot \frac{15}{\sqrt{n}} < 2 \;\Rightarrow\; \sqrt{n} > \frac{1.75 \cdot 15}{2} = 13.125 \;\Rightarrow\; n > 13.125^2 \approx 172.27
+$$
+
+**Respuesta.** La nueva muestra debe tener como mínimo **173 herramientas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se quiere estudiar la proporción de perros que están vacunados en Andalucía. Para ello, se toma una muestra aleatoria de $400$ perros de los que $320$ resultan estar vacunados.
+
+a) **(1.5 puntos)** Obtenga un intervalo con un nivel de confianza del $92\%$ para estimar la proporción de perros vacunados en Andalucía y calcule el error máximo cometido.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{320}{400} = 0.8$ y, al $92\%$, $z_{\alpha/2} = 1.75$ (entre $0.9599$ y $0.9608$, $0.96$ queda más cerca de $1.75$).
+
+**Error máximo:**
+
+$$
+E = 1.75\sqrt{\frac{0.8 \cdot 0.2}{400}} = 1.75 \cdot \sqrt{0.0004} = 1.75 \cdot 0.02 = 0.035
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.8 - 0.035,\ 0.8 + 0.035) = (0.765,\ 0.835)
+$$
+
+</Solucion>
+
+b) **(1 punto)** En una nueva muestra, manteniendo el mismo nivel de confianza y la misma proporción muestral, ¿cuántos perros, como mínimo, hay que elegir para que el error sea menor que $0.02$?
+
+<Solucion>
+
+Queremos $E < 0.02$:
+
+$$
+1.75\sqrt{\frac{0.8 \cdot 0.2}{n}} < 0.02 \;\Rightarrow\; n > \frac{1.75^2 \cdot 0.16}{0.02^2} = \frac{0.49}{0.0004} = 1225
+$$
+
+Con $n = 1225$ el error sería exactamente $0.02$, y se pide que sea **menor**, así que hace falta uno más.
+
+**Respuesta.** Hay que elegir como mínimo **1226 perros**.
+
+</Solucion>

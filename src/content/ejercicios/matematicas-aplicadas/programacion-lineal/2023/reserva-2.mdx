@@ -1,0 +1,56 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionBarcos from "../../../../../components/figuras/RegionBarcos.astro"
+
+**(2.5 puntos)** Una compañía de transporte marítimo de mercancías dispone de dos barcos $B_1$ y $B_2$ para realizar una determinada ruta, durante un año, entre dos ciudades costeras europeas. El barco $B_1$ no puede realizar más de $14$ viajes y debe realizar tantos viajes o más que el barco $B_2$. Entre los dos barcos deben realizar al menos $10$ viajes y como mucho $24$. La compañía obtiene unos beneficios de $15000$ € por cada viaje del barco $B_1$ y $17000$ € por cada viaje del barco $B_2$.
+
+Halle el número de viajes que debe realizar cada barco para que el beneficio obtenido por la empresa sea máximo y obtenga dicho beneficio.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de viajes del barco $B_1$ e $y$ a los del barco $B_2$. Hay que maximizar el beneficio, en euros,
+
+$$
+F(x, y) = 15000x + 17000y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x \le 14 & \text{(máximo de } B_1\text{)}\\
+x \ge y & (B_1 \text{ hace tantos viajes o más que } B_2)\\
+x + y \ge 10 & \text{(mínimo entre los dos)}\\
+x + y \le 24 & \text{(máximo entre los dos)}\\
+y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda por debajo de $y = x$, a la izquierda de $x = 14$, por encima del eje $OX$ y entre las rectas $x + y = 10$ y $x + y = 24$:
+
+<RegionBarcos />
+
+**Vértices:**
+
+- $A(10, 0)$ y $B(14, 0)$: el eje $OX$ con $x + y = 10$ y con $x = 14$.
+- $C$: $x = 14$ y $x + y = 24$ $\Rightarrow$ $C(14, 10)$. Cumple $y \le x$.
+- $D$: $y = x$ y $x + y = 24$ $\Rightarrow$ $2x = 24$, $D(12, 12)$.
+- $E$: $y = x$ y $x + y = 10$ $\Rightarrow$ $2x = 10$, $E(5, 5)$.
+
+**Resolución.**
+
+- $F(10, 0) = 150\,000$
+- $F(14, 0) = 210\,000$
+- $F(14, 10) = 210\,000 + 170\,000 = 380\,000$
+- $F(12, 12) = 180\,000 + 204\,000 = 384\,000$
+- $F(5, 5) = 75\,000 + 85\,000 = 160\,000$
+
+**Respuesta.** Cada barco debe hacer **12 viajes**, con un **beneficio máximo de 384 000 €**.
+
+</Solucion>

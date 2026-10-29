@@ -1,0 +1,22 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2023, ejercicio 4 d): beneficio B(t) = −t² + 21t − 20
+// en [0, 15], con máximo en (10.5, 90.25).
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-1}
+  xMax={16.5}
+  yMin={-30}
+  yMax={105}
+  marcasX={[5, 10, 15]}
+  marcasY={[-20, 20, 40, 60, 80, 100]}
+  tramos={[{ f: (t) => -(t ** 2) + 21 * t - 20, desde: 0, hasta: 15 }]}
+  puntos={[
+    { x: 0, y: -20, texto: "(0, −20)", dx: 6, dy: 6 },
+    { x: 1, y: 0, texto: "(1, 0)", dx: 6, dy: 12 },
+    { x: 10.5, y: 90.25, texto: "Máximo (10.5, 90.25)", dx: 0, dy: -8 },
+    { x: 15, y: 70, texto: "(15, 70)", dx: 0, dy: 16 },
+  ]}
+  descripcion="Gráfica del beneficio: arco de parábola que parte de (0, −20), corta al eje en t = 1, sube hasta el máximo (10.5, 90.25) y baja hasta (15, 70)"
+/>

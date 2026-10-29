@@ -1,0 +1,54 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RegionReserva4de2022 from "../../../../../components/figuras/RegionReserva4de2022.astro"
+
+Se considera el recinto definido por las siguientes inecuaciones:
+
+$$
+x + 2y \ge 7; \qquad 2x - y \le 4; \qquad 4x - y \ge 1; \qquad 3x + 2y \le 20
+$$
+
+a) **(2 puntos)** Represente dicho recinto y calcule sus vértices.
+
+<Solucion>
+
+**Rectas frontera.** Para saber qué lado de cada recta vale, probamos el origen $(0, 0)$:
+
+- $x + 2y = 7$, por $(1, 3)$ y $(3, 2)$. El origen da $0 \ge 7$, falso: el recinto queda **por encima** de la recta.
+- $2x - y = 4$, por $(2, 0)$ y $(4, 4)$. El origen da $0 \le 4$, cierto: lado de **arriba a la izquierda**.
+- $4x - y = 1$, por $(1, 3)$ y $(2, 7)$. El origen da $0 \ge 1$, falso: lado de **abajo a la derecha**.
+- $3x + 2y = 20$, por $(4, 4)$ y $(2, 7)$. El origen da $0 \le 20$, cierto: **por debajo** de la recta.
+
+<RegionReserva4de2022 />
+
+**Vértices.** Cada uno es el corte de dos rectas consecutivas del borde:
+
+- $A$: $x + 2y = 7$ y $4x - y = 1$. De la segunda, $y = 4x - 1$; sustituyendo, $x + 8x - 2 = 7 \Rightarrow x = 1$, $y = 3$: $A(1, 3)$.
+- $B$: $x + 2y = 7$ y $2x - y = 4$. De la segunda, $y = 2x - 4$; sustituyendo, $x + 4x - 8 = 7 \Rightarrow x = 3$, $y = 2$: $B(3, 2)$.
+- $C$: $2x - y = 4$ y $3x + 2y = 20$. Con $y = 2x - 4$: $3x + 4x - 8 = 20 \Rightarrow x = 4$, $y = 4$: $C(4, 4)$.
+- $D$: $4x - y = 1$ y $3x + 2y = 20$. Con $y = 4x - 1$: $3x + 8x - 2 = 20 \Rightarrow x = 2$, $y = 7$: $D(2, 7)$.
+
+Cada vértice cumple las otras dos inecuaciones; por ejemplo, $D$: $2 + 14 = 16 \ge 7$ y $4 - 7 = -3 \le 4$.
+
+</Solucion>
+
+b) **(0.5 puntos)** Obtenga el valor máximo de la función $F(x, y) = x + 3y$ en el recinto anterior, así como el punto donde se alcanza.
+
+<Solucion>
+
+El recinto es acotado, así que el máximo se alcanza en un vértice:
+
+- $F(1, 3) = 1 + 9 = 10$
+- $F(3, 2) = 3 + 6 = 9$
+- $F(4, 4) = 4 + 12 = 16$
+- $F(2, 7) = 2 + 21 = 23$
+
+**Respuesta.** El **máximo es $23$ y se alcanza en $D(2, 7)$**.
+
+</Solucion>

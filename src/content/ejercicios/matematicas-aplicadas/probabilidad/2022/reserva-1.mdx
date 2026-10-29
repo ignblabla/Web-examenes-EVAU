@@ -1,0 +1,118 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+De los sucesos $A$ y $B$ de un mismo experimento aleatorio se conocen las siguientes probabilidades:
+
+$$
+P(A) = 0.7 \qquad P(B) = 0.6 \qquad P(A \cup B) = 0.8
+$$
+
+Calcule la probabilidad de que:
+
+a) **(0.75 puntos)** Ocurra $A$ y $B$.
+
+<Solucion>
+
+De la fórmula de la unión, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$:
+
+$$
+P(A \cap B) = 0.7 + 0.6 - 0.8 = 0.5
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** No ocurra ni $A$ ni $B$.
+
+<Solucion>
+
+Por las leyes de De Morgan, $\overline{A} \cap \overline{B} = \overline{A \cup B}$:
+
+$$
+P(\overline{A} \cap \overline{B}) = 1 - P(A \cup B) = 1 - 0.8 = 0.2
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Ocurra $A$ pero no $B$.
+
+<Solucion>
+
+$$
+P(A \cap \overline{B}) = P(A) - P(A \cap B) = 0.7 - 0.5 = 0.2
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Ocurra $A$ sabiendo que no ha ocurrido $B$.
+
+<Solucion>
+
+Con $P(\overline{B}) = 1 - 0.6 = 0.4$:
+
+$$
+P(A/\overline{B}) = \frac{P(A \cap \overline{B})}{P(\overline{B})} = \frac{0.2}{0.4} = 0.5
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+El porcentaje de conductores que consumen alcohol durante la madrugada del sábado es del $5\%$. La policía realiza controles de alcoholemia mediante un test del que se sabe que da positivo en un $96\%$ si la persona ha bebido alcohol y en un $10\%$ si la persona no ha bebido alcohol.
+
+Elegido al azar un conductor en la madrugada del sábado y realizado este test de alcoholemia, halle la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $Al$ a que el conductor haya consumido alcohol y $T$ a que el test dé positivo:
+
+- $P(Al) = 0.05$, con $P(T/Al) = 0.96$ y $P(\overline{T}/Al) = 0.04$.
+- $P(\overline{Al}) = 0.95$, con $P(T/\overline{Al}) = 0.1$ y $P(\overline{T}/\overline{Al}) = 0.9$.
+
+Por el teorema de la probabilidad total:
+
+$$
+P(T) = 0.05 \cdot 0.96 + 0.95 \cdot 0.1 = 0.048 + 0.095 = 0.143, \qquad P(\overline{T}) = 1 - 0.143 = 0.857
+$$
+
+</Solucion>
+
+a) **(1.25 puntos)** Si el test da positivo, el conductor haya consumido alcohol.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(Al/T) = \frac{P(Al) \cdot P(T/Al)}{P(T)} = \frac{0.048}{0.143} = \frac{48}{143} \approx 0.3357
+$$
+
+Aunque el test detecta casi siempre a quien ha bebido, la mayoría de los positivos son de conductores que no han bebido, porque son muchos más.
+
+</Solucion>
+
+b) **(0.5 puntos)** El test dé negativo y el conductor no haya consumido alcohol.
+
+<Solucion>
+
+$$
+P(\overline{T} \cap \overline{Al}) = P(\overline{Al}) \cdot P(\overline{T}/\overline{Al}) = 0.95 \cdot 0.9 = 0.855
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Si el test ha dado negativo, el conductor no haya consumido alcohol.
+
+<Solucion>
+
+Por el teorema de Bayes, con el apartado anterior:
+
+$$
+P(\overline{Al}/\overline{T}) = \frac{P(\overline{T} \cap \overline{Al})}{P(\overline{T})} = \frac{0.855}{0.857} = \frac{855}{857} \approx 0.9977
+$$
+
+</Solucion>

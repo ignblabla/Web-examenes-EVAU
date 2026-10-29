@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2022, ejercicio 1: región factible de los juegos de
+// ajedrez (x) y de dominó (y) fabricados al día.
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={4}
+  yMax={10}
+  marcasX={[1, 2, 3]}
+  marcasY={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  rectas={[
+    { desde: [0, 3], hasta: [3, 0], color: "#2f6fa3", etiqueta: "x + y = 3", en: [2.6, 0.9] },
+    { desde: [0, 7], hasta: [3.5, 0], color: "#7a5b16", etiqueta: "2x + y = 7", en: [2.3, 3.0] },
+    { desde: [0, 9], hasta: [2.25, 0], color: "#b04a3a", etiqueta: "4x + y = 9", en: [0.15, 9.3] },
+  ]}
+  region={[
+    [0, 3],
+    [2, 1],
+    [1, 5],
+    [0, 7],
+  ]}
+  vertices={[
+    { x: 0, y: 3, texto: "A", dx: 6, dy: 12 },
+    { x: 2, y: 1, texto: "B", dx: -14, dy: 4 },
+    { x: 1, y: 5, texto: "C", dx: 7, dy: 0 },
+    { x: 0, y: 7, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 3), B(2, 1), C(1, 5) y D(0, 7), limitado por el eje OY y las rectas x + y = 3, 4x + y = 9 y 2x + y = 7"
+/>

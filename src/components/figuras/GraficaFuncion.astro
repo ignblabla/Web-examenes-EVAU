@@ -6,6 +6,10 @@ interface Tramo {
   f: (x: number) => number
   desde: number
   hasta: number
+  // Para dibujar varias rectas distintas (por ejemplo, una región no acotada): color propio
+  // y una etiqueta en el punto (x, y), con el texto creciendo hacia el lado de "ancla".
+  color?: string
+  etiqueta?: { texto: string; x: number; y: number; ancla?: "start" | "middle" | "end" }
 }
 
 interface Asintota {
@@ -17,6 +21,10 @@ interface Asintota {
   arriba?: boolean
   // Etiqueta de una asíntota horizontal debajo de la recta en vez de encima.
   debajo?: boolean
+  // Recta continua en vez de discontinua (por ejemplo, una restricción x = −7 de programación
+  // lineal), con su color.
+  recta?: boolean
+  color?: string
 }
 
 // Recinto sombreado entre dos curvas (o entre una curva y el eje, con abajo = () => 0).
@@ -30,6 +38,8 @@ interface Recinto {
 interface PuntoDestacado {
   x: number
   y: number
+  // Punto que no pertenece a la gráfica (extremo abierto de un tramo): círculo hueco.
+  abierto?: boolean
   texto?: string
   dx?: number
   dy?: number
@@ -122,20 +132,34 @@ const id = `recorte-${Math.round(Math.random() * 1e9)}`
       {marcasY.map((m) => <path d={`M${ejeY - 3} ${py(m)}h6`} />)}
     </g>
 
-    <g fill="none" stroke="#b04a3a" stroke-width="1.2" stroke-dasharray="5 4">
+    <g fill="none" stroke="#b04a3a" stroke-width="1.2">
       {
-        asintotas.map((a) =>
-          a.tipo === "v" ? (
-            <path d={`M${px(a.valor)} ${py(yMin)}V${py(yMax)}`} />
-          ) : (
-            <path d={`M${px(xMin)} ${py(a.valor)}H${px(xMax)}`} />
-          ),
-        )
+        asintotas.map((a) => (
+          <path
+            d={a.tipo === "v" ? `M${px(a.valor)} ${py(yMin)}V${py(yMax)}` : `M${px(xMin)} ${py(a.valor)}H${px(xMax)}`}
+            stroke={a.color}
+            stroke-width={a.recta ? 1.4 : undefined}
+            stroke-dasharray={a.recta ? undefined : "5 4"}
+          />
+        ))
       }
     </g>
 
     <g clip-path={`url(#${id})`} fill="none" stroke="#195c51" stroke-width="2.2">
-      {curvas.map((d) => <path d={d} />)}
+      {curvas.map((d, i) => <path d={d} stroke={tramos[i].color} stroke-width={tramos[i].color && 1.4} />)}
+    </g>
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10">
+      {
+        tramos.map(
+          (t) =>
+            t.etiqueta && (
+              <text x={px(t.etiqueta.x)} y={py(t.etiqueta.y)} text-anchor={t.etiqueta.ancla ?? "start"} fill={t.color ?? "#195c51"}>
+                {t.etiqueta.texto}
+              </text>
+            ),
+        )
+      }
     </g>
 
     <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
@@ -149,11 +173,11 @@ const id = `recorte-${Math.round(Math.random() * 1e9)}`
       {
         asintotas.map((a) =>
           a.tipo === "v" ? (
-            <text x={px(a.valor) + 4} y={a.arriba ? py(yMax) + 10 : py(yMin) - 6}>
+            <text x={px(a.valor) + 4} y={a.arriba ? py(yMax) + 10 : py(yMin) - 6} fill={a.color}>
               {a.etiqueta}
             </text>
           ) : (
-            <text x={px(xMax) - 2} y={py(a.valor) + (a.debajo ? 12 : -4)} text-anchor="end">
+            <text x={px(xMax) - 2} y={py(a.valor) + (a.debajo ? 12 : -4)} text-anchor="end" fill={a.color}>
               {a.etiqueta}
             </text>
           ),
@@ -165,7 +189,7 @@ const id = `recorte-${Math.round(Math.random() * 1e9)}`
       {
         puntos.map((p) => (
           <>
-            <circle cx={px(p.x)} cy={py(p.y)} r="3" />
+            <circle cx={px(p.x)} cy={py(p.y)} r="3" fill={p.abierto ? "#fff" : undefined} stroke={p.abierto ? "#195c51" : undefined} stroke-width={p.abierto ? 1.5 : undefined} />
             {p.texto && (
               <text
                 x={px(p.x) + (p.dx ?? 0)}

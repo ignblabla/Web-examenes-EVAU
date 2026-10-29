@@ -1,0 +1,98 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+a) **(1.5 puntos)** En una Escuela Politécnica hay matriculados en el último curso $60$ estudiantes de Ingeniería Eléctrica, $40$ de Ingeniería Informática, $30$ de Ingeniería Civil, $50$ de Ingeniería Mecánica y $20$ de Ingeniería Aeronáutica. Se quiere hacer una encuesta al $20\%$ de estos estudiantes, de manera proporcional al número de matriculados en cada titulación.
+
+<div class="math-sub">
+
+1. ¿Qué tipo de muestreo se debe emplear?
+2. ¿Cuántos alumnos debe haber en la muestra y cuántos de cada titulación?
+
+</div>
+
+<Solucion>
+
+**1. Tipo de muestreo.** La población está dividida en grupos (las titulaciones) y se quiere que cada uno esté representado en proporción a su tamaño, así que se emplea un **muestreo aleatorio estratificado con afijación proporcional**: los estratos son las cinco titulaciones.
+
+**2. Tamaños.** La población tiene $60 + 40 + 30 + 50 + 20 = 200$ estudiantes y la muestra, el $20\%$:
+
+$$
+n = 0.2 \cdot 200 = 40 \text{ alumnos}
+$$
+
+En cada estrato se toma también el $20\%$ de sus matriculados:
+
+- Eléctrica: $0.2 \cdot 60 = 12$
+- Informática: $0.2 \cdot 40 = 8$
+- Civil: $0.2 \cdot 30 = 6$
+- Mecánica: $0.2 \cdot 50 = 10$
+- Aeronáutica: $0.2 \cdot 20 = 4$
+
+**Respuesta.** La muestra tiene **40 alumnos: 12 de Eléctrica, 8 de Informática, 6 de Civil, 10 de Mecánica y 4 de Aeronáutica**.
+
+</Solucion>
+
+b) **(1 punto)** Dada la población $\{a, 10, 12, 11, 18\}$, ¿cuánto debe valer $a$, sabiendo que la media de las medias muestrales de tamaño $3$, obtenidas mediante muestreo aleatorio simple, es $13.2$?
+
+<Solucion>
+
+**Media de las medias muestrales.** En el muestreo aleatorio simple, la media de todas las medias muestrales coincide con la media de la población, sea cual sea el tamaño de las muestras:
+
+$$
+\mu_{\bar{X}} = \mu = \frac{a + 10 + 12 + 11 + 18}{5} = \frac{a + 51}{5}
+$$
+
+**Valor de $a$:**
+
+$$
+\frac{a + 51}{5} = 13.2 \;\Rightarrow\; a + 51 = 66 \;\Rightarrow\; a = 15
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se desea estimar la proporción de individuos mayores de edad de una localidad que están en contra de la construcción de una central nuclear en su término municipal. Para ello, se pregunta a $100$ individuos mayores de edad de esa localidad, elegidos de forma aleatoria, resultando que $45$ de ellos rechazan la construcción de la central.
+
+a) **(1.5 puntos)** Calcule un intervalo de confianza al $92\%$ para estimar la proporción real de individuos de esa localidad que están en contra de la construcción de la central.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = \frac{45}{100} = 0.45$.
+
+**Valor crítico.** Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 1.75\sqrt{\frac{0.45 \cdot 0.55}{100}} = 1.75\sqrt{0.002475} \approx 1.75 \cdot 0.04975 \approx 0.0871
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.45 - 0.0871,\ 0.45 + 0.0871) = (0.3629,\ 0.5371)
+$$
+
+Con una confianza del $92\%$, la proporción de individuos en contra de la central está entre **0.3629 y 0.5371**.
+
+</Solucion>
+
+b) **(1 punto)** Suponiendo que se mantiene la misma proporción muestral y el mismo nivel de confianza del apartado anterior, determine el tamaño mínimo de la muestra que hay que tomar, para que al estimar la proporción de individuos de esa localidad que rechazan la construcción de la central, el error cometido sea inferior al $5\%$.
+
+<Solucion>
+
+Un error del $5\%$ en una proporción es $0.05$. Con $z_{\alpha/2} = 1.75$ y $\hat{p} = 0.45$, queremos $E < 0.05$:
+
+$$
+1.75\sqrt{\frac{0.45 \cdot 0.55}{n}} < 0.05 \;\Rightarrow\; n > \frac{1.75^2 \cdot 0.2475}{0.05^2} = \frac{3.0625 \cdot 0.2475}{0.0025} = 303.1875
+$$
+
+**Respuesta.** Hay que tomar una muestra de como mínimo **304 individuos**.
+
+</Solucion>

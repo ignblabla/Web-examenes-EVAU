@@ -1,0 +1,86 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+a) **(1 punto)** Un gimnasio establece sus tarifas por grupos de edad: juvenil, adulto y senior. Tiene matriculados $25$ juveniles, $75$ adultos y $50$ seniors. Se quiere seleccionar una muestra de $30$ personas del gimnasio utilizando un muestreo estratificado con afijación proporcional. ¿Cuál será la composición que debe tener dicha muestra?
+
+<Solucion>
+
+El gimnasio tiene $25 + 75 + 50 = 150$ personas. Con afijación proporcional se toma **la misma fracción de cada estrato**:
+
+$$
+\frac{30}{150} = \frac{1}{5}
+$$
+
+| | Juvenil | Adulto | Senior | Total |
+|---|---|---|---|---|
+| Matriculados | 25 | 75 | 50 | 150 |
+| Muestra ($\frac{1}{5}$) | 5 | 15 | 10 | 30 |
+
+**Respuesta.** La muestra debe tener **5 juveniles, 15 adultos y 10 seniors**.
+
+</Solucion>
+
+b) **(1.5 puntos)** Dada la población $\{9, 11, 13, 18, 20\}$, calcule la varianza de la distribución de las medias muestrales de tamaño $2$ obtenidas mediante muestreo aleatorio simple.
+
+<Solucion>
+
+En el muestreo aleatorio simple (con reemplazamiento), la varianza de la media muestral es $Var(\bar{X}) = \frac{\sigma^2}{n}$. Calculamos la media y la varianza de la población:
+
+$$
+\mu = \frac{9 + 11 + 13 + 18 + 20}{5} = \frac{71}{5} = 14.2
+$$
+
+$$
+\sigma^2 = \frac{81 + 121 + 169 + 324 + 400}{5} - 14.2^2 = \frac{1095}{5} - 201.64 = 219 - 201.64 = 17.36
+$$
+
+**Respuesta.** La varianza de la distribución de las medias muestrales es **$\frac{17.36}{2} = 8.68$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+En el otoño de 2021, el municipio de El Paso en la Isla de La Palma sufrió la erupción del volcán Cumbre Vieja. Al finalizar la erupción, se escogió una muestra de $500$ casas resultando que $325$ de ellas estaban afectadas por la erupción.
+
+a) **(1.25 puntos)** Calcule un intervalo, con un nivel de confianza del $97\%$, para estimar la proporción de casas afectadas por la erupción del volcán. Según el resultado obtenido, ¿se puede admitir que el porcentaje de casas afectadas por el volcán es del $64\%$?
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{325}{500} = 0.65$.
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+**Error:**
+
+$$
+E = 2.17\sqrt{\frac{0.65 \cdot 0.35}{500}} \approx 2.17 \cdot 0.02133 \approx 0.0463
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.65 - 0.0463,\ 0.65 + 0.0463) = (0.6037,\ 0.6963)
+$$
+
+**¿64 %?** $0.64$ está dentro del intervalo, así que, con una confianza del $97\%$, **sí se puede admitir** que el $64\%$ de las casas estaban afectadas.
+
+</Solucion>
+
+b) **(1.25 puntos)** Para un nivel de confianza del $92\%$ y manteniendo la proporción muestral, ¿cuál debe ser el tamaño mínimo de una nueva muestra para que el error máximo de estimación sea del $2\%$?
+
+<Solucion>
+
+Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$. Queremos $E \le 0.02$:
+
+$$
+1.75\sqrt{\frac{0.65 \cdot 0.35}{n}} \le 0.02 \;\Rightarrow\; n \ge \frac{1.75^2 \cdot 0.2275}{0.02^2} \approx 1741.80
+$$
+
+**Respuesta.** La nueva muestra debe tener como mínimo **1742 casas**.
+
+</Solucion>

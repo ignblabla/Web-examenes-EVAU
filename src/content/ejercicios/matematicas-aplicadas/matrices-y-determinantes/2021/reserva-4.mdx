@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} a & 4\\ 6 & 8 \end{pmatrix}, \quad B = \begin{pmatrix} 2 & 2\\ 3 & 3 \end{pmatrix} \quad \text{y} \quad C = \begin{pmatrix} 1 & 2 \end{pmatrix}.
+$$
+
+a) **(0.5 puntos)** Calcule el valor del parámetro $a$ para que la matriz $A$ no tenga inversa.
+
+<Solucion>
+
+$A$ no tiene inversa si y solo si $|A| = 0$:
+
+$$
+|A| = 8a - 24 = 0 \iff a = 3
+$$
+
+**Respuesta.** $A$ no tiene inversa para **$a = 3$**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Para $a = 3$, resuelva la ecuación matricial $X \cdot A - X \cdot B = C$.
+
+<Solucion>
+
+**Despejar $X$.** Sacamos $X$ factor común por la izquierda:
+
+$$
+X \cdot A - X \cdot B = X(A - B) = C, \qquad A - B = \begin{pmatrix} 3 & 4\\ 6 & 8 \end{pmatrix} - \begin{pmatrix} 2 & 2\\ 3 & 3 \end{pmatrix} = \begin{pmatrix} 1 & 2\\ 3 & 5 \end{pmatrix}
+$$
+
+Aunque $A$ no tiene inversa para $a = 3$, $A - B$ sí: $|A - B| = 5 - 6 = -1 \ne 0$. Multiplicando por $(A - B)^{-1}$ por la **derecha**, $X = C\,(A - B)^{-1}$, de dimensión $1 \times 2$ como $C$.
+
+**Inversa:**
+
+$$
+(A - B)^{-1} = \frac{1}{-1}\begin{pmatrix} 5 & -2\\ -3 & 1 \end{pmatrix} = \begin{pmatrix} -5 & 2\\ 3 & -1 \end{pmatrix}
+$$
+
+**Cálculo:**
+
+$$
+X = \begin{pmatrix} 1 & 2 \end{pmatrix}\begin{pmatrix} -5 & 2\\ 3 & -1 \end{pmatrix} = \begin{pmatrix} -5 + 6 & 2 - 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \end{pmatrix}
+$$
+
+Comprobación: $X(A - B) = \begin{pmatrix} 1 & 0 \end{pmatrix}\begin{pmatrix} 1 & 2\\ 3 & 5 \end{pmatrix} = \begin{pmatrix} 1 & 2 \end{pmatrix} = C$.
+
+</Solucion>
+
+c) **(0.75 puntos)** Para $a = 3$, compruebe que $A^2 = 11 \cdot A$ y exprese $A^8$ en función de la matriz $A$.
+
+<Solucion>
+
+**Comprobación:**
+
+$$
+A^2 = \begin{pmatrix} 3 & 4\\ 6 & 8 \end{pmatrix}\begin{pmatrix} 3 & 4\\ 6 & 8 \end{pmatrix} = \begin{pmatrix} 9 + 24 & 12 + 32\\ 18 + 48 & 24 + 64 \end{pmatrix} = \begin{pmatrix} 33 & 44\\ 66 & 88 \end{pmatrix} = 11\begin{pmatrix} 3 & 4\\ 6 & 8 \end{pmatrix} = 11A
+$$
+
+**Potencias.** Usando $A^2 = 11A$ cada vez:
+
+$$
+A^3 = A^2 \cdot A = 11A^2 = 11^2 A, \qquad A^4 = A^3 \cdot A = 11^2 A^2 = 11^3 A, \qquad \dots, \qquad A^n = 11^{n-1} A
+$$
+
+**Respuesta.** $A^8 = 11^7 A = 19\,487\,171\,A$.
+
+</Solucion>

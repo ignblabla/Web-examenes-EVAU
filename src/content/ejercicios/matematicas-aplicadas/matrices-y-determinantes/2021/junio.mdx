@@ -1,0 +1,65 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+Se considera la matriz
+
+$$
+A = \begin{pmatrix} 1 & -1 & m\\ 0 & 2 & -3\\ m & 1 & 1 \end{pmatrix}
+$$
+
+con $m$ un parámetro real.
+
+a) **(0.7 puntos)** ¿Para qué valores del parámetro $m$ existe la matriz inversa de $A$?
+
+<Solucion>
+
+$A$ tiene inversa si y solo si $|A| \ne 0$. Desarrollamos por la primera fila:
+
+$$
+|A| = 1 \cdot \begin{vmatrix} 2 & -3\\ 1 & 1 \end{vmatrix} + 1 \cdot \begin{vmatrix} 0 & -3\\ m & 1 \end{vmatrix} + m \cdot \begin{vmatrix} 0 & 2\\ m & 1 \end{vmatrix} = 5 + 3m - 2m^2
+$$
+
+$$
+-2m^2 + 3m + 5 = 0 \iff 2m^2 - 3m - 5 = 0 \iff m = \frac{3 \pm \sqrt{9 + 40}}{4} = \frac{3 \pm 7}{4} \iff m = \frac{5}{2} \text{ o } m = -1
+$$
+
+**Respuesta.** Existe la inversa de $A$ para **todo $m \ne -1$ y $m \ne \frac{5}{2}$**.
+
+</Solucion>
+
+b) **(1.8 puntos)** Para $m = 2$, resuelva la ecuación matricial $X \cdot A - A^2 = I_3$.
+
+<Solucion>
+
+**Despejar $X$.** Para $m = 2$, $|A| = 5 + 6 - 8 = 3 \ne 0$, así que $A$ tiene inversa. Sumamos $A^2$ y multiplicamos por $A^{-1}$ por la **derecha**, que es donde está $A$:
+
+$$
+X \cdot A = I_3 + A^2 \;\Rightarrow\; X = (I_3 + A^2)\,A^{-1} = A^{-1} + A
+$$
+
+ya que $A^2 A^{-1} = A$.
+
+**Inversa.** Con $A^{-1} = \frac{1}{|A|}\big(\text{Adj}(A)\big)^t$:
+
+$$
+A = \begin{pmatrix} 1 & -1 & 2\\ 0 & 2 & -3\\ 2 & 1 & 1 \end{pmatrix}, \quad
+\text{Adj}(A) = \begin{pmatrix} 5 & -6 & -4\\ 3 & -3 & -3\\ -1 & 3 & 2 \end{pmatrix}, \quad
+A^{-1} = \frac{1}{3}\begin{pmatrix} 5 & 3 & -1\\ -6 & -3 & 3\\ -4 & -3 & 2 \end{pmatrix}
+$$
+
+Comprobación: $A \cdot A^{-1} = I_3$.
+
+**Cálculo de $X$:**
+
+$$
+X = A + A^{-1} = \begin{pmatrix} 1 & -1 & 2\\ 0 & 2 & -3\\ 2 & 1 & 1 \end{pmatrix} + \begin{pmatrix} \frac{5}{3} & 1 & -\frac{1}{3}\\ -2 & -1 & 1\\ -\frac{4}{3} & -1 & \frac{2}{3} \end{pmatrix} = \begin{pmatrix} \frac{8}{3} & 0 & \frac{5}{3}\\ -2 & 1 & -2\\ \frac{2}{3} & 0 & \frac{5}{3} \end{pmatrix}
+$$
+
+**Comprobación.** $A^2 = \begin{pmatrix} 5 & -1 & 7\\ -6 & 1 & -9\\ 4 & 1 & 2 \end{pmatrix}$, así que $I_3 + A^2 = \begin{pmatrix} 6 & -1 & 7\\ -6 & 2 & -9\\ 4 & 1 & 3 \end{pmatrix}$, que es justo $X \cdot A$.
+
+</Solucion>

@@ -1,0 +1,53 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RegionJuguetes from "../../../../../components/figuras/RegionJuguetes.astro"
+
+**(2.5 puntos)** Una fábrica de juguetes educativos produce juegos de ajedrez y dominó. Para fabricar un ajedrez se necesitan $2$ kg de madera y $4$ horas de trabajo, mientras que para fabricar un dominó se necesita $1$ kg de madera y $1$ hora de trabajo. Para que la producción sea rentable hay que hacer al día al menos $3$ juegos y emplear como máximo $7$ kg de madera y $9$ horas de trabajo. Cada ajedrez se vende por $40$ € y cada dominó por $15$ €. ¿Cuántos juegos de ajedrez y dominó deben fabricarse diariamente para que la ganancia obtenida sea máxima? ¿Cuál será esa ganancia?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de juegos de ajedrez e $y$ al de dominó fabricados al día. Hay que maximizar la ganancia, en euros,
+
+$$
+F(x, y) = 40x + 15y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + y \ge 3 & \text{(al menos 3 juegos)}\\
+2x + y \le 7 & \text{(madera)}\\
+4x + y \le 9 & \text{(horas de trabajo)}\\
+x \ge 0,\ y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda a la derecha del eje $OY$, por encima de $x + y = 3$ y por debajo de las rectas de la madera y de las horas:
+
+<RegionJuguetes />
+
+**Vértices:**
+
+- $A(0, 3)$ y $D(0, 7)$: el eje $OY$ con $x + y = 3$ y con $2x + y = 7$. La recta de las horas corta el eje más arriba, en $(0, 9)$.
+- $B$: $x + y = 3$ y $4x + y = 9$. Restando, $3x = 6 \Rightarrow x = 2$, $y = 1$: $B(2, 1)$. Cumple $4 + 1 = 5 \le 7$.
+- $C$: $2x + y = 7$ y $4x + y = 9$. Restando, $2x = 2 \Rightarrow x = 1$, $y = 5$: $C(1, 5)$.
+
+La región no llega al eje $OX$: en $y = 0$, la recta de las horas pide $x \le 2.25$ y la del mínimo de juegos, $x \ge 3$.
+
+**Resolución.**
+
+- $F(0, 3) = 45$
+- $F(2, 1) = 80 + 15 = 95$
+- $F(1, 5) = 40 + 75 = 115$
+- $F(0, 7) = 105$
+
+**Respuesta.** Deben fabricarse **1 ajedrez y 5 dominós** al día, con una **ganancia máxima de 115 €**.
+
+</Solucion>

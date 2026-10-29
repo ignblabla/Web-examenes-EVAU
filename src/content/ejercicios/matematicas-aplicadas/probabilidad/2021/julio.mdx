@@ -1,0 +1,97 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+En una población, se sabe que el $15\%$ de las personas padece una determinada enfermedad. Si la persona está enferma, un test da positivo en el $92\%$ de los casos, mientras que si la persona está sana, el test da positivo en el $4\%$ de los casos (falso positivo). Se elige una persona al azar de esa población.
+
+a) **(1.25 puntos)** Calcule la probabilidad de que, habiendo dado positivo el test, la persona esté enferma.
+
+<Solucion>
+
+**Sucesos.** $E$: la persona está enferma; $S = \overline{E}$: está sana; $T$: el test da positivo. Los datos son
+
+$$
+P(E) = 0.15, \qquad P(S) = 0.85, \qquad P(T \mid E) = 0.92, \qquad P(T \mid S) = 0.04
+$$
+
+**Probabilidad total** de dar positivo:
+
+$$
+P(T) = 0.15 \cdot 0.92 + 0.85 \cdot 0.04 = 0.138 + 0.034 = 0.172
+$$
+
+**Teorema de Bayes:**
+
+$$
+P(E \mid T) = \frac{P(E) \cdot P(T \mid E)}{P(T)} = \frac{0.138}{0.172} = \frac{69}{86} \approx 0.8023
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule la probabilidad de que la persona esté enferma y el test salga negativo.
+
+<Solucion>
+
+Si está enferma, el test da negativo con probabilidad $P(\overline{T} \mid E) = 1 - 0.92 = 0.08$:
+
+$$
+P(E \cap \overline{T}) = P(E) \cdot P(\overline{T} \mid E) = 0.15 \cdot 0.08 = 0.012
+$$
+
+</Solucion>
+
+c) **(0.75 puntos)** Calcule la probabilidad de que saliendo el test negativo, la persona esté enferma.
+
+<Solucion>
+
+$P(\overline{T}) = 1 - 0.172 = 0.828$ y, con el apartado b):
+
+$$
+P(E \mid \overline{T}) = \frac{P(E \cap \overline{T})}{P(\overline{T})} = \frac{0.012}{0.828} = \frac{1}{69} \approx 0.0145
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+En una comunidad de vecinos, el $90\%$ de sus miembros tiene vehículo propio, el $40\%$ hace uso del transporte público y un $3\%$ ni tiene vehículo propio ni usa el transporte público. Se elige al azar un miembro de esa comunidad.
+
+a) **(1 punto)** Calcule la probabilidad de que tenga vehículo propio o use el transporte público.
+
+<Solucion>
+
+**Sucesos.** $V$: tiene vehículo propio; $T$: usa el transporte público. Los datos son $P(V) = 0.9$, $P(T) = 0.4$ y $P(\overline{V} \cap \overline{T}) = 0.03$. Por las leyes de De Morgan, $\overline{V} \cap \overline{T} = \overline{V \cup T}$:
+
+$$
+P(V \cup T) = 1 - P(\overline{V} \cap \overline{T}) = 1 - 0.03 = 0.97
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Calcule la probabilidad de que use el transporte público y no tenga vehículo propio.
+
+<Solucion>
+
+$V \cup T$ se descompone en $V$ y $T \cap \overline{V}$, que son incompatibles:
+
+$$
+P(T \cap \overline{V}) = P(V \cup T) - P(V) = 0.97 - 0.9 = 0.07
+$$
+
+</Solucion>
+
+c) **(1 punto)** Calcule la probabilidad de que use el transporte público, sabiendo que no tiene vehículo propio.
+
+<Solucion>
+
+$P(\overline{V}) = 1 - 0.9 = 0.1$ y, con el apartado b):
+
+$$
+P(T \mid \overline{V}) = \frac{P(T \cap \overline{V})}{P(\overline{V})} = \frac{0.07}{0.1} = 0.7
+$$
+
+</Solucion>

@@ -1,0 +1,105 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Un equipo andaluz de baloncesto jugó en una temporada un $40\%$ de los partidos en casa y el resto fuera. De los partidos que jugó en casa, obtuvo un $60\%$ de victorias y el resto fueron derrotas, mientras que de los que jugó fuera, obtuvo un $30\%$ de victorias y el resto derrotas. Se elige un partido de este equipo al azar.
+
+a) **(1.25 puntos)** Calcule la probabilidad de que el partido acabase en victoria.
+
+<Solucion>
+
+**Sucesos.** $C$: el partido se jugó en casa; $F$: fuera; $V$: acabó en victoria; $D$: en derrota. Los datos son
+
+$$
+P(C) = 0.4, \qquad P(F) = 0.6, \qquad P(V \mid C) = 0.6, \qquad P(V \mid F) = 0.3
+$$
+
+**Probabilidad total:**
+
+$$
+P(V) = 0.4 \cdot 0.6 + 0.6 \cdot 0.3 = 0.24 + 0.18 = 0.42
+$$
+
+</Solucion>
+
+b) **(1 punto)** Calcule la probabilidad de que el partido haya sido jugado en casa, sabiendo que el resultado final fue una derrota.
+
+<Solucion>
+
+$P(D) = 1 - 0.42 = 0.58$ y $P(D \mid C) = 1 - 0.6 = 0.4$. Por el teorema de Bayes:
+
+$$
+P(C \mid D) = \frac{P(C) \cdot P(D \mid C)}{P(D)} = \frac{0.4 \cdot 0.4}{0.58} = \frac{0.16}{0.58} = \frac{8}{29} \approx 0.2759
+$$
+
+</Solucion>
+
+c) **(0.25 puntos)** Si además se sabe que el $10\%$ de las victorias obtenidas en casa y el $20\%$ de las obtenidas fuera se produjeron tras una prórroga, calcule la probabilidad de que el partido acabase en victoria y que además esa victoria haya sido tras una prórroga.
+
+<Solucion>
+
+Llamamos $R$ a que el partido tuvo prórroga. Las victorias en casa tienen probabilidad $P(C \cap V) = 0.24$, y de ellas el $10\%$ fue tras prórroga; las de fuera, $P(F \cap V) = 0.18$, con el $20\%$:
+
+$$
+P(V \cap R) = 0.24 \cdot 0.1 + 0.18 \cdot 0.2 = 0.024 + 0.036 = 0.06
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Sean $A$ y $B$ dos sucesos asociados a un mismo espacio muestral con $P(A^c) = 0.4$ y $P(A \cap B^c) = 0.12$.
+
+a) **(0.5 puntos)** Calcule $P(A)$ y $P(A \cap B)$.
+
+<Solucion>
+
+$$
+P(A) = 1 - P(A^c) = 0.6
+$$
+
+$A$ se descompone en $A \cap B$ y $A \cap B^c$, que son incompatibles:
+
+$$
+P(A \cap B) = P(A) - P(A \cap B^c) = 0.6 - 0.12 = 0.48
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Determine $P(B)$ para que $A$ y $B$ sean independientes.
+
+<Solucion>
+
+Son independientes si $P(A \cap B) = P(A) \cdot P(B)$:
+
+$$
+0.48 = 0.6 \cdot P(B) \iff P(B) = \frac{0.48}{0.6} = 0.8
+$$
+
+</Solucion>
+
+c) **(1.5 puntos)** Si $P(B^c) = 0.2$, calcule $P(A \cup B)$, $P(A^c \cup B^c)$ y $P(A/B^c)$.
+
+<Solucion>
+
+Con $P(B) = 1 - 0.2 = 0.8$:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.6 + 0.8 - 0.48 = 0.92
+$$
+
+Por las leyes de De Morgan, $A^c \cup B^c = (A \cap B)^c$:
+
+$$
+P(A^c \cup B^c) = 1 - P(A \cap B) = 1 - 0.48 = 0.52
+$$
+
+$$
+P(A / B^c) = \frac{P(A \cap B^c)}{P(B^c)} = \frac{0.12}{0.2} = 0.6
+$$
+
+</Solucion>

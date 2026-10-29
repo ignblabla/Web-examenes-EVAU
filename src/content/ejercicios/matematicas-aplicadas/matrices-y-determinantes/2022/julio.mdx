@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 1 & 1 & 2\\ -2 & 0 & 1\\ 0 & -1 & -1 \end{pmatrix}, \quad B = \begin{pmatrix} -2 & 1\\ 3 & 1\\ 0 & 2 \end{pmatrix}, \quad C = \begin{pmatrix} 1 & 2\\ -1 & -1\\ -2 & 3 \end{pmatrix}
+$$
+
+a) **(1.5 puntos)** Determine la matriz $X$ que verifica $A \cdot X + B = A^2 \cdot C$.
+
+<Solucion>
+
+**Despejar $X$.** Restamos $B$ y multiplicamos por $A^{-1}$ por la **izquierda**, que es donde está $A$:
+
+$$
+A \cdot X = A^2 C - B \;\Rightarrow\; X = A^{-1}(A^2 C - B) = A\,C - A^{-1}B
+$$
+
+porque $A^{-1}A^2 = A$.
+
+**Inversa de $A$.** Desarrollando por la primera fila:
+
+$$
+|A| = 1 \cdot (0 + 1) - 1 \cdot (2 - 0) + 2 \cdot (2 - 0) = 1 - 2 + 4 = 3 \ne 0
+$$
+
+$$
+\text{Adj}(A) = \begin{pmatrix} 1 & -2 & 2\\ -1 & -1 & 1\\ 1 & -5 & 2 \end{pmatrix}, \qquad
+A^{-1} = \frac{1}{3}\begin{pmatrix} 1 & -1 & 1\\ -2 & -1 & -5\\ 2 & 1 & 2 \end{pmatrix}
+$$
+
+**Cálculo.**
+
+$$
+A\,C = \begin{pmatrix} 1 & 1 & 2\\ -2 & 0 & 1\\ 0 & -1 & -1 \end{pmatrix}\begin{pmatrix} 1 & 2\\ -1 & -1\\ -2 & 3 \end{pmatrix} = \begin{pmatrix} -4 & 7\\ -4 & -1\\ 3 & -2 \end{pmatrix}
+$$
+
+$$
+A^{-1}B = \frac{1}{3}\begin{pmatrix} 1 & -1 & 1\\ -2 & -1 & -5\\ 2 & 1 & 2 \end{pmatrix}\begin{pmatrix} -2 & 1\\ 3 & 1\\ 0 & 2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} -5 & 2\\ 1 & -13\\ -1 & 7 \end{pmatrix}
+$$
+
+$$
+X = \begin{pmatrix} -4 & 7\\ -4 & -1\\ 3 & -2 \end{pmatrix} - \frac{1}{3}\begin{pmatrix} -5 & 2\\ 1 & -13\\ -1 & 7 \end{pmatrix} = \begin{pmatrix} -\frac{7}{3} & \frac{19}{3}\\ -\frac{13}{3} & \frac{10}{3}\\ \frac{10}{3} & -\frac{13}{3} \end{pmatrix}
+$$
+
+Comprobación: $A \cdot X = \begin{pmatrix} 0 & 1\\ 8 & -17\\ 1 & 1 \end{pmatrix}$, que coincide con $A^2 C - B$.
+
+</Solucion>
+
+b) **(1 punto)** Determine las dimensiones de dos matrices $P$ y $Q$ sabiendo que
+
+$$
+A \cdot P^t + C = C \cdot (Q \cdot B)
+$$
+
+<Solucion>
+
+$A$ es $3 \times 3$, y $B$ y $C$ son $3 \times 2$.
+
+**Matriz $P$.** Para sumar $A \cdot P^t$ con $C$, el producto tiene que ser $3 \times 2$. Como $A$ tiene $3$ columnas, $P^t$ debe tener $3$ filas, y para que el resultado tenga $2$ columnas, $P^t$ debe tener $2$. Así, $P^t$ es $3 \times 2$ y **$P$ es $2 \times 3$**.
+
+**Matriz $Q$.** El lado derecho también tiene que ser $3 \times 2$:
+
+- Para que $Q \cdot B$ exista, $Q$ debe tener $3$ columnas (las filas de $B$), y el resultado tiene las filas de $Q$ y $2$ columnas.
+- Para que $C \cdot (Q \cdot B)$ exista, $Q \cdot B$ debe tener $2$ filas (las columnas de $C$), así que $Q$ tiene $2$ filas. Entonces $C \cdot (Q \cdot B)$ es $(3 \times 2)(2 \times 2) = 3 \times 2$, como se necesita.
+
+**$Q$ es $2 \times 3$**.
+
+</Solucion>

@@ -1,0 +1,117 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Juan realiza el siguiente juego: Lanza dos dados simultáneamente y si la suma es $2$ o mayor que $7$, gana y termina el juego. En caso contrario, tiene una segunda y última oportunidad lanzando de nuevo los dos dados y ganaría si la suma es mayor que $9$.
+
+<Solucion titulo="Planteamiento común">
+
+Al lanzar dos dados hay $36$ resultados igual de probables. El número de formas de obtener cada suma es:
+
+| Suma | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Casos | 1 | 2 | 3 | 4 | 5 | 6 | 5 | 4 | 3 | 2 | 1 |
+
+</Solucion>
+
+a) **(1 punto)** ¿Cuál es la probabilidad de que Juan gane lanzando una sola vez los dados?
+
+<Solucion>
+
+Gana a la primera si la suma es $2$ ($1$ caso) o está entre $8$ y $12$ ($5 + 4 + 3 + 2 + 1 = 15$ casos). Por la regla de Laplace:
+
+$$
+P(G_1) = \frac{1 + 15}{36} = \frac{16}{36} = \frac{4}{9} \approx 0.4444
+$$
+
+</Solucion>
+
+b) **(1 punto)** ¿Cuál es la probabilidad de que Juan gane en la segunda oportunidad?
+
+<Solucion>
+
+Para ganar en la segunda tiene que **no ganar en la primera** y, después, sacar una suma mayor que $9$ ($3 + 2 + 1 = 6$ casos). Los dos lanzamientos son independientes:
+
+$$
+P(\overline{G_1}) = 1 - \frac{4}{9} = \frac{5}{9}, \qquad P(\text{suma} > 9) = \frac{6}{36} = \frac{1}{6}
+$$
+
+$$
+P(\text{gana en la segunda}) = \frac{5}{9} \cdot \frac{1}{6} = \frac{5}{54} \approx 0.0926
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** ¿Cuál es la probabilidad de que Juan gane?
+
+<Solucion>
+
+Gana en la primera o en la segunda oportunidad, que son incompatibles:
+
+$$
+P(\text{gana}) = \frac{4}{9} + \frac{5}{54} = \frac{24 + 5}{54} = \frac{29}{54} \approx 0.5370
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Una encuesta realizada a los clientes de un banco muestra que el $60\%$ de sus clientes tiene un ordenador, el $50\%$ tiene una tablet y el $20\%$ posee un ordenador y una tablet. Se elige al azar un cliente de ese banco.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $O$ a tener ordenador y $T$ a tener tablet:
+
+$$
+P(O) = 0.6, \qquad P(T) = 0.5, \qquad P(O \cap T) = 0.2
+$$
+
+</Solucion>
+
+a) Calcule la probabilidad de que:
+
+i) **(0.5 puntos)** Tenga un ordenador o una tablet.
+
+<Solucion>
+
+$$
+P(O \cup T) = P(O) + P(T) - P(O \cap T) = 0.6 + 0.5 - 0.2 = 0.9
+$$
+
+</Solucion>
+
+ii) **(0.75 puntos)** No tenga tablet si no tiene ordenador.
+
+<Solucion>
+
+Por las leyes de De Morgan, $P(\overline{O} \cap \overline{T}) = 1 - P(O \cup T) = 0.1$, y $P(\overline{O}) = 1 - 0.6 = 0.4$:
+
+$$
+P(\overline{T}/\overline{O}) = \frac{P(\overline{T} \cap \overline{O})}{P(\overline{O})} = \frac{0.1}{0.4} = 0.25
+$$
+
+</Solucion>
+
+iii) **(0.75 puntos)** Tenga ordenador y no tenga tablet.
+
+<Solucion>
+
+$$
+P(O \cap \overline{T}) = P(O) - P(O \cap T) = 0.6 - 0.2 = 0.4
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Son los sucesos "Tener un ordenador" y "Tener una tablet" incompatibles? ¿Son sucesos independientes?
+
+<Solucion>
+
+**Incompatibilidad.** $P(O \cap T) = 0.2 \ne 0$: hay clientes con las dos cosas, así que **no son incompatibles**.
+
+**Independencia.** $P(O) \cdot P(T) = 0.6 \cdot 0.5 = 0.3 \ne 0.2 = P(O \cap T)$, así que **no son independientes**.
+
+</Solucion>

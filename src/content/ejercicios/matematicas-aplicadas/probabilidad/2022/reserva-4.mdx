@@ -1,0 +1,133 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Se ha llevado a cabo una encuesta en un centro educativo para saber qué actividades extraescolares se realizan por la tarde. El $80\%$ de los encuestados practican deporte o estudian idiomas, el $35\%$ realizan ambas actividades y el $60\%$ no estudian idiomas.
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $D$ a practicar deporte e $I$ a estudiar idiomas:
+
+$$
+P(D \cup I) = 0.8, \qquad P(D \cap I) = 0.35, \qquad P(\overline{I}) = 0.6 \;\Rightarrow\; P(I) = 0.4
+$$
+
+De la fórmula de la unión, $P(D \cup I) = P(D) + P(I) - P(D \cap I)$:
+
+$$
+0.8 = P(D) + 0.4 - 0.35 \;\Rightarrow\; P(D) = 0.75
+$$
+
+</Solucion>
+
+a) Elegido un estudiante de ese centro al azar, calcule la probabilidad de que:
+
+i) **(0.75 puntos)** Practique deporte y no estudie idiomas.
+
+<Solucion>
+
+$$
+P(D \cap \overline{I}) = P(D) - P(D \cap I) = 0.75 - 0.35 = 0.4
+$$
+
+</Solucion>
+
+ii) **(0.5 puntos)** Estudie idiomas y no practique deporte.
+
+<Solucion>
+
+$$
+P(I \cap \overline{D}) = P(I) - P(D \cap I) = 0.4 - 0.35 = 0.05
+$$
+
+</Solucion>
+
+iii) **(0.5 puntos)** Haga solamente una de las dos actividades.
+
+<Solucion>
+
+Son los dos casos anteriores, que son incompatibles:
+
+$$
+P(D \cap \overline{I}) + P(I \cap \overline{D}) = 0.4 + 0.05 = 0.45
+$$
+
+</Solucion>
+
+iv) **(0.25 puntos)** No haga ninguna de las dos actividades.
+
+<Solucion>
+
+Es el contrario de la unión:
+
+$$
+P(\overline{D} \cap \overline{I}) = 1 - P(D \cup I) = 1 - 0.8 = 0.2
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** ¿Son independientes los sucesos "Practicar deporte" y "Estudiar idiomas"?
+
+<Solucion>
+
+$$
+P(D) \cdot P(I) = 0.75 \cdot 0.4 = 0.3 \ne 0.35 = P(D \cap I)
+$$
+
+**No son independientes.**
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Del total de personas vacunadas en un país para prevenir una enfermedad, el $48\%$ recibió la vacuna $A$, el $35\%$ la vacuna $B$ y el resto la vacuna $C$.
+
+La efectividad de la vacuna $A$ se sitúa en el $70\%$, la de $B$ en el $95\%$ y la de $C$ en el $94\%$. Elegida al azar una persona vacunada,
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $A$, $B$ y $C$ a la vacuna recibida y $E$ a que sea efectiva:
+
+- $P(A) = 0.48$, con $P(E/A) = 0.7$ y $P(\overline{E}/A) = 0.3$.
+- $P(B) = 0.35$, con $P(E/B) = 0.95$ y $P(\overline{E}/B) = 0.05$.
+- $P(C) = 1 - 0.48 - 0.35 = 0.17$, con $P(E/C) = 0.94$ y $P(\overline{E}/C) = 0.06$.
+
+</Solucion>
+
+a) **(1.25 puntos)** ¿Cuál es la probabilidad de que haya sido vacunada con $A$ y no le sea efectiva?
+
+<Solucion>
+
+$$
+P(A \cap \overline{E}) = P(A) \cdot P(\overline{E}/A) = 0.48 \cdot 0.3 = 0.144
+$$
+
+</Solucion>
+
+b) **(0.75 puntos)** ¿Qué probabilidad hay de que la vacuna le sea efectiva?
+
+<Solucion>
+
+Por el teorema de la probabilidad total:
+
+$$
+P(E) = 0.48 \cdot 0.7 + 0.35 \cdot 0.95 + 0.17 \cdot 0.94 = 0.336 + 0.3325 + 0.1598 = 0.8283
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Sabiendo que la vacuna no le ha sido efectiva, ¿cuál es la probabilidad de que haya sido vacunada con $C$?
+
+<Solucion>
+
+Por el teorema de Bayes, con $P(\overline{E}) = 1 - 0.8283 = 0.1717$:
+
+$$
+P(C/\overline{E}) = \frac{P(C) \cdot P(\overline{E}/C)}{P(\overline{E})} = \frac{0.17 \cdot 0.06}{0.1717} = \frac{0.0102}{0.1717} \approx 0.0594
+$$
+
+</Solucion>

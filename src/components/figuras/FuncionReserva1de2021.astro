@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2021, ejercicio 3: f a trozos con a = −2 y b = 16, y el
+// recinto entre la parábola −2x² + 8 y el eje OX de x = −2 a x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f1 = (x: number) => -2 * x - 4
+const f2 = (x: number) => -2 * x ** 2 + 8
+const f3 = (x: number) => -8 * x + 16
+---
+
+<GraficaFuncion
+  xMin={-4.6}
+  xMax={3.6}
+  yMin={-9.5}
+  yMax={9.5}
+  marcasX={[-4, -3, -2, -1, 1, 2, 3]}
+  marcasY={[-8, -6, -4, -2, 2, 4, 6, 8]}
+  tramos={[
+    { f: f1, desde: -4, hasta: -2 },
+    { f: f2, desde: -2, hasta: 2 },
+    { f: f3, desde: 2, hasta: 3 },
+  ]}
+  recinto={{ arriba: f2, abajo: () => 0, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -4, y: 4, texto: "(−4, 4)", dx: 6, dy: -4 },
+    { x: -2, y: 0, texto: "(−2, 0)", dx: -6, dy: 26 },
+    { x: 0, y: 8, texto: "(0, 8)", dx: 8, dy: 0 },
+    { x: 2, y: 0 },
+    { x: 3, y: -8, texto: "(3, −8)", dx: -6, dy: 4 },
+  ]}
+  descripcion="Gráfica de f con a = −2 y b = 16: recta decreciente de (−4, 4) a (−2, 0), parábola −2x² + 8 con máximo en (0, 8) que vuelve al eje en x = 2, y recta decreciente hasta (3, −8); el recinto bajo la parábola, de −2 a 2, está sombreado"
+/>

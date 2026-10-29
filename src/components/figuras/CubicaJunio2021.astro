@@ -1,0 +1,24 @@
+---
+// Matemáticas aplicadas, junio de 2021, ejercicio 3: f(x) = x³ − 4x² + 4x = x(x − 2)², con el
+// recinto entre la gráfica y el eje OX de x = 0 a x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 3 - 4 * x ** 2 + 4 * x
+---
+
+<GraficaFuncion
+  xMin={-1}
+  xMax={3.4}
+  yMin={-3}
+  yMax={4}
+  marcasX={[1, 2, 3]}
+  marcasY={[-2, -1, 1, 2, 3]}
+  tramos={[{ f, desde: -1, hasta: 3.4 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: -40, dy: -6 },
+    { x: 2 / 3, y: 32 / 27, texto: "Máx (⅔, 32⁄27)", dx: 6, dy: -8 },
+    { x: 2, y: 0, texto: "Mín (2, 0)", dx: 4, dy: 15 },
+  ]}
+  descripcion="Gráfica de f(x) = x³ − 4x² + 4x: crece hasta el máximo en (⅔, 32⁄27), decrece hasta el mínimo en (2, 0), donde toca el eje, y vuelve a crecer; corta al eje OX en el origen y el recinto entre la gráfica y el eje, de 0 a 2, está sombreado"
+/>

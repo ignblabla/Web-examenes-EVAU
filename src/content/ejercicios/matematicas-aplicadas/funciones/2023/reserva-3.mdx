@@ -1,0 +1,124 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import RecintoReserva3de2023 from "../../../../../components/figuras/RecintoReserva3de2023.astro"
+import FuncionReserva3de2023Ej4 from "../../../../../components/figuras/FuncionReserva3de2023Ej4.astro"
+
+a) **(1.5 puntos)** Se considera la función
+
+$$
+f(x) = \begin{cases}
+ax^2 + bx + 6 & x \le 2.5\\
+-1.4x + 7 & x > 2.5
+\end{cases}
+$$
+
+con $a$ y $b$ números reales. Calcule el valor de los parámetros $a$ y $b$ para que la función sea continua y tenga un máximo en $x = 1$.
+
+<Solucion>
+
+Hay dos condiciones:
+
+- **Continuidad en $x = 2.5$.** Los dos tramos son polinomios; solo hay que unir los trozos: $f(2.5) = \lim_{x \to 2.5^+} f(x)$.
+
+$$
+6.25a + 2.5b + 6 = -1.4 \cdot 2.5 + 7 = 3.5 \;\Rightarrow\; 6.25a + 2.5b = -2.5
+$$
+
+- **Máximo en $x = 1$.** El punto está en el primer tramo, que es derivable, así que $f'(1) = 0$. Como $f'(x) = 2ax + b$: $2a + b = 0 \Rightarrow b = -2a$.
+
+Sustituyendo en la primera:
+
+$$
+6.25a - 5a = -2.5 \;\Rightarrow\; 1.25a = -2.5 \;\Rightarrow\; a = -2, \qquad b = 4
+$$
+
+Es un máximo: $f''(x) = 2a = -4 < 0$.
+
+**Respuesta.** **$a = -2$ y $b = 4$**.
+
+</Solucion>
+
+b) **(1 punto)** Represente gráficamente la función $g(x) = -2x^2 + 2x + 4$ y calcule el área de la región acotada, limitada por la gráfica de dicha función y el eje de abscisas.
+
+<Solucion>
+
+**Gráfica.** Es una parábola que abre hacia abajo ($-2 < 0$):
+
+- **Vértice:** $x = \frac{-2}{2 \cdot (-2)} = 0.5$, con $g(0.5) = -0.5 + 1 + 4 = 4.5$: el punto $(0.5, 4.5)$.
+- **Cortes con el eje $OX$:** $-2x^2 + 2x + 4 = 0 \iff x^2 - x - 2 = 0 \iff x = -1$ o $x = 2$.
+- **Corte con el eje $OY$:** $(0, 4)$.
+
+<RecintoReserva3de2023 />
+
+**Área.** Entre $-1$ y $2$ la parábola está por encima del eje:
+
+$$
+\int_{-1}^{2} (-2x^2 + 2x + 4)\,dx = \left[-\frac{2x^3}{3} + x^2 + 4x\right]_{-1}^{2} = \left(-\frac{16}{3} + 4 + 8\right) - \left(\frac{2}{3} + 1 - 4\right) = \frac{20}{3} + \frac{7}{3} = 9\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+\dfrac{x^2}{3} & 0 \le x \le 2\\[2mm]
+\dfrac{4}{x + 1} & x > 2
+\end{cases}
+$$
+
+a) **(1.25 puntos)** Estudie la continuidad y derivabilidad de la función $f$.
+
+<Solucion>
+
+**Continuidad.** El primer tramo es un polinomio. El segundo solo deja de ser continuo en $x = -1$, que no está en su intervalo. Queda estudiar $x = 2$:
+
+$$
+f(2) = \lim_{x \to 2^-} f(x) = \frac{4}{3}, \qquad \lim_{x \to 2^+} f(x) = \frac{4}{2 + 1} = \frac{4}{3}
+$$
+
+Coinciden, así que $f$ **es continua en $[0, +\infty)$**.
+
+**Derivabilidad.** Fuera de $x = 2$:
+
+$$
+f'(x) = \begin{cases}
+\dfrac{2x}{3} & 0 < x < 2\\[2mm]
+\dfrac{-4}{(x + 1)^2} & x > 2
+\end{cases}
+$$
+
+En $x = 2$, que es continua, comparamos las derivadas laterales:
+
+$$
+f'(2^-) = \frac{4}{3}, \qquad f'(2^+) = \frac{-4}{9}
+$$
+
+No coinciden: hay un pico en $x = 2$. $f$ **es derivable en $(0, 2) \cup (2, +\infty)$**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Determine los intervalos de crecimiento y decrecimiento, el máximo de la función y represente gráficamente la función $f$.
+
+<Solucion>
+
+**Monotonía.**
+
+- En $(0, 2)$, $f'(x) = \frac{2x}{3} > 0$: $f$ **crece**.
+- En $(2, +\infty)$, $f'(x) = \frac{-4}{(x + 1)^2} < 0$: $f$ **decrece**.
+
+**Máximo.** $f$ es continua y pasa de crecer a decrecer en $x = 2$, así que tiene el **máximo en $\left(2, \frac{4}{3}\right)$**. Es absoluto: a la izquierda los valores son menores porque crece, y a la derecha también, porque decrece.
+
+**Gráfica.** El primer tramo es un arco de parábola desde $(0, 0)$ hasta $\left(2, \frac{4}{3}\right)$. El segundo es una rama de hipérbola que decrece y se acerca a la asíntota horizontal $y = 0$, porque $\lim_{x \to +\infty} \frac{4}{x + 1} = 0$, sin llegar a tocarla:
+
+<FuncionReserva3de2023Ej4 />
+
+</Solucion>

@@ -1,0 +1,25 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2023, ejercicio 3 b): parábola g(x) = −2x² + 2x + 4 y
+// recinto con el eje OX entre x = −1 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const g = (x: number) => -2 * x ** 2 + 2 * x + 4
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={3}
+  yMin={-3}
+  yMax={5.5}
+  marcasX={[1]}
+  marcasY={[-2, 2]}
+  tramos={[{ f: g, desde: -2, hasta: 3 }]}
+  recinto={{ arriba: g, abajo: () => 0, desde: -1, hasta: 2 }}
+  puntos={[
+    { x: -1, y: 0, texto: "(−1, 0)", dx: -6, dy: -6 },
+    { x: 0, y: 4, texto: "(0, 4)", dx: -6, dy: -4 },
+    { x: 0.5, y: 4.5, texto: "(0.5, 4.5)", dx: 6, dy: -6 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Parábola g(x) = −2x² + 2x + 4 con vértice en (0.5, 4.5), que corta al eje OX en −1 y 2 y al eje OY en 4; el recinto entre la parábola y el eje está sombreado"
+/>

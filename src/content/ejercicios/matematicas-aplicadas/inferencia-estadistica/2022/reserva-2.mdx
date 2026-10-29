@@ -1,0 +1,93 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se desea estimar la proporción de personas mayores de $45$ años de una determinada ciudad que tienen presbicia (vista cansada). Para ello, se toma una muestra aleatoria de $540$ personas mayores de $45$ años, obteniéndose que $378$ tienen presbicia.
+
+a) **(1.5 puntos)** Obtenga un intervalo, con un nivel de confianza del $97\%$, para estimar la proporción poblacional de personas mayores de $45$ años con presbicia en dicha ciudad.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{378}{540} = 0.7$.
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+**Error:**
+
+$$
+E = 2.17\sqrt{\frac{0.7 \cdot 0.3}{540}} \approx 2.17 \cdot 0.01972 \approx 0.0428
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.7 - 0.0428,\ 0.7 + 0.0428) = (0.6572,\ 0.7428)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Suponiendo que se mantiene la misma proporción muestral y el mismo nivel de confianza del apartado anterior, ¿cuántas personas se deberán seleccionar como mínimo para que la proporción muestral difiera de la proporción poblacional a lo sumo en un $3\%$?
+
+<Solucion>
+
+Que difieran a lo sumo en un $3\%$ es que el error sea $E \le 0.03$:
+
+$$
+2.17\sqrt{\frac{0.7 \cdot 0.3}{n}} \le 0.03 \;\Rightarrow\; n \ge \frac{2.17^2 \cdot 0.21}{0.03^2} = \frac{0.988869}{0.0009} \approx 1098.74
+$$
+
+**Respuesta.** Hay que seleccionar como mínimo **1099 personas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El peso en gramos de las tortugas terrestres de una reserva natural sigue una ley Normal de varianza $121\ g^2$. Para estimar el peso medio de las tortugas de la reserva, se toma una muestra de $10$ tortugas, obteniéndose los siguientes datos:
+
+$$
+980 \quad 1002 \quad 950 \quad 985 \quad 1100 \quad 1085 \quad 895 \quad 1000 \quad 912 \quad 1006
+$$
+
+<Solucion titulo="Planteamiento común">
+
+La desviación típica es la raíz de la varianza: $\sigma = \sqrt{121} = 11$ g. La media de la muestra es:
+
+$$
+\bar{x} = \frac{980 + 1002 + 950 + 985 + 1100 + 1085 + 895 + 1000 + 912 + 1006}{10} = \frac{9915}{10} = 991.5\ \text{g}
+$$
+
+</Solucion>
+
+a) **(1.5 puntos)** Halle un intervalo de confianza para el peso medio de las tortugas con un nivel de confianza del $97\%$.
+
+<Solucion>
+
+Para el $97\%$, $z_{\alpha/2} = 2.17$ (fila $2.1$, columna $0.07$ de la tabla).
+
+$$
+E = 2.17 \cdot \frac{11}{\sqrt{10}} \approx 2.17 \cdot 3.4785 \approx 7.548
+$$
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (991.5 - 7.548,\ 991.5 + 7.548) = (983.952,\ 999.048)
+$$
+
+</Solucion>
+
+b) **(1 punto)** ¿Cuál debe ser el tamaño mínimo de la muestra para asegurar con un nivel de confianza del $94\%$ que el error máximo cometido sea de $5$ g?
+
+<Solucion>
+
+Para el $94\%$, $P(Z \le z_{\alpha/2}) = 0.97$, entre $0.9699$ ($1.88$) y $0.9706$ ($1.89$), más cerca del primero: $z_{\alpha/2} = 1.88$. Queremos $E \le 5$:
+
+$$
+1.88 \cdot \frac{11}{\sqrt{n}} \le 5 \;\Rightarrow\; \sqrt{n} \ge \frac{1.88 \cdot 11}{5} = 4.136 \;\Rightarrow\; n \ge 4.136^2 \approx 17.11
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **18 tortugas**.
+
+</Solucion>

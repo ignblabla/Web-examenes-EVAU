@@ -1,0 +1,27 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2021, ejercicio 4: costes f(x) = x² − 6x + 10 y su recta
+// tangente en x = 4, y = 2x − 6.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 2 - 6 * x + 10
+const t = (x: number) => 2 * x - 6
+---
+
+<GraficaFuncion
+  xMin={-0.4}
+  xMax={7.4}
+  yMin={-6.6}
+  yMax={11}
+  marcasX={[1, 2, 3, 4, 5, 6, 7]}
+  marcasY={[-6, -4, -2, 2, 4, 6, 8, 10]}
+  tramos={[
+    { f, desde: 0, hasta: 7.4 },
+    { f: t, desde: 0, hasta: 7.4, color: "#b04a3a", etiqueta: { texto: "y = 2x − 6", x: 6.4, y: 4.6, ancla: "start" } },
+  ]}
+  puntos={[
+    { x: 0, y: 10, texto: "(0, 10)", dx: 6, dy: 0 },
+    { x: 3, y: 1, texto: "Mín (3, 1)", dx: 0, dy: -10 },
+    { x: 4, y: 2, texto: "(4, 2)", dx: 8, dy: 10 },
+  ]}
+  descripcion="Parábola de costes f(x) = x² − 6x + 10 para x ≥ 0, que baja desde (0, 10) hasta el mínimo en (3, 1) y vuelve a subir, y su recta tangente en (4, 2), y = 2x − 6, que corta al eje OX en x = 3 y al eje OY en −6"
+/>

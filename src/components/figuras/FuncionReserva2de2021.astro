@@ -1,0 +1,33 @@
+---
+// Matemáticas aplicadas, reserva 2 de 2021, ejercicio 3: 1/x hasta x = −1, la parábola −3x² + 4 en
+// (−1, 1) y la recta 2x − 1 desde x = 1, con el recinto bajo la gráfica de x = 0 a x = 3.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f1 = (x: number) => 1 / x
+const f2 = (x: number) => -3 * x ** 2 + 4
+const f3 = (x: number) => 2 * x - 1
+const f = (x: number) => (x < 1 ? f2(x) : f3(x))
+---
+
+<GraficaFuncion
+  xMin={-5}
+  xMax={3.6}
+  yMin={-2}
+  yMax={6.2}
+  marcasX={[-4, -3, -2, -1, 1, 2, 3]}
+  marcasY={[-1, 1, 2, 3, 4, 5]}
+  tramos={[
+    { f: f1, desde: -5, hasta: -1 },
+    { f: f2, desde: -1, hasta: 1 },
+    { f: f3, desde: 1, hasta: 3.6 },
+  ]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 3 }}
+  puntos={[
+    { x: -1, y: -1, texto: "(−1, −1)", dx: -6, dy: 14 },
+    { x: -1, y: 1, texto: "(−1, 1)", dx: -6, dy: -6, abierto: true },
+    { x: 0, y: 4, texto: "(0, 4)", dx: 6, dy: -6 },
+    { x: 1, y: 1, texto: "(1, 1)", dx: 6, dy: 12 },
+    { x: 3, y: 5, texto: "(3, 5)", dx: -6, dy: -4 },
+  ]}
+  descripcion="Gráfica de f: la hipérbola 1/x para x ≤ −1, que se acerca al eje OX por la izquierda y llega a (−1, −1); la parábola −3x² + 4 entre x = −1 y x = 1, con vértice en (0, 4) y un punto hueco en (−1, 1); y la recta 2x − 1 desde (1, 1). El recinto bajo la gráfica entre x = 0 y x = 3 está sombreado"
+/>

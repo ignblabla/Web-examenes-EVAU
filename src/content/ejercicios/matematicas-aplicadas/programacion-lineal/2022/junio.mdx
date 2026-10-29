@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+import RegionPastelitos from "../../../../../components/figuras/RegionPastelitos.astro"
+
+**(2.5 puntos)** Una pastelería decide preparar dos tipos de cajas de pastelitos para regalar a los clientes en su inauguración. En total dispone de $120$ piononos y $150$ pestiños. En la caja del primer tipo habrá $3$ piononos y $2$ pestiños y en la del segundo tipo $4$ piononos y $6$ pestiños. Deben preparar al menos $9$ cajas del segundo tipo.
+
+Determine cuántas cajas de cada tipo deberá preparar para realizar el máximo número de regalos posible. En este caso, indique cuántos piononos y cuántos pestiños se utilizarán.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de cajas del primer tipo e $y$ a las del segundo. Cada caja es un regalo, así que hay que maximizar
+
+$$
+F(x, y) = x + y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+3x + 4y \le 120 & \text{(piononos)}\\
+2x + 6y \le 150 \iff x + 3y \le 75 & \text{(pestiños)}\\
+y \ge 9 & \text{(mínimo del segundo tipo)}\\
+x \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda a la derecha del eje $OY$, por encima de $y = 9$ y por debajo de las rectas de los piononos y los pestiños:
+
+<RegionPastelitos />
+
+**Vértices:**
+
+- $A(0, 9)$: la recta $y = 9$ con el eje $OY$.
+- $B$: $y = 9$ y $3x + 4y = 120$ $\Rightarrow$ $3x = 84$, $B(28, 9)$. Cumple $28 + 27 = 55 \le 75$.
+- $C$: $3x + 4y = 120$ y $x + 3y = 75$. De la segunda, $x = 75 - 3y$; sustituyendo, $225 - 9y + 4y = 120 \Rightarrow y = 21$, $x = 12$: $C(12, 21)$.
+- $D(0, 25)$: la recta de los pestiños con el eje $OY$. La de los piononos lo corta más arriba, en $(0, 30)$, así que ahí mandan los pestiños.
+
+**Resolución.**
+
+- $F(0, 9) = 9$
+- $F(28, 9) = 37$
+- $F(12, 21) = 33$
+- $F(0, 25) = 25$
+
+**Respuesta.** Debe preparar **28 cajas del primer tipo y 9 del segundo**, en total **37 regalos**. Se utilizan:
+
+- Piononos: $3 \cdot 28 + 4 \cdot 9 = 84 + 36 = 120$, **todos los disponibles**.
+- Pestiños: $2 \cdot 28 + 6 \cdot 9 = 56 + 54 = 110$, de modo que **sobran 40**.
+
+</Solucion>

@@ -1,0 +1,97 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+Una fábrica de tornillos quiere hacer un estudio sobre la proporción de tornillos que cumplen las especificaciones del fabricante. Para ello ha seleccionado una muestra aleatoria de $1500$ tornillos, resultando que $1425$ cumplen las especificaciones del fabricante.
+
+a) **(1.5 puntos)** Determine un intervalo de confianza para la proporción de tornillos que cumplen con las especificaciones del fabricante con un nivel de confianza del $97\%$.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{1425}{1500} = 0.95$.
+
+**Valor crítico.** Para el $97\%$, $P(Z \le z_{\alpha/2}) = 0.985$, en la fila $2.1$ y la columna $0.07$: $z_{\alpha/2} = 2.17$.
+
+**Error:**
+
+$$
+E = 2.17\sqrt{\frac{0.95 \cdot 0.05}{1500}} \approx 2.17 \cdot 0.005627 \approx 0.0122
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.95 - 0.0122,\ 0.95 + 0.0122) = (0.9378,\ 0.9622)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Manteniendo la proporción muestral y el nivel de confianza del apartado anterior, ¿cuál tendría que ser el tamaño mínimo de una nueva muestra para que el error de estimación sea inferior al $1\%$?
+
+<Solucion>
+
+Queremos $E < 0.01$:
+
+$$
+2.17\sqrt{\frac{0.95 \cdot 0.05}{n}} < 0.01 \;\Rightarrow\; n > \frac{2.17^2 \cdot 0.0475}{0.01^2} \approx 2236.73
+$$
+
+**Respuesta.** La nueva muestra debe tener como mínimo **2237 tornillos**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El número de días que los titulados en un cierto máster tardan en encontrar su primer trabajo sigue una distribución Normal de media $\mu$ desconocida y desviación típica $3$ días.
+
+a) **(1 punto)** Se elige una muestra aleatoria de $100$ titulados obteniéndose una media muestral de $8.1$ días. Calcule un intervalo de confianza al $97\%$ para estimar la media poblacional.
+
+<Solucion>
+
+Para el $97\%$, $z_{\alpha/2} = 2.17$ (fila $2.1$, columna $0.07$ de la tabla).
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 2.17 \cdot \frac{3}{\sqrt{100}} = 0.651
+$$
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (8.1 - 0.651,\ 8.1 + 0.651) = (7.449,\ 8.751)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Con un nivel de confianza del $92\%$, calcule el tamaño muestral mínimo necesario para que el error cometido, al estimar el número medio de días que estos titulados tardan en encontrar trabajo, sea inferior a un día.
+
+<Solucion>
+
+Para el $92\%$, $P(Z \le z_{\alpha/2}) = 0.96$, entre $0.9599$ ($1.75$) y $0.9608$ ($1.76$), más cerca del primero: $z_{\alpha/2} = 1.75$. Queremos $E < 1$:
+
+$$
+1.75 \cdot \frac{3}{\sqrt{n}} < 1 \;\Rightarrow\; \sqrt{n} > 5.25 \;\Rightarrow\; n > 27.5625
+$$
+
+**Respuesta.** Hacen falta como mínimo **28 titulados**.
+
+</Solucion>
+
+c) **(0.5 puntos)** Suponiendo $\mu = 7.61$ días y tomando muestras aleatorias de $36$ titulados, ¿qué distribución de probabilidad sigue la variable aleatoria media muestral? ¿Cuál es la probabilidad de que la media muestral sea superior a $8$ días?
+
+<Solucion>
+
+**Distribución.** Como la población es normal, la media muestral también lo es:
+
+$$
+\bar{X} \sim N\left(7.61,\ \frac{3}{\sqrt{36}}\right) = N(7.61,\ 0.5)
+$$
+
+**Probabilidad.** Tipificamos:
+
+$$
+P(\bar{X} > 8) = P\left(Z > \frac{8 - 7.61}{0.5}\right) = P(Z > 0.78) = 1 - 0.7823 = 0.2177
+$$
+
+</Solucion>

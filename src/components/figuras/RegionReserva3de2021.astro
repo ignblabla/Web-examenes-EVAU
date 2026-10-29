@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2021, ejercicio 1: misiones (x) y programas (y) de la Agencia
+// Espacial Europea; cuadrilátero de vértices A(4, 12), B(5, 10), C(6, 12) y D(4, 16).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={9}
+  yMax={21}
+  marcasX={[1, 2, 3, 4, 5, 6, 7, 8]}
+  marcasY={[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]}
+  rectas={[
+    { desde: [1.5, 21], hasta: [9, 6], color: "#b04a3a", etiqueta: "2x + y = 24", en: [7.2, 11.2], ancla: "start" },
+    { desde: [0.5, 19], hasta: [9, 2], color: "#2f6fa3", etiqueta: "2x + y = 20", en: [6.8, 0.9], ancla: "start" },
+    { desde: [4, 0], hasta: [4, 21], color: "#5b3f8c", etiqueta: "x = 4", en: [3.8, 2], ancla: "end" },
+    { desde: [0, 0], hasta: [9, 18], color: "#7a5b16", etiqueta: "y = 2x", en: [8, 17.6], ancla: "end" },
+  ]}
+  region={[
+    [4, 12],
+    [5, 10],
+    [6, 12],
+    [4, 16],
+  ]}
+  vertices={[
+    { x: 4, y: 12, texto: "A", dx: -14, dy: 4 },
+    { x: 5, y: 10, texto: "B", dx: 4, dy: 14 },
+    { x: 6, y: 12, texto: "C", dx: 6, dy: 4 },
+    { x: 4, y: 16, texto: "D", dx: -14, dy: -2 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(4, 12), B(5, 10), C(6, 12) y D(4, 16), limitado por las rectas x = 4, y = 2x, 2x + y = 24 y 2x + y = 20; el lado AB, sobre 2x + y = 20, no pertenece a la región"
+/>

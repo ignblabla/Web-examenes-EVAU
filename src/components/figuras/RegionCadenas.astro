@@ -1,0 +1,28 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2023, ejercicio 2: región factible de las horas
+// extraordinarias de la cadena A (x) y de la cadena B (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={32}
+  yMax={40}
+  marcasX={[5, 10, 15, 20, 25, 30]}
+  marcasY={[5, 10, 15, 20, 25, 30, 35]}
+  rectas={[
+    { desde: [0, 0], hasta: [13, 39], color: "#2f6fa3", etiqueta: "y = 3x", en: [13.5, 37] },
+    { desde: [0, 36], hasta: [24, 0], color: "#7a5b16", etiqueta: "3x + 2y = 72", en: [1, 37.5] },
+    { desde: [0, 21.6], hasta: [32, 2.4], color: "#b04a3a", etiqueta: "3x + 5y = 108", en: [17, 12.3] },
+  ]}
+  region={[
+    [6, 18],
+    [16, 12],
+    [8, 24],
+  ]}
+  vertices={[
+    { x: 6, y: 18, texto: "P", dx: -14, dy: 4 },
+    { x: 16, y: 12, texto: "Q", dx: 2, dy: 16 },
+    { x: 8, y: 24, texto: "R", dx: -14, dy: -2 },
+  ]}
+  descripcion="Región factible: triángulo de vértices P(6, 18), Q(16, 12) y R(8, 24), limitado por las rectas y = 3x, 3x + 2y = 72 y 3x + 5y = 108"
+/>

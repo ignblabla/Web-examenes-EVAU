@@ -1,0 +1,121 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import FuncionReserva3de2022Ej3 from "../../../../../components/figuras/FuncionReserva3de2022Ej3.astro"
+import HiperbolaReserva3de2022 from "../../../../../components/figuras/HiperbolaReserva3de2022.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+a(x + 1)^2 & -3 \le x \le 1\\[1mm]
+\dfrac{bx^2}{2} + 2 & 1 < x \le 2
+\end{cases}
+$$
+
+con $a$ y $b$ números reales.
+
+a) **(1.25 puntos)** Determine los valores de $a$ y $b$ para que $f$ sea continua y derivable.
+
+<Solucion>
+
+Los dos tramos son polinomios, continuos y derivables en sus intervalos. Solo hay que imponer las condiciones en $x = 1$:
+
+- **Continuidad:** $f(1) = \lim_{x \to 1^+} f(x)$, es decir, $4a = \frac{b}{2} + 2$.
+- **Derivabilidad:** con $f'(x) = 2a(x + 1)$ a la izquierda y $f'(x) = bx$ a la derecha, $f'(1^-) = f'(1^+)$, es decir, $4a = b$.
+
+Sustituyendo $4a = b$ en la primera: $b = \frac{b}{2} + 2 \Rightarrow b = 4$, y entonces $a = 1$.
+
+**Respuesta.** **$a = 1$ y $b = 4$**.
+
+</Solucion>
+
+b) **(1.25 puntos)** Para $a = 1$ y $b = 2$, esboce la gráfica de la función $f$ y calcule el área del recinto limitado por la gráfica de $f$, el eje $OX$ y las rectas $x = -2$ y $x = 1$.
+
+<Solucion>
+
+**Gráfica.** Con estos valores, $f(x) = (x + 1)^2$ en $[-3, 1]$ y $f(x) = x^2 + 2$ en $(1, 2]$.
+
+- **Primer tramo:** parábola con el vértice en $(-1, 0)$, que va de $(-3, 4)$ a $(1, 4)$.
+- **Segundo tramo:** arco de parábola que empieza en $(1, 3)$, sin incluir ese punto, y llega a $(2, 6)$. Como $4 \ne 3$, con estos valores la función tiene un salto en $x = 1$.
+
+<FuncionReserva3de2022Ej3 />
+
+**Área.** Entre $-2$ y $1$ se usa solo el primer tramo, que no es negativo (es un cuadrado):
+
+$$
+\int_{-2}^{1} (x + 1)^2\,dx = \left[\frac{(x + 1)^3}{3}\right]_{-2}^{1} = \frac{8}{3} - \frac{-1}{3} = \frac{9}{3} = 3\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Se considera la función $f(x) = \dfrac{x - 3}{x + 2}$
+
+a) **(1 punto)** Determine el dominio de la función y estudie su monotonía y curvatura.
+
+<Solucion>
+
+**Dominio.** El denominador se anula en $x = -2$: $\text{Dom}(f) = \mathbb{R} - \{-2\}$.
+
+**Monotonía:**
+
+$$
+f'(x) = \frac{(x + 2) - (x - 3)}{(x + 2)^2} = \frac{5}{(x + 2)^2} > 0
+$$
+
+$f$ es **creciente en $(-\infty, -2)$ y en $(-2, +\infty)$**. No tiene extremos relativos.
+
+**Curvatura:**
+
+$$
+f''(x) = \frac{-10}{(x + 2)^3}
+$$
+
+- Si $x < -2$, $(x + 2)^3 < 0$ y $f''(x) > 0$: $f$ es **convexa** en $(-\infty, -2)$.
+- Si $x > -2$, $f''(x) < 0$: $f$ es **cóncava** en $(-2, +\infty)$.
+
+No hay puntos de inflexión: la curvatura cambia en $x = -2$, que no es del dominio.
+
+</Solucion>
+
+b) **(1 punto)** Calcule las ecuaciones de las asíntotas de $f$ si existen. Calcule los puntos de corte de la gráfica de $f$ con los ejes de coordenadas.
+
+<Solucion>
+
+**Asíntota vertical $x = -2$.** El numerador vale $-5$ y el denominador tiende a $0$:
+
+$$
+\lim_{x \to -2^-} \frac{x - 3}{x + 2} = +\infty, \qquad \lim_{x \to -2^+} \frac{x - 3}{x + 2} = -\infty
+$$
+
+**Asíntota horizontal $y = 1$:**
+
+$$
+\lim_{x \to \pm\infty} \frac{x - 3}{x + 2} = 1
+$$
+
+Al haber horizontal por los dos lados, **no hay asíntotas oblicuas**. Además, $f(x) - 1 = \frac{-5}{x + 2}$: la gráfica queda por encima de $y = 1$ si $x < -2$ y por debajo si $x > -2$.
+
+**Cortes con los ejes:**
+
+- Eje $OY$: $f(0) = -\frac{3}{2}$, el punto $\left(0, -\frac{3}{2}\right)$.
+- Eje $OX$: $x - 3 = 0 \Rightarrow x = 3$, el punto $(3, 0)$.
+
+</Solucion>
+
+c) **(0.5 puntos)** Represente la gráfica de la función $f$.
+
+<Solucion>
+
+Con los apartados anteriores: dos ramas crecientes, separadas por la asíntota $x = -2$, que se acercan a $y = 1$ (la izquierda por encima, convexa; la derecha por debajo, cóncava, pasando por $\left(0, -\frac{3}{2}\right)$ y $(3, 0)$).
+
+<HiperbolaReserva3de2022 />
+
+</Solucion>

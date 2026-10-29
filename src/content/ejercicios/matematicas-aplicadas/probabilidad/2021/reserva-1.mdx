@@ -1,0 +1,115 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Sean $A$ y $B$ dos sucesos de un mismo experimento aleatorio de los que se sabe que:
+
+$$
+P(A - B) = 0.3 \qquad P(A^c) = 0.35 \qquad P(B) = 0.55
+$$
+
+a) **(0.8 puntos)** Calcule la probabilidad de que suceda al menos uno de ellos.
+
+<Solucion>
+
+**Datos.** $P(A) = 1 - P(A^c) = 0.65$. Como $A - B = A \cap B^c$, $P(A) = P(A - B) + P(A \cap B)$:
+
+$$
+P(A \cap B) = 0.65 - 0.3 = 0.35
+$$
+
+**Al menos uno** es la unión:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0.65 + 0.55 - 0.35 = 0.85
+$$
+
+</Solucion>
+
+b) **(0.6 puntos)** Calcule la probabilidad de que ocurra $B$, sabiendo que no ha ocurrido $A$.
+
+<Solucion>
+
+$P(B \cap A^c) = P(B) - P(A \cap B) = 0.55 - 0.35 = 0.2$, así que
+
+$$
+P(B \mid A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{0.2}{0.35} = \frac{4}{7} \approx 0.5714
+$$
+
+</Solucion>
+
+c) **(0.6 puntos)** Calcule la probabilidad de que no ocurra ninguno de los dos sucesos.
+
+<Solucion>
+
+Por las leyes de De Morgan, $A^c \cap B^c = (A \cup B)^c$:
+
+$$
+P(A^c \cap B^c) = 1 - P(A \cup B) = 1 - 0.85 = 0.15
+$$
+
+</Solucion>
+
+d) **(0.5 puntos)** Razone si los sucesos $A$ y $B$ son independientes.
+
+<Solucion>
+
+Son independientes si y solo si $P(A \cap B) = P(A) \cdot P(B)$:
+
+$$
+P(A) \cdot P(B) = 0.65 \cdot 0.55 = 0.3575 \ne 0.35 = P(A \cap B)
+$$
+
+**Respuesta.** **No son independientes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+En una determinada muestra de suelo se han aislado dos tipos de bacterias, $A$ y $B$, de las cuales el $70\%$ son de $A$ y el $30\%$ de $B$. La probabilidad de que una bacteria de tipo $A$ reaccione a la prueba del nitrato es $0.15$ y para la bacteria $B$ es $0.8$. De las bacterias aisladas se selecciona una al azar.
+
+a) **(1 punto)** Calcule la probabilidad de que reaccione a la prueba del nitrato.
+
+<Solucion>
+
+**Sucesos.** $A$ y $B$: la bacteria es del tipo $A$ o del $B$; $N$: reacciona a la prueba del nitrato. Los datos son
+
+$$
+P(A) = 0.7, \qquad P(B) = 0.3, \qquad P(N \mid A) = 0.15, \qquad P(N \mid B) = 0.8
+$$
+
+**Probabilidad total:**
+
+$$
+P(N) = 0.7 \cdot 0.15 + 0.3 \cdot 0.8 = 0.105 + 0.24 = 0.345
+$$
+
+</Solucion>
+
+b) **(1 punto)** Si la bacteria ha reaccionado a la prueba del nitrato, calcule la probabilidad de que sea del tipo $B$.
+
+<Solucion>
+
+Por el teorema de Bayes:
+
+$$
+P(B \mid N) = \frac{P(B) \cdot P(N \mid B)}{P(N)} = \frac{0.24}{0.345} = \frac{16}{23} \approx 0.6957
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Calcule la probabilidad de que la bacteria sea del tipo $A$ y no reaccione a la prueba del nitrato.
+
+<Solucion>
+
+$P(\overline{N} \mid A) = 1 - 0.15 = 0.85$:
+
+$$
+P(A \cap \overline{N}) = P(A) \cdot P(\overline{N} \mid A) = 0.7 \cdot 0.85 = 0.595
+$$
+
+</Solucion>

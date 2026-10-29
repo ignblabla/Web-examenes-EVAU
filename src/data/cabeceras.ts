@@ -92,6 +92,63 @@ const matematicasAplicadas2024: Cabecera = {
   ],
 }
 
+// Curso 2022-2023 (PEvAU): cuatro bloques con dos ejercicios; se eligen cuatro de al menos tres bloques.
+const matematicasAplicadas2023: Cabecera = {
+  ...matematicasAplicadas2024,
+  curso: "CURSO 2022-2023",
+  asignatura: ["MATEMATICAS", "APLICADAS A LAS", "CIENCIAS SOCIALES II"],
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Elija cuatro de los ocho ejercicios propuestos de al menos tres bloques distintos. Se corregirán los cuatro primeros ejercicios que aparezcan en el examen y que cumplan el requisito anterior.",
+    ...matematicasAplicadas2024.instrucciones.slice(2),
+  ],
+}
+
+// Curso 2021-2022 (PEvAU): como 2022-2023, con la convocatoria en el curso y una instrucción más.
+const matematicasAplicadas2022Junio: Cabecera = {
+  ...matematicasAplicadas2024,
+  curso: "CONVOCATORIA ORDINARIA. CURSO 2021-2022",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Este examen consta de 4 Bloques (A, B, C y D)",
+    "c) Elija cuatro de los ocho ejercicios propuestos de al menos tres bloques distintos. Se corregirán los cuatro primeros ejercicios que aparezcan en el examen y que cumplan el requisito anterior.",
+    "d) En cada ejercicio, parte o apartado se indica la puntuación máxima asignada.",
+    "e) Todos los resultados deben estar suficientemente justificados.",
+    "f) Se permitirá el uso de calculadoras que no sean programables, gráficas ni con capacidad para almacenar o transmitir datos. Si obtiene resultados directamente con la calculadora, explique con detalle los pasos necesarios para su obtención sin el uso de la misma.",
+  ],
+}
+
+const matematicasAplicadas2022Julio: Cabecera = {
+  ...matematicasAplicadas2022Junio,
+  curso: "CONVOCATORIA EXTRAORDINARIA. CURSO 2021-2022",
+}
+
+// En las reservas de 2021-2022 el curso aparece sin la convocatoria.
+const matematicasAplicadas2022Reserva: Cabecera = {
+  ...matematicasAplicadas2022Junio,
+  curso: "CURSO 2021-2022",
+}
+
+// Curso 2020-2021: como 2022-2023, con otro título, la convocatoria en el curso y letra con serifa.
+const matematicasAplicadas2021Junio: Cabecera = {
+  ...matematicasAplicadas2023,
+  titulo: ["PRUEBA DE ACCESO Y ADMISIÓN A LA", "UNIVERSIDAD"],
+  curso: "CONVOCATORIA ORDINARIA, CURSO 2020-2021",
+  asignatura: ["MATEMÁTICAS", "APLICADAS A LAS", "CIENCIAS SOCIALES II"],
+  serifa: true,
+}
+
+const matematicasAplicadas2021Julio: Cabecera = {
+  ...matematicasAplicadas2021Junio,
+  curso: "CONVOCATORIA EXTRAORDINARIA, CURSO 2020-2021",
+}
+
+// En las reservas de 2020-2021 el curso aparece sin la convocatoria y con raya, como en el PDF.
+const matematicasAplicadas2021Reserva: Cabecera = {
+  ...matematicasAplicadas2021Junio,
+  curso: "CURSO 2020–2021",
+}
+
 const ingles2025: Cabecera = {
   ...ingles2026,
   titulo: ["PRUEBA DE ACCESO A LA UNIVERSIDAD", "Y PRUEBA DE ADMISIÓN"],
@@ -282,6 +339,24 @@ export const cabeceras: Record<string, Cabecera> = {
   "frances/2026/reserva-2": frances2026,
   "frances/2026/reserva-3": frances2026,
   "frances/2026/reserva-4": frances2026,
+  "matematicas-aplicadas/2021/junio": matematicasAplicadas2021Junio,
+  "matematicas-aplicadas/2021/julio": matematicasAplicadas2021Julio,
+  "matematicas-aplicadas/2021/reserva-1": matematicasAplicadas2021Reserva,
+  "matematicas-aplicadas/2021/reserva-2": matematicasAplicadas2021Reserva,
+  "matematicas-aplicadas/2021/reserva-3": matematicasAplicadas2021Reserva,
+  "matematicas-aplicadas/2021/reserva-4": matematicasAplicadas2021Reserva,
+  "matematicas-aplicadas/2022/junio": matematicasAplicadas2022Junio,
+  "matematicas-aplicadas/2022/julio": matematicasAplicadas2022Julio,
+  "matematicas-aplicadas/2022/reserva-1": matematicasAplicadas2022Reserva,
+  "matematicas-aplicadas/2022/reserva-2": matematicasAplicadas2022Reserva,
+  "matematicas-aplicadas/2022/reserva-3": matematicasAplicadas2022Reserva,
+  "matematicas-aplicadas/2022/reserva-4": matematicasAplicadas2022Reserva,
+  "matematicas-aplicadas/2023/junio": matematicasAplicadas2023,
+  "matematicas-aplicadas/2023/julio": matematicasAplicadas2023,
+  "matematicas-aplicadas/2023/reserva-1": matematicasAplicadas2023,
+  "matematicas-aplicadas/2023/reserva-2": matematicasAplicadas2023,
+  "matematicas-aplicadas/2023/reserva-3": matematicasAplicadas2023,
+  "matematicas-aplicadas/2023/reserva-4": matematicasAplicadas2023,
   "matematicas-aplicadas/2024/junio": matematicasAplicadas2024,
   "matematicas-aplicadas/2024/julio": matematicasAplicadas2024,
   "matematicas-aplicadas/2024/reserva-1": matematicasAplicadas2024,

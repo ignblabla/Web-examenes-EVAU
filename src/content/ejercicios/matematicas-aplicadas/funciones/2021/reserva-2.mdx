@@ -1,0 +1,124 @@
+---
+asignatura: matematicas-aplicadas
+tema: funciones
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import FuncionReserva2de2021 from "../../../../../components/figuras/FuncionReserva2de2021.astro"
+import CostesFabrica from "../../../../../components/figuras/CostesFabrica.astro"
+
+Se considera la función
+
+$$
+f(x) = \begin{cases}
+\dfrac{1}{x} & \text{si } x \le -1\\[2mm]
+-3x^2 + 4 & \text{si } -1 < x < 1\\[1mm]
+2x - 1 & \text{si } x \ge 1
+\end{cases}
+$$
+
+a) **(1 punto)** Estudie la continuidad y derivabilidad de la función $f$ en todo su dominio.
+
+<Solucion>
+
+**Dominio.** El denominador de $\frac{1}{x}$ solo se anula en $x = 0$, que no está en $x \le -1$; los otros tramos son polinomios. El dominio es $\mathbb{R}$ y cada tramo es continuo y derivable en su intervalo abierto.
+
+**Continuidad** en los puntos de unión:
+
+- En $x = -1$: $f(-1) = -1$ y $\displaystyle\lim_{x \to -1^+} (-3x^2 + 4) = 1$. Los límites laterales no coinciden: **discontinuidad de salto finito**.
+- En $x = 1$: $\displaystyle\lim_{x \to 1^-} (-3x^2 + 4) = 1$ y $f(1) = 2 - 1 = 1$. Es **continua**.
+
+**Derivabilidad.** Fuera de los puntos de unión,
+
+$$
+f'(x) = \begin{cases}
+-\dfrac{1}{x^2} & \text{si } x < -1\\[2mm]
+-6x & \text{si } -1 < x < 1\\[1mm]
+2 & \text{si } x > 1
+\end{cases}
+$$
+
+- En $x = -1$ **no es derivable**, porque no es continua.
+- En $x = 1$: $f'(1^-) = -6$ y $f'(1^+) = 2$. **No es derivable**.
+
+**Respuesta.** $f$ es continua en $\mathbb{R} \setminus \{-1\}$ y derivable en $\mathbb{R} \setminus \{-1, 1\}$.
+
+</Solucion>
+
+b) **(0.8 puntos)** Represente gráficamente la función $f$.
+
+<Solucion>
+
+- **Para $x \le -1$:** la hipérbola $y = \frac{1}{x}$, negativa y decreciente ($f' < 0$). Llega a $(-1, -1)$ y, cuando $x \to -\infty$, se acerca a $0$: $y = 0$ es asíntota horizontal por la izquierda. Por ejemplo, $f(-2) = -0.5$ y $f(-4) = -0.25$.
+- **Para $-1 < x < 1$:** la parábola $y = -3x^2 + 4$, abierta hacia abajo, con vértice en $(0, 4)$. En los extremos tiende a $1$; en $(-1, 1)$ el punto no pertenece a la gráfica.
+- **Para $x \ge 1$:** la recta $y = 2x - 1$, que sale de $(1, 1)$ y pasa por $(3, 5)$.
+
+<FuncionReserva2de2021 />
+
+</Solucion>
+
+c) **(0.7 puntos)** Calcule el área de la región limitada por la gráfica de la función $f$, el eje de abscisas y las rectas $x = 0$ y $x = 3$.
+
+<Solucion>
+
+**Planteamiento.** En $[0, 3]$, $f$ es positiva: en $[0, 1)$, $-3x^2 + 4 > 1$, y en $[1, 3]$, $2x - 1 \ge 1$. El área (sombreada en la gráfica) se parte en $x = 1$, donde cambia la expresión:
+
+$$
+\text{Área} = \int_0^1 (-3x^2 + 4)\,dx + \int_1^3 (2x - 1)\,dx
+$$
+
+**Cálculo**, con las primitivas $4x - x^3$ y $x^2 - x$:
+
+$$
+\int_0^1 (-3x^2 + 4)\,dx = \Big[4x - x^3\Big]_0^1 = 3, \qquad \int_1^3 (2x - 1)\,dx = \Big[x^2 - x\Big]_1^3 = 6 - 0 = 6
+$$
+
+$$
+\text{Área} = 3 + 6 = 9\ u^2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u></strong></Bloque>
+
+Una fábrica estima que sus costes de producción, expresados en miles de euros, vienen dados por la función $f(x) = x^2 - 6x + 10$, donde $x$ es la cantidad semanal a producir expresada en miles de kilogramos.
+
+a) **(1 punto)** ¿Cuál debe ser la producción semanal para que el coste sea mínimo? ¿Cuál es dicho coste?
+
+<Solucion>
+
+**Abscisa del mínimo.**
+
+$$
+f'(x) = 2x - 6 = 0 \iff x = 3
+$$
+
+Como $f''(x) = 2 > 0$, es un mínimo; además $f$ decrece para $x < 3$ y crece para $x > 3$, así que es el mínimo absoluto.
+
+**Valor:** $f(3) = 9 - 18 + 10 = 1$.
+
+**Respuesta.** La producción semanal debe ser de **3 miles de kilogramos (3000 kg)**, con un coste mínimo de **1 mil euros (1000 euros)**.
+
+</Solucion>
+
+b) **(1.5 puntos)** Calcule la recta tangente a la función de costes en el punto de abscisa $x = 4$. Represente gráficamente la función de costes y la recta tangente hallada.
+
+<Solucion>
+
+**Recta tangente.** Es $y - f(4) = f'(4)(x - 4)$, con
+
+$$
+f(4) = 16 - 24 + 10 = 2, \qquad f'(4) = 8 - 6 = 2
+$$
+
+$$
+y - 2 = 2(x - 4) \iff y = 2x - 6
+$$
+
+**Gráfica.** La función de costes es una parábola abierta hacia arriba con vértice en $(3, 1)$ y $f(0) = 10$; como $x$ es una cantidad producida, se dibuja para $x \ge 0$. La tangente pasa por $(4, 2)$ y corta a los ejes en $(3, 0)$ y $(0, -6)$:
+
+<CostesFabrica />
+
+</Solucion>

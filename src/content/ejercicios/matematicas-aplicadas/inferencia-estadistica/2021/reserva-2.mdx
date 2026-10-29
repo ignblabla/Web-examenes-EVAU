@@ -1,0 +1,101 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se quiere estudiar la proporción de ciudadanos enfermos de COVID-19 en una determinada población. Para ello, se elige una muestra al azar de $1000$ ciudadanos, revelándose que el $15\%$ de ellos están enfermos.
+
+a) **(1.5 puntos)** Calcule un intervalo de confianza al $95\%$, para estimar la proporción real de enfermos de COVID-19 en dicha población.
+
+<Solucion>
+
+**Proporción muestral:** $\hat{p} = 0.15$.
+
+**Valor crítico.** Para el $95\%$, $P(Z \le z_{\alpha/2}) = 0.975$, que está en la tabla para $z_{\alpha/2} = 1.96$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} = 1.96\sqrt{\frac{0.15 \cdot 0.85}{1000}} = 1.96\sqrt{0.0001275} \approx 1.96 \cdot 0.01129 \approx 0.0221
+$$
+
+**Intervalo:**
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.15 - 0.0221,\ 0.15 + 0.0221) = (0.1279,\ 0.1721)
+$$
+
+</Solucion>
+
+b) **(1 punto)** Determine el tamaño muestral mínimo para que, con el mismo nivel de confianza y la misma proporción muestral anteriores, el error que se cometa al estimar la proporción de ciudadanos enfermos de COVID-19 en esa población sea inferior al $1\%$.
+
+<Solucion>
+
+Un error del $1\%$ en una proporción es $0.01$. Queremos $E < 0.01$:
+
+$$
+1.96\sqrt{\frac{0.15 \cdot 0.85}{n}} < 0.01 \;\Rightarrow\; n > \frac{1.96^2 \cdot 0.1275}{0.01^2} = \frac{3.8416 \cdot 0.1275}{0.0001} = 4898.04
+$$
+
+**Respuesta.** Hace falta una muestra de como mínimo **4899 ciudadanos**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El peso de los paquetes de arroz de una marca comercial concreta sigue una ley Normal de media $1000\ g$ y varianza $256\ g^2$.
+
+a) **(0.75 puntos)** Calcule la probabilidad de que el peso medio de las muestras de tamaño $64$ sea menor que $996\ g$.
+
+<Solucion>
+
+**Distribución de la media.** La desviación típica es $\sigma = \sqrt{256} = 16\ g$. Las medias de las muestras de tamaño $64$ siguen
+
+$$
+\bar{X} \sim N\left(1000, \frac{16}{\sqrt{64}}\right) = N(1000, 2)
+$$
+
+**Probabilidad.** Tipificando:
+
+$$
+P(\bar{X} < 996) = P\left(Z < \frac{996 - 1000}{2}\right) = P(Z < -2) = 1 - P(Z \le 2) = 1 - 0.9772 = 0.0228
+$$
+
+</Solucion>
+
+b) **(1.5 puntos)** Tras varias denuncias presentadas por falta de peso en los citados paquetes, una organización de consumidores ha procedido a tomar una muestra de $64$ paquetes, resultando que la suma de los pesos ha sido de $63\,744\ g$. Halle un intervalo de confianza al $90\%$ para estimar el peso medio real de los paquetes de arroz de esa marca.
+
+<Solucion>
+
+**Media muestral:**
+
+$$
+\bar{x} = \frac{63\,744}{64} = 996\ g
+$$
+
+**Valor crítico.** Para el $90\%$, $P(Z \le z_{\alpha/2}) = 0.95$, justo a mitad de camino entre $0.9495$ ($1.64$) y $0.9505$ ($1.65$): $z_{\alpha/2} = 1.645$.
+
+**Error**, con $\sigma = 16$:
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 1.645 \cdot \frac{16}{8} = 3.29
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (996 - 3.29,\ 996 + 3.29) = (992.71,\ 999.29)
+$$
+
+</Solucion>
+
+c) **(0.25 puntos)** A la vista del intervalo obtenido y teniendo en cuenta que el peso que marca el paquete es de $1000\ g$, ¿cree que la denuncia tiene base?
+
+<Solucion>
+
+**Sí**: $1000\ g$ queda fuera del intervalo, que está entero por debajo de ese valor. Con una confianza del $90\%$, el peso medio real de los paquetes es menor que el que marca el envase.
+
+</Solucion>

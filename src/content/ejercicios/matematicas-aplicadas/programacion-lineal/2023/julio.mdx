@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-aplicadas
+tema: programacion-lineal
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+import RegionAnillos from "../../../../../components/figuras/RegionAnillos.astro"
+
+**(2.5 puntos)** Un artesano decide montar dos tipos de anillos utilizando dos tipos de piedras semipreciosas, una de mayor calidad que otra. Para montar uno de los anillos tarda $20$ minutos y utiliza $1$ de las piedras de mayor calidad y $2$ de las de menor calidad. Para el otro tarda $50$ minutos y utiliza $3$ piedras de mayor calidad y $1$ de menor calidad.
+
+Semanalmente, el artesano dispone de $200$ piedras de mayor calidad y $150$ de menor calidad. Además, quiere trabajar al menos $1900$ minutos a la semana.
+
+Sabiendo que el primer tipo de anillo se vende a $21$ €, el segundo a $50$ € y que deben fabricarse al menos $20$ anillos del primer tipo a la semana, determine cuántos anillos de cada tipo deben montarse para maximizar el valor de la venta. ¿A cuánto asciende dicho valor?
+
+<Solucion>
+
+**Planteamiento.** Llamamos $x$ al número de anillos del primer tipo e $y$ a los del segundo, a la semana. Hay que maximizar el valor de la venta, en euros,
+
+$$
+F(x, y) = 21x + 50y
+$$
+
+con las restricciones:
+
+$$
+\begin{cases}
+x + 3y \le 200 & \text{(piedras de mayor calidad)}\\
+2x + y \le 150 & \text{(piedras de menor calidad)}\\
+20x + 50y \ge 1900 \iff 2x + 5y \ge 190 & \text{(minutos de trabajo)}\\
+x \ge 20 & \text{(mínimo del primer tipo)}\\
+y \ge 0
+\end{cases}
+$$
+
+**Región factible.** Queda a la derecha de $x = 20$, por encima de $2x + 5y = 190$ y por debajo de las rectas de las piedras:
+
+<RegionAnillos />
+
+**Vértices:**
+
+- $A$: $x = 20$ y $2x + 5y = 190$ $\Rightarrow$ $5y = 150$, $A(20, 30)$.
+- $B$: $2x + 5y = 190$ y $2x + y = 150$. Restando, $4y = 40 \Rightarrow y = 10$, $x = 70$: $B(70, 10)$.
+- $C$: $x + 3y = 200$ y $2x + y = 150$. De la segunda, $y = 150 - 2x$; sustituyendo, $x + 450 - 6x = 200 \Rightarrow x = 50$, $y = 50$: $C(50, 50)$.
+- $D$: $x = 20$ y $x + 3y = 200$ $\Rightarrow$ $3y = 180$, $D(20, 60)$.
+
+La recta $2x + 5y = 190$ corta al eje $OX$ en $(95, 0)$, que no cumple $2x + y \le 150$; por eso la región no llega al eje $OX$.
+
+**Resolución.**
+
+- $F(20, 30) = 420 + 1500 = 1920$
+- $F(70, 10) = 1470 + 500 = 1970$
+- $F(50, 50) = 1050 + 2500 = 3550$
+- $F(20, 60) = 420 + 3000 = 3420$
+
+**Respuesta.** Deben montarse **50 anillos de cada tipo** a la semana, y el **valor máximo de la venta es de 3550 €**.
+
+</Solucion>

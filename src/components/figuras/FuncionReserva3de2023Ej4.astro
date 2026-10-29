@@ -1,0 +1,23 @@
+---
+// Matemáticas aplicadas, reserva 3 de 2023, ejercicio 4: f(x) = x² entre 3 en [0, 2] y
+// 4 entre (x + 1) para x > 2, con máximo en (2, 4⁄3) y asíntota horizontal y = 0.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.5}
+  xMax={12}
+  yMin={-0.3}
+  yMax={1.8}
+  marcasX={[2, 4, 6, 8, 10]}
+  marcasY={[0.5, 1, 1.5]}
+  tramos={[
+    { f: (x) => x ** 2 / 3, desde: 0, hasta: 2 },
+    { f: (x) => 4 / (x + 1), desde: 2, hasta: 12 },
+  ]}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: 6, dy: 14 },
+    { x: 2, y: 4 / 3, texto: "Máximo (2, 4⁄3)", dx: 6, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: arco de parábola creciente desde (0, 0) hasta el máximo (2, 4 tercios), donde forma un pico, y después una rama de hipérbola decreciente que se acerca al eje OX"
+/>

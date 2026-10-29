@@ -1,0 +1,32 @@
+---
+// Matemáticas aplicadas, reserva 1 de 2022, ejercicio 2: región factible de los lotes de tipo A
+// (x) y de tipo B (y).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={165}
+  yMax={145}
+  marcasX={[25, 50, 75, 100, 125, 150]}
+  marcasY={[25, 50, 75, 100, 125]}
+  rectas={[
+    { desde: [0, 100], hasta: [165, 100], color: "#2f6fa3", etiqueta: "y = 100", en: [128, 104] },
+    { desde: [0, 133.33], hasta: [165, 23.33], color: "#7a5b16", etiqueta: "2x + 3y = 400", en: [9, 137] },
+    { desde: [77.5, 145], hasta: [150, 0], color: "#b04a3a", etiqueta: "2x + y = 300", en: [100, 112] },
+  ]}
+  region={[
+    [0, 0],
+    [150, 0],
+    [125, 50],
+    [50, 100],
+    [0, 100],
+  ]}
+  vertices={[
+    { x: 0, y: 0, texto: "O", dx: -10, dy: 14 },
+    { x: 150, y: 0, texto: "A", dx: 6, dy: -6 },
+    { x: 125, y: 50, texto: "B", dx: 7, dy: 4 },
+    { x: 50, y: 100, texto: "C", dx: 2, dy: -8 },
+    { x: 0, y: 100, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: pentágono de vértices O(0, 0), A(150, 0), B(125, 50), C(50, 100) y D(0, 100), limitado por los ejes y las rectas 2x + y = 300, 2x + 3y = 400 e y = 100"
+/>

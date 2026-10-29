@@ -1,0 +1,88 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+a) **(1.25 puntos)** Se divide una población en cuatro estratos de tamaño $60000$, $20000$, $24000$ y $16000$ personas. En dicha población se realiza un muestreo estratificado por afijación proporcional, seleccionándose $144$ personas del tercer estrato. Determine el tamaño total de la muestra y su composición.
+
+<Solucion>
+
+La población tiene $60000 + 20000 + 24000 + 16000 = 120000$ personas. Con afijación proporcional se toma **la misma fracción de cada estrato**. Del tercero, con $24000$ personas, se toman $144$:
+
+$$
+\frac{144}{24000} = 0.006
+$$
+
+**Tamaño de la muestra:** $n = 120000 \cdot 0.006 = 720$ personas.
+
+| | $E_1$ | $E_2$ | $E_3$ | $E_4$ | Total |
+|---|---|---|---|---|---|
+| Población | 60000 | 20000 | 24000 | 16000 | 120000 |
+| Muestra ($\cdot\,0.006$) | 360 | 120 | 144 | 96 | 720 |
+
+</Solucion>
+
+b) **(1.25 puntos)** Dada la población $\{1, 4, 7\}$, establezca todas las muestras posibles de tamaño $2$ que se puedan formar mediante muestreo aleatorio simple y determinar la media y la desviación típica de las medias muestrales obtenidas con todas estas muestras.
+
+<Solucion>
+
+**Muestras.** En el muestreo aleatorio simple se extrae con reemplazamiento, así que hay $3^2 = 9$ muestras. Con su media:
+
+| Muestra | (1, 1) | (1, 4) | (1, 7) | (4, 1) | (4, 4) | (4, 7) | (7, 1) | (7, 4) | (7, 7) |
+|---|---|---|---|---|---|---|---|---|---|
+| $\bar{x}$ | 1 | 2.5 | 4 | 2.5 | 4 | 5.5 | 4 | 5.5 | 7 |
+
+**Media de las medias muestrales:**
+
+$$
+\mu_{\bar{X}} = \frac{1 + 2.5 + 4 + 2.5 + 4 + 5.5 + 4 + 5.5 + 7}{9} = \frac{36}{9} = 4
+$$
+
+**Desviación típica.** Las desviaciones respecto de $4$ al cuadrado son $9$, $2.25$, $0$, $2.25$, $0$, $2.25$, $0$, $2.25$ y $9$:
+
+$$
+\sigma^2_{\bar{X}} = \frac{27}{9} = 3, \qquad \sigma_{\bar{X}} = \sqrt{3} \approx 1.7321
+$$
+
+Coincide con la teoría: la población tiene $\mu = 4$ y $\sigma^2 = \frac{9 + 0 + 9}{3} = 6$, y $\sigma_{\bar{X}} = \sqrt{\frac{6}{2}} = \sqrt{3}$.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+Se desea estimar la proporción de estudiantes de una universidad que proceden de otras provincias, para ello se selecciona una muestra de tamaño $2100$ de los que $630$ lo cumplen.
+
+a) **(1.25 puntos)** Calcule un intervalo de confianza con un nivel del $97.5\%$ para estimar la proporción poblacional de estudiantes de esa universidad procedentes de otras provincias.
+
+<Solucion>
+
+La proporción muestral es $\hat{p} = \frac{630}{2100} = 0.3$.
+
+**Valor crítico.** Para el $97.5\%$, $P(Z \le z_{\alpha/2}) = 0.9875$, que está en la tabla en la fila $2.2$ y la columna $0.04$: $z_{\alpha/2} = 2.24$.
+
+$$
+E = 2.24\sqrt{\frac{0.3 \cdot 0.7}{2100}} = 2.24\sqrt{0.0001} = 2.24 \cdot 0.01 = 0.0224
+$$
+
+$$
+(\hat{p} - E,\ \hat{p} + E) = (0.3 - 0.0224,\ 0.3 + 0.0224) = (0.2776,\ 0.3224)
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** En una nueva muestra que mantiene la misma proporción muestral, y con el mismo nivel de confianza, queremos que el error máximo cometido sea de $0.01$. Halle su tamaño mínimo.
+
+<Solucion>
+
+Queremos $E \le 0.01$:
+
+$$
+2.24\sqrt{\frac{0.3 \cdot 0.7}{n}} \le 0.01 \;\Rightarrow\; n \ge \frac{2.24^2 \cdot 0.21}{0.01^2} = \frac{1.053696}{0.0001} = 10536.96
+$$
+
+**Respuesta.** La muestra debe tener como mínimo **10 537 estudiantes**.
+
+</Solucion>

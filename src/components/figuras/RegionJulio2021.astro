@@ -1,0 +1,31 @@
+---
+// Matemáticas aplicadas, julio de 2021, ejercicio 2: triángulo de vértices A(−7, −2), B(−7, 5) y
+// C(−3, 1), entre x = −7, 3x − 4y = −13 y x + y = −2; la recta 5x − 4y = −19 solo lo toca en C.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const r1 = (x: number) => (5 * x + 19) / 4
+const r2 = (x: number) => (3 * x + 13) / 4
+const r4 = (x: number) => -x - 2
+---
+
+<GraficaFuncion
+  xMin={-9}
+  xMax={4}
+  yMin={-5}
+  yMax={7.5}
+  marcasX={[-8, -7, -6, -5, -4, -3, -2, -1, 1, 2, 3]}
+  marcasY={[-4, -2, 2, 4, 6]}
+  tramos={[
+    { f: r1, desde: -9, hasta: 4, color: "#b04a3a", etiqueta: { texto: "5x − 4y = −19", x: -1.2, y: 4.6, ancla: "end" } },
+    { f: r2, desde: -9, hasta: 4, color: "#2f6fa3", etiqueta: { texto: "3x − 4y = −13", x: 0.3, y: 2.4, ancla: "start" } },
+    { f: r4, desde: -9, hasta: 4, color: "#7a5b16", etiqueta: { texto: "x + y = −2", x: 1.2, y: -2, ancla: "start" } },
+  ]}
+  asintotas={[{ tipo: "v", valor: -7, etiqueta: "x = −7", recta: true, color: "#5b3f8c" }]}
+  recinto={{ arriba: r4, abajo: r2, desde: -7, hasta: -3 }}
+  puntos={[
+    { x: -7, y: -2, texto: "A(−7, −2)", dx: 6, dy: 14 },
+    { x: -7, y: 5, texto: "B(−7, 5)", dx: 6, dy: -6 },
+    { x: -3, y: 1, texto: "C(−3, 1)", dx: 6, dy: 4 },
+  ]}
+  descripcion="Región factible: triángulo de vértices A(−7, −2), B(−7, 5) y C(−3, 1), limitado por las rectas x = −7, 3x − 4y = −13 y x + y = −2; la recta 5x − 4y = −19 pasa por C y deja todo el triángulo en su lado"
+/>

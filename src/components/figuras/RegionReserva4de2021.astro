@@ -1,0 +1,30 @@
+---
+// Matemáticas aplicadas, reserva 4 de 2021, ejercicio 1: unidades por hora del medicamento A (x)
+// y del B (y); cuadrilátero de vértices A(0, 4), B(3, 1), C(6, 4) y D(0, 10).
+import RegionFactible from "./RegionFactible.astro"
+---
+
+<RegionFactible
+  xMax={11}
+  yMax={11}
+  marcasX={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  marcasY={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  rectas={[
+    { desde: [0, 10], hasta: [10, 0], color: "#b04a3a", etiqueta: "x + y = 10", en: [7.4, 3.6], ancla: "start" },
+    { desde: [0, 4], hasta: [4, 0], color: "#2f6fa3", etiqueta: "x + y = 4", en: [0.4, 1.2], ancla: "start" },
+    { desde: [2, 0], hasta: [11, 9], color: "#7a5b16", etiqueta: "x − y = 2", en: [10.9, 5.4], ancla: "end" },
+  ]}
+  region={[
+    [0, 4],
+    [3, 1],
+    [6, 4],
+    [0, 10],
+  ]}
+  vertices={[
+    { x: 0, y: 4, texto: "A", dx: 6, dy: -6 },
+    { x: 3, y: 1, texto: "B", dx: -2, dy: 16 },
+    { x: 6, y: 4, texto: "C", dx: 6, dy: 4 },
+    { x: 0, y: 10, texto: "D", dx: 6, dy: -6 },
+  ]}
+  descripcion="Región factible: cuadrilátero de vértices A(0, 4), B(3, 1), C(6, 4) y D(0, 10), limitado por el eje OY y las rectas x + y = 4, x − y = 2 y x + y = 10"
+/>

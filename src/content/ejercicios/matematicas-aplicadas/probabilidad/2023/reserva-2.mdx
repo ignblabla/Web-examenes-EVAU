@@ -1,0 +1,113 @@
+---
+asignatura: matematicas-aplicadas
+tema: probabilidad
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+En una encuesta realizada en un instituto sobre los hábitos de los estudiantes en su tiempo libre, el $80\%$ de los encuestados dedica el tiempo libre a enviar mensajes con el móvil o a jugar a videojuegos, el $45\%$ realiza ambas cosas y el $40\%$ no juega a videojuegos. Si se elige un estudiante de ese instituto al azar, calcule la probabilidad de que dedique su tiempo libre a:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $M$ a enviar mensajes con el móvil y $V$ a jugar a videojuegos. Los datos son:
+
+$$
+P(M \cup V) = 0.8, \qquad P(M \cap V) = 0.45, \qquad P(\overline{V}) = 0.4 \;\Rightarrow\; P(V) = 0.6
+$$
+
+De la fórmula de la unión, $P(M \cup V) = P(M) + P(V) - P(M \cap V)$:
+
+$$
+0.8 = P(M) + 0.6 - 0.45 \;\Rightarrow\; P(M) = 0.65
+$$
+
+</Solucion>
+
+a) **(1 punto)** Enviar mensajes con el móvil y no jugar a videojuegos.
+
+<Solucion>
+
+$$
+P(M \cap \overline{V}) = P(M) - P(M \cap V) = 0.65 - 0.45 = 0.2
+$$
+
+</Solucion>
+
+b) **(0.5 puntos)** Jugar a videojuegos sabiendo que no envía mensajes con el móvil.
+
+<Solucion>
+
+$P(V \cap \overline{M}) = P(V) - P(M \cap V) = 0.6 - 0.45 = 0.15$ y $P(\overline{M}) = 1 - 0.65 = 0.35$:
+
+$$
+P(V / \overline{M}) = \frac{P(V \cap \overline{M})}{P(\overline{M})} = \frac{0.15}{0.35} = \frac{3}{7} \approx 0.4286
+$$
+
+</Solucion>
+
+c) **(0.5 puntos)** Hacer solamente una de las dos cosas.
+
+<Solucion>
+
+Es enviar mensajes y no jugar, o jugar y no enviar mensajes, que son incompatibles:
+
+$$
+P(M \cap \overline{V}) + P(V \cap \overline{M}) = 0.2 + 0.15 = 0.35
+$$
+
+También se obtiene como $P(M \cup V) - P(M \cap V) = 0.8 - 0.45$.
+
+</Solucion>
+
+d) **(0.5 puntos)** No hacer ninguna de las dos cosas.
+
+<Solucion>
+
+"Ninguna de las dos" es el contrario de "al menos una", es decir, de la unión:
+
+$$
+P(\overline{M} \cap \overline{V}) = 1 - P(M \cup V) = 1 - 0.8 = 0.2
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u></strong></Bloque>
+
+Un componente electrónico se produce en dos fábricas, $A$ y $B$. Se exporta el $40\%$ de los componentes producidos en $A$ y la cuarta parte de los producidos en $B$, mientras que el resto es para consumo nacional. Además, el $37\%$ de todos los componentes producidos es exportado. Si se elige un componente electrónico al azar, halle la probabilidad de que:
+
+<Solucion titulo="Planteamiento común">
+
+Llamamos $A$ y $B$ a la fábrica de origen y $E$ a que el componente se exporte:
+
+- $P(E/A) = 0.4$ y $P(\overline{E}/A) = 0.6$.
+- $P(E/B) = 0.25$ y $P(\overline{E}/B) = 0.75$.
+- $P(E) = 0.37$.
+
+</Solucion>
+
+a) **(1.5 puntos)** Se haya producido en la fábrica $A$.
+
+<Solucion>
+
+Llamamos $a = P(A)$, de modo que $P(B) = 1 - a$. Por el teorema de la probabilidad total:
+
+$$
+P(E) = a \cdot 0.4 + (1 - a) \cdot 0.25 = 0.37 \;\Rightarrow\; 0.15a + 0.25 = 0.37 \;\Rightarrow\; a = \frac{0.12}{0.15} = 0.8
+$$
+
+**Respuesta.** $P(A) = 0.8$.
+
+</Solucion>
+
+b) **(1 punto)** Se haya producido en la fábrica $A$ sabiendo que no es exportado.
+
+<Solucion>
+
+Por el teorema de Bayes, con $P(\overline{E}) = 1 - 0.37 = 0.63$:
+
+$$
+P(A/\overline{E}) = \frac{P(A) \cdot P(\overline{E}/A)}{P(\overline{E})} = \frac{0.8 \cdot 0.6}{0.63} = \frac{0.48}{0.63} = \frac{16}{21} \approx 0.7619
+$$
+
+</Solucion>

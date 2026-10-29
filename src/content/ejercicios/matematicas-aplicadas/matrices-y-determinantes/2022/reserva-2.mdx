@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-aplicadas
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se consideran las matrices
+
+$$
+A = \begin{pmatrix} 7 & -6 & -2\\ 3 & 1 & 4\\ -5 & 0 & -4 \end{pmatrix}, \quad B = \begin{pmatrix} 2 & 2 & 3\\ 5 & 3 & 4\\ -4 & 0 & 1 \end{pmatrix}, \quad C = \begin{pmatrix} 1 & 2 & -1\\ -2 & -3 & 0 \end{pmatrix}, \quad D = \begin{pmatrix} a^2 & 0 & -1\\ 1 & -1 & a \end{pmatrix}
+$$
+
+a) **(1.5 puntos)** Resuelva la siguiente ecuación matricial $A^t - X \cdot A = 3I_3$.
+
+<Solucion>
+
+**Despejar $X$.** Dejamos $X \cdot A$ solo y multiplicamos por $A^{-1}$ por la **derecha**, que es donde está $A$:
+
+$$
+X \cdot A = A^t - 3I_3 \;\Rightarrow\; X = (A^t - 3I_3)\,A^{-1}
+$$
+
+**Inversa de $A$.** Desarrollando por la primera fila:
+
+$$
+|A| = 7 \cdot (-4 - 0) - (-6) \cdot (-12 + 20) + (-2) \cdot (0 + 5) = -28 + 48 - 10 = 10 \ne 0
+$$
+
+$$
+\text{Adj}(A) = \begin{pmatrix} -4 & -8 & 5\\ -24 & -38 & 30\\ -22 & -34 & 25 \end{pmatrix}, \qquad
+A^{-1} = \frac{1}{10}\begin{pmatrix} -4 & -24 & -22\\ -8 & -38 & -34\\ 5 & 30 & 25 \end{pmatrix}
+$$
+
+**Cálculo.**
+
+$$
+A^t - 3I_3 = \begin{pmatrix} 7 & 3 & -5\\ -6 & 1 & 0\\ -2 & 4 & -4 \end{pmatrix} - \begin{pmatrix} 3 & 0 & 0\\ 0 & 3 & 0\\ 0 & 0 & 3 \end{pmatrix} = \begin{pmatrix} 4 & 3 & -5\\ -6 & -2 & 0\\ -2 & 4 & -7 \end{pmatrix}
+$$
+
+$$
+X = \frac{1}{10}\begin{pmatrix} 4 & 3 & -5\\ -6 & -2 & 0\\ -2 & 4 & -7 \end{pmatrix}\begin{pmatrix} -4 & -24 & -22\\ -8 & -38 & -34\\ 5 & 30 & 25 \end{pmatrix} = \frac{1}{10}\begin{pmatrix} -65 & -360 & -315\\ 40 & 220 & 200\\ -59 & -314 & -267 \end{pmatrix}
+$$
+
+Es decir:
+
+$$
+X = \begin{pmatrix} -6.5 & -36 & -31.5\\ 4 & 22 & 20\\ -5.9 & -31.4 & -26.7 \end{pmatrix}
+$$
+
+Comprobación: $X \cdot A = \begin{pmatrix} 4 & 3 & -5\\ -6 & -2 & 0\\ -2 & 4 & -7 \end{pmatrix} = A^t - 3I_3$.
+
+</Solucion>
+
+b) **(1 punto)** ¿Existe algún valor del parámetro $a$ para el que se verifique $C^t \cdot D = B$? En caso afirmativo, calcule dicho valor.
+
+<Solucion>
+
+$C^t$ es $3 \times 2$ y $D$ es $2 \times 3$, así que $C^t D$ es $3 \times 3$, como $B$:
+
+$$
+C^t D = \begin{pmatrix} 1 & -2\\ 2 & -3\\ -1 & 0 \end{pmatrix}\begin{pmatrix} a^2 & 0 & -1\\ 1 & -1 & a \end{pmatrix} = \begin{pmatrix} a^2 - 2 & 2 & -1 - 2a\\ 2a^2 - 3 & 3 & -2 - 3a\\ -a^2 & 0 & 1 \end{pmatrix}
+$$
+
+Igualando elemento a elemento con $B$:
+
+- $a^2 - 2 = 2$, $2a^2 - 3 = 5$ y $-a^2 = -4$: las tres dan $a^2 = 4$, es decir, $a = 2$ o $a = -2$.
+- $-1 - 2a = 3 \Rightarrow a = -2$.
+- $-2 - 3a = 4 \Rightarrow a = -2$.
+- Los demás elementos ($2$, $3$, $0$ y $1$) ya coinciden.
+
+**Respuesta.** **Sí, para $a = -2$**, que cumple todas las condiciones a la vez ($a = 2$ no cumple las dos últimas).
+
+</Solucion>

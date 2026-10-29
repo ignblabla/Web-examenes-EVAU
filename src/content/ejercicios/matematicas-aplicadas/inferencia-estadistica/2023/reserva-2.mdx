@@ -1,0 +1,89 @@
+---
+asignatura: matematicas-aplicadas
+tema: inferencia-estadistica
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se sabe que la vida útil en meses de una batería de coche sigue una distribución Normal de media desconocida y varianza $8\ meses^2$. Se seleccionan al azar $100$ clientes que habían comprado una de estas baterías y se les pregunta cuando las reemplazaron, obteniéndose una media de $4$ años y $2$ meses.
+
+<Solucion titulo="Planteamiento común">
+
+Trabajamos en meses: la media muestral es $\bar{x} = 4 \cdot 12 + 2 = 50$ meses. La desviación típica es la raíz de la varianza, $\sigma = \sqrt{8} \approx 2.8284$ meses, y $n = 100$.
+
+</Solucion>
+
+a) **(1.25 puntos)** Determine, con un nivel de confianza del $94\%$, un intervalo de confianza para estimar la vida media de estas baterías.
+
+<Solucion>
+
+**Valor crítico.** Para el $94\%$, $P(Z \le z_{\alpha/2}) = 0.97$, entre $0.9699$ ($1.88$) y $0.9706$ ($1.89$), más cerca del primero: $z_{\alpha/2} = 1.88$.
+
+**Error:**
+
+$$
+E = z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = 1.88 \cdot \frac{\sqrt{8}}{10} \approx 1.88 \cdot 0.28284 \approx 0.5317
+$$
+
+**Intervalo:**
+
+$$
+(\bar{x} - E,\ \bar{x} + E) = (50 - 0.5317,\ 50 + 0.5317) = (49.4683,\ 50.5317)
+$$
+
+La vida media de las baterías está entre **49.47 y 50.53 meses**, con una confianza del $94\%$.
+
+</Solucion>
+
+b) **(1.25 puntos)** Manteniendo el mismo nivel de confianza, determine el tamaño muestral mínimo que debe tomarse para que el error cometido al estimar la vida media de estas baterías sea menor que $0.1$ meses.
+
+<Solucion>
+
+Con $z_{\alpha/2} = 1.88$, queremos $E < 0.1$:
+
+$$
+1.88 \cdot \frac{\sqrt{8}}{\sqrt{n}} < 0.1 \;\Rightarrow\; n > \frac{1.88^2 \cdot 8}{0.1^2} = \frac{3.5344 \cdot 8}{0.01} = 2827.52
+$$
+
+**Respuesta.** Hay que preguntar como mínimo a **2828 clientes**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u></strong></Bloque>
+
+El tiempo de adaptación al uso de unas gafas progresivas depende de la persona, de la graduación de las lentes y del tipo de progresivo elegido. No obstante, se sabe que el tiempo de adaptación sigue una ley Normal de media $12.5$ días y desviación típica $2.5$ días.
+
+a) **(1.25 puntos)** Si se toma una muestra aleatoria de $16$ individuos que han comenzado a utilizar este tipo de gafas, ¿qué distribución sigue la media muestral del tiempo de adaptación? ¿Cuál es la probabilidad de que el tiempo medio de adaptación a las gafas progresivas para dicha muestra supere los $12$ días?
+
+<Solucion>
+
+**Distribución.** Como la población es normal, la media muestral también lo es, con media $\mu$ y desviación típica $\frac{\sigma}{\sqrt{n}}$:
+
+$$
+\bar{X} \sim N\left(12.5,\ \frac{2.5}{\sqrt{16}}\right) = N(12.5,\ 0.625)
+$$
+
+**Probabilidad.** Tipificamos:
+
+$$
+P(\bar{X} > 12) = P\left(Z > \frac{12 - 12.5}{0.625}\right) = P(Z > -0.8) = P(Z \le 0.8) = 0.7881
+$$
+
+</Solucion>
+
+b) **(1.25 puntos)** Si la muestra elegida es de tamaño $25$ ¿Cuál es la probabilidad de que el tiempo medio muestral de adaptación a las gafas progresivas diste de $12$ días a lo sumo $1$ día?
+
+<Solucion>
+
+Ahora $\bar{X} \sim N\left(12.5,\ \frac{2.5}{\sqrt{25}}\right) = N(12.5,\ 0.5)$. Distar de $12$ a lo sumo $1$ día es estar entre $11$ y $13$ días:
+
+$$
+P(11 \le \bar{X} \le 13) = P\left(\frac{11 - 12.5}{0.5} \le Z \le \frac{13 - 12.5}{0.5}\right) = P(-3 \le Z \le 1)
+$$
+
+$$
+= P(Z \le 1) - \big(1 - P(Z \le 3)\big) = 0.8413 - (1 - 0.9987) = 0.8413 - 0.0013 = 0.84
+$$
+
+</Solucion>
