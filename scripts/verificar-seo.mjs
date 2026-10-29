@@ -143,11 +143,12 @@ for (const { ruta, html } of paginas) {
 
   // Exámenes de idiomas: soluciones, idioma del enunciado, bloques y enlaces relacionados.
   if (/^\/(ingles|frances)\/\d{4}\/[a-z0-9-]+\/$/.test(ruta)) {
-    const n = (html.match(/class="solution"/g) ?? []).length
+    // La clase puede llevar modificadores, como "solution solution--plegable".
+    const n = (html.match(/class="solution(?: [^"]*)?"/g) ?? []).length
     soluciones += n
     if (n === 0) aviso("examen sin soluciones")
     if (!/class="official-statement[^"]*" lang="(en|fr)"/.test(html)) aviso("enunciado sin lang")
-    if (!html.includes('class="solution" lang="es"')) aviso("soluciones sin lang=\"es\"")
+    if (!/class="solution(?: [^"]*)?" lang="es"/.test(html)) aviso("soluciones sin lang=\"es\"")
     if (!html.includes('<h2 class="official-block')) aviso("bloques del examen sin H2")
     if (!html.includes('id="sigue-practicando"')) aviso("sin enlaces relacionados")
   }
