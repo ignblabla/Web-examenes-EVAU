@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import rehypeFormulasHtml from './src/plugins/rehype-formulas-html.mjs'
 import { asignaturas } from './src/data/asignaturas.ts'
 import { paginasLegales } from './src/data/legal.ts'
 import { fechaSitemap } from './src/data/fechas.ts'
@@ -21,7 +22,9 @@ export default defineConfig({
   trailingSlash: 'always',
   devToolbar: { enabled: false },
   integrations: [
-    mdx(),
+    // Los rehypePlugins de mdx() sustituyen a los de markdown, así que KaTeX se repite aquí; después,
+    // cada fórmula se guarda como una cadena de HTML (ver el plugin).
+    mdx({ rehypePlugins: [rehypeKatex, rehypeFormulasHtml] }),
     sitemap({
       filter: (page) => !ocultas.some((ruta) => new URL(page).pathname.startsWith(ruta)),
       serialize: (item) => {
