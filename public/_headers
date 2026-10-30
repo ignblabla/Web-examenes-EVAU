@@ -1,0 +1,7 @@
+# Cabeceras de Cloudflare Pages. Los archivos de /_astro/ llevan un hash en el nombre que
+# cambia con su contenido, y las fuentes no cambian: el navegador los guarda un año.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
