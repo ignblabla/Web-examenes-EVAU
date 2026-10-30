@@ -595,7 +595,7 @@
 
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -614,7 +614,8 @@
   transform: translateY(-6px);
 }
 
-.subject-card--physics {
+.subject-card--physics,
+.subject-card--math-two {
   background: var(--teal);
   color: white;
 }
@@ -709,6 +710,11 @@
 .english-symbol {
   width: 175px;
   color: var(--ink);
+}
+
+/* Sobre fondo verde: toma el blanco de la tarjeta o del panel. */
+.geometry-symbol {
+  width: 175px;
 }
 
 .english-symbol {
@@ -1584,7 +1590,8 @@ footer {
   color: var(--ink);
 }
 
-.topics--physics {
+.topics--physics,
+.topics--math-two {
   --tone-dark: #4f9887;
   --tone-light: #dcefe8;
 }

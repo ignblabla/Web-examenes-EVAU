@@ -41,6 +41,16 @@ const subjects = [
     className: "subject-card subject-card--math",
     href: "/matematicas-aplicadas/",
   },
+  {
+    key: "04",
+    symbol: "geometry",
+    title: "Matemáticas II",
+    description:
+      "Próximamente: los exámenes desde 2021 resueltos paso a paso, con el planteamiento, los cálculos y las gráficas.",
+    detail: "Álgebra · Geometría · Análisis · Probabilidad",
+    className: "subject-card subject-card--math-two",
+    href: "/matematicas-ii/",
+  },
 ] as const
 
 const jsonLd = {
@@ -157,7 +167,7 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
           <p class="section-kicker">Elige tu asignatura</p>
         </div>
         <h2>
-          Tres asignaturas.
+          Cuatro asignaturas.
           <br />
           <em>Un objetivo claro.</em>
         </h2>

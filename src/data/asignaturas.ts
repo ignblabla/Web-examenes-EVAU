@@ -4,8 +4,8 @@ export interface Asignatura {
   slug: string
   nombre: string
   titulo: string
-  simbolo: "atom" | "graph" | "english" | "french"
-  color: "physics" | "math" | "english" | "french"
+  simbolo: "atom" | "graph" | "geometry" | "english" | "french"
+  color: "physics" | "math" | "math-two" | "english" | "french"
   temas: Tema[]
   // Idioma del enunciado, si no es el español.
   idioma?: "en" | "fr"
@@ -115,6 +115,24 @@ export const asignaturas: Asignatura[] = [
       "Probabilidad",
       "Distribución binomial",
       "Inferencia estadística",
+    ]),
+  },
+  {
+    slug: "matematicas-ii",
+    nombre: "Matemáticas II",
+    titulo: "Matemáticas II.",
+    simbolo: "geometry",
+    color: "math-two",
+    // Sin exámenes todavía: la página existe, pero no se indexa ni entra en el sitemap.
+    indexable: false,
+    temas: temas([
+      "Matrices y determinantes",
+      "Sistemas de ecuaciones lineales",
+      "Espacio afín y euclídeo",
+      "Funciones",
+      "Integrales",
+      "Probabilidad",
+      "Distribución binomial y normal",
     ]),
   },
 ]

@@ -11,7 +11,8 @@ const imagenes = [
   { archivo: "inicio", titulo: "Exámenes de Selectividad", color: "#c8ef59", marca: "✓", pie: "Inglés, Francés y Matemáticas · Junio, julio y reservas" },
   { archivo: "ingles", titulo: "Exámenes de Inglés", color: "#edc767", marca: "En", pie: "Reading · Use of English · Writing · 2021–2026" },
   { archivo: "frances", titulo: "Exámenes de Francés", color: "#e99887", marca: "Fr", pie: "Compréhension · Compétence linguistique · 2021–2026" },
-  { archivo: "matematicas-aplicadas", titulo: "Matemáticas CCSS", subtitulo: "resueltas paso a paso.", color: "#d8e5ed", marca: "Σ", pie: "Álgebra · Funciones · Probabilidad · Inferencia · 2024–2026" },
+  { archivo: "matematicas-aplicadas", titulo: "Matemáticas CCSS", subtitulo: "resueltas paso a paso.", color: "#d8e5ed", marca: "Σ", pie: "Álgebra · Funciones · Probabilidad · Inferencia · 2021–2026" },
+  { archivo: "matematicas-ii", titulo: "Matemáticas II", subtitulo: "resueltas paso a paso.", color: verde, marca: "∫", pie: "Álgebra · Geometría · Análisis · Probabilidad · 2021–2026" },
 ]
 
 const escapar = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")
