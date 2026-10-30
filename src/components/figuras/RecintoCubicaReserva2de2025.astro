@@ -1,0 +1,27 @@
+---
+// Matemáticas II, reserva 2 de 2025, ejercicio 3: recinto entre f(x) = x³ − x y g(x) = −x² + 1, que
+// se cortan en x = −1 (tangentes) y en x = 1. En [−1, 1] la parábola g queda por encima.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 3 - x
+const g = (x: number) => -(x ** 2) + 1
+---
+
+<GraficaFuncion
+  xMin={-1.8}
+  xMax={1.8}
+  yMin={-1.6}
+  yMax={1.6}
+  marcasX={[-1, 1]}
+  marcasY={[-1, 1]}
+  tramos={[
+    { f, desde: -1.6, hasta: 1.6, etiqueta: { texto: "f", x: 1.45, y: 1.2, ancla: "start" } },
+    { f: g, desde: -1.6, hasta: 1.6, color: "#b04a3a", etiqueta: { texto: "g", x: -1.55, y: -1.1, ancla: "end" } },
+  ]}
+  recinto={{ arriba: g, abajo: f, desde: -1, hasta: 1 }}
+  puntos={[
+    { x: -1, y: 0, texto: "(−1, 0)", dx: -8, dy: -8 },
+    { x: 1, y: 0, texto: "(1, 0)", dx: 8, dy: 14 },
+  ]}
+  descripcion="La cúbica f y la parábola g se tocan en (−1, 0) y se cortan en (1, 0). Entre ellas, de x = −1 a x = 1, queda sombreado el recinto, con la parábola por arriba y la cúbica por abajo"
+/>

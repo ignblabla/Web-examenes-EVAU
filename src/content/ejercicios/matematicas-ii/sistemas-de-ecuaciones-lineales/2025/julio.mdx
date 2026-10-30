@@ -1,0 +1,49 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+Se sabe que la suma de tres números naturales es $22$ y que la suma de cuatro veces el primero más el triple del segundo más el doble del tercero es $61$. ¿Puede ser $15$ uno de los tres números? En caso afirmativo, calcula los restantes. ¿Existen otras opciones?
+
+<Solucion>
+
+**Incógnitas y ecuaciones.** Llamamos $x$, $y$ y $z$ a los tres números, en ese orden.
+
+- Su suma es $22$: $x + y + z = 22$.
+- Cuatro veces el primero más el triple del segundo más el doble del tercero es $61$: $4x + 3y + 2z = 61$.
+
+$$
+\begin{cases}
+x + y + z = 22 \\
+4x + 3y + 2z = 61
+\end{cases}
+$$
+
+**Soluciones del sistema.** Son dos ecuaciones independientes (los coeficientes no son proporcionales) con tres incógnitas: el sistema es compatible indeterminado, con infinitas soluciones. Restando a la segunda ecuación el doble de la primera:
+
+$$
+(4x + 3y + 2z) - 2(x + y + z) = 61 - 44 \quad\Rightarrow\quad 2x + y = 17
+$$
+
+Tomando $x = t$ como parámetro, $y = 17 - 2t$ y, de la primera ecuación, $z = 22 - t - (17 - 2t) = 5 + t$:
+
+$$
+(x,\ y,\ z) = (t,\ 17 - 2t,\ 5 + t)
+$$
+
+**Que sean naturales.** $t$ tiene que ser natural, y $y = 17 - 2t \geq 0$ obliga a $t \leq 8$. Así que $t$ va de $0$ a $8$ (o de $1$ a $8$, si no se cuenta el $0$ como natural).
+
+**¿Puede ser 15 uno de los números?** Probamos cada posición:
+
+- $x = 15$: entonces $t = 15$ e $y = 17 - 30 = -13$, que no es natural. No sirve.
+- $y = 15$: entonces $17 - 2t = 15$, $t = 1$, y queda $(1,\ 15,\ 6)$. Sí sirve.
+- $z = 15$: entonces $5 + t = 15$, $t = 10$, e $y = 17 - 20 = -3$, que no es natural. No sirve.
+
+**Comprobación.** $1 + 15 + 6 = 22$ y $4 \cdot 1 + 3 \cdot 15 + 2 \cdot 6 = 4 + 45 + 12 = 61$.
+
+**Respuesta.** **Sí: el $15$ tiene que ser el segundo número, y entonces el primero es $1$ y el tercero, $6$.** No hay otras opciones con un $15$: en la primera o en la tercera posición saldría un número negativo. Sin el $15$ sí hay más tríos de naturales que cumplen las dos condiciones, los de la forma $(t,\ 17 - 2t,\ 5 + t)$ con $t \leq 8$, por ejemplo $(2,\ 13,\ 7)$.
+
+</Solucion>

@@ -1,0 +1,56 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sean las funciones $f \colon (-1, 0) \cup (0, 1) \to \mathbb{R}$ y $g \colon \mathbb{R} \to \mathbb{R}$, definidas por $f(x) = \ln\left(\dfrac{x^2}{e}\right)$ y $g(x) = x^3 + 2$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula $a \neq 0$ de forma que en el punto $(a, f(a))$ la recta normal a la gráfica de la función $f$ sea paralela a la recta tangente a la gráfica de $g$ en el punto $(a, g(a))$.
+
+</div>
+
+<Solucion>
+
+**Derivadas.** Por las propiedades de los logaritmos, $f(x) = \ln(x^2) - \ln e = \ln(x^2) - 1$, así que
+
+$$
+f'(x) = \frac{2x}{x^2} = \frac{2}{x}, \qquad g'(x) = 3x^2
+$$
+
+**Pendientes.** La recta tangente a $f$ en $x = a$ tiene pendiente $f'(a) = \dfrac{2}{a}$, y la normal, perpendicular a ella, $-\dfrac{1}{f'(a)} = -\dfrac{a}{2}$. La tangente a $g$ en $x = a$ tiene pendiente $g'(a) = 3a^2$.
+
+**Igualar las pendientes.** Dos rectas son paralelas si tienen la misma pendiente:
+
+$$
+-\frac{a}{2} = 3a^2 \quad\Rightarrow\quad 6a^2 + a = 0 \quad\Rightarrow\quad a\,(6a + 1) = 0
+$$
+
+Como $a \neq 0$, queda $a = -\dfrac{1}{6}$, que está en el dominio de $f$.
+
+**Comprobación.** La normal a $f$ en $-\frac{1}{6}$ tiene pendiente $-\frac{-1/6}{2} = \frac{1}{12}$, y la tangente a $g$, $3 \cdot \frac{1}{36} = \frac{1}{12}$.
+
+**Respuesta.** **$a = -\dfrac{1}{6}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Determina los intervalos de crecimiento y de decrecimiento de la función $f$.
+
+</div>
+
+<Solucion>
+
+Por el apartado a), $f'(x) = \dfrac{2}{x}$, cuyo signo es el de $x$:
+
+- En $(-1, 0)$, $f'(x) < 0$: $f$ es **decreciente**.
+- En $(0, 1)$, $f'(x) > 0$: $f$ es **creciente**.
+
+**Respuesta.** $f$ es decreciente en **$(-1, 0)$** y creciente en **$(0, 1)$**.
+
+</Solucion>

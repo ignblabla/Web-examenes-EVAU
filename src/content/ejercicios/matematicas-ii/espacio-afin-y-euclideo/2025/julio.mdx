@@ -1,0 +1,119 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 4 y 5 son los dos de geometría: van juntos y el rótulo del 5 va aquí. */}
+
+Considera la recta $r \equiv \begin{cases} x - y + z = 3 \\ x + 2y - z = 4 \end{cases}$ y el plano $\pi \equiv mx - y - 2z = 5$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Halla $m$ para que $r$ y $\pi$ sean paralelos.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La recta y el plano son paralelos si el vector director de la recta es perpendicular al vector normal del plano y, además, la recta no está contenida en el plano.
+
+**Vector director de $r$.** La recta es la intersección de dos planos, así que su dirección es perpendicular a los dos normales, $(1, -1, 1)$ y $(1, 2, -1)$:
+
+$$
+\vec{d} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 1 \\ 1 & 2 & -1 \end{vmatrix} = (1 - 2)\,\vec{i} - (-1 - 1)\,\vec{j} + (2 + 1)\,\vec{k} = (-1,\ 2,\ 3)
+$$
+
+**Condición de paralelismo.** Con $\vec{n} = (m, -1, -2)$:
+
+$$
+\vec{d} \cdot \vec{n} = -m - 2 - 6 = 0 \quad\Rightarrow\quad m = -8
+$$
+
+**¿Está contenida?** Un punto de $r$: con $y = 1$ y $z = 1$, las dos ecuaciones dan $x = 3$, así que $R(3, 1, 1)$ está en $r$. En el plano $-8x - y - 2z = 5$: $-24 - 1 - 2 = -27 \neq 5$. $R$ no está en $\pi$, así que la recta no está contenida en el plano.
+
+**Respuesta.** $r$ y $\pi$ son paralelos para **$m = -8$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Para $m = -8$, calcula la distancia de la recta $r$ al plano $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Como la recta es paralela al plano, todos sus puntos están a la misma distancia de él: basta con calcular la distancia de un punto cualquiera de $r$, por ejemplo $R(3, 1, 1)$, al plano $\pi \equiv -8x - y - 2z - 5 = 0$.
+
+$$
+d(r, \pi) = d(R, \pi) = \frac{|-8 \cdot 3 - 1 - 2 \cdot 1 - 5|}{\sqrt{(-8)^2 + (-1)^2 + (-2)^2}} = \frac{|-32|}{\sqrt{69}} = \frac{32}{\sqrt{69}}
+$$
+
+**Respuesta.** La distancia de $r$ a $\pi$ es **$\dfrac{32}{\sqrt{69}} = \dfrac{32\sqrt{69}}{69} \approx 3{,}85$ unidades**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 5.</u> (2,5 puntos)</strong></Bloque>
+
+Sean las rectas $r \equiv \dfrac{x + 1}{4} = \dfrac{y + 2}{3} = \dfrac{z - 2}{-1} \quad$ y $\quad s \equiv \begin{cases} x = 1 - \lambda \\ y = 2 + \lambda \\ z = -3 - 2\lambda \end{cases}$
+
+<div class="math-sub">
+
+a) **[1 punto]** Estudia la posición relativa de las rectas $r$ y $s$.
+
+</div>
+
+<Solucion>
+
+**Datos.** $r$ pasa por $A(-1, -2, 2)$ con vector director $\vec{u} = (4, 3, -1)$, y $s$ pasa por $B(1, 2, -3)$ con vector director $\vec{v} = (-1, 1, -2)$.
+
+**Planteamiento.** $\vec{u}$ y $\vec{v}$ no son proporcionales, así que las rectas no son paralelas ni coincidentes: se cortan o se cruzan. Se cortan si $\overrightarrow{AB}$, $\vec{u}$ y $\vec{v}$ están en un mismo plano, es decir, si su determinante es $0$.
+
+$$
+\overrightarrow{AB} = (2,\ 4,\ -5)
+$$
+
+$$
+\begin{vmatrix} 2 & 4 & -5 \\ 4 & 3 & -1 \\ -1 & 1 & -2 \end{vmatrix} = 2\,(-6 + 1) - 4\,(-8 - 1) + (-5)\,(4 + 3) = -10 + 36 - 35 = -9 \neq 0
+$$
+
+**Respuesta.** El determinante no es nulo, así que **las rectas se cruzan**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla la ecuación de un plano que contiene a $r$ y a una recta perpendicular a las rectas $r$ y $s$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Una recta perpendicular a $r$ y a $s$ tiene como vector director uno perpendicular a $\vec{u}$ y a $\vec{v}$, su producto vectorial. El plano que contiene a $r$ y a una recta así que corte a $r$ (por ejemplo, la perpendicular común) pasa por $A$ y tiene como vectores directores $\vec{u}$ y ese producto vectorial.
+
+**Dirección perpendicular a las dos rectas.**
+
+$$
+\vec{w} = \vec{u} \times \vec{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 4 & 3 & -1 \\ -1 & 1 & -2 \end{vmatrix} = (-6 + 1)\,\vec{i} - (-8 - 1)\,\vec{j} + (4 + 3)\,\vec{k} = (-5,\ 9,\ 7)
+$$
+
+**Vector normal del plano.** Es perpendicular a $\vec{u}$ y a $\vec{w}$:
+
+$$
+\vec{u} \times \vec{w} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 4 & 3 & -1 \\ -5 & 9 & 7 \end{vmatrix} = (21 + 9)\,\vec{i} - (28 - 5)\,\vec{j} + (36 + 15)\,\vec{k} = (30,\ -23,\ 51)
+$$
+
+**Ecuación.** Por $A(-1, -2, 2)$:
+
+$$
+30(x + 1) - 23(y + 2) + 51(z - 2) = 0 \quad\Rightarrow\quad 30x - 23y + 51z - 118 = 0
+$$
+
+**Comprobación.** $(30, -23, 51) \cdot (4, 3, -1) = 120 - 69 - 51 = 0$ y $(30, -23, 51) \cdot (-5, 9, 7) = -150 - 207 + 357 = 0$.
+
+**Respuesta.** El plano es **$30x - 23y + 51z - 118 = 0$**.
+
+</Solucion>

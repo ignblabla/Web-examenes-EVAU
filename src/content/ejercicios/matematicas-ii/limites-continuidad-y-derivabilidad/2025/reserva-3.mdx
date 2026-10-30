@@ -1,0 +1,60 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Sea la función $f \colon (-1, 1) \to \mathbb{R}$ definida por $f(x) = \dfrac{1 + |x|}{1 - |x|}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Estudia la derivabilidad de $f$.
+
+</div>
+
+<Solucion>
+
+**Sin valor absoluto.** Como $|x| = -x$ si $x < 0$ y $|x| = x$ si $x \geq 0$:
+
+$$
+f(x) = \begin{cases} \dfrac{1 - x}{1 + x} & \text{si } -1 < x < 0 \\[8pt] \dfrac{1 + x}{1 - x} & \text{si } \ 0 \leq x < 1 \end{cases}
+$$
+
+**Derivabilidad en $(-1, 0) \cup (0, 1)$.** En cada tramo, $f$ es un cociente de polinomios cuyo denominador no se anula en el intervalo, así que es derivable. Por la regla del cociente:
+
+$$
+f'(x) = \begin{cases} \dfrac{-(1 + x) - (1 - x)}{(1 + x)^2} = \dfrac{-2}{(1 + x)^2} & \text{si } -1 < x < 0 \\[10pt] \dfrac{(1 - x) + (1 + x)}{(1 - x)^2} = \dfrac{2}{(1 - x)^2} & \text{si } \ 0 < x < 1 \end{cases}
+$$
+
+**En $x = 0$.** $f$ es continua: los dos tramos valen $1$ en $x = 0$ y $f(0) = 1$. Las derivadas laterales son
+
+$$
+f'(0^-) = \frac{-2}{1} = -2, \qquad f'(0^+) = \frac{2}{1} = 2
+$$
+
+Son distintas, así que $f$ **no es derivable en $x = 0$**.
+
+**Respuesta.** $f$ es derivable en **$(-1, 0) \cup (0, 1)$** y no lo es en $x = 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Halla los intervalos de crecimiento y de decrecimiento de $f$.
+
+</div>
+
+<Solucion>
+
+Por el apartado a):
+
+- En $(-1, 0)$, $f'(x) = \dfrac{-2}{(1 + x)^2} < 0$: $f$ es **decreciente**.
+- En $(0, 1)$, $f'(x) = \dfrac{2}{(1 - x)^2} > 0$: $f$ es **creciente**.
+
+Así que en $x = 0$ hay un mínimo, $f(0) = 1$, aunque $f$ no sea derivable ahí. Encaja con que $f$ es par, $f(-x) = f(x)$: su gráfica es simétrica respecto del eje $OY$.
+
+**Respuesta.** $f$ es decreciente en **$(-1, 0)$** y creciente en **$(0, 1)$**.
+
+</Solucion>

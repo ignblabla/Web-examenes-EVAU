@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: distribucion-binomial-y-normal
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+La velocidad máxima a la que puede circular un vehículo sobre un determinado puente del río Guadalete es de 70 km/h.
+
+<div class="math-sub">
+
+a) **[1 punto]** En uno de los sentidos de circulación, la velocidad de los vehículos sigue una distribución normal de media 64 km/h y desviación típica 4 km/h. Si el radar de control salta a partir de 72 km/h, ¿cuál es el porcentaje de vehículos que se sancionan?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Llamamos $X$ a la velocidad, en km/h: $X \sim N(64;\ 4)$. Se sancionan los vehículos que van a más de $72$ km/h, así que nos piden $P(X > 72)$ (en una distribución continua da igual incluir o no el $72$).
+
+**Tipificación.** Con $Z = \dfrac{X - 64}{4} \sim N(0, 1)$:
+
+$$
+P(X > 72) = P\left(Z > \frac{72 - 64}{4}\right) = P(Z > 2) = 1 - P(Z \leq 2) = 1 - 0{,}9772 = 0{,}0228
+$$
+
+**Respuesta.** Se sanciona al **$2{,}28\,\%$** de los vehículos.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** En el sentido contrario, también sigue una distribución normal de la que sabemos que la velocidad media es de 63,6 km/h y que el 5,05 % de todos los vehículos viaja a más de 80 km/h. En este caso, ¿cuánto vale la desviación típica?
+
+</div>
+
+<Solucion>
+
+**Probabilidad en función de la desviación típica.** Ahora $Y \sim N(63{,}6;\ \sigma)$ y sabemos que $P(Y > 80) = 0{,}0505$. Tipificando:
+
+$$
+P(Y > 80) = P\left(Z > \frac{80 - 63{,}6}{\sigma}\right) = P\left(Z > \frac{16{,}4}{\sigma}\right) = 0{,}0505
+$$
+
+es decir,
+
+$$
+P\left(Z \leq \frac{16{,}4}{\sigma}\right) = 1 - 0{,}0505 = 0{,}9495
+$$
+
+**Lectura inversa de la tabla.** El valor $0{,}9495$ aparece exactamente en la tabla, para $z = 1{,}64$:
+
+$$
+\frac{16{,}4}{\sigma} = 1{,}64 \quad\Rightarrow\quad \sigma = \frac{16{,}4}{1{,}64} = 10
+$$
+
+**Respuesta.** La desviación típica es de **$10$ km/h**.
+
+</Solucion>

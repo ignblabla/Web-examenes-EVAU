@@ -1,0 +1,28 @@
+---
+// Matemáticas II, reserva 3 de 2025, ejercicio 6: f(x) = −eˣ y g(x) = −e⁻ˣ, simétricas respecto del
+// eje OY, que se cortan en (0, −1); sombreados los dos recintos entre x = −1 y x = 1.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => -Math.exp(x)
+const g = (x: number) => -Math.exp(-x)
+---
+
+<GraficaFuncion
+  xMin={-2}
+  xMax={2}
+  yMin={-3.4}
+  yMax={0.5}
+  marcasX={[-1, 1]}
+  marcasY={[-3, -2, -1]}
+  tramos={[
+    { f, desde: -2, hasta: 1.25, etiqueta: { texto: "f", x: 0.95, y: -2.55, ancla: "start" } },
+    { f: g, desde: -1.25, hasta: 2, color: "#b04a3a", etiqueta: { texto: "g", x: -0.95, y: -2.55, ancla: "end" } },
+  ]}
+  asintotas={[
+    { tipo: "v", valor: -1, etiqueta: "x = −1", recta: true, color: "#555" },
+    { tipo: "v", valor: 1, etiqueta: "x = 1", recta: true, color: "#555" },
+  ]}
+  recinto={{ arriba: (x) => Math.max(f(x), g(x)), abajo: (x) => Math.min(f(x), g(x)), desde: -1, hasta: 1 }}
+  puntos={[{ x: 0, y: -1, texto: "(0, −1)", dx: 10, dy: 4 }]}
+  descripcion="Las gráficas de f = −eˣ y g = −e⁻ˣ, simétricas respecto del eje vertical, se cortan en (0, −1). Entre las rectas x = −1 y x = 1 quedan sombreados dos recintos iguales, uno a cada lado del eje"
+/>

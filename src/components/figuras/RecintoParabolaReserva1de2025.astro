@@ -1,0 +1,26 @@
+---
+// Matemáticas II, reserva 1 de 2025, ejercicio 2 a): recinto entre la parábola f(x) = (x − 1)² y la
+// recta y = a. Se dibuja con un valor cualquiera de a > 0 (aquí 2): los cortes son x = 1 ± √a.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x - 1) ** 2
+const a = 2
+---
+
+<GraficaFuncion
+  xMin={-1.2}
+  xMax={3.2}
+  yMin={-0.3}
+  yMax={3.6}
+  marcasX={[-1, 1, 2, 3]}
+  marcasY={[1, 2, 3]}
+  tramos={[{ f, desde: -0.9, hasta: 2.9 }]}
+  asintotas={[{ tipo: "h", valor: a, etiqueta: "y = a", debajo: true, recta: true, color: "#b04a3a" }]}
+  recinto={{ arriba: () => a, abajo: f, desde: 1 - Math.sqrt(a), hasta: 1 + Math.sqrt(a) }}
+  puntos={[
+    { x: 1, y: 0, texto: "Vértice (1, 0)", dx: 0, dy: 16 },
+    { x: 1 - Math.sqrt(a), y: a, texto: "x = 1 − √a", dx: -8, dy: -8 },
+    { x: 1 + Math.sqrt(a), y: a, texto: "x = 1 + √a", dx: 8, dy: -8 },
+  ]}
+  descripcion="Parábola con vértice en (1, 0), abierta hacia arriba, cortada por la recta horizontal y = a. El recinto sombreado queda entre la recta, por arriba, y la parábola, por abajo, desde x = 1 − √a hasta x = 1 + √a"
+/>

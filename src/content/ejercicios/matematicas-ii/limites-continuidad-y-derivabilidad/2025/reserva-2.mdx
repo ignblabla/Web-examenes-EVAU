@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import TrozosReserva2de2025 from "../../../../../components/figuras/TrozosReserva2de2025.astro"
+
+Sea $f \colon [0, 2] \to \mathbb{R}$ la función definida por
+
+$$
+f(x) = \begin{cases} 1 - e^x & \text{si } \ 0 \leq x < 1 \\ 2x - 1 - e & \text{si } \ 1 \leq x \leq 2 \end{cases}
+$$
+
+<div class="math-sub">
+
+a) **[1 punto]** Estudia la derivabilidad de $f$.
+
+</div>
+
+<Solucion>
+
+**Derivabilidad en $[0, 1) \cup (1, 2]$.** En cada tramo, $f$ es una función derivable (una exponencial y un polinomio), con
+
+$$
+f'(x) = \begin{cases} -e^x & \text{si } \ 0 \leq x < 1 \\ 2 & \text{si } \ 1 < x \leq 2 \end{cases}
+$$
+
+(en los extremos $x = 0$ y $x = 2$, derivadas laterales, porque el dominio es $[0, 2]$).
+
+**En $x = 1$.** Primero la continuidad, porque si no es continua tampoco es derivable:
+
+$$
+\lim_{x \to 1^-} f(x) = 1 - e, \qquad \lim_{x \to 1^+} f(x) = f(1) = 2 - 1 - e = 1 - e
+$$
+
+Coinciden, así que $f$ es continua en $x = 1$. Las derivadas laterales:
+
+$$
+f'(1^-) = -e^1 = -e, \qquad f'(1^+) = 2
+$$
+
+Son distintas, así que $f$ **no es derivable en $x = 1$** (su gráfica tiene un pico).
+
+**Respuesta.** $f$ es derivable en **$[0, 1) \cup (1, 2]$**; en $x = 1$ es continua pero no derivable.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla los extremos absolutos de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Existencia.** $f$ es continua en el intervalo cerrado $[0, 2]$ (por el apartado a), así que, por el teorema de Weierstrass, alcanza un máximo y un mínimo absolutos.
+
+**Candidatos.** Los extremos absolutos están en los extremos del intervalo, en los puntos donde $f$ no es derivable o en los que $f' = 0$. Aquí $f'$ nunca se anula ($-e^x < 0$ y $2 \neq 0$), así que los candidatos son $x = 0$, $x = 1$ y $x = 2$:
+
+$$
+f(0) = 1 - 1 = 0, \qquad f(1) = 1 - e \approx -1{,}72, \qquad f(2) = 3 - e \approx 0{,}28
+$$
+
+Coincide con la monotonía: $f$ decrece en $(0, 1)$, porque $f'(x) = -e^x < 0$, y crece en $(1, 2)$, porque $f'(x) = 2 > 0$.
+
+<TrozosReserva2de2025 />
+
+**Respuesta.** El **mínimo absoluto** está en **$x = 1$**, donde vale **$1 - e$**, y el **máximo absoluto**, en **$x = 2$**, donde vale **$3 - e$**.
+
+</Solucion>

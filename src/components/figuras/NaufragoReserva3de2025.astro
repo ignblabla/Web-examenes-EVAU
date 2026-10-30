@@ -1,0 +1,26 @@
+---
+// Matemáticas II, reserva 3 de 2025, ejercicio 2: trayectoria del ferry y = √(x + 1), la isla en
+// (2, 0) y el camino más corto hasta el punto (3/2, √10/2).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const px = 1.5
+const py = Math.sqrt(2.5)
+---
+
+<GraficaFuncion
+  xMin={-1.4}
+  xMax={4.4}
+  yMin={-0.5}
+  yMax={2.6}
+  marcasX={[-1, 1, 2, 3, 4]}
+  marcasY={[1, 2]}
+  tramos={[
+    { f: (x) => Math.sqrt(x + 1), desde: -1, hasta: 4.4, etiqueta: { texto: "ferry", x: 3.6, y: 2.35, ancla: "middle" } },
+    { f: (x) => (py * (x - 2)) / (px - 2), desde: px, hasta: 2, color: "#b04a3a" },
+  ]}
+  puntos={[
+    { x: 2, y: 0, texto: "Isla (2, 0)", dx: 0, dy: 30 },
+    { x: px, y: py, texto: "Punto más cercano", dx: -8, dy: -8 },
+  ]}
+  descripcion="Gráfica de y = raíz de x + 1, que sale de (−1, 0) y crece cada vez más despacio. La isla está en (2, 0) y un segmento la une con el punto de la curva de abscisa 1,5, el más cercano"
+/>

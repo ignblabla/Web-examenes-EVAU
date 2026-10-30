@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera la función $f \colon (-1, 1) \to \mathbb{R}$ definida por $f(x) = \dfrac{1}{(1 - |x|)^2}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Estudia la continuidad y derivabilidad de la función $f$.
+
+</div>
+
+<Solucion>
+
+**Continuidad.** $|x|$ es continua, y en $(-1, 1)$ es $|x| < 1$, así que el denominador $(1 - |x|)^2$ no se anula. $f$ es un cociente de funciones continuas con denominador no nulo: **es continua en todo $(-1, 1)$**.
+
+**Sin valor absoluto.**
+
+$$
+f(x) = \begin{cases} \dfrac{1}{(1 + x)^2} = (1 + x)^{-2} & \text{si } -1 < x < 0 \\[8pt] \dfrac{1}{(1 - x)^2} = (1 - x)^{-2} & \text{si } \ 0 \leq x < 1 \end{cases}
+$$
+
+**Derivabilidad fuera de $x = 0$.** En cada tramo es derivable, con
+
+$$
+f'(x) = \begin{cases} -2\,(1 + x)^{-3} = \dfrac{-2}{(1 + x)^3} & \text{si } -1 < x < 0 \\[8pt] 2\,(1 - x)^{-3} = \dfrac{2}{(1 - x)^3} & \text{si } \ 0 < x < 1 \end{cases}
+$$
+
+**En $x = 0$.** Las derivadas laterales son $f'(0^-) = -2$ y $f'(0^+) = 2$. Son distintas, así que **$f$ no es derivable en $x = 0$**.
+
+**Respuesta.** $f$ es continua en $(-1, 1)$ y derivable en $(-1, 0) \cup (0, 1)$; en $x = 0$ no es derivable.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla, si existen, sus extremos absolutos (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Mínimo absoluto en $x = 0$.** Por el apartado a), $f'(x) < 0$ en $(-1, 0)$ y $f'(x) > 0$ en $(0, 1)$: $f$ decrece hasta $0$ y crece después. Así que en $x = 0$ hay un mínimo, y es absoluto, con valor $f(0) = \dfrac{1}{1^2} = 1$. Se ve también directamente: $1 - |x| \leq 1$, así que $(1 - |x|)^2 \leq 1$ y $f(x) \geq 1 = f(0)$ para todo $x$ del dominio.
+
+**No hay máximo absoluto.** Cuando $x$ se acerca a $1$ o a $-1$, el denominador tiende a $0$ por valores positivos:
+
+$$
+\lim_{x \to 1^-} f(x) = \lim_{x \to -1^+} f(x) = +\infty
+$$
+
+$f$ toma valores tan grandes como se quiera, así que no tiene máximo. (El teorema de Weierstrass no se aplica porque el intervalo $(-1, 1)$ es abierto.)
+
+**Respuesta.** $f$ tiene un **mínimo absoluto en $x = 0$, donde vale $1$**, y **no tiene máximo absoluto**.
+
+</Solucion>

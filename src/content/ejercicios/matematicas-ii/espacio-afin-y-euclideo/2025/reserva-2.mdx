@@ -1,0 +1,67 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera el plano $\pi \equiv x + y + z + 1 = 0$ y los puntos $A(1, 2, 0)$ y $B(3, 1, 0)$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula el punto simétrico del punto $A$ con respecto al plano $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $A'$ está en la recta que pasa por $A$ y es perpendicular a $\pi$, a la misma distancia del plano pero al otro lado. El punto $M$ donde esa recta corta a $\pi$ es el punto medio de $A$ y $A'$.
+
+**Recta perpendicular al plano por $A$.** Su vector director es el normal del plano, $(1, 1, 1)$:
+
+$$
+(x, y, z) = (1 + \mu,\ 2 + \mu,\ \mu)
+$$
+
+**Corte con el plano.**
+
+$$
+(1 + \mu) + (2 + \mu) + \mu + 1 = 0 \;\Rightarrow\; 3\mu + 4 = 0 \;\Rightarrow\; \mu = -\frac{4}{3} \;\Rightarrow\; M\left(-\frac{1}{3},\ \frac{2}{3},\ -\frac{4}{3}\right)
+$$
+
+**Simétrico.** $A' = 2M - A$:
+
+$$
+A' = \left(-\frac{2}{3} - 1,\ \frac{4}{3} - 2,\ -\frac{8}{3} - 0\right) = \left(-\frac{5}{3},\ -\frac{2}{3},\ -\frac{8}{3}\right)
+$$
+
+**Comprobación.** $A$ da $1 + 2 + 0 + 1 = 4$ en la ecuación del plano y $A'$, $-\frac{5}{3} - \frac{2}{3} - \frac{8}{3} + 1 = -4$: la misma distancia, a lados opuestos.
+
+**Respuesta.** El simétrico de $A$ respecto de $\pi$ es **$A'\left(-\dfrac{5}{3}, -\dfrac{2}{3}, -\dfrac{8}{3}\right)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Halla el plano que contiene a los puntos $A$ y $B$ y es perpendicular al plano $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El plano contiene a $A$ y a $B$, así que tiene la dirección $\overrightarrow{AB} = (2, -1, 0)$. Al ser perpendicular a $\pi$, también contiene la dirección del normal de $\pi$, $\vec{n} = (1, 1, 1)$. Su vector normal es el producto vectorial de las dos:
+
+$$
+\overrightarrow{AB} \times \vec{n} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & -1 & 0 \\ 1 & 1 & 1 \end{vmatrix} = (-1 - 0)\,\vec{i} - (2 - 0)\,\vec{j} + (2 + 1)\,\vec{k} = (-1,\ -2,\ 3)
+$$
+
+o el opuesto, $(1, 2, -3)$.
+
+**Ecuación.** El plano es $x + 2y - 3z + D = 0$ y pasa por $A(1, 2, 0)$: $1 + 4 - 0 + D = 0 \Rightarrow D = -5$.
+
+**Comprobación.** $B(3, 1, 0)$ da $3 + 2 - 0 - 5 = 0$, y $(1, 2, -3) \cdot (1, 1, 1) = 0$, así que es perpendicular a $\pi$.
+
+**Respuesta.** El plano es **$x + 2y - 3z - 5 = 0$**.
+
+</Solucion>

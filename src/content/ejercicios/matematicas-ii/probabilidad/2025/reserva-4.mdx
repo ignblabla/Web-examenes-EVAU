@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Una empresa fabrica bolígrafos en tres provincias: Almería, Barcelona y Cáceres. El porcentaje de producción total de bolígrafos que se fabrica en cada provincia es, respectivamente, del $20\,\%$, $50\,\%$ y $30\,\%$. Además, el porcentaje de bolígrafos defectuosos en cada una de ellas es del $7\,\%$, $6\,\%$ y $2\,\%$, respectivamente.
+
+<div class="math-sub">
+
+a) **[1 punto]** ¿Cuál es la probabilidad de que un bolígrafo, tomado al azar, sea defectuoso?
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos $A$, $B$ y $C$ a que el bolígrafo se haya fabricado en Almería, Barcelona o Cáceres, y $D$ a que sea defectuoso:
+
+$$
+P(A) = 0{,}2, \qquad P(B) = 0{,}5, \qquad P(C) = 0{,}3
+$$
+
+$$
+P(D \mid A) = 0{,}07, \qquad P(D \mid B) = 0{,}06, \qquad P(D \mid C) = 0{,}02
+$$
+
+**Teorema de la probabilidad total.** Cada bolígrafo se fabrica en una sola provincia, así que $A$, $B$ y $C$ forman un sistema completo de sucesos:
+
+$$
+P(D) = P(A)\,P(D \mid A) + P(B)\,P(D \mid B) + P(C)\,P(D \mid C) = 0{,}2 \cdot 0{,}07 + 0{,}5 \cdot 0{,}06 + 0{,}3 \cdot 0{,}02
+$$
+
+$$
+= 0{,}014 + 0{,}03 + 0{,}006 = 0{,}05
+$$
+
+**Respuesta.** La probabilidad de que un bolígrafo sea defectuoso es **$0{,}05$**, es decir, un $5\,\%$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Si se ha escogido un bolígrafo no defectuoso, ¿cuál es la probabilidad de que provenga de Almería?
+
+</div>
+
+<Solucion>
+
+**Teorema de Bayes.** Sabemos que el bolígrafo no es defectuoso, $\overline{D}$, y preguntamos por la provincia: nos piden $P(A \mid \overline{D})$. Por el suceso contrario, $P(\overline{D} \mid A) = 1 - 0{,}07 = 0{,}93$ y, por el apartado a), $P(\overline{D}) = 1 - 0{,}05 = 0{,}95$:
+
+$$
+P(A \mid \overline{D}) = \frac{P(A)\,P(\overline{D} \mid A)}{P(\overline{D})} = \frac{0{,}2 \cdot 0{,}93}{0{,}95} = \frac{0{,}186}{0{,}95} \approx 0{,}1958
+$$
+
+**Respuesta.** La probabilidad de que un bolígrafo no defectuoso venga de Almería es **$\approx 0{,}1958$**.
+
+</Solucion>

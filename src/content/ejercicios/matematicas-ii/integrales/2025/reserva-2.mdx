@@ -1,0 +1,87 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RecintoCubicaReserva2de2025 from "../../../../../components/figuras/RecintoCubicaReserva2de2025.astro"
+
+{/* Los ejercicios 2 y 3 son los dos de integrales: van juntos y el rótulo del 3 va aquí. */}
+
+Calcula $\displaystyle\int_{\sqrt{3}}^{2} \frac{4x}{x^4 - 6x^2 + 10}\,dx$. $\qquad$ (Sugerencia: efectúa el cambio de variable $t = x^2 - 3$).
+
+<Solucion>
+
+**Cambio de variable.** Con $t = x^2 - 3$, es $dt = 2x\,dx$, así que $4x\,dx = 2\,dt$. El denominador se escribe en función de $t$ completando el cuadrado:
+
+$$
+x^4 - 6x^2 + 10 = (x^2 - 3)^2 + 1 = t^2 + 1
+$$
+
+Y los límites cambian: para $x = \sqrt{3}$, $t = 0$; para $x = 2$, $t = 1$.
+
+**Primitiva.** La integral queda de tipo arcotangente:
+
+$$
+\int_{\sqrt{3}}^{2} \frac{4x}{x^4 - 6x^2 + 10}\,dx = \int_0^1 \frac{2}{t^2 + 1}\,dt = \Big[2\operatorname{arctg}(t)\Big]_0^1 = 2 \cdot \frac{\pi}{4} - 0 = \frac{\pi}{2}
+$$
+
+**Respuesta.** **$\dfrac{\pi}{2}$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3.</u> (2,5 puntos)</strong></Bloque>
+
+Sean las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = x^3 - x\;$ y $\;g(x) = -x^2 + 1$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla los puntos de corte (abscisas donde se obtienen y valores que se alcanzan) de las gráficas de $f$ y $g$. Realiza un esbozo del recinto acotado y limitado por dichas gráficas.
+
+</div>
+
+<Solucion>
+
+**Puntos de corte.** Igualamos las dos funciones:
+
+$$
+x^3 - x = -x^2 + 1 \quad\Rightarrow\quad x^3 + x^2 - x - 1 = 0
+$$
+
+Sacando factor común por grupos: $x^2(x + 1) - (x + 1) = (x + 1)(x^2 - 1) = (x + 1)^2(x - 1) = 0$. Las soluciones son $x = -1$ (doble: las gráficas son tangentes ahí) y $x = 1$. Los valores son $g(-1) = 0$ y $g(1) = 0$.
+
+Las gráficas se cortan en **$(-1, 0)$ y $(1, 0)$**.
+
+**Esbozo.** $g$ es una parábola abierta hacia abajo con vértice en $(0, 1)$, y $f$ es una cúbica que corta el eje en $-1$, $0$ y $1$. En $x = 0$, $g(0) = 1 > f(0) = 0$, así que entre los cortes la parábola queda por encima:
+
+<RecintoCubicaReserva2de2025 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula el área del recinto acotado y limitado por las gráficas de $f$ y $g$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** En $[-1, 1]$, $g(x) - f(x) = -(x + 1)^2(x - 1) \geq 0$, así que el área es
+
+$$
+A = \int_{-1}^{1} \big(g(x) - f(x)\big)\,dx = \int_{-1}^{1} \left(-x^3 - x^2 + x + 1\right) dx
+$$
+
+**Primitiva y regla de Barrow.**
+
+$$
+A = \left[-\frac{x^4}{4} - \frac{x^3}{3} + \frac{x^2}{2} + x\right]_{-1}^{1} = \left(-\frac{1}{4} - \frac{1}{3} + \frac{1}{2} + 1\right) - \left(-\frac{1}{4} + \frac{1}{3} + \frac{1}{2} - 1\right) = \frac{11}{12} + \frac{5}{12} = \frac{4}{3}
+$$
+
+**Comprobación.** Los términos impares, $-x^3$ y $x$, se anulan al integrar en un intervalo simétrico, y queda $\int_{-1}^{1}(1 - x^2)\,dx = 2 - \frac{2}{3} = \frac{4}{3}$.
+
+**Respuesta.** El área del recinto es **$\dfrac{4}{3}$ unidades cuadradas**.
+
+</Solucion>

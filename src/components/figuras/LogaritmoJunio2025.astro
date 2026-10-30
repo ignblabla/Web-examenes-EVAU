@@ -1,0 +1,20 @@
+---
+// Matemáticas II, junio de 2025, ejercicio 3 b): f(x) = ln(x) / x², creciente hasta el máximo en
+// x = √e y decreciente después, acercándose a la asíntota horizontal y = 0.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.3}
+  xMax={6.5}
+  yMin={-0.8}
+  yMax={0.35}
+  marcasX={[1, 2, 3, 4, 5, 6]}
+  marcasY={[-0.6, -0.4, -0.2, 0.2]}
+  tramos={[{ f: (x) => Math.log(x) / x ** 2, desde: 0.55, hasta: 6.5 }]}
+  puntos={[
+    { x: 1, y: 0, texto: "(1, 0)", dx: 22, dy: -6 },
+    { x: Math.sqrt(Math.E), y: 1 / (2 * Math.E), texto: "Máximo en x = √e", dx: 0, dy: -8 },
+  ]}
+  descripcion="Gráfica de f: viene desde menos infinito junto al eje vertical, corta el eje horizontal en x = 1, sube hasta el máximo en x = √e, de valor 1 entre 2e, y después baja acercándose al eje horizontal sin tocarlo"
+/>

@@ -1,0 +1,123 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 4 y 5 son los dos de geometría: van juntos y el rótulo del 5 va aquí. */}
+
+Sean los puntos $A(3, -1, 1)$, $B(1, 3, -3)$ y $C(-2, -2, 1)$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula el área del triángulo de vértices $A$, $B$ y $C$.
+
+</div>
+
+<Solucion>
+
+**Vectores que determinan el triángulo.**
+
+$$
+\overrightarrow{AB} = (-2,\ 4,\ -4), \qquad \overrightarrow{AC} = (-5,\ -1,\ 0)
+$$
+
+**Producto vectorial.**
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -2 & 4 & -4 \\ -5 & -1 & 0 \end{vmatrix} = (0 - 4)\,\vec{i} - (0 - 20)\,\vec{j} + (2 + 20)\,\vec{k} = (-4,\ 20,\ 22)
+$$
+
+$$
+\left|\overrightarrow{AB} \times \overrightarrow{AC}\right| = \sqrt{16 + 400 + 484} = \sqrt{900} = 30
+$$
+
+**Respuesta.** El área del triángulo es la mitad: **$15$ unidades cuadradas**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla los puntos $D$ pertenecientes al eje $OZ$ para que el tetraedro de vértices $A$, $B$, $C$ y $D$ tenga un volumen de 20 unidades cúbicas.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Un punto del eje $OZ$ es de la forma $D(0, 0, z)$, y $\overrightarrow{AD} = (-3,\ 1,\ z - 1)$. El volumen del tetraedro es la sexta parte del valor absoluto del producto mixto $\left[\overrightarrow{AB}, \overrightarrow{AC}, \overrightarrow{AD}\right] = \left(\overrightarrow{AB} \times \overrightarrow{AC}\right) \cdot \overrightarrow{AD}$, y el producto vectorial ya lo tenemos del apartado a):
+
+$$
+(-4,\ 20,\ 22) \cdot (-3,\ 1,\ z - 1) = 12 + 20 + 22z - 22 = 22z + 10
+$$
+
+**Condición.**
+
+$$
+V = \frac{|22z + 10|}{6} = 20 \quad\Rightarrow\quad |22z + 10| = 120
+$$
+
+Así que $22z + 10 = 120$, de donde $z = 5$, o $22z + 10 = -120$, de donde $z = -\dfrac{130}{22} = -\dfrac{65}{11}$.
+
+**Respuesta.** Hay dos puntos: **$D(0, 0, 5)$ y $D\left(0, 0, -\dfrac{65}{11}\right)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 5.</u> (2,5 puntos)</strong></Bloque>
+
+Considera el plano $\pi \equiv 2x + y + 2z + 5 = 0$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula el punto simétrico de $P(1, 0, 1)$ respecto de $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $P'$ está en la recta que pasa por $P$ y es perpendicular a $\pi$, a la misma distancia que $P$ pero al otro lado. El punto $M$ donde esa recta corta a $\pi$ es el punto medio de $P$ y $P'$.
+
+**Recta perpendicular al plano por $P$.** Su vector director es el normal del plano, $(2, 1, 2)$:
+
+$$
+t \equiv (x, y, z) = (1 + 2\mu,\ \mu,\ 1 + 2\mu)
+$$
+
+**Corte con el plano.**
+
+$$
+2(1 + 2\mu) + \mu + 2(1 + 2\mu) + 5 = 0 \;\Rightarrow\; 9\mu + 9 = 0 \;\Rightarrow\; \mu = -1 \;\Rightarrow\; M(-1,\ -1,\ -1)
+$$
+
+**Simétrico.** $P' = 2M - P = (-2 - 1,\ -2 - 0,\ -2 - 1) = (-3,\ -2,\ -3)$.
+
+**Comprobación.** $P$ da $2 + 0 + 2 + 5 = 9$ en la ecuación del plano y $P'$, $-6 - 2 - 6 + 5 = -9$: la misma distancia, $\frac{9}{3} = 3$, a lados opuestos.
+
+**Respuesta.** El simétrico de $P$ respecto de $\pi$ es **$P'(-3, -2, -3)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula los planos paralelos a $\pi$ y que disten $2$ unidades de $\pi$.
+
+</div>
+
+<Solucion>
+
+**Condición de paralelismo.** Un plano es paralelo a $\pi$ si tiene el mismo vector normal (o uno proporcional) y no coincide con él, así que es de la forma
+
+$$
+\pi' \equiv 2x + y + 2z + D = 0, \qquad D \neq 5
+$$
+
+**Distancia entre dos planos paralelos.** Con las ecuaciones escritas con los mismos coeficientes de $x$, $y$ y $z$, es la diferencia de los términos independientes dividida entre el módulo del normal, $\sqrt{4 + 1 + 4} = 3$:
+
+$$
+d(\pi, \pi') = \frac{|D - 5|}{3} = 2 \quad\Rightarrow\quad |D - 5| = 6 \quad\Rightarrow\quad D = 11 \ \text{ o } \ D = -1
+$$
+
+**Respuesta.** Hay dos planos, uno a cada lado de $\pi$: **$2x + y + 2z + 11 = 0$ y $2x + y + 2z - 1 = 0$**.
+
+</Solucion>

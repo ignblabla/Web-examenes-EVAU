@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 2 y 3 son los dos de integrales: van juntos y el rótulo del 3 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \dfrac{1}{x^2 + 2x + 2}$. Calcula una primitiva de $f$ cuya gráfica pase por el punto $\left(0, \dfrac{\pi}{4}\right)$.
+
+<Solucion>
+
+**Integral indefinida.** El denominador no tiene raíces reales (su discriminante es $4 - 8 < 0$), así que no se descompone en fracciones simples. Completamos el cuadrado:
+
+$$
+x^2 + 2x + 2 = (x + 1)^2 + 1
+$$
+
+Y la integral es inmediata, de tipo arcotangente, $\int \frac{du}{u^2 + 1} = \operatorname{arctg}(u)$ con $u = x + 1$:
+
+$$
+\int \frac{dx}{(x + 1)^2 + 1} = \operatorname{arctg}(x + 1) + C
+$$
+
+**Condición del punto.** La primitiva pasa por $\left(0, \frac{\pi}{4}\right)$:
+
+$$
+F(0) = \operatorname{arctg}(1) + C = \frac{\pi}{4} + C = \frac{\pi}{4} \quad\Rightarrow\quad C = 0
+$$
+
+**Comprobación.** $F'(x) = \dfrac{1}{1 + (x + 1)^2} = \dfrac{1}{x^2 + 2x + 2} = f(x)$.
+
+**Respuesta.** **$F(x) = \operatorname{arctg}(x + 1)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3.</u> (2,5 puntos)</strong></Bloque>
+
+Calcula el valor de $k$ para que $\displaystyle\int_1^3 e^{x-k}(x - 2)\,dx = 2$.
+
+<Solucion>
+
+**Planteamiento.** Como $e^{x-k} = e^{-k}\,e^x$ y $e^{-k}$ es una constante, podemos sacarla de la integral:
+
+$$
+\int_1^3 e^{x-k}(x - 2)\,dx = e^{-k}\int_1^3 (x - 2)\,e^x\,dx
+$$
+
+**Integral indefinida.** Por partes, con $u = x - 2$ y $dv = e^x\,dx$, es decir, $du = dx$ y $v = e^x$:
+
+$$
+\int (x - 2)\,e^x\,dx = (x - 2)\,e^x - \int e^x\,dx = (x - 2)\,e^x - e^x = (x - 3)\,e^x + C
+$$
+
+**Regla de Barrow.**
+
+$$
+\int_1^3 (x - 2)\,e^x\,dx = \Big[(x - 3)\,e^x\Big]_1^3 = 0 \cdot e^3 - (-2)\,e = 2e
+$$
+
+**Condición.**
+
+$$
+e^{-k} \cdot 2e = 2 \quad\Rightarrow\quad e^{1-k} = 1 \quad\Rightarrow\quad 1 - k = 0 \quad\Rightarrow\quad k = 1
+$$
+
+**Respuesta.** **$k = 1$**.
+
+</Solucion>

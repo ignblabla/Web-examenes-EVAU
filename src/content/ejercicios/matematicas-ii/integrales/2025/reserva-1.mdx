@@ -1,0 +1,109 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RecintoParabolaReserva1de2025 from "../../../../../components/figuras/RecintoParabolaReserva1de2025.astro"
+
+{/* Los ejercicios 2 y 3 son los dos de integrales: van juntos y el rótulo del 3 va aquí. */}
+
+Sea la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = (x - 1)^2$.
+
+<div class="math-sub">
+
+a) **[0,75 puntos]** Esboza el recinto acotado y limitado por la gráfica de $f$ y la recta $y = a$ con $a > 0$.
+
+</div>
+
+<Solucion>
+
+**Gráfica de $f$.** Es una parábola abierta hacia arriba con el vértice en $(1, 0)$: la de $y = x^2$ desplazada una unidad a la derecha.
+
+**Cortes con la recta $y = a$.** $(x - 1)^2 = a \Leftrightarrow x - 1 = \pm\sqrt{a} \Leftrightarrow x = 1 \pm \sqrt{a}$. Como $a > 0$, son dos puntos distintos, simétricos respecto de $x = 1$.
+
+**Recinto.** Entre esos dos puntos, la recta $y = a$ queda por encima de la parábola. El recinto acotado es la zona entre la recta, por arriba, y la parábola, por abajo, desde $x = 1 - \sqrt{a}$ hasta $x = 1 + \sqrt{a}$. En el dibujo, con un valor de $a$ cualquiera:
+
+<RecintoParabolaReserva1de2025 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,75 puntos]** Calcula $a > 0$ para que el área del recinto acotado y limitado por la gráfica de $f$ y la recta $y = a$ sea $\dfrac{4}{3}$ unidades cuadradas.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Por el apartado a), el área es la integral de "recta menos parábola" entre los cortes:
+
+$$
+A(a) = \int_{1 - \sqrt{a}}^{1 + \sqrt{a}} \Big(a - (x - 1)^2\Big)\,dx
+$$
+
+**Cálculo.** Una primitiva es $a\,x - \dfrac{(x - 1)^3}{3}$. Con la regla de Barrow, y como $(x - 1)$ vale $\sqrt{a}$ y $-\sqrt{a}$ en los extremos:
+
+$$
+A(a) = \left[a\,x - \frac{(x - 1)^3}{3}\right]_{1 - \sqrt{a}}^{1 + \sqrt{a}} = a \cdot 2\sqrt{a} - \frac{\left(\sqrt{a}\right)^3 - \left(-\sqrt{a}\right)^3}{3} = 2a\sqrt{a} - \frac{2a\sqrt{a}}{3} = \frac{4}{3}\,a\sqrt{a}
+$$
+
+**Ecuación.**
+
+$$
+\frac{4}{3}\,a\sqrt{a} = \frac{4}{3} \quad\Rightarrow\quad a\sqrt{a} = a^{3/2} = 1 \quad\Rightarrow\quad a = 1
+$$
+
+**Comprobación.** Con $a = 1$ los cortes son $x = 0$ y $x = 2$, y $\displaystyle\int_0^2 \big(1 - (x - 1)^2\big)\,dx = 2 - \left[\frac{(x - 1)^3}{3}\right]_0^2 = 2 - \frac{2}{3} = \frac{4}{3}$.
+
+**Respuesta.** **$a = 1$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función
+
+$$
+f(x) = \begin{cases} x\operatorname{sen}(2x) & \text{si } x \leq 0 \\ \cos(\pi x) - 1 & \text{si } x > 0 \end{cases}
+$$
+
+Calcula $\displaystyle\int_{-\frac{\pi}{4}}^{1} f(x)\,dx$.
+
+<Solucion>
+
+**Planteamiento.** La función cambia de expresión en $x = 0$, así que partimos la integral en dos:
+
+$$
+\int_{-\frac{\pi}{4}}^{1} f(x)\,dx = \int_{-\frac{\pi}{4}}^{0} x\operatorname{sen}(2x)\,dx + \int_0^1 \big(\cos(\pi x) - 1\big)\,dx
+$$
+
+**Primer tramo: integral indefinida.** Por partes, con $u = x$ y $dv = \operatorname{sen}(2x)\,dx$, es decir, $du = dx$ y $v = -\dfrac{\cos(2x)}{2}$:
+
+$$
+\int x\operatorname{sen}(2x)\,dx = -\frac{x\cos(2x)}{2} + \int \frac{\cos(2x)}{2}\,dx = -\frac{x\cos(2x)}{2} + \frac{\operatorname{sen}(2x)}{4} + C
+$$
+
+Con la regla de Barrow, y como $\cos\left(-\frac{\pi}{2}\right) = 0$ y $\operatorname{sen}\left(-\frac{\pi}{2}\right) = -1$:
+
+$$
+\int_{-\frac{\pi}{4}}^{0} x\operatorname{sen}(2x)\,dx = (0 + 0) - \left(0 + \frac{-1}{4}\right) = \frac{1}{4}
+$$
+
+**Segundo tramo.** Una primitiva de $\cos(\pi x) - 1$ es $\dfrac{\operatorname{sen}(\pi x)}{\pi} - x$:
+
+$$
+\int_0^1 \big(\cos(\pi x) - 1\big)\,dx = \left[\frac{\operatorname{sen}(\pi x)}{\pi} - x\right]_0^1 = (0 - 1) - (0 - 0) = -1
+$$
+
+**Suma.**
+
+$$
+\int_{-\frac{\pi}{4}}^{1} f(x)\,dx = \frac{1}{4} - 1 = -\frac{3}{4}
+$$
+
+**Respuesta.** $\displaystyle\int_{-\frac{\pi}{4}}^{1} f(x)\,dx =$ **$-\dfrac{3}{4}$**.
+
+</Solucion>

@@ -1,0 +1,63 @@
+---
+asignatura: matematicas-ii
+tema: distribucion-binomial-y-normal
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+El peso de las manzanas producidas en una granja sigue una distribución normal de media $200$ gramos y desviación típica desconocida.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Si el $33\,\%$ de las manzanas pesan más de $230$ gramos, calcula la desviación típica del peso de las manzanas.
+
+</div>
+
+<Solucion>
+
+**Planteamiento y tipificación.** Llamamos $X$ al peso, en gramos: $X \sim N(200;\ \sigma)$. Sabemos que $P(X > 230) = 0{,}33$. Tipificando:
+
+$$
+P(X > 230) = P\left(Z > \frac{230 - 200}{\sigma}\right) = P\left(Z > \frac{30}{\sigma}\right) = 0{,}33
+$$
+
+es decir,
+
+$$
+P\left(Z \leq \frac{30}{\sigma}\right) = 1 - 0{,}33 = 0{,}67
+$$
+
+**Lectura inversa de la tabla.** El valor $0{,}6700$ aparece exactamente en la tabla, para $z = 0{,}44$:
+
+$$
+\frac{30}{\sigma} = 0{,}44 \quad\Rightarrow\quad \sigma = \frac{30}{0{,}44} \approx 68{,}18
+$$
+
+**Respuesta.** La desviación típica es de unos **$68{,}18$ gramos**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si la desviación típica es de $50$ gramos, calcula el porcentaje de manzanas que pesan entre $160$ y $220$ gramos.
+
+</div>
+
+<Solucion>
+
+**Planteamiento y tipificación.** Ahora $X \sim N(200;\ 50)$ y nos piden $P(160 < X < 220)$:
+
+$$
+P(160 < X < 220) = P\left(\frac{160 - 200}{50} < Z < \frac{220 - 200}{50}\right) = P(-0{,}8 < Z < 0{,}4)
+$$
+
+**Tabla.** $P(Z \leq 0{,}4) = 0{,}6554$ y, por la simetría de la normal, $P(Z \leq -0{,}8) = 1 - P(Z \leq 0{,}8) = 1 - 0{,}7881 = 0{,}2119$:
+
+$$
+P(-0{,}8 < Z < 0{,}4) = 0{,}6554 - 0{,}2119 = 0{,}4435
+$$
+
+**Respuesta.** El **$44{,}35\,\%$** de las manzanas pesa entre $160$ y $220$ gramos.
+
+</Solucion>

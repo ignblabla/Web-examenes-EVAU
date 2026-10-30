@@ -1,0 +1,61 @@
+---
+asignatura: matematicas-ii
+tema: distribucion-binomial-y-normal
+anio: 2025
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Los rodamientos de las ruedas de un coche se configuran con unas bolas cuyos diámetros siguen una distribución normal de media 13 mm y desviación típica 0,1 mm. Para que el funcionamiento del rodamiento sea óptimo el diámetro debe estar entre 12,9 mm y 13,15 mm. No obstante, la máquina que los elabora es muy sensible a los cambios de temperatura y pierde eficacia cuando ésta sube considerablemente. El 15 de julio, tras una rotura del sistema de refrigeración, la máquina configura bolas cuyos diámetros siguen una distribución normal de media 12,9 mm y desviación típica 0,2 mm.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** En circunstancias ideales, ¿cuál es la probabilidad de que la máquina elabore piezas con rodamiento óptimo?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Llamamos $X$ al diámetro de una bola, en mm, en circunstancias ideales: $X \sim N(13;\ 0{,}1)$. Nos piden $P(12{,}9 < X < 13{,}15)$.
+
+**Tipificación.** Con $Z = \dfrac{X - 13}{0{,}1} \sim N(0, 1)$:
+
+$$
+P(12{,}9 < X < 13{,}15) = P\left(\frac{12{,}9 - 13}{0{,}1} < Z < \frac{13{,}15 - 13}{0{,}1}\right) = P(-1 < Z < 1{,}5)
+$$
+
+**Tabla.** $P(Z \leq 1{,}5) = 0{,}9332$ y, por simetría, $P(Z \leq -1) = 1 - P(Z \leq 1) = 1 - 0{,}8413 = 0{,}1587$:
+
+$$
+P(-1 < Z < 1{,}5) = 0{,}9332 - 0{,}1587 = 0{,}7745
+$$
+
+**Respuesta.** La probabilidad es **$0{,}7745$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** ¿Cuál es la probabilidad de que el 15 de julio la máquina elabore piezas con rodamiento óptimo?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El 15 de julio el diámetro es $Y \sim N(12{,}9;\ 0{,}2)$, y el intervalo óptimo sigue siendo el mismo: nos piden $P(12{,}9 < Y < 13{,}15)$.
+
+**Tipificación.** Con $Z = \dfrac{Y - 12{,}9}{0{,}2}$:
+
+$$
+P(12{,}9 < Y < 13{,}15) = P\left(\frac{12{,}9 - 12{,}9}{0{,}2} < Z < \frac{13{,}15 - 12{,}9}{0{,}2}\right) = P(0 < Z < 1{,}25)
+$$
+
+**Tabla.**
+
+$$
+P(0 < Z < 1{,}25) = P(Z \leq 1{,}25) - P(Z \leq 0) = 0{,}8944 - 0{,}5 = 0{,}3944
+$$
+
+**Respuesta.** La probabilidad baja a **$0{,}3944$**: con la avería salen bien más o menos la mitad de piezas que en circunstancias ideales.
+
+</Solucion>

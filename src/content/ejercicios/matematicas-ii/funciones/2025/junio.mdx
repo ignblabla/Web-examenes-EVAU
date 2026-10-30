@@ -1,0 +1,68 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+import LogaritmoJunio2025 from "../../../../../components/figuras/LogaritmoJunio2025.astro"
+
+Sea la función $f \colon (0, +\infty) \to \mathbb{R}$ definida por $f(x) = a + \dfrac{\ln(x)}{x^2}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula $a$ para que $y = 1$ sea una asíntota horizontal de la gráfica de $f$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** $y = 1$ es asíntota horizontal si $\displaystyle\lim_{x \to +\infty} f(x) = 1$ (por la izquierda no hay nada que estudiar, porque el dominio es $(0, +\infty)$).
+
+**Límite.** $\displaystyle\lim_{x \to +\infty} \frac{\ln(x)}{x^2}$ es una indeterminación $\dfrac{\infty}{\infty}$. Por la regla de L'Hôpital:
+
+$$
+\lim_{x \to +\infty} \frac{\ln(x)}{x^2} = \lim_{x \to +\infty} \frac{1/x}{2x} = \lim_{x \to +\infty} \frac{1}{2x^2} = 0
+$$
+
+Así que $\displaystyle\lim_{x \to +\infty} f(x) = a + 0 = a$, y la asíntota horizontal es $y = a$.
+
+**Respuesta.** $y = 1$ es asíntota horizontal para **$a = 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Para $a = 0$, calcula los intervalos de crecimiento y de decrecimiento de $f$. Estudia y halla los extremos relativos de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Derivada.** Con $a = 0$, $f(x) = \dfrac{\ln(x)}{x^2}$. Por la regla del cociente:
+
+$$
+f'(x) = \frac{\frac{1}{x} \cdot x^2 - \ln(x) \cdot 2x}{x^4} = \frac{x - 2x\ln(x)}{x^4} = \frac{1 - 2\ln(x)}{x^3}
+$$
+
+**Puntos críticos.** $f'(x) = 0 \Leftrightarrow 1 - 2\ln(x) = 0 \Leftrightarrow \ln(x) = \dfrac{1}{2} \Leftrightarrow x = e^{1/2} = \sqrt{e}$.
+
+**Intervalos de crecimiento y decrecimiento.** En $(0, +\infty)$ el denominador $x^3$ es positivo, así que el signo de $f'$ es el de $1 - 2\ln(x)$, que es positivo cuando $\ln(x) < \frac{1}{2}$, es decir, cuando $x < \sqrt{e}$:
+
+- En $\left(0, \sqrt{e}\right)$, $f'(x) > 0$: $f$ es **creciente**.
+- En $\left(\sqrt{e}, +\infty\right)$, $f'(x) < 0$: $f$ es **decreciente**.
+
+**Extremos relativos.** En $x = \sqrt{e}$ la función pasa de crecer a decrecer: hay un **máximo relativo**. Su valor es
+
+$$
+f\left(\sqrt{e}\right) = \frac{\ln\left(\sqrt{e}\right)}{\left(\sqrt{e}\right)^2} = \frac{1/2}{e} = \frac{1}{2e} \approx 0{,}18
+$$
+
+No hay mínimos relativos: no hay más puntos críticos y el dominio es un intervalo abierto.
+
+<LogaritmoJunio2025 />
+
+**Respuesta.** $f$ es creciente en **$\left(0, \sqrt{e}\right)$** y decreciente en **$\left(\sqrt{e}, +\infty\right)$**, y tiene un **máximo relativo en $x = \sqrt{e}$, donde vale $\dfrac{1}{2e}$**.
+
+</Solucion>

@@ -1,0 +1,153 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 4 y 5 son los dos de geometría: van juntos y el rótulo del 5 va aquí. */}
+
+Sean los puntos $O(0, 0, 0)$, $A(0, 2, -2)$, $B(1, 2, m)$ y $C(2, 3, 2)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla los valores de $m$ para que el tetraedro determinado por los puntos $O$, $A$, $B$ y $C$ tenga un volumen de $3$ unidades cúbicas.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El volumen del tetraedro es la sexta parte del valor absoluto del producto mixto de los vectores que salen de un vértice. Desde $O$ son $\overrightarrow{OA} = (0, 2, -2)$, $\overrightarrow{OB} = (1, 2, m)$ y $\overrightarrow{OC} = (2, 3, 2)$:
+
+$$
+V = \frac{1}{6}\left|\left[\overrightarrow{OA}, \overrightarrow{OB}, \overrightarrow{OC}\right]\right|
+$$
+
+**Producto mixto.** Desarrollando por la primera fila:
+
+$$
+\begin{vmatrix} 0 & 2 & -2 \\ 1 & 2 & m \\ 2 & 3 & 2 \end{vmatrix} = 0 - 2\,(2 - 2m) + (-2)\,(3 - 4) = -4 + 4m + 2 = 4m - 2
+$$
+
+**Condición.**
+
+$$
+\frac{|4m - 2|}{6} = 3 \quad\Rightarrow\quad |4m - 2| = 18
+$$
+
+Así que $4m - 2 = 18$, de donde $m = 5$, o $4m - 2 = -18$, de donde $m = -4$.
+
+**Respuesta.** El tetraedro tiene $3$ unidades cúbicas de volumen para **$m = 5$ y para $m = -4$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Para $m = 0$, calcula la distancia del punto $O$ al plano que pasa por los puntos $A$, $B$ y $C$.
+
+</div>
+
+<Solucion>
+
+**Plano que pasa por $A$, $B$ y $C$.** Con $m = 0$, $B(1, 2, 0)$. Dos vectores del plano y su producto vectorial, que es un vector normal:
+
+$$
+\overrightarrow{AB} = (1,\ 0,\ 2), \qquad \overrightarrow{AC} = (2,\ 1,\ 4)
+$$
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 0 & 2 \\ 2 & 1 & 4 \end{vmatrix} = (0 - 2)\,\vec{i} - (4 - 4)\,\vec{j} + (1 - 0)\,\vec{k} = (-2,\ 0,\ 1)
+$$
+
+El plano es $-2x + z + D = 0$ y pasa por $A(0, 2, -2)$: $0 - 2 + D = 0 \Rightarrow D = 2$. Multiplicando por $-1$:
+
+$$
+\pi \equiv 2x - z - 2 = 0
+$$
+
+Comprobación: $B$ da $2 - 0 - 2 = 0$ y $C$, $4 - 2 - 2 = 0$.
+
+**Distancia de $O$ al plano.**
+
+$$
+d(O, \pi) = \frac{|2 \cdot 0 - 0 - 2|}{\sqrt{2^2 + 0^2 + (-1)^2}} = \frac{2}{\sqrt{5}} = \frac{2\sqrt{5}}{5}
+$$
+
+**Respuesta.** La distancia de $O$ al plano es **$\dfrac{2\sqrt{5}}{5} \approx 0{,}89$ unidades**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 5.</u> (2,5 puntos)</strong></Bloque>
+
+Considera el punto $P(1, 1, 1)$ y la recta $r \equiv \dfrac{x - 1}{1} = \dfrac{y - 2}{2} = \dfrac{z - 3}{2}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla el plano que pasa por el punto $P$ y contiene a la recta $r$.
+
+</div>
+
+<Solucion>
+
+**Vectores directores del plano.** La recta pasa por $R(1, 2, 3)$ con vector director $\vec{d} = (1, 2, 2)$. El plano contiene a $r$ y a $P$, así que tiene como vectores directores $\vec{d}$ y el vector que va de $R$ a $P$:
+
+$$
+\vec{d} = (1,\ 2,\ 2), \qquad \overrightarrow{RP} = (1 - 1,\ 1 - 2,\ 1 - 3) = (0,\ -1,\ -2)
+$$
+
+No son proporcionales, así que $P$ no está en $r$ y el plano es único.
+
+**Vector normal.**
+
+$$
+\vec{d} \times \overrightarrow{RP} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 2 & 2 \\ 0 & -1 & -2 \end{vmatrix} = (-4 + 2)\,\vec{i} - (-2 - 0)\,\vec{j} + (-1 - 0)\,\vec{k} = (-2,\ 2,\ -1)
+$$
+
+o el proporcional $(2, -2, 1)$.
+
+**Ecuación.** Por $P(1, 1, 1)$: $2(x - 1) - 2(y - 1) + (z - 1) = 0$.
+
+**Comprobación.** $R(1, 2, 3)$ da $2 - 4 + 3 - 1 = 0$, y $(2, -2, 1) \cdot (1, 2, 2) = 0$.
+
+**Respuesta.** El plano es **$2x - 2y + z - 1 = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla la recta que pasa por el punto $P$ y corta perpendicularmente a la recta $r$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La recta buscada va de $P$ a un punto $Q$ de $r$ tal que $\overrightarrow{PQ}$ es perpendicular al vector director de $r$. Un punto genérico de $r$ es
+
+$$
+Q = (1 + \lambda,\ 2 + 2\lambda,\ 3 + 2\lambda), \qquad \overrightarrow{PQ} = (\lambda,\ 1 + 2\lambda,\ 2 + 2\lambda)
+$$
+
+**Condición de perpendicularidad.**
+
+$$
+\overrightarrow{PQ} \cdot \vec{d} = \lambda + 2(1 + 2\lambda) + 2(2 + 2\lambda) = 9\lambda + 6 = 0 \quad\Rightarrow\quad \lambda = -\frac{2}{3}
+$$
+
+**Punto de corte y vector director.**
+
+$$
+Q = \left(\frac{1}{3},\ \frac{2}{3},\ \frac{5}{3}\right), \qquad \overrightarrow{PQ} = \left(-\frac{2}{3},\ -\frac{1}{3},\ \frac{2}{3}\right)
+$$
+
+o el proporcional $(2, 1, -2)$. Comprobación: $(2, 1, -2) \cdot (1, 2, 2) = 2 + 2 - 4 = 0$.
+
+**Respuesta.** La recta pasa por $P(1, 1, 1)$ con dirección $(2, 1, -2)$ y corta a $r$ en $Q\left(\frac{1}{3}, \frac{2}{3}, \frac{5}{3}\right)$:
+
+$$
+s \equiv \frac{x - 1}{2} = \frac{y - 1}{1} = \frac{z - 1}{-2}
+$$
+
+Como corta a $r$ y pasa por $P$, está en el plano del apartado a): $2 \cdot 2 - 2 \cdot 1 + (-2) = 0$.
+
+</Solucion>

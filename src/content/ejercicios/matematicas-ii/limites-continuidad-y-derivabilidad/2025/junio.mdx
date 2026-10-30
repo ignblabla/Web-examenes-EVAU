@@ -1,0 +1,33 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+Sabiendo que $\displaystyle\lim_{x \to 0} \frac{\operatorname{sen}(x) - ax + 2 - 2\cos(x)}{e^x - x\cos(x) - 1}$ es finito, calcula $a$ y el valor del límite.
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $\operatorname{sen} 0 - 0 + 2 - 2\cos 0 = 0$ y el denominador, $e^0 - 0 - 1 = 0$. Es una indeterminación $\dfrac{0}{0}$ para cualquier $a$, así que aplicamos la regla de L'Hôpital.
+
+**Primera aplicación de L'Hôpital.** La derivada del denominador, con la regla del producto en $x\cos(x)$, es $e^x - \cos(x) + x\operatorname{sen}(x)$:
+
+$$
+\lim_{x \to 0} \frac{\operatorname{sen}(x) - ax + 2 - 2\cos(x)}{e^x - x\cos(x) - 1} = \lim_{x \to 0} \frac{\cos(x) - a + 2\operatorname{sen}(x)}{e^x - \cos(x) + x\operatorname{sen}(x)}
+$$
+
+En $x = 0$, el denominador vale $1 - 1 + 0 = 0$ y el numerador, $1 - a$.
+
+**Valor de $a$.** Si $1 - a \neq 0$, el cociente tiende a un número distinto de $0$ dividido entre $0$: el límite sería infinito. Para que sea finito, el numerador también tiene que anularse: $1 - a = 0$, es decir, **$a = 1$**. Entonces vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Con $a = 1$, derivamos otra vez. La derivada de $x\operatorname{sen}(x)$ es $\operatorname{sen}(x) + x\cos(x)$:
+
+$$
+\lim_{x \to 0} \frac{\cos(x) - 1 + 2\operatorname{sen}(x)}{e^x - \cos(x) + x\operatorname{sen}(x)} = \lim_{x \to 0} \frac{-\operatorname{sen}(x) + 2\cos(x)}{e^x + 2\operatorname{sen}(x) + x\cos(x)} = \frac{0 + 2}{1 + 0 + 0} = 2
+$$
+
+**Respuesta.** El límite es finito para **$a = 1$**, y entonces vale **$2$**.
+
+</Solucion>

@@ -1,0 +1,24 @@
+---
+// Matemáticas II, reserva 2 de 2025, ejercicio 1: f(x) = 1 − eˣ en [0, 1) y 2x − 1 − e en [1, 2].
+// Continua, con un pico hacia abajo en x = 1 (mínimo absoluto) y el máximo absoluto en x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.3}
+  xMax={2.4}
+  yMin={-2}
+  yMax={0.7}
+  marcasX={[1, 2]}
+  marcasY={[-1.5, -1, -0.5, 0.5]}
+  tramos={[
+    { f: (x) => 1 - Math.exp(x), desde: 0, hasta: 1 },
+    { f: (x) => 2 * x - 1 - Math.E, desde: 1, hasta: 2 },
+  ]}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: 8, dy: -8 },
+    { x: 1, y: 1 - Math.E, texto: "Mínimo (1, 1 − e)", dx: 0, dy: 18 },
+    { x: 2, y: 3 - Math.E, texto: "Máximo (2, 3 − e)", dx: -8, dy: -10 },
+  ]}
+  descripcion="Gráfica de f en el intervalo de 0 a 2: baja desde (0, 0) hasta el punto (1, 1 − e), donde forma un pico, y sube en línea recta hasta (2, 3 − e)"
+/>

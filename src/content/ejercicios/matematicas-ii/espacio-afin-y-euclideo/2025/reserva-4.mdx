@@ -1,0 +1,65 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera la recta $r \equiv \begin{cases} x + y + z = 0 \\ y - z = 0 \end{cases}$ y el punto $P(2, 1, 0)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla la distancia del punto $P$ a la recta $r$.
+
+</div>
+
+<Solucion>
+
+**Datos de la recta.** Su vector director es perpendicular a los normales de los dos planos, $(1, 1, 1)$ y $(0, 1, -1)$:
+
+$$
+\vec{d} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 1 & 1 \\ 0 & 1 & -1 \end{vmatrix} = (-1 - 1)\,\vec{i} - (-1 - 0)\,\vec{j} + (1 - 0)\,\vec{k} = (-2,\ 1,\ 1)
+$$
+
+y el origen $O(0, 0, 0)$ cumple las dos ecuaciones, así que es un punto de $r$.
+
+**Planteamiento.** La distancia de $P$ a $r$ es el área del paralelogramo que forman $\overrightarrow{OP}$ y $\vec{d}$ dividida entre la base $|\vec{d}|$:
+
+$$
+d(P, r) = \frac{\left|\overrightarrow{OP} \times \vec{d}\right|}{|\vec{d}|}
+$$
+
+**Cálculo.** Con $\overrightarrow{OP} = (2, 1, 0)$:
+
+$$
+\overrightarrow{OP} \times \vec{d} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & 1 & 0 \\ -2 & 1 & 1 \end{vmatrix} = (1 - 0)\,\vec{i} - (2 - 0)\,\vec{j} + (2 + 2)\,\vec{k} = (1,\ -2,\ 4)
+$$
+
+$$
+d(P, r) = \frac{\sqrt{1 + 4 + 16}}{\sqrt{4 + 1 + 1}} = \frac{\sqrt{21}}{\sqrt{6}} = \sqrt{\frac{7}{2}} = \frac{\sqrt{14}}{2}
+$$
+
+**Comprobación.** El punto de $r$ más cercano a $P$ es $Q = t(-2, 1, 1)$ con $\overrightarrow{PQ} \perp \vec{d}$: $6t + 3 = 0$, $t = -\frac{1}{2}$, $Q\left(1, -\frac{1}{2}, -\frac{1}{2}\right)$, y $\left|\overrightarrow{PQ}\right| = \sqrt{1 + \frac{9}{4} + \frac{1}{4}} = \sqrt{\frac{7}{2}}$.
+
+**Respuesta.** La distancia de $P$ a $r$ es **$\dfrac{\sqrt{14}}{2} \approx 1{,}87$ unidades**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula la ecuación del plano que contiene a la recta $r$ y al punto $P$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El plano pasa por $O$, que es de $r$, y tiene como vectores directores $\vec{d}$ y $\overrightarrow{OP}$. $P$ no está en $r$ (su distancia a $r$ no es nula), así que el plano es único. Su vector normal es el producto vectorial que ya hemos calculado, $(1, -2, 4)$.
+
+**Ecuación.** Por $O(0, 0, 0)$: $x - 2y + 4z = 0$.
+
+**Comprobación.** $P(2, 1, 0)$ da $2 - 2 + 0 = 0$, y $(1, -2, 4) \cdot (-2, 1, 1) = -2 - 2 + 4 = 0$.
+
+**Respuesta.** El plano es **$x - 2y + 4z = 0$**.
+
+</Solucion>

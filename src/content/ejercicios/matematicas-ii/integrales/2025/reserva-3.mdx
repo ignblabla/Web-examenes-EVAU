@@ -1,0 +1,53 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import ExponencialesReserva3de2025 from "../../../../../components/figuras/ExponencialesReserva3de2025.astro"
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = -e^x$ y $g(x) = -e^{-x}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Esboza las gráficas de dichas funciones.
+
+</div>
+
+<Solucion>
+
+**Gráfica de $f$.** $f(x) = -e^x$ es la exponencial $e^x$ reflejada respecto del eje $OX$: siempre negativa, decreciente, pasa por $(0, -1)$ y tiende a $0$ cuando $x \to -\infty$ (asíntota horizontal $y = 0$ por la izquierda).
+
+**Gráfica de $g$.** Como $g(x) = f(-x)$, es la gráfica de $f$ reflejada respecto del eje $OY$: siempre negativa, creciente, pasa por $(0, -1)$ y tiende a $0$ cuando $x \to +\infty$.
+
+Las dos se cortan solo en $(0, -1)$: $-e^x = -e^{-x} \Leftrightarrow x = -x \Leftrightarrow x = 0$.
+
+<ExponencialesReserva3de2025 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula la suma de las áreas de los recintos acotados y limitados por las gráficas de dichas funciones y las rectas $x = -1$ y $x = 1$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Las gráficas se cortan en $x = 0$, así que hay dos recintos: uno entre $x = -1$ y $x = 0$ y otro entre $x = 0$ y $x = 1$. En $(0, 1]$ es $e^x > e^{-x}$, así que $g(x) = -e^{-x} > -e^x = f(x)$: $g$ queda por encima. Por la simetría respecto del eje $OY$, el recinto de la izquierda es igual al de la derecha, así que la suma de las áreas es el doble de una integral:
+
+$$
+A = 2\int_0^1 \big(g(x) - f(x)\big)\,dx = 2\int_0^1 \left(e^x - e^{-x}\right) dx
+$$
+
+**Cálculo.** Una primitiva de $e^x - e^{-x}$ es $e^x + e^{-x}$:
+
+$$
+A = 2\Big[e^x + e^{-x}\Big]_0^1 = 2\left(e + \frac{1}{e} - 2\right) = 2e + \frac{2}{e} - 4 \approx 2{,}17
+$$
+
+**Respuesta.** La suma de las áreas es **$2e + \dfrac{2}{e} - 4 \approx 2{,}17$ unidades cuadradas**.
+
+</Solucion>

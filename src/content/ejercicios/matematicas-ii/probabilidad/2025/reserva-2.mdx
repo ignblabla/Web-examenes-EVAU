@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2025
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Se hace un estudio sobre el café que se consume en la cafetería de una estación. Según el tipo de taza tenemos tres opciones: expreso, medio y americano; con porcentajes, respectivamente, de $29\,\%$, $51\,\%$ y $20\,\%$. Por otra parte, también sabemos que el café puede ser de la variedad que tiene cafeína o ser descafeinado. En concreto, las tazas de café con cafeína presentan, para cada uno de los tipos de taza establecidos antes, los porcentajes $18\,\%$, $31\,\%$ y $11\,\%$, respectivamente.
+
+<div class="math-sub">
+
+a) **[0,75 puntos]** ¿Cuál es la probabilidad de que una persona adquiera un café expreso descafeinado?
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos $E$, $M$ y $A$ a que la taza sea expreso, media o americano, $C$ a que el café tenga cafeína y $D$ a que sea descafeinado. Los porcentajes de café con cafeína se dan para cada tipo de taza, así que son probabilidades condicionadas:
+
+$$
+P(E) = 0{,}29, \qquad P(M) = 0{,}51, \qquad P(A) = 0{,}20
+$$
+
+$$
+P(C \mid E) = 0{,}18, \qquad P(C \mid M) = 0{,}31, \qquad P(C \mid A) = 0{,}11
+$$
+
+Por el suceso contrario, $P(D \mid E) = 0{,}82$, $P(D \mid M) = 0{,}69$ y $P(D \mid A) = 0{,}89$.
+
+**Planteamiento.** Nos piden que sea expreso y descafeinado, $P(E \cap D)$. Por la regla del producto:
+
+$$
+P(E \cap D) = P(E)\,P(D \mid E) = 0{,}29 \cdot 0{,}82 = 0{,}2378
+$$
+
+**Respuesta.** La probabilidad es **$0{,}2378$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,75 puntos]** Si sabemos que el café es descafeinado, ¿cuál es la probabilidad de que sea un expreso?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Sabemos que es descafeinado y preguntamos por el tipo de taza: nos piden $P(E \mid D)$, que se calcula con el teorema de Bayes,
+
+$$
+P(E \mid D) = \frac{P(E)\,P(D \mid E)}{P(D)}
+$$
+
+**Teorema de la probabilidad total.** Un café descafeinado puede ser de cualquiera de los tres tipos de taza:
+
+$$
+P(D) = 0{,}29 \cdot 0{,}82 + 0{,}51 \cdot 0{,}69 + 0{,}20 \cdot 0{,}89 = 0{,}2378 + 0{,}3519 + 0{,}178 = 0{,}7677
+$$
+
+**Teorema de Bayes.** Con el resultado del apartado a):
+
+$$
+P(E \mid D) = \frac{0{,}2378}{0{,}7677} \approx 0{,}3098
+$$
+
+**Respuesta.** La probabilidad de que un café descafeinado sea un expreso es **$\approx 0{,}3098$**.
+
+</Solucion>

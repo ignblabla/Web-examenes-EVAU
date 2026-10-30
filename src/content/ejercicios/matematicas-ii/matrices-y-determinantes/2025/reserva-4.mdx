@@ -1,0 +1,117 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 4 y 5 son los dos de matrices: van juntos y el rótulo del 5 va aquí. */}
+
+Considera la matriz $A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula $A^4$ y $A^{31}$.
+
+</div>
+
+<Solucion>
+
+**Cálculo de $A^4$.** Primero $A^2$:
+
+$$
+A^2 = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I
+$$
+
+Así que $A^4 = \left(A^2\right)^2 = (-I)^2 = I$.
+
+**Cálculo de $A^{31}$.** Como $A^4 = I$, las potencias de $A$ se repiten cada cuatro. $31 = 4 \cdot 7 + 3$:
+
+$$
+A^{31} = \left(A^4\right)^7 A^3 = I \cdot A^3 = A^2 A = -A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+$$
+
+**Respuesta.** **$A^4 = I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$** y **$A^{31} = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla razonadamente el determinante de la matriz $\;4A^{25}(A^t)^4$.
+
+</div>
+
+<Solucion>
+
+**Propiedades de los determinantes.** $|A| = 0 \cdot 0 - (-1) \cdot 1 = 1$, y usamos que:
+
+- El determinante de un producto es el producto de los determinantes: $|A^{25}| = |A|^{25}$ y $|(A^t)^4| = |A^t|^4$.
+- $|A^t| = |A|$.
+- Las matrices son de orden $2$, así que multiplicar por $4$ multiplica el determinante por $4^2$: $|4M| = 4^2\,|M|$.
+
+$$
+\left|4A^{25}(A^t)^4\right| = 4^2 \cdot |A|^{25} \cdot |A|^4 = 16 \cdot 1 \cdot 1 = 16
+$$
+
+**Respuesta.** El determinante vale **$16$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 5.</u> (2,5 puntos)</strong></Bloque>
+
+Sean las matrices $A = \begin{pmatrix} 2 & 2 \\ 3 & 4 \end{pmatrix}$ y $B = \begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla razonadamente el determinante de una matriz $X$ que verifica $X^3AX^2 = B^2$.
+
+</div>
+
+<Solucion>
+
+**Determinantes de $A$ y $B$.** $|A| = 8 - 6 = 2$ y $|B| = 6 - 2 = 4$.
+
+**Propiedades de los determinantes.** Tomamos determinantes en los dos lados; el de un producto es el producto de los determinantes:
+
+$$
+|X|^3 \cdot |A| \cdot |X|^2 = |B|^2 \quad\Rightarrow\quad |X|^5 \cdot 2 = 16 \quad\Rightarrow\quad |X|^5 = 8
+$$
+
+**Respuesta.** $|X| = \sqrt[5]{8} = 2^{3/5} \approx 1{,}52$ (la única raíz quinta real de $8$).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Determina, si existe, una matriz $Y$ que verifique $A^3YB^{-1} = A^2$.
+
+</div>
+
+<Solucion>
+
+**Cálculo simbólico de $Y$.** $A$ y $B$ son invertibles, porque sus determinantes, $2$ y $4$, no son nulos. Multiplicamos por $A^{-3}$ por la izquierda y por $B$ por la derecha, respetando el orden porque el producto de matrices no es conmutativo:
+
+$$
+A^{-3}A^3\,Y\,B^{-1}B = A^{-3}A^2\,B \quad\Rightarrow\quad Y = A^{-1}B
+$$
+
+Así que $Y$ existe y es única.
+
+**Inversa de $A$.** $A^{-1} = \dfrac{1}{|A|}\,(\text{Adj}\,A)^t$:
+
+$$
+A^{-1} = \frac{1}{2}\begin{pmatrix} 4 & -2 \\ -3 & 2 \end{pmatrix} = \begin{pmatrix} 2 & -1 \\ -\frac{3}{2} & 1 \end{pmatrix}
+$$
+
+**Cálculo de $Y$.**
+
+$$
+Y = A^{-1}B = \begin{pmatrix} 2 & -1 \\ -\frac{3}{2} & 1 \end{pmatrix}\begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix} = \begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix}
+$$
+
+**Comprobación.** $Y = A^{-1}B$ equivale a $AY = B$: $\begin{pmatrix} 2 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix} = \begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix} = B$.
+
+**Respuesta.** Sí existe: **$Y = \begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix}$**.
+
+</Solucion>

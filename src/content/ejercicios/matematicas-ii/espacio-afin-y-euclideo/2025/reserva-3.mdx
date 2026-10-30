@@ -1,0 +1,61 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2025
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera las rectas $r \equiv \dfrac{x}{1} = \dfrac{y - 2}{-1} = \dfrac{z - k}{2}\;$ y $\;s \equiv \dfrac{x + 2}{-1} = \dfrac{y + 3}{2} = \dfrac{z - 1}{1}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina $k$ sabiendo que ambas se cortan en un punto.
+
+</div>
+
+<Solucion>
+
+**Datos.** $r$ pasa por $P(0, 2, k)$ con vector director $\vec{u} = (1, -1, 2)$, y $s$ pasa por $Q(-2, -3, 1)$ con vector director $\vec{v} = (-1, 2, 1)$.
+
+**Planteamiento.** $\vec{u}$ y $\vec{v}$ no son proporcionales, así que las rectas no son paralelas: o se cortan o se cruzan. Se cortan si $\overrightarrow{PQ}$, $\vec{u}$ y $\vec{v}$ están en un mismo plano, es decir, si su determinante es $0$.
+
+$$
+\overrightarrow{PQ} = (-2,\ -5,\ 1 - k)
+$$
+
+$$
+\begin{vmatrix} -2 & -5 & 1 - k \\ 1 & -1 & 2 \\ -1 & 2 & 1 \end{vmatrix} = -2\,(-1 - 4) + 5\,(1 + 2) + (1 - k)\,(2 - 1) = 10 + 15 + 1 - k = 26 - k
+$$
+
+**Condición.** $26 - k = 0 \Rightarrow k = 26$.
+
+**Comprobación.** Con $k = 26$, el punto de $r$ con parámetro $t = -9$, $(-9,\ 11,\ 8)$, es el de $s$ con $\lambda = 7$: $(-2 - 7,\ -3 + 14,\ 1 + 7)$.
+
+**Respuesta.** Las rectas se cortan para **$k = 26$**, en el punto $(-9, 11, 8)$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Para $k = 0$, halla la ecuación general del plano que contiene a $r$ y es paralelo a $s$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El plano contiene a $r$, así que pasa por $P(0, 2, 0)$ y tiene la dirección $\vec{u}$. Es paralelo a $s$, así que también tiene la dirección $\vec{v}$. Su vector normal es el producto vectorial:
+
+$$
+\vec{u} \times \vec{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 2 \\ -1 & 2 & 1 \end{vmatrix} = (-1 - 4)\,\vec{i} - (1 + 2)\,\vec{j} + (2 - 1)\,\vec{k} = (-5,\ -3,\ 1)
+$$
+
+o el opuesto, $(5, 3, -1)$.
+
+**Ecuación.** El plano es $5x + 3y - z + D = 0$ y pasa por $P(0, 2, 0)$: $6 + D = 0 \Rightarrow D = -6$.
+
+**Comprobación.** $Q(-2, -3, 1)$ da $-10 - 9 - 1 - 6 = -26 \neq 0$: $s$ no está en el plano, así que es paralela a él y no está contenida.
+
+**Respuesta.** El plano es **$5x + 3y - z - 6 = 0$**.
+
+</Solucion>

@@ -1,0 +1,74 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+En la tabla siguiente se recoge el número de coches y motos que se presentaron a la ITV en el año $2023$:
+
+<div class="math-tabla">
+
+|  | Coches | Motos |
+|:---:|:---:|:---:|
+| Aptos | 116.383 | 160.667 |
+| No aptos | 2.679 | 3.447 |
+
+</div>
+
+Se elige un vehículo al azar de entre los coches y motos que se presentaron a dicha inspección.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** ¿Cuál es la probabilidad de que el vehículo elegido sea una moto o haya resultado apto?
+
+</div>
+
+<Solucion>
+
+**Totales.** Sumando filas y columnas:
+
+| | Coches | Motos | Total |
+|---|---|---|---|
+| Aptos | $116\,383$ | $160\,667$ | $277\,050$ |
+| No aptos | $2\,679$ | $3\,447$ | $6\,126$ |
+| Total | $119\,062$ | $164\,114$ | $283\,176$ |
+
+**Sucesos.** Llamamos $M$ a que el vehículo sea una moto, $C$ a que sea un coche, $A$ a que haya resultado apto y $\overline{A}$ a que no. Todos los vehículos tienen la misma probabilidad de ser elegidos, así que usamos la regla de Laplace.
+
+**Probabilidad de la unión.**
+
+$$
+P(M \cup A) = P(M) + P(A) - P(M \cap A) = \frac{164\,114 + 277\,050 - 160\,667}{283\,176}
+$$
+
+$$
+= \frac{280\,497}{283\,176} \approx 0{,}9905
+$$
+
+**Otra forma.** Lo contrario de "moto o apto" es "coche y no apto", así que $P(M \cup A) = 1 - \dfrac{2\,679}{283\,176} = \dfrac{280\,497}{283\,176}$.
+
+**Respuesta.** La probabilidad es **$\dfrac{280\,497}{283\,176} \approx 0{,}9905$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si el vehículo elegido es un coche, ¿cuál es la probabilidad de que haya resultado no apto?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Sabemos que es un coche, así que nos piden la probabilidad condicionada
+
+$$
+P\left(\overline{A} \mid C\right) = \frac{P\left(\overline{A} \cap C\right)}{P(C)} = \frac{2\,679 / 283\,176}{119\,062 / 283\,176} = \frac{2\,679}{119\,062} \approx 0{,}0225
+$$
+
+Es lo mismo que contar solo entre los $119\,062$ coches: $2\,679$ no resultaron aptos.
+
+**Respuesta.** La probabilidad de que un coche haya resultado no apto es **$\dfrac{2\,679}{119\,062} \approx 0{,}0225$**, alrededor de un $2{,}25\,\%$.
+
+</Solucion>

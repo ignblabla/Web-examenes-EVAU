@@ -1,0 +1,78 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2025
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import InflexionReserva1de2025 from "../../../../../components/figuras/InflexionReserva1de2025.astro"
+
+Considera la función $f : \mathbb{R} \to \mathbb{R}$ definida por $f(x) = (x - 1)e^x$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina la ecuación de la recta tangente y la ecuación de la recta normal a la gráfica de $f$ en el punto de inflexión.
+
+</div>
+
+<Solucion>
+
+**Derivadas.** Por la regla del producto:
+
+$$
+f'(x) = e^x + (x - 1)e^x = x\,e^x, \qquad f''(x) = e^x + x\,e^x = (x + 1)\,e^x
+$$
+
+**Punto de inflexión.** $f''(x) = 0 \Leftrightarrow x = -1$, porque $e^x > 0$. El signo de $f''$ es el de $x + 1$: negativo antes de $-1$ (cóncava) y positivo después (convexa). Cambia la curvatura, así que en $x = -1$ hay un punto de inflexión:
+
+$$
+f(-1) = -2e^{-1} = -\frac{2}{e}
+$$
+
+**Pendientes de las rectas tangente y normal.** La de la tangente es $f'(-1) = -e^{-1} = -\dfrac{1}{e}$. La normal es perpendicular a la tangente, así que su pendiente es la opuesta de la inversa: $-\dfrac{1}{-1/e} = e$.
+
+**Recta tangente.**
+
+$$
+y + \frac{2}{e} = -\frac{1}{e}\,(x + 1) \quad\Rightarrow\quad y = -\frac{x + 3}{e}
+$$
+
+**Recta normal.**
+
+$$
+y + \frac{2}{e} = e\,(x + 1) \quad\Rightarrow\quad y = e\,x + e - \frac{2}{e}
+$$
+
+**Respuesta.** En el punto de inflexión $\left(-1, -\frac{2}{e}\right)$, la recta tangente es **$y = -\dfrac{x + 3}{e}$** y la normal, **$y = e\,x + e - \dfrac{2}{e}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Estudia y calcula las asíntotas de la función.
+
+</div>
+
+<Solucion>
+
+**Asíntotas verticales.** $f$ es continua en todo $\mathbb{R}$ (producto de un polinomio y una exponencial), así que **no tiene asíntotas verticales**.
+
+**Asíntota horizontal.**
+
+- Cuando $x \to +\infty$: $(x - 1)e^x \to +\infty$. No hay asíntota horizontal por la derecha.
+- Cuando $x \to -\infty$: es una indeterminación $(-\infty) \cdot 0$. La escribimos como cociente y aplicamos L'Hôpital:
+
+$$
+\lim_{x \to -\infty} (x - 1)e^x = \lim_{x \to -\infty} \frac{x - 1}{e^{-x}} = \lim_{x \to -\infty} \frac{1}{-e^{-x}} = 0
+$$
+
+porque $e^{-x} \to +\infty$. Así que **$y = 0$ es asíntota horizontal cuando $x \to -\infty$**.
+
+**Asíntota oblicua.** Por la izquierda ya hay asíntota horizontal. Por la derecha, $\dfrac{f(x)}{x} = \dfrac{(x - 1)e^x}{x} \to +\infty$, así que tampoco hay oblicua.
+
+<InflexionReserva1de2025 />
+
+**Respuesta.** La única asíntota es la horizontal **$y = 0$, cuando $x \to -\infty$**. No hay verticales ni oblicuas.
+
+</Solucion>

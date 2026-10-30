@@ -1,0 +1,50 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: junio
+formato: matematicas
+---
+
+Halla la función $f \colon (0, +\infty) \to \mathbb{R}$ que pasa por los puntos $\big(2,\ e - 2 - 2\ln(2)\big)$ y $(1, 0)$, y verifica que $f''(x) = e^{x-1} - \dfrac{1}{x}$.
+
+<Solucion>
+
+**Planteamiento.** Integrando $f''$ obtenemos $f'$, con una constante, e integrando $f'$ obtenemos $f$, con otra. Las dos constantes se fijan con los dos puntos.
+
+**Primitiva de $f''$.** Como $x > 0$, $\int \frac{1}{x}\,dx = \ln(x)$:
+
+$$
+f'(x) = \int \left(e^{x-1} - \frac{1}{x}\right) dx = e^{x-1} - \ln(x) + C_1
+$$
+
+**Primitiva de $f'$.** La integral de $\ln(x)$ se hace por partes, con $u = \ln(x)$ y $dv = dx$, es decir, $du = \frac{1}{x}\,dx$ y $v = x$:
+
+$$
+\int \ln(x)\,dx = x\ln(x) - \int x \cdot \frac{1}{x}\,dx = x\ln(x) - x
+$$
+
+Por tanto
+
+$$
+f(x) = \int \big(e^{x-1} - \ln(x) + C_1\big)\,dx = e^{x-1} - x\ln(x) + x + C_1 x + C_2
+$$
+
+**Condiciones.**
+
+- Pasa por $(1, 0)$: $f(1) = e^0 - 0 + 1 + C_1 + C_2 = 0$, es decir, $C_1 + C_2 = -2$.
+- Pasa por $\big(2, e - 2 - 2\ln(2)\big)$: $f(2) = e - 2\ln(2) + 2 + 2C_1 + C_2 = e - 2 - 2\ln(2)$, es decir, $2C_1 + C_2 = -4$.
+
+Restando la primera a la segunda, $C_1 = -2$, y entonces $C_2 = 0$.
+
+**La función.**
+
+$$
+f(x) = e^{x-1} - x\ln(x) + x - 2x = e^{x-1} - x\ln(x) - x
+$$
+
+**Comprobación.** $f'(x) = e^{x-1} - \ln(x) - 1 - 1$ y $f''(x) = e^{x-1} - \dfrac{1}{x}$; además $f(1) = 1 - 0 - 1 = 0$ y $f(2) = e - 2\ln(2) - 2$.
+
+**Respuesta.** **$f(x) = e^{x-1} - x\ln(x) - x$**.
+
+</Solucion>

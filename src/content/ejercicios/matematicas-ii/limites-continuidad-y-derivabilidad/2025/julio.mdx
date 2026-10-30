@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2025
+convocatoria: julio
+formato: matematicas
+---
+
+Calcula $a$ y $b$ sabiendo que
+
+$$
+\lim_{x \to 0} \frac{x\operatorname{sen}(x) + a(e^x - 1) + \operatorname{sen}(x)}{bx^2 + x - \operatorname{sen}(x)} = 1.
+$$
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $0 + a(1 - 1) + 0 = 0$ y el denominador, $0 + 0 - 0 = 0$: es $\dfrac{0}{0}$ para cualesquiera $a$ y $b$. Aplicamos la regla de L'Hôpital.
+
+**Primera aplicación de L'Hôpital.** La derivada de $x\operatorname{sen}(x)$ es $\operatorname{sen}(x) + x\cos(x)$:
+
+$$
+\lim_{x \to 0} \frac{\operatorname{sen}(x) + x\cos(x) + a e^x + \cos(x)}{2bx + 1 - \cos(x)}
+$$
+
+En $x = 0$, el denominador vale $0 + 1 - 1 = 0$ y el numerador, $a + 1$. Si $a + 1 \neq 0$, el límite sería infinito; para que valga $1$ tiene que ser $a + 1 = 0$, es decir, **$a = -1$**. Entonces vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Con $a = -1$, derivamos otra vez. La derivada de $x\cos(x)$ es $\cos(x) - x\operatorname{sen}(x)$:
+
+$$
+\lim_{x \to 0} \frac{\cos(x) + \cos(x) - x\operatorname{sen}(x) - e^x - \operatorname{sen}(x)}{2b + \operatorname{sen}(x)} = \frac{1 + 1 - 0 - 1 - 0}{2b + 0} = \frac{1}{2b}
+$$
+
+(si $b = 0$, este cociente sería $\frac{1}{0}$ y el límite, infinito, así que $b \neq 0$).
+
+**Condición.** $\dfrac{1}{2b} = 1 \Rightarrow$ **$b = \dfrac{1}{2}$**.
+
+**Respuesta.** **$a = -1$ y $b = \dfrac{1}{2}$**.
+
+</Solucion>

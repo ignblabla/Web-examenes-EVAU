@@ -1,0 +1,35 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2025
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sea $f \colon \mathbb{R} \to \mathbb{R}$ la función definida por $f(x) = \dfrac{x^3 + 1}{x^2 + 1}$. Calcula una primitiva de $f$ cuya gráfica pase por el punto $(0, 5)$.
+
+<Solucion>
+
+**División.** El numerador tiene mayor grado que el denominador, así que dividimos: $x^3 + 1 = x\,(x^2 + 1) + (1 - x)$. Por tanto
+
+$$
+f(x) = x + \frac{1 - x}{x^2 + 1} = x + \frac{1}{x^2 + 1} - \frac{x}{x^2 + 1}
+$$
+
+**Cálculo de una primitiva.** Integramos término a término:
+
+- $\displaystyle\int x\,dx = \frac{x^2}{2}$.
+- $\displaystyle\int \frac{1}{x^2 + 1}\,dx = \operatorname{arctg}(x)$, inmediata.
+- $\displaystyle\int \frac{x}{x^2 + 1}\,dx = \frac{1}{2}\int \frac{2x}{x^2 + 1}\,dx = \frac{1}{2}\ln(x^2 + 1)$, porque el numerador es, salvo el factor $\frac{1}{2}$, la derivada del denominador (y $x^2 + 1 > 0$, así que sobra el valor absoluto).
+
+$$
+F(x) = \frac{x^2}{2} + \operatorname{arctg}(x) - \frac{1}{2}\ln(x^2 + 1) + C
+$$
+
+**Condición del punto.** $F(0) = 0 + 0 - \frac{1}{2}\ln 1 + C = C = 5$.
+
+**Comprobación.** $F'(x) = x + \dfrac{1}{1 + x^2} - \dfrac{x}{1 + x^2} = \dfrac{x^3 + x + 1 - x}{x^2 + 1} = \dfrac{x^3 + 1}{x^2 + 1} = f(x)$.
+
+**Respuesta.** **$F(x) = \dfrac{x^2}{2} + \operatorname{arctg}(x) - \dfrac{1}{2}\ln(x^2 + 1) + 5$**.
+
+</Solucion>

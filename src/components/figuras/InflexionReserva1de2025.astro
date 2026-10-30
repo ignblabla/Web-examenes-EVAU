@@ -1,0 +1,29 @@
+---
+// Matemáticas II, reserva 1 de 2025, ejercicio 1: f(x) = (x − 1)eˣ con su punto de inflexión en
+// x = −1, la recta tangente en él y la asíntota horizontal y = 0 cuando x → −∞ (el propio eje).
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-6}
+  xMax={1.6}
+  yMin={-1.5}
+  yMax={1.4}
+  marcasX={[-5, -4, -3, -2, -1, 1]}
+  marcasY={[-1, -0.5, 0.5, 1]}
+  tramos={[
+    { f: (x) => (x - 1) * Math.exp(x), desde: -6, hasta: 1.6 },
+    {
+      f: (x) => -(x + 3) / Math.E,
+      desde: -5.5,
+      hasta: 1.2,
+      color: "#b04a3a",
+      etiqueta: { texto: "tangente", x: -5.4, y: 1.0, ancla: "start" },
+    },
+  ]}
+  puntos={[
+    { x: -1, y: -2 / Math.E, texto: "Inflexión en x = −1", dx: -62, dy: 18 },
+    { x: 0, y: -1, texto: "Mínimo (0, −1)", dx: 4, dy: 22 },
+  ]}
+  descripcion="Gráfica de f: se acerca al eje horizontal por debajo cuando x tiende a menos infinito, baja hasta el mínimo en (0, −1), corta el eje en x = 1 y crece muy deprisa. En el punto de inflexión (−1, −2 entre e) se dibuja la recta tangente, de pendiente −1 entre e"
+/>
