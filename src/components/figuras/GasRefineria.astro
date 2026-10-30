@@ -1,0 +1,19 @@
+---
+// Matemáticas II, reserva 1 de 2026, ejercicio 1: producción de gas f(t) = 7 + e^(−(t−4)²),
+// con el máximo de 8 en t = 4 y la asíntota horizontal y = 7. El eje vertical empieza en 6.6
+// para que se vea la forma de la curva, que solo se mueve entre 7 y 8.
+import GraficaFuncion from "./GraficaFuncion.astro"
+---
+
+<GraficaFuncion
+  xMin={-0.5}
+  xMax={10.5}
+  yMin={6.6}
+  yMax={8.4}
+  marcasX={[2, 4, 6, 8, 10]}
+  marcasY={[7, 7.5, 8]}
+  tramos={[{ f: (t) => 7 + Math.exp(-((t - 4) ** 2)), desde: 0, hasta: 10.5 }]}
+  asintotas={[{ tipo: "h", valor: 7, etiqueta: "y = 7", debajo: true }]}
+  puntos={[{ x: 4, y: 8, texto: "Máximo (4, 8)", dx: 0, dy: -8 }]}
+  descripcion="Gráfica de la producción de gas: empieza muy cerca de 7, sube hasta el máximo de 8 a los 4 segundos y vuelve a acercarse a la asíntota y = 7 sin llegar a tocarla"
+/>

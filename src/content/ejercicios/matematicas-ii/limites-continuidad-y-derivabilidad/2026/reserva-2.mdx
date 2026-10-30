@@ -1,0 +1,63 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Determina para qué valores de $a$ el límite
+
+$$
+\lim_{x \to 0} \frac{e^{-ax} - (1 - ax)\cos(2x)}{x^2}
+$$
+
+vale $6$.
+
+<Solucion>
+
+**Tipo de indeterminación.** Sustituyendo $x = 0$: el numerador vale $e^0 - (1 - 0)\cos 0 = 1 - 1 = 0$ y el denominador, $0$. Es una indeterminación del tipo $\dfrac{0}{0}$, así que aplicamos la regla de L'Hôpital: derivamos numerador y denominador por separado.
+
+**Primera aplicación de L'Hôpital.** La derivada del numerador, usando la regla del producto en $(1 - ax)\cos(2x)$, es
+
+$$
+-a\,e^{-ax} - \Big[-a\cos(2x) + (1 - ax)\cdot\big(-2\sin(2x)\big)\Big]
+$$
+
+$$
+= -a\,e^{-ax} + a\cos(2x) + 2(1 - ax)\sin(2x)
+$$
+
+y la del denominador, $2x$. Así que
+
+$$
+\lim_{x \to 0} \frac{e^{-ax} - (1 - ax)\cos(2x)}{x^2} = \lim_{x \to 0} \frac{-a\,e^{-ax} + a\cos(2x) + 2(1 - ax)\sin(2x)}{2x}
+$$
+
+En $x = 0$, el nuevo numerador vale $-a + a + 0 = 0$ y el denominador, $0$: sigue siendo $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Derivamos otra vez. La derivada de $2(1 - ax)\sin(2x)$ es $-2a\sin(2x) + 4(1 - ax)\cos(2x)$, así que la del numerador es
+
+$$
+a^2 e^{-ax} - 2a\sin(2x) - 2a\sin(2x) + 4(1 - ax)\cos(2x)
+$$
+
+$$
+= a^2 e^{-ax} - 4a\sin(2x) + 4(1 - ax)\cos(2x)
+$$
+
+y la del denominador, $2$. Ahora ya no hay indeterminación:
+
+$$
+\lim_{x \to 0} \frac{a^2 e^{-ax} - 4a\sin(2x) + 4(1 - ax)\cos(2x)}{2} = \frac{a^2 - 0 + 4}{2} = \frac{a^2 + 4}{2}
+$$
+
+**Condición.** El límite vale $6$ si
+
+$$
+\frac{a^2 + 4}{2} = 6 \quad\Rightarrow\quad a^2 = 8 \quad\Rightarrow\quad a = \pm\sqrt{8} = \pm 2\sqrt{2}
+$$
+
+**Respuesta.** El límite vale $6$ para **$a = 2\sqrt{2}$ y para $a = -2\sqrt{2}$**.
+
+</Solucion>

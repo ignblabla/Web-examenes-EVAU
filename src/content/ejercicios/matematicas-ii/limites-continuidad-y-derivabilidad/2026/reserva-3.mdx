@@ -1,0 +1,43 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Calcula el siguiente límite
+
+$$
+\lim_{x \to 0} \frac{x^2 - \operatorname{sen}(x^2)}{1 - \cos(x)}
+$$
+
+<Solucion>
+
+**Tipo de indeterminación.** En $x = 0$, el numerador vale $0 - \operatorname{sen} 0 = 0$ y el denominador, $1 - \cos 0 = 0$. Es una indeterminación del tipo $\dfrac{0}{0}$, así que aplicamos la regla de L'Hôpital.
+
+**Primera aplicación de L'Hôpital.** La derivada de $\operatorname{sen}(x^2)$ es $2x\cos(x^2)$ (regla de la cadena), así que
+
+$$
+\lim_{x \to 0} \frac{x^2 - \operatorname{sen}(x^2)}{1 - \cos(x)} = \lim_{x \to 0} \frac{2x - 2x\cos(x^2)}{\operatorname{sen}(x)}
+$$
+
+En $x = 0$ vuelve a salir $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** La derivada de $2x\cos(x^2)$ es $2\cos(x^2) - 4x^2\operatorname{sen}(x^2)$, así que
+
+$$
+\lim_{x \to 0} \frac{2x - 2x\cos(x^2)}{\operatorname{sen}(x)} = \lim_{x \to 0} \frac{2 - 2\cos(x^2) + 4x^2\operatorname{sen}(x^2)}{\cos(x)} = \frac{2 - 2 + 0}{1} = 0
+$$
+
+**Otra forma, tras la primera aplicación.** Sacando factor común,
+
+$$
+\frac{2x\,\big(1 - \cos(x^2)\big)}{\operatorname{sen}(x)} = 2 \cdot \frac{x}{\operatorname{sen}(x)} \cdot \big(1 - \cos(x^2)\big) \;\longrightarrow\; 2 \cdot 1 \cdot 0 = 0
+$$
+
+usando el límite conocido $\displaystyle\lim_{x \to 0} \frac{\operatorname{sen}(x)}{x} = 1$.
+
+**Respuesta.** $\displaystyle\lim_{x \to 0} \frac{x^2 - \operatorname{sen}(x^2)}{1 - \cos(x)} =$ **$0$**.
+
+</Solucion>

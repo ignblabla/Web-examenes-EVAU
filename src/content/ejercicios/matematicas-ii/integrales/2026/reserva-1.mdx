@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import FuncionImparReserva1de2026 from "../../../../../components/figuras/FuncionImparReserva1de2026.astro"
+
+Considera la función $f : [-2, 2] \to \mathbb{R}$ definida por $f(x) = \dfrac{x}{|x| + 1}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula $\displaystyle\int_0^2 f(x)\,dx$.
+
+</div>
+
+<Solucion>
+
+**Sin valor absoluto.** En $[0, 2]$ es $x \geq 0$, así que $|x| = x$ y $f(x) = \dfrac{x}{x + 1}$.
+
+**Cálculo de $\displaystyle\int f(x)\,dx$.** Numerador y denominador tienen el mismo grado, así que dividimos: $x = (x + 1) - 1$, de donde
+
+$$
+\frac{x}{x + 1} = 1 - \frac{1}{x + 1}
+\qquad\Rightarrow\qquad
+\int \frac{x}{x + 1}\,dx = x - \ln|x + 1| + C
+$$
+
+**Regla de Barrow.**
+
+$$
+\int_0^2 \frac{x}{x + 1}\,dx = \Big[x - \ln(x + 1)\Big]_0^2 = (2 - \ln 3) - (0 - \ln 1) = 2 - \ln 3
+$$
+
+**Respuesta.** $\displaystyle\int_0^2 f(x)\,dx =$ **$2 - \ln 3 \approx 0{,}90$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Estudia la simetría de la función $f$ y deduce de ella el valor de $\displaystyle\int_{-2}^2 f(x)\,dx$.
+
+</div>
+
+<Solucion>
+
+**Simetría de $f$.** El dominio $[-2, 2]$ es simétrico respecto de $0$, y para todo $x$ de él, como $|-x| = |x|$,
+
+$$
+f(-x) = \frac{-x}{|-x| + 1} = -\frac{x}{|x| + 1} = -f(x)
+$$
+
+Así que $f$ es **impar**: su gráfica es simétrica respecto del origen.
+
+<FuncionImparReserva1de2026 />
+
+**Valor de la integral.** Por la simetría, el recinto entre la gráfica y el eje en $[-2, 0]$ es igual que el de $[0, 2]$, pero queda por debajo del eje. Las dos integrales son opuestas:
+
+$$
+\int_{-2}^{0} f(x)\,dx = -\int_0^2 f(x)\,dx = -(2 - \ln 3)
+$$
+
+$$
+\int_{-2}^{2} f(x)\,dx = \int_{-2}^{0} f(x)\,dx + \int_0^2 f(x)\,dx = -(2 - \ln 3) + (2 - \ln 3) = 0
+$$
+
+**Respuesta.** $f$ es impar y, por tanto, **$\displaystyle\int_{-2}^{2} f(x)\,dx = 0$**.
+
+</Solucion>

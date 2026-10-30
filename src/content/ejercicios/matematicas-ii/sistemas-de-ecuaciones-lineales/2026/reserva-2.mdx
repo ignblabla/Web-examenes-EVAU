@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Una empresa produce tres tipos de productos, $A$, $B$ y $C$. Si el precio del producto $A$ tuviera un $10\,\%$ de descuento y el de los productos $B$ y $C$ tuviera un $20\,\%$ de descuento cada uno, la suma de los precios de tres productos, uno de cada tipo, sería $66$€. El precio total sin descuento de $3$ productos del tipo $A$ y $4$ productos del tipo $B$ es $140$€.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** ¿Cuánto valdrán $3$ productos de tipo $A$ más $8$ productos de tipo $C$?
+
+</div>
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ a los precios sin descuento, en euros, de los productos $A$, $B$ y $C$.
+
+**Primera ecuación.** Un descuento del $10\,\%$ deja el precio en el $90\,\%$, es decir, lo multiplica por $0{,}9$, y uno del $20\,\%$ lo multiplica por $0{,}8$:
+
+$$
+0{,}9x + 0{,}8y + 0{,}8z = 66
+$$
+
+**Segunda ecuación.** Sin descuento, $3$ productos $A$ y $4$ productos $B$ cuestan $140$ euros:
+
+$$
+3x + 4y = 140
+$$
+
+**Lo que se pide.** Con dos ecuaciones y tres incógnitas no podemos hallar cada precio, pero no hace falta: nos piden $3x + 8z$, y se puede obtener combinando las ecuaciones. Multiplicando la primera por $5$ aparece $4y$, igual que en la segunda:
+
+$$
+4{,}5x + 4y + 4z = 330
+$$
+
+Restándole la segunda ecuación, desaparece $y$:
+
+$$
+(4{,}5x + 4y + 4z) - (3x + 4y) = 330 - 140 \quad\Rightarrow\quad 1{,}5x + 4z = 190
+$$
+
+Y multiplicando por $2$: $3x + 8z = 380$.
+
+**Respuesta.** $3$ productos de tipo $A$ más $8$ de tipo $C$ valen **$380$ €**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Determina el precio, sin descuento, de cada tipo de producto, sabiendo además que el precio del producto de tipo $C$ es el doble que el de tipo $A$.
+
+</div>
+
+<Solucion>
+
+**Sistema con la ecuación adicional.** El precio de $C$ es el doble que el de $A$: $z = 2x$. El sistema queda
+
+$$
+\begin{cases}
+0{,}9x + 0{,}8y + 0{,}8z = 66 \\
+3x + 4y = 140 \\
+z = 2x
+\end{cases}
+$$
+
+**Resolución.** Por el apartado a), las dos primeras ecuaciones dan $3x + 8z = 380$. Sustituyendo $z = 2x$:
+
+$$
+3x + 16x = 380 \quad\Rightarrow\quad 19x = 380 \quad\Rightarrow\quad x = 20
+$$
+
+Entonces $z = 2 \cdot 20 = 40$ y, de la segunda ecuación, $4y = 140 - 60 = 80$, es decir, $y = 20$.
+
+**Comprobación.** $0{,}9 \cdot 20 + 0{,}8 \cdot 20 + 0{,}8 \cdot 40 = 18 + 16 + 32 = 66$ y $3 \cdot 20 + 4 \cdot 20 = 140$.
+
+**Respuesta.** Sin descuento, el producto $A$ cuesta **$20$ €**, el $B$ **$20$ €** y el $C$ **$40$ €**.
+
+</Solucion>

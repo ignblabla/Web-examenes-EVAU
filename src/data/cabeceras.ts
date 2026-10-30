@@ -65,6 +65,28 @@ const matematicasAplicadas2026: Cabecera = {
   ],
 }
 
+const matematicasII2026: Cabecera = {
+  ...comun2026,
+  asignatura: "MATEMÁTICAS II",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) Este examen consta de seis ejercicios distribuidos en una parte con dos ejercicios obligatorios y una parte con dos bloques con dos ejercicios optativos cada uno.",
+    "d) Se deben resolver los dos ejercicios obligatorios y solamente un ejercicio de cada uno de los dos bloques con optatividad. En caso de responder a dos ejercicios de un mismo bloque optativo, sólo se corregirá el que aparezca físicamente en primer lugar.",
+    "e) Cada ejercicio tiene un valor máximo de 2,5 puntos. En la puntuación máxima de cada ejercicio están contemplados 0,25 puntos para valorar la expresión correcta de los procesos y métodos utilizados.",
+    "f) Se permitirá el uso de calculadoras que no sean programables, ni gráficas, ni con capacidad para almacenar o transmitir datos. No obstante, todos los procesos conducentes a la obtención de resultados deben estar suficientemente justificados.",
+    "g) Se proporciona la tabla de la distribución Normal. Se permite el uso de regla.",
+  ],
+}
+
+// La reserva 3 dice "Se permite" en la instrucción f), en vez de "Se permitirá".
+const matematicasII2026Reserva3: Cabecera = {
+  ...matematicasII2026,
+  instrucciones: matematicasII2026.instrucciones.map((i) =>
+    i.startsWith("f) ") ? i.replace("Se permitirá", "Se permite") : i,
+  ),
+}
+
 // Curso 2024-2025: cuatro bloques (A, B, C y D) y un ejercicio de cada uno.
 const matematicasAplicadas2025: Cabecera = {
   ...matematicasAplicadas2026,
@@ -375,4 +397,10 @@ export const cabeceras: Record<string, Cabecera> = {
   "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
+  "matematicas-ii/2026/junio": matematicasII2026,
+  "matematicas-ii/2026/julio": matematicasII2026,
+  "matematicas-ii/2026/reserva-1": matematicasII2026,
+  "matematicas-ii/2026/reserva-2": matematicasII2026,
+  "matematicas-ii/2026/reserva-3": matematicasII2026Reserva3,
+  "matematicas-ii/2026/reserva-4": matematicasII2026,
 }

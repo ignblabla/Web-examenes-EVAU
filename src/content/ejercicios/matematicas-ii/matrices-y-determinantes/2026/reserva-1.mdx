@@ -1,0 +1,72 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Dadas las matrices $A = \begin{pmatrix} 1 & 0 & 1 \\ -1 & 2 & 0 \\ 0 & 1 & 1 \end{pmatrix}$, $B = \begin{pmatrix} -1 \\ 2 \\ 3 \end{pmatrix}$ y $C = \begin{pmatrix} 1 & 4 & 2 \end{pmatrix}$, calcula la matriz $X$ que satisface $X - 2C = B^t + XA$.
+
+<Solucion>
+
+**Dimensión de $X$.** $C$ y $B^t$ son matrices fila $1 \times 3$, así que $X$ también es $1 \times 3$ (y entonces $XA$ es $1 \times 3$, como debe ser).
+
+**Despejar $X$.** Pasamos los términos con $X$ a la izquierda y sacamos $X$ factor común por la izquierda, escribiendo $X = XI$ con $I$ la identidad de orden $3$:
+
+$$
+X - XA = B^t + 2C \quad\Rightarrow\quad X\,(I - A) = B^t + 2C \quad\Rightarrow\quad X = (B^t + 2C)\,(I - A)^{-1}
+$$
+
+siempre que $I - A$ sea invertible. Hay que multiplicar por la inversa por la derecha, porque $X$ está a la izquierda de $(I - A)$.
+
+**La matriz $I - A$ y su determinante.**
+
+$$
+I - A = \begin{pmatrix} 0 & 0 & -1 \\ 1 & -1 & 0 \\ 0 & -1 & 0 \end{pmatrix}, \qquad
+|I - A| = -1 \cdot \begin{vmatrix} 1 & -1 \\ 0 & -1 \end{vmatrix} = -1 \cdot (-1) = 1
+$$
+
+(desarrollando por la primera fila). Como $|I - A| = 1 \neq 0$, es invertible.
+
+**Inversa.** $(I - A)^{-1} = \dfrac{1}{|I - A|}\,\big(\text{Adj}(I - A)\big)^t$. Los adjuntos son
+
+$$
+\text{Adj}(I - A) = \begin{pmatrix} 0 & 0 & -1 \\ 1 & 0 & 0 \\ -1 & -1 & 0 \end{pmatrix}
+\quad\Rightarrow\quad
+(I - A)^{-1} = \begin{pmatrix} 0 & 1 & -1 \\ 0 & 0 & -1 \\ -1 & 0 & 0 \end{pmatrix}
+$$
+
+Comprobación:
+
+$$
+(I - A)(I - A)^{-1} = \begin{pmatrix} 0 & 0 & -1 \\ 1 & -1 & 0 \\ 0 & -1 & 0 \end{pmatrix}\begin{pmatrix} 0 & 1 & -1 \\ 0 & 0 & -1 \\ -1 & 0 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+**Cálculo de $X$.**
+
+$$
+B^t + 2C = (-1,\ 2,\ 3) + (2,\ 8,\ 4) = (1,\ 10,\ 7)
+$$
+
+$$
+X = (1,\ 10,\ 7)\begin{pmatrix} 0 & 1 & -1 \\ 0 & 0 & -1 \\ -1 & 0 & 0 \end{pmatrix} = (0 + 0 - 7,\ \ 1 + 0 + 0,\ \ -1 - 10 + 0)
+$$
+
+$$
+X = (-7,\ 1,\ -11)
+$$
+
+**Comprobación.** $X - 2C = (-7 - 2,\ 1 - 8,\ -11 - 4) = (-9,\ -7,\ -15)$, y
+
+$$
+XA = (-7 - 1 + 0,\ \ 0 + 2 - 11,\ \ -7 + 0 - 11) = (-8,\ -9,\ -18)
+$$
+
+$$
+B^t + XA = (-1,\ 2,\ 3) + (-8,\ -9,\ -18) = (-9,\ -7,\ -15)
+$$
+
+**Respuesta.** **$X = \begin{pmatrix} -7 & 1 & -11 \end{pmatrix}$**.
+
+</Solucion>

@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Tres máquinas A, B y C, producen el $45\,\%$, $30\,\%$ y $25\,\%$, respectivamente, del total de los coches que se producen en una fábrica. Los porcentajes de producción defectuosa de estas máquinas son del $3\,\%$, $4\,\%$ y $5\,\%$, respectivamente.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Seleccionamos un coche al azar. Calcula la probabilidad de que sea defectuoso.
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos $A$, $B$ y $C$ a que el coche lo haya producido cada máquina, y $D$ a que el coche sea defectuoso. Los datos son
+
+$$
+P(A) = 0{,}45, \qquad P(B) = 0{,}30, \qquad P(C) = 0{,}25
+$$
+
+$$
+P(D \mid A) = 0{,}03, \qquad P(D \mid B) = 0{,}04, \qquad P(D \mid C) = 0{,}05
+$$
+
+**Probabilidad pedida.** Cada coche sale de una sola máquina, así que $A$, $B$ y $C$ forman un sistema completo de sucesos. Por el teorema de la probabilidad total:
+
+$$
+P(D) = P(A)\,P(D \mid A) + P(B)\,P(D \mid B) + P(C)\,P(D \mid C)
+$$
+
+$$
+= 0{,}45 \cdot 0{,}03 + 0{,}30 \cdot 0{,}04 + 0{,}25 \cdot 0{,}05 = 0{,}0135 + 0{,}012 + 0{,}0125 = 0{,}038
+$$
+
+**Respuesta.** La probabilidad de que el coche sea defectuoso es **$0{,}038$**, es decir, un $3{,}8\,\%$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Tomamos, al azar, un coche y resulta ser defectuoso. ¿Qué máquina tiene la mayor probabilidad de haber producido dicho coche?
+
+</div>
+
+<Solucion>
+
+**Probabilidades que hay que calcular.** Sabemos que el coche es defectuoso, así que hay que comparar las tres probabilidades condicionadas $P(A \mid D)$, $P(B \mid D)$ y $P(C \mid D)$. Las calculamos con el teorema de Bayes, usando $P(D) = 0{,}038$ del apartado a):
+
+$$
+P(A \mid D) = \frac{P(A)\,P(D \mid A)}{P(D)} = \frac{0{,}0135}{0{,}038} = \frac{27}{76} \approx 0{,}3553
+$$
+
+$$
+P(B \mid D) = \frac{P(B)\,P(D \mid B)}{P(D)} = \frac{0{,}012}{0{,}038} = \frac{24}{76} \approx 0{,}3158
+$$
+
+$$
+P(C \mid D) = \frac{P(C)\,P(D \mid C)}{P(D)} = \frac{0{,}0125}{0{,}038} = \frac{25}{76} \approx 0{,}3289
+$$
+
+Las tres suman $\frac{27 + 24 + 25}{76} = 1$, como debe ser.
+
+**Respuesta.** Lo más probable es que el coche defectuoso lo haya producido **la máquina A**, con probabilidad $\dfrac{27}{76} \approx 0{,}355$. Aunque es la que menos falla, fabrica casi la mitad de los coches.
+
+</Solucion>

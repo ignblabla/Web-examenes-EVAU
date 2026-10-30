@@ -1,0 +1,67 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera los puntos $A(1, 0, 2)$, $B(-1, 1, 0)$, $C(0, -1, 1)\;$ y $\;D(1, 1, 1)$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula la longitud de la altura del tetraedro de vértices $A, B, C, D$ trazada desde el vértice $D$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La altura desde $D$ es el segmento perpendicular desde $D$ a la cara opuesta, que está en el plano que contiene a $A$, $B$ y $C$. Su longitud es la distancia de $D$ a ese plano.
+
+**Plano que contiene a $A$, $B$ y $C$.** Sus vectores directores son
+
+$$
+\overrightarrow{AB} = (-2,\ 1,\ -2), \qquad \overrightarrow{AC} = (-1,\ -1,\ -1)
+$$
+
+y un vector normal es su producto vectorial:
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -2 & 1 & -2 \\ -1 & -1 & -1 \end{vmatrix} = (-1 - 2)\,\vec{i} - (2 - 2)\,\vec{j} + (2 + 1)\,\vec{k} = (-3,\ 0,\ 3)
+$$
+
+o el proporcional $\vec{n} = (1, 0, -1)$. El plano es $x - z + D' = 0$ y pasa por $A(1, 0, 2)$: $1 - 2 + D' = 0 \Rightarrow D' = 1$.
+
+$$
+\pi \equiv x - z + 1 = 0
+$$
+
+Comprobación: $B$ da $-1 - 0 + 1 = 0$ y $C$, $0 - 1 + 1 = 0$.
+
+**Altura.** La distancia de $D(1, 1, 1)$ a $\pi$:
+
+$$
+h = d(D, \pi) = \frac{|1 - 1 + 1|}{\sqrt{1^2 + 0^2 + (-1)^2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}
+$$
+
+**Respuesta.** La altura desde $D$ mide **$\dfrac{\sqrt{2}}{2} \approx 0{,}71$ unidades**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Determina el ángulo que forma la recta que pasa por $A$ y $D$ con el plano que contiene a los puntos $A$, $B$ y $C$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La recta tiene vector director $\overrightarrow{AD} = (0, 1, -1)$ y el plano, del apartado a), vector normal $\vec{n} = (1, 0, -1)$. El ángulo $\alpha$ entre una recta y un plano es el complementario del que forman el vector director y el normal, así que
+
+$$
+\sin \alpha = \frac{\left|\overrightarrow{AD} \cdot \vec{n}\right|}{\left|\overrightarrow{AD}\right|\,|\vec{n}|} = \frac{|0 + 0 + 1|}{\sqrt{2} \cdot \sqrt{2}} = \frac{1}{2}
+$$
+
+**Respuesta.** $\sin \alpha = \frac{1}{2}$, así que la recta y el plano forman un ángulo de **$30^\circ$**.
+
+</Solucion>

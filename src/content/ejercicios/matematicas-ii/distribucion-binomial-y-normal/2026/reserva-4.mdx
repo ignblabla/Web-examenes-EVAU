@@ -1,0 +1,65 @@
+---
+asignatura: matematicas-ii
+tema: distribucion-binomial-y-normal
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+La estatura de los alumnos de un centro de Educación Secundaria sigue una distribución normal de media $172$ cm y desviación típica $7$ cm.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula la probabilidad de que un alumno elegido al azar mida entre $168$ y $180$ cm.
+
+</div>
+
+<Solucion>
+
+**Variable.** Llamamos $X$ a la estatura, en cm: $X \sim N(172;\ 7)$.
+
+**Probabilidad pedida.** $P(168 < X < 180)$.
+
+**Tipificación.** Con $Z = \dfrac{X - 172}{7} \sim N(0, 1)$:
+
+$$
+P(168 < X < 180) = P\left(\frac{168 - 172}{7} < Z < \frac{180 - 172}{7}\right) = P(-0{,}57 < Z < 1{,}14)
+$$
+
+(redondeando $-\frac{4}{7} = -0{,}571\ldots$ y $\frac{8}{7} = 1{,}142\ldots$ a dos decimales, como trae la tabla).
+
+**Tabla.** $P(Z \leq 1{,}14) = 0{,}8729$ y, por la simetría de la normal, $P(Z \leq -0{,}57) = 1 - P(Z \leq 0{,}57) = 1 - 0{,}7157 = 0{,}2843$:
+
+$$
+P(-0{,}57 < Z < 1{,}14) = 0{,}8729 - 0{,}2843 = 0{,}5886
+$$
+
+**Respuesta.** La probabilidad es **$0{,}5886$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** ¿Cuánto mide al menos un alumno que está en el grupo del $5\,\%$ de alumnos más altos?
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Buscamos la estatura $k$ que deja por encima al $5\,\%$ más alto: $P(X \geq k) = 0{,}05$, es decir, $P(X < k) = 0{,}95$.
+
+**Tipificación.**
+
+$$
+P\left(Z < \frac{k - 172}{7}\right) = 0{,}95
+$$
+
+**Lectura inversa de la tabla.** El valor $0{,}95$ no aparece en la tabla: está justo entre $0{,}9495$ (para $z = 1{,}64$) y $0{,}9505$ (para $z = 1{,}65$). Interpolando, $z = 1{,}645$ (los criterios generales también dan por bueno tomar el valor más cercano).
+
+$$
+\frac{k - 172}{7} = 1{,}645 \quad\Rightarrow\quad k = 172 + 1{,}645 \cdot 7 = 172 + 11{,}515 = 183{,}515
+$$
+
+**Respuesta.** Un alumno del $5\,\%$ más alto mide **al menos unos $183{,}5$ cm**. Con $z = 1{,}64$ o $z = 1{,}65$ sale $183{,}48$ o $183{,}55$ cm, prácticamente lo mismo.
+
+</Solucion>

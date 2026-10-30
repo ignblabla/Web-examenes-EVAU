@@ -1,0 +1,55 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Se sabe que la función $f : \mathbb{R} \to \mathbb{R}$ dada por
+
+$$
+f(x) = \begin{cases} 2\,|x^2 - 1| & \text{si } x \leq \frac{1}{2} \\[6pt] ax^2 + bx & \text{si } x > \frac{1}{2} \end{cases}
+$$
+
+es derivable en $x = \frac{1}{2}$. Determina $a$ y $b$.
+
+<Solucion>
+
+**Primer tramo sin valor absoluto.** Cerca de $x = \frac{1}{2}$, en concreto en $(-1, 1)$, se cumple $x^2 < 1$, así que $x^2 - 1 < 0$ y $|x^2 - 1| = 1 - x^2$. Por tanto, a la izquierda de $\frac{1}{2}$ (y cerca de él)
+
+$$
+f(x) = 2(1 - x^2) = 2 - 2x^2
+$$
+
+**Condición de continuidad.** Una función derivable en un punto es continua en él, así que los límites laterales en $x = \frac{1}{2}$ tienen que coincidir con $f\left(\frac{1}{2}\right)$:
+
+$$
+\lim_{x \to \frac{1}{2}^-} f(x) = f\left(\tfrac{1}{2}\right) = 2 - 2 \cdot \frac{1}{4} = \frac{3}{2}, \qquad \lim_{x \to \frac{1}{2}^+} f(x) = \frac{a}{4} + \frac{b}{2}
+$$
+
+$$
+\frac{a}{4} + \frac{b}{2} = \frac{3}{2} \quad\Rightarrow\quad a + 2b = 6
+$$
+
+**Condición de derivabilidad.** Las derivadas laterales tienen que ser iguales. Derivando cada tramo,
+
+$$
+f'(x) = \begin{cases} -4x & \text{si } -1 < x < \frac{1}{2} \\[4pt] 2ax + b & \text{si } x > \frac{1}{2} \end{cases}
+$$
+
+$$
+f'\left(\tfrac{1}{2}^-\right) = -4 \cdot \frac{1}{2} = -2, \qquad f'\left(\tfrac{1}{2}^+\right) = 2a \cdot \frac{1}{2} + b = a + b
+$$
+
+$$
+a + b = -2
+$$
+
+**Resolución.** Restando la segunda ecuación a la primera, $(a + 2b) - (a + b) = 6 - (-2)$, es decir, $b = 8$, y entonces $a = -2 - 8 = -10$.
+
+**Comprobación.** Con $a = -10$ y $b = 8$: $\frac{-10}{4} + \frac{8}{2} = -\frac{5}{2} + 4 = \frac{3}{2}$ y $-10 + 8 = -2$.
+
+**Respuesta.** **$a = -10$ y $b = 8$**.
+
+</Solucion>

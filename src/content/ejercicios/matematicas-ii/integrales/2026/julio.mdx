@@ -1,0 +1,47 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+La velocidad de crecimiento de la población de peces en un lago al cabo del tiempo, t en años, viene dada por $P'(t) = 20\,t\,e^{\frac{-t}{10}}$, siendo $P(t)$ la población de peces. Sabiendo que la población inicial es de $1000$ peces, calcula cuántos tendrá el lago transcurridos $10$ años.
+
+<Solucion>
+
+**Planteamiento.** La población $P(t)$ es una primitiva de su velocidad de crecimiento $P'(t)$. Calculamos la integral, fijamos la constante con la población inicial, $P(0) = 1000$, y evaluamos en $t = 10$.
+
+**Población en función del tiempo.** La integral se resuelve por partes, $\int u\,dv = uv - \int v\,du$, con
+
+$$
+u = t \;\Rightarrow\; du = dt, \qquad dv = e^{-t/10}\,dt \;\Rightarrow\; v = -10\,e^{-t/10}
+$$
+
+$$
+\int t\,e^{-t/10}\,dt = -10\,t\,e^{-t/10} + 10\int e^{-t/10}\,dt = -10\,t\,e^{-t/10} - 100\,e^{-t/10}
+$$
+
+Multiplicando por $20$ y sacando factor común:
+
+$$
+P(t) = \int 20\,t\,e^{-t/10}\,dt = -200\,t\,e^{-t/10} - 2000\,e^{-t/10} + C = -200\,(t + 10)\,e^{-t/10} + C
+$$
+
+**Población inicial.** $P(0) = -200 \cdot 10 \cdot e^0 + C = -2000 + C = 1000 \Rightarrow C = 3000$. Por tanto
+
+$$
+P(t) = 3000 - 200\,(t + 10)\,e^{-t/10}
+$$
+
+**Comprobación.** $P'(t) = -200\,e^{-t/10} + 200\,(t + 10) \cdot \dfrac{1}{10}\,e^{-t/10} = e^{-t/10}\,(-200 + 20t + 200) = 20\,t\,e^{-t/10}$.
+
+**Población a los 10 años.**
+
+$$
+P(10) = 3000 - 200 \cdot 20 \cdot e^{-1} = 3000 - \frac{4000}{e} \approx 3000 - 1471{,}52 = 1528{,}48
+$$
+
+**Respuesta.** A los $10$ años el lago tendrá **$3000 - \dfrac{4000}{e} \approx 1528$ peces**.
+
+</Solucion>

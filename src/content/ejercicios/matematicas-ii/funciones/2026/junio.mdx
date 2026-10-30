@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+import VentanaJunio2026 from "../../../../../components/figuras/VentanaJunio2026.astro"
+
+Una ventana tiene forma de rectángulo y está coronada por un semicírculo. Sabiendo que el perímetro de la ventana mide $8$ metros, halla las dimensiones de la ventana que permitan la mayor entrada de luz.
+
+<Solucion>
+
+**Variables.** Llamamos $x$ a la anchura de la ventana (la base del rectángulo) e $y$ a la altura del rectángulo, en metros. El semicírculo tiene por diámetro el lado de arriba del rectángulo, así que su radio es $r = \dfrac{x}{2}$.
+
+<VentanaJunio2026 />
+
+**Función a maximizar.** Entra más luz cuanto mayor es la superficie de la ventana: el área del rectángulo más la de medio círculo de radio $\frac{x}{2}$,
+
+$$
+f(x, y) = xy + \frac{1}{2}\,\pi \left(\frac{x}{2}\right)^2 = xy + \frac{\pi x^2}{8}
+$$
+
+**Ecuación del perímetro.** El contorno de la ventana lo forman la base, los dos lados verticales y el arco del semicírculo, que es media circunferencia de radio $\frac{x}{2}$, es decir, $\frac{1}{2} \cdot 2\pi \cdot \frac{x}{2} = \frac{\pi x}{2}$. El lado de arriba del rectángulo no cuenta: queda dentro de la ventana. Por tanto
+
+$$
+x + 2y + \frac{\pi x}{2} = 8 \quad\Rightarrow\quad y = \frac{8 - x - \frac{\pi x}{2}}{2} = 4 - \frac{(2 + \pi)\,x}{4}
+$$
+
+**Función de una variable.** Sustituyendo $y$ en $f(x, y)$:
+
+$$
+f(x) = x\left(4 - \frac{(2 + \pi)\,x}{4}\right) + \frac{\pi x^2}{8} = 4x - \frac{(4 + 2\pi)\,x^2}{8} + \frac{\pi x^2}{8} = 4x - \frac{(4 + \pi)\,x^2}{8}
+$$
+
+Las dos medidas tienen que ser positivas: $x > 0$ e $y > 0$, es decir, $4 - \frac{(2 + \pi)\,x}{4} > 0 \Leftrightarrow x < \frac{16}{2 + \pi} \approx 3{,}11$. Buscamos el máximo de $f$ en el intervalo $\left(0, \frac{16}{2 + \pi}\right)$.
+
+**Derivada.**
+
+$$
+f'(x) = 4 - \frac{(4 + \pi)\,x}{4} = 0 \quad\Rightarrow\quad x = \frac{16}{4 + \pi} \approx 2{,}24
+$$
+
+que está dentro del intervalo. Como $f''(x) = -\dfrac{4 + \pi}{4} < 0$, en $x = \frac{16}{4 + \pi}$ hay un **máximo**. Además $f$ es una parábola que se abre hacia abajo, así que es el máximo absoluto: $f$ crece antes de ese punto y decrece después.
+
+**Altura del rectángulo.**
+
+$$
+y = 4 - \frac{2 + \pi}{4} \cdot \frac{16}{4 + \pi} = 4 - \frac{4(2 + \pi)}{4 + \pi} = \frac{16 + 4\pi - 8 - 4\pi}{4 + \pi} = \frac{8}{4 + \pi} \approx 1{,}12
+$$
+
+**Comprobación.** Con $x \approx 2{,}2404$ e $y \approx 1{,}1202$, el perímetro es $2{,}2404 + 2 \cdot 1{,}1202 + \pi \cdot 1{,}1202 \approx 2{,}2404 + 2{,}2404 + 3{,}5192 = 8$ metros.
+
+**Respuesta.** Entra la mayor cantidad de luz cuando la ventana mide **$\dfrac{16}{4 + \pi} \approx 2{,}24$ m de ancho** y la parte rectangular **$\dfrac{8}{4 + \pi} \approx 1{,}12$ m de alto**, la misma medida que el radio del semicírculo. La superficie de la ventana es entonces $f\left(\frac{16}{4 + \pi}\right) = \dfrac{32}{4 + \pi} \approx 4{,}48$ m².
+
+</Solucion>

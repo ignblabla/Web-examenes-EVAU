@@ -1,0 +1,79 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Los $120$ estudiantes de segundo de Bachillerato de un centro se distribuyen por clases como se indica en la tabla:
+
+<div class="math-tabla">
+
+|  | Cursan inglés | Cursan francés | Número de estudiantes |
+|---|:---:|:---:|:---:|
+| Clase A | $30$ | $10$ | 40 |
+| Clase B | $15$ | $20$ | 35 |
+| Clase C | $20$ | $5$ | 25 |
+| Clase D | $20$ | $0$ | 20 |
+
+</div>
+
+Se elige un estudiante al azar y se pide:
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** ¿Cuál es la probabilidad de que el estudiante elegido esté en la clase A o haya cursado francés?
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos $A$ a que el estudiante esté en la clase A, $C$ a que esté en la clase C, $I$ a que curse inglés y $F$ a que curse francés. En cada clase, los que cursan inglés más los que cursan francés suman el total, así que cada estudiante cursa uno solo de los dos idiomas. Sumando las columnas, cursan inglés $30 + 15 + 20 + 20 = 85$ estudiantes y francés $10 + 20 + 5 + 0 = 35$.
+
+Todos los estudiantes tienen la misma probabilidad de ser elegidos, así que usamos la regla de Laplace con los $120$ estudiantes.
+
+**Probabilidad de la unión.** Nos piden $P(A \cup F)$:
+
+$$
+P(A \cup F) = P(A) + P(F) - P(A \cap F)
+$$
+
+- Probabilidad de que esté en la clase A: $P(A) = \dfrac{40}{120}$.
+- Probabilidad de que haya cursado francés: $P(F) = \dfrac{35}{120}$.
+- Probabilidad de las dos cosas a la vez (clase A y francés): $P(A \cap F) = \dfrac{10}{120}$.
+
+$$
+P(A \cup F) = \frac{40}{120} + \frac{35}{120} - \frac{10}{120} = \frac{65}{120} = \frac{13}{24} \approx 0{,}5417
+$$
+
+**Respuesta.** La probabilidad es **$\dfrac{13}{24} \approx 0{,}54$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si el estudiante elegido cursaba inglés, ¿cuál es la probabilidad de que esté en la clase C?
+
+</div>
+
+<Solucion>
+
+**Probabilidad condicionada.** Sabemos que cursa inglés, así que nos piden
+
+$$
+P(C \mid I) = \frac{P(C \cap I)}{P(I)}
+$$
+
+- Probabilidad de que esté en la clase C y estudie inglés: $P(C \cap I) = \dfrac{20}{120}$.
+- Probabilidad de que haya estudiado inglés: $P(I) = \dfrac{85}{120}$.
+
+$$
+P(C \mid I) = \frac{20/120}{85/120} = \frac{20}{85} = \frac{4}{17} \approx 0{,}2353
+$$
+
+Es lo mismo que contar solo entre los $85$ que cursan inglés: $20$ de ellos están en la clase C.
+
+**Respuesta.** La probabilidad es **$\dfrac{4}{17} \approx 0{,}24$**.
+
+</Solucion>

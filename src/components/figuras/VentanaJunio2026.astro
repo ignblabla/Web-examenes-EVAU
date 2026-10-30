@@ -1,0 +1,28 @@
+---
+// Matemáticas II, junio de 2026, ejercicio 1: ventana rectangular de anchura x y altura y,
+// coronada por un semicírculo de radio x/2.
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 260 220" role="img" aria-label="Ventana formada por un rectángulo de anchura x y altura y, coronado por un semicírculo de diámetro x y radio x entre 2">
+    <g fill="#dcefe8" stroke="#111" stroke-width="1.5">
+      <path d="M50 110 A80 80 0 0 1 210 110 L210 190 L50 190 Z" />
+    </g>
+    <g fill="none" stroke="#111" stroke-width="1" stroke-dasharray="4 3">
+      <path d="M50 110 H210" />
+    </g>
+    <g fill="none" stroke="#195c51" stroke-width="1.5">
+      <path d="M130 110 L186.6 53.4" />
+    </g>
+    <circle cx="130" cy="110" r="2.5" fill="#195c51" />
+    <g fill="none" stroke="#b04a3a" stroke-width="1">
+      <path d="M50 203 H210 M50 198 V208 M210 198 V208" />
+      <path d="M223 110 V190 M218 110 H228 M218 190 H228" />
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic">
+      <text x="130" y="216" text-anchor="middle" fill="#b04a3a">x</text>
+      <text x="236" y="154" fill="#b04a3a">y</text>
+      <text x="118" y="70" text-anchor="end" fill="#195c51" font-weight="700">r = x/2</text>
+    </g>
+  </svg>
+</figure>

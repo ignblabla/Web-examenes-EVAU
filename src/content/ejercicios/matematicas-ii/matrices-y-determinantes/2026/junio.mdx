@@ -1,0 +1,65 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} \alpha & \beta & 1 \\ 2 & \alpha & \beta \\ 3 & 4 & \alpha \end{pmatrix}$ que cumple $|A| = -2$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula $\begin{vmatrix} -3 & -4 & -\alpha \\ \alpha - 2 & \beta - \alpha & 1 - \beta \\ 8 & 4\alpha & 4\beta \end{vmatrix}$
+
+</div>
+
+<Solucion>
+
+No conocemos $\alpha$ ni $\beta$, así que el determinante hay que calcularlo con sus propiedades, a partir de $|A|$. Llamamos $F_1$, $F_2$ y $F_3$ a las filas de $A$:
+
+$$
+F_1 = (\alpha,\ \beta,\ 1), \qquad F_2 = (2,\ \alpha,\ \beta), \qquad F_3 = (3,\ 4,\ \alpha)
+$$
+
+Las filas del determinante pedido se escriben con ellas:
+
+- $(-3,\ -4,\ -\alpha) = -F_3$
+- $(\alpha - 2,\ \beta - \alpha,\ 1 - \beta) = F_1 - F_2$
+- $(8,\ 4\alpha,\ 4\beta) = 4F_2$
+
+Aplicamos las propiedades paso a paso:
+
+$$
+\begin{vmatrix} -F_3 \\ F_1 - F_2 \\ 4F_2 \end{vmatrix}
+\overset{(1)}{=} (-1) \cdot 4 \begin{vmatrix} F_3 \\ F_1 - F_2 \\ F_2 \end{vmatrix}
+\overset{(2)}{=} -4 \begin{vmatrix} F_3 \\ F_1 \\ F_2 \end{vmatrix}
+\overset{(3)}{=} -4 \begin{vmatrix} F_1 \\ F_2 \\ F_3 \end{vmatrix}
+= -4\,|A| = -4 \cdot (-2) = 8
+$$
+
+- **(1)** Si una fila está multiplicada por un número, ese número sale fuera del determinante: el $-1$ de la primera fila y el $4$ de la tercera.
+- **(2)** Sumar a una fila un múltiplo de otra no cambia el determinante: a la segunda fila, $F_1 - F_2$, le sumamos la tercera, $F_2$, y queda $F_1$.
+- **(3)** Cada intercambio de dos filas cambia el signo del determinante. Para pasar de $(F_3, F_1, F_2)$ a $(F_1, F_2, F_3)$ hacen falta dos intercambios (la primera fila con la segunda y luego la segunda con la tercera), así que el signo no cambia.
+
+**Respuesta.** El determinante vale **$8$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula $\left|A^{-1}(A^t)^2A\right|$
+
+</div>
+
+<Solucion>
+
+Como $|A| = -2 \neq 0$, la matriz $A$ es invertible y existe $A^{-1}$. Usamos tres propiedades: el determinante de un producto es el producto de los determinantes, $|A^t| = |A|$ y $|A^{-1}| = \dfrac{1}{|A|}$.
+
+$$
+\left|A^{-1}(A^t)^2A\right| = |A^{-1}| \cdot |A^t|^2 \cdot |A| = \frac{1}{|A|} \cdot |A|^2 \cdot |A| = |A|^2 = (-2)^2 = 4
+$$
+
+**Respuesta.** $\left|A^{-1}(A^t)^2A\right| =$ **$4$**.
+
+</Solucion>

@@ -1,0 +1,74 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import PotenciaPerdida from "../../../../../components/figuras/PotenciaPerdida.astro"
+
+La potencia de pérdida $P(t)$ (en vatios) en una máquina, debido a la fricción, depende del tiempo de uso $t$ (en años) según la función $P(t) = \dfrac{4t}{1 + t^2}$ siendo $\quad t \geq 0$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula en qué momento la potencia de pérdida es máxima.
+
+</div>
+
+<Solucion>
+
+**Derivada.** Por la regla del cociente:
+
+$$
+P'(t) = \frac{4\,(1 + t^2) - 4t \cdot 2t}{(1 + t^2)^2} = \frac{4 - 4t^2}{(1 + t^2)^2} = \frac{4\,(1 - t)(1 + t)}{(1 + t^2)^2}
+$$
+
+**Puntos críticos.** $P'(t) = 0 \Leftrightarrow 4 - 4t^2 = 0 \Leftrightarrow t = 1$ o $t = -1$. Como $t \geq 0$, el único punto crítico es **$t = 1$**.
+
+**Monotonía.** El denominador $(1 + t^2)^2$ y el factor $4(1 + t)$ son positivos para $t \geq 0$, así que el signo de $P'$ es el de $1 - t$:
+
+- En $(0, 1)$, $P'(t) > 0$: la potencia **crece**.
+- En $(1, +\infty)$, $P'(t) < 0$: la potencia **decrece**.
+
+Por tanto, en $t = 1$ hay un máximo, y es absoluto en $[0, +\infty)$: antes la función crece y después decrece. Su valor es $P(1) = \dfrac{4}{2} = 2$ vatios.
+
+<PotenciaPerdida />
+
+**Respuesta.** La potencia de pérdida es máxima **al cabo de $1$ año de uso**, cuando vale $2$ vatios.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** La energía total perdida en los $t$ primeros años viene dada por la expresión $E(t) = \displaystyle\int_0^t P(x)\,dx$ (vatios por año). Calcula la energía total perdida en los tres primeros años.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La energía perdida en los tres primeros años es
+
+$$
+E(3) = \int_0^3 \frac{4x}{1 + x^2}\,dx
+$$
+
+el área sombreada en la gráfica del apartado a).
+
+**Primitiva de $P$.** El numerador es, salvo una constante, la derivada del denominador: $(1 + x^2)' = 2x$. Así que es una integral de tipo logaritmo:
+
+$$
+\int \frac{4x}{1 + x^2}\,dx = 2\int \frac{2x}{1 + x^2}\,dx = 2\ln(1 + x^2) + C
+$$
+
+(sin valor absoluto, porque $1 + x^2 > 0$).
+
+**Regla de Barrow.**
+
+$$
+E(3) = \Big[2\ln(1 + x^2)\Big]_0^3 = 2\ln 10 - 2\ln 1 = 2\ln 10 \approx 4{,}61
+$$
+
+**Respuesta.** En los tres primeros años se pierde una energía de **$2\ln 10 \approx 4{,}61$** (en las unidades del enunciado, vatios por año).
+
+</Solucion>

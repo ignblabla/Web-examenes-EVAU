@@ -2435,6 +2435,13 @@ footer {
   margin-top: 8px;
 }
 
+/* Texto que sigue al rótulo recuadrado (Matemáticas II: "PARTE OBLIGATORIA. Resuelve…"). */
+.official-statement--matematicas .math-bloque .math-bloque-texto {
+  padding: 0;
+  border: 0;
+  font-weight: 400;
+}
+
 .official-statement--matematicas .math-sub {
   padding-left: 22px;
 }
@@ -3077,6 +3084,23 @@ footer {
 
 .official-statement .solution li + li {
   margin-top: 2px;
+}
+
+/* Tabla del enunciado con bordes y centrada, como el PDF (Matemáticas II, reserva 1 de 2026). */
+.math-tabla table {
+  margin: 8px auto 10px;
+  border-collapse: collapse;
+}
+
+.math-tabla th,
+.math-tabla td {
+  padding: 1px 8px;
+  border: 1px solid #111;
+  font-weight: 400;
+}
+
+.math-tabla td:first-child {
+  text-align: left;
 }
 
 .official-statement .solution table {

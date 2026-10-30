@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+import TrianguloReserva3de2026 from "../../../../../components/figuras/TrianguloReserva3de2026.astro"
+
+En un jardín botánico se desea crear un recinto floral con forma de triángulo rectángulo. Por la disposición del recinto y las características del terreno, la hipotenusa ha de medir $20$ metros. ¿Qué longitudes han de tener los catetos del triángulo rectángulo para que su área sea lo mayor posible y cuál es el valor de esta área?
+
+<Solucion>
+
+**Variables.** Llamamos $x$ e $y$ a los catetos, en metros.
+
+<TrianguloReserva3de2026 />
+
+**Ligadura.** Por el teorema de Pitágoras, con la hipotenusa de $20$ metros:
+
+$$
+x^2 + y^2 = 400 \quad\Rightarrow\quad y = \sqrt{400 - x^2}
+$$
+
+(la raíz positiva, porque $y$ es una longitud).
+
+**Función a maximizar.** En un triángulo rectángulo, los catetos son base y altura:
+
+$$
+f(x, y) = \frac{x\,y}{2}
+$$
+
+**Función de una variable.** Sustituyendo $y$:
+
+$$
+f(x) = \frac{x\sqrt{400 - x^2}}{2}, \qquad 0 < x < 20
+$$
+
+**Derivada.** Por la regla del producto, con $\left(\sqrt{400 - x^2}\right)' = \dfrac{-x}{\sqrt{400 - x^2}}$:
+
+$$
+f'(x) = \frac{1}{2}\left(\sqrt{400 - x^2} - \frac{x^2}{\sqrt{400 - x^2}}\right) = \frac{400 - 2x^2}{2\sqrt{400 - x^2}}
+$$
+
+**Punto crítico.** $f'(x) = 0 \Leftrightarrow 400 - 2x^2 = 0 \Leftrightarrow x^2 = 200 \Leftrightarrow x = \sqrt{200} = 10\sqrt{2}$ (la solución negativa no sirve).
+
+**Máximo.** El denominador es positivo, así que el signo de $f'$ es el de $400 - 2x^2$: positivo en $\left(0, 10\sqrt{2}\right)$ y negativo en $\left(10\sqrt{2}, 20\right)$. El área crece y después decrece, así que en $x = 10\sqrt{2}$ hay un máximo, que es absoluto.
+
+**Otro cateto y área.**
+
+$$
+y = \sqrt{400 - 200} = \sqrt{200} = 10\sqrt{2}, \qquad f\left(10\sqrt{2}\right) = \frac{10\sqrt{2} \cdot 10\sqrt{2}}{2} = \frac{200}{2} = 100
+$$
+
+**Respuesta.** Los dos catetos tienen que medir **$10\sqrt{2} \approx 14{,}14$ metros** (el triángulo es isósceles), y el área máxima es de **$100$ m²**.
+
+</Solucion>

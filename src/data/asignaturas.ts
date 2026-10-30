@@ -123,12 +123,16 @@ export const asignaturas: Asignatura[] = [
     titulo: "Matemáticas II.",
     simbolo: "geometry",
     color: "math-two",
-    // Sin exámenes todavía: la página existe, pero no se indexa ni entra en el sitemap.
-    indexable: false,
+    indexable: true,
+    desde: 2026,
+    intro:
+      "El examen de Matemáticas II de la PAU de Andalucía dura 1 hora y 30 minutos y tiene seis ejercicios de 2,5 puntos: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.",
+    resuelto: "todos los ejercicios paso a paso y justificados",
     temas: temas([
       "Matrices y determinantes",
       "Sistemas de ecuaciones lineales",
       "Espacio afín y euclídeo",
+      "Límites, continuidad y derivabilidad",
       "Funciones",
       "Integrales",
       "Probabilidad",

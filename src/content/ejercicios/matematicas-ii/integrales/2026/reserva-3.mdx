@@ -1,0 +1,79 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera la función $f : [-\pi, \pi] \to \mathbb{R}$ definida por $f(x) = x^2\cos(x)$.
+
+<div class="math-sub">
+
+a) **[2 puntos]** Calcula $\displaystyle\int_0^\pi f(x)\,dx$
+
+</div>
+
+<Solucion>
+
+**Primitiva de $f$.** Integramos por partes dos veces, $\int u\,dv = uv - \int v\,du$.
+
+Primera vez, con $u = x^2$ y $dv = \cos(x)\,dx$, es decir, $du = 2x\,dx$ y $v = \operatorname{sen}(x)$:
+
+$$
+\int x^2\cos(x)\,dx = x^2\operatorname{sen}(x) - \int 2x\operatorname{sen}(x)\,dx
+$$
+
+Segunda vez, con $u = 2x$ y $dv = \operatorname{sen}(x)\,dx$, es decir, $du = 2\,dx$ y $v = -\cos(x)$:
+
+$$
+\int 2x\operatorname{sen}(x)\,dx = -2x\cos(x) + \int 2\cos(x)\,dx = -2x\cos(x) + 2\operatorname{sen}(x)
+$$
+
+Juntando las dos:
+
+$$
+F(x) = \int x^2\cos(x)\,dx = x^2\operatorname{sen}(x) + 2x\cos(x) - 2\operatorname{sen}(x) + C
+$$
+
+**Comprobación.** $F'(x) = 2x\operatorname{sen}(x) + x^2\cos(x) + 2\cos(x) - 2x\operatorname{sen}(x) - 2\cos(x) = x^2\cos(x)$.
+
+**Regla de Barrow.** Como $\operatorname{sen}(\pi) = \operatorname{sen}(0) = 0$, $\cos(\pi) = -1$ y $\cos(0) = 1$:
+
+$$
+\int_0^\pi x^2\cos(x)\,dx = \Big[x^2\operatorname{sen}(x) + 2x\cos(x) - 2\operatorname{sen}(x)\Big]_0^\pi
+$$
+
+$$
+= (0 - 2\pi - 0) - (0 + 0 - 0) = -2\pi
+$$
+
+**Respuesta.** $\displaystyle\int_0^\pi f(x)\,dx =$ **$-2\pi \approx -6{,}28$**. Es negativa porque, entre $\frac{\pi}{2}$ y $\pi$, $\cos(x) < 0$ y $x^2$ es grande, así que pesa más la parte bajo el eje.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,5 puntos]** Estudia la simetría de la función $f$ y deduce de ella la relación que existe entre $\displaystyle\int_0^\pi f(x)\,dx$ y $\displaystyle\int_{-\pi}^\pi f(x)\,dx$
+
+</div>
+
+<Solucion>
+
+**Simetría de $f$.** El dominio $[-\pi, \pi]$ es simétrico respecto de $0$ y, como $(-x)^2 = x^2$ y el coseno es par,
+
+$$
+f(-x) = (-x)^2\cos(-x) = x^2\cos(x) = f(x)
+$$
+
+Así que $f$ es **par**: su gráfica es simétrica respecto del eje $OY$.
+
+**Relación entre las integrales.** Por la simetría, la integral entre $-\pi$ y $0$ es igual que la integral entre $0$ y $\pi$, así que
+
+$$
+\int_{-\pi}^{\pi} f(x)\,dx = \int_{-\pi}^{0} f(x)\,dx + \int_0^{\pi} f(x)\,dx = 2\int_0^{\pi} f(x)\,dx
+$$
+
+**Respuesta.** $\displaystyle\int_{-\pi}^{\pi} f(x)\,dx = 2\int_0^{\pi} f(x)\,dx$, que con el apartado a) vale **$2 \cdot (-2\pi) = -4\pi$**.
+
+</Solucion>

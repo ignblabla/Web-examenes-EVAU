@@ -1,0 +1,70 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+Disponemos de dos bolsas con monedas de oro y monedas de plata. En la primera hay $2$ monedas de oro y $3$ monedas de plata. En la segunda hay $6$ monedas de oro y $3$ de plata. Sin mirar, extraemos una moneda al azar de la primera bolsa y la depositamos en la segunda bolsa. Luego extraemos una moneda de la segunda bolsa.
+
+<div class="math-sub">
+
+a) **[0,75 puntos]** Calcula la probabilidad de que la segunda moneda sea de oro, sabiendo que la moneda que se extrajo de la primera bolsa era de plata.
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos
+
+- $O_1$: la moneda extraída de la primera bolsa es de oro, y $P_1$: es de plata.
+- $O_2$: la moneda extraída de la segunda bolsa es de oro.
+
+Sus probabilidades en la primera extracción, con $5$ monedas en la bolsa, son $P(O_1) = \dfrac{2}{5}$ y $P(P_1) = \dfrac{3}{5}$.
+
+**Probabilidad pedida.** "Sabiendo que la moneda de la primera bolsa era de plata" indica una probabilidad condicionada: nos piden $P(O_2 \mid P_1)$. Si pasamos una moneda de plata, la segunda bolsa queda con $6$ de oro y $4$ de plata, $10$ en total:
+
+$$
+P(O_2 \mid P_1) = \frac{6}{10} = \frac{3}{5} = 0{,}6
+$$
+
+**Respuesta.** La probabilidad es **$\dfrac{3}{5} = 0{,}6$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,75 puntos]** Calcula la probabilidad de que la moneda que se extrajo de la primera bolsa fuera de plata, sabiendo que la segunda moneda es de oro.
+
+</div>
+
+<Solucion>
+
+**Probabilidad pedida.** Ahora sabemos el resultado de la segunda extracción y preguntamos por la primera: es la probabilidad condicionada $P(P_1 \mid O_2)$, que se calcula con el teorema de Bayes.
+
+**Probabilidades de cada camino.** Si de la primera bolsa sale una moneda de oro, la segunda bolsa queda con $7$ de oro y $3$ de plata; si sale de plata, con $6$ de oro y $4$ de plata (apartado a):
+
+$$
+P(O_2 \mid O_1) = \frac{7}{10}, \qquad P(O_2 \mid P_1) = \frac{6}{10}
+$$
+
+**Teorema de la probabilidad total.** La segunda moneda puede ser de oro por los dos caminos:
+
+$$
+P(O_2) = P(O_1)\,P(O_2 \mid O_1) + P(P_1)\,P(O_2 \mid P_1)
+$$
+
+$$
+= \frac{2}{5} \cdot \frac{7}{10} + \frac{3}{5} \cdot \frac{6}{10} = \frac{14}{50} + \frac{18}{50} = \frac{32}{50} = 0{,}64
+$$
+
+**Teorema de Bayes.**
+
+$$
+P(P_1 \mid O_2) = \frac{P(P_1)\,P(O_2 \mid P_1)}{P(O_2)} = \frac{18/50}{32/50} = \frac{18}{32} = \frac{9}{16} = 0{,}5625
+$$
+
+**Respuesta.** La probabilidad de que la primera moneda fuera de plata, sabiendo que la segunda es de oro, es **$\dfrac{9}{16} = 0{,}5625$**.
+
+</Solucion>

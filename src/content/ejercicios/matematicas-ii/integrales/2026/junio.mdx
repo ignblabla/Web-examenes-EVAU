@@ -1,0 +1,50 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+Dada la función $f : \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \dfrac{8\mathrm{e}^x - 4\mathrm{e}^{2x}}{1 + \mathrm{e}^x}$, halla la primitiva de $f$ cuya gráfica tiene por tangente a la recta $y = 2x + 12\ln(2)$ en el punto de abscisa $x = 0$.
+
+(Sugerencia: puedes hacer el cambio $\mathrm{e}^x = t$).
+
+<Solucion>
+
+**Cálculo de $\displaystyle\int f(x)\,dx$.** Con el cambio $\mathrm{e}^x = t$ tenemos $\mathrm{e}^{2x} = t^2$ y $\mathrm{e}^x\,dx = dt$, es decir, $dx = \dfrac{dt}{t}$:
+
+$$
+\int \frac{8\mathrm{e}^x - 4\mathrm{e}^{2x}}{1 + \mathrm{e}^x}\,dx = \int \frac{8t - 4t^2}{1 + t} \cdot \frac{dt}{t} = \int \frac{8 - 4t}{1 + t}\,dt
+$$
+
+Es una función racional con el numerador del mismo grado que el denominador, así que dividimos: $-4t + 8 = -4\,(t + 1) + 12$, de donde
+
+$$
+\frac{8 - 4t}{1 + t} = -4 + \frac{12}{1 + t}
+$$
+
+$$
+\int \left(-4 + \frac{12}{1 + t}\right) dt = -4t + 12\ln|1 + t| + C
+$$
+
+Deshacemos el cambio. Como $1 + \mathrm{e}^x > 0$, sobra el valor absoluto:
+
+$$
+F(x) = -4\mathrm{e}^x + 12\ln(1 + \mathrm{e}^x) + C
+$$
+
+**Comprobación.** $F'(x) = -4\mathrm{e}^x + \dfrac{12\mathrm{e}^x}{1 + \mathrm{e}^x} = \dfrac{-4\mathrm{e}^x - 4\mathrm{e}^{2x} + 12\mathrm{e}^x}{1 + \mathrm{e}^x} = \dfrac{8\mathrm{e}^x - 4\mathrm{e}^{2x}}{1 + \mathrm{e}^x} = f(x)$.
+
+**Condición de la tangente.** Que la recta $y = 2x + 12\ln(2)$ sea tangente a la gráfica de $F$ en $x = 0$ significa dos cosas:
+
+- La pendiente coincide: $F'(0) = f(0) = \dfrac{8 - 4}{1 + 1} = 2$. Se cumple para cualquier primitiva, porque todas tienen la misma derivada.
+- El punto de tangencia está en la recta: $F(0) = 2 \cdot 0 + 12\ln(2) = 12\ln(2)$. Esta condición es la que fija $C$:
+
+$$
+F(0) = -4 + 12\ln(2) + C = 12\ln(2) \quad\Rightarrow\quad C = 4
+$$
+
+**Respuesta.** La primitiva pedida es **$F(x) = -4\mathrm{e}^x + 12\ln(1 + \mathrm{e}^x) + 4$**.
+
+</Solucion>

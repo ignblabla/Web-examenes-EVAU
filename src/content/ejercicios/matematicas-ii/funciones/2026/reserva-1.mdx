@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2026
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import GasRefineria from "../../../../../components/figuras/GasRefineria.astro"
+
+La producción de gas en una refinería, medida en metros cúbicos, viene dada por la función $f(t) = 7 + e^{-(t-4)^2}$, donde $t$ representa el tiempo medido en segundos.
+
+<div class="math-sub">
+
+a) **[2 puntos]** Razona que la producción de gas varía siempre entre $7$ y $8$ metros cúbicos. ¿Se producen $7$ metros cúbicos de gas en algún momento concreto?
+
+</div>
+
+<Solucion>
+
+La variable $t$ es un tiempo, así que $t \geq 0$.
+
+**Cota inferior.** Una exponencial siempre es positiva: $e^{-(t-4)^2} > 0$ para todo $t$. Por tanto
+
+$$
+f(t) = 7 + e^{-(t-4)^2} > 7
+$$
+
+**Cota superior.** El exponente $-(t-4)^2$ nunca es positivo, porque un cuadrado es mayor o igual que $0$. Como la exponencial es creciente, $e^{-(t-4)^2} \leq e^0 = 1$ y
+
+$$
+f(t) \leq 7 + 1 = 8
+$$
+
+con la igualdad solo cuando $(t - 4)^2 = 0$, es decir, en $t = 4$.
+
+**Con la derivada.** Lo mismo se ve estudiando la monotonía:
+
+$$
+f'(t) = -2(t - 4)\,e^{-(t-4)^2}
+$$
+
+Como la exponencial es positiva, el signo de $f'$ es el de $-2(t - 4)$: $f'(t) > 0$ si $0 \leq t < 4$ y $f'(t) < 0$ si $t > 4$. La producción crece hasta $t = 4$ y luego decrece, con un **máximo absoluto en $t = 4$**, donde $f(4) = 7 + e^0 = 8$.
+
+<GasRefineria />
+
+Por tanto, la producción siempre está entre $7$ y $8$ metros cúbicos: $7 < f(t) \leq 8$.
+
+**¿Se producen 7 metros cúbicos?** Habría que tener $f(t) = 7$, es decir, $e^{-(t-4)^2} = 0$, y una exponencial nunca vale $0$. Así que **no: la producción nunca es exactamente de $7$ metros cúbicos**. Se acerca a $7$ tanto como se quiera con el paso del tiempo (apartado b), pero siempre queda por encima. Incluso al principio, $f(0) = 7 + e^{-16}$ es mayor que $7$, aunque por muy poco.
+
+**Respuesta.** La producción varía entre $7$ y $8$ m³: es siempre mayor que $7$ y llega a $8$ en $t = 4$ segundos. **Nunca se producen exactamente $7$ m³.**
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,5 puntos]** Justifica que la producción de gas se estabiliza con el paso del tiempo.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Que la producción se estabilice significa que, cuando $t \to +\infty$, $f(t)$ tiende a un valor fijo. Calculamos el límite:
+
+$$
+\lim_{t \to +\infty} f(t) = 7 + \lim_{t \to +\infty} e^{-(t-4)^2} = 7 + 0 = 7
+$$
+
+porque $-(t-4)^2 \to -\infty$ y $e^{u} \to 0$ cuando $u \to -\infty$.
+
+**Respuesta.** La recta $y = 7$ es una asíntota horizontal: con el paso del tiempo **la producción se estabiliza en $7$ metros cúbicos**, acercándose a ese valor desde arriba.
+
+</Solucion>

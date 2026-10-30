@@ -1,0 +1,51 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import CampoReserva4de2026 from "../../../../../components/figuras/CampoReserva4de2026.astro"
+
+Un jardinero quiere vallar un campo rectangular que tiene un lado junto a un camino. La valla del lado del camino cuesta $80$ euros por metro y el precio de la valla de los tres lados restantes es de $10$ euros por metro. Halla las dimensiones del campo de mayor área que puede cercarse con $28800$ euros. ¿Qué área tiene el campo?
+
+<Solucion>
+
+**Variables.** Llamamos $x$ al lado que da al camino (y a su opuesto) e $y$ a los otros dos lados, en metros.
+
+<CampoReserva4de2026 />
+
+**Ligadura: el coste.** El lado del camino cuesta $80x$ euros. Los otros tres lados (el opuesto, de $x$ metros, y los dos de $y$ metros) cuestan $10(x + 2y)$ euros. Con $28800$ euros:
+
+$$
+80x + 10x + 20y = 28800 \quad\Rightarrow\quad 90x + 20y = 28800 \quad\Rightarrow\quad y = 1440 - 4{,}5x
+$$
+
+**Función a maximizar.** El área del campo, $f(x, y) = xy$. Sustituyendo $y$:
+
+$$
+f(x) = x\,(1440 - 4{,}5x) = 1440x - 4{,}5x^2
+$$
+
+Las dos medidas tienen que ser positivas: $x > 0$ e $y > 0$, es decir, $0 < x < 320$.
+
+**Derivada.**
+
+$$
+f'(x) = 1440 - 9x = 0 \quad\Rightarrow\quad x = 160
+$$
+
+que está en $(0, 320)$. Como $f''(x) = -9 < 0$, en $x = 160$ hay un **máximo**, y es absoluto porque $f$ es una parábola que se abre hacia abajo.
+
+**El otro lado y el área.**
+
+$$
+y = 1440 - 4{,}5 \cdot 160 = 1440 - 720 = 720, \qquad f(160) = 160 \cdot 720 = 115200
+$$
+
+**Comprobación.** $90 \cdot 160 + 20 \cdot 720 = 14400 + 14400 = 28800$ euros.
+
+**Respuesta.** El campo de mayor área mide **$160$ m en el lado del camino** (y en el opuesto) y **$720$ m en los otros dos lados**. Su área es de **$115200$ m²**.
+
+</Solucion>

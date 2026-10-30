@@ -1,0 +1,51 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Una familia va al mercado semanalmente y compra tres tipos de alimentos: verdura, carne y pescado. El año pasado, en el que gastó $115$€ semanales, observó que pagaba el doble en el puesto del pescado que en el de la verdura. En $2026$ se ha notado un incremento de precios pues ahora gasta $19$€ más que el año pasado por la misma compra, comprobando que la verdura ha subido un $12\,\%$, la carne un $15\,\%$ y el pescado un $20\,\%$. Calcula el precio que la familia paga semanalmente en $2026$, por cada tipo de alimento.
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ a lo que la familia pagaba el año pasado cada semana, en euros, por la verdura, la carne y el pescado.
+
+**Planteamiento del sistema.**
+
+- El año pasado gastó $115$ euros: $x + y + z = 115$.
+- Pagaba el doble por el pescado que por la verdura: $z = 2x$.
+- En $2026$ gasta $115 + 19 = 134$ euros. Subir un $12\,\%$ es multiplicar por $1{,}12$, y lo mismo con los otros: $1{,}12x + 1{,}15y + 1{,}20z = 134$.
+
+$$
+\begin{cases}
+x + y + z = 115 \\
+2x - z = 0 \\
+1{,}12x + 1{,}15y + 1{,}20z = 134
+\end{cases}
+$$
+
+**Precios del año pasado.** Sustituimos $z = 2x$ en las otras dos ecuaciones. En la primera, $3x + y = 115$, es decir, $y = 115 - 3x$. En la tercera:
+
+$$
+1{,}12x + 1{,}15\,(115 - 3x) + 1{,}20 \cdot 2x = 134
+$$
+
+$$
+1{,}12x + 132{,}25 - 3{,}45x + 2{,}40x = 134 \;\Rightarrow\; 0{,}07x = 1{,}75
+$$
+
+de donde $x = 25$, $z = 2 \cdot 25 = 50$ e $y = 115 - 75 = 40$. El año pasado pagaba $25$ euros en verdura, $40$ en carne y $50$ en pescado.
+
+**Precios en 2026.** Aplicamos cada subida:
+
+- Verdura: $25 \cdot 1{,}12 = 28$ euros.
+- Carne: $40 \cdot 1{,}15 = 46$ euros.
+- Pescado: $50 \cdot 1{,}20 = 60$ euros.
+
+**Comprobación.** $28 + 46 + 60 = 134 = 115 + 19$.
+
+**Respuesta.** En $2026$ la familia paga cada semana **$28$ € en verdura, $46$ € en carne y $60$ € en pescado**.
+
+</Solucion>

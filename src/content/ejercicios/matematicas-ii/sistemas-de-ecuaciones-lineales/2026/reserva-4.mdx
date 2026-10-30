@@ -1,0 +1,74 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera el sistema de ecuaciones
+
+$$
+\left\{
+\begin{array}{rcrcrcr}
+x & + & y & + & z & = & 1 \\
+7x & + & 3y & + & 3z & = & 15 \\
+x & - & y & - & z & = & 5
+\end{array}
+\right.
+$$
+
+<div class="math-sub">
+
+a) **[1,5 punto]** Clasifícalo y resuélvelo, si es posible.
+
+</div>
+
+<Solucion>
+
+**Matrices del sistema.**
+
+$$
+A = \begin{pmatrix} 1 & 1 & 1 \\ 7 & 3 & 3 \\ 1 & -1 & -1 \end{pmatrix}, \qquad
+A^* = \left(\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 7 & 3 & 3 & 15 \\ 1 & -1 & -1 & 5 \end{array}\right)
+$$
+
+**Rango de $A$.** Las columnas de $y$ y de $z$ son iguales, así que $|A| = 0$ y $\text{rg}(A) < 3$. El menor $\begin{vmatrix} 1 & 1 \\ 7 & 3 \end{vmatrix} = 3 - 7 = -4 \neq 0$, así que $\text{rg}(A) = 2$.
+
+**Rango de $A^*$.** Orlamos ese menor con la columna de términos independientes (la de $z$ daría el mismo determinante que la de $y$):
+
+$$
+\begin{vmatrix} 1 & 1 & 1 \\ 7 & 3 & 15 \\ 1 & -1 & 5 \end{vmatrix} = 1 \cdot (15 + 15) - 1 \cdot (35 - 15) + 1 \cdot (-7 - 3) = 30 - 20 - 10 = 0
+$$
+
+así que $\text{rg}(A^*) = 2$.
+
+**Clasificación.** Por el teorema de Rouché-Frobenius, $\text{rg}(A) = \text{rg}(A^*) = 2 < 3$: el sistema es **compatible indeterminado**, con un parámetro.
+
+**Resolución.** Nos quedamos con dos ecuaciones independientes, la primera y la tercera. Sumándolas, $2x = 6$, es decir, $x = 3$. Restándolas, $2y + 2z = -4$, es decir, $y + z = -2$. Tomando $y = \lambda$:
+
+$$
+x = 3, \qquad y = \lambda, \qquad z = -2 - \lambda, \qquad \lambda \in \mathbb{R}
+$$
+
+**Comprobación** en la segunda ecuación: $7 \cdot 3 + 3\lambda + 3(-2 - \lambda) = 21 - 6 = 15$.
+
+**Respuesta.** Es un **sistema compatible indeterminado** y sus soluciones son **$(3,\ \lambda,\ -2 - \lambda)$**, con $\lambda \in \mathbb{R}$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** ¿Existe alguna solución del sistema que verifique $\;y + z + 2 = 0\;$? Razona la respuesta.
+
+</div>
+
+<Solucion>
+
+En todas las soluciones del apartado a), $y + z = \lambda + (-2 - \lambda) = -2$, es decir, $y + z + 2 = 0$. Se ve también en el sistema: $y$ y $z$ solo aparecen sumados, y al restar la primera ecuación y la tercera queda $y + z = -2$.
+
+Otra forma: añadir la ecuación $y + z + 2 = 0$ no cambia el sistema. Es la mitad de la diferencia entre la tercera ecuación y la primera, así que no añade información: el sistema ampliado sigue siendo compatible indeterminado, con las mismas soluciones.
+
+**Respuesta.** **Sí, y no solo una: todas las soluciones del sistema la verifican**, porque en todas ellas $y + z = -2$.
+
+</Solucion>

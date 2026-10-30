@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-ii
+tema: probabilidad
+anio: 2026
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Dos laboratorios, Virex y Borez, elaboran las dosis de la vacuna contra la gripe A. Para mejorar la efectividad de dicha vacuna necesitamos dos inoculaciones. En la farmacia disponen de seis dosis de Virex y dos de Borez. Se sabe que las dosis se sirven de manera aleatoria y consecutiva.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla la probabilidad de que la segunda dosis sea del laboratorio Virex.
+
+</div>
+
+<Solucion>
+
+**Sucesos.** Llamamos $V_1$ y $B_1$ a que la primera dosis sea de Virex o de Borez, y $V_2$ y $B_2$, lo mismo para la segunda. Hay $8$ dosis, $6$ de Virex y $2$ de Borez, y se sirven una tras otra, así que la primera ya no está cuando se sirve la segunda:
+
+$$
+P(V_1) = \frac{6}{8}, \qquad P(B_1) = \frac{2}{8}
+$$
+
+$$
+P(V_2 \mid V_1) = \frac{5}{7}, \qquad P(V_2 \mid B_1) = \frac{6}{7}
+$$
+
+(si la primera fue de Virex, quedan $5$ de Virex entre $7$; si fue de Borez, siguen las $6$ de Virex entre $7$).
+
+**Teorema de la probabilidad total.** La segunda dosis puede ser de Virex después de una de Virex o de una de Borez:
+
+$$
+P(V_2) = P(V_1)\,P(V_2 \mid V_1) + P(B_1)\,P(V_2 \mid B_1) = \frac{6}{8} \cdot \frac{5}{7} + \frac{2}{8} \cdot \frac{6}{7} = \frac{30}{56} + \frac{12}{56} = \frac{42}{56} = \frac{3}{4}
+$$
+
+**Respuesta.** La probabilidad de que la segunda dosis sea de Virex es **$\dfrac{3}{4} = 0{,}75$**, la misma que para la primera, $\frac{6}{8}$, como cabe esperar si no se sabe qué salió antes.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si la segunda dosis es del laboratorio Virex, halla la probabilidad de que la primera hubiese sido de Borez.
+
+</div>
+
+<Solucion>
+
+**Fórmula de Bayes.** Sabemos cómo fue la segunda dosis y preguntamos por la primera: nos piden $P(B_1 \mid V_2)$, que se calcula con el teorema de Bayes y el resultado del apartado a):
+
+$$
+P(B_1 \mid V_2) = \frac{P(B_1)\,P(V_2 \mid B_1)}{P(V_2)} = \frac{12/56}{42/56} = \frac{12}{42} = \frac{2}{7} \approx 0{,}2857
+$$
+
+**Respuesta.** La probabilidad de que la primera dosis fuera de Borez es **$\dfrac{2}{7} \approx 0{,}29$**.
+
+</Solucion>

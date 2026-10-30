@@ -1,0 +1,37 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera la función $f : [0, \pi] \to \mathbb{R}$ definida por $f(x) = a\operatorname{sen}(x) + \cos(bx)$. Determina $a$ y $b$ $(0 < b < 3)$, sabiendo que $x = \dfrac{\pi}{2}$ es un punto crítico de $f$ y que $\displaystyle\int_0^\pi f(x)\,dx = 4$.
+
+<Solucion>
+
+**Condición del punto crítico.** En un punto crítico la derivada se anula. Por la regla de la cadena,
+
+$$
+f'(x) = a\cos(x) - b\operatorname{sen}(bx)
+$$
+
+$$
+f'\left(\frac{\pi}{2}\right) = a\cos\left(\frac{\pi}{2}\right) - b\operatorname{sen}\left(\frac{b\pi}{2}\right) = -b\operatorname{sen}\left(\frac{b\pi}{2}\right) = 0
+$$
+
+Como $b > 0$, tiene que ser $\operatorname{sen}\left(\frac{b\pi}{2}\right) = 0$, es decir, $\frac{b\pi}{2} = k\pi$ con $k$ entero, o sea, $b = 2k$. El único valor con $0 < b < 3$ es **$b = 2$**.
+
+**Condición de la integral.** Con $b = 2$, $f(x) = a\operatorname{sen}(x) + \cos(2x)$, y una primitiva es $-a\cos(x) + \dfrac{\operatorname{sen}(2x)}{2}$:
+
+$$
+\int_0^\pi \big(a\operatorname{sen}(x) + \cos(2x)\big)\,dx = \left[-a\cos(x) + \frac{\operatorname{sen}(2x)}{2}\right]_0^\pi = (a + 0) - (-a + 0) = 2a
+$$
+
+Imponiendo que valga $4$: $2a = 4 \Rightarrow$ **$a = 2$**.
+
+**Comprobación.** Con $f(x) = 2\operatorname{sen}(x) + \cos(2x)$: $f'\left(\frac{\pi}{2}\right) = 2\cos\left(\frac{\pi}{2}\right) - 2\operatorname{sen}(\pi) = 0$ y la integral vale $2 \cdot 2 = 4$.
+
+**Respuesta.** **$a = 2$ y $b = 2$**, es decir, $f(x) = 2\operatorname{sen}(x) + \cos(2x)$.
+
+</Solucion>

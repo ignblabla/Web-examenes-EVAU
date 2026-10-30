@@ -1,0 +1,23 @@
+---
+// Matemáticas II, reserva 1 de 2026, ejercicio 3.2: f(x) = x / (|x| + 1) en [−2, 2], impar,
+// con los dos recintos entre la gráfica y el eje, iguales y a lados opuestos.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x / (Math.abs(x) + 1)
+---
+
+<GraficaFuncion
+  xMin={-2.4}
+  xMax={2.4}
+  yMin={-1}
+  yMax={1}
+  marcasX={[-2, -1, 1, 2]}
+  marcasY={[-0.5, 0.5]}
+  tramos={[{ f, desde: -2, hasta: 2 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: -2 / 3, texto: "(−2, −⅔)", dx: 0, dy: 15 },
+    { x: 2, y: 2 / 3, texto: "(2, ⅔)", dx: 0, dy: -8 },
+  ]}
+  descripcion="Gráfica de f en el intervalo de −2 a 2: pasa por el origen, es simétrica respecto de él y deja dos recintos iguales, uno por encima del eje entre 0 y 2 y otro por debajo entre −2 y 0"
+/>

@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Considera la recta $\quad r \equiv \begin{cases} x = \phantom{-1}-2\lambda \\ y = -1 + 2\lambda \\ z = \phantom{-}3 + 2\lambda \end{cases} \quad$ y el plano $\quad \pi \equiv x - 2y + z - 3 = 0$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Determina la ecuación de la recta que corta perpendicularmente a $r$ y que está contenida en $\pi$.
+
+</div>
+
+<Solucion>
+
+**Datos.** La recta $r$ pasa por $R(0, -1, 3)$ con vector director $\vec{u} = (-2, 2, 2)$, o el proporcional $(-1, 1, 1)$. El plano tiene vector normal $\vec{n} = (1, -2, 1)$.
+
+**Punto de corte.** La recta $s$ que buscamos está en $\pi$ y corta a $r$, así que lo hace en el punto donde $r$ atraviesa $\pi$. Como $\vec{u} \cdot \vec{n} = -2 - 4 + 2 = -4 \neq 0$, $r$ no es paralela a $\pi$ y lo corta en un solo punto. Sustituimos las ecuaciones de $r$ en las de $\pi$:
+
+$$
+-2\lambda - 2(-1 + 2\lambda) + (3 + 2\lambda) - 3 = 0 \;\Rightarrow\; -4\lambda + 2 = 0 \;\Rightarrow\; \lambda = \frac{1}{2}
+$$
+
+El punto es $Q(-1, 0, 4)$, que está en $\pi$: $-1 - 0 + 4 - 3 = 0$.
+
+**Vector director de $s$.** Tiene que ser perpendicular a $r$ (corta a $r$ perpendicularmente) y a $\vec{n}$ (está contenida en $\pi$). El producto vectorial de $(-1, 1, 1)$ y $(1, -2, 1)$ cumple las dos cosas:
+
+$$
+\vec{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -1 & 1 & 1 \\ 1 & -2 & 1 \end{vmatrix} = (1 + 2)\,\vec{i} - (-1 - 1)\,\vec{j} + (2 - 1)\,\vec{k} = (3,\ 2,\ 1)
+$$
+
+Comprobación: $(3, 2, 1) \cdot (-1, 1, 1) = 0$ y $(3, 2, 1) \cdot (1, -2, 1) = 0$.
+
+**Respuesta.** La recta pasa por $Q(-1, 0, 4)$ con dirección $(3, 2, 1)$:
+
+$$
+s \equiv \frac{x + 1}{3} = \frac{y}{2} = \frac{z - 4}{1}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla el punto simétrico de $P(1, 1, 1)$ respecto de $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $P'$ está en la recta que pasa por $P$ y es perpendicular a $\pi$, a la misma distancia de $\pi$ que $P$ pero al otro lado. Por tanto, el punto $M$ donde esa recta corta a $\pi$ es el punto medio de $P$ y $P'$.
+
+**Recta perpendicular al plano por $P$.** Su vector director es el normal del plano, $\vec{n} = (1, -2, 1)$:
+
+$$
+t \equiv \begin{cases} x = 1 + \mu \\ y = 1 - 2\mu \\ z = 1 + \mu \end{cases}
+$$
+
+**Punto de corte con $\pi$.**
+
+$$
+(1 + \mu) - 2(1 - 2\mu) + (1 + \mu) - 3 = 0 \;\Rightarrow\; 6\mu - 3 = 0 \;\Rightarrow\; \mu = \frac{1}{2}
+$$
+
+$$
+M = \left(\frac{3}{2},\ 0,\ \frac{3}{2}\right)
+$$
+
+**Simétrico.** $M$ es el punto medio de $P$ y $P'$, así que $P' = 2M - P$:
+
+$$
+P' = \left(2 \cdot \frac{3}{2} - 1,\ 2 \cdot 0 - 1,\ 2 \cdot \frac{3}{2} - 1\right) = (2,\ -1,\ 2)
+$$
+
+**Comprobación.** El punto medio de $P(1, 1, 1)$ y $P'(2, -1, 2)$ es $\left(\frac{3}{2}, 0, \frac{3}{2}\right) = M$, y $\overrightarrow{PP'} = (1, -2, 1)$ es el vector normal del plano.
+
+**Respuesta.** El simétrico de $P$ respecto de $\pi$ es **$P'(2, -1, 2)$**.
+
+</Solucion>

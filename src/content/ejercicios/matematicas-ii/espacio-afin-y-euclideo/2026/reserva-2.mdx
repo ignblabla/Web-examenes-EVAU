@@ -1,0 +1,121 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 3.1 y 3.2 son los dos de geometría: van juntos y el rótulo del 3.2 va aquí. */}
+
+Considera el plano $\pi \equiv 4x + 5y - 20z + 20 = 0$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla el área del triángulo cuyos vértices están determinados por la intersección de $\pi$ con los ejes coordenados.
+
+</div>
+
+<Solucion>
+
+**Puntos de corte con los ejes.** En cada eje, las otras dos coordenadas son $0$:
+
+- Eje $OX$ ($y = z = 0$): $4x + 20 = 0 \Rightarrow x = -5$. Punto $A(-5, 0, 0)$.
+- Eje $OY$ ($x = z = 0$): $5y + 20 = 0 \Rightarrow y = -4$. Punto $B(0, -4, 0)$.
+- Eje $OZ$ ($x = y = 0$): $-20z + 20 = 0 \Rightarrow z = 1$. Punto $C(0, 0, 1)$.
+
+**Área del triángulo.** Es la mitad del módulo del producto vectorial de dos lados:
+
+$$
+\overrightarrow{AB} = (5,\ -4,\ 0), \qquad \overrightarrow{AC} = (5,\ 0,\ 1)
+$$
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 5 & -4 & 0 \\ 5 & 0 & 1 \end{vmatrix} = (-4 - 0)\,\vec{i} - (5 - 0)\,\vec{j} + (0 + 20)\,\vec{k} = (-4,\ -5,\ 20)
+$$
+
+$$
+\left|\overrightarrow{AB} \times \overrightarrow{AC}\right| = \sqrt{16 + 25 + 400} = \sqrt{441} = 21
+\quad\Rightarrow\quad
+\text{Área} = \frac{21}{2}
+$$
+
+**Respuesta.** El área del triángulo es **$\dfrac{21}{2} = 10{,}5$ unidades cuadradas**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla los planos paralelos a $\pi$ que distan $2$ unidades del punto $P(2, 2, 1)$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Los planos paralelos a $\pi$ tienen el mismo vector normal, $(4, 5, -20)$, así que son de la forma
+
+$$
+\pi' \equiv 4x + 5y - 20z + D = 0
+$$
+
+Imponemos que la distancia de $P(2, 2, 1)$ a $\pi'$ sea $2$:
+
+$$
+d(P, \pi') = \frac{|4 \cdot 2 + 5 \cdot 2 - 20 \cdot 1 + D|}{\sqrt{4^2 + 5^2 + (-20)^2}} = \frac{|D - 2|}{\sqrt{441}} = \frac{|D - 2|}{21} = 2
+$$
+
+**Resolución.** $|D - 2| = 42$, así que $D - 2 = 42$ o $D - 2 = -42$, es decir, $D = 44$ o $D = -40$.
+
+**Respuesta.** Hay dos planos, uno a cada lado de $P$:
+
+$$
+\mathbf{4x + 5y - 20z + 44 = 0} \qquad \text{y} \qquad \mathbf{4x + 5y - 20z - 40 = 0}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3.2</u> (2,5 puntos)</strong></Bloque>
+
+Considera los planos $\pi_1 \equiv 2x - y - z = 7$, $\quad \pi_2 \equiv x - 2y + z = 3\;$ y el punto $\;P(1, 1, 0)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Determina la ecuación de la recta que pasa por el punto $P$ y es paralela a ambos planos.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Una recta paralela a un plano tiene el vector director perpendicular al vector normal del plano. Los normales son $\vec{n}_1 = (2, -1, -1)$ y $\vec{n}_2 = (1, -2, 1)$, así que el vector director tiene que ser perpendicular a los dos: sirve su producto vectorial.
+
+**Vector director.**
+
+$$
+\vec{n}_1 \times \vec{n}_2 = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & -1 & -1 \\ 1 & -2 & 1 \end{vmatrix} = (-1 - 2)\,\vec{i} - (2 + 1)\,\vec{j} + (-4 + 1)\,\vec{k} = (-3,\ -3,\ -3)
+$$
+
+o el proporcional $\vec{u} = (1, 1, 1)$. Comprobación: $(1, 1, 1) \cdot (2, -1, -1) = 0$ y $(1, 1, 1) \cdot (1, -2, 1) = 0$.
+
+**Respuesta.** La recta pasa por $P(1, 1, 0)$ con dirección $(1, 1, 1)$:
+
+$$
+r \equiv \frac{x - 1}{1} = \frac{y - 1}{1} = \frac{z}{1}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla la ecuación del plano que pasa por el punto $P$ y es perpendicular a $\pi_1$ y a $\pi_2$.
+
+</div>
+
+<Solucion>
+
+**Vector normal.** Un plano perpendicular a $\pi_1$ contiene la dirección de $\vec{n}_1$, y uno perpendicular a $\pi_2$, la de $\vec{n}_2$. Su vector normal tiene que ser perpendicular a $\vec{n}_1$ y a $\vec{n}_2$, y eso es justo el vector del apartado a): $\vec{n} = (1, 1, 1)$.
+
+**Ecuación.** El plano es $x + y + z + D = 0$ y pasa por $P(1, 1, 0)$: $1 + 1 + 0 + D = 0 \Rightarrow D = -2$.
+
+**Respuesta.** El plano es **$x + y + z - 2 = 0$**. Es el plano que pasa por $P$ y es perpendicular a la recta del apartado a).
+
+</Solucion>

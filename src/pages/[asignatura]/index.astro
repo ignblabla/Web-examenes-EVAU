@@ -68,8 +68,10 @@ const opciones = [
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 const pruebas = prueba(desde) === "PAU" ? "PAU" : "PAU y PEvAU"
+// "de 2021 a 2026", o "de 2026" si la asignatura solo tiene exámenes del último curso.
+const periodo = desde === ultimoAnio ? `de ${desde}` : `de ${desde} a ${ultimoAnio}`
 // La descripción más completa que quepa en 160 caracteres.
-const inicio = `Todos los exámenes de ${corto} de Selectividad de Andalucía (${pruebas}) de ${desde} a ${ultimoAnio}`
+const inicio = `Todos los exámenes de ${corto} de Selectividad de Andalucía (${pruebas}) ${periodo}`
 const descripciones = [
   `${inicio}: junio, julio y reservas, con las soluciones explicadas y por temas.`,
   `${inicio}: junio, julio y reservas, resueltos y por temas.`,
@@ -118,7 +120,7 @@ const jsonLd = {
         <h1>
           {asignatura.titulo}
           <br />
-          <em>De {desde} a {ultimoAnio}.</em>
+          <em>{desde === ultimoAnio ? `Curso ${desde - 1}-${desde}` : `De ${desde} a ${ultimoAnio}`}.</em>
         </h1>
         <p class="hero-lead">
           {

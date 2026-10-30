@@ -1,0 +1,106 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2026
+convocatoria: junio
+formato: matematicas
+---
+
+Considera el sistema
+
+$$
+\left\{
+\begin{array}{rcrcrcl}
+3x & - & y & & & = & a^2 \\
+ & & (1 - a)\,y & + & 2z & = & 0 \\
+ & & 4y & + & (3 - a)\,z & = & a - 5
+\end{array}
+\right.
+$$
+
+<div class="math-sub">
+
+a) **[1,75 puntos]** Discútelo según los valores de $a$.
+
+</div>
+
+<Solucion>
+
+**Matrices del sistema.** La matriz de coeficientes $A$ y la ampliada $A^*$ son
+
+$$
+A = \begin{pmatrix} 3 & -1 & 0 \\ 0 & 1 - a & 2 \\ 0 & 4 & 3 - a \end{pmatrix}, \qquad
+A^* = \left(\begin{array}{ccc|c} 3 & -1 & 0 & a^2 \\ 0 & 1 - a & 2 & 0 \\ 0 & 4 & 3 - a & a - 5 \end{array}\right)
+$$
+
+**Determinante de $A$.** Desarrollando por la primera columna:
+
+$$
+|A| = 3 \begin{vmatrix} 1 - a & 2 \\ 4 & 3 - a \end{vmatrix} = 3\big[(1 - a)(3 - a) - 8\big]
+$$
+
+$$
+= 3\,(a^2 - 4a + 3 - 8) = 3\,(a^2 - 4a - 5)
+$$
+
+**Valores críticos.** $a^2 - 4a - 5 = 0 \Rightarrow a = \dfrac{4 \pm \sqrt{16 + 20}}{2} = \dfrac{4 \pm 6}{2}$, es decir, $a = 5$ o $a = -1$. Así que $|A| = 3(a - 5)(a + 1)$.
+
+Discutimos con el teorema de Rouché-Frobenius.
+
+**Si $a \neq 5$ y $a \neq -1$:** $|A| \neq 0$, así que $\text{rg}(A) = 3 = \text{rg}(A^*) =$ número de incógnitas. El sistema es **compatible determinado**.
+
+**Si $a = 5$:**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 3 & -1 & 0 & 25 \\ 0 & -4 & 2 & 0 \\ 0 & 4 & -2 & 0 \end{array}\right)
+$$
+
+La tercera fila es la segunda cambiada de signo (también en el término independiente, que es $0$ en las dos), así que sobra. El menor $\begin{vmatrix} 3 & -1 \\ 0 & -4 \end{vmatrix} = -12 \neq 0$ da $\text{rg}(A) = \text{rg}(A^*) = 2 < 3$. El sistema es **compatible indeterminado** (infinitas soluciones, con un parámetro).
+
+**Si $a = -1$:**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 3 & -1 & 0 & 1 \\ 0 & 2 & 2 & 0 \\ 0 & 4 & 4 & -6 \end{array}\right)
+$$
+
+$\text{rg}(A) = 2$, porque $|A| = 0$ y $\begin{vmatrix} 3 & -1 \\ 0 & 2 \end{vmatrix} = 6 \neq 0$. En la ampliada, el menor formado por las columnas de $x$, $y$ y los términos independientes es
+
+$$
+\begin{vmatrix} 3 & -1 & 1 \\ 0 & 2 & 0 \\ 0 & 4 & -6 \end{vmatrix} = 3 \cdot (2 \cdot (-6) - 0 \cdot 4) = -36 \neq 0
+$$
+
+así que $\text{rg}(A^*) = 3 \neq \text{rg}(A)$. El sistema es **incompatible**. Se ve también en las ecuaciones: la segunda dice $y + z = 0$ y la tercera, $y + z = -\frac{3}{2}$.
+
+**Respuesta.**
+
+- $a \neq 5$ y $a \neq -1$: **sistema compatible determinado**.
+- $a = 5$: **sistema compatible indeterminado**.
+- $a = -1$: **sistema incompatible**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,75 puntos]** Para $a = 0$ resuelve el sistema, si es posible.
+
+</div>
+
+<Solucion>
+
+Por el apartado a), para $a = 0$ el sistema es compatible determinado, así que tiene una única solución. El sistema queda
+
+$$
+\begin{cases}
+3x - y = 0 \\
+y + 2z = 0 \\
+4y + 3z = -5
+\end{cases}
+$$
+
+De la segunda ecuación, $y = -2z$. Sustituyendo en la tercera: $-8z + 3z = -5 \Rightarrow -5z = -5 \Rightarrow z = 1$. Entonces $y = -2$ y, de la primera, $x = \dfrac{y}{3} = -\dfrac{2}{3}$.
+
+**Comprobación.** $3 \cdot \left(-\frac{2}{3}\right) - (-2) = 0$, $\ -2 + 2 \cdot 1 = 0$ y $4 \cdot (-2) + 3 \cdot 1 = -5$.
+
+**Respuesta.** La solución es **$x = -\dfrac{2}{3}$, $y = -2$, $z = 1$**.
+
+</Solucion>

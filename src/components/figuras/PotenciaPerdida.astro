@@ -1,0 +1,20 @@
+---
+// Matemáticas II, reserva 2 de 2026, ejercicio 1: potencia de pérdida P(t) = 4t / (1 + t²), con el
+// máximo en t = 1 y sombreada el área de 0 a 3, que es la energía perdida en los tres primeros años.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const p = (t: number) => (4 * t) / (1 + t ** 2)
+---
+
+<GraficaFuncion
+  xMin={-0.3}
+  xMax={8.5}
+  yMin={0}
+  yMax={2.5}
+  marcasX={[1, 2, 3, 4, 5, 6, 7, 8]}
+  marcasY={[0.5, 1, 1.5, 2]}
+  tramos={[{ f: p, desde: 0, hasta: 8.5 }]}
+  recinto={{ arriba: p, abajo: () => 0, desde: 0, hasta: 3 }}
+  puntos={[{ x: 1, y: 2, texto: "Máximo (1, 2)", dx: 0, dy: -8 }]}
+  descripcion="Gráfica de la potencia de pérdida: sale de 0, sube hasta el máximo de 2 vatios al año de uso y después baja acercándose a 0. Está sombreada el área bajo la curva entre t = 0 y t = 3, que es la energía perdida en los tres primeros años"
+/>

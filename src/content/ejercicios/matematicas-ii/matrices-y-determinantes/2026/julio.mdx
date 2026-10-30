@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2026
+convocatoria: julio
+formato: matematicas
+---
+
+Considera las matrices $\quad A = \begin{pmatrix} 2 & 2 \\ 3 & 4 \end{pmatrix} \quad$ y $\quad B = \begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla razonadamente el determinante de una matriz $X$ que verifica $A^3XB^t = 5B^2A^{-1}$.
+
+</div>
+
+<Solucion>
+
+Primero, los determinantes de $A$ y $B$:
+
+$$
+|A| = 2 \cdot 4 - 2 \cdot 3 = 2, \qquad |B| = 3 \cdot 2 - 1 \cdot 2 = 4
+$$
+
+Como $|A| \neq 0$, existe $A^{-1}$. Tomamos determinantes en los dos lados de la igualdad y usamos sus propiedades:
+
+- El determinante de un producto es el producto de los determinantes: $|A^3| = |A|^3$ y $|B^2| = |B|^2$.
+- $|B^t| = |B|$ y $|A^{-1}| = \dfrac{1}{|A|}$.
+- Las matrices son de orden $2$, así que multiplicar por $5$ multiplica el determinante por $5^2$: $|5M| = 5^2\,|M|$.
+
+$$
+|A|^3 \cdot |X| \cdot |B| = 5^2 \cdot |B|^2 \cdot \frac{1}{|A|}
+\quad\Rightarrow\quad
+2^3 \cdot |X| \cdot 4 = 25 \cdot 16 \cdot \frac{1}{2}
+\quad\Rightarrow\quad
+32\,|X| = 200
+$$
+
+**Respuesta.** $|X| = \dfrac{200}{32} =$ **$\dfrac{25}{4} = 6{,}25$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Determina, si existe, una matriz $Y$ que verifica $A^3YB^{-1} = A^2$.
+
+</div>
+
+<Solucion>
+
+**Cálculo simbólico de $Y$.** $A$ y $B$ son invertibles (sus determinantes, $2$ y $4$, no son nulos), así que podemos despejar. Multiplicamos por $A^{-3} = (A^{-1})^3$ por la izquierda y por $B$ por la derecha, respetando el orden porque el producto de matrices no es conmutativo:
+
+$$
+A^{-3}A^3\,Y\,B^{-1}B = A^{-3}A^2\,B \quad\Rightarrow\quad Y = A^{-1}B
+$$
+
+Así que $Y$ existe y es única.
+
+**Inversa de $A$.** Para una matriz $2 \times 2$, $A^{-1} = \dfrac{1}{|A|}\,(\text{Adj}\,A)^t$:
+
+$$
+A^{-1} = \frac{1}{2}\begin{pmatrix} 4 & -2 \\ -3 & 2 \end{pmatrix} = \begin{pmatrix} 2 & -1 \\ -\frac{3}{2} & 1 \end{pmatrix}
+$$
+
+Comprobación: $A\,A^{-1} = \begin{pmatrix} 2 \cdot 2 + 2 \cdot \left(-\frac{3}{2}\right) & -2 + 2 \\ 6 - 6 & -3 + 4 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$.
+
+**Cálculo de $Y$.**
+
+$$
+Y = A^{-1}B = \begin{pmatrix} 2 & -1 \\ -\frac{3}{2} & 1 \end{pmatrix}\begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix} = \begin{pmatrix} 6 - 2 & 2 - 2 \\ -\frac{9}{2} + 2 & -\frac{3}{2} + 2 \end{pmatrix} = \begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix}
+$$
+
+**Comprobación.** $Y = A^{-1}B$ equivale a $AY = B$: $\begin{pmatrix} 2 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix} = \begin{pmatrix} 8 - 5 & 1 \\ 12 - 10 & 2 \end{pmatrix} = \begin{pmatrix} 3 & 1 \\ 2 & 2 \end{pmatrix} = B$.
+
+**Respuesta.** Sí existe: **$Y = \begin{pmatrix} 4 & 0 \\ -\frac{5}{2} & \frac{1}{2} \end{pmatrix}$**.
+
+</Solucion>

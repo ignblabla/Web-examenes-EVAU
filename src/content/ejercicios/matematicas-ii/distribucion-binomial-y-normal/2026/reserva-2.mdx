@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-ii
+tema: distribucion-binomial-y-normal
+anio: 2026
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Las tallas de las niñas al nacer se distribuyen según una distribución normal de media 50 cm y desviación típica 1,8 cm.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla la probabilidad de que una niña al nacer mida más de 54 cm.
+
+</div>
+
+<Solucion>
+
+**Variable.** Llamamos $X$ a la talla al nacer, en cm: $X \sim N(50;\ 1{,}8)$.
+
+**Probabilidad pedida.** $P(X > 54)$.
+
+**Tipificación.** Con $Z = \dfrac{X - 50}{1{,}8} \sim N(0, 1)$:
+
+$$
+P(X > 54) = P\left(Z > \frac{54 - 50}{1{,}8}\right) = P(Z > 2{,}22)
+$$
+
+(redondeando $\frac{4}{1{,}8} = 2{,}222\ldots$ a dos decimales, como trae la tabla).
+
+**Tabla.** La tabla da probabilidades de la forma $P(Z \leq z)$, así que pasamos al suceso contrario:
+
+$$
+P(Z > 2{,}22) = 1 - P(Z \leq 2{,}22) = 1 - 0{,}9868 = 0{,}0132
+$$
+
+**Respuesta.** La probabilidad de que una niña mida más de 54 cm al nacer es **$0{,}0132$**, un $1{,}32\,\%$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Si en un hospital durante un mes han nacido 100 niñas, ¿cuántas tendrán en el momento del nacimiento una talla entre 48,2 y 51,8 cm?
+
+</div>
+
+<Solucion>
+
+**Probabilidad pedida.** Primero, la probabilidad de que una niña mida entre 48,2 y 51,8 cm: $P(48{,}2 < X < 51{,}8)$.
+
+**Tipificación.**
+
+$$
+P(48{,}2 < X < 51{,}8) = P\left(\frac{48{,}2 - 50}{1{,}8} < Z < \frac{51{,}8 - 50}{1{,}8}\right) = P(-1 < Z < 1)
+$$
+
+**Tabla.** Por la simetría de la normal, $P(Z \leq -1) = 1 - P(Z \leq 1)$, así que
+
+$$
+P(-1 < Z < 1) = P(Z < 1) - P(Z \leq -1) = 2\,P(Z \leq 1) - 1
+$$
+
+$$
+= 2 \cdot 0{,}8413 - 1 = 0{,}6826
+$$
+
+**Número de niñas.** De $100$ niñas, se espera que estén en ese intervalo
+
+$$
+100 \cdot 0{,}6826 = 68{,}26
+$$
+
+**Respuesta.** Unas **$68$ niñas** tendrán al nacer una talla entre 48,2 y 51,8 cm.
+
+</Solucion>

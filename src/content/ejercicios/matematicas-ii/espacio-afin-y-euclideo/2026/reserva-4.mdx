@@ -1,0 +1,119 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2026
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 3.1 y 3.2 son los dos de geometría: van juntos y el rótulo del 3.2 va aquí. */}
+
+Considera los vectores $\vec{u} = (2, 0, 1)$ y $\vec{v} = (1, m, 2)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula $m$ para que el área del triángulo que definen $\vec{u}$ y $\vec{v}$ sea $\dfrac{\sqrt{29}}{2}$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El área del triángulo que definen dos vectores es la mitad del módulo de su producto vectorial.
+
+**Producto vectorial.**
+
+$$
+\vec{u} \times \vec{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & 0 & 1 \\ 1 & m & 2 \end{vmatrix} = (0 - m)\,\vec{i} - (4 - 1)\,\vec{j} + (2m - 0)\,\vec{k} = (-m,\ -3,\ 2m)
+$$
+
+$$
+|\vec{u} \times \vec{v}| = \sqrt{m^2 + 9 + 4m^2} = \sqrt{5m^2 + 9}
+$$
+
+**Condición.**
+
+$$
+\frac{\sqrt{5m^2 + 9}}{2} = \frac{\sqrt{29}}{2} \quad\Rightarrow\quad 5m^2 + 9 = 29 \quad\Rightarrow\quad m^2 = 4 \quad\Rightarrow\quad m = \pm 2
+$$
+
+**Respuesta.** **$m = 2$ o $m = -2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Para $m = 0$, halla los vectores que sean perpendiculares a $\vec{u}$ y $\vec{v}$, y tengan módulo $\sqrt{20}$.
+
+</div>
+
+<Solucion>
+
+**Dirección perpendicular a los dos.** Para $m = 0$, $\vec{v} = (1, 0, 2)$, y por el apartado a)
+
+$$
+\vec{u} \times \vec{v} = (0,\ -3,\ 0)
+$$
+
+que es perpendicular a $\vec{u}$ y a $\vec{v}$. Todos los vectores perpendiculares a ambos son proporcionales a él, o al más sencillo $(0, 1, 0)$: son de la forma $\vec{w} = (0,\ \lambda,\ 0)$.
+
+**Módulo.** $|\vec{w}| = |\lambda| = \sqrt{20} = 2\sqrt{5}$, así que $\lambda = 2\sqrt{5}$ o $\lambda = -2\sqrt{5}$.
+
+**Comprobación.** $(0, 2\sqrt{5}, 0) \cdot (2, 0, 1) = 0$ y $(0, 2\sqrt{5}, 0) \cdot (1, 0, 2) = 0$.
+
+**Respuesta.** Hay dos vectores: **$\left(0,\ 2\sqrt{5},\ 0\right)$ y $\left(0,\ -2\sqrt{5},\ 0\right)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 3.2</u> (2,5 puntos)</strong></Bloque>
+
+Considera el plano $\pi \equiv 2x - y + 2z - 3 = 0\;$ y la recta $\;r \equiv \dfrac{x - 1}{2} = \dfrac{y}{1} = \dfrac{z - 2}{m - 2}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Halla la posición relativa de $\pi$ y $r$ según los valores de $m$.
+
+</div>
+
+<Solucion>
+
+**Datos.** La recta pasa por $P(1, 0, 2)$ con vector director $\vec{d} = (2,\ 1,\ m - 2)$, y el plano tiene vector normal $\vec{n} = (2,\ -1,\ 2)$.
+
+**Planteamiento.** Si $\vec{d}$ no es perpendicular a $\vec{n}$, la recta corta al plano en un punto. Si es perpendicular, la recta es paralela al plano o está contenida en él, según que $P$ esté o no en $\pi$.
+
+$$
+\vec{d} \cdot \vec{n} = 2 \cdot 2 + 1 \cdot (-1) + (m - 2) \cdot 2 = 4 - 1 + 2m - 4 = 2m - 1
+$$
+
+**Si $m \neq \frac{1}{2}$:** $\vec{d} \cdot \vec{n} \neq 0$, así que **$r$ y $\pi$ son secantes**: se cortan en un punto.
+
+**Si $m = \frac{1}{2}$:** $\vec{d} \cdot \vec{n} = 0$. Sustituimos $P(1, 0, 2)$ en el plano: $2 - 0 + 4 - 3 = 3 \neq 0$, así que $P$ no está en $\pi$ y **$r$ es paralela a $\pi$** (sin puntos comunes).
+
+**Respuesta.** Para $m \neq \frac{1}{2}$, la recta y el plano son **secantes**; para $m = \frac{1}{2}$, la recta es **paralela** al plano. Nunca está contenida en él.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Para $m = 1$, determina la ecuación del plano que contiene a $r$ y corta perpendicularmente a $\pi$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Para $m = 1$, $\vec{d} = (2, 1, -1)$. El plano buscado contiene a $r$, así que pasa por $P(1, 0, 2)$ y contiene la dirección $\vec{d}$. Además es perpendicular a $\pi$, así que contiene la dirección del normal de $\pi$, $\vec{n} = (2, -1, 2)$. Su vector normal es el producto vectorial de los dos:
+
+$$
+\vec{d} \times \vec{n} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & 1 & -1 \\ 2 & -1 & 2 \end{vmatrix} = (2 - 1)\,\vec{i} - (4 + 2)\,\vec{j} + (-2 - 2)\,\vec{k} = (1,\ -6,\ -4)
+$$
+
+**Ecuación.** Por $P(1, 0, 2)$:
+
+$$
+1\,(x - 1) - 6\,(y - 0) - 4\,(z - 2) = 0 \quad\Rightarrow\quad x - 6y - 4z + 7 = 0
+$$
+
+**Comprobación.** $(1, -6, -4) \cdot (2, 1, -1) = 2 - 6 + 4 = 0$ (contiene la dirección de $r$) y $(1, -6, -4) \cdot (2, -1, 2) = 2 + 6 - 8 = 0$ (es perpendicular a $\pi$).
+
+**Respuesta.** El plano es **$x - 6y - 4z + 7 = 0$**.
+
+</Solucion>
