@@ -6,6 +6,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import { asignaturas } from './src/data/asignaturas.ts'
 import { paginasLegales } from './src/data/legal.ts'
+import { fechaSitemap } from './src/data/fechas.ts'
 
 // Las asignaturas sin resolver y las páginas legales llevan noindex y no entran en el sitemap.
 const ocultas = [
@@ -21,7 +22,13 @@ export default defineConfig({
   devToolbar: { enabled: false },
   integrations: [
     mdx(),
-    sitemap({ filter: (page) => !ocultas.some((ruta) => new URL(page).pathname.startsWith(ruta)) }),
+    sitemap({
+      filter: (page) => !ocultas.some((ruta) => new URL(page).pathname.startsWith(ruta)),
+      serialize: (item) => {
+        const lastmod = fechaSitemap(new URL(item.url).pathname)
+        return lastmod ? { ...item, lastmod } : item
+      },
+    }),
   ],
   markdown: {
     remarkPlugins: [remarkMath],
