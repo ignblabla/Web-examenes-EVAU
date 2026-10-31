@@ -1,0 +1,105 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera los puntos $A(1, -2, 3)$ y $B(2, 0, -1)$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Halla los puntos que dividen el segmento $AB$ en cuatro partes iguales.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Son tres puntos, $P_1$, $P_2$ y $P_3$, que se obtienen sumando a $A$ uno, dos y tres cuartos del vector $\overrightarrow{AB}$:
+
+$$
+\overrightarrow{AB} = (1,\ 2,\ -4), \qquad \frac{1}{4}\,\overrightarrow{AB} = \left(\frac{1}{4},\ \frac{1}{2},\ -1\right)
+$$
+
+**Puntos.**
+
+$$
+P_1 = A + \frac{1}{4}\overrightarrow{AB} = \left(\frac{5}{4},\ -\frac{3}{2},\ 2\right)
+$$
+
+$$
+P_2 = A + \frac{2}{4}\overrightarrow{AB} = \left(\frac{3}{2},\ -1,\ 1\right)
+$$
+
+$$
+P_3 = A + \frac{3}{4}\overrightarrow{AB} = \left(\frac{7}{4},\ -\frac{1}{2},\ 0\right)
+$$
+
+**Comprobación.** $P_3 + \frac{1}{4}\overrightarrow{AB} = (2, 0, -1) = B$, y $P_2$ es el punto medio de $A$ y $B$.
+
+**Respuesta.** Los puntos son **$\left(\frac{5}{4}, -\frac{3}{2}, 2\right)$, $\left(\frac{3}{2}, -1, 1\right)$ y $\left(\frac{7}{4}, -\frac{1}{2}, 0\right)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Determina la ecuación del plano perpendicular al segmento $AB$ que pasa por el punto medio de dicho segmento.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El vector normal del plano es $\overrightarrow{AB} = (1, 2, -4)$ y pasa por el punto medio, que es $P_2\left(\frac{3}{2}, -1, 1\right)$.
+
+**Ecuación.**
+
+$$
+\left(x - \frac{3}{2}\right) + 2\,(y + 1) - 4\,(z - 1) = 0 \quad\Rightarrow\quad x + 2y - 4z + \frac{9}{2} = 0
+$$
+
+Multiplicando por $2$ para quitar el denominador:
+
+**Respuesta.** El plano es **$2x + 4y - 8z + 9 = 0$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera el plano $\pi \equiv x + y + z = 0$ y la recta $r \equiv x - 1 = \dfrac{y}{2} = \dfrac{z + 1}{2}$. Halla la ecuación de un plano $\pi'$, paralelo a $\pi$, tal que si $Q$ y $Q'$ son respectivamente los puntos de corte de la recta $r$ con los planos $\pi$ y $\pi'$, entonces la distancia entre $Q$ y $Q'$ sea de $2$ unidades.
+
+<Solucion>
+
+**Recta en paramétricas.** $r$ pasa por $(1, 0, -1)$ con vector director $\vec{d} = (1, 2, 2)$, de módulo $|\vec{d}| = \sqrt{1 + 4 + 4} = 3$:
+
+$$
+r \equiv (x,\ y,\ z) = (1 + t,\ 2t,\ -1 + 2t)
+$$
+
+**Punto $Q$.** Corte de $r$ con $\pi$: $(1 + t) + 2t + (-1 + 2t) = 5t = 0$, así que $t = 0$ y $Q(1, 0, -1)$.
+
+**Planteamiento de $d(Q, Q') = 2$.** $Q'$ es otro punto de $r$, $Q' = Q + t\,\vec{d}$, así que
+
+$$
+d(Q, Q') = |t|\,|\vec{d}| = 3\,|t| = 2 \quad\Rightarrow\quad t = \frac{2}{3} \quad\text{o}\quad t = -\frac{2}{3}
+$$
+
+**Puntos $Q'$.**
+
+- Con $t = \frac{2}{3}$: $Q' = \left(\frac{5}{3}, \frac{4}{3}, \frac{1}{3}\right)$.
+- Con $t = -\frac{2}{3}$: $Q' = \left(\frac{1}{3}, -\frac{4}{3}, -\frac{7}{3}\right)$.
+
+**Planos $\pi'$.** Son paralelos a $\pi$, así que tienen la forma $x + y + z + D = 0$, y pasan por $Q'$:
+
+- Por $\left(\frac{5}{3}, \frac{4}{3}, \frac{1}{3}\right)$: $\frac{10}{3} + D = 0$, así que $D = -\frac{10}{3}$.
+- Por $\left(\frac{1}{3}, -\frac{4}{3}, -\frac{7}{3}\right)$: $-\frac{10}{3} + D = 0$, así que $D = \frac{10}{3}$.
+
+**Respuesta.** Hay dos planos que cumplen la condición, uno a cada lado de $\pi$:
+
+$$
+\pi' \equiv 3x + 3y + 3z - 10 = 0 \qquad \text{o} \qquad \pi' \equiv 3x + 3y + 3z + 10 = 0
+$$
+
+</Solucion>

@@ -1,0 +1,46 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+Una marca de vehículos ha vendido este mes coches de tres colores: blancos, negros y rojos. El $60\,\%$ de los coches blancos más el $50\,\%$ de los coches negros representan el $30\,\%$ de los coches vendidos. El $20\,\%$ de los coches blancos junto con el $60\,\%$ de los coches negros y el $60\,\%$ de los coches rojos representan la mitad de los coches vendidos. Se han vendido $100$ coches negros más que blancos. Determina el número de coches vendidos de cada color.
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ al número de coches blancos, negros y rojos vendidos. En total se han vendido $x + y + z$.
+
+**Planteamiento del sistema.**
+
+- El $60\,\%$ de los blancos más el $50\,\%$ de los negros es el $30\,\%$ del total: $0{,}6x + 0{,}5y = 0{,}3\,(x + y + z)$. Pasando todo a un lado y multiplicando por $10$: $3x + 2y - 3z = 0$.
+- El $20\,\%$ de los blancos, el $60\,\%$ de los negros y el $60\,\%$ de los rojos son la mitad del total: $0{,}2x + 0{,}6y + 0{,}6z = 0{,}5\,(x + y + z)$. Pasando todo a un lado y multiplicando por $10$: $-3x + y + z = 0$.
+- Hay $100$ negros más que blancos: $y = x + 100$, es decir, $-x + y = 100$.
+
+$$
+\begin{cases}
+3x + 2y - 3z = 0 \\
+-3x + y + z = 0 \\
+-x + y = 100
+\end{cases}
+$$
+
+**Resolución.** Sustituimos $y = x + 100$ en las dos primeras:
+
+- $3x + 2(x + 100) - 3z = 0$, es decir, $5x + 200 = 3z$.
+- $-3x + (x + 100) + z = 0$, es decir, $z = 2x - 100$.
+
+Llevando la segunda a la primera:
+
+$$
+5x + 200 = 3\,(2x - 100) = 6x - 300 \quad\Rightarrow\quad x = 500
+$$
+
+Entonces $y = 600$ y $z = 2 \cdot 500 - 100 = 900$.
+
+**Comprobación.** En total se han vendido $2000$ coches. $0{,}6 \cdot 500 + 0{,}5 \cdot 600 = 300 + 300 = 600$, que es el $30\,\%$ de $2000$. $0{,}2 \cdot 500 + 0{,}6 \cdot 600 + 0{,}6 \cdot 900 = 100 + 360 + 540 = 1000$, la mitad. Y $600 - 500 = 100$.
+
+**Respuesta.** Se han vendido **$500$ coches blancos, $600$ negros y $900$ rojos**.
+
+</Solucion>

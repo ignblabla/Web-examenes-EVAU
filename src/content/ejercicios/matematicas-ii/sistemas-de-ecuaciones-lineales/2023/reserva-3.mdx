@@ -1,0 +1,73 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Dadas las matrices $A = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 1 \end{pmatrix}$ y $B = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}$, se define la matriz $M = A + (\lambda - 1)B$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Halla los valores de $\lambda$ para los que la matriz $M$ tiene rango menor que $3$.
+
+</div>
+
+<Solucion>
+
+**La matriz $M$.** Para simplificar, llamamos $\mu = \lambda - 1$:
+
+$$
+M = \begin{pmatrix} 1 & 1 & \mu \\ 1 & \mu & 1 \\ \mu & 1 & 1 \end{pmatrix}
+$$
+
+**Determinante de $M$.** Desarrollando por la primera fila:
+
+$$
+|M| = 1\,(\mu - 1) - 1\,(1 - \mu) + \mu\,(1 - \mu^2) = -\mu^3 + 3\mu - 2 = -(\mu - 1)^2(\mu + 2)
+$$
+
+Volviendo a $\lambda$, con $\mu - 1 = \lambda - 2$ y $\mu + 2 = \lambda + 1$:
+
+$$
+|M| = -(\lambda - 2)^2(\lambda + 1)
+$$
+
+**Valores críticos.** $M$ tiene rango menor que $3$ si y solo si $|M| = 0$, es decir, para $\lambda = 2$ y para $\lambda = -1$.
+
+**Respuesta.** **$\lambda = 2$ y $\lambda = -1$**. (Con $\lambda = 2$, $M$ tiene todos sus elementos iguales a $1$ y rango $1$; con $\lambda = -1$, rango $2$.)
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Para $\lambda = -1$, resuelve el sistema lineal homogéneo cuya matriz de coeficientes es $M$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Con $\lambda = -1$, $\mu = -2$:
+
+$$
+\begin{cases}
+x + y - 2z = 0 \\
+x - 2y + z = 0 \\
+-2x + y + z = 0
+\end{cases}
+$$
+
+Es homogéneo y, por el apartado a), su matriz tiene rango $2$ (el menor $\begin{vmatrix} 1 & 1 \\ 1 & -2 \end{vmatrix} = -3 \neq 0$). Es compatible indeterminado, con un parámetro, y basta con las dos primeras ecuaciones.
+
+**Resolución.** Restando la segunda a la primera, $3y - 3z = 0$, así que $y = z$. Y de la primera, $x = 2z - y = z$. Tomando $z = t$, las soluciones son $(t, t, t)$.
+
+**Comprobación.** La tercera ecuación: $-2t + t + t = 0$.
+
+**Respuesta.** Las soluciones son
+
+$$
+(x,\ y,\ z) = (t,\ t,\ t), \qquad t \in \mathbb{R}
+$$
+
+</Solucion>

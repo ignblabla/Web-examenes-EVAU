@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Dadas las matrices $A = \begin{pmatrix} 2 & -1 & -2 \\ -2 & 3 & 1 \\ 6 & 1 & 3 \end{pmatrix}$ y $B = \begin{pmatrix} -1 & 0 & -1 \\ -3 & -1 & 5 \end{pmatrix}$, calcula, si es posible, la matriz $X$ que verifica la ecuación $3X - B^t = AX$, siendo $B^t$ la matriz traspuesta de $B$.
+
+<Solucion>
+
+**Despejamos $X$.** Pasando $AX$ a la izquierda y $B^t$ a la derecha, y sacando $X$ factor común por la derecha (con $3X = 3IX$):
+
+$$
+3X - AX = B^t \quad\Rightarrow\quad (3I - A)\,X = B^t \quad\Rightarrow\quad X = (3I - A)^{-1}B^t
+$$
+
+siempre que $3I - A$ tenga inversa. $B^t$ es $3 \times 2$, así que $X$ también lo será.
+
+**La matriz $3I - A$ y su determinante.**
+
+$$
+3I - A = \begin{pmatrix} 1 & 1 & 2 \\ 2 & 0 & -1 \\ -6 & -1 & 0 \end{pmatrix}
+$$
+
+$$
+|3I - A| = 1\,(0 - 1) - 1\,(0 - 6) + 2\,(-2 - 0) = -1 + 6 - 4 = 1 \neq 0
+$$
+
+**Inversa de $3I - A$.** Los adjuntos son $-1$, $6$, $-2$ (primera fila), $-2$, $12$, $-5$ (segunda) y $-1$, $5$, $-2$ (tercera). Trasponiendo y dividiendo entre $1$:
+
+$$
+(3I - A)^{-1} = \begin{pmatrix} -1 & -2 & -1 \\ 6 & 12 & 5 \\ -2 & -5 & -2 \end{pmatrix}
+$$
+
+Comprobación: la primera fila de $3I - A$ por las columnas de la inversa da $-1 + 6 - 4 = 1$, $-2 + 12 - 10 = 0$ y $-1 + 5 - 4 = 0$.
+
+**Cálculo de $X$.**
+
+$$
+X = \begin{pmatrix} -1 & -2 & -1 \\ 6 & 12 & 5 \\ -2 & -5 & -2 \end{pmatrix}\begin{pmatrix} -1 & -3 \\ 0 & -1 \\ -1 & 5 \end{pmatrix} = \begin{pmatrix} 2 & 0 \\ -11 & -5 \\ 4 & 1 \end{pmatrix}
+$$
+
+**Comprobación.**
+
+$$
+(3I - A)\,X = \begin{pmatrix} 1 & 1 & 2 \\ 2 & 0 & -1 \\ -6 & -1 & 0 \end{pmatrix}\begin{pmatrix} 2 & 0 \\ -11 & -5 \\ 4 & 1 \end{pmatrix} = \begin{pmatrix} -1 & -3 \\ 0 & -1 \\ -1 & 5 \end{pmatrix} = B^t
+$$
+
+**Respuesta.** Sí es posible, y la matriz es
+
+$$
+X = \begin{pmatrix} 2 & 0 \\ -11 & -5 \\ 4 & 1 \end{pmatrix}
+$$
+
+</Solucion>

@@ -1,0 +1,28 @@
+---
+// Matemáticas II, reserva 1 de 2023, ejercicio 4: recinto entre la parábola f(x) = x² + 1, por
+// arriba, su tangente y = 4x − 3 en (2, 5), por abajo, y el eje de ordenadas.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 2 + 1
+const t = (x: number) => 4 * x - 3
+---
+
+<GraficaFuncion
+  xMin={-1.2}
+  xMax={3.2}
+  yMin={-3.8}
+  yMax={7.4}
+  marcasX={[-1, 1, 2, 3]}
+  marcasY={[-3, -1, 1, 3, 5, 7]}
+  tramos={[
+    { f, desde: -1.15, hasta: 2.45, etiqueta: { texto: "f", x: -0.75, y: 2.6, ancla: "end" } },
+    { f: t, desde: -0.2, hasta: 2.6, color: "#b04a3a", etiqueta: { texto: "y = 4x − 3", x: 1.15, y: -0.6 } },
+  ]}
+  recinto={{ arriba: f, abajo: t, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 2, y: 5, texto: "(2, 5)", dx: 10, dy: 4 },
+    { x: 0, y: -3, texto: "(0, −3)", dx: 8, dy: 4 },
+    { x: 0, y: 1, texto: "(0, 1)", dx: -8, dy: -6 },
+  ]}
+  descripcion="Parábola f(x) = x² + 1, con vértice en (0, 1), y su recta tangente y = 4x − 3 en el punto (2, 5), que corta al eje Y en (0, −3). El recinto sombreado queda entre el eje de ordenadas, la parábola por arriba y la recta por abajo, desde x = 0 hasta x = 2"
+/>

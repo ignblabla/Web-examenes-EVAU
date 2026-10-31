@@ -1,0 +1,81 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Sean las matrices
+
+$$
+A = \begin{pmatrix} m + 1 & 1 & m - 1 \\ 1 & 1 & 1 \\ m - 1 & 1 & m + 1 \end{pmatrix}, \quad B = \begin{pmatrix} 0 & 4 & 2 \\ 0 & 0 & 4 \\ 2 & 2 & 1 \end{pmatrix} \quad\text{y}\quad C = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}.
+$$
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula $m$ para que la matriz $A$ tenga inversa.
+
+</div>
+
+<Solucion>
+
+**Determinante de $A$.** Desarrollando por la primera fila:
+
+$$
+|A| = (m + 1)\left[(m + 1) - 1\right] - 1\left[(m + 1) - (m - 1)\right] + (m - 1)\left[1 - (m - 1)\right]
+$$
+
+$$
+= (m + 1)\,m - 2 + (m - 1)(2 - m) = m^2 + m - 2 - m^2 + 3m - 2 = 4m - 4
+$$
+
+**Respuesta.** $|A| = 4(m - 1)$ se anula solo para $m = 1$. $A$ tiene inversa **para todo $m \neq 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Para $m = 0$, resuelve, si es posible, la ecuación matricial $\dfrac{1}{2}AX + C^4 = B$.
+
+</div>
+
+<Solucion>
+
+**Cálculo de $C^4$.** $C$ intercambia la primera y la tercera fila de la matriz por la que se multiplica, así que hacerlo dos veces deja todo igual:
+
+$$
+C^2 = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix}\begin{pmatrix} 0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0 \end{pmatrix} = I, \qquad C^4 = (C^2)^2 = I
+$$
+
+**Despejamos $X$.** Con $m = 0$, $|A| = -4 \neq 0$, así que $A$ tiene inversa:
+
+$$
+\frac{1}{2}AX + I = B \quad\Rightarrow\quad AX = 2\,(B - I) \quad\Rightarrow\quad X = 2\,A^{-1}(B - I)
+$$
+
+**Inversa de $A$.** Con $m = 0$, $A = \begin{pmatrix} 1 & 1 & -1 \\ 1 & 1 & 1 \\ -1 & 1 & 1 \end{pmatrix}$. Sus adjuntos son $0$, $-2$, $2$ (primera fila), $-2$, $0$, $-2$ (segunda) y $2$, $-2$, $0$ (tercera). Trasponiendo y dividiendo entre $-4$:
+
+$$
+A^{-1} = -\frac{1}{4}\begin{pmatrix} 0 & -2 & 2 \\ -2 & 0 & -2 \\ 2 & -2 & 0 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 0 & 1 & -1 \\ 1 & 0 & 1 \\ -1 & 1 & 0 \end{pmatrix}
+$$
+
+**Cálculo de $X$.** El $2$ se simplifica con el $\frac{1}{2}$:
+
+$$
+X = \begin{pmatrix} 0 & 1 & -1 \\ 1 & 0 & 1 \\ -1 & 1 & 0 \end{pmatrix}\begin{pmatrix} -1 & 4 & 2 \\ 0 & -1 & 4 \\ 2 & 2 & 0 \end{pmatrix} = \begin{pmatrix} -2 & -3 & 4 \\ 1 & 6 & 2 \\ 1 & -5 & 2 \end{pmatrix}
+$$
+
+**Comprobación.**
+
+$$
+AX = \begin{pmatrix} 1 & 1 & -1 \\ 1 & 1 & 1 \\ -1 & 1 & 1 \end{pmatrix}\begin{pmatrix} -2 & -3 & 4 \\ 1 & 6 & 2 \\ 1 & -5 & 2 \end{pmatrix} = \begin{pmatrix} -2 & 8 & 4 \\ 0 & -2 & 8 \\ 4 & 4 & 0 \end{pmatrix} = 2\,(B - I)
+$$
+
+**Respuesta.**
+
+$$
+X = \begin{pmatrix} -2 & -3 & 4 \\ 1 & 6 & 2 \\ 1 & -5 & 2 \end{pmatrix}
+$$
+
+</Solucion>

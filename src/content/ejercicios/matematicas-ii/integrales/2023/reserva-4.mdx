@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Calcula una primitiva de la función $f \colon [0, +\infty) \to \mathbb{R}$ definida por $f(x) = \operatorname{arc\,tg}(\sqrt{x})$ cuya gráfica pase por el punto $(0, 1)$ ($\operatorname{arc\,tg}$ denota la función arco tangente). Sugerencia: efectúa el cambio $x = t^2$.
+
+<Solucion>
+
+**Cambio de variable.** Con $x = t^2$ y $t \geq 0$, $\sqrt{x} = t$ y $dx = 2t\,dt$:
+
+$$
+\int \operatorname{arc\,tg}(\sqrt{x})\,dx = \int 2t\operatorname{arc\,tg}(t)\,dt
+$$
+
+**Integración por partes.** Con $u = \operatorname{arc\,tg}(t)$ y $dv = 2t\,dt$, de modo que $du = \dfrac{dt}{1 + t^2}$ y $v = t^2$:
+
+$$
+\int 2t\operatorname{arc\,tg}(t)\,dt = t^2\operatorname{arc\,tg}(t) - \int \frac{t^2}{1 + t^2}\,dt
+$$
+
+**Integral racional.** Dividiendo, $\dfrac{t^2}{1 + t^2} = 1 - \dfrac{1}{1 + t^2}$:
+
+$$
+\int \frac{t^2}{1 + t^2}\,dt = t - \operatorname{arc\,tg}(t)
+$$
+
+Así que
+
+$$
+\int 2t\operatorname{arc\,tg}(t)\,dt = t^2\operatorname{arc\,tg}(t) - t + \operatorname{arc\,tg}(t) + C = (t^2 + 1)\operatorname{arc\,tg}(t) - t + C
+$$
+
+**Deshacemos el cambio.** Con $t = \sqrt{x}$ y $t^2 = x$:
+
+$$
+F(x) = (x + 1)\operatorname{arc\,tg}(\sqrt{x}) - \sqrt{x} + C
+$$
+
+**Condición del punto.** $F(0) = 1 \cdot \operatorname{arc\,tg}(0) - 0 + C = C = 1$.
+
+**Comprobación.** Para $x > 0$, $F'(x) = \operatorname{arc\,tg}(\sqrt{x}) + (x + 1) \cdot \dfrac{1}{1 + x} \cdot \dfrac{1}{2\sqrt{x}} - \dfrac{1}{2\sqrt{x}} = \operatorname{arc\,tg}(\sqrt{x})$.
+
+**Respuesta.**
+
+$$
+F(x) = (x + 1)\operatorname{arc\,tg}(\sqrt{x}) - \sqrt{x} + 1
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función $f \colon (-1, +\infty) \to \mathbb{R}$, definida por $f(x) = \ln(x + 1)$, donde $\ln$ denota el logaritmo neperiano. Calcula el área del recinto limitado por la gráfica de $f$, el eje de abscisas y la recta $x = e - 1$.
+
+<Solucion>
+
+**El recinto.** $f(x) = 0$ cuando $x + 1 = 1$, es decir, en $x = 0$. El recinto va de $x = 0$ a $x = e - 1 \approx 1{,}72$, y ahí $f \geq 0$ porque $x + 1 \geq 1$. (A la izquierda de $0$, $f$ es negativa y tiende a $-\infty$ en $x = -1$, así que por ese lado no hay recinto acotado.)
+
+**Área como integral definida.**
+
+$$
+A = \int_0^{e - 1} \ln(x + 1)\,dx
+$$
+
+**Integración por partes.** Con $u = \ln(x + 1)$ y $dv = dx$, tomando $v = x + 1$ (que también es una primitiva de $1$ y simplifica la cuenta), $du = \dfrac{dx}{x + 1}$:
+
+$$
+\int \ln(x + 1)\,dx = (x + 1)\ln(x + 1) - \int (x + 1) \cdot \frac{1}{x + 1}\,dx = (x + 1)\ln(x + 1) - x + C
+$$
+
+**Regla de Barrow.** Con $\ln e = 1$ y $\ln 1 = 0$:
+
+$$
+A = \Big[(x + 1)\ln(x + 1) - x\Big]_0^{e - 1} = \left(e \cdot 1 - (e - 1)\right) - (1 \cdot 0 - 0) = 1
+$$
+
+**Respuesta.** El área es **$1$ unidad cuadrada**.
+
+</Solucion>

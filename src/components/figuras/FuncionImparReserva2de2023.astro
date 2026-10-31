@@ -1,0 +1,25 @@
+---
+// Matemáticas II, reserva 2 de 2023, ejercicio 2: f(x) = 1/(x|x|), que vale 1/x² para x > 0 y
+// −1/x² para x < 0. Sus asíntotas, x = 0 e y = 0, coinciden con los ejes.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => 1 / (x * Math.abs(x))
+---
+
+<GraficaFuncion
+  xMin={-3.2}
+  xMax={3.2}
+  yMin={-4.6}
+  yMax={4.6}
+  marcasX={[-3, -2, -1, 1, 2, 3]}
+  marcasY={[-4, -3, -2, -1, 1, 2, 3, 4]}
+  tramos={[
+    { f, desde: -3.15, hasta: -0.42 },
+    { f, desde: 0.42, hasta: 3.15 },
+  ]}
+  puntos={[
+    { x: 1, y: 1, texto: "(1, 1)", dx: 8, dy: -6 },
+    { x: -1, y: -1, texto: "(−1, −1)", dx: -8, dy: 16 },
+  ]}
+  descripcion="Gráfica de f(x) = 1/(x|x|). Para x > 0 es 1/x²: positiva, convexa, sube hacia +∞ al acercarse a 0 y baja hacia 0 en +∞. Para x < 0 es −1/x²: negativa, cóncava, baja hacia −∞ al acercarse a 0 y sube hacia 0 en −∞. Es simétrica respecto del origen, con asíntota vertical x = 0 y horizontal y = 0"
+/>

@@ -1,0 +1,41 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Una plataforma de streaming se especializa en series de tres géneros: animación, ciencia ficción y comedia. Se sabe que el $30\,\%$ de las series de animación más el $50\,\%$ de las de ciencia ficción coincide con el $20\,\%$ de total de series. El $25\,\%$ de las series de animación más el $50\,\%$ de las de ciencia ficción más el $60\,\%$ de las de comedia representan la mitad del total de series. Hay $100$ series menos de animación que de ciencia ficción. Halla el número de series de cada género.
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ al número de series de animación, ciencia ficción y comedia. El total es $x + y + z$.
+
+**Planteamiento del sistema.**
+
+- $0{,}3x + 0{,}5y = 0{,}2\,(x + y + z)$. Pasando todo a un lado y multiplicando por $10$: $x + 3y - 2z = 0$.
+- $0{,}25x + 0{,}5y + 0{,}6z = 0{,}5\,(x + y + z)$. Pasando todo a un lado, $-0{,}25x + 0{,}1z = 0$, y multiplicando por $20$: $-5x + 2z = 0$.
+- Hay $100$ series menos de animación que de ciencia ficción: $x = y - 100$, es decir, $-x + y = 100$.
+
+$$
+\begin{cases}
+x + 3y - 2z = 0 \\
+-5x + 2z = 0 \\
+-x + y = 100
+\end{cases}
+$$
+
+**Resolución.** De la segunda, $2z = 5x$. De la tercera, $y = x + 100$. Sustituyendo en la primera:
+
+$$
+x + 3\,(x + 100) - 5x = 0 \quad\Rightarrow\quad -x + 300 = 0 \quad\Rightarrow\quad x = 300
+$$
+
+Entonces $y = 400$ y $z = \dfrac{5 \cdot 300}{2} = 750$.
+
+**Comprobación.** En total hay $1450$ series. $0{,}3 \cdot 300 + 0{,}5 \cdot 400 = 90 + 200 = 290$, que es el $20\,\%$ de $1450$. $0{,}25 \cdot 300 + 0{,}5 \cdot 400 + 0{,}6 \cdot 750 = 75 + 200 + 450 = 725$, la mitad. Y $400 - 300 = 100$.
+
+**Respuesta.** Hay **$300$ series de animación, $400$ de ciencia ficción y $750$ de comedia**.
+
+</Solucion>

@@ -1,0 +1,148 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \dfrac{1}{e^x + e^{-x}}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Estudia y halla los máximos y mínimos absolutos de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Derivada.** Escribiendo $f(x) = (e^x + e^{-x})^{-1}$ y con la regla de la cadena (la derivada de $e^{-x}$ es $-e^{-x}$):
+
+$$
+f'(x) = -\frac{e^x - e^{-x}}{(e^x + e^{-x})^2}
+$$
+
+**Dónde se anula.** $f'(x) = 0$ cuando $e^x = e^{-x}$, es decir, $e^{2x} = 1$, así que $x = 0$.
+
+**Signo de la derivada.** El denominador es positivo. Si $x < 0$, $e^x < e^{-x}$, así que $e^x - e^{-x} < 0$ y $f'(x) > 0$. Si $x > 0$, al revés, $f'(x) < 0$.
+
+<div class="math-tabla">
+
+| | $(-\infty, 0)$ | $(0, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $-$ |
+| $f$ | crece | decrece |
+
+</div>
+
+**Máximo absoluto.** $f$ crece hasta $x = 0$ y decrece después, así que en $x = 0$ alcanza su mayor valor:
+
+$$
+f(0) = \frac{1}{1 + 1} = \frac{1}{2}
+$$
+
+**Mínimo absoluto.** $f(x) > 0$ para todo $x$, y en los dos extremos tiende a $0$, porque el denominador tiende a $+\infty$:
+
+$$
+\lim_{x \to \pm\infty} \frac{1}{e^x + e^{-x}} = 0
+$$
+
+Así que $f$ se acerca a $0$ tanto como queramos, pero nunca lo alcanza: no hay ningún valor que sea el más pequeño.
+
+**Respuesta.** $f$ tiene un **máximo absoluto en $x = 0$, que vale $\dfrac{1}{2}$**. **No tiene mínimo absoluto.**
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula $\displaystyle\lim_{x \to +\infty} \left(x^2 f(x)\right)$.
+
+</div>
+
+<Solucion>
+
+**Indeterminación.**
+
+$$
+\lim_{x \to +\infty} x^2 f(x) = \lim_{x \to +\infty} \frac{x^2}{e^x + e^{-x}}
+$$
+
+Numerador y denominador tienden a $+\infty$: es una indeterminación $\dfrac{\infty}{\infty}$.
+
+**Primera aplicación de L'Hôpital.**
+
+$$
+\lim_{x \to +\infty} \frac{x^2}{e^x + e^{-x}} = \lim_{x \to +\infty} \frac{2x}{e^x - e^{-x}}
+$$
+
+Sigue siendo $\dfrac{\infty}{\infty}$.
+
+**Segunda aplicación de L'Hôpital.**
+
+$$
+\lim_{x \to +\infty} \frac{2x}{e^x - e^{-x}} = \lim_{x \to +\infty} \frac{2}{e^x + e^{-x}} = 0
+$$
+
+**Respuesta.** El límite vale **$0$**: la exponencial crece mucho más deprisa que $x^2$.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Sea la función $f \colon [-2, 2] \longrightarrow \mathbb{R}$, definida por $f(x) = x^3 - 2x + 5$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina las abscisas de los puntos, si existen, en los que la pendiente de la recta tangente coincide con la pendiente de la recta que pasa por los puntos $(-2, f(-2))$ y $(2, f(2))$.
+
+</div>
+
+<Solucion>
+
+**Pendiente de la recta que une los extremos.** $f(-2) = -8 + 4 + 5 = 1$ y $f(2) = 8 - 4 + 5 = 9$:
+
+$$
+m = \frac{f(2) - f(-2)}{2 - (-2)} = \frac{9 - 1}{4} = 2
+$$
+
+**Planteamiento.** La pendiente de la tangente en $x$ es $f'(x) = 3x^2 - 2$. Buscamos los $x$ de $[-2, 2]$ con $f'(x) = 2$. (Su existencia la garantiza el teorema del valor medio de Lagrange, porque $f$ es un polinomio, continuo en $[-2, 2]$ y derivable en $(-2, 2)$.)
+
+**Resolución.**
+
+$$
+3x^2 - 2 = 2 \quad\Rightarrow\quad x^2 = \frac{4}{3} \quad\Rightarrow\quad x = \pm\frac{2}{\sqrt{3}} = \pm\frac{2\sqrt{3}}{3}
+$$
+
+Los dos valores, $\approx \pm 1{,}15$, están en el intervalo $(-2, 2)$.
+
+**Respuesta.** Son los puntos de abscisas **$x = \dfrac{2\sqrt{3}}{3}$ y $x = -\dfrac{2\sqrt{3}}{3}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Determina la ecuación de la recta tangente y la ecuación de la recta normal a la gráfica de $f$ en el punto de inflexión.
+
+</div>
+
+<Solucion>
+
+**Punto de inflexión.** $f''(x) = 6x$ se anula en $x = 0$ y cambia de signo ahí (negativa antes, positiva después), así que el punto de inflexión es $(0, f(0)) = (0, 5)$.
+
+**Recta tangente.** La pendiente es $f'(0) = -2$:
+
+$$
+y - 5 = -2\,(x - 0) \quad\Rightarrow\quad y = -2x + 5
+$$
+
+**Recta normal.** Su pendiente es $-\dfrac{1}{f'(0)} = \dfrac{1}{2}$:
+
+$$
+y - 5 = \frac{1}{2}\,(x - 0) \quad\Rightarrow\quad y = \frac{x}{2} + 5
+$$
+
+**Respuesta.** La recta tangente es **$y = -2x + 5$** y la normal, **$y = \dfrac{x}{2} + 5$**.
+
+</Solucion>

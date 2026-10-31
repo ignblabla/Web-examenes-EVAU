@@ -112,6 +112,20 @@ const matematicasII2024: Cabecera = {
   ],
 }
 
+// Curso 2022-2023 (PEvAU): dos bloques (A y B) de cuatro ejercicios; se eligen cuatro cualesquiera.
+const matematicasII2023: Cabecera = {
+  ...matematicasII2024,
+  curso: "CURSO 2022-2023",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Este examen consta de 8 ejercicios distribuidos en 2 bloques (A y B) de 4 ejercicios cada uno.",
+    "c) Cada ejercicio tiene un valor máximo de 2,5 puntos.",
+    "d) Se realizarán únicamente cuatro ejercicios, independientemente del bloque al que pertenezcan. En caso de responder a más de cuatro ejercicios, se corregirán únicamente los cuatro que aparezcan físicamente en primer lugar.",
+    "e) Se permitirá el uso de calculadoras que no sean programables, ni gráficas ni con capacidad para almacenar o transmitir datos. No obstante, todos los procesos conducentes a la obtención de resultados deben estar suficientemente justificados.",
+    "f) En la puntuación máxima de cada ejercicio están contemplados 0,25 puntos para valorar la expresión correcta de los procesos y métodos utilizados.",
+  ],
+}
+
 // La reserva 3 dice "Se permite" en la instrucción f), en vez de "Se permitirá".
 const matematicasII2026Reserva3: Cabecera = {
   ...matematicasII2026,
@@ -430,6 +444,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
+  "matematicas-ii/2023/junio": matematicasII2023,
+  "matematicas-ii/2023/julio": matematicasII2023,
+  "matematicas-ii/2023/reserva-1": matematicasII2023,
+  "matematicas-ii/2023/reserva-2": matematicasII2023,
+  "matematicas-ii/2023/reserva-3": matematicasII2023,
+  "matematicas-ii/2023/reserva-4": matematicasII2023,
   "matematicas-ii/2024/junio": matematicasII2024,
   "matematicas-ii/2024/julio": matematicasII2024,
   "matematicas-ii/2024/reserva-1": matematicasII2024,

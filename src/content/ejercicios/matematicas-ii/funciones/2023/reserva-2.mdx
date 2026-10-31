@@ -1,0 +1,103 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import FuncionImparReserva2de2023 from "../../../../../components/figuras/FuncionImparReserva2de2023.astro"
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+De entre todos los rectángulos de diagonal $10$ cm (cada una), calcula las dimensiones del que tiene mayor área.
+
+<Solucion>
+
+**Variables y restricción.** Llamamos $x$ e $y$ a los lados del rectángulo, en cm. Por el teorema de Pitágoras, la diagonal cumple $x^2 + y^2 = 100$, así que $y = \sqrt{100 - x^2}$, con $0 < x < 10$.
+
+**Función de una variable a maximizar.**
+
+$$
+A(x) = x\sqrt{100 - x^2}, \qquad 0 < x < 10
+$$
+
+**Puntos críticos.** Por la regla del producto:
+
+$$
+A'(x) = \sqrt{100 - x^2} - \frac{x^2}{\sqrt{100 - x^2}} = \frac{100 - 2x^2}{\sqrt{100 - x^2}}
+$$
+
+$A'(x) = 0$ cuando $x^2 = 50$, es decir, $x = 5\sqrt{2}$ (la raíz negativa no está en el intervalo).
+
+**Es un máximo.** El signo de $A'$ es el de $100 - 2x^2$: positivo para $x < 5\sqrt{2}$ y negativo después. $A$ crece y luego decrece, así que en $x = 5\sqrt{2}$ tiene su máximo absoluto.
+
+**Dimensiones.** $y = \sqrt{100 - 50} = 5\sqrt{2}$. El área máxima es $5\sqrt{2} \cdot 5\sqrt{2} = 50$ cm².
+
+**Respuesta.** El rectángulo de mayor área es **un cuadrado de $5\sqrt{2} \approx 7{,}07$ cm de lado**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función $f(x) = \dfrac{1}{x|x|}$, para $x \neq 0$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula los intervalos de concavidad y de convexidad de $f$, así como los puntos de inflexión de su gráfica, si existen.
+
+</div>
+
+<Solucion>
+
+**$f$ a trozos.** Si $x > 0$, $|x| = x$; si $x < 0$, $|x| = -x$:
+
+$$
+f(x) = \begin{cases} -\dfrac{1}{x^2} = -x^{-2} & \text{si } x < 0 \\[2ex] \dfrac{1}{x^2} = x^{-2} & \text{si } x > 0 \end{cases}
+$$
+
+**Derivadas.**
+
+$$
+f'(x) = \begin{cases} 2x^{-3} & \text{si } x < 0 \\ -2x^{-3} & \text{si } x > 0 \end{cases} \qquad f''(x) = \begin{cases} -6x^{-4} = -\dfrac{6}{x^4} & \text{si } x < 0 \\[2ex] 6x^{-4} = \dfrac{6}{x^4} & \text{si } x > 0 \end{cases}
+$$
+
+**Curvatura.** Como $x^4 > 0$, $f''(x) < 0$ para $x < 0$ y $f''(x) > 0$ para $x > 0$. Donde $f'' > 0$ la función es convexa ($\cup$), y donde $f'' < 0$, cóncava ($\cap$).
+
+**Puntos de inflexión.** La curvatura cambia al pasar por $x = 0$, pero $0$ no está en el dominio de $f$, así que no hay punto de la gráfica: no es un punto de inflexión. $f''$ no se anula nunca.
+
+**Respuesta.** $f$ es **cóncava en $(-\infty, 0)$** y **convexa en $(0, +\infty)$**. **No tiene puntos de inflexión.**
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Estudia y calcula las asíntotas de la función. Esboza su gráfica.
+
+</div>
+
+<Solucion>
+
+**Asíntota vertical.** El único punto fuera del dominio es $x = 0$:
+
+$$
+\lim_{x \to 0^-} \left(-\frac{1}{x^2}\right) = -\infty, \qquad \lim_{x \to 0^+} \frac{1}{x^2} = +\infty
+$$
+
+Así que **$x = 0$ es asíntota vertical**.
+
+**Asíntota horizontal.**
+
+$$
+\lim_{x \to -\infty} \left(-\frac{1}{x^2}\right) = 0, \qquad \lim_{x \to +\infty} \frac{1}{x^2} = 0
+$$
+
+Así que **$y = 0$ es asíntota horizontal** por los dos lados.
+
+**Asíntotas oblicuas.** No hay, porque hay asíntota horizontal en $-\infty$ y en $+\infty$.
+
+**Esbozo.** $f$ es impar ($f(-x) = -f(x)$), así que su gráfica es simétrica respecto del origen. Para $x > 0$ es la curva $\frac{1}{x^2}$, siempre positiva, y para $x < 0$ es su simétrica respecto del origen, siempre negativa. Las dos asíntotas coinciden con los ejes:
+
+<FuncionImparReserva2de2023 />
+
+</Solucion>

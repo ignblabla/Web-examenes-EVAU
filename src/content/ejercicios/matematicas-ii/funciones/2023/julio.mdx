@@ -1,0 +1,144 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Sea la función $f \colon [-2, 2\pi] \longrightarrow \mathbb{R}$, definida por $f(x) = \begin{cases} 5x + 1 & \text{si } -2 \leq x \leq 0 \\ e^x\cos(x) & \text{si } 0 < x \leq 2\pi \end{cases}$
+
+<div class="math-sub">
+
+a) **[2 puntos]** Halla los extremos relativos y absolutos de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Comportamiento en $0$.** $f(0) = 5 \cdot 0 + 1 = 1$ y $\displaystyle\lim_{x \to 0^+} e^x\cos(x) = 1$, así que $f$ es continua en $0$. Las derivadas laterales son $f'(0^-) = 5$ y $f'(0^+) = e^0(\cos 0 - \operatorname{sen} 0) = 1$: no coinciden, así que $f$ no es derivable en $0$. Pero las dos son positivas, así que $f$ crece a ambos lados de $0$ y ahí no hay extremo.
+
+**Derivada en cada trozo.**
+
+$$
+f'(x) = \begin{cases} 5 & \text{si } -2 < x < 0 \\ e^x\cos(x) - e^x\operatorname{sen}(x) = e^x\left(\cos(x) - \operatorname{sen}(x)\right) & \text{si } 0 < x < 2\pi \end{cases}
+$$
+
+**Puntos críticos.** En el primer trozo, $f' = 5 \neq 0$. En el segundo, como $e^x > 0$, $f'(x) = 0$ cuando $\cos(x) = \operatorname{sen}(x)$, es decir, $\operatorname{tg}(x) = 1$. En $(0, 2\pi)$: $x = \dfrac{\pi}{4}$ y $x = \dfrac{5\pi}{4}$.
+
+**Signo de la derivada.** El de $\cos(x) - \operatorname{sen}(x)$ en cada intervalo (por ejemplo, en $x = \frac{\pi}{2}$ vale $-1$ y en $x = \frac{3\pi}{2}$, $1$):
+
+<div class="math-tabla">
+
+| | $(-2, 0)$ | $\left(0, \frac{\pi}{4}\right)$ | $\left(\frac{\pi}{4}, \frac{5\pi}{4}\right)$ | $\left(\frac{5\pi}{4}, 2\pi\right)$ |
+|:-:|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $+$ | $-$ | $+$ |
+| $f$ | crece | crece | decrece | crece |
+
+</div>
+
+**Extremos relativos.**
+
+- Máximo relativo en $x = \dfrac{\pi}{4}$: $f\left(\dfrac{\pi}{4}\right) = e^{\pi/4} \cdot \dfrac{\sqrt{2}}{2} \approx 1{,}55$.
+- Mínimo relativo en $x = \dfrac{5\pi}{4}$: $f\left(\dfrac{5\pi}{4}\right) = e^{5\pi/4} \cdot \left(-\dfrac{\sqrt{2}}{2}\right) \approx -35{,}89$.
+
+(Si se consideran también los extremos del intervalo, en $x = -2$ hay un mínimo relativo, porque $f$ crece a su derecha, y en $x = 2\pi$ un máximo relativo, porque crece hasta él.)
+
+**Extremos absolutos.** $f$ es continua en el intervalo cerrado $[-2, 2\pi]$, así que alcanza su máximo y su mínimo absolutos (teorema de Weierstrass). Comparamos los valores en los extremos relativos y en los extremos del intervalo:
+
+$$
+f(-2) = -9, \qquad f\left(\frac{\pi}{4}\right) \approx 1{,}55, \qquad f\left(\frac{5\pi}{4}\right) \approx -35{,}89, \qquad f(2\pi) = e^{2\pi}\cos(2\pi) = e^{2\pi} \approx 535{,}49
+$$
+
+**Respuesta.**
+
+- **Máximo relativo** en $x = \dfrac{\pi}{4}$, que vale $\dfrac{\sqrt{2}}{2}e^{\pi/4}$, y **mínimo relativo** en $x = \dfrac{5\pi}{4}$, que vale $-\dfrac{\sqrt{2}}{2}e^{5\pi/4}$.
+- **Máximo absoluto** en $x = 2\pi$, que vale $e^{2\pi}$, y **mínimo absoluto** en $x = \dfrac{5\pi}{4}$, que vale $-\dfrac{\sqrt{2}}{2}e^{5\pi/4}$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,5 puntos]** Determina la ecuación de la recta tangente a la gráfica de $f$ en el punto de abscisa $x = \dfrac{\pi}{2}$.
+
+</div>
+
+<Solucion>
+
+**Punto y pendiente.** $\frac{\pi}{2}$ está en el segundo trozo. Con $\cos\left(\frac{\pi}{2}\right) = 0$ y $\operatorname{sen}\left(\frac{\pi}{2}\right) = 1$:
+
+$$
+f\left(\frac{\pi}{2}\right) = e^{\pi/2} \cdot 0 = 0, \qquad f'\left(\frac{\pi}{2}\right) = e^{\pi/2}\,(0 - 1) = -e^{\pi/2}
+$$
+
+**Respuesta.** La recta tangente es
+
+$$
+y = -e^{\pi/2}\left(x - \frac{\pi}{2}\right)
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Sea $f \colon (0, +\infty) \to \mathbb{R}$ la función definida por $f(x) = x\left(\ln(x)\right)^2$ ($\ln$ denota la función logaritmo neperiano).
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula, si existen, sus extremos relativos (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Derivada.** Por la regla del producto, y como la derivada de $(\ln x)^2$ es $2\ln(x) \cdot \frac{1}{x}$:
+
+$$
+f'(x) = (\ln x)^2 + x \cdot \frac{2\ln x}{x} = (\ln x)^2 + 2\ln x = \ln x\,(\ln x + 2)
+$$
+
+**Puntos críticos.** $f'(x) = 0$ cuando $\ln x = 0$, es decir, $x = 1$, o cuando $\ln x = -2$, es decir, $x = e^{-2}$.
+
+**Signo de la derivada.** Con $u = \ln x$, el signo es el de $u\,(u + 2)$: positivo si $u < -2$ o $u > 0$, y negativo entre medias. Como $\ln$ es creciente:
+
+<div class="math-tabla">
+
+| | $(0, e^{-2})$ | $(e^{-2}, 1)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $-$ | $+$ |
+| $f$ | crece | decrece | crece |
+
+</div>
+
+**Respuesta.**
+
+- **Máximo relativo en $x = e^{-2}$**, que vale $f(e^{-2}) = e^{-2}\,(-2)^2 = \dfrac{4}{e^2} \approx 0{,}54$.
+- **Mínimo relativo en $x = 1$**, que vale $f(1) = 1 \cdot 0^2 = 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula, si existen, sus extremos absolutos (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Límite en el infinito.** $x \to +\infty$ y $(\ln x)^2 \to +\infty$, así que
+
+$$
+\lim_{x \to +\infty} x\,(\ln x)^2 = +\infty
+$$
+
+$f$ no está acotada superiormente, así que **no tiene máximo absoluto**.
+
+**Mínimo absoluto.** Para todo $x > 0$, $x > 0$ y $(\ln x)^2 \geq 0$, así que $f(x) \geq 0$. Como $f(1) = 0$, en $x = 1$ alcanza el menor valor posible.
+
+(Cerca de $0$, $f$ también tiende a $0$, sin alcanzarlo: $\lim_{x \to 0^+} x\,(\ln x)^2 = 0$, como se ve escribiéndolo como $\frac{(\ln x)^2}{1/x}$ y aplicando L'Hôpital dos veces. Así que el máximo relativo de $e^{-2}$ no es absoluto.)
+
+**Respuesta.** $f$ tiene un **mínimo absoluto en $x = 1$, que vale $0$**, y **no tiene máximo absoluto**.
+
+</Solucion>

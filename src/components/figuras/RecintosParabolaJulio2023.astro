@@ -1,0 +1,33 @@
+---
+// Matemáticas II, julio de 2023, ejercicio 4: f(x) = 5 − x² y g(x) = 4/x², que se cortan en
+// x = ±1 y x = ±2, y los dos recintos acotados que forman, en [−2, −1] y en [1, 2].
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => 5 - x ** 2
+const g = (x: number) => 4 / x ** 2
+---
+
+<GraficaFuncion
+  xMin={-3.2}
+  xMax={3.2}
+  yMin={-0.9}
+  yMax={6.4}
+  marcasX={[-3, -2, -1, 1, 2, 3]}
+  marcasY={[1, 2, 3, 4, 5]}
+  tramos={[
+    { f, desde: -2.9, hasta: 2.9, etiqueta: { texto: "f", x: 0.2, y: 5.5 } },
+    { f: g, desde: -3.15, hasta: -0.7, color: "#b04a3a" },
+    { f: g, desde: 0.7, hasta: 3.15, color: "#b04a3a", etiqueta: { texto: "g", x: 3.05, y: 0.85, ancla: "end" } },
+  ]}
+  recinto={[
+    { arriba: f, abajo: g, desde: -2, hasta: -1 },
+    { arriba: f, abajo: g, desde: 1, hasta: 2 },
+  ]}
+  puntos={[
+    { x: -2, y: 1, texto: "(−2, 1)", dx: -10, dy: 16 },
+    { x: -1, y: 4, texto: "(−1, 4)", dx: -10, dy: -8 },
+    { x: 1, y: 4, texto: "(1, 4)", dx: 10, dy: -8 },
+    { x: 2, y: 1, texto: "(2, 1)", dx: 10, dy: 16 },
+  ]}
+  descripcion="Parábola f(x) = 5 − x², abierta hacia abajo con vértice en (0, 5), y gráfica de g(x) = 4/x², positiva, con asíntota vertical en x = 0 (el eje Y) y que tiende a 0 en el infinito. Se cortan en (−2, 1), (−1, 4), (1, 4) y (2, 1). Hay dos recintos acotados sombreados, iguales por simetría: entre x = −2 y x = −1 y entre x = 1 y x = 2, con la parábola por arriba y g por abajo"
+/>

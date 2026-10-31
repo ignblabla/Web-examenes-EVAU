@@ -50,9 +50,9 @@ export const asignaturas: Asignatura[] = [
     simbolo: "geometry",
     color: "math-two",
     indexable: true,
-    desde: 2024,
+    desde: 2023,
     intro:
-      "El examen de Matemáticas II de la PAU de Andalucía dura 1 hora y 30 minutos y todos sus ejercicios valen 2,5 puntos. Desde 2026 tiene seis: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.",
+      "El examen de Matemáticas II de la PAU de Andalucía dura 1 hora y 30 minutos y todos sus ejercicios valen 2,5 puntos. Desde 2026 tiene seis: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque, y en 2023, ocho en dos bloques de cuatro, y se elegían cuatro cualesquiera. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.",
     resuelto: "todos los ejercicios paso a paso y justificados",
     temas: temas([
       "Matrices y determinantes",

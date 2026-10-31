@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+Sea la matriz $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}$ e $I$ la matriz identidad de orden $3$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla los valores de $m$ para que la matriz $A - mI$ no tenga inversa.
+
+</div>
+
+<Solucion>
+
+**Determinante de $A - mI$.**
+
+$$
+|A - mI| = \begin{vmatrix} 1 - m & 1 & 1 \\ 1 & 1 - m & 1 \\ 1 & 1 & 1 - m \end{vmatrix}
+$$
+
+Sumando a la primera fila las otras dos, todos sus elementos valen $3 - m$, y lo sacamos factor común. Después restamos la primera fila a las otras dos:
+
+$$
+|A - mI| = (3 - m)\begin{vmatrix} 1 & 1 & 1 \\ 1 & 1 - m & 1 \\ 1 & 1 & 1 - m \end{vmatrix} = (3 - m)\begin{vmatrix} 1 & 1 & 1 \\ 0 & -m & 0 \\ 0 & 0 & -m \end{vmatrix} = (3 - m)\,m^2
+$$
+
+**Respuesta.** $A - mI$ no tiene inversa cuando su determinante es $0$: **para $m = 0$ y para $m = 3$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla $x$, distinto de cero, para que $A - xI$ sea la inversa de la matriz $\dfrac{1}{x}(A - I)$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** $A - xI$ es la inversa de $\frac{1}{x}(A - I)$ si su producto es la identidad:
+
+$$
+(A - xI) \cdot \frac{1}{x}(A - I) = I \quad\Leftrightarrow\quad (A - xI)(A - I) = xI
+$$
+
+(Las dos matrices son de la forma $\alpha A + \beta I$, así que conmutan, y basta con comprobar el producto en un orden.)
+
+**Una propiedad de $A$.** Cada elemento de $A^2$ es $1 + 1 + 1 = 3$, así que $A^2 = 3A$.
+
+**Desarrollo del producto.**
+
+$$
+(A - xI)(A - I) = A^2 - A - xA + xI = 3A - A - xA + xI = (2 - x)\,A + xI
+$$
+
+**Condición.**
+
+$$
+(2 - x)\,A + xI = xI \quad\Rightarrow\quad (2 - x)\,A = O
+$$
+
+Como $A$ no es la matriz nula, tiene que ser $2 - x = 0$, es decir, $x = 2$.
+
+**Comprobación.** Con $x = 2$: $(A - 2I)(A - I) = A^2 - 3A + 2I = 3A - 3A + 2I = 2I$, así que $(A - 2I) \cdot \frac{1}{2}(A - I) = I$.
+
+**Respuesta.** **$x = 2$**.
+
+</Solucion>

@@ -1,0 +1,99 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Sea $f \colon (-1, +\infty) \to \mathbb{R}$ la función definida por $f(x) = \dfrac{\ln(x + 1) + a}{3x + 4}$ ($\ln$ denota la función logaritmo neperiano).
+
+<div class="math-sub">
+
+a) **[1 punto]** Determina $a$ sabiendo que la pendiente de la recta tangente a la gráfica de la función $f$ en el punto de abscisa $x = 0$ es $1$.
+
+</div>
+
+<Solucion>
+
+**Derivada.** Por la regla del cociente:
+
+$$
+f'(x) = \frac{\dfrac{1}{x + 1}\,(3x + 4) - 3\left(\ln(x + 1) + a\right)}{(3x + 4)^2}
+$$
+
+**Condición.** La pendiente de la tangente en $x = 0$ es $f'(0)$, y con $\ln 1 = 0$:
+
+$$
+f'(0) = \frac{1 \cdot 4 - 3\,(0 + a)}{4^2} = \frac{4 - 3a}{16} = 1 \quad\Rightarrow\quad 4 - 3a = 16 \quad\Rightarrow\quad a = -4
+$$
+
+**Respuesta.** **$a = -4$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Para $a = 0$, estudia y calcula las asíntotas de $f$.
+
+</div>
+
+<Solucion>
+
+**La función.** $f(x) = \dfrac{\ln(x + 1)}{3x + 4}$, con dominio $(-1, +\infty)$. El denominador se anula en $x = -\frac{4}{3}$, que está fuera del dominio.
+
+**Asíntota vertical.** El único borde finito del dominio es $x = -1$. Cuando $x \to -1^+$, $x + 1 \to 0^+$, así que $\ln(x + 1) \to -\infty$, mientras el denominador tiende a $3(-1) + 4 = 1$:
+
+$$
+\lim_{x \to -1^+} \frac{\ln(x + 1)}{3x + 4} = -\infty
+$$
+
+Así que **$x = -1$ es asíntota vertical**.
+
+**Asíntota horizontal.** Solo tiene sentido en $+\infty$, porque el dominio no llega a $-\infty$. Es una indeterminación $\frac{\infty}{\infty}$, y por L'Hôpital:
+
+$$
+\lim_{x \to +\infty} \frac{\ln(x + 1)}{3x + 4} = \lim_{x \to +\infty} \frac{\dfrac{1}{x + 1}}{3} = 0
+$$
+
+Así que **$y = 0$ es asíntota horizontal** en $+\infty$.
+
+**Asíntota oblicua.** No hay: en $+\infty$ ya hay asíntota horizontal.
+
+**Respuesta.** Asíntota vertical **$x = -1$** y asíntota horizontal **$y = 0$** (en $+\infty$).
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+En una fábrica de pinturas, las latas que se utilizan para envasar la pintura tienen forma cilíndrica y una capacidad de $20$ litros. Halla las dimensiones del cilindro, con tapas, para que la chapa empleada en su construcción sea mínima.
+
+<Solucion>
+
+**Variables y restricción.** Trabajamos en decímetros, porque $1$ litro $= 1$ dm³. Llamamos $r$ al radio de la base y $h$ a la altura. El volumen es $20$ dm³:
+
+$$
+\pi r^2 h = 20 \quad\Rightarrow\quad h = \frac{20}{\pi r^2}
+$$
+
+**Función de una variable a minimizar.** La chapa es la superficie total: las dos tapas, $2\pi r^2$, y la superficie lateral, $2\pi r h$:
+
+$$
+S(r) = 2\pi r^2 + 2\pi r \cdot \frac{20}{\pi r^2} = 2\pi r^2 + \frac{40}{r}, \qquad r > 0
+$$
+
+**Puntos críticos.**
+
+$$
+S'(r) = 4\pi r - \frac{40}{r^2} = 0 \quad\Rightarrow\quad 4\pi r^3 = 40 \quad\Rightarrow\quad r^3 = \frac{10}{\pi} \quad\Rightarrow\quad r = \sqrt[3]{\frac{10}{\pi}} \approx 1{,}47 \text{ dm}
+$$
+
+**Es un mínimo.** $S''(r) = 4\pi + \dfrac{80}{r^3} > 0$, así que es un mínimo, y es el absoluto, porque es el único punto crítico y $S \to +\infty$ cuando $r \to 0^+$ y cuando $r \to +\infty$.
+
+**Altura.** Como $\pi r^3 = 10$, $\pi r^2 = \dfrac{10}{r}$, así que $h = \dfrac{20}{\pi r^2} = \dfrac{20r}{10} = 2r \approx 2{,}94$ dm.
+
+**Respuesta.** El radio de la base es **$r = \sqrt[3]{\dfrac{10}{\pi}} \approx 1{,}47$ dm** ($14{,}7$ cm) y la altura, **$h = 2\sqrt[3]{\dfrac{10}{\pi}} \approx 2{,}94$ dm** ($29{,}4$ cm): la altura es igual al diámetro.
+
+</Solucion>

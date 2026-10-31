@@ -1,0 +1,118 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2023
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RecintoValorAbsolutoReserva2de2023 from "../../../../../components/figuras/RecintoValorAbsolutoReserva2de2023.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Determina la función $f \colon (0, +\infty) \to \mathbb{R}$, sabiendo que es dos veces derivable, su gráfica pasa por el punto $(1, 0)$, $f'(e) = e$ y $f''(x) = 2\ln(x) + 1$, para todo $x > 0$ ($\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Primera integral indefinida.** $\int \ln(x)\,dx$ se hace por partes, con $u = \ln x$ y $dv = dx$, de modo que $du = \frac{dx}{x}$ y $v = x$: $\int \ln x\,dx = x\ln x - \int dx = x\ln x - x$. Así que
+
+$$
+f'(x) = \int (2\ln x + 1)\,dx = 2\,(x\ln x - x) + x + C_1 = 2x\ln x - x + C_1
+$$
+
+**Primera constante.** Con $\ln e = 1$: $f'(e) = 2e - e + C_1 = e + C_1 = e$, así que $C_1 = 0$ y $f'(x) = 2x\ln x - x$.
+
+**Segunda integral indefinida.** Para $\int 2x\ln x\,dx$, por partes con $u = \ln x$ y $dv = 2x\,dx$, de modo que $du = \frac{dx}{x}$ y $v = x^2$:
+
+$$
+\int 2x\ln x\,dx = x^2\ln x - \int x^2 \cdot \frac{1}{x}\,dx = x^2\ln x - \frac{x^2}{2}
+$$
+
+Así que
+
+$$
+f(x) = \int (2x\ln x - x)\,dx = x^2\ln x - \frac{x^2}{2} - \frac{x^2}{2} + C_2 = x^2\ln x - x^2 + C_2
+$$
+
+**Segunda constante.** La gráfica pasa por $(1, 0)$: $f(1) = 0 - 1 + C_2 = 0$, así que $C_2 = 1$.
+
+**Comprobación.** $f'(x) = 2x\ln x + x - 2x = 2x\ln x - x$, y $f''(x) = 2\ln x + 2 - 1 = 2\ln x + 1$.
+
+**Respuesta.**
+
+$$
+f(x) = x^2\ln(x) - x^2 + 1
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = |x^2 - 1|$ y $g(x) = x + 5$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula los puntos de corte de las gráficas de ambas funciones y esboza el recinto que determinan.
+
+</div>
+
+<Solucion>
+
+**$f$ a trozos.**
+
+$$
+f(x) = \begin{cases} x^2 - 1 & \text{si } x \leq -1 \text{ o } x \geq 1 \\ 1 - x^2 & \text{si } -1 < x < 1 \end{cases}
+$$
+
+**Puntos de corte.**
+
+- Si $|x| \geq 1$: $x^2 - 1 = x + 5$, es decir, $x^2 - x - 6 = 0$, así que $x = 3$ o $x = -2$. Los dos cumplen $|x| \geq 1$.
+- Si $|x| < 1$: $1 - x^2 = x + 5$, es decir, $x^2 + x + 4 = 0$, que no tiene soluciones reales (su discriminante es $1 - 16 < 0$).
+
+Con $g(-2) = 3$ y $g(3) = 8$, los puntos de corte son **$(-2, 3)$ y $(3, 8)$**.
+
+**Esbozo.** $f$ es la parábola $x^2 - 1$ con la parte que queda bajo el eje $X$ reflejada hacia arriba: toca el eje en $x = \pm 1$ y tiene un pico en $(0, 1)$. Entre $x = -2$ y $x = 3$, la recta queda por encima (en $x = 0$, $5 > 1$):
+
+<RecintoValorAbsolutoReserva2de2023 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Determina el área del recinto anterior.
+
+</div>
+
+<Solucion>
+
+**Área como suma de integrales definidas.** $f$ cambia de expresión en $x = -1$ y $x = 1$:
+
+$$
+A = \int_{-2}^{-1} \left[(x + 5) - (x^2 - 1)\right]dx + \int_{-1}^{1} \left[(x + 5) - (1 - x^2)\right]dx + \int_{1}^{3} \left[(x + 5) - (x^2 - 1)\right]dx
+$$
+
+$$
+A = \int_{-2}^{-1} (-x^2 + x + 6)\,dx + \int_{-1}^{1} (x^2 + x + 4)\,dx + \int_{1}^{3} (-x^2 + x + 6)\,dx
+$$
+
+**Cálculo.** Con $F(x) = -\dfrac{x^3}{3} + \dfrac{x^2}{2} + 6x$ y $G(x) = \dfrac{x^3}{3} + \dfrac{x^2}{2} + 4x$:
+
+$$
+\int_{-2}^{-1} (-x^2 + x + 6)\,dx = F(-1) - F(-2) = -\frac{31}{6} - \left(-\frac{44}{6}\right) = \frac{13}{6}
+$$
+
+$$
+\int_{-1}^{1} (x^2 + x + 4)\,dx = G(1) - G(-1) = \frac{29}{6} - \left(-\frac{23}{6}\right) = \frac{52}{6}
+$$
+
+$$
+\int_{1}^{3} (-x^2 + x + 6)\,dx = F(3) - F(1) = \frac{81}{6} - \frac{37}{6} = \frac{44}{6}
+$$
+
+**Respuesta.**
+
+$$
+A = \frac{13 + 52 + 44}{6} = \frac{109}{6} \approx 18{,}17 \text{ unidades cuadradas}
+$$
+
+</Solucion>

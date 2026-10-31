@@ -1,0 +1,101 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera los planos $\pi_1 \equiv x - y + z = 0$ y $\pi_2 \equiv x + y = 2$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula la distancia entre la recta intersección de $\pi_1$ y $\pi_2$ y el punto $P(2, 6, -2)$.
+
+</div>
+
+<Solucion>
+
+**Vector director de la recta intersección.** Es perpendicular a los dos vectores normales, $\vec{n}_1 = (1, -1, 1)$ y $\vec{n}_2 = (1, 1, 0)$:
+
+$$
+\vec{d} = \vec{n}_1 \times \vec{n}_2 = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 1 \\ 1 & 1 & 0 \end{vmatrix} = (0 - 1)\,\vec{i} - (0 - 1)\,\vec{j} + (1 + 1)\,\vec{k} = (-1,\ 1,\ 2)
+$$
+
+**Un punto de la recta.** Tomando $x = 1$, la segunda ecuación da $y = 1$ y la primera, $z = y - x = 0$: el punto $R(1, 1, 0)$.
+
+**Distancia.** Con $\overrightarrow{RP} = (1, 5, -2)$:
+
+$$
+\overrightarrow{RP} \times \vec{d} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 5 & -2 \\ -1 & 1 & 2 \end{vmatrix} = (10 + 2)\,\vec{i} - (2 - 2)\,\vec{j} + (1 + 5)\,\vec{k} = (12,\ 0,\ 6)
+$$
+
+$$
+d(P, r) = \frac{\left|\overrightarrow{RP} \times \vec{d}\right|}{|\vec{d}|} = \frac{\sqrt{144 + 36}}{\sqrt{1 + 1 + 4}} = \frac{\sqrt{180}}{\sqrt{6}} = \sqrt{30}
+$$
+
+**Respuesta.** La distancia es **$\sqrt{30} \approx 5{,}48$ unidades**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Halla el ángulo que forman $\pi_1$ y $\pi_2$.
+
+</div>
+
+<Solucion>
+
+**Vectores normales.** $\vec{n}_1 = (1, -1, 1)$ y $\vec{n}_2 = (1, 1, 0)$. El ángulo entre dos planos es el que forman sus vectores normales (tomando el agudo).
+
+**Cálculo.**
+
+$$
+\cos\alpha = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1|\,|\vec{n}_2|} = \frac{|1 - 1 + 0|}{\sqrt{3}\,\sqrt{2}} = 0
+$$
+
+**Respuesta.** $\alpha = 90^\circ$: **los planos son perpendiculares**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Calcula el volumen del tetraedro que limita el plano determinado por los puntos $A(0, 2, -2)$, $B(3, 2, 1)$ y $C(2, 3, 2)$ con los planos cartesianos.
+
+<Solucion>
+
+**Planteamiento.** Los planos cartesianos son $x = 0$, $y = 0$ y $z = 0$. El plano $ABC$ los corta formando un tetraedro con un vértice en el origen y los otros tres en los puntos donde corta a los ejes. Así que hallamos el plano, sus cortes con los ejes y el volumen.
+
+**Plano $ABC$.**
+
+$$
+\overrightarrow{AB} = (3,\ 0,\ 3), \qquad \overrightarrow{AC} = (2,\ 1,\ 4)
+$$
+
+Con $(1, 0, 1)$, proporcional a $\overrightarrow{AB}$:
+
+$$
+\vec{n} = (1,\ 0,\ 1) \times (2,\ 1,\ 4) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 0 & 1 \\ 2 & 1 & 4 \end{vmatrix} = (0 - 1)\,\vec{i} - (4 - 2)\,\vec{j} + (1 - 0)\,\vec{k} = (-1,\ -2,\ 1)
+$$
+
+Por $A(0, 2, -2)$: $-x - 2(y - 2) + (z + 2) = 0$, y multiplicando por $-1$,
+
+$$
+\pi \equiv x + 2y - z - 6 = 0
+$$
+
+Comprobación: $B$ da $3 + 4 - 1 - 6 = 0$ y $C$, $2 + 6 - 2 - 6 = 0$.
+
+**Cortes con los ejes.** $P(6, 0, 0)$, $Q(0, 3, 0)$ y $R(0, 0, -6)$.
+
+**Volumen.** El volumen del tetraedro $OPQR$ es la sexta parte del valor absoluto del producto mixto de $\overrightarrow{OP}$, $\overrightarrow{OQ}$ y $\overrightarrow{OR}$ (como esas tres aristas son perpendiculares, es también $\frac{1}{6} \cdot 6 \cdot 3 \cdot 6$):
+
+$$
+V = \frac{1}{6}\left|\begin{vmatrix} 6 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & -6 \end{vmatrix}\right| = \frac{1}{6}\,|-108| = 18
+$$
+
+**Respuesta.** El volumen es **$18$ unidades cúbicas**.
+
+</Solucion>

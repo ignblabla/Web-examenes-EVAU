@@ -1,0 +1,47 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+El dueño de un bar ha comprado refrescos, cerveza y vino por un importe de $500$ euros sin incluir impuestos. El gasto en vino es $60$ euros menos que los gastos en refrescos y cerveza conjuntamente, sin incluir impuestos. Teniendo en cuenta que los impuestos de los refrescos, la cerveza y el vino son el $6\,\%$, el $12\,\%$ y el $30\,\%$, respectivamente, entonces el importe total de la factura incluyendo impuestos ha ascendido a $592{,}4$ euros. Calcula el importe, incluyendo impuestos, invertido en cada una de las bebidas.
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ a lo gastado, **sin impuestos**, en refrescos, cerveza y vino, en euros. Con impuestos, cada uno se multiplica por $1{,}06$, $1{,}12$ y $1{,}30$.
+
+**Planteamiento del sistema.**
+
+- Sin impuestos el gasto es $500$ euros: $x + y + z = 500$.
+- El vino cuesta $60$ euros menos que los refrescos y la cerveza juntos: $z = x + y - 60$, es decir, $x + y - z = 60$.
+- Con impuestos la factura es $592{,}4$ euros: $1{,}06x + 1{,}12y + 1{,}30z = 592{,}4$.
+
+$$
+\begin{cases}
+x + y + z = 500 \\
+x + y - z = 60 \\
+1{,}06x + 1{,}12y + 1{,}30z = 592{,}4
+\end{cases}
+$$
+
+**Resolución.** Restando las dos primeras ecuaciones, $2z = 440$, así que $z = 220$ y $x + y = 280$. En la tercera:
+
+$$
+1{,}06x + 1{,}12\,(280 - x) + 1{,}30 \cdot 220 = 592{,}4 \quad\Rightarrow\quad -0{,}06x + 313{,}6 + 286 = 592{,}4 \quad\Rightarrow\quad x = 120
+$$
+
+y entonces $y = 160$.
+
+**Importes con impuestos.**
+
+- Refrescos: $120 \cdot 1{,}06 = 127{,}2$ euros.
+- Cerveza: $160 \cdot 1{,}12 = 179{,}2$ euros.
+- Vino: $220 \cdot 1{,}30 = 286$ euros.
+
+**Comprobación.** $120 + 160 + 220 = 500$; $120 + 160 - 60 = 220$; y $127{,}2 + 179{,}2 + 286 = 592{,}4$.
+
+**Respuesta.** Incluyendo impuestos, ha invertido **$127{,}2$ euros en refrescos, $179{,}2$ euros en cerveza y $286$ euros en vino** (sin impuestos, $120$, $160$ y $220$ euros).
+
+</Solucion>

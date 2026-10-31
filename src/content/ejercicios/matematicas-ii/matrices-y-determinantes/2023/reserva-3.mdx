@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} 0 & a & -b \\ 0 & 0 & b \\ 0 & 0 & 0 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[0,75 puntos]** Calcula $A^{10}$.
+
+</div>
+
+<Solucion>
+
+**Cálculo de $A^2$.**
+
+$$
+A^2 = \begin{pmatrix} 0 & a & -b \\ 0 & 0 & b \\ 0 & 0 & 0 \end{pmatrix}\begin{pmatrix} 0 & a & -b \\ 0 & 0 & b \\ 0 & 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 & ab \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+$$
+
+**Cálculo de $A^3$.**
+
+$$
+A^3 = A^2 A = \begin{pmatrix} 0 & 0 & ab \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}\begin{pmatrix} 0 & a & -b \\ 0 & 0 & b \\ 0 & 0 & 0 \end{pmatrix} = O
+$$
+
+porque la única fila no nula de $A^2$ multiplica a la tercera fila de $A$, que es nula.
+
+**Respuesta.** Como $A^3 = O$, todas las potencias siguientes también son nulas: **$A^{10} = A^3 A^7 = O$**, la matriz nula de orden $3$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,75 puntos]** Calcula, si es posible, la matriz inversa de $I + A + A^2$, donde $I$ denota la matriz identidad de orden $3$.
+
+</div>
+
+<Solucion>
+
+**La matriz.**
+
+$$
+M = I + A + A^2 = \begin{pmatrix} 1 & a & ab - b \\ 0 & 1 & b \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+**Es invertible.** Es triangular, así que su determinante es el producto de la diagonal: $|M| = 1 \neq 0$, para cualquier $a$ y $b$.
+
+**Matriz adjunta.** Los adjuntos de $M$ son:
+
+- Primera fila: $M_{11} = 1$, $M_{12} = 0$, $M_{13} = 0$.
+- Segunda fila: $M_{21} = -\begin{vmatrix} a & ab - b \\ 0 & 1 \end{vmatrix} = -a$, $M_{22} = 1$, $M_{23} = 0$.
+- Tercera fila: $M_{31} = \begin{vmatrix} a & ab - b \\ 1 & b \end{vmatrix} = ab - ab + b = b$, $M_{32} = -\begin{vmatrix} 1 & ab - b \\ 0 & b \end{vmatrix} = -b$, $M_{33} = 1$.
+
+**Inversa.** Trasponiendo la adjunta y dividiendo entre $|M| = 1$:
+
+$$
+M^{-1} = \begin{pmatrix} 1 & -a & b \\ 0 & 1 & -b \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+**Comprobación.** Es $I - A$, y como $A^3 = O$:
+
+$$
+(I - A)(I + A + A^2) = I + A + A^2 - A - A^2 - A^3 = I - A^3 = I
+$$
+
+**Respuesta.** Sí es posible, para cualquier $a$ y $b$:
+
+$$
+(I + A + A^2)^{-1} = I - A = \begin{pmatrix} 1 & -a & b \\ 0 & 1 & -b \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+</Solucion>

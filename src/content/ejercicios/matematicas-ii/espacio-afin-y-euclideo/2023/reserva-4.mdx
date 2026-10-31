@@ -1,0 +1,94 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2023
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Determina los puntos de la recta $r \equiv \begin{cases} x - y + z = 0 \\ x + 3y - 1 = 0 \end{cases}$ que son equidistantes de los planos cartesianos $OYZ$ y $OXZ$.
+
+<Solucion>
+
+**Planteamiento.** El plano $OYZ$ es $x = 0$ y el $OXZ$ es $y = 0$. La distancia de un punto $(x, y, z)$ a cada uno es $|x|$ y $|y|$, así que buscamos los puntos de $r$ con $|x| = |y|$.
+
+**Punto genérico de $r$.** Tomando $y = t$: de la segunda ecuación, $x = 1 - 3t$, y de la primera, $z = y - x = t - (1 - 3t) = 4t - 1$:
+
+$$
+X = (1 - 3t,\ t,\ 4t - 1)
+$$
+
+**Condición $|1 - 3t| = |t|$.**
+
+- $1 - 3t = t$: $t = \frac{1}{4}$, y el punto es $\left(\frac{1}{4}, \frac{1}{4}, 0\right)$.
+- $1 - 3t = -t$: $t = \frac{1}{2}$, y el punto es $\left(-\frac{1}{2}, \frac{1}{2}, 1\right)$.
+
+**Comprobación.** Los dos cumplen las ecuaciones de $r$: $\frac{1}{4} - \frac{1}{4} + 0 = 0$ y $\frac{1}{4} + \frac{3}{4} - 1 = 0$; $-\frac{1}{2} - \frac{1}{2} + 1 = 0$ y $-\frac{1}{2} + \frac{3}{2} - 1 = 0$.
+
+**Respuesta.** Los puntos son **$\left(\dfrac{1}{4}, \dfrac{1}{4}, 0\right)$ y $\left(-\dfrac{1}{2}, \dfrac{1}{2}, 1\right)$**, a distancia $\frac{1}{4}$ y $\frac{1}{2}$ de los dos planos, respectivamente.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la recta $r \equiv \begin{cases} x - y + z = 1 \\ 3x - 2z = -2 \end{cases}$
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina la ecuación del plano paralelo a $r$ que contiene a la recta $-x + 1 = y = \dfrac{z - 3}{2}$.
+
+</div>
+
+<Solucion>
+
+**Vector director de $r$.** Es perpendicular a los normales de los dos planos que la definen:
+
+$$
+\vec{d}_r = (1,\ -1,\ 1) \times (3,\ 0,\ -2) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 1 \\ 3 & 0 & -2 \end{vmatrix} = (2 - 0)\,\vec{i} - (-2 - 3)\,\vec{j} + (0 + 3)\,\vec{k} = (2,\ 5,\ 3)
+$$
+
+Un punto de $r$: con $x = 0$, $z = 1$ e $y = x + z - 1 = 0$, el punto $(0, 0, 1)$.
+
+**La otra recta.** Escribiendo $-x + 1 = \dfrac{x - 1}{-1}$, la recta $s$ pasa por $S(1, 0, 3)$ con vector director $\vec{d}_s = (-1, 1, 2)$.
+
+**Planteamiento.** El plano contiene a $s$, así que pasa por $S$ y tiene a $\vec{d}_s$ como vector director. Es paralelo a $r$, así que $\vec{d}_r$ es otro vector director.
+
+**Vector normal.**
+
+$$
+\vec{n} = \vec{d}_s \times \vec{d}_r = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -1 & 1 & 2 \\ 2 & 5 & 3 \end{vmatrix} = (3 - 10)\,\vec{i} - (-3 - 4)\,\vec{j} + (-5 - 2)\,\vec{k} = (-7,\ 7,\ -7)
+$$
+
+o el proporcional $(1, -1, 1)$.
+
+**Ecuación.** Por $S(1, 0, 3)$: $(x - 1) - y + (z - 3) = 0$, es decir, $x - y + z - 4 = 0$.
+
+**Comprobación.** $(1, -1, 1) \cdot (2, 5, 3) = 0$, y el punto $(0, 0, 1)$ de $r$ da $0 - 0 + 1 - 4 = -3 \neq 0$: $r$ es paralela al plano y no está contenida en él.
+
+**Respuesta.** El plano es **$x - y + z - 4 = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula la distancia entre la recta $r$ y el plano $2x + 5y + 3z = 41$.
+
+</div>
+
+<Solucion>
+
+**Posición relativa.** El vector normal del plano es $(2, 5, 3)$, que es justo el vector director de $r$. Como
+
+$$
+\vec{d}_r \cdot \vec{n} = 4 + 25 + 9 = 38 \neq 0
+$$
+
+la recta no es paralela al plano: lo corta (de hecho, es perpendicular a él).
+
+**Punto de corte.** Con $r \equiv (2t,\ 5t,\ 1 + 3t)$: $4t + 25t + 3 + 9t = 41$, así que $38t = 38$, $t = 1$, y se cortan en $(2, 5, 4)$.
+
+**Respuesta.** Como la recta y el plano se cortan, **la distancia entre ellos es $0$**.
+
+</Solucion>

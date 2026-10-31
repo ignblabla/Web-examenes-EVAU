@@ -1,0 +1,95 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2023
+convocatoria: julio
+formato: matematicas
+---
+
+import RecintosParabolaJulio2023 from "../../../../../components/figuras/RecintosParabolaJulio2023.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Calcula $a$ con $0 < a < 1$, tal que $\displaystyle\int_a^1 \frac{\ln(x)}{x}\,dx + 2 = 0$ ($\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Integral indefinida.** Es inmediata: con $u = \ln x$, $du = \dfrac{dx}{x}$, y $\int u\,du = \dfrac{u^2}{2}$:
+
+$$
+\int \frac{\ln x}{x}\,dx = \frac{(\ln x)^2}{2} + C
+$$
+
+**Integral definida.** Por la regla de Barrow, con $\ln 1 = 0$:
+
+$$
+\int_a^1 \frac{\ln x}{x}\,dx = \frac{(\ln 1)^2}{2} - \frac{(\ln a)^2}{2} = -\frac{(\ln a)^2}{2}
+$$
+
+**Ecuación.**
+
+$$
+-\frac{(\ln a)^2}{2} + 2 = 0 \quad\Rightarrow\quad (\ln a)^2 = 4 \quad\Rightarrow\quad \ln a = 2 \quad\text{o}\quad \ln a = -2
+$$
+
+**Las dos posibles soluciones.** $\ln a = 2$ da $a = e^2 \approx 7{,}39$, y $\ln a = -2$ da $a = e^{-2} \approx 0{,}14$. Solo la segunda cumple $0 < a < 1$.
+
+**Respuesta.** **$a = e^{-2} = \dfrac{1}{e^2}$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las funciones $f \colon \mathbb{R} \to \mathbb{R}$ y $g \colon \mathbb{R} - \{0\} \to \mathbb{R}$ definidas por $f(x) = 5 - x^2$ y $g(x) = \dfrac{4}{x^2}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Esboza las gráficas de las dos funciones y calcula los puntos de corte entre ellas.
+
+</div>
+
+<Solucion>
+
+**Puntos de corte.** Igualando y multiplicando por $x^2 \neq 0$:
+
+$$
+5 - x^2 = \frac{4}{x^2} \quad\Rightarrow\quad 5x^2 - x^4 = 4 \quad\Rightarrow\quad x^4 - 5x^2 + 4 = 0
+$$
+
+Es una ecuación bicuadrada. Con $u = x^2$: $u^2 - 5u + 4 = 0$, así que $u = 1$ o $u = 4$, y $x = \pm 1$ o $x = \pm 2$. Con $f(\pm 1) = 4$ y $f(\pm 2) = 1$, los puntos de corte son **$(-2, 1)$, $(-1, 4)$, $(1, 4)$ y $(2, 1)$**.
+
+**Esbozo.** $f$ es una parábola abierta hacia abajo con vértice en $(0, 5)$ que corta al eje $X$ en $x = \pm\sqrt{5}$. $g$ es siempre positiva, tiene una asíntota vertical en $x = 0$ (tiende a $+\infty$ por los dos lados) y una horizontal en $y = 0$. Las dos son pares, así que sus gráficas son simétricas respecto del eje $Y$.
+
+<RecintosParabolaJulio2023 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula la suma de las áreas de los recintos limitados por las gráficas de $f$ y $g$.
+
+</div>
+
+<Solucion>
+
+**Recintos.** Entre $x = -1$ y $x = 1$ la región no está acotada, porque $g$ tiende a $+\infty$ en $x = 0$. Los recintos acotados son dos: en $[-2, -1]$ y en $[1, 2]$. En ellos $f$ queda por encima (por ejemplo, en $x = 1{,}5$, $f = 2{,}75$ y $g \approx 1{,}78$).
+
+**Áreas como integrales definidas.** Por la simetría respecto del eje $Y$, los dos recintos tienen la misma área:
+
+$$
+A = \int_{-2}^{-1} \left(5 - x^2 - \frac{4}{x^2}\right)dx + \int_{1}^{2} \left(5 - x^2 - \frac{4}{x^2}\right)dx = 2\int_{1}^{2} \left(5 - x^2 - \frac{4}{x^2}\right)dx
+$$
+
+**Cálculo.** Una primitiva de $-\dfrac{4}{x^2} = -4x^{-2}$ es $\dfrac{4}{x}$:
+
+$$
+\int_{1}^{2} \left(5 - x^2 - \frac{4}{x^2}\right)dx = \left[5x - \frac{x^3}{3} + \frac{4}{x}\right]_1^2 = \left(10 - \frac{8}{3} + 2\right) - \left(5 - \frac{1}{3} + 4\right) = \frac{28}{3} - \frac{26}{3} = \frac{2}{3}
+$$
+
+**Respuesta.**
+
+$$
+A = 2 \cdot \frac{2}{3} = \frac{4}{3} \approx 1{,}33 \text{ unidades cuadradas}
+$$
+
+</Solucion>

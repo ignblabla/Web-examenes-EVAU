@@ -1,0 +1,37 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Sabiendo que $\displaystyle\lim_{x \to 0} \frac{\operatorname{sen}(x) - \ln(1 + x)}{ax^2 - x + e^x - \cos(2x)} = -\frac{1}{7}$, calcula $a$ ($\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $\operatorname{sen}(0) - \ln(1) = 0$ y el denominador, $0 - 0 + 1 - \cos(0) = 0$. Es una indeterminación $\dfrac{0}{0}$.
+
+**Primera aplicación de L'Hôpital.** La derivada de $\cos(2x)$ es $-2\operatorname{sen}(2x)$:
+
+$$
+\lim_{x \to 0} \frac{\cos(x) - \dfrac{1}{1 + x}}{2ax - 1 + e^x + 2\operatorname{sen}(2x)}
+$$
+
+En $x = 0$, el numerador vale $1 - 1 = 0$ y el denominador, $0 - 1 + 1 + 0 = 0$, para cualquier $a$. Sigue siendo $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** La derivada de $\dfrac{1}{1 + x}$ es $-\dfrac{1}{(1 + x)^2}$ y la de $2\operatorname{sen}(2x)$, $4\cos(2x)$:
+
+$$
+\lim_{x \to 0} \frac{-\operatorname{sen}(x) + \dfrac{1}{(1 + x)^2}}{2a + e^x + 4\cos(2x)} = \frac{0 + 1}{2a + 1 + 4} = \frac{1}{2a + 5}
+$$
+
+**Valor de $a$.**
+
+$$
+\frac{1}{2a + 5} = -\frac{1}{7} \quad\Rightarrow\quad 2a + 5 = -7 \quad\Rightarrow\quad a = -6
+$$
+
+**Respuesta.** **$a = -6$**.
+
+</Solucion>

@@ -1,0 +1,60 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2023
+convocatoria: junio
+formato: matematicas
+---
+
+import RecintoTangenteJunio2023 from "../../../../../components/figuras/RecintoTangenteJunio2023.astro"
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$, definida por $f(x) = x|x - 1|$. Calcula el área del recinto limitado por la gráfica de dicha función y su recta tangente en el punto de abscisa $x = 0$.
+
+<Solucion>
+
+**$f$ a trozos.** Quitando el valor absoluto:
+
+$$
+f(x) = \begin{cases} x\,(1 - x) = x - x^2 & \text{si } x < 1 \\ x\,(x - 1) = x^2 - x & \text{si } x \geq 1 \end{cases}
+$$
+
+**Recta tangente en $x = 0$.** Cerca de $0$ vale el primer trozo: $f(0) = 0$ y $f'(x) = 1 - 2x$, así que $f'(0) = 1$. La tangente es
+
+$$
+y - 0 = 1\,(x - 0) \quad\Rightarrow\quad y = x
+$$
+
+**Cortes de la tangente con la gráfica.**
+
+- Si $x < 1$: $x - x^2 = x$ da $x^2 = 0$, es decir, $x = 0$, el punto de tangencia.
+- Si $x \geq 1$: $x^2 - x = x$ da $x\,(x - 2) = 0$, y de las dos soluciones solo $x = 2$ cumple $x \geq 1$.
+
+El recinto va de $x = 0$ a $x = 2$.
+
+**Qué curva queda por encima.** En $[0, 1]$, $x - (x - x^2) = x^2 \geq 0$, y en $[1, 2]$, $x - (x^2 - x) = x\,(2 - x) \geq 0$: la recta está por encima en todo el recinto.
+
+<RecintoTangenteJunio2023 />
+
+**Área como suma de integrales.** Como $f$ cambia de expresión en $x = 1$:
+
+$$
+A = \int_0^1 \left[x - (x - x^2)\right]dx + \int_1^2 \left[x - (x^2 - x)\right]dx = \int_0^1 x^2\,dx + \int_1^2 (2x - x^2)\,dx
+$$
+
+**Cálculo.**
+
+$$
+\int_0^1 x^2\,dx = \left[\frac{x^3}{3}\right]_0^1 = \frac{1}{3}
+$$
+
+$$
+\int_1^2 (2x - x^2)\,dx = \left[x^2 - \frac{x^3}{3}\right]_1^2 = \left(4 - \frac{8}{3}\right) - \left(1 - \frac{1}{3}\right) = \frac{4}{3} - \frac{2}{3} = \frac{2}{3}
+$$
+
+**Respuesta.**
+
+$$
+A = \frac{1}{3} + \frac{2}{3} = 1 \text{ unidad cuadrada}
+$$
+
+</Solucion>

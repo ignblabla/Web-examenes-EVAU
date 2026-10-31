@@ -1,0 +1,27 @@
+---
+// Matemáticas II, junio de 2023, ejercicio 3: recinto entre la recta tangente y = x, por arriba,
+// y f(x) = x|x − 1|, por abajo, que se cortan en x = 0 (punto de tangencia) y en x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x * Math.abs(x - 1)
+const t = (x: number) => x
+---
+
+<GraficaFuncion
+  xMin={-0.7}
+  xMax={2.7}
+  yMin={-0.8}
+  yMax={2.9}
+  marcasX={[1, 2]}
+  marcasY={[1, 2]}
+  tramos={[
+    { f, desde: -0.6, hasta: 2.55, etiqueta: { texto: "f", x: 2.12, y: 2.75, ancla: "end" } },
+    { f: t, desde: -0.65, hasta: 2.65, color: "#b04a3a", etiqueta: { texto: "y = x", x: 1.25, y: 1.6, ancla: "end" } },
+  ]}
+  recinto={{ arriba: t, abajo: f, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: 8, dy: 16 },
+    { x: 2, y: 2, texto: "(2, 2)", dx: 10, dy: 4 },
+  ]}
+  descripcion="Gráfica de f(x) = x|x − 1|: entre 0 y 1 es un arco de parábola por encima del eje que vuelve a tocarlo en x = 1, y a partir de ahí crece como x² − x. La recta tangente en el origen, y = x, queda por encima de la gráfica entre x = 0 y x = 2, donde vuelve a cortarla, en el punto (2, 2). El recinto sombreado queda entre las dos"
+/>

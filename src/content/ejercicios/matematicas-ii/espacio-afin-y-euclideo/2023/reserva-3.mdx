@@ -1,0 +1,117 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera el plano $\pi$, determinado por los puntos $A(-1, 0, 0)$, $B(0, 1, 1)$ y $C(2, 1, 0)$, y la recta
+
+$$
+r \equiv \begin{cases} x - 2z - 3 = 0 \\ y - z - 2 = 0 \end{cases}
+$$
+
+Halla los puntos de $r$ cuya distancia a $\pi$ es $\sqrt{14}$ unidades.
+
+<Solucion>
+
+**Planteamiento.** Escribimos un punto genérico de $r$ en función de un parámetro, calculamos su distancia a $\pi$ e igualamos a $\sqrt{14}$.
+
+**Plano $\pi$.**
+
+$$
+\overrightarrow{AB} = (1,\ 1,\ 1), \qquad \overrightarrow{AC} = (3,\ 1,\ 0)
+$$
+
+$$
+\vec{n} = \overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 1 & 1 \\ 3 & 1 & 0 \end{vmatrix} = (0 - 1)\,\vec{i} - (0 - 3)\,\vec{j} + (1 - 3)\,\vec{k} = (-1,\ 3,\ -2)
+$$
+
+Por $A(-1, 0, 0)$: $-(x + 1) + 3y - 2z = 0$, y multiplicando por $-1$,
+
+$$
+\pi \equiv x - 3y + 2z + 1 = 0
+$$
+
+Comprobación: $B$ da $0 - 3 + 2 + 1 = 0$ y $C$, $2 - 3 + 0 + 1 = 0$.
+
+**Punto genérico de $r$.** Tomando $z = t$: $x = 3 + 2t$ e $y = 2 + t$, así que $X = (3 + 2t,\ 2 + t,\ t)$.
+
+**Distancia a $\pi$.** Con $|\vec{n}| = \sqrt{1 + 9 + 4} = \sqrt{14}$:
+
+$$
+d(X, \pi) = \frac{|(3 + 2t) - 3(2 + t) + 2t + 1|}{\sqrt{14}} = \frac{|t - 2|}{\sqrt{14}}
+$$
+
+**Condición.**
+
+$$
+\frac{|t - 2|}{\sqrt{14}} = \sqrt{14} \quad\Rightarrow\quad |t - 2| = 14 \quad\Rightarrow\quad t = 16 \quad\text{o}\quad t = -12
+$$
+
+**Puntos.** Con $t = 16$, $(35, 18, 16)$; con $t = -12$, $(-21, -10, -12)$.
+
+**Comprobación.** Sustituyendo en la ecuación del plano: $35 - 54 + 32 + 1 = 14$ y $-21 + 30 - 24 + 1 = -14$. Divididos entre $\sqrt{14}$, dan distancia $\sqrt{14}$.
+
+**Respuesta.** Los puntos son **$(35, 18, 16)$ y $(-21, -10, -12)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera el paralelogramo cuyos vértices consecutivos son los puntos $P(-1, 2, 3)$, $Q(-2, 1, 0)$, $R(0, 5, 1)$ y $S$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla las coordenadas del punto $S$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** En el paralelogramo $PQRS$, con los vértices en ese orden, los lados opuestos son vectores iguales: $\overrightarrow{PS} = \overrightarrow{QR}$. Así que $S = P + \overrightarrow{QR}$.
+
+**Cálculo.**
+
+$$
+\overrightarrow{QR} = (0 + 2,\ 5 - 1,\ 1 - 0) = (2,\ 4,\ 1), \qquad S = (-1 + 2,\ 2 + 4,\ 3 + 1) = (1,\ 6,\ 4)
+$$
+
+**Comprobación.** Las diagonales se cortan en su punto medio: el de $PR$ es $\left(-\frac{1}{2}, \frac{7}{2}, 2\right)$ y el de $QS$, $\left(\frac{-2 + 1}{2}, \frac{1 + 6}{2}, \frac{0 + 4}{2}\right) = \left(-\frac{1}{2}, \frac{7}{2}, 2\right)$.
+
+**Respuesta.** **$S(1, 6, 4)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula la ecuación de la recta que pasa por el origen de coordenadas y es perpendicular al plano que contiene a los puntos $P$, $Q$ y $R$.
+
+</div>
+
+<Solucion>
+
+**Vectores directores del plano.**
+
+$$
+\overrightarrow{PQ} = (-1,\ -1,\ -3), \qquad \overrightarrow{PR} = (1,\ 3,\ -2)
+$$
+
+**Vector normal del plano.** La recta es perpendicular al plano, así que su vector director es el normal del plano:
+
+$$
+\vec{n} = \overrightarrow{PQ} \times \overrightarrow{PR} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -1 & -1 & -3 \\ 1 & 3 & -2 \end{vmatrix} = (2 + 9)\,\vec{i} - (2 + 3)\,\vec{j} + (-3 + 1)\,\vec{k} = (11,\ -5,\ -2)
+$$
+
+Comprobación: $\vec{n} \cdot \overrightarrow{PQ} = -11 + 5 + 6 = 0$ y $\vec{n} \cdot \overrightarrow{PR} = 11 - 15 + 4 = 0$.
+
+**Respuesta.** La recta pasa por el origen con dirección $(11, -5, -2)$:
+
+$$
+\frac{x}{11} = \frac{y}{-5} = \frac{z}{-2}
+$$
+
+</Solucion>

@@ -1,0 +1,38 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2023
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Determina las longitudes de los lados de un rectángulo de área máxima que está inscrito en una semicircunferencia de $6$ cm de radio, teniendo uno de sus lados sobre el diámetro de ella.
+
+<Solucion>
+
+**Variables.** Colocamos el centro de la semicircunferencia en el origen, con el diámetro sobre el eje $X$. Por simetría, el rectángulo va de $-x$ a $x$ sobre el diámetro, y sus dos vértices de arriba están en la semicircunferencia $X^2 + Y^2 = 36$, con $Y \geq 0$. Así que, con $0 < x < 6$:
+
+- Base: $2x$.
+- Altura: $y = \sqrt{36 - x^2}$.
+
+**Función de una variable a maximizar.**
+
+$$
+A(x) = 2x\sqrt{36 - x^2}, \qquad 0 < x < 6
+$$
+
+**Puntos críticos.** Por la regla del producto, con $\left(\sqrt{36 - x^2}\right)' = \dfrac{-x}{\sqrt{36 - x^2}}$:
+
+$$
+A'(x) = 2\sqrt{36 - x^2} - \frac{2x^2}{\sqrt{36 - x^2}} = \frac{2\,(36 - x^2) - 2x^2}{\sqrt{36 - x^2}} = \frac{72 - 4x^2}{\sqrt{36 - x^2}}
+$$
+
+$A'(x) = 0$ cuando $4x^2 = 72$, es decir, $x^2 = 18$ y $x = 3\sqrt{2}$ (la raíz negativa no está en el intervalo).
+
+**Es un máximo.** El denominador es positivo y el numerador $72 - 4x^2$ es positivo para $x < 3\sqrt{2}$ y negativo para $x > 3\sqrt{2}$: $A$ crece y luego decrece, así que en $x = 3\sqrt{2}$ tiene su máximo absoluto en $(0, 6)$.
+
+**Lados.** Base $2x = 6\sqrt{2}$ cm y altura $\sqrt{36 - 18} = \sqrt{18} = 3\sqrt{2}$ cm. El área máxima es $6\sqrt{2} \cdot 3\sqrt{2} = 36$ cm².
+
+**Respuesta.** El rectángulo mide **$6\sqrt{2} \approx 8{,}49$ cm de base** (sobre el diámetro) y **$3\sqrt{2} \approx 4{,}24$ cm de altura**.
+
+</Solucion>

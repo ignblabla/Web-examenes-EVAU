@@ -1,0 +1,93 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2023
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Sabiendo que $F \colon \mathbb{R} \to \mathbb{R}$ definida por $F(x) = e^{x^2}$ es una primitiva de $f$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Comprueba que $f$ es creciente.
+
+</div>
+
+<Solucion>
+
+**La función $f$.** Si $F$ es una primitiva de $f$, entonces $f = F'$. Por la regla de la cadena:
+
+$$
+f(x) = F'(x) = 2x\,e^{x^2}
+$$
+
+**Derivada de $f$.** Por la regla del producto:
+
+$$
+f'(x) = 2e^{x^2} + 2x \cdot 2x\,e^{x^2} = 2e^{x^2}\left(1 + 2x^2\right)
+$$
+
+**Signo.** $e^{x^2} > 0$ y $1 + 2x^2 \geq 1 > 0$, así que $f'(x) > 0$ para todo $x$.
+
+**Respuesta.** Como su derivada es positiva en todo $\mathbb{R}$, **$f$ es creciente**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula el área del recinto limitado por la gráfica de la función $f$, el eje de abscisas y la recta $x = 1$.
+
+</div>
+
+<Solucion>
+
+**El recinto.** $f(x) = 2x\,e^{x^2}$ corta al eje de abscisas solo en $x = 0$. Así que el recinto va de $x = 0$ a $x = 1$, y ahí $f \geq 0$ (por el apartado a), $f$ crece desde $f(0) = 0$).
+
+**Área como integral definida.** Como $F$ es una primitiva de $f$, por la regla de Barrow:
+
+$$
+A = \int_0^1 2x\,e^{x^2}\,dx = F(1) - F(0) = e^1 - e^0
+$$
+
+**Respuesta.** El área es **$e - 1 \approx 1{,}72$ unidades cuadradas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función $f \colon [0, +\infty) \to \mathbb{R}$ definida por $f(x) = \cos(\sqrt{x})$. Calcula, si es posible, una primitiva de $f$ cuya gráfica pase por el punto $(0, 5)$. Sugerencia: haz el cambio $t = \sqrt{x}$.
+
+<Solucion>
+
+**Cambio de variable.** Con $t = \sqrt{x}$, $x = t^2$ y $dx = 2t\,dt$:
+
+$$
+\int \cos(\sqrt{x})\,dx = \int 2t\cos(t)\,dt
+$$
+
+**La integral, por partes.** Con $u = 2t$ y $dv = \cos(t)\,dt$, de modo que $du = 2\,dt$ y $v = \operatorname{sen}(t)$:
+
+$$
+\int 2t\cos(t)\,dt = 2t\operatorname{sen}(t) - \int 2\operatorname{sen}(t)\,dt = 2t\operatorname{sen}(t) + 2\cos(t) + C
+$$
+
+Deshaciendo el cambio:
+
+$$
+F(x) = 2\sqrt{x}\operatorname{sen}(\sqrt{x}) + 2\cos(\sqrt{x}) + C
+$$
+
+**Cálculo de la constante.** La gráfica pasa por $(0, 5)$: $F(0) = 0 + 2\cos(0) + C = 2 + C = 5$, así que $C = 3$.
+
+**Comprobación.** Derivando respecto de $t$, $2\operatorname{sen}(t) + 2t\cos(t) - 2\operatorname{sen}(t) = 2t\cos(t)$, y como $\dfrac{dt}{dx} = \dfrac{1}{2t}$, $F'(x) = \cos(t) = \cos(\sqrt{x})$.
+
+**Respuesta.** Sí es posible:
+
+$$
+F(x) = 2\sqrt{x}\operatorname{sen}(\sqrt{x}) + 2\cos(\sqrt{x}) + 3
+$$
+
+</Solucion>
