@@ -1811,6 +1811,8 @@ footer {
 }
 
 .legal-sheet {
+  /* Por encima de .hero, que es relative: si no, la cabecera tapa los 40px que la hoja sube sobre ella. */
+  position: relative;
   max-width: 820px;
   margin: -40px auto 0;
   padding: 48px 52px 56px;
