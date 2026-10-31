@@ -1,0 +1,104 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas $r \equiv \begin{cases} x = 0, \\ z = 0, \end{cases}$ y $s \equiv \begin{cases} x + y = 1, \\ x - y = 1. \end{cases}$
+
+<div class="math-sub">
+
+a) Determina la ecuación del plano que contiene a $r$ y es paralelo a $s$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Las rectas.** $r$ es el eje $Y$: pasa por $O(0, 0, 0)$ con vector director $\vec{d}_r = (0, 1, 0)$. En $s$, sumando y restando las ecuaciones, $x = 1$ e $y = 0$, y $z$ queda libre: $s$ pasa por $(1, 0, 0)$ con vector director $\vec{d}_s = (0, 0, 1)$.
+
+**Planteamiento.** El plano contiene a $r$, así que pasa por $O$ y tiene a $\vec{d}_r$ como vector director. Es paralelo a $s$, así que $\vec{d}_s$ es otro vector director.
+
+**Vector normal.**
+
+$$
+\vec{d}_r \times \vec{d}_s = (0,\ 1,\ 0) \times (0,\ 0,\ 1) = (1,\ 0,\ 0)
+$$
+
+**Ecuación.** Por $O$: $x = 0$.
+
+**Comprobación.** $s$ no está contenida en el plano, porque su punto $(1, 0, 0)$ tiene $x = 1$: es paralela.
+
+**Respuesta.** El plano es **$x = 0$** (el plano $OYZ$).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina la ecuación del plano que contiene a $r$ y es perpendicular a $s$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Un plano perpendicular a $s$ tiene como vector normal el director de $s$, $\vec{n} = (0, 0, 1)$. Para que además contenga a $r$, hace falta que $\vec{d}_r$ sea perpendicular a $\vec{n}$, y lo es: $(0, 1, 0) \cdot (0, 0, 1) = 0$. Y tiene que pasar por un punto de $r$, por ejemplo $O$.
+
+**Ecuación.** Con normal $(0, 0, 1)$ y pasando por $O$: $z = 0$.
+
+**Respuesta.** El plano es **$z = 0$** (el plano $OXY$).
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera los planos $\pi_1 \equiv x + y + 2 = 0$ y $\pi_2 \equiv x - z - 1 = 0$, así como la recta $r \equiv \begin{cases} 2x + z = 1 \\ y = 1 \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula los puntos de la recta $r$ que equidistan de los planos $\pi_1$ y $\pi_2$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Punto genérico de $r$.** Tomando $x = t$: $y = 1$ y $z = 1 - 2t$, así que $X = (t,\ 1,\ 1 - 2t)$.
+
+**Distancias a los planos.** Los dos vectores normales, $(1, 1, 0)$ y $(1, 0, -1)$, miden $\sqrt{2}$:
+
+$$
+d(X, \pi_1) = \frac{|t + 1 + 2|}{\sqrt{2}} = \frac{|t + 3|}{\sqrt{2}}, \qquad d(X, \pi_2) = \frac{|t - (1 - 2t) - 1|}{\sqrt{2}} = \frac{|3t - 2|}{\sqrt{2}}
+$$
+
+**Condición $|t + 3| = |3t - 2|$.**
+
+- $t + 3 = 3t - 2$: $t = \frac{5}{2}$, y el punto es $\left(\frac{5}{2}, 1, -4\right)$.
+- $t + 3 = -(3t - 2)$: $4t = -1$, $t = -\frac{1}{4}$, y el punto es $\left(-\frac{1}{4}, 1, \frac{3}{2}\right)$.
+
+**Comprobación.** En el primero, las dos distancias valen $\frac{11/2}{\sqrt{2}}$; en el segundo, $\frac{11/4}{\sqrt{2}}$.
+
+**Respuesta.** Los puntos son **$\left(\dfrac{5}{2}, 1, -4\right)$ y $\left(-\dfrac{1}{4}, 1, \dfrac{3}{2}\right)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla el ángulo que forman los planos $\pi_1$ y $\pi_2$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El ángulo entre dos planos es el (agudo) que forman sus vectores normales, $\vec{n}_1 = (1, 1, 0)$ y $\vec{n}_2 = (1, 0, -1)$.
+
+**Cálculo.**
+
+$$
+\cos\alpha = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1|\,|\vec{n}_2|} = \frac{|1 + 0 + 0|}{\sqrt{2}\,\sqrt{2}} = \frac{1}{2}
+$$
+
+**Respuesta.** **$\alpha = 60^\circ$** ($\frac{\pi}{3}$ radianes).
+
+</Solucion>

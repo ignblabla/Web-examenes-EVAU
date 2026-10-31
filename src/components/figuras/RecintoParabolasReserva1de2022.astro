@@ -1,0 +1,28 @@
+---
+// Matemáticas II, reserva 1 de 2022, ejercicio 4: recinto entre f(x) = 1 − x², por arriba, y
+// g(x) = 2x², por abajo, que se cortan en x = ±√3/3.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => 1 - x ** 2
+const g = (x: number) => 2 * x ** 2
+const c = Math.sqrt(3) / 3
+---
+
+<GraficaFuncion
+  xMin={-1.5}
+  xMax={1.5}
+  yMin={-0.7}
+  yMax={2.2}
+  marcasX={[-1, 1]}
+  marcasY={[1, 2]}
+  tramos={[
+    { f, desde: -1.35, hasta: 1.35, etiqueta: { texto: "f", x: -1.2, y: 0.05, ancla: "end" } },
+    { f: g, desde: -1.02, hasta: 1.02, color: "#b04a3a", etiqueta: { texto: "g", x: 1.1, y: 1.85 } },
+  ]}
+  recinto={{ arriba: f, abajo: g, desde: -c, hasta: c }}
+  puntos={[
+    { x: -c, y: 2 / 3, texto: "(−√3/3, 2/3)", dx: -10, dy: -8 },
+    { x: c, y: 2 / 3, texto: "(√3/3, 2/3)", dx: 10, dy: -8 },
+  ]}
+  descripcion="Parábola f(x) = 1 − x², abierta hacia abajo con vértice en (0, 1), y parábola g(x) = 2x², abierta hacia arriba con vértice en el origen. Se cortan en (−√3/3, 2/3) y (√3/3, 2/3). El recinto sombreado queda entre las dos, con f por arriba"
+/>

@@ -1,0 +1,41 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+La suma de los seguidores en una determinada red social de Alberto, Begoña y Carlos es de $13000$ personas. Aunque Carlos perdiera una tercera parte de sus seguidores, todavía seguiría teniendo el doble de seguidores que tiene Alberto. Por otro lado, los seguidores de Alberto más la quinta parte de los seguidores de Begoña, son tantos como la mitad de los de Carlos. Calcula cuántos seguidores tiene cada uno.
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ a los seguidores de Alberto, Begoña y Carlos.
+
+**Planteamiento del sistema.**
+
+- Entre los tres suman $13000$: $x + y + z = 13000$.
+- Si Carlos perdiera un tercio, le quedarían $\frac{2}{3}z$, que sería el doble de los de Alberto: $\frac{2}{3}z = 2x$, es decir, $3x - z = 0$.
+- Alberto más la quinta parte de Begoña es la mitad de Carlos: $x + \frac{y}{5} = \frac{z}{2}$, y multiplicando por $10$, $10x + 2y - 5z = 0$.
+
+$$
+\begin{cases}
+x + y + z = 13000 \\
+3x - z = 0 \\
+10x + 2y - 5z = 0
+\end{cases}
+$$
+
+**Resolución.** De la segunda, $z = 3x$. En la tercera, $10x + 2y - 15x = 0$, así que $y = \frac{5x}{2}$. En la primera:
+
+$$
+x + \frac{5x}{2} + 3x = \frac{13x}{2} = 13000 \quad\Rightarrow\quad x = 2000
+$$
+
+Entonces $y = 5000$ y $z = 6000$.
+
+**Comprobación.** $2000 + 5000 + 6000 = 13000$; $\frac{2}{3} \cdot 6000 = 4000 = 2 \cdot 2000$; $2000 + 1000 = 3000 = \frac{6000}{2}$.
+
+**Respuesta.** **Alberto tiene $2000$ seguidores, Begoña $5000$ y Carlos $6000$**.
+
+</Solucion>

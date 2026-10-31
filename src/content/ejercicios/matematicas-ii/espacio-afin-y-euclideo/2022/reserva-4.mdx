@@ -1,0 +1,113 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Sea el plano $\pi \equiv 2x + y - 2z - 2 = 0$.
+
+<div class="math-sub">
+
+a) Halla las ecuaciones de los planos paralelos a $\pi$ que distan $2$ unidades de dicho plano. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Los planos paralelos a $\pi$ tienen el mismo vector normal: $\pi' \equiv 2x + y - 2z + D = 0$. La distancia entre dos planos paralelos $Ax + By + Cz + D_1 = 0$ y $Ax + By + Cz + D_2 = 0$ es $\dfrac{|D_1 - D_2|}{\sqrt{A^2 + B^2 + C^2}}$.
+
+**Condición.** Con $\sqrt{4 + 1 + 4} = 3$:
+
+$$
+\frac{|D - (-2)|}{3} = 2 \quad\Rightarrow\quad |D + 2| = 6 \quad\Rightarrow\quad D = 4 \quad\text{o}\quad D = -8
+$$
+
+**Comprobación.** El punto $(1, 0, 0)$ está en $\pi$. Su distancia a $2x + y - 2z + 4 = 0$ es $\frac{|2 + 4|}{3} = 2$, y a $2x + y - 2z - 8 = 0$, $\frac{|2 - 8|}{3} = 2$.
+
+**Respuesta.** Hay dos planos, uno a cada lado de $\pi$: **$2x + y - 2z + 4 = 0$** y **$2x + y - 2z - 8 = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula el volumen del tetraedro cuyos vértices son el origen de coordenadas y los puntos de corte del plano $\pi$ con los ejes coordenados. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Cortes con los ejes.**
+
+- Eje $X$ ($y = z = 0$): $2x - 2 = 0$, así que $A(1, 0, 0)$.
+- Eje $Y$ ($x = z = 0$): $y - 2 = 0$, así que $B(0, 2, 0)$.
+- Eje $Z$ ($x = y = 0$): $-2z - 2 = 0$, así que $C(0, 0, -1)$.
+
+**Planteamiento.** El volumen del tetraedro $OABC$ es la sexta parte del valor absoluto del producto mixto de $\overrightarrow{OA}$, $\overrightarrow{OB}$ y $\overrightarrow{OC}$:
+
+$$
+V = \frac{1}{6}\left|\begin{vmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -1 \end{vmatrix}\right| = \frac{1}{6}\,|-2| = \frac{1}{3}
+$$
+
+**Respuesta.** El volumen es **$\dfrac{1}{3}$ unidades cúbicas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las rectas $r \equiv x = 1 - y = z$ y $s \equiv \begin{cases} x + y - 3z = 4 \\ 3x - y + z = -2 \end{cases}$
+
+<div class="math-sub">
+
+a) Estudia la posición relativa de $r$ y $s$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de $r$.** Escribiendo $1 - y = \dfrac{y - 1}{-1}$, la recta pasa por $R(0, 1, 0)$ con vector director $\vec{d}_r = (1, -1, 1)$.
+
+**Datos de $s$.** Su vector director es perpendicular a los normales de los dos planos:
+
+$$
+(1,\ 1,\ -3) \times (3,\ -1,\ 1) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 1 & -3 \\ 3 & -1 & 1 \end{vmatrix} = (1 - 3)\,\vec{i} - (1 + 9)\,\vec{j} + (-1 - 3)\,\vec{k} = (-2,\ -10,\ -4)
+$$
+
+o el proporcional $\vec{d}_s = (1, 5, 2)$. Un punto: con $x = 0$, queda $y - 3z = 4$ y $-y + z = -2$; sumando, $-2z = 2$, así que $z = -1$ e $y = 1$: el punto $S(0, 1, -1)$.
+
+**Planteamiento.** $\vec{d}_r$ y $\vec{d}_s$ no son proporcionales, así que las rectas se cortan o se cruzan. Se cortan si $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = (0, 0, -1)$ son coplanarios:
+
+$$
+\begin{vmatrix} 1 & -1 & 1 \\ 1 & 5 & 2 \\ 0 & 0 & -1 \end{vmatrix} = -1 \cdot \begin{vmatrix} 1 & -1 \\ 1 & 5 \end{vmatrix} = -6 \neq 0
+$$
+
+**Respuesta.** Los tres vectores no son coplanarios: **las rectas $r$ y $s$ se cruzan**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula la ecuación del plano que contiene a $s$ y es paralelo a $r$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El plano contiene a $s$, así que pasa por $S(0, 1, -1)$ y tiene a $\vec{d}_s$ como vector director. Es paralelo a $r$, así que $\vec{d}_r$ es otro vector director.
+
+**Vector normal.**
+
+$$
+\vec{n} = \vec{d}_s \times \vec{d}_r = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 5 & 2 \\ 1 & -1 & 1 \end{vmatrix} = (5 + 2)\,\vec{i} - (1 - 2)\,\vec{j} + (-1 - 5)\,\vec{k} = (7,\ 1,\ -6)
+$$
+
+**Ecuación.** Por $S$: $7x + (y - 1) - 6(z + 1) = 0$, es decir, $7x + y - 6z - 7 = 0$.
+
+**Comprobación.** $(7, 1, -6) \cdot (1, -1, 1) = 0$ y $(7, 1, -6) \cdot (1, 5, 2) = 0$. Además, el punto $R(0, 1, 0)$ de $r$ da $1 - 7 = -6 \neq 0$: $r$ es paralela al plano, no está contenida en él (como debe ser, porque las rectas se cruzan).
+
+**Respuesta.** El plano es **$7x + y - 6z - 7 = 0$**.
+
+</Solucion>

@@ -1,0 +1,110 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Considera la función continua $f$ definida por $f(x) = \begin{cases} \dfrac{1}{x} & \text{si } x < -1 \\[1.5ex] ax + b & \text{si } -1 \leq x < 1 \\[1.5ex] \dfrac{x^2}{x + 1} & \text{si } x \geq 1 \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula $a$ y $b$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Cada trozo es continuo en su intervalo ($\frac{1}{x}$ solo se rompe en $x = 0$ y $\frac{x^2}{x + 1}$ en $x = -1$, que quedan fuera de sus tramos). Así que solo hay que imponer la continuidad en $x = -1$ y en $x = 1$.
+
+**Continuidad en $x = -1$.** El límite por la izquierda es $\dfrac{1}{-1} = -1$, y $f(-1) = -a + b$:
+
+$$
+-a + b = -1
+$$
+
+**Continuidad en $x = 1$.** El límite por la izquierda es $a + b$, y $f(1) = \dfrac{1}{1 + 1} = \dfrac{1}{2}$:
+
+$$
+a + b = \frac{1}{2}
+$$
+
+**Resolución.** Sumando las dos ecuaciones, $2b = -\frac{1}{2}$, así que $b = -\frac{1}{4}$ y $a = \frac{1}{2} + \frac{1}{4} = \frac{3}{4}$.
+
+**Respuesta.** **$a = \dfrac{3}{4}$ y $b = -\dfrac{1}{4}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Estudia y halla las asíntotas de la gráfica de $f$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Asíntotas verticales.** $f$ es continua en todo $\mathbb{R}$ (por el apartado a)), así que no tiene ninguna: no hay ningún punto donde tienda a infinito.
+
+**Asíntota horizontal en $-\infty$.** Cuando $x \to -\infty$ vale el primer trozo:
+
+$$
+\lim_{x \to -\infty} \frac{1}{x} = 0
+$$
+
+Así que **$y = 0$ es asíntota horizontal en $-\infty$**.
+
+**Asíntota en $+\infty$.** Vale el tercer trozo, y $\displaystyle\lim_{x \to +\infty} \frac{x^2}{x + 1} = +\infty$, así que no hay horizontal. Buscamos una oblicua $y = mx + n$:
+
+$$
+m = \lim_{x \to +\infty} \frac{f(x)}{x} = \lim_{x \to +\infty} \frac{x^2}{x^2 + x} = 1
+$$
+
+$$
+n = \lim_{x \to +\infty} \left(\frac{x^2}{x + 1} - x\right) = \lim_{x \to +\infty} \frac{x^2 - x^2 - x}{x + 1} = \lim_{x \to +\infty} \frac{-x}{x + 1} = -1
+$$
+
+Así que **$y = x - 1$ es asíntota oblicua en $+\infty$**.
+
+**Respuesta.** $f$ no tiene asíntotas verticales; tiene la **horizontal $y = 0$ en $-\infty$** y la **oblicua $y = x - 1$ en $+\infty$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+De entre todos los rectángulos con lados paralelos a los ejes de coordenadas, determina las dimensiones de aquel de área máxima que puede inscribirse en la región limitada por las gráficas de las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$, definidas por $f(x) = 4 - \dfrac{x^2}{3}$ y $g(x) = \dfrac{x^2}{6} - 2$.
+
+<Solucion>
+
+**La región.** $f$ es una parábola abierta hacia abajo con vértice en $(0, 4)$ y $g$, una abierta hacia arriba con vértice en $(0, -2)$. Se cortan donde
+
+$$
+4 - \frac{x^2}{3} = \frac{x^2}{6} - 2 \quad\Rightarrow\quad 6 = \frac{x^2}{2} \quad\Rightarrow\quad x = \pm 2\sqrt{3}
+$$
+
+y entre esos dos valores $f$ queda por encima de $g$.
+
+**Función de una variable a optimizar.** La región es simétrica respecto del eje $Y$, así que tomamos el rectángulo centrado en él: sus vértices son $(\pm x, f(x))$ arriba y $(\pm x, g(x))$ abajo, con $0 < x < 2\sqrt{3}$.
+
+- Base: $2x$.
+- Altura: $f(x) - g(x) = 4 - \dfrac{x^2}{3} - \dfrac{x^2}{6} + 2 = 6 - \dfrac{x^2}{2}$.
+
+$$
+A(x) = 2x\left(6 - \frac{x^2}{2}\right) = 12x - x^3, \qquad 0 < x < 2\sqrt{3}
+$$
+
+**Máximo de la función.**
+
+$$
+A'(x) = 12 - 3x^2 = 0 \quad\Rightarrow\quad x^2 = 4 \quad\Rightarrow\quad x = 2
+$$
+
+(la raíz $x = -2$ no está en el intervalo). Como $A''(x) = -6x$ y $A''(2) = -12 < 0$, es un máximo, y es el absoluto: es el único punto crítico y $A$ vale $0$ en los dos extremos del intervalo.
+
+**Dimensiones.** Base $2 \cdot 2 = 4$ y altura $6 - \frac{4}{2} = 4$. El área máxima es $16$.
+
+**Respuesta.** El rectángulo de área máxima es **un cuadrado de lado $4$**, con vértices $(\pm 2, \frac{8}{3})$ y $(\pm 2, -\frac{4}{3})$.
+
+</Solucion>

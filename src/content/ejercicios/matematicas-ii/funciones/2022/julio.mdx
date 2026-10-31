@@ -1,0 +1,36 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+Calcula los vértices y el área del rectángulo de área máxima inscrito en el recinto limitado por la gráfica de la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = -x^2 + 12$ y el eje de abscisas, y que tiene su base sobre dicho eje.
+
+<Solucion>
+
+**El recinto.** $f$ es una parábola abierta hacia abajo con vértice en $(0, 12)$ que corta al eje de abscisas en $x = \pm\sqrt{12} = \pm 2\sqrt{3}$.
+
+**Función de una variable a optimizar.** El recinto es simétrico respecto del eje $Y$, así que el rectángulo tiene la base sobre el eje, centrada, y sus vértices son $(\pm x, 0)$ y $(\pm x, f(x))$, con $0 < x < 2\sqrt{3}$:
+
+- Base: $2x$.
+- Altura: $f(x) = 12 - x^2$.
+
+$$
+A(x) = 2x\,(12 - x^2) = 24x - 2x^3, \qquad 0 < x < 2\sqrt{3}
+$$
+
+**Máximo de la función.**
+
+$$
+A'(x) = 24 - 6x^2 = 0 \quad\Rightarrow\quad x^2 = 4 \quad\Rightarrow\quad x = 2
+$$
+
+(la raíz $x = -2$ no está en el intervalo). Como $A''(x) = -12x$ y $A''(2) = -24 < 0$, es un máximo, y es el absoluto: es el único punto crítico y $A$ vale $0$ en los extremos del intervalo.
+
+**Dimensiones y área.** Base $4$, altura $f(2) = 8$ y área $4 \cdot 8 = 32$.
+
+**Respuesta.** Los vértices son **$(-2, 0)$, $(2, 0)$, $(2, 8)$ y $(-2, 8)$**, y el área máxima es **$32$ unidades cuadradas**.
+
+</Solucion>

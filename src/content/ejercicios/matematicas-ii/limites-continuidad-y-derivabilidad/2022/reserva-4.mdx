@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sea $f$ la función continua definida por $f(x) = \begin{cases} \dfrac{e^{\lambda x} - e^x - x}{x^2} & \text{si } x \neq 0 \\[2ex] \mu & \text{si } x = 0 \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula $\lambda$ y $\mu$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Para $x \neq 0$, $f$ es continua. En $x = 0$ tiene que cumplirse $\displaystyle\lim_{x \to 0} f(x) = f(0) = \mu$, así que el límite tiene que existir y ser finito.
+
+**Indeterminación.** En $x = 0$, el numerador vale $1 - 1 - 0 = 0$ y el denominador, $0$: es $\dfrac{0}{0}$. Por L'Hôpital:
+
+$$
+\lim_{x \to 0} \frac{e^{\lambda x} - e^x - x}{x^2} = \lim_{x \to 0} \frac{\lambda e^{\lambda x} - e^x - 1}{2x}
+$$
+
+En $x = 0$, el denominador vale $0$ y el numerador, $\lambda - 2$.
+
+**Valor de $\lambda$.** Si $\lambda \neq 2$, el límite sería infinito y $f$ no podría ser continua. Así que **$\lambda = 2$**, y vuelve a ser $\dfrac{0}{0}$.
+
+**Valor de $\mu$.** Aplicando L'Hôpital otra vez:
+
+$$
+\lim_{x \to 0} \frac{2e^{2x} - e^x - 1}{2x} = \lim_{x \to 0} \frac{4e^{2x} - e^x}{2} = \frac{4 - 1}{2} = \frac{3}{2}
+$$
+
+Así que **$\mu = \dfrac{3}{2}$**.
+
+**Respuesta.** **$\lambda = 2$ y $\mu = \dfrac{3}{2}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $\lambda = 2$, calcula la ecuación de la recta tangente a la gráfica de $f$ en el punto de abscisa $x = 1$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Punto.** Cerca de $x = 1$, $f(x) = \dfrac{e^{2x} - e^x - x}{x^2}$, así que $f(1) = e^2 - e - 1$.
+
+**Cálculo de $f'(1)$.** Por la regla del cociente, y simplificando un factor $x$:
+
+$$
+f'(x) = \frac{(2e^{2x} - e^x - 1)\,x^2 - (e^{2x} - e^x - x)\,2x}{x^4} = \frac{(2e^{2x} - e^x - 1)\,x - 2\,(e^{2x} - e^x - x)}{x^3}
+$$
+
+$$
+f'(1) = (2e^2 - e - 1) - 2\,(e^2 - e - 1) = e + 1
+$$
+
+**Recta tangente.**
+
+$$
+y - (e^2 - e - 1) = (e + 1)(x - 1) \quad\Rightarrow\quad y = (e + 1)\,x + e^2 - 2e - 2
+$$
+
+**Respuesta.** La recta tangente es **$y = (e + 1)\,x + e^2 - 2e - 2$**.
+
+</Solucion>

@@ -1,0 +1,76 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera las matrices $A = \begin{pmatrix} m & 1 & 3 \\ 1 & m & 2 \\ 1 & m & 3 \end{pmatrix}$ y $B = \begin{pmatrix} 2 & 2 \\ 1 & 0 \\ -1 & 2 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) Calcula el rango de la matriz $A$ según los valores de $m$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Determinante.** Desarrollando por la primera fila:
+
+$$
+|A| = m\,(3m - 2m) - 1\,(3 - 2) + 3\,(m - m) = m^2 - 1
+$$
+
+Se anula para $m = 1$ y $m = -1$.
+
+**Si $m \neq 1$ y $m \neq -1$.** $|A| \neq 0$: $\operatorname{rg}(A) = 3$.
+
+**Si $m = 1$.** $A = \begin{pmatrix} 1 & 1 & 3 \\ 1 & 1 & 2 \\ 1 & 1 & 3 \end{pmatrix}$, y el menor $\begin{vmatrix} 1 & 3 \\ 1 & 2 \end{vmatrix} = -1 \neq 0$: $\operatorname{rg}(A) = 2$.
+
+**Si $m = -1$.** $A = \begin{pmatrix} -1 & 1 & 3 \\ 1 & -1 & 2 \\ 1 & -1 & 3 \end{pmatrix}$, y el menor $\begin{vmatrix} 1 & 3 \\ -1 & 2 \end{vmatrix} = 5 \neq 0$: $\operatorname{rg}(A) = 2$.
+
+**Respuesta.**
+
+- $m \neq 1$ y $m \neq -1$: **$\operatorname{rg}(A) = 3$**.
+- $m = 1$ o $m = -1$: **$\operatorname{rg}(A) = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $m = 0$ resuelve la ecuación $AX = B$, si es posible. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Es posible.** Con $m = 0$, $|A| = -1 \neq 0$, así que $A$ tiene inversa y $X = A^{-1}B$. Como $B$ es $3 \times 2$, $X$ también lo es.
+
+**Inversa de $A$.** Con $m = 0$, $A = \begin{pmatrix} 0 & 1 & 3 \\ 1 & 0 & 2 \\ 1 & 0 & 3 \end{pmatrix}$. Sus adjuntos son $0$, $-1$, $0$ (primera fila), $-3$, $-3$, $1$ (segunda) y $2$, $3$, $-1$ (tercera). Trasponiendo y dividiendo entre $|A| = -1$:
+
+$$
+A^{-1} = -\begin{pmatrix} 0 & -3 & 2 \\ -1 & -3 & 3 \\ 0 & 1 & -1 \end{pmatrix} = \begin{pmatrix} 0 & 3 & -2 \\ 1 & 3 & -3 \\ 0 & -1 & 1 \end{pmatrix}
+$$
+
+Comprobación: la primera fila de $A$ por las columnas de $A^{-1}$ da $1$, $3 - 3 = 0$ y $-3 + 3 = 0$.
+
+**Cálculo de $X$.**
+
+$$
+X = \begin{pmatrix} 0 & 3 & -2 \\ 1 & 3 & -3 \\ 0 & -1 & 1 \end{pmatrix}\begin{pmatrix} 2 & 2 \\ 1 & 0 \\ -1 & 2 \end{pmatrix} = \begin{pmatrix} 5 & -4 \\ 8 & -4 \\ -2 & 2 \end{pmatrix}
+$$
+
+**Comprobación.**
+
+$$
+AX = \begin{pmatrix} 0 & 1 & 3 \\ 1 & 0 & 2 \\ 1 & 0 & 3 \end{pmatrix}\begin{pmatrix} 5 & -4 \\ 8 & -4 \\ -2 & 2 \end{pmatrix} = \begin{pmatrix} 2 & 2 \\ 1 & 0 \\ -1 & 2 \end{pmatrix} = B
+$$
+
+**Respuesta.**
+
+$$
+X = \begin{pmatrix} 5 & -4 \\ 8 & -4 \\ -2 & 2 \end{pmatrix}
+$$
+
+</Solucion>

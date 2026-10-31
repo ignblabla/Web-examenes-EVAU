@@ -1,0 +1,70 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Calcula $\displaystyle\int \frac{2x^3 + 2x^2 - 2x + 7}{x^2 + x - 2}\,dx$.
+
+<Solucion>
+
+**División.** El numerador tiene mayor grado que el denominador. Dividiendo, $2x^3 + 2x^2 - 2x + 7 = 2x\,(x^2 + x - 2) + (2x + 7)$:
+
+$$
+\frac{2x^3 + 2x^2 - 2x + 7}{x^2 + x - 2} = 2x + \frac{2x + 7}{x^2 + x - 2}
+$$
+
+**Descomposición en fracciones elementales.** Como $x^2 + x - 2 = (x - 1)(x + 2)$:
+
+$$
+\frac{2x + 7}{(x - 1)(x + 2)} = \frac{A}{x - 1} + \frac{B}{x + 2} \quad\Rightarrow\quad 2x + 7 = A\,(x + 2) + B\,(x - 1)
+$$
+
+- Con $x = 1$: $9 = 3A$, así que $A = 3$.
+- Con $x = -2$: $3 = -3B$, así que $B = -1$.
+
+**Integral.**
+
+$$
+\int \left(2x + \frac{3}{x - 1} - \frac{1}{x + 2}\right)dx = x^2 + 3\ln|x - 1| - \ln|x + 2| + C
+$$
+
+**Comprobación.** Derivando: $2x + \dfrac{3}{x - 1} - \dfrac{1}{x + 2} = 2x + \dfrac{3(x + 2) - (x - 1)}{(x - 1)(x + 2)} = 2x + \dfrac{2x + 7}{x^2 + x - 2}$.
+
+**Respuesta.**
+
+$$
+\int \frac{2x^3 + 2x^2 - 2x + 7}{x^2 + x - 2}\,dx = x^2 + 3\ln|x - 1| - \ln|x + 2| + C
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = x^2$ y $g(x) = a|x|$, con $a > 0$. Determina el valor de $a$ para que el área total de los recintos limitados por las gráficas de ambas funciones sea de $9$ unidades cuadradas.
+
+<Solucion>
+
+**Cortes.** Para $x \geq 0$, $g(x) = ax$ y $x^2 = ax$ da $x = 0$ o $x = a$. Para $x < 0$, $g(x) = -ax$ y $x^2 = -ax$ da $x = -a$. Las gráficas se cortan en $x = -a$, $0$ y $a$.
+
+**Recintos.** Hay dos, en $[-a, 0]$ y en $[0, a]$, y en ellos $g$ queda por encima (por ejemplo, en $x = \frac{a}{2}$, $\frac{a^2}{2} > \frac{a^2}{4}$). Las dos funciones son pares, así que los dos recintos son simétricos y tienen la misma área.
+
+**Planteamiento de la integral definida.**
+
+$$
+A = 2\int_0^a (ax - x^2)\,dx = 2\left[\frac{ax^2}{2} - \frac{x^3}{3}\right]_0^a = 2\left(\frac{a^3}{2} - \frac{a^3}{3}\right) = \frac{a^3}{3}
+$$
+
+**Condición.**
+
+$$
+\frac{a^3}{3} = 9 \quad\Rightarrow\quad a^3 = 27 \quad\Rightarrow\quad a = 3
+$$
+
+**Respuesta.** **$a = 3$**.
+
+</Solucion>

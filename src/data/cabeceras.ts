@@ -126,6 +126,23 @@ const matematicasII2023: Cabecera = {
   ],
 }
 
+// Curso 2021-2022 (PEvAU): como 2022-2023, con la convocatoria en el curso.
+const matematicasII2022Junio: Cabecera = {
+  ...matematicasII2023,
+  curso: "CONVOCATORIA ORDINARIA. CURSO 2021-2022",
+}
+
+const matematicasII2022Julio: Cabecera = {
+  ...matematicasII2022Junio,
+  curso: "CONVOCATORIA EXTRAORDINARIA. CURSO 2021-2022",
+}
+
+// En las reservas de 2021-2022 el curso aparece sin la convocatoria.
+const matematicasII2022Reserva: Cabecera = {
+  ...matematicasII2022Junio,
+  curso: "CURSO 2021-2022",
+}
+
 // La reserva 3 dice "Se permite" en la instrucción f), en vez de "Se permitirá".
 const matematicasII2026Reserva3: Cabecera = {
   ...matematicasII2026,
@@ -444,6 +461,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
+  "matematicas-ii/2022/junio": matematicasII2022Junio,
+  "matematicas-ii/2022/julio": matematicasII2022Julio,
+  "matematicas-ii/2022/reserva-1": matematicasII2022Reserva,
+  "matematicas-ii/2022/reserva-2": matematicasII2022Reserva,
+  "matematicas-ii/2022/reserva-3": matematicasII2022Reserva,
+  "matematicas-ii/2022/reserva-4": matematicasII2022Reserva,
   "matematicas-ii/2023/junio": matematicasII2023,
   "matematicas-ii/2023/julio": matematicasII2023,
   "matematicas-ii/2023/reserva-1": matematicasII2023,

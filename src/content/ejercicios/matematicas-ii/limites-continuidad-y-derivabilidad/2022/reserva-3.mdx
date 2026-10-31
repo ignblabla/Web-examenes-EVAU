@@ -1,0 +1,35 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Calcula $a$ y $b$ sabiendo que $\displaystyle\lim_{x \to 0} \frac{a\operatorname{sen}(x) + x\ln(x + 1) + bx^2}{x^3 + x^2} = 2$ (donde $\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $a \cdot 0 + 0 \cdot \ln 1 + 0 = 0$ y el denominador, $0$. Es una indeterminación $\dfrac{0}{0}$ para cualquier $a$ y $b$.
+
+**Primera aplicación de L'Hôpital.** La derivada de $x\ln(x + 1)$, por la regla del producto, es $\ln(x + 1) + \dfrac{x}{x + 1}$:
+
+$$
+\lim_{x \to 0} \frac{a\cos(x) + \ln(x + 1) + \dfrac{x}{x + 1} + 2bx}{3x^2 + 2x}
+$$
+
+En $x = 0$, el denominador vale $0$ y el numerador, $a$.
+
+**Valor de $a$.** Si $a \neq 0$, el cociente tiende a un número distinto de $0$ dividido entre $0$, y el límite sería infinito, no $2$. Así que **$a = 0$**, y vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Con $a = 0$, y como la derivada de $\dfrac{x}{x + 1}$ es $\dfrac{1}{(x + 1)^2}$:
+
+$$
+\lim_{x \to 0} \frac{\dfrac{1}{x + 1} + \dfrac{1}{(x + 1)^2} + 2b}{6x + 2} = \frac{1 + 1 + 2b}{2} = 1 + b
+$$
+
+**Valor de $b$.** $1 + b = 2$, así que $b = 1$.
+
+**Respuesta.** **$a = 0$ y $b = 1$**.
+
+</Solucion>

@@ -1,0 +1,96 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera el sistema:
+
+$$
+\begin{cases}
+2x + 3y + mz = 3 \\
+x + my - z = -1 \\
+3x + y - 3z = -m
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) Discute el sistema según los valores de $m$. **(1,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = \begin{vmatrix} 2 & 3 & m \\ 1 & m & -1 \\ 3 & 1 & -3 \end{vmatrix} = 2\,(-3m + 1) - 3\,(-3 + 3) + m\,(1 - 3m) = -3m^2 - 5m + 2
+$$
+
+**Valores críticos.** $3m^2 + 5m - 2 = 0$ da $m = \dfrac{-5 \pm \sqrt{25 + 24}}{6} = \dfrac{-5 \pm 7}{6}$, es decir, $m = \dfrac{1}{3}$ y $m = -2$.
+
+**Si $m \neq \frac{1}{3}$ y $m \neq -2$.** $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$: **compatible determinado**.
+
+**Si $m = -2$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 2 & 3 & -2 & 3 \\ 1 & -2 & -1 & -1 \\ 3 & 1 & -3 & 2 \end{array}\right)
+$$
+
+La tercera fila es la suma de las dos primeras, también en los términos independientes, así que sobra. El menor $\begin{vmatrix} 2 & 3 \\ 1 & -2 \end{vmatrix} = -7 \neq 0$ da $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 2 < 3$: **compatible indeterminado**.
+
+**Si $m = \frac{1}{3}$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 2 & 3 & 1/3 & 3 \\ 1 & 1/3 & -1 & -1 \\ 3 & 1 & -3 & -1/3 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, por el menor $\begin{vmatrix} 2 & 3 \\ 1 & 1/3 \end{vmatrix} = -\frac{7}{3} \neq 0$. Con las columnas 1, 2 y 4:
+
+$$
+\begin{vmatrix} 2 & 3 & 3 \\ 1 & 1/3 & -1 \\ 3 & 1 & -1/3 \end{vmatrix} = 2\left(-\frac{1}{9} + 1\right) - 3\left(-\frac{1}{3} + 3\right) + 3\,(1 - 1) = \frac{16}{9} - 8 = -\frac{56}{9} \neq 0
+$$
+
+así que $\operatorname{rg}(A^*) = 3$ y el sistema es **incompatible**.
+
+**Respuesta.**
+
+- $m \neq \frac{1}{3}$ y $m \neq -2$: **compatible determinado**.
+- $m = -2$: **compatible indeterminado**.
+- $m = \frac{1}{3}$: **incompatible**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $m = -2$ encuentra, si es posible, $y_0$ para que la solución del sistema sea $x = \lambda$, $y = y_0$, $z = \lambda - \frac{3}{7}$. **(0,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Resolución con $m = -2$.** Es compatible indeterminado y basta con las dos primeras ecuaciones:
+
+$$
+\begin{cases}
+2x + 3y - 2z = 3 \\
+x - 2y - z = -1
+\end{cases}
+$$
+
+Tomando $x = \lambda$, de la segunda, $z = 1 + \lambda - 2y$. En la primera:
+
+$$
+2\lambda + 3y - 2\,(1 + \lambda - 2y) = 3 \quad\Rightarrow\quad 7y - 2 = 3 \quad\Rightarrow\quad y = \frac{5}{7}
+$$
+
+y entonces $z = 1 + \lambda - \frac{10}{7} = \lambda - \frac{3}{7}$.
+
+**Comprobación.** En la tercera ecuación: $3\lambda + \frac{5}{7} - 3\left(\lambda - \frac{3}{7}\right) = \frac{5 + 9}{7} = 2 = -m$.
+
+**Respuesta.** Sí es posible: las soluciones son exactamente de la forma $\left(\lambda, \frac{5}{7}, \lambda - \frac{3}{7}\right)$, con **$y_0 = \dfrac{5}{7}$**.
+
+</Solucion>

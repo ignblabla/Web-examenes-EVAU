@@ -1,0 +1,113 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+import RecintoTramosJunio2022 from "../../../../../components/figuras/RecintoTramosJunio2022.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Sea $f$ la función definida por $f(x) = \begin{cases} 2x + 4 & \text{si } x < 0 \\ (x - 2)^2 & \text{si } x \geq 0 \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula los puntos de corte de la gráfica de $f$ con el eje de abscisas y esboza la gráfica de la función. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Puntos de corte con el eje de abscisas.**
+
+- Si $x < 0$: $2x + 4 = 0$ da $x = -2$, que es negativo. Sirve.
+- Si $x \geq 0$: $(x - 2)^2 = 0$ da $x = 2$. Sirve.
+
+Los puntos de corte son **$(-2, 0)$ y $(2, 0)$**.
+
+**Esbozo.** Para $x < 0$ es una recta de pendiente $2$ que llega a $(0, 4)$. Para $x \geq 0$ es una parábola con vértice en $(2, 0)$, que en $x = 0$ vale $4$: la gráfica no da saltos. La parábola toca el eje en $(2, 0)$ sin cruzarlo.
+
+<RecintoTramosJunio2022 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla el área del recinto limitado por la gráfica de $f$ y por el eje de abscisas. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**El recinto.** Va de $x = -2$ a $x = 2$, y ahí $f \geq 0$. Fuera de ese intervalo no está acotado: a la izquierda la recta baja sin límite y a la derecha la parábola sube.
+
+**Área como integral definida.** Como $f$ cambia de expresión en $x = 0$:
+
+$$
+A = \int_{-2}^{2} f(x)\,dx = \int_{-2}^{0} (2x + 4)\,dx + \int_{0}^{2} (x - 2)^2\,dx
+$$
+
+**Cálculo.**
+
+$$
+\int_{-2}^{0} (2x + 4)\,dx = \left[x^2 + 4x\right]_{-2}^{0} = 0 - (4 - 8) = 4
+$$
+
+$$
+\int_{0}^{2} (x - 2)^2\,dx = \left[\frac{(x - 2)^3}{3}\right]_{0}^{2} = 0 - \frac{-8}{3} = \frac{8}{3}
+$$
+
+**Respuesta.**
+
+$$
+A = 4 + \frac{8}{3} = \frac{20}{3} \approx 6{,}67 \text{ unidades cuadradas}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función $f$ definida por $f(x) = \dfrac{x^3}{x^2 - 2x + 1}$ para $x \neq 1$. Halla una primitiva de $f$ que pase por el punto $(2, 6)$.
+
+<Solucion>
+
+**División.** El numerador tiene mayor grado que el denominador. Dividiendo, $x^3 = (x + 2)(x^2 - 2x + 1) + (3x - 2)$:
+
+$$
+\frac{x^3}{x^2 - 2x + 1} = x + 2 + \frac{3x - 2}{(x - 1)^2}
+$$
+
+**Descomposición en fracciones elementales.** El denominador $(x - 1)^2$ tiene una raíz doble:
+
+$$
+\frac{3x - 2}{(x - 1)^2} = \frac{A}{x - 1} + \frac{B}{(x - 1)^2} \quad\Rightarrow\quad 3x - 2 = A\,(x - 1) + B
+$$
+
+- Con $x = 1$: $1 = B$.
+- Comparando los coeficientes de $x$: $A = 3$.
+
+**Todas las primitivas.** Como $\int \frac{dx}{(x - 1)^2} = -\frac{1}{x - 1}$:
+
+$$
+\int f(x)\,dx = \frac{x^2}{2} + 2x + 3\ln|x - 1| - \frac{1}{x - 1} + C
+$$
+
+**Condición del punto.** Con $\ln 1 = 0$:
+
+$$
+F(2) = 2 + 4 + 3\ln 1 - 1 + C = 5 + C = 6 \quad\Rightarrow\quad C = 1
+$$
+
+**Comprobación.** $F'(x) = x + 2 + \dfrac{3}{x - 1} + \dfrac{1}{(x - 1)^2} = x + 2 + \dfrac{3(x - 1) + 1}{(x - 1)^2} = x + 2 + \dfrac{3x - 2}{(x - 1)^2} = f(x)$.
+
+**Respuesta.**
+
+$$
+F(x) = \frac{x^2}{2} + 2x + 3\ln|x - 1| - \frac{1}{x - 1} + 1
+$$
+
+(El punto $(2, 6)$ está en el intervalo $(1, +\infty)$, que es donde esta primitiva queda fijada.)
+
+</Solucion>

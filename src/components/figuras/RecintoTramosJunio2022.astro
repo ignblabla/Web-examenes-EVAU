@@ -1,0 +1,27 @@
+---
+// Matemáticas II, junio de 2022, ejercicio 3: f(x) = 2x + 4 si x < 0 y (x − 2)² si x ≥ 0, y el
+// recinto que forma con el eje X entre x = −2 y x = 2.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => (x < 0 ? 2 * x + 4 : (x - 2) ** 2)
+---
+
+<GraficaFuncion
+  xMin={-3.2}
+  xMax={4.2}
+  yMin={-1.6}
+  yMax={5.4}
+  marcasX={[-3, -2, -1, 1, 2, 3, 4]}
+  marcasY={[-1, 1, 2, 3, 4, 5]}
+  tramos={[
+    { f, desde: -2.75, hasta: 0 },
+    { f, desde: 0, hasta: 4.3 },
+  ]}
+  recinto={{ arriba: f, abajo: () => 0, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: 0, texto: "(−2, 0)", dx: -10, dy: -8 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 8, dy: 16 },
+    { x: 0, y: 4, texto: "(0, 4)", dx: 8, dy: -6 },
+  ]}
+  descripcion="Gráfica de f: para x < 0 es la recta y = 2x + 4, que corta al eje X en (−2, 0) y sube hasta (0, 4); para x ≥ 0 es la parábola (x − 2)², que baja desde (0, 4) hasta tocar el eje X en (2, 0) y vuelve a subir. El recinto sombreado queda entre la gráfica y el eje X, desde x = −2 hasta x = 2"
+/>

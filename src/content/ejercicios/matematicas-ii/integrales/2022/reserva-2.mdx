@@ -1,0 +1,110 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $F \colon [0, 2\pi] \to \mathbb{R}$ definida por $F(x) = \displaystyle\int_0^x 2t\cos(t)\,dt$.
+
+<div class="math-sub">
+
+a) Determina los intervalos de crecimiento y de decrecimiento de $F$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Derivada de $F$.** El integrando $2t\cos(t)$ es continuo, así que, por el teorema fundamental del cálculo,
+
+$$
+F'(x) = 2x\cos(x)
+$$
+
+**Dónde se anula.** En $[0, 2\pi]$: $x = 0$, o $\cos(x) = 0$, es decir, $x = \frac{\pi}{2}$ y $x = \frac{3\pi}{2}$.
+
+**Signo de la derivada.** En $(0, 2\pi)$, $2x > 0$, así que el signo es el de $\cos(x)$:
+
+<div class="math-tabla">
+
+| | $\left(0, \frac{\pi}{2}\right)$ | $\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$ | $\left(\frac{3\pi}{2}, 2\pi\right)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $F'$ | $+$ | $-$ | $+$ |
+| $F$ | crece | decrece | crece |
+
+</div>
+
+**Respuesta.** $F$ **crece en $\left(0, \frac{\pi}{2}\right) \cup \left(\frac{3\pi}{2}, 2\pi\right)$** y **decrece en $\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla la ecuación de la recta tangente a la gráfica de $F$ en el punto de abscisa $x = \pi$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Necesitamos $F(\pi)$, que es una integral definida, y $F'(\pi)$, que ya sabemos calcular.
+
+**Integral definida.** Por partes, con $u = 2t$ y $dv = \cos(t)\,dt$, de modo que $du = 2\,dt$ y $v = \operatorname{sen}(t)$:
+
+$$
+\int 2t\cos(t)\,dt = 2t\operatorname{sen}(t) - \int 2\operatorname{sen}(t)\,dt = 2t\operatorname{sen}(t) + 2\cos(t)
+$$
+
+$$
+F(\pi) = \Big[2t\operatorname{sen}(t) + 2\cos(t)\Big]_0^{\pi} = (0 - 2) - (0 + 2) = -4
+$$
+
+**Pendiente.** $F'(\pi) = 2\pi\cos(\pi) = -2\pi$.
+
+**Respuesta.** La recta tangente es
+
+$$
+y + 4 = -2\pi\,(x - \pi) \quad\Rightarrow\quad y = -2\pi x + 2\pi^2 - 4
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Calcula $\displaystyle\int_0^1 x\operatorname{arc\,tg}(x)\,dx$ (donde $\operatorname{arc\,tg}$ denota la función arcotangente).
+
+<Solucion>
+
+**Integración por partes.** Con $u = \operatorname{arc\,tg}(x)$ y $dv = x\,dx$, de modo que $du = \dfrac{dx}{1 + x^2}$ y $v = \dfrac{x^2}{2}$:
+
+$$
+\int x\operatorname{arc\,tg}(x)\,dx = \frac{x^2}{2}\operatorname{arc\,tg}(x) - \frac{1}{2}\int \frac{x^2}{1 + x^2}\,dx
+$$
+
+**La integral racional.** Dividiendo, $\dfrac{x^2}{1 + x^2} = 1 - \dfrac{1}{1 + x^2}$, así que
+
+$$
+\int \frac{x^2}{1 + x^2}\,dx = x - \operatorname{arc\,tg}(x)
+$$
+
+**Primitiva.**
+
+$$
+\int x\operatorname{arc\,tg}(x)\,dx = \frac{x^2}{2}\operatorname{arc\,tg}(x) - \frac{x}{2} + \frac{1}{2}\operatorname{arc\,tg}(x) = \frac{(x^2 + 1)\operatorname{arc\,tg}(x) - x}{2}
+$$
+
+**Regla de Barrow.** Con $\operatorname{arc\,tg}(1) = \frac{\pi}{4}$ y $\operatorname{arc\,tg}(0) = 0$:
+
+$$
+\int_0^1 x\operatorname{arc\,tg}(x)\,dx = \frac{2 \cdot \frac{\pi}{4} - 1}{2} - 0 = \frac{\pi}{4} - \frac{1}{2}
+$$
+
+**Respuesta.**
+
+$$
+\int_0^1 x\operatorname{arc\,tg}(x)\,dx = \frac{\pi}{4} - \frac{1}{2} \approx 0{,}29
+$$
+
+</Solucion>

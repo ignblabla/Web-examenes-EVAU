@@ -1,0 +1,43 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+En un estudio del ciclo del sueño se monitoriza la fase NO-REM (es el momento del sueño que el cuerpo utiliza para descansar físicamente). Esta fase se divide a su vez en tres momentos: Fase I (adormecimiento), Fase II (sueño ligero) y Fase III (sueño profundo). Una persona dedica el $75\,\%$ de su sueño a la fase NO-REM. Además, el tiempo que dedica a la Fase II es el doble que el de la Fase I y III juntas. Por otro lado, a la Fase III se dedica el cuádruple que a la Fase I. Si una persona ha dormido $8$ horas, ¿cuántos minutos dedica a las Fases I, II y III del ciclo del sueño?
+
+<Solucion>
+
+**Tiempo en la fase NO-REM.** $8$ horas son $480$ minutos, y el $75\,\%$ es $0{,}75 \cdot 480 = 360$ minutos.
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ a los minutos dedicados a las fases I, II y III.
+
+**Planteamiento del sistema.**
+
+- Las tres fases forman la NO-REM: $x + y + z = 360$.
+- La Fase II es el doble de la I y la III juntas: $y = 2(x + z)$, es decir, $2x - y + 2z = 0$.
+- La Fase III es el cuádruple de la I: $z = 4x$, es decir, $4x - z = 0$.
+
+$$
+\begin{cases}
+x + y + z = 360 \\
+2x - y + 2z = 0 \\
+4x - z = 0
+\end{cases}
+$$
+
+**Resolución.** Con $z = 4x$, la segunda ecuación da $y = 2(x + 4x) = 10x$, y la primera:
+
+$$
+x + 10x + 4x = 15x = 360 \quad\Rightarrow\quad x = 24
+$$
+
+Entonces $y = 240$ y $z = 96$.
+
+**Comprobación.** $24 + 240 + 96 = 360$; $240 = 2\,(24 + 96)$; $96 = 4 \cdot 24$.
+
+**Respuesta.** Dedica **$24$ minutos a la Fase I, $240$ minutos a la Fase II y $96$ minutos a la Fase III**.
+
+</Solucion>

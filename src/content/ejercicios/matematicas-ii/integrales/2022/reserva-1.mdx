@@ -1,0 +1,101 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RecintoParabolasReserva1de2022 from "../../../../../components/figuras/RecintoParabolasReserva1de2022.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = e^x\operatorname{sen}(2x)$. Halla la primitiva de $f$ cuya gráfica pase por el punto $(0, 0)$.
+
+<Solucion>
+
+**Planteamiento.** Llamamos $I = \displaystyle\int e^x\operatorname{sen}(2x)\,dx$. Integrando por partes dos veces vuelve a aparecer $I$, y se despeja.
+
+**Primera integración por partes.** Con $u = \operatorname{sen}(2x)$ y $dv = e^x\,dx$, de modo que $du = 2\cos(2x)\,dx$ y $v = e^x$:
+
+$$
+I = e^x\operatorname{sen}(2x) - 2\int e^x\cos(2x)\,dx
+$$
+
+**Segunda integración por partes.** Con $u = \cos(2x)$ y $dv = e^x\,dx$, de modo que $du = -2\operatorname{sen}(2x)\,dx$ y $v = e^x$:
+
+$$
+\int e^x\cos(2x)\,dx = e^x\cos(2x) + 2\int e^x\operatorname{sen}(2x)\,dx = e^x\cos(2x) + 2I
+$$
+
+**Despejamos $I$.**
+
+$$
+I = e^x\operatorname{sen}(2x) - 2e^x\cos(2x) - 4I \quad\Rightarrow\quad 5I = e^x\left(\operatorname{sen}(2x) - 2\cos(2x)\right)
+$$
+
+$$
+\int e^x\operatorname{sen}(2x)\,dx = \frac{e^x\left(\operatorname{sen}(2x) - 2\cos(2x)\right)}{5} + C
+$$
+
+**Condición del punto.** $F(0) = \dfrac{1 \cdot (0 - 2)}{5} + C = 0$, así que $C = \dfrac{2}{5}$.
+
+**Comprobación.** $F'(x) = \dfrac{e^x\left(\operatorname{sen}(2x) - 2\cos(2x)\right) + e^x\left(2\cos(2x) + 4\operatorname{sen}(2x)\right)}{5} = e^x\operatorname{sen}(2x)$.
+
+**Respuesta.**
+
+$$
+F(x) = \frac{e^x\left(\operatorname{sen}(2x) - 2\cos(2x)\right) + 2}{5}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = 1 - x^2$ y $g(x) = 2x^2$.
+
+<div class="math-sub">
+
+a) Calcula los puntos de corte de las gráficas de $f$ y $g$. Esboza el recinto que delimitan. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Puntos de corte.**
+
+$$
+1 - x^2 = 2x^2 \quad\Rightarrow\quad x^2 = \frac{1}{3} \quad\Rightarrow\quad x = \pm\frac{1}{\sqrt{3}} = \pm\frac{\sqrt{3}}{3}
+$$
+
+y en los dos $g = 2 \cdot \frac{1}{3} = \frac{2}{3}$. Los puntos de corte son **$\left(-\dfrac{\sqrt{3}}{3}, \dfrac{2}{3}\right)$ y $\left(\dfrac{\sqrt{3}}{3}, \dfrac{2}{3}\right)$**.
+
+**Esbozo.** $f$ es una parábola abierta hacia abajo con vértice en $(0, 1)$ y $g$, una abierta hacia arriba con vértice en el origen. Entre los dos cortes, $f$ queda por encima (en $x = 0$, $1 > 0$):
+
+<RecintoParabolasReserva1de2022 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina el área del recinto anterior. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Área como integral definida.**
+
+$$
+A = \int_{-\sqrt{3}/3}^{\sqrt{3}/3} \left[(1 - x^2) - 2x^2\right]dx = \int_{-\sqrt{3}/3}^{\sqrt{3}/3} (1 - 3x^2)\,dx
+$$
+
+**Cálculo.** El integrando es par, así que la integral es el doble de la de $0$ a $\frac{\sqrt{3}}{3}$:
+
+$$
+A = 2\left[x - x^3\right]_0^{\sqrt{3}/3} = 2\left(\frac{\sqrt{3}}{3} - \frac{3\sqrt{3}}{27}\right) = 2\left(\frac{\sqrt{3}}{3} - \frac{\sqrt{3}}{9}\right) = 2 \cdot \frac{2\sqrt{3}}{9} = \frac{4\sqrt{3}}{9}
+$$
+
+**Respuesta.** El área es **$\dfrac{4\sqrt{3}}{9} \approx 0{,}77$ unidades cuadradas**.
+
+</Solucion>

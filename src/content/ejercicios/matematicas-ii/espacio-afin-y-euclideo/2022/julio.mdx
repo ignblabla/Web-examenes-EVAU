@@ -1,0 +1,127 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas $r \equiv x + 1 = y - a = -z$ y $s \equiv \begin{cases} x = 5 + 2\lambda \\ y = -3 \\ z = 2 - \lambda \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula $a$ para que $r$ y $s$ se corten. Determina dicho punto de corte. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de las rectas.** Escribiendo $-z = \dfrac{z}{-1}$, la recta $r$ pasa por $R(-1, a, 0)$ con vector director $\vec{d}_r = (1, 1, -1)$. La recta $s$ pasa por $S(5, -3, 2)$ con vector director $\vec{d}_s = (2, 0, -1)$. No son proporcionales, así que las rectas se cortan o se cruzan.
+
+**Planteamiento.** Se cortan si $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = (6, -3 - a, 2)$ son coplanarios:
+
+$$
+\begin{vmatrix} 1 & 1 & -1 \\ 2 & 0 & -1 \\ 6 & -3 - a & 2 \end{vmatrix} = 1\,(0 - 3 - a) - 1\,(4 + 6) - 1\,(-6 - 2a) = a - 7
+$$
+
+$a - 7 = 0$ para $a = 7$.
+
+**Punto de corte.** Con $a = 7$, $r \equiv (-1 + t,\ 7 + t,\ -t)$. Igualando con $s$: de $y$, $7 + t = -3$, así que $t = -10$ y el punto de $r$ es $(-11, -3, 10)$. En $s$, $5 + 2\lambda = -11$ da $\lambda = -8$, y entonces $z = 2 + 8 = 10$: coincide.
+
+**Respuesta.** Las rectas se cortan para **$a = 7$**, en el punto **$(-11, -3, 10)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla la ecuación del plano que pasa por $P(8, -7, 2)$ y que contiene a la recta $s$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Vectores directores del plano.** Contiene a $s$, así que $\vec{d}_s = (2, 0, -1)$ es uno. El otro, el que va de $S$ a $P$: $\overrightarrow{SP} = (3, -4, 0)$. No son proporcionales, así que $P$ no está en $s$ y el plano es único.
+
+**Vector normal.**
+
+$$
+\vec{n} = \vec{d}_s \times \overrightarrow{SP} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & 0 & -1 \\ 3 & -4 & 0 \end{vmatrix} = (0 - 4)\,\vec{i} - (0 + 3)\,\vec{j} + (-8 - 0)\,\vec{k} = (-4,\ -3,\ -8)
+$$
+
+o el proporcional $(4, 3, 8)$.
+
+**Ecuación.** Por $S(5, -3, 2)$: $4(x - 5) + 3(y + 3) + 8(z - 2) = 0$, es decir, $4x + 3y + 8z - 27 = 0$.
+
+**Comprobación.** $P$ da $32 - 21 + 16 - 27 = 0$, y $(4, 3, 8) \cdot (2, 0, -1) = 0$.
+
+**Respuesta.** El plano es **$4x + 3y + 8z - 27 = 0$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Sean el plano $\pi \equiv x + y - z = 2$ y la recta $r \equiv x = \dfrac{y}{3} = z - 1$.
+
+<div class="math-sub">
+
+a) Calcula, si existe, el punto de intersección de $\pi$ y $r$. **(0,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Escribimos $r$ en paramétricas y sustituimos en la ecuación del plano. La recta pasa por $(0, 0, 1)$ con vector director $(1, 3, 1)$:
+
+$$
+r \equiv (x,\ y,\ z) = (t,\ 3t,\ 1 + t)
+$$
+
+**Sustitución.**
+
+$$
+t + 3t - (1 + t) = 2 \quad\Rightarrow\quad 3t - 1 = 2 \quad\Rightarrow\quad t = 1
+$$
+
+Hay una única solución, así que la recta corta al plano en un punto. (Se ve también en que $(1, 3, 1) \cdot (1, 1, -1) = 3 \neq 0$.)
+
+**Respuesta.** Sí existe: el punto de intersección es **$(1, 3, 2)$**. Comprobación: $1 + 3 - 2 = 2$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Dado el punto $Q(2, 6, 3)$, halla su simétrico respecto del plano $\pi$. **(1,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $Q'$ está en la recta perpendicular a $\pi$ que pasa por $Q$, y el punto medio de $Q$ y $Q'$ es la proyección $M$ de $Q$ sobre el plano.
+
+**Recta perpendicular.** Su vector director es el normal del plano, $(1, 1, -1)$:
+
+$$
+(x,\ y,\ z) = (2 + \lambda,\ 6 + \lambda,\ 3 - \lambda)
+$$
+
+**Proyección de $Q$ sobre el plano.**
+
+$$
+(2 + \lambda) + (6 + \lambda) - (3 - \lambda) = 2 \quad\Rightarrow\quad 5 + 3\lambda = 2 \quad\Rightarrow\quad \lambda = -1
+$$
+
+Así que $M = (1, 5, 4)$. Comprobación: $1 + 5 - 4 = 2$.
+
+**Simétrico.** $Q' = 2M - Q$:
+
+$$
+Q' = (2 - 2,\ 10 - 6,\ 8 - 3) = (0,\ 4,\ 5)
+$$
+
+Comprobación: al sustituir en $x + y - z - 2$, $Q$ da $3$ y $Q'$ da $-3$.
+
+**Respuesta.** El simétrico de $Q$ es **$Q'(0, 4, 5)$**.
+
+</Solucion>

@@ -1,0 +1,95 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+import RecintoCubicaParabolaJulio2022 from "../../../../../components/figuras/RecintoCubicaParabolaJulio2022.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Calcula $\displaystyle\int_3^8 \frac{1}{\sqrt{1 + x} - 1}\,dx$. (Sugerencia: efectúa el cambio de variable $t = \sqrt{1 + x} - 1$.)
+
+<Solucion>
+
+**Cambio de variable.** Con $t = \sqrt{1 + x} - 1$, $\sqrt{1 + x} = t + 1$, así que $x = (t + 1)^2 - 1$ y
+
+$$
+dx = 2\,(t + 1)\,dt
+$$
+
+**Nuevos límites.** Para $x = 3$, $t = \sqrt{4} - 1 = 1$; para $x = 8$, $t = \sqrt{9} - 1 = 2$.
+
+**Integral transformada.**
+
+$$
+\int_3^8 \frac{dx}{\sqrt{1 + x} - 1} = \int_1^2 \frac{2\,(t + 1)}{t}\,dt = \int_1^2 \left(2 + \frac{2}{t}\right)dt
+$$
+
+**Primitiva y regla de Barrow.**
+
+$$
+\int_1^2 \left(2 + \frac{2}{t}\right)dt = \Big[2t + 2\ln t\Big]_1^2 = (4 + 2\ln 2) - (2 + 0) = 2 + 2\ln 2
+$$
+
+**Respuesta.**
+
+$$
+\int_3^8 \frac{1}{\sqrt{1 + x} - 1}\,dx = 2 + 2\ln 2 \approx 3{,}39
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = x^3 + 2$ y $g(x) = -x^2 + 2x + 2$.
+
+<div class="math-sub">
+
+a) Calcula los puntos de corte de las gráficas de $f$ y $g$. Esboza sus gráficas. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Puntos de corte.**
+
+$$
+x^3 + 2 = -x^2 + 2x + 2 \quad\Rightarrow\quad x^3 + x^2 - 2x = 0 \quad\Rightarrow\quad x\,(x^2 + x - 2) = 0 \quad\Rightarrow\quad x\,(x - 1)(x + 2) = 0
+$$
+
+Así que $x = 0$, $x = 1$ y $x = -2$. Con $f(0) = 2$, $f(1) = 3$ y $f(-2) = -6$, los puntos de corte son **$(-2, -6)$, $(0, 2)$ y $(1, 3)$**.
+
+**Esbozo.** $f$ es la cúbica $x^3$ subida $2$ unidades: siempre crece y pasa por $(0, 2)$. $g$ es una parábola abierta hacia abajo con vértice en $(1, 3)$, que es uno de los puntos de corte, y pasa por $(0, 2)$.
+
+<RecintoCubicaParabolaJulio2022 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina el área del recinto limitado por las gráficas de $f$ y $g$ en el primer cuadrante. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**El recinto.** En el primer cuadrante las gráficas se cortan en $x = 0$ y $x = 1$, y entre ellos las dos funciones son positivas. En $[0, 1]$,
+
+$$
+g(x) - f(x) = -x^3 - x^2 + 2x = x\,(1 - x)(x + 2) \geq 0
+$$
+
+así que la parábola queda por encima. (El otro recinto entre las curvas, en $[-2, 0]$, no está en el primer cuadrante.)
+
+**Área como integral definida.**
+
+$$
+A = \int_0^1 \left(g(x) - f(x)\right)dx = \int_0^1 (-x^3 - x^2 + 2x)\,dx = \left[-\frac{x^4}{4} - \frac{x^3}{3} + x^2\right]_0^1 = -\frac{1}{4} - \frac{1}{3} + 1
+$$
+
+**Respuesta.** El área es **$\dfrac{5}{12} \approx 0{,}42$ unidades cuadradas**.
+
+</Solucion>

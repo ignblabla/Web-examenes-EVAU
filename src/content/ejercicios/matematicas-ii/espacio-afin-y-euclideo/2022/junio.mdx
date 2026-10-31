@@ -1,0 +1,117 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2022
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Se consideran los vectores $\vec{u} = (-1, 2, 3)$ y $\vec{v} = (2, 0, -1)$, así como el punto $A(-4, 4, 7)$.
+
+<div class="math-sub">
+
+a) Calcula $a$ y $b$ para que el vector $\vec{w} = (1, a, b)$ sea ortogonal a $\vec{u}$ y $\vec{v}$. **(0,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Condiciones de ortogonalidad.** Dos vectores son ortogonales si su producto escalar es $0$:
+
+$$
+\vec{w} \cdot \vec{u} = -1 + 2a + 3b = 0, \qquad \vec{w} \cdot \vec{v} = 2 + 0 - b = 0
+$$
+
+**Resolución.** De la segunda, $b = 2$, y de la primera, $2a = 1 - 6 = -5$, así que $a = -\frac{5}{2}$.
+
+**Comprobación.** $\vec{w} = \left(1, -\frac{5}{2}, 2\right)$ es proporcional a $\vec{u} \times \vec{v} = (-2, 5, -4)$, que es perpendicular a los dos.
+
+**Respuesta.** **$a = -\dfrac{5}{2}$ y $b = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina los cuatro vértices de un paralelogramo cuyos lados tienen las direcciones de los vectores $\vec{u}$ y $\vec{v}$, y que tiene al vector $\overrightarrow{OA}$ como una de sus diagonales, siendo $O$ el origen de coordenadas. **(1,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Dos vértices opuestos son $O$ y $A$. Si desde $O$ salen los lados $\alpha\vec{u}$ y $\beta\vec{v}$, los otros dos vértices son $P = \alpha\vec{u}$ y $Q = \beta\vec{v}$, y la diagonal es su suma:
+
+$$
+\overrightarrow{OA} = \alpha\vec{u} + \beta\vec{v}
+$$
+
+**Sistema.**
+
+$$
+\alpha\,(-1, 2, 3) + \beta\,(2, 0, -1) = (-4, 4, 7) \quad\Rightarrow\quad \begin{cases} -\alpha + 2\beta = -4 \\ 2\alpha = 4 \\ 3\alpha - \beta = 7 \end{cases}
+$$
+
+De la segunda, $\alpha = 2$; de la tercera, $\beta = 6 - 7 = -1$; y la primera se cumple: $-2 - 2 = -4$.
+
+**Vértices.**
+
+$$
+P = 2\vec{u} = (-2,\ 4,\ 6), \qquad Q = -\vec{v} = (-2,\ 0,\ 1)
+$$
+
+**Comprobación.** $P + Q = (-4, 4, 7) = A$, así que $OPAQ$ es un paralelogramo con diagonal $\overrightarrow{OA}$.
+
+**Respuesta.** Los vértices, en orden, son **$O(0, 0, 0)$, $P(-2, 4, 6)$, $A(-4, 4, 7)$ y $Q(-2, 0, 1)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la recta $r \equiv x - 2 = \dfrac{y}{-1} = \dfrac{z - 1}{2}$, así como la recta $s$ determinada por el punto $P(1, 2, 3)$ y el vector director $\vec{v} = (1 + a, -a, 3a)$.
+
+<div class="math-sub">
+
+a) Calcula $a$ para que las rectas $r$ y $s$ se corten. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de $r$.** Pasa por $R(2, 0, 1)$ con vector director $\vec{d} = (1, -1, 2)$.
+
+**Planteamiento.** Las rectas se cortan si no son paralelas y $\vec{d}$, $\vec{v}$ y $\overrightarrow{RP}$ son coplanarios, es decir, si su determinante es $0$. Con $\overrightarrow{RP} = (-1, 2, 2)$:
+
+$$
+\begin{vmatrix} 1 & -1 & 2 \\ 1 + a & -a & 3a \\ -1 & 2 & 2 \end{vmatrix} = 1\,(-2a - 6a) + 1\,(2 + 2a + 3a) + 2\,(2 + 2a - a) = -a + 6
+$$
+
+**Condición.** $-a + 6 = 0$, así que $a = 6$.
+
+**No son paralelas.** Con $a = 6$, $\vec{v} = (7, -6, 18)$, que no es proporcional a $(1, -1, 2)$.
+
+**Comprobación.** El punto $(-6, 8, -15)$ está en las dos: en $r$ con parámetro $-8$ y en $s$ con parámetro $-1$, porque $(1, 2, 3) - (7, -6, 18) = (-6, 8, -15)$.
+
+**Respuesta.** Las rectas se cortan para **$a = 6$**, en el punto $(-6, 8, -15)$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula $a$ para que las rectas $r$ y $s$ sean perpendiculares. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Dos rectas son perpendiculares si sus vectores directores son ortogonales, es decir, si su producto escalar es $0$.
+
+**Condición.**
+
+$$
+\vec{d} \cdot \vec{v} = (1 + a) + a + 6a = 1 + 8a = 0 \quad\Rightarrow\quad a = -\frac{1}{8}
+$$
+
+**Respuesta.** Las rectas son perpendiculares para **$a = -\dfrac{1}{8}$** (con ese valor no se cortan, porque solo se cortan para $a = 6$: se cruzan perpendicularmente).
+
+</Solucion>

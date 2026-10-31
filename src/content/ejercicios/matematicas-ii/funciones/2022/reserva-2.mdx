@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \ln(x^2 + 1)$ (donde $\ln$ denota la función logaritmo neperiano).
+
+<div class="math-sub">
+
+a) Determina los intervalos de crecimiento y de decrecimiento de $f$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Primera derivada.** Por la regla de la cadena:
+
+$$
+f'(x) = \frac{2x}{x^2 + 1}
+$$
+
+**Punto crítico.** El denominador es siempre positivo, así que $f'(x) = 0$ solo en $x = 0$, y el signo de $f'$ es el de $2x$.
+
+<div class="math-tabla">
+
+| | $(-\infty, 0)$ | $(0, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f'$ | $-$ | $+$ |
+| $f$ | decrece | crece |
+
+</div>
+
+**Respuesta.** $f$ **decrece en $(-\infty, 0)$** y **crece en $(0, +\infty)$** (en $x = 0$ tiene un mínimo, $f(0) = 0$).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina los intervalos de convexidad y de concavidad de $f$ y los puntos de inflexión de su gráfica. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Segunda derivada.** Por la regla del cociente:
+
+$$
+f''(x) = \frac{2\,(x^2 + 1) - 2x \cdot 2x}{(x^2 + 1)^2} = \frac{2 - 2x^2}{(x^2 + 1)^2} = \frac{2\,(1 - x)(1 + x)}{(x^2 + 1)^2}
+$$
+
+**Signo.** El denominador es positivo, así que el signo es el de $1 - x^2$: positivo si $-1 < x < 1$ y negativo fuera. Donde $f'' > 0$ la función es convexa ($\cup$), y donde $f'' < 0$, cóncava ($\cap$):
+
+<div class="math-tabla">
+
+| | $(-\infty, -1)$ | $(-1, 1)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f''$ | $-$ | $+$ | $-$ |
+| $f$ | cóncava | convexa | cóncava |
+
+</div>
+
+**Puntos de inflexión.** La curvatura cambia en $x = -1$ y en $x = 1$, y $f(\pm 1) = \ln 2$.
+
+**Respuesta.** $f$ es **convexa en $(-1, 1)$** y **cóncava en $(-\infty, -1) \cup (1, +\infty)$**. Los puntos de inflexión son **$(-1, \ln 2)$ y $(1, \ln 2)$**.
+
+</Solucion>

@@ -1,0 +1,141 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 5 y 6 son los dos de matrices: van juntos y el rótulo del 6 va aquí. */}
+
+Considera las matrices $A = \begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix}$, $B = \begin{pmatrix} 1 & 1 & a \\ 2 & a & 1 \\ 2 & 2 & 0 \end{pmatrix}$ y $C = \begin{pmatrix} 1 & 0 & -2 \\ 2 & -1 & -1 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) Determina los valores de $a$ para los que la matriz $B$ no tiene inversa. **(0,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Condición.** $B$ no tiene inversa cuando su determinante es $0$. Desarrollando por la primera fila:
+
+$$
+|B| = 1\,(0 - 2) - 1\,(0 - 2) + a\,(4 - 2a) = 4a - 2a^2 = 2a\,(2 - a)
+$$
+
+**Respuesta.** $B$ no tiene inversa para **$a = 0$ y $a = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = 1$ calcula $X$ tal que $AXB = C$, si es posible. **(2 puntos)**
+
+</div>
+
+<Solucion>
+
+**Despejamos $X$.** $|A| = 1$ y, con $a = 1$, $|B| = 2 \cdot 1 \cdot 1 = 2$: las dos tienen inversa. Multiplicando por $A^{-1}$ por la izquierda y por $B^{-1}$ por la derecha:
+
+$$
+X = A^{-1}\,C\,B^{-1}
+$$
+
+$X$ es una matriz $2 \times 3$, como $C$.
+
+**Inversa de $A$.** Para una matriz $2 \times 2$, se intercambian los elementos de la diagonal, se cambia el signo de los otros dos y se divide entre el determinante:
+
+$$
+A^{-1} = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}
+$$
+
+**Inversa de $B$.** Con $a = 1$, $B = \begin{pmatrix} 1 & 1 & 1 \\ 2 & 1 & 1 \\ 2 & 2 & 0 \end{pmatrix}$. Sus adjuntos son $-2$, $2$, $2$ (primera fila), $2$, $-2$, $0$ (segunda) y $0$, $1$, $-1$ (tercera). Trasponiendo y dividiendo entre $|B| = 2$:
+
+$$
+B^{-1} = \frac{1}{2}\begin{pmatrix} -2 & 2 & 0 \\ 2 & -2 & 1 \\ 2 & 0 & -1 \end{pmatrix} = \begin{pmatrix} -1 & 1 & 0 \\ 1 & -1 & 1/2 \\ 1 & 0 & -1/2 \end{pmatrix}
+$$
+
+**Cálculo de $X$.** Primero $A^{-1}C$ y después por $B^{-1}$:
+
+$$
+A^{-1}C = \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 & -2 \\ 2 & -1 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & -2 \\ 4 & -1 & -5 \end{pmatrix}
+$$
+
+$$
+X = \begin{pmatrix} 1 & 0 & -2 \\ 4 & -1 & -5 \end{pmatrix}\begin{pmatrix} -1 & 1 & 0 \\ 1 & -1 & 1/2 \\ 1 & 0 & -1/2 \end{pmatrix} = \begin{pmatrix} -3 & 1 & 1 \\ -10 & 5 & 2 \end{pmatrix}
+$$
+
+**Comprobación.** $XB = \begin{pmatrix} 1 & 0 & -2 \\ 4 & -1 & -5 \end{pmatrix}$, y multiplicando por $A$ por la izquierda: $\begin{pmatrix} 1 & 0 & -2 \\ -2 + 4 & -1 & 4 - 5 \end{pmatrix} = C$.
+
+**Respuesta.**
+
+$$
+X = \begin{pmatrix} -3 & 1 & 1 \\ -10 & 5 & 2 \end{pmatrix}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6.</u> (2,5 puntos)</strong></Bloque>
+
+Se sabe que $\begin{vmatrix} a & b & c \\ p & q & r \\ x & y & z \end{vmatrix} = -2$.
+
+<div class="math-sub">
+
+a) Calcula: $\begin{vmatrix} a & c & b \\ 2x & 2z & 2y \\ -3p & -3r & -3q \end{vmatrix}$ **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Factor común en las filas.** Si todos los elementos de una fila se multiplican por un número, el determinante queda multiplicado por ese número. Sacando $2$ de la segunda fila y $-3$ de la tercera:
+
+$$
+\begin{vmatrix} a & c & b \\ 2x & 2z & 2y \\ -3p & -3r & -3q \end{vmatrix} = 2 \cdot (-3)\begin{vmatrix} a & c & b \\ x & z & y \\ p & r & q \end{vmatrix}
+$$
+
+**Intercambios.** Cada intercambio de dos filas o de dos columnas cambia el signo. Intercambiando la segunda y la tercera columna, y después la segunda y la tercera fila, volvemos al determinante conocido:
+
+$$
+\begin{vmatrix} a & c & b \\ x & z & y \\ p & r & q \end{vmatrix} = -\begin{vmatrix} a & b & c \\ x & y & z \\ p & q & r \end{vmatrix} = (-1)(-1)\begin{vmatrix} a & b & c \\ p & q & r \\ x & y & z \end{vmatrix} = -2
+$$
+
+**Respuesta.**
+
+$$
+\begin{vmatrix} a & c & b \\ 2x & 2z & 2y \\ -3p & -3r & -3q \end{vmatrix} = -6 \cdot (-2) = 12
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula: $\begin{vmatrix} x & a - 3p & -2a \\ y & b - 3q & -2b \\ z & c - 3r & -2c \end{vmatrix}$ **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Suma de determinantes.** La segunda columna es la suma de $(a, b, c)$ y $(-3p, -3q, -3r)$, así que el determinante se separa en dos:
+
+$$
+\begin{vmatrix} x & a - 3p & -2a \\ y & b - 3q & -2b \\ z & c - 3r & -2c \end{vmatrix} = \begin{vmatrix} x & a & -2a \\ y & b & -2b \\ z & c & -2c \end{vmatrix} + \begin{vmatrix} x & -3p & -2a \\ y & -3q & -2b \\ z & -3r & -2c \end{vmatrix}
+$$
+
+**El primero es cero.** Su tercera columna es la segunda multiplicada por $-2$: tiene dos columnas proporcionales.
+
+**El segundo.** Sacando $-3$ de la segunda columna y $-2$ de la tercera:
+
+$$
+\begin{vmatrix} x & -3p & -2a \\ y & -3q & -2b \\ z & -3r & -2c \end{vmatrix} = (-3)(-2)\begin{vmatrix} x & p & a \\ y & q & b \\ z & r & c \end{vmatrix}
+$$
+
+Un determinante no cambia al trasponerlo, así que este último es $\begin{vmatrix} x & y & z \\ p & q & r \\ a & b & c \end{vmatrix}$, que es el conocido con la primera y la tercera fila intercambiadas: vale $-(-2) = 2$.
+
+**Respuesta.**
+
+$$
+\begin{vmatrix} x & a - 3p & -2a \\ y & b - 3q & -2b \\ z & c - 3r & -2c \end{vmatrix} = 0 + 6 \cdot 2 = 12
+$$
+
+</Solucion>

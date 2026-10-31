@@ -1,0 +1,47 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import TerrenoReserva1de2022 from "../../../../../components/figuras/TerrenoReserva1de2022.astro"
+
+Se quiere cercar un trozo de terreno como el de la figura, de modo que el área del recinto central rectangular sea de $\dfrac{200}{\pi}$ metros cuadrados. Sabiendo que el coste de la cerca que se puede poner en los tramos rectos es de $10$ euros por metro lineal, y en los tramos circulares de $20$ euros por metro lineal, calcula las dimensiones $a$ y $b$ del terreno para las que se minimiza el coste del cercado.
+
+<TerrenoReserva1de2022 />
+
+<Solucion>
+
+**Función a optimizar.** La cerca tiene dos tramos rectos de longitud $a$ (arriba y abajo) y dos tramos circulares, que son dos semicircunferencias de diámetro $b$, es decir, una circunferencia completa de longitud $\pi b$. El coste es
+
+$$
+C = 10 \cdot 2a + 20 \cdot \pi b = 20a + 20\pi b
+$$
+
+**Expresión como función de una variable.** El rectángulo central tiene área $ab = \dfrac{200}{\pi}$, así que $a = \dfrac{200}{\pi b}$:
+
+$$
+C(b) = \frac{4000}{\pi b} + 20\pi b, \qquad b > 0
+$$
+
+**Punto crítico.**
+
+$$
+C'(b) = -\frac{4000}{\pi b^2} + 20\pi = 0 \quad\Rightarrow\quad b^2 = \frac{4000}{20\pi^2} = \frac{200}{\pi^2} \quad\Rightarrow\quad b = \frac{\sqrt{200}}{\pi} = \frac{10\sqrt{2}}{\pi}
+$$
+
+**Es un mínimo.** $C''(b) = \dfrac{8000}{\pi b^3} > 0$ para $b > 0$, así que es un mínimo, y el absoluto, porque es el único punto crítico.
+
+**Dimensión $a$.**
+
+$$
+a = \frac{200}{\pi b} = \frac{200}{\pi \cdot \frac{10\sqrt{2}}{\pi}} = \frac{20}{\sqrt{2}} = 10\sqrt{2}
+$$
+
+El coste mínimo es $20 \cdot 10\sqrt{2} + 20\pi \cdot \dfrac{10\sqrt{2}}{\pi} = 400\sqrt{2} \approx 565{,}69$ euros.
+
+**Respuesta.** **$a = 10\sqrt{2} \approx 14{,}14$ m** y **$b = \dfrac{10\sqrt{2}}{\pi} \approx 4{,}50$ m**.
+
+</Solucion>

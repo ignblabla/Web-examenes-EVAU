@@ -1,0 +1,66 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Sea $f \colon [0, 2\pi] \to \mathbb{R}$ la función definida por $f(x) = e^x\left(\cos(x) + \operatorname{sen}(x)\right)$.
+
+<div class="math-sub">
+
+a) Halla los extremos absolutos de $f$ (abscisas donde se obtienen y valores que se alcanzan). **(2 puntos)**
+
+</div>
+
+<Solucion>
+
+**Derivada.** Por la regla del producto:
+
+$$
+f'(x) = e^x\left(\cos(x) + \operatorname{sen}(x)\right) + e^x\left(-\operatorname{sen}(x) + \cos(x)\right) = 2e^x\cos(x)
+$$
+
+**Puntos críticos.** Como $e^x > 0$, $f'(x) = 0$ cuando $\cos(x) = 0$. En $[0, 2\pi]$: $x = \dfrac{\pi}{2}$ y $x = \dfrac{3\pi}{2}$.
+
+**Signo de la derivada.** Es el de $\cos(x)$:
+
+<div class="math-tabla">
+
+| | $\left(0, \frac{\pi}{2}\right)$ | $\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)$ | $\left(\frac{3\pi}{2}, 2\pi\right)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $-$ | $+$ |
+| $f$ | crece | decrece | crece |
+
+</div>
+
+En $x = \frac{\pi}{2}$ hay un máximo relativo y en $x = \frac{3\pi}{2}$, un mínimo relativo.
+
+**Justificación de los extremos absolutos.** $f$ es continua en el intervalo cerrado $[0, 2\pi]$, así que alcanza su máximo y su mínimo absolutos (teorema de Weierstrass), y están en los puntos críticos o en los extremos del intervalo. Comparamos:
+
+$$
+f(0) = 1, \qquad f\left(\frac{\pi}{2}\right) = e^{\pi/2} \approx 4{,}81, \qquad f\left(\frac{3\pi}{2}\right) = -e^{3\pi/2} \approx -111{,}32, \qquad f(2\pi) = e^{2\pi} \approx 535{,}49
+$$
+
+**Respuesta.** El **máximo absoluto** se alcanza en **$x = 2\pi$** y vale **$e^{2\pi}$**. El **mínimo absoluto** se alcanza en **$x = \dfrac{3\pi}{2}$** y vale **$-e^{3\pi/2}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina la ecuación de la recta tangente y la ecuación de la recta normal a la gráfica de $f$ en el punto de abscisa $x = \frac{3\pi}{2}$. **(0,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Punto y pendiente.** $f\left(\frac{3\pi}{2}\right) = -e^{3\pi/2}$ y $f'\left(\frac{3\pi}{2}\right) = 2e^{3\pi/2}\cos\left(\frac{3\pi}{2}\right) = 0$.
+
+**Recta tangente.** Su pendiente es $0$, así que es horizontal: $y = -e^{3\pi/2}$.
+
+**Recta normal.** Es perpendicular a una recta horizontal, así que es vertical y pasa por el punto: $x = \dfrac{3\pi}{2}$.
+
+**Respuesta.** La recta tangente es **$y = -e^{3\pi/2}$** y la normal, **$x = \dfrac{3\pi}{2}$**.
+
+</Solucion>

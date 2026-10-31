@@ -1,0 +1,62 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Sea $f$ la función continua definida por $f(x) = \begin{cases} x^2 + 2 & \text{si } x \leq 0 \\[1ex] \sqrt{ax + b} & \text{si } 0 < x \leq 2 \\[1ex] \dfrac{-x}{2\sqrt{2}} + \dfrac{3}{\sqrt{2}} & \text{si } 2 < x \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula $a$ y $b$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** $f$ es continua, así que en $x = 0$ y en $x = 2$ los límites laterales coinciden con el valor de la función.
+
+**Continuidad en $x = 0$: valor de $b$.** $f(0) = 0 + 2 = 2$, y el límite por la derecha es $\sqrt{b}$:
+
+$$
+\sqrt{b} = 2 \quad\Rightarrow\quad b = 4
+$$
+
+**Continuidad en $x = 2$: valor de $a$.** $f(2) = \sqrt{2a + 4}$, y el límite por la derecha es
+
+$$
+\lim_{x \to 2^+} \left(\frac{-x}{2\sqrt{2}} + \frac{3}{\sqrt{2}}\right) = \frac{-2}{2\sqrt{2}} + \frac{3}{\sqrt{2}} = \frac{2}{\sqrt{2}} = \sqrt{2}
+$$
+
+Igualando, $\sqrt{2a + 4} = \sqrt{2}$, así que $2a + 4 = 2$ y $a = -1$.
+
+**Respuesta.** **$a = -1$ y $b = 4$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = -1$ y $b = 4$, estudia si existe la derivada de $f$ en $x = 2$. En caso afirmativo, calcula la ecuación de la recta tangente a la gráfica de $f$ en dicho punto. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**$f$ es derivable en $x = 2$.** Es continua (apartado a)), así que comparamos las derivadas laterales.
+
+- Por la izquierda, $f(x) = \sqrt{4 - x}$ y $f'(x) = \dfrac{-1}{2\sqrt{4 - x}}$, así que $f'(2^-) = \dfrac{-1}{2\sqrt{2}}$.
+- Por la derecha, $f$ es una recta de pendiente $\dfrac{-1}{2\sqrt{2}}$, así que $f'(2^+) = \dfrac{-1}{2\sqrt{2}}$.
+
+Coinciden, así que sí existe $f'(2) = -\dfrac{1}{2\sqrt{2}} = -\dfrac{\sqrt{2}}{4}$.
+
+**Recta tangente.** Pasa por $(2, f(2)) = (2, \sqrt{2})$:
+
+$$
+y - \sqrt{2} = -\frac{\sqrt{2}}{4}\,(x - 2) \quad\Rightarrow\quad y = -\frac{\sqrt{2}}{4}x + \frac{3\sqrt{2}}{2}
+$$
+
+**Respuesta.** $f$ es derivable en $x = 2$ y la recta tangente es **$y = -\dfrac{\sqrt{2}}{4}x + \dfrac{3\sqrt{2}}{2}$**. Es justo el tercer trozo de $f$, porque $\dfrac{-x}{2\sqrt{2}} + \dfrac{3}{\sqrt{2}} = -\dfrac{\sqrt{2}}{4}x + \dfrac{3\sqrt{2}}{2}$: a partir de $x = 2$, la función sigue por su tangente.
+
+</Solucion>

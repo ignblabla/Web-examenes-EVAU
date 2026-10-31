@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera la función $f$ definida por $f(x) = \dfrac{x^4 - 3x^2 + 2}{(x + 2)^3}$, para $x \neq -2$.
+
+<div class="math-sub">
+
+a) Estudia y halla las asíntotas de la gráfica de $f$. **(1,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Asíntota vertical.** El único punto fuera del dominio es $x = -2$. Ahí el numerador vale $16 - 12 + 2 = 6 \neq 0$ y el denominador tiende a $0$, así que el límite es infinito. Como $(x + 2)^3$ tiene el signo de $x + 2$:
+
+$$
+\lim_{x \to -2^-} f(x) = -\infty, \qquad \lim_{x \to -2^+} f(x) = +\infty
+$$
+
+**$x = -2$ es asíntota vertical.**
+
+**Asíntota horizontal.** No hay: el numerador tiene mayor grado que el denominador, así que $f$ tiende a infinito cuando $x \to \pm\infty$.
+
+**Asíntota oblicua.** El grado del numerador es uno más que el del denominador, así que hay oblicua $y = mx + n$:
+
+$$
+m = \lim_{x \to \pm\infty} \frac{f(x)}{x} = \lim_{x \to \pm\infty} \frac{x^4 - 3x^2 + 2}{x\,(x + 2)^3} = 1
+$$
+
+Con $(x + 2)^3 = x^3 + 6x^2 + 12x + 8$:
+
+$$
+n = \lim_{x \to \pm\infty} \left(f(x) - x\right) = \lim_{x \to \pm\infty} \frac{x^4 - 3x^2 + 2 - x^4 - 6x^3 - 12x^2 - 8x}{(x + 2)^3} = \lim_{x \to \pm\infty} \frac{-6x^3 - 15x^2 - 8x + 2}{x^3 + 6x^2 + 12x + 8} = -6
+$$
+
+**$y = x - 6$ es asíntota oblicua** en $-\infty$ y en $+\infty$.
+
+**Respuesta.** Asíntota vertical **$x = -2$** y asíntota oblicua **$y = x - 6$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula la ecuación de la recta normal a la gráfica de $f$ en el punto de abscisa $x = 0$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Punto.** $f(0) = \dfrac{2}{8} = \dfrac{1}{4}$.
+
+**Pendiente.** Por la regla del cociente, simplificando un factor $(x + 2)^2$:
+
+$$
+f'(x) = \frac{(4x^3 - 6x)(x + 2)^3 - (x^4 - 3x^2 + 2) \cdot 3(x + 2)^2}{(x + 2)^6} = \frac{(4x^3 - 6x)(x + 2) - 3\,(x^4 - 3x^2 + 2)}{(x + 2)^4}
+$$
+
+$$
+f'(0) = \frac{0 - 6}{16} = -\frac{3}{8}
+$$
+
+La normal tiene pendiente $-\dfrac{1}{f'(0)} = \dfrac{8}{3}$.
+
+**Respuesta.** La recta normal es
+
+$$
+y - \frac{1}{4} = \frac{8}{3}\,x \quad\Rightarrow\quad y = \frac{8}{3}x + \frac{1}{4}
+$$
+
+</Solucion>

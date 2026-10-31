@@ -1,0 +1,122 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2022
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera el plano $\pi \equiv x + y + z = 0$ y la recta $r \equiv \begin{cases} x = \lambda \\ y = 1 - \lambda \\ z = 0 \end{cases}$
+
+<div class="math-sub">
+
+a) Determina la ecuación del plano perpendicular a $\pi$ que contiene a $r$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos.** $r$ pasa por $R(0, 1, 0)$ con vector director $\vec{d} = (1, -1, 0)$, y $\pi$ tiene vector normal $\vec{n} = (1, 1, 1)$.
+
+**Planteamiento.** El plano buscado contiene a $r$, así que tiene a $\vec{d}$ como vector director. Es perpendicular a $\pi$, así que contiene la dirección perpendicular a $\pi$: $\vec{n}$ es otro vector director. No son proporcionales, así que el plano es único.
+
+**Vector normal.**
+
+$$
+\vec{d} \times \vec{n} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 0 \\ 1 & 1 & 1 \end{vmatrix} = (-1 - 0)\,\vec{i} - (1 - 0)\,\vec{j} + (1 + 1)\,\vec{k} = (-1,\ -1,\ 2)
+$$
+
+o el proporcional $(1, 1, -2)$.
+
+**Ecuación.** Por $R(0, 1, 0)$: $x + (y - 1) - 2z = 0$.
+
+**Comprobación.** Los puntos de $r$ cumplen $\lambda + (1 - \lambda) - 0 - 1 = 0$, y $(1, 1, -2) \cdot (1, 1, 1) = 0$.
+
+**Respuesta.** El plano es **$x + y - 2z - 1 = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula la distancia entre $r$ y $\pi$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Posición relativa.** $\vec{d} \cdot \vec{n} = 1 - 1 + 0 = 0$, así que $r$ es paralela a $\pi$ o está contenida en él. El punto $R(0, 1, 0)$ da $0 + 1 + 0 = 1 \neq 0$: no está en el plano, así que **$r$ es paralela a $\pi$**.
+
+**Distancia.** Al ser paralelos, todos los puntos de $r$ están a la misma distancia del plano, y basta con usar $R$:
+
+$$
+d(r, \pi) = d(R, \pi) = \frac{|0 + 1 + 0|}{\sqrt{1 + 1 + 1}} = \frac{1}{\sqrt{3}}
+$$
+
+**Respuesta.** La distancia es **$\dfrac{\sqrt{3}}{3} \approx 0{,}58$ unidades**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Sean los planos $\pi_1 \equiv 2x + y + z - 3 = 0$, $\pi_2 \equiv x + 2y - z + 5 = 0$ y la recta $r \equiv x - 1 = \dfrac{y}{2} = \dfrac{z + 1}{5}$.
+
+<div class="math-sub">
+
+a) Halla los puntos de $r$ que equidistan de $\pi_1$ y $\pi_2$. **(2 puntos)**
+
+</div>
+
+<Solucion>
+
+**Punto genérico de $r$.** La recta pasa por $(1, 0, -1)$ con vector director $(1, 2, 5)$:
+
+$$
+X = (1 + t,\ 2t,\ -1 + 5t)
+$$
+
+**Distancias a los planos.** Los dos vectores normales, $(2, 1, 1)$ y $(1, 2, -1)$, miden $\sqrt{6}$:
+
+$$
+d(X, \pi_1) = \frac{|2(1 + t) + 2t + (-1 + 5t) - 3|}{\sqrt{6}} = \frac{|9t - 2|}{\sqrt{6}}
+$$
+
+$$
+d(X, \pi_2) = \frac{|(1 + t) + 4t - (-1 + 5t) + 5|}{\sqrt{6}} = \frac{|7|}{\sqrt{6}} = \frac{7}{\sqrt{6}}
+$$
+
+(La distancia a $\pi_2$ no depende de $t$: la recta es paralela a $\pi_2$, porque $(1, 2, 5) \cdot (1, 2, -1) = 0$.)
+
+**Condición.** $|9t - 2| = 7$:
+
+- $9t - 2 = 7$: $t = 1$, y el punto es $(2, 2, 4)$.
+- $9t - 2 = -7$: $t = -\frac{5}{9}$, y el punto es $\left(\frac{4}{9}, -\frac{10}{9}, -\frac{34}{9}\right)$.
+
+**Respuesta.** Los puntos son **$(2, 2, 4)$ y $\left(\dfrac{4}{9}, -\dfrac{10}{9}, -\dfrac{34}{9}\right)$**, los dos a distancia $\dfrac{7}{\sqrt{6}}$ de cada plano.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla el seno del ángulo que forma el plano $\pi_1$ con la recta $r$. **(0,5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El ángulo $\alpha$ entre una recta y un plano es el complementario del que forman el vector director de la recta y el normal del plano, así que su seno es el coseno de este último:
+
+$$
+\operatorname{sen}\alpha = \frac{|\vec{d} \cdot \vec{n}_1|}{|\vec{d}|\,|\vec{n}_1|}
+$$
+
+**Cálculo.** Con $\vec{d} = (1, 2, 5)$ y $\vec{n}_1 = (2, 1, 1)$:
+
+$$
+\operatorname{sen}\alpha = \frac{|2 + 2 + 5|}{\sqrt{30}\,\sqrt{6}} = \frac{9}{\sqrt{180}} = \frac{9}{6\sqrt{5}} = \frac{3\sqrt{5}}{10}
+$$
+
+**Respuesta.** **$\operatorname{sen}\alpha = \dfrac{3\sqrt{5}}{10} \approx 0{,}67$**.
+
+</Solucion>

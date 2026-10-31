@@ -1,0 +1,41 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2022
+convocatoria: julio
+formato: matematicas
+---
+
+Calcula $a$ sabiendo que $\displaystyle\lim_{x \to +\infty} \frac{ax}{(\ln x)^3 + 2x} = 1$ (donde $\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Indeterminación.** Si $a = 0$, el límite sería $0$, no $1$, así que $a \neq 0$. Entonces el numerador tiende a $\pm\infty$ y el denominador, a $+\infty$: es una indeterminación $\dfrac{\infty}{\infty}$.
+
+**Primera aplicación de L'Hôpital.** La derivada de $(\ln x)^3$ es $3(\ln x)^2 \cdot \frac{1}{x}$. Multiplicando numerador y denominador por $x$:
+
+$$
+\lim_{x \to +\infty} \frac{a}{\dfrac{3(\ln x)^2}{x} + 2} = \lim_{x \to +\infty} \frac{ax}{3(\ln x)^2 + 2x}
+$$
+
+Sigue siendo $\dfrac{\infty}{\infty}$.
+
+**Segunda aplicación de L'Hôpital.** Igual, con la derivada de $3(\ln x)^2$, que es $\frac{6\ln x}{x}$:
+
+$$
+\lim_{x \to +\infty} \frac{a}{\dfrac{6\ln x}{x} + 2} = \lim_{x \to +\infty} \frac{ax}{6\ln x + 2x}
+$$
+
+Sigue siendo $\dfrac{\infty}{\infty}$.
+
+**Tercera aplicación de L'Hôpital.**
+
+$$
+\lim_{x \to +\infty} \frac{a}{\dfrac{6}{x} + 2} = \frac{a}{0 + 2} = \frac{a}{2}
+$$
+
+**Valor de $a$.** $\dfrac{a}{2} = 1$, así que $a = 2$.
+
+**Respuesta.** **$a = 2$**. (La idea de fondo: $(\ln x)^3$ crece mucho más despacio que $2x$, así que el denominador se comporta como $2x$.)
+
+</Solucion>

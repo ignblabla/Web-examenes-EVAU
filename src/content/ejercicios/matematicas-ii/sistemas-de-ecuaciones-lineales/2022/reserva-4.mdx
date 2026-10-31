@@ -1,0 +1,158 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2022
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 5 y 6 son los dos de sistemas: van juntos y el rótulo del 6 va aquí. */}
+
+Considera el sistema de ecuaciones lineales:
+
+$$
+\begin{pmatrix} \alpha & 1 & 1 \\ \alpha & -1 & 1 \\ \alpha & 0 & \alpha \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+$$
+
+<div class="math-sub">
+
+a) Discute el sistema según los valores de $\alpha$. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Es homogéneo.** Siempre es compatible, porque $(0, 0, 0)$ es solución. Es determinado si el rango de la matriz es $3$, es decir, si su determinante no es $0$.
+
+**Determinante de la matriz de coeficientes.** Sacando $\alpha$ factor común de la primera columna:
+
+$$
+\begin{vmatrix} \alpha & 1 & 1 \\ \alpha & -1 & 1 \\ \alpha & 0 & \alpha \end{vmatrix} = \alpha\begin{vmatrix} 1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 0 & \alpha \end{vmatrix} = \alpha\left[1\,(-\alpha) - 1\,(\alpha - 1) + 1\,(0 + 1)\right] = \alpha\,(2 - 2\alpha) = 2\alpha\,(1 - \alpha)
+$$
+
+Se anula para $\alpha = 0$ y $\alpha = 1$.
+
+**Si $\alpha = 0$.** La matriz es $\begin{pmatrix} 0 & 1 & 1 \\ 0 & -1 & 1 \\ 0 & 0 & 0 \end{pmatrix}$, de rango $2$ (el menor $\begin{vmatrix} 1 & 1 \\ -1 & 1 \end{vmatrix} = 2 \neq 0$).
+
+**Si $\alpha = 1$.** La matriz es $\begin{pmatrix} 1 & 1 & 1 \\ 1 & -1 & 1 \\ 1 & 0 & 1 \end{pmatrix}$, de rango $2$ (el menor $\begin{vmatrix} 1 & 1 \\ 1 & -1 \end{vmatrix} = -2 \neq 0$).
+
+**Respuesta.**
+
+- $\alpha \neq 0$ y $\alpha \neq 1$: **compatible determinado**, con la única solución $(0, 0, 0)$.
+- $\alpha = 0$ o $\alpha = 1$: **compatible indeterminado** (rango $2$, un parámetro).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $\alpha = 1$ resuelve el sistema y da una solución del mismo diferente de la solución trivial, si es posible. **(1,25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Solución general.** Con $\alpha = 1$ el rango es $2$, así que basta con dos ecuaciones independientes, por ejemplo las dos primeras:
+
+$$
+\begin{cases}
+x + y + z = 0 \\
+x - y + z = 0
+\end{cases}
+$$
+
+Restándolas, $2y = 0$, así que $y = 0$, y entonces $x = -z$. Tomando $z = \lambda$:
+
+$$
+(x,\ y,\ z) = (-\lambda,\ 0,\ \lambda), \qquad \lambda \in \mathbb{R}
+$$
+
+La tercera ecuación, $x + z = 0$, también se cumple.
+
+**Respuesta.** Sí es posible. Las soluciones son $(-\lambda, 0, \lambda)$ y, por ejemplo con $\lambda = 1$, una distinta de la trivial es **$(x, y, z) = (-1, 0, 1)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6.</u> (2,5 puntos)</strong></Bloque>
+
+Considera el sistema:
+
+$$
+\begin{cases}
+x - my - 2z = m \\
+x + y + z = 2m \\
+x + 2y + mz = 3m
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) Discute el sistema según los valores de $m$. **(1,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = \begin{vmatrix} 1 & -m & -2 \\ 1 & 1 & 1 \\ 1 & 2 & m \end{vmatrix} = 1\,(m - 2) + m\,(m - 1) - 2\,(2 - 1) = m^2 - 4
+$$
+
+**Valores críticos.** $m = 2$ y $m = -2$.
+
+**Si $m \neq 2$ y $m \neq -2$.** $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$: **compatible determinado**.
+
+**Si $m = 2$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 1 & -2 & -2 & 2 \\ 1 & 1 & 1 & 4 \\ 1 & 2 & 2 & 6 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, por el menor $\begin{vmatrix} 1 & -2 \\ 1 & 1 \end{vmatrix} = 3 \neq 0$. Con las columnas 1, 2 y 4:
+
+$$
+\begin{vmatrix} 1 & -2 & 2 \\ 1 & 1 & 4 \\ 1 & 2 & 6 \end{vmatrix} = 1\,(6 - 8) + 2\,(6 - 4) + 2\,(2 - 1) = 4 \neq 0
+$$
+
+así que $\operatorname{rg}(A^*) = 3$: **incompatible**.
+
+**Si $m = -2$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 1 & 2 & -2 & -2 \\ 1 & 1 & 1 & -4 \\ 1 & 2 & -2 & -6 \end{array}\right)
+$$
+
+La primera y la tercera ecuación tienen los mismos coeficientes pero distinto término independiente ($-2$ y $-6$): no pueden cumplirse a la vez. Es **incompatible** ($\operatorname{rg}(A) = 2$ y $\operatorname{rg}(A^*) = 3$).
+
+**Respuesta.**
+
+- $m \neq 2$ y $m \neq -2$: **compatible determinado**.
+- $m = 2$ o $m = -2$: **incompatible**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $m = 1$ resuelve el sistema, si es posible. **(0,75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Es posible.** Con $m = 1$ es compatible determinado:
+
+$$
+\begin{cases}
+x - y - 2z = 1 \\
+x + y + z = 2 \\
+x + 2y + z = 3
+\end{cases}
+$$
+
+**Resolución.** Restando la segunda ecuación a la tercera, $y = 1$. Quedan $x - 2z = 2$ y $x + z = 1$; restándolas, $-3z = 1$, así que $z = -\frac{1}{3}$ y $x = 1 + \frac{1}{3} = \frac{4}{3}$.
+
+**Comprobación.** $\frac{4}{3} - 1 + \frac{2}{3} = 1$; $\frac{4}{3} + 1 - \frac{1}{3} = 2$; $\frac{4}{3} + 2 - \frac{1}{3} = 3$.
+
+**Respuesta.** **$x = \dfrac{4}{3}$, $y = 1$, $z = -\dfrac{1}{3}$**.
+
+</Solucion>
