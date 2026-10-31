@@ -13,26 +13,16 @@ import Base from "../layouts/Base.astro"
 const subjects = [
   {
     key: "01",
-    symbol: "english",
-    title: "Inglés",
+    symbol: "geometry",
+    title: "Matemáticas II",
     description:
-      "Todos los exámenes desde 2021, con cada respuesta del Reading y del Use of English explicada en español.",
-    detail: "Reading · Use of English · Writing",
-    className: "subject-card subject-card--english",
-    href: "/ingles/",
+      "Los exámenes desde 2025 resueltos paso a paso, con el planteamiento, los cálculos y las figuras.",
+    detail: "Álgebra · Geometría · Análisis · Probabilidad",
+    className: "subject-card subject-card--math-two",
+    href: "/matematicas-ii/",
   },
   {
     key: "02",
-    symbol: "french",
-    title: "Francés",
-    description:
-      "Todos los exámenes desde 2021, con cada respuesta de la compréhension y la compétence linguistique explicada.",
-    detail: "Compréhension · Compétence linguistique · Expression",
-    className: "subject-card subject-card--french",
-    href: "/frances/",
-  },
-  {
-    key: "03",
     symbol: "graph",
     title: "Matemáticas aplicadas",
     description:
@@ -42,14 +32,24 @@ const subjects = [
     href: "/matematicas-aplicadas/",
   },
   {
-    key: "04",
-    symbol: "geometry",
-    title: "Matemáticas II",
+    key: "03",
+    symbol: "english",
+    title: "Inglés",
     description:
-      "Los exámenes desde 2025 resueltos paso a paso, con el planteamiento, los cálculos y las figuras.",
-    detail: "Álgebra · Geometría · Análisis · Probabilidad",
-    className: "subject-card subject-card--math-two",
-    href: "/matematicas-ii/",
+      "Todos los exámenes desde 2021, con cada respuesta del Reading y del Use of English explicada en español.",
+    detail: "Reading · Use of English · Writing",
+    className: "subject-card subject-card--english",
+    href: "/ingles/",
+  },
+  {
+    key: "04",
+    symbol: "french",
+    title: "Francés",
+    description:
+      "Todos los exámenes desde 2021, con cada respuesta de la compréhension y la compétence linguistique explicada.",
+    detail: "Compréhension · Compétence linguistique · Expression",
+    className: "subject-card subject-card--french",
+    href: "/frances/",
   },
 ] as const
 
