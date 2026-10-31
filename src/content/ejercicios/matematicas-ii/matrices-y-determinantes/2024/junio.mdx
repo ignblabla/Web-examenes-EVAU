@@ -1,0 +1,75 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} 1 & 1/8 & 1/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula $A^{2024}$.
+
+</div>
+
+<Solucion>
+
+**Algunas potencias.** Calculamos las primeras para ver cómo cambian:
+
+$$
+A^2 = \begin{pmatrix} 1 & 1/8 & 1/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1/8 & 1/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 2/8 & 2/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+$$
+A^3 = A^2 A = \begin{pmatrix} 1 & 2/8 & 2/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 1/8 & 1/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 3/8 & 3/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+**Patrón.** Cada vez que multiplicamos por $A$, los dos elementos de la primera fila aumentan en $\frac{1}{8}$ y el resto no cambia:
+
+$$
+A^n = \begin{pmatrix} 1 & n/8 & n/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+Se comprueba por inducción: si vale para $n$, entonces $A^{n+1} = A^n A$ tiene en la primera fila $\left(1,\ \frac{1}{8} + \frac{n}{8},\ \frac{1}{8} + \frac{n}{8}\right)$, que es la fórmula para $n + 1$.
+
+**Respuesta.** Como $\dfrac{2024}{8} = 253$:
+
+$$
+A^{2024} = \begin{pmatrix} 1 & 253 & 253 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Halla la matriz $X$, si es posible, que verifica $A^2XA + I = O$, donde $I$ y $O$ son la matriz identidad y la matriz nula de orden $3$, respectivamente.
+
+</div>
+
+<Solucion>
+
+**$A$ es invertible.** Es triangular, así que su determinante es el producto de la diagonal: $|A| = 1 \neq 0$. Entonces también $A^2$ es invertible.
+
+**Despejamos $X$.** De $A^2XA = -I$, multiplicamos por $(A^2)^{-1}$ por la izquierda y por $A^{-1}$ por la derecha (el orden importa, porque el producto de matrices no es conmutativo):
+
+$$
+X = -(A^2)^{-1}A^{-1} = -A^{-2}A^{-1} = -A^{-3} = -(A^3)^{-1}
+$$
+
+**Inversa de $A^3$.** Por el patrón del apartado a), la inversa de $A^3$ es la matriz con $-\frac{3}{8}$ en lugar de $\frac{3}{8}$, porque al multiplicarlas se cancelan:
+
+$$
+\begin{pmatrix} 1 & 3/8 & 3/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -3/8 & -3/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & -3/8 + 3/8 & -3/8 + 3/8 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} = I
+$$
+
+**Comprobación.** $A^2XA = A^2\left(-A^{-3}\right)A = -A^{2 - 3 + 1} = -A^0 = -I$, así que $A^2XA + I = O$.
+
+**Respuesta.** Sí es posible, y la matriz es
+
+$$
+X = -(A^3)^{-1} = \begin{pmatrix} -1 & 3/8 & 3/8 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix}
+$$
+
+</Solucion>

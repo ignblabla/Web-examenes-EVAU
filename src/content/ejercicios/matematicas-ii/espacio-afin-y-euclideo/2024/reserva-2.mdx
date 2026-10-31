@@ -1,0 +1,123 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera los puntos $P(1, 0, 1)$ y $Q(3, -2, 1)$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula el plano perpendicular al segmento $PQ$ que pasa por su punto medio.
+
+</div>
+
+<Solucion>
+
+**Vector normal y punto medio.** El plano es perpendicular al segmento, así que su vector normal es $\overrightarrow{PQ}$, y pasa por el punto medio $M$:
+
+$$
+\overrightarrow{PQ} = (3 - 1,\ -2 - 0,\ 1 - 1) = (2,\ -2,\ 0), \qquad M = \left(\frac{1 + 3}{2},\ \frac{0 - 2}{2},\ \frac{1 + 1}{2}\right) = (2,\ -1,\ 1)
+$$
+
+**Ecuación.** Podemos usar el normal proporcional $(1, -1, 0)$. Por $M(2, -1, 1)$:
+
+$$
+(x - 2) - (y + 1) + 0\,(z - 1) = 0
+$$
+
+**Respuesta.** El plano es **$x - y - 3 = 0$**. (Es el plano mediador: sus puntos están a la misma distancia de $P$ y de $Q$.)
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula el plano paralelo a la recta $r \equiv 1 - x = \dfrac{y - 2}{3} = z + 1$ que pasa por $P$ y $Q$.
+
+</div>
+
+<Solucion>
+
+**Vector director de $r$.** Escribiendo $1 - x = \dfrac{x - 1}{-1}$, la recta es $\dfrac{x - 1}{-1} = \dfrac{y - 2}{3} = \dfrac{z + 1}{1}$: pasa por $(1, 2, -1)$ con vector director $\vec{d} = (-1, 3, 1)$.
+
+**Vectores directores del plano.** El plano contiene a $P$ y a $Q$, así que $\overrightarrow{PQ} = (2, -2, 0)$, o el proporcional $(1, -1, 0)$, es un vector director. Y es paralelo a $r$, así que $\vec{d} = (-1, 3, 1)$ es otro. No son proporcionales.
+
+**Vector normal.**
+
+$$
+\vec{n} = (1,\ -1,\ 0) \times (-1,\ 3,\ 1) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 0 \\ -1 & 3 & 1 \end{vmatrix} = (-1 - 0)\,\vec{i} - (1 - 0)\,\vec{j} + (3 - 1)\,\vec{k} = (-1,\ -1,\ 2)
+$$
+
+o el proporcional $(1, 1, -2)$.
+
+**Ecuación.** Por $P(1, 0, 1)$: $(x - 1) + y - 2(z - 1) = 0$, es decir, $x + y - 2z + 1 = 0$.
+
+**Comprobación.** $Q$ da $3 - 2 - 2 + 1 = 0$, y $(1, 1, -2) \cdot (-1, 3, 1) = 0$. Además, el punto $(1, 2, -1)$ de $r$ da $1 + 2 + 2 + 1 = 6 \neq 0$: la recta no está en el plano, es paralela a él.
+
+**Respuesta.** El plano es **$x + y - 2z + 1 = 0$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera los puntos $A(1, 1, 2)$, $B(1, 0, 1)$ y $C(1, -1, 2)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Determina el área del triángulo de vértices $A$, $B$ y $C$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El área del triángulo es la mitad del módulo del producto vectorial de dos lados que salen del mismo vértice:
+
+$$
+\overrightarrow{AB} = (0,\ -1,\ -1), \qquad \overrightarrow{AC} = (0,\ -2,\ 0)
+$$
+
+**Producto vectorial.**
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 0 & -1 & -1 \\ 0 & -2 & 0 \end{vmatrix} = (0 - 2)\,\vec{i} - (0 - 0)\,\vec{j} + (0 - 0)\,\vec{k} = (-2,\ 0,\ 0)
+$$
+
+No es el vector nulo, así que los puntos no están alineados y forman un triángulo.
+
+**Respuesta.**
+
+$$
+\text{Área} = \frac{1}{2}\left|\overrightarrow{AB} \times \overrightarrow{AC}\right| = \frac{1}{2} \cdot 2 = 1 \text{ unidad cuadrada}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula $D$ para que los puntos $A$, $B$, $C$ y $D$ sean los vértices consecutivos de un paralelogramo.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** En el paralelogramo $ABCD$, con los vértices en ese orden, los lados opuestos son vectores iguales: $\overrightarrow{AD} = \overrightarrow{BC}$. Así que $D = A + \overrightarrow{BC}$.
+
+**Cálculo.**
+
+$$
+\overrightarrow{BC} = (1 - 1,\ -1 - 0,\ 2 - 1) = (0,\ -1,\ 1)
+$$
+
+$$
+D = (1,\ 1,\ 2) + (0,\ -1,\ 1) = (1,\ 0,\ 3)
+$$
+
+**Comprobación.** Las diagonales de un paralelogramo se cortan en su punto medio: el de $AC$ es $(1, 0, 2)$ y el de $BD$, $\left(1, 0, \frac{1 + 3}{2}\right) = (1, 0, 2)$.
+
+**Respuesta.** **$D(1, 0, 3)$**.
+
+</Solucion>

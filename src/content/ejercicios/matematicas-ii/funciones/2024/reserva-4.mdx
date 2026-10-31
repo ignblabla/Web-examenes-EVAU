@@ -1,0 +1,70 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sea la función $f \colon (0, +\infty) \to \mathbb{R}$, definida por $f(x) = \ln\left(\dfrac{x^2 + 1}{x}\right)$, donde $\ln$ denota la función logaritmo neperiano.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula los intervalos de crecimiento y de decrecimiento.
+
+</div>
+
+<Solucion>
+
+**Derivada de $f$.** Por las propiedades del logaritmo, $f(x) = \ln(x^2 + 1) - \ln(x)$, así que
+
+$$
+f'(x) = \frac{2x}{x^2 + 1} - \frac{1}{x} = \frac{2x^2 - (x^2 + 1)}{x\,(x^2 + 1)} = \frac{x^2 - 1}{x\,(x^2 + 1)}
+$$
+
+**Dónde se anula.** $x^2 - 1 = 0$ da $x = \pm 1$, pero solo $x = 1$ está en el dominio $(0, +\infty)$.
+
+**Signo de la derivada.** En $(0, +\infty)$ el denominador $x\,(x^2 + 1)$ es positivo, así que el signo de $f'$ es el de $x^2 - 1$: negativo en $(0, 1)$ y positivo en $(1, +\infty)$.
+
+<div class="math-tabla">
+
+| | $(0, 1)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f'$ | $-$ | $+$ |
+| $f$ | decrece | crece |
+
+</div>
+
+**Respuesta.** $f$ **decrece en $(0, 1)$** y **crece en $(1, +\infty)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Estudia y halla los extremos relativos y absolutos de $f$ (abscisas donde se obtienen y valores que alcanzan).
+
+</div>
+
+<Solucion>
+
+**Mínimo relativo.** Por el apartado a), en $x = 1$ la función pasa de decrecer a crecer, así que hay un mínimo relativo:
+
+$$
+f(1) = \ln\left(\frac{1 + 1}{1}\right) = \ln 2 \approx 0{,}69
+$$
+
+No hay más extremos relativos, porque $x = 1$ es el único punto donde se anula la derivada.
+
+**Comportamiento en los extremos del dominio.**
+
+$$
+\lim_{x \to 0^+} \frac{x^2 + 1}{x} = +\infty, \qquad \lim_{x \to +\infty} \frac{x^2 + 1}{x} = +\infty
+$$
+
+así que $f(x) \to +\infty$ tanto cuando $x \to 0^+$ como cuando $x \to +\infty$.
+
+**Extremos absolutos.** $f$ decrece hasta $x = 1$ y crece después, así que en $x = 1$ toma su valor más pequeño: el mínimo relativo es también absoluto. Como $f$ no está acotada superiormente, no tiene máximo absoluto.
+
+**Respuesta.** $f$ tiene un **mínimo relativo y absoluto en $x = 1$, que vale $\ln 2$**. **No tiene máximos**, ni relativos ni absolutos.
+
+</Solucion>

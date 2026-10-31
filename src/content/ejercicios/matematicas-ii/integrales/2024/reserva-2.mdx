@@ -1,0 +1,92 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Halla la función $f \colon (2, +\infty) \to \mathbb{R}$ que pasa por el punto $(3, -4\ln 5)$ y verifica $f'(x) = \dfrac{3x^2 + 4x + 12}{x^2 - 4}$, donde $\ln$ denota la función logaritmo neperiano.
+
+<Solucion>
+
+**Planteamiento.** $f$ es una primitiva de $f'$, así que
+
+$$
+f(x) = \int \frac{3x^2 + 4x + 12}{x^2 - 4}\,dx
+$$
+
+Es la integral de una función racional, y fijaremos la constante con el punto $(3, -4\ln 5)$.
+
+**División.** Numerador y denominador tienen el mismo grado. Como $3x^2 + 4x + 12 = 3\,(x^2 - 4) + (4x + 24)$:
+
+$$
+\frac{3x^2 + 4x + 12}{x^2 - 4} = 3 + \frac{4x + 24}{x^2 - 4}
+$$
+
+**Fracciones simples.** Con $x^2 - 4 = (x - 2)(x + 2)$:
+
+$$
+\frac{4x + 24}{(x - 2)(x + 2)} = \frac{A}{x - 2} + \frac{B}{x + 2} \quad\Rightarrow\quad 4x + 24 = A\,(x + 2) + B\,(x - 2)
+$$
+
+- Con $x = 2$: $32 = 4A$, así que $A = 8$.
+- Con $x = -2$: $16 = -4B$, así que $B = -4$.
+
+**Primitivas.** En $(2, +\infty)$, $x - 2 > 0$ y $x + 2 > 0$, así que no hacen falta valores absolutos:
+
+$$
+f(x) = \int \left(3 + \frac{8}{x - 2} - \frac{4}{x + 2}\right)dx = 3x + 8\ln(x - 2) - 4\ln(x + 2) + C
+$$
+
+**Condición del punto.** Con $\ln 1 = 0$:
+
+$$
+f(3) = 9 + 8\ln 1 - 4\ln 5 + C = 9 - 4\ln 5 + C = -4\ln 5 \quad\Rightarrow\quad C = -9
+$$
+
+**Respuesta.**
+
+$$
+f(x) = 3x + 8\ln(x - 2) - 4\ln(x + 2) - 9
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Sea $f \colon \mathbb{R} \to \mathbb{R}$ la función definida por $f(x) = (x^2 - 3x + 5)e^x$. Halla una primitiva de $f$ cuya gráfica pase por el punto $(0, 5)$.
+
+<Solucion>
+
+**Primera integración por partes.** Con $u = x^2 - 3x + 5$ y $dv = e^x\,dx$, de modo que $du = (2x - 3)\,dx$ y $v = e^x$:
+
+$$
+\int (x^2 - 3x + 5)\,e^x\,dx = (x^2 - 3x + 5)\,e^x - \int (2x - 3)\,e^x\,dx
+$$
+
+**Segunda integración por partes.** Con $u = 2x - 3$ y $dv = e^x\,dx$, de modo que $du = 2\,dx$ y $v = e^x$:
+
+$$
+\int (2x - 3)\,e^x\,dx = (2x - 3)\,e^x - \int 2e^x\,dx = (2x - 3)\,e^x - 2e^x = (2x - 5)\,e^x
+$$
+
+**Todas las primitivas.**
+
+$$
+F(x) = (x^2 - 3x + 5)\,e^x - (2x - 5)\,e^x + C = (x^2 - 5x + 10)\,e^x + C
+$$
+
+**Condición del punto.** $F(0) = 10 + C = 5$, así que $C = -5$.
+
+**Comprobación.** $F'(x) = (2x - 5)\,e^x + (x^2 - 5x + 10)\,e^x = (x^2 - 3x + 5)\,e^x = f(x)$.
+
+**Respuesta.**
+
+$$
+F(x) = (x^2 - 5x + 10)\,e^x - 5
+$$
+
+</Solucion>

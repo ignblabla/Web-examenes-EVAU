@@ -1,0 +1,87 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Considera las matrices $A = \begin{pmatrix} 1 & -1 & 0 \\ 7 & 2 & 0 \\ 0 & 0 & 1 \end{pmatrix}$ y $B = \begin{pmatrix} 2 & 0 & 1 \\ 0 & 1 & 0 \\ 1/9 & 0 & 0 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula los determinantes de las matrices $\left((AB)^5\right)^{-1}$ y $27AB^6$.
+
+</div>
+
+<Solucion>
+
+**Determinantes de $A$ y $B$.** Desarrollando $|A|$ por la tercera columna y $|B|$ por la segunda fila:
+
+$$
+|A| = 1 \cdot \begin{vmatrix} 1 & -1 \\ 7 & 2 \end{vmatrix} = 2 + 7 = 9, \qquad |B| = 1 \cdot \begin{vmatrix} 2 & 1 \\ 1/9 & 0 \end{vmatrix} = 0 - \frac{1}{9} = -\frac{1}{9}
+$$
+
+**Propiedades que usamos.** $|MN| = |M|\,|N|$, $|M^n| = |M|^n$, $|M^{-1}| = \dfrac{1}{|M|}$ y, para una matriz de orden $3$, $|kM| = k^3\,|M|$.
+
+**Primer determinante.** $|AB| = 9 \cdot \left(-\frac{1}{9}\right) = -1$, así que
+
+$$
+\left|\left((AB)^5\right)^{-1}\right| = \frac{1}{|AB|^5} = \frac{1}{(-1)^5} = -1
+$$
+
+**Segundo determinante.**
+
+$$
+|27AB^6| = 27^3\,|A|\,|B|^6 = 3^9 \cdot 3^2 \cdot \left(\frac{1}{9}\right)^6 = \frac{3^{11}}{3^{12}} = \frac{1}{3}
+$$
+
+**Respuesta.** $\left|\left((AB)^5\right)^{-1}\right| = \mathbf{-1}$ y $|27AB^6| = \mathbf{\dfrac{1}{3}}$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla la matriz $X$, si es posible, que verifica que $AXB = 9I$, donde $I$ es la matriz identidad de orden $3$.
+
+</div>
+
+<Solucion>
+
+**Despejamos $X$.** $|A| = 9$ y $|B| = -\frac{1}{9}$ no son nulos, así que $A$ y $B$ tienen inversa. Multiplicando por $A^{-1}$ por la izquierda y por $B^{-1}$ por la derecha:
+
+$$
+AXB = 9I \quad\Rightarrow\quad X = A^{-1}\,(9I)\,B^{-1} = 9\,A^{-1}B^{-1}
+$$
+
+**Inversa de $A$.** Con la fórmula $A^{-1} = \dfrac{1}{|A|}\operatorname{Adj}(A)^t$. Como la tercera fila y la tercera columna de $A$ son las de la identidad, basta con invertir el bloque $\begin{pmatrix} 1 & -1 \\ 7 & 2 \end{pmatrix}$, cuya inversa es $\dfrac{1}{9}\begin{pmatrix} 2 & 1 \\ -7 & 1 \end{pmatrix}$:
+
+$$
+A^{-1} = \frac{1}{9}\begin{pmatrix} 2 & 1 & 0 \\ -7 & 1 & 0 \\ 0 & 0 & 9 \end{pmatrix}
+$$
+
+**Inversa de $B$.** Los adjuntos de $B$ son $B_{11} = 0$, $B_{12} = 0$, $B_{13} = -\frac{1}{9}$, $B_{21} = 0$, $B_{22} = -\frac{1}{9}$, $B_{23} = 0$, $B_{31} = -1$, $B_{32} = 0$ y $B_{33} = 2$:
+
+$$
+B^{-1} = \frac{1}{|B|}\operatorname{Adj}(B)^t = -9\begin{pmatrix} 0 & 0 & -1 \\ 0 & -1/9 & 0 \\ -1/9 & 0 & 2 \end{pmatrix} = \begin{pmatrix} 0 & 0 & 9 \\ 0 & 1 & 0 \\ 1 & 0 & -18 \end{pmatrix}
+$$
+
+**Cálculo de $X$.** El $9$ se simplifica con el $\frac{1}{9}$ de $A^{-1}$:
+
+$$
+X = \begin{pmatrix} 2 & 1 & 0 \\ -7 & 1 & 0 \\ 0 & 0 & 9 \end{pmatrix}\begin{pmatrix} 0 & 0 & 9 \\ 0 & 1 & 0 \\ 1 & 0 & -18 \end{pmatrix} = \begin{pmatrix} 0 & 1 & 18 \\ 0 & 1 & -63 \\ 9 & 0 & -162 \end{pmatrix}
+$$
+
+**Comprobación.**
+
+$$
+AX = \begin{pmatrix} 0 & 0 & 81 \\ 0 & 9 & 0 \\ 9 & 0 & -162 \end{pmatrix}, \qquad AXB = \begin{pmatrix} 0 & 0 & 81 \\ 0 & 9 & 0 \\ 9 & 0 & -162 \end{pmatrix}\begin{pmatrix} 2 & 0 & 1 \\ 0 & 1 & 0 \\ 1/9 & 0 & 0 \end{pmatrix} = \begin{pmatrix} 9 & 0 & 0 \\ 0 & 9 & 0 \\ 0 & 0 & 9 \end{pmatrix} = 9I
+$$
+
+**Respuesta.** Sí es posible, y la matriz es
+
+$$
+X = \begin{pmatrix} 0 & 1 & 18 \\ 0 & 1 & -63 \\ 9 & 0 & -162 \end{pmatrix}
+$$
+
+</Solucion>

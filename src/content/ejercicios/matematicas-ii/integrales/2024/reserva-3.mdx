@@ -1,0 +1,103 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función
+
+$$
+f(x) = \begin{cases} 1 - e^x & \text{si } x \leq 0 \\ x\cos(x) & \text{si } x > 0 \end{cases}
+$$
+
+Calcula $\displaystyle\int_{-\pi}^{\pi} f(x)\,dx$.
+
+<Solucion>
+
+**Suma de dos integrales.** $f$ cambia de expresión en $x = 0$, así que separamos el intervalo en ese punto:
+
+$$
+\int_{-\pi}^{\pi} f(x)\,dx = \int_{-\pi}^{0} (1 - e^x)\,dx + \int_{0}^{\pi} x\cos(x)\,dx
+$$
+
+(La función es continua: en $0$, los dos trozos valen $1 - 1 = 0$ y $0 \cdot \cos 0 = 0$.)
+
+**Primera integral.** Es inmediata:
+
+$$
+\int_{-\pi}^{0} (1 - e^x)\,dx = \left[x - e^x\right]_{-\pi}^{0} = (0 - 1) - \left(-\pi - e^{-\pi}\right) = \pi - 1 + e^{-\pi}
+$$
+
+**Segunda integral, por partes.** Con $u = x$ y $dv = \cos(x)\,dx$, de modo que $du = dx$ y $v = \operatorname{sen}(x)$:
+
+$$
+\int x\cos(x)\,dx = x\operatorname{sen}(x) - \int \operatorname{sen}(x)\,dx = x\operatorname{sen}(x) + \cos(x) + C
+$$
+
+$$
+\int_{0}^{\pi} x\cos(x)\,dx = \left[x\operatorname{sen}(x) + \cos(x)\right]_0^{\pi} = (0 - 1) - (0 + 1) = -2
+$$
+
+**Respuesta.**
+
+$$
+\int_{-\pi}^{\pi} f(x)\,dx = \pi - 1 + e^{-\pi} - 2 = \pi - 3 + e^{-\pi} \approx 0{,}18
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Calcula una primitiva de la función $f \colon (1, +\infty) \to \mathbb{R}$ definida por $f(x) = (x - 1)^2 \ln\dfrac{\sqrt{x - 1}}{2}$ cuya gráfica pase por el punto $(5, -7/2)$, donde $\ln$ denota la función logaritmo neperiano. (Sugerencia: efectúa el cambio de variable $x - 1 = t^2$).
+
+<Solucion>
+
+**Cambio de variable.** Con $x - 1 = t^2$ y $t > 0$, es decir, $t = \sqrt{x - 1}$, tenemos $dx = 2t\,dt$, $(x - 1)^2 = t^4$ y $\sqrt{x - 1} = t$:
+
+$$
+\int (x - 1)^2 \ln\frac{\sqrt{x - 1}}{2}\,dx = \int t^4 \ln\frac{t}{2} \cdot 2t\,dt = 2\int t^5 \ln\frac{t}{2}\,dt
+$$
+
+**Integración por partes.** Con $u = \ln\dfrac{t}{2}$ y $dv = t^5\,dt$, de modo que $du = \dfrac{1}{t}\,dt$ (porque $\ln\frac{t}{2} = \ln t - \ln 2$) y $v = \dfrac{t^6}{6}$:
+
+$$
+\int t^5 \ln\frac{t}{2}\,dt = \frac{t^6}{6}\ln\frac{t}{2} - \int \frac{t^6}{6} \cdot \frac{1}{t}\,dt = \frac{t^6}{6}\ln\frac{t}{2} - \frac{t^6}{36} + C
+$$
+
+Multiplicando por $2$:
+
+$$
+2\int t^5 \ln\frac{t}{2}\,dt = \frac{t^6}{3}\ln\frac{t}{2} - \frac{t^6}{18} + C
+$$
+
+**Deshacemos el cambio.** Con $t^6 = (x - 1)^3$ y $t = \sqrt{x - 1}$:
+
+$$
+F(x) = \frac{(x - 1)^3}{3}\ln\frac{\sqrt{x - 1}}{2} - \frac{(x - 1)^3}{18} + C
+$$
+
+**Condición del punto.** En $x = 5$, $(x - 1)^3 = 64$ y $\dfrac{\sqrt{4}}{2} = 1$, así que el logaritmo vale $0$:
+
+$$
+F(5) = 0 - \frac{64}{18} + C = -\frac{32}{9} + C = -\frac{7}{2} \quad\Rightarrow\quad C = \frac{32}{9} - \frac{7}{2} = \frac{64 - 63}{18} = \frac{1}{18}
+$$
+
+**Comprobación.** Con $\ln\frac{\sqrt{x - 1}}{2} = \frac{1}{2}\ln(x - 1) - \ln 2$, cuya derivada es $\frac{1}{2(x - 1)}$:
+
+$$
+F'(x) = (x - 1)^2\ln\frac{\sqrt{x - 1}}{2} + \frac{(x - 1)^3}{3} \cdot \frac{1}{2(x - 1)} - \frac{3(x - 1)^2}{18} = (x - 1)^2\ln\frac{\sqrt{x - 1}}{2}
+$$
+
+porque los dos últimos términos valen $\frac{(x - 1)^2}{6}$ y se cancelan.
+
+**Respuesta.**
+
+$$
+F(x) = \frac{(x - 1)^3}{3}\ln\frac{\sqrt{x - 1}}{2} - \frac{(x - 1)^3}{18} + \frac{1}{18}
+$$
+
+</Solucion>

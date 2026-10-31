@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+Sea la función $f \colon (0, +\infty) \to \mathbb{R}$ definida por $f(x) = \ln(x)$, donde $\ln$ denota la función logaritmo neperiano, y los puntos de su gráfica $A(1, 0)$ y $B(e, 1)$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina, si existen, los puntos de la gráfica de $f$ en los que la recta tangente a la gráfica es paralela a la recta que pasa por los puntos $A$ y $B$.
+
+</div>
+
+<Solucion>
+
+**Pendiente de la recta $AB$.**
+
+$$
+m_{AB} = \frac{1 - 0}{e - 1} = \frac{1}{e - 1}
+$$
+
+**Condición de paralelismo.** Dos rectas son paralelas si tienen la misma pendiente, y la pendiente de la tangente en el punto de abscisa $x$ es $f'(x) = \dfrac{1}{x}$:
+
+$$
+\frac{1}{x} = \frac{1}{e - 1} \quad\Rightarrow\quad x = e - 1
+$$
+
+Como $e - 1 \approx 1{,}72 > 0$, el punto está en el dominio de $f$, y es el único: $\dfrac{1}{x}$ toma cada valor positivo una sola vez.
+
+**Respuesta.** Hay un único punto, **$\left(e - 1,\ \ln(e - 1)\right) \approx (1{,}72;\ 0{,}54)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Determina la ecuación de la recta normal a la gráfica de $f$ en el punto $A$.
+
+</div>
+
+<Solucion>
+
+**Pendiente de la recta normal.** La normal es perpendicular a la tangente, así que su pendiente es $-\dfrac{1}{f'(1)}$. Como $f'(1) = \dfrac{1}{1} = 1$:
+
+$$
+m_n = -\frac{1}{1} = -1
+$$
+
+**Ecuación.** Pasa por $A(1, 0)$:
+
+$$
+y - 0 = -1\,(x - 1)
+$$
+
+**Respuesta.** La recta normal es **$y = -x + 1$**.
+
+</Solucion>

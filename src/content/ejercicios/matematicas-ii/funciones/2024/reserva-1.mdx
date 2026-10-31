@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Sea la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = (x^2 + 1)e^x$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula los intervalos de crecimiento y de decrecimiento de $f$.
+
+</div>
+
+<Solucion>
+
+**Derivada de $f$.** Por la regla del producto:
+
+$$
+f'(x) = 2x\,e^x + (x^2 + 1)\,e^x = (x^2 + 2x + 1)\,e^x = (x + 1)^2\,e^x
+$$
+
+**Dónde se anula.** Como $e^x > 0$ siempre, $f'(x) = 0$ solo si $(x + 1)^2 = 0$, es decir, en $x = -1$.
+
+**Signo de la derivada.** $(x + 1)^2 \geq 0$ y $e^x > 0$, así que $f'(x) > 0$ para todo $x \neq -1$. La derivada no cambia de signo en $x = -1$: ahí la tangente es horizontal, pero no hay máximo ni mínimo.
+
+<div class="math-tabla">
+
+| | $(-\infty, -1)$ | $(-1, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $+$ |
+| $f$ | crece | crece |
+
+</div>
+
+**Respuesta.** $f$ **es creciente en todo $\mathbb{R}$** (en $(-\infty, -1)$ y en $(-1, +\infty)$, y como es continua, también al pasar por $-1$). **No tiene intervalos de decrecimiento.**
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Determina los intervalos de concavidad y de convexidad de $f$ y los puntos de inflexión de su gráfica (abscisas donde se obtienen y valores que alcanzan).
+
+</div>
+
+<Solucion>
+
+**Segunda derivada.** Derivando $f'(x) = (x + 1)^2 e^x$ con la regla del producto:
+
+$$
+f''(x) = 2(x + 1)\,e^x + (x + 1)^2\,e^x = (x + 1)\left(2 + x + 1\right)e^x = (x + 1)(x + 3)\,e^x
+$$
+
+**Dónde se anula.** Como $e^x > 0$, $f''(x) = 0$ en $x = -3$ y en $x = -1$.
+
+**Signo de la segunda derivada.** Es el de $(x + 1)(x + 3)$, una parábola abierta hacia arriba con raíces $-3$ y $-1$: positiva fuera de $[-3, -1]$ y negativa dentro. Donde $f'' > 0$ la función es convexa ($\cup$), y donde $f'' < 0$, cóncava ($\cap$):
+
+<div class="math-tabla">
+
+| | $(-\infty, -3)$ | $(-3, -1)$ | $(-1, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f''$ | $+$ | $-$ | $+$ |
+| $f$ | convexa | cóncava | convexa |
+
+</div>
+
+**Puntos de inflexión.** La curvatura cambia en $x = -3$ y en $x = -1$, así que los dos son puntos de inflexión:
+
+$$
+f(-3) = (9 + 1)\,e^{-3} = \frac{10}{e^3} \approx 0{,}50, \qquad f(-1) = (1 + 1)\,e^{-1} = \frac{2}{e} \approx 0{,}74
+$$
+
+**Respuesta.** $f$ es **convexa en $(-\infty, -3) \cup (-1, +\infty)$** y **cóncava en $(-3, -1)$**. Los puntos de inflexión son **$\left(-3, \dfrac{10}{e^3}\right)$** y **$\left(-1, \dfrac{2}{e}\right)$**.
+
+</Solucion>

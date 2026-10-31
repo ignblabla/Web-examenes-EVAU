@@ -1,0 +1,112 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Sea $f \colon \mathbb{R} \to \mathbb{R}$ la función definida por
+
+$$
+f(x) = a + b\cos(x) + c\operatorname{sen}(x).
+$$
+
+Halla $a$, $b$ y $c$ sabiendo que su gráfica tiene en el punto de abscisa $x = \dfrac{\pi}{2}$ a la recta $y = 1$ como recta tangente, y que la recta $y = x - 1$ corta a la gráfica de $f$ en el punto de abscisa $x = 0$.
+
+<Solucion>
+
+**Derivada de $f$.**
+
+$$
+f'(x) = -b\operatorname{sen}(x) + c\cos(x)
+$$
+
+**Tres condiciones.** Con $\operatorname{sen}\left(\frac{\pi}{2}\right) = 1$ y $\cos\left(\frac{\pi}{2}\right) = 0$:
+
+- La tangente en $x = \frac{\pi}{2}$ es $y = 1$, que es horizontal, así que su pendiente es $0$: $f'\left(\frac{\pi}{2}\right) = -b \cdot 1 + c \cdot 0 = -b = 0$, es decir, $b = 0$.
+- Esa tangente toca la gráfica en $x = \frac{\pi}{2}$, así que el punto de tangencia es $\left(\frac{\pi}{2}, 1\right)$: $f\left(\frac{\pi}{2}\right) = a + b \cdot 0 + c \cdot 1 = a + c = 1$.
+- La recta $y = x - 1$ corta a la gráfica en $x = 0$, donde vale $0 - 1 = -1$. Así que $f(0) = -1$: $a + b\cos(0) + c\operatorname{sen}(0) = a + b = -1$.
+
+**Resolución.** Con $b = 0$, la tercera condición da $a = -1$ y la segunda, $c = 1 - a = 2$.
+
+**Comprobación.** $f(x) = -1 + 2\operatorname{sen}(x)$: $f\left(\frac{\pi}{2}\right) = -1 + 2 = 1$, $f'\left(\frac{\pi}{2}\right) = 2\cos\left(\frac{\pi}{2}\right) = 0$ y $f(0) = -1$.
+
+**Respuesta.** **$a = -1$, $b = 0$ y $c = 2$**, es decir, $f(x) = -1 + 2\operatorname{sen}(x)$.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Sea la función $f \colon \mathbb{R} \to \mathbb{R}$ dada por $f(x) = \left(x - \dfrac{1}{2}\right)e^{-x^2}$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina los intervalos de crecimiento y de decrecimiento de $f$.
+
+</div>
+
+<Solucion>
+
+**Derivada de $f$.** Por la regla del producto, y como la derivada de $e^{-x^2}$ es $-2x\,e^{-x^2}$:
+
+$$
+f'(x) = e^{-x^2} + \left(x - \frac{1}{2}\right)(-2x)\,e^{-x^2} = e^{-x^2}\left(1 - 2x^2 + x\right) = e^{-x^2}\left(-2x^2 + x + 1\right)
+$$
+
+**Puntos críticos.** Como $e^{-x^2} > 0$ siempre, $f'(x) = 0$ solo cuando $-2x^2 + x + 1 = 0$, es decir, $2x^2 - x - 1 = 0$:
+
+$$
+x = \frac{1 \pm \sqrt{1 + 8}}{4} = \frac{1 \pm 3}{4} \quad\Rightarrow\quad x = 1, \quad x = -\frac{1}{2}
+$$
+
+**Signo de la derivada.** El signo de $f'$ es el de $-2x^2 + x + 1 = -(2x + 1)(x - 1)$, una parábola abierta hacia abajo: es positiva entre las raíces y negativa fuera.
+
+<div class="math-tabla">
+
+| | $\left(-\infty, -\frac{1}{2}\right)$ | $\left(-\frac{1}{2}, 1\right)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $-$ | $+$ | $-$ |
+| $f$ | decrece | crece | decrece |
+
+</div>
+
+**Respuesta.** $f$ **crece en $\left(-\frac{1}{2}, 1\right)$** y **decrece en $\left(-\infty, -\frac{1}{2}\right) \cup (1, +\infty)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Halla los extremos absolutos de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Extremos relativos.** Por la tabla del apartado a), en $x = -\frac{1}{2}$ la función pasa de decrecer a crecer, así que hay un **mínimo relativo**, y en $x = 1$ pasa de crecer a decrecer, así que hay un **máximo relativo**. Sus valores son
+
+$$
+f\left(-\frac{1}{2}\right) = (-1)\,e^{-1/4} = -\frac{1}{\sqrt[4]{e}} \approx -0{,}78, \qquad f(1) = \frac{1}{2}\,e^{-1} = \frac{1}{2e} \approx 0{,}18
+$$
+
+**Comportamiento en el infinito.** La exponencial $e^{-x^2}$ tiende a $0$ mucho más deprisa de lo que crece $x - \frac{1}{2}$:
+
+$$
+\lim_{x \to \pm\infty} \left(x - \frac{1}{2}\right)e^{-x^2} = \lim_{x \to \pm\infty} \frac{x - \frac{1}{2}}{e^{x^2}} = 0
+$$
+
+(por L'Hôpital, $\dfrac{1}{2x\,e^{x^2}} \to 0$).
+
+**¿Son absolutos?** Juntando todo:
+
+- En $\left(-\infty, -\frac{1}{2}\right)$, $f$ decrece desde valores cercanos a $0$ hasta $-\frac{1}{\sqrt[4]{e}}$.
+- En $\left(-\frac{1}{2}, 1\right)$, crece de $-\frac{1}{\sqrt[4]{e}}$ a $\frac{1}{2e}$.
+- En $(1, +\infty)$, decrece de $\frac{1}{2e}$ hacia $0$ sin llegar a él.
+
+Así que $f$ nunca baja de $-\frac{1}{\sqrt[4]{e}}$ ni sube de $\frac{1}{2e}$, y los extremos relativos son también absolutos.
+
+**Respuesta.** El **máximo absoluto** se alcanza en **$x = 1$** y vale **$\dfrac{1}{2e} \approx 0{,}18$**. El **mínimo absoluto** se alcanza en **$x = -\dfrac{1}{2}$** y vale **$-e^{-1/4} \approx -0{,}78$**.
+
+</Solucion>

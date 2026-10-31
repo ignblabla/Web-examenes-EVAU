@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} 1 & 0 & 1 \\ 2 & 0 & a \\ 5 & 3a - 1 & 0 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula el rango de $A$ según los valores de $a$.
+
+</div>
+
+<Solucion>
+
+**Determinante de $A$.** Desarrollando por la segunda columna, que solo tiene un elemento no nulo, el de la posición $(3, 2)$, con signo $(-1)^{3+2} = -1$:
+
+$$
+|A| = -(3a - 1)\begin{vmatrix} 1 & 1 \\ 2 & a \end{vmatrix} = -(3a - 1)(a - 2)
+$$
+
+**Valores que anulan el determinante.** $|A| = 0$ para $a = \dfrac{1}{3}$ y para $a = 2$.
+
+**Si $a \neq \frac{1}{3}$ y $a \neq 2$.** $|A| \neq 0$, así que $\operatorname{rg}(A) = 3$.
+
+**Si $a = \frac{1}{3}$.**
+
+$$
+A = \begin{pmatrix} 1 & 0 & 1 \\ 2 & 0 & 1/3 \\ 5 & 0 & 0 \end{pmatrix}
+$$
+
+$|A| = 0$ y el menor $\begin{vmatrix} 1 & 1 \\ 2 & 1/3 \end{vmatrix} = \frac{1}{3} - 2 = -\frac{5}{3} \neq 0$, así que $\operatorname{rg}(A) = 2$.
+
+**Si $a = 2$.**
+
+$$
+A = \begin{pmatrix} 1 & 0 & 1 \\ 2 & 0 & 2 \\ 5 & 5 & 0 \end{pmatrix}
+$$
+
+$|A| = 0$ y el menor $\begin{vmatrix} 1 & 0 \\ 5 & 5 \end{vmatrix} = 5 \neq 0$, así que $\operatorname{rg}(A) = 2$.
+
+**Respuesta.**
+
+- $a \neq \frac{1}{3}$ y $a \neq 2$: **$\operatorname{rg}(A) = 3$**.
+- $a = \frac{1}{3}$ o $a = 2$: **$\operatorname{rg}(A) = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si $B = \begin{pmatrix} 1 \\ 2 \\ 4 \end{pmatrix}$, $X = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$ y $a = 2$ resuelve, si es posible, el sistema $AX = B$.
+
+</div>
+
+<Solucion>
+
+**El sistema.** Con $a = 2$:
+
+$$
+\begin{cases}
+x + z = 1 \\
+2x + 2z = 2 \\
+5x + 5y = 4
+\end{cases}
+$$
+
+**El sistema es compatible indeterminado.** Por el apartado a), $\operatorname{rg}(A) = 2$. En la ampliada, la segunda fila $(2, 0, 2 \mid 2)$ es el doble de la primera $(1, 0, 1 \mid 1)$, también en el término independiente, así que $\operatorname{rg}(A^*) = 2$. Por el teorema de Rouché-Frobenius, $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 2 < 3$: tiene infinitas soluciones, con un parámetro.
+
+**Resolución.** Quitando la segunda ecuación, que es la primera multiplicada por $2$, y tomando $z = \lambda$:
+
+- De la primera, $x = 1 - \lambda$.
+- De la tercera, $5y = 4 - 5x = 4 - 5 + 5\lambda$, así que $y = \lambda - \dfrac{1}{5}$.
+
+**Comprobación.** $5(1 - \lambda) + 5\left(\lambda - \frac{1}{5}\right) = 5 - 1 = 4$.
+
+**Respuesta.** El sistema es compatible indeterminado y sus soluciones son
+
+$$
+(x,\ y,\ z) = \left(1 - \lambda,\ \lambda - \frac{1}{5},\ \lambda\right), \qquad \lambda \in \mathbb{R}
+$$
+
+</Solucion>

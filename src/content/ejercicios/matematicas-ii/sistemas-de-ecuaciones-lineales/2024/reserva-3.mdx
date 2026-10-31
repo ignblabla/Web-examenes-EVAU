@@ -1,0 +1,90 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera el sistema
+
+$$
+\begin{pmatrix} 5 & -2 & -3 \\ 2 & 0 & -2 \\ 3 & -2 & -1 \end{pmatrix}\begin{pmatrix} x \\ y \\ z \end{pmatrix} = m\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+$$
+
+<div class="math-sub">
+
+a) **[1,75 puntos]** Determina los valores de $m$ para los que el sistema es compatible indeterminado.
+
+</div>
+
+<Solucion>
+
+**El sistema es homogéneo.** Pasando $mX$ al primer miembro, $(M - mI)X = O$, donde $M$ es la matriz del enunciado:
+
+$$
+\begin{cases}
+(5 - m)x - 2y - 3z = 0 \\
+2x - my - 2z = 0 \\
+3x - 2y + (-1 - m)z = 0
+\end{cases}
+$$
+
+Un sistema homogéneo siempre es compatible, porque $(0, 0, 0)$ es solución. Es compatible indeterminado cuando el rango de la matriz de coeficientes es menor que $3$, es decir, cuando su determinante es $0$.
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+\begin{vmatrix} 5 - m & -2 & -3 \\ 2 & -m & -2 \\ 3 & -2 & -1 - m \end{vmatrix} = (5 - m)\left(m^2 + m - 4\right) + 2\,(4 - 2m) - 3\,(3m - 4)
+$$
+
+$$
+= -m^3 + 4m^2 + 9m - 20 + 8 - 4m - 9m + 12 = -m^3 + 4m^2 - 4m = -m\,(m - 2)^2
+$$
+
+**Puntos críticos.** El determinante se anula para $m = 0$ y para $m = 2$.
+
+**Respuesta.**
+
+- Si **$m = 0$ o $m = 2$**, el rango es menor que $3$ y el sistema es **compatible indeterminado**.
+- Para cualquier otro valor de $m$, es compatible determinado y su única solución es $(0, 0, 0)$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,75 puntos]** Para $m = 2$ resuelve el sistema, si es posible.
+
+</div>
+
+<Solucion>
+
+**El sistema.** Con $m = 2$:
+
+$$
+\begin{cases}
+3x - 2y - 3z = 0 \\
+2x - 2y - 2z = 0 \\
+3x - 2y - 3z = 0
+\end{cases}
+$$
+
+La primera y la tercera ecuación son iguales, y el menor $\begin{vmatrix} 3 & -2 \\ 2 & -2 \end{vmatrix} = -2 \neq 0$ confirma que el rango es $2$: hay un parámetro.
+
+**Resolución.** Dividiendo la segunda ecuación entre $2$, $x - y - z = 0$, así que $y = x - z$. Sustituyendo en la primera:
+
+$$
+3x - 2(x - z) - 3z = x - z = 0 \quad\Rightarrow\quad x = z
+$$
+
+y entonces $y = 0$. Tomando $z = \lambda$, las soluciones son $(\lambda, 0, \lambda)$.
+
+**Comprobación.** Con $(1, 0, 1)$: $\begin{pmatrix} 5 - 3 \\ 2 - 2 \\ 3 - 1 \end{pmatrix} = \begin{pmatrix} 2 \\ 0 \\ 2 \end{pmatrix} = 2\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$.
+
+**Respuesta.** Las soluciones son
+
+$$
+(x,\ y,\ z) = (\lambda,\ 0,\ \lambda), \qquad \lambda \in \mathbb{R}
+$$
+
+</Solucion>

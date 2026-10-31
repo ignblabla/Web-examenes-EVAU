@@ -1,0 +1,91 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f$ definida por $f(x) = \dfrac{x^3 + 2}{x^2 - 1}$, para $x \neq -1$, $x \neq 1$. Calcula una primitiva de $f$ cuya gráfica pase por el punto $(0, 1)$.
+
+<Solucion>
+
+**División.** El grado del numerador es mayor que el del denominador, así que primero dividimos: $x^3 + 2 = x\,(x^2 - 1) + (x + 2)$. Por tanto,
+
+$$
+\frac{x^3 + 2}{x^2 - 1} = x + \frac{x + 2}{x^2 - 1}
+$$
+
+**Descomposición en fracciones simples.** Como $x^2 - 1 = (x - 1)(x + 1)$:
+
+$$
+\frac{x + 2}{(x - 1)(x + 1)} = \frac{A}{x - 1} + \frac{B}{x + 1} \quad\Rightarrow\quad x + 2 = A\,(x + 1) + B\,(x - 1)
+$$
+
+- Con $x = 1$: $3 = 2A$, así que $A = \dfrac{3}{2}$.
+- Con $x = -1$: $1 = -2B$, así que $B = -\dfrac{1}{2}$.
+
+**Todas las primitivas.**
+
+$$
+\int f(x)\,dx = \int x\,dx + \frac{3}{2}\int \frac{dx}{x - 1} - \frac{1}{2}\int \frac{dx}{x + 1} = \frac{x^2}{2} + \frac{3}{2}\ln|x - 1| - \frac{1}{2}\ln|x + 1| + C
+$$
+
+**Condición del punto.** La primitiva pasa por $(0, 1)$, y $\ln|-1| = \ln 1 = 0$:
+
+$$
+F(0) = 0 + \frac{3}{2}\ln 1 - \frac{1}{2}\ln 1 + C = C = 1
+$$
+
+**Comprobación.** $F'(x) = x + \dfrac{3}{2(x - 1)} - \dfrac{1}{2(x + 1)} = x + \dfrac{3(x + 1) - (x - 1)}{2(x^2 - 1)} = x + \dfrac{x + 2}{x^2 - 1} = f(x)$.
+
+**Respuesta.**
+
+$$
+F(x) = \frac{x^2}{2} + \frac{3}{2}\ln|x - 1| - \frac{1}{2}\ln|x + 1| + 1
+$$
+
+(El punto $(0, 1)$ está en el intervalo $(-1, 1)$, que es donde esta primitiva queda fijada.)
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Halla la función $f \colon \mathbb{R} \to \mathbb{R}$ tal que $f''(x) = x\cos(x)$ y cuya gráfica pasa por los puntos $\left(0, \dfrac{\pi}{2}\right)$ y $(\pi, 2\pi)$.
+
+<Solucion>
+
+**Cálculo de $f'(x)$.** Integramos $f''$ por partes, con $u = x$ y $dv = \cos(x)\,dx$, de modo que $du = dx$ y $v = \operatorname{sen}(x)$:
+
+$$
+f'(x) = \int x\cos(x)\,dx = x\operatorname{sen}(x) - \int \operatorname{sen}(x)\,dx = x\operatorname{sen}(x) + \cos(x) + C_1
+$$
+
+**Cálculo de $f(x)$.** Integramos otra vez. Para $\int x\operatorname{sen}(x)\,dx$, por partes con $u = x$ y $dv = \operatorname{sen}(x)\,dx$, de modo que $v = -\cos(x)$:
+
+$$
+\int x\operatorname{sen}(x)\,dx = -x\cos(x) + \int \cos(x)\,dx = -x\cos(x) + \operatorname{sen}(x)
+$$
+
+Sumando el resto de términos:
+
+$$
+f(x) = -x\cos(x) + \operatorname{sen}(x) + \operatorname{sen}(x) + C_1 x + C_2 = -x\cos(x) + 2\operatorname{sen}(x) + C_1 x + C_2
+$$
+
+**Condiciones de los puntos.**
+
+- Pasa por $\left(0, \frac{\pi}{2}\right)$: $f(0) = 0 + 0 + 0 + C_2 = \dfrac{\pi}{2}$, así que $C_2 = \dfrac{\pi}{2}$.
+- Pasa por $(\pi, 2\pi)$, con $\cos(\pi) = -1$ y $\operatorname{sen}(\pi) = 0$: $f(\pi) = \pi + 0 + C_1\pi + \dfrac{\pi}{2} = 2\pi$, así que $C_1\pi = \dfrac{\pi}{2}$ y $C_1 = \dfrac{1}{2}$.
+
+**Comprobación.** $f'(x) = -\cos(x) + x\operatorname{sen}(x) + 2\cos(x) + \frac{1}{2} = x\operatorname{sen}(x) + \cos(x) + \frac{1}{2}$, y $f''(x) = \operatorname{sen}(x) + x\cos(x) - \operatorname{sen}(x) = x\cos(x)$.
+
+**Respuesta.**
+
+$$
+f(x) = -x\cos(x) + 2\operatorname{sen}(x) + \frac{x}{2} + \frac{\pi}{2}
+$$
+
+</Solucion>

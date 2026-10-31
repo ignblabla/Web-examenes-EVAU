@@ -1,0 +1,119 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera el plano $\pi \equiv x - y = 0$ y la recta $r \equiv \dfrac{x - 1}{2} = \dfrac{y}{3} = z - 2$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula, si es posible, el plano perpendicular a $\pi$ que contiene a $r$.
+
+</div>
+
+<Solucion>
+
+**Datos.** La recta pasa por $R(1, 0, 2)$ con vector director $\vec{d} = (2, 3, 1)$. El plano $\pi$ tiene vector normal $\vec{n} = (1, -1, 0)$.
+
+**Planteamiento.** El plano buscado contiene a $r$, así que tiene $\vec{d}$ como vector director. Y es perpendicular a $\pi$, así que contiene la dirección perpendicular a $\pi$: $\vec{n}$ es otro vector director. Es posible porque $\vec{d}$ y $\vec{n}$ no son proporcionales (si lo fueran, $r$ sería perpendicular a $\pi$ y habría infinitos planos).
+
+**Vector normal.**
+
+$$
+\vec{d} \times \vec{n} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & 3 & 1 \\ 1 & -1 & 0 \end{vmatrix} = (0 + 1)\,\vec{i} - (0 - 1)\,\vec{j} + (-2 - 3)\,\vec{k} = (1,\ 1,\ -5)
+$$
+
+**Ecuación.** Por $R(1, 0, 2)$: $(x - 1) + y - 5(z - 2) = 0$.
+
+**Comprobación.** $(1, 1, -5) \cdot (2, 3, 1) = 0$, así que contiene la dirección de $r$, y $(1, 1, -5) \cdot (1, -1, 0) = 0$, así que es perpendicular a $\pi$.
+
+**Respuesta.** El plano es **$x + y - 5z + 9 = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Calcula, si es posible, la recta perpendicular a $r$, contenida en $\pi$ y que pasa por el origen.
+
+</div>
+
+<Solucion>
+
+**Es posible.** El origen está en $\pi$, porque $0 - 0 = 0$.
+
+**Vector director.** La recta está contenida en $\pi$, así que su vector director es perpendicular a $\vec{n}$. Y es perpendicular a $r$, así que también es perpendicular a $\vec{d}$. Es, por tanto, el producto vectorial de los dos, que ya calculamos en el apartado a):
+
+$$
+\vec{v} = \vec{d} \times \vec{n} = (1,\ 1,\ -5)
+$$
+
+**Respuesta.** La recta pasa por $O(0, 0, 0)$ con dirección $(1, 1, -5)$:
+
+$$
+s \equiv \frac{x}{1} = \frac{y}{1} = \frac{z}{-5}
+$$
+
+Comprobación: todos sus puntos $(\lambda, \lambda, -5\lambda)$ cumplen $x - y = 0$.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera los puntos $O(0, 0, 0)$, $A(a, -1, 2)$ y $B(a, 1, 0)$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina $a$ para que el triángulo $OAB$ tenga área $3$ unidades cuadradas.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El área del triángulo es la mitad del módulo del producto vectorial de $\overrightarrow{OA} = (a, -1, 2)$ y $\overrightarrow{OB} = (a, 1, 0)$.
+
+**Producto vectorial.**
+
+$$
+\overrightarrow{OA} \times \overrightarrow{OB} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ a & -1 & 2 \\ a & 1 & 0 \end{vmatrix} = (0 - 2)\,\vec{i} - (0 - 2a)\,\vec{j} + (a + a)\,\vec{k} = (-2,\ 2a,\ 2a)
+$$
+
+**Condición.**
+
+$$
+\text{Área} = \frac{1}{2}\sqrt{4 + 4a^2 + 4a^2} = \frac{1}{2} \cdot 2\sqrt{1 + 2a^2} = \sqrt{1 + 2a^2} = 3
+$$
+
+$$
+1 + 2a^2 = 9 \quad\Rightarrow\quad a^2 = 4 \quad\Rightarrow\quad a = \pm 2
+$$
+
+**Respuesta.** El área es $3$ para **$a = 2$ y para $a = -2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula $a$ para que $O$, $A$ y $B$ sean coplanarios con el punto $C(1, 1, 0)$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Los cuatro puntos son coplanarios si los vectores $\overrightarrow{OA}$, $\overrightarrow{OB}$ y $\overrightarrow{OC}$ están en un mismo plano, es decir, si tienen rango $2$. Como $\overrightarrow{OA}$ y $\overrightarrow{OB}$ no son proporcionales (la tercera coordenada de $\overrightarrow{OB}$ es $0$ y la de $\overrightarrow{OA}$ no), el rango es al menos $2$, y es $2$ cuando el determinante de los tres vale $0$.
+
+**Determinante.** Con $\overrightarrow{OC} = (1, 1, 0)$, desarrollando por la tercera columna:
+
+$$
+\begin{vmatrix} a & -1 & 2 \\ a & 1 & 0 \\ 1 & 1 & 0 \end{vmatrix} = 2\begin{vmatrix} a & 1 \\ 1 & 1 \end{vmatrix} = 2\,(a - 1)
+$$
+
+**Condición.** $2(a - 1) = 0$ para $a = 1$.
+
+**Respuesta.** Los cuatro puntos son coplanarios para **$a = 1$**. Entonces $B(1, 1, 0)$ coincide con $C$, así que en realidad solo hay tres puntos distintos, que siempre están en un plano.
+
+</Solucion>

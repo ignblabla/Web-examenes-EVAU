@@ -1,0 +1,126 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+import RecintoCubicaReserva1de2024 from "../../../../../components/figuras/RecintoCubicaReserva1de2024.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = x^3 - 6x^2 + 8x$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula los puntos de corte de la gráfica de $f$ con los ejes de coordenadas y esboza dicha gráfica.
+
+</div>
+
+<Solucion>
+
+**Corte con el eje $Y$.** $f(0) = 0$: el punto $(0, 0)$.
+
+**Cortes con el eje $X$.** Sacando factor común $x$ y resolviendo la ecuación de segundo grado:
+
+$$
+x^3 - 6x^2 + 8x = x\,(x^2 - 6x + 8) = x\,(x - 2)(x - 4) = 0 \quad\Rightarrow\quad x = 0, \quad x = 2, \quad x = 4
+$$
+
+Los puntos de corte son **$(0, 0)$, $(2, 0)$ y $(4, 0)$**.
+
+**Esbozo.** Para dibujarla, buscamos también sus extremos relativos: $f'(x) = 3x^2 - 12x + 8 = 0$ da $x = 2 \pm \dfrac{2\sqrt{3}}{3}$, es decir, $x \approx 0{,}85$ (máximo, con $f \approx 3{,}08$) y $x \approx 3{,}15$ (mínimo, con $f \approx -3{,}08$). Es una cúbica con coeficiente principal positivo: viene de $-\infty$, sube hasta el máximo, baja cortando el eje en $x = 2$ hasta el mínimo y vuelve a subir.
+
+<RecintoCubicaReserva1de2024 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula la suma de las áreas de los recintos acotados y limitados por la gráfica de $f$ y el eje de abscisas.
+
+</div>
+
+<Solucion>
+
+**Recintos.** Hay dos: entre $x = 0$ y $x = 2$, donde $f \geq 0$ (por ejemplo, $f(1) = 3$), y entre $x = 2$ y $x = 4$, donde $f \leq 0$ (por ejemplo, $f(3) = -3$). En el segundo, el área es la integral de $-f$.
+
+**Área como integral definida.**
+
+$$
+A = \int_0^2 \left(x^3 - 6x^2 + 8x\right)dx + \left|\int_2^4 \left(x^3 - 6x^2 + 8x\right)dx\right|
+$$
+
+**Primitiva.**
+
+$$
+F(x) = \frac{x^4}{4} - 2x^3 + 4x^2
+$$
+
+con $F(0) = 0$, $F(2) = 4 - 16 + 16 = 4$ y $F(4) = 64 - 128 + 64 = 0$.
+
+**Regla de Barrow, dos veces.**
+
+$$
+\int_0^2 f(x)\,dx = F(2) - F(0) = 4, \qquad \int_2^4 f(x)\,dx = F(4) - F(2) = -4
+$$
+
+La segunda es negativa porque ese recinto está por debajo del eje: su área es $4$. (Los dos recintos son iguales porque la gráfica es simétrica respecto del punto $(2, 0)$.)
+
+**Respuesta.**
+
+$$
+A = 4 + 4 = 8 \text{ unidades cuadradas}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Calcula $\displaystyle\int \frac{e^{3x} - 1}{e^x - 3}\,dx$. (Sugerencia: efectúa el cambio de variable $t = e^x$).
+
+<Solucion>
+
+**Cambio de variable.** Con $t = e^x$, $dt = e^x\,dx = t\,dx$, así que $dx = \dfrac{dt}{t}$, y $e^{3x} = t^3$:
+
+$$
+\int \frac{e^{3x} - 1}{e^x - 3}\,dx = \int \frac{t^3 - 1}{t - 3} \cdot \frac{dt}{t} = \int \frac{t^3 - 1}{t^2 - 3t}\,dt
+$$
+
+**División.** El numerador tiene mayor grado que el denominador. Dividiendo, $t^3 - 1 = (t + 3)(t^2 - 3t) + (9t - 1)$:
+
+$$
+\frac{t^3 - 1}{t^2 - 3t} = t + 3 + \frac{9t - 1}{t\,(t - 3)}
+$$
+
+**Fracciones simples.**
+
+$$
+\frac{9t - 1}{t\,(t - 3)} = \frac{A}{t} + \frac{B}{t - 3} \quad\Rightarrow\quad 9t - 1 = A\,(t - 3) + B\,t
+$$
+
+- Con $t = 0$: $-1 = -3A$, así que $A = \dfrac{1}{3}$.
+- Con $t = 3$: $26 = 3B$, así que $B = \dfrac{26}{3}$.
+
+**Integral en $t$.**
+
+$$
+\int \left(t + 3 + \frac{1/3}{t} + \frac{26/3}{t - 3}\right)dt = \frac{t^2}{2} + 3t + \frac{1}{3}\ln|t| + \frac{26}{3}\ln|t - 3| + C
+$$
+
+**Deshacemos el cambio.** Con $t = e^x$, $t^2 = e^{2x}$ y $\ln|t| = \ln(e^x) = x$:
+
+$$
+\int \frac{e^{3x} - 1}{e^x - 3}\,dx = \frac{e^{2x}}{2} + 3e^x + \frac{x}{3} + \frac{26}{3}\ln\left|e^x - 3\right| + C
+$$
+
+**Comprobación.** Derivando, con $t = e^x$: $t^2 + 3t + \dfrac{1}{3} + \dfrac{26}{3} \cdot \dfrac{t}{t - 3} = \dfrac{3(t^2 + 3t)(t - 3) + (t - 3) + 26t}{3(t - 3)} = \dfrac{3t^3 - 27t + 27t - 3}{3(t - 3)} = \dfrac{t^3 - 1}{t - 3}$, que es el integrando.
+
+**Respuesta.**
+
+$$
+\int \frac{e^{3x} - 1}{e^x - 3}\,dx = \frac{e^{2x}}{2} + 3e^x + \frac{x}{3} + \frac{26}{3}\ln\left|e^x - 3\right| + C
+$$
+
+</Solucion>

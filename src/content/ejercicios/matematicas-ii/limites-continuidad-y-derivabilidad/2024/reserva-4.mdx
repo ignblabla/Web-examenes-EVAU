@@ -1,0 +1,45 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Calcula $a$ y $b$ sabiendo que
+
+$$
+\lim_{x \to 0} \frac{a\left(\ln(1 + x) - x\right) + b\,(e^x - 1) + 1 - \cos(x)}{\operatorname{sen}^2(x)} = 5
+$$
+
+donde $\ln$ denota la función logaritmo neperiano.
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $a\,(\ln 1 - 0) + b\,(1 - 1) + 1 - 1 = 0$ y el denominador, $\operatorname{sen}^2(0) = 0$. Es una indeterminación $\dfrac{0}{0}$ para cualquier $a$ y $b$, así que aplicamos la regla de L'Hôpital.
+
+**Primera aplicación de L'Hôpital.** La derivada del denominador es $2\operatorname{sen}(x)\cos(x) = \operatorname{sen}(2x)$:
+
+$$
+\lim_{x \to 0} \frac{a\left(\dfrac{1}{1 + x} - 1\right) + b\,e^x + \operatorname{sen}(x)}{\operatorname{sen}(2x)}
+$$
+
+En $x = 0$, el denominador vale $0$ y el numerador, $a\,(1 - 1) + b + 0 = b$.
+
+**Valor de $b$.** Si $b \neq 0$, el cociente tiende a un número distinto de $0$ dividido entre $0$, y el límite sería infinito, no $5$. Así que **$b = 0$**, y entonces vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Con $b = 0$, derivamos otra vez. La derivada de $\dfrac{1}{1 + x}$ es $-\dfrac{1}{(1 + x)^2}$ y la de $\operatorname{sen}(2x)$, $2\cos(2x)$:
+
+$$
+\lim_{x \to 0} \frac{-\dfrac{a}{(1 + x)^2} + \cos(x)}{2\cos(2x)} = \frac{-a + 1}{2}
+$$
+
+**Valor de $a$.**
+
+$$
+\frac{1 - a}{2} = 5 \quad\Rightarrow\quad 1 - a = 10 \quad\Rightarrow\quad a = -9
+$$
+
+**Respuesta.** **$a = -9$ y $b = 0$**.
+
+</Solucion>

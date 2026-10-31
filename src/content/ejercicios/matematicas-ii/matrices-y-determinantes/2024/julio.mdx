@@ -1,0 +1,82 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla todas las matrices $X$ que cumplen $XA = -AX^t$ y $X^2 = I$, donde $I$ es la matriz identidad de orden $2$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Escribimos $X = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, de modo que $X^t = \begin{pmatrix} a & c \\ b & d \end{pmatrix}$.
+
+**Primera condición: $XA = -AX^t$.**
+
+$$
+XA = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} -a & b \\ -c & d \end{pmatrix}
+$$
+
+$$
+-AX^t = -\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & c \\ b & d \end{pmatrix} = -\begin{pmatrix} -a & -c \\ b & d \end{pmatrix} = \begin{pmatrix} a & c \\ -b & -d \end{pmatrix}
+$$
+
+Igualando elemento a elemento: $-a = a$, así que $a = 0$; $b = c$; $-c = -b$, que es la misma condición; y $d = -d$, así que $d = 0$. Por tanto,
+
+$$
+X = \begin{pmatrix} 0 & b \\ b & 0 \end{pmatrix}
+$$
+
+**Segunda condición: $X^2 = I$.**
+
+$$
+X^2 = \begin{pmatrix} 0 & b \\ b & 0 \end{pmatrix}\begin{pmatrix} 0 & b \\ b & 0 \end{pmatrix} = \begin{pmatrix} b^2 & 0 \\ 0 & b^2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+Así que $b^2 = 1$ y $b = 1$ o $b = -1$.
+
+**Respuesta.** Hay dos matrices:
+
+$$
+X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \qquad \text{y} \qquad X = \begin{pmatrix} 0 & -1 \\ -1 & 0 \end{pmatrix}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla todas las matrices $Y$ que cumplen $YA = AY$, la suma de los elementos de su diagonal principal es cero y tienen determinante $-1$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Escribimos $Y = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
+
+**Primera condición: $YA = AY$.**
+
+$$
+YA = \begin{pmatrix} -a & b \\ -c & d \end{pmatrix}, \qquad AY = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -a & -b \\ c & d \end{pmatrix}
+$$
+
+Igualando: $b = -b$, así que $b = 0$, y $-c = c$, así que $c = 0$. Las matrices que conmutan con $A$ son las diagonales, $Y = \begin{pmatrix} a & 0 \\ 0 & d \end{pmatrix}$.
+
+**Otras dos condiciones.**
+
+- La suma de la diagonal principal es cero: $a + d = 0$, así que $d = -a$.
+- El determinante es $-1$: $ad = a\,(-a) = -a^2 = -1$, así que $a^2 = 1$ y $a = 1$ o $a = -1$.
+
+**Respuesta.** Hay dos matrices:
+
+$$
+Y = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \qquad \text{y} \qquad Y = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}
+$$
+
+</Solucion>

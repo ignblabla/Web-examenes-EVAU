@@ -1,0 +1,27 @@
+---
+// Matemáticas II, julio de 2024, ejercicio 3: recinto entre la parábola f(x) = −x² + 7, por
+// arriba, y g(x) = |x² − 1|, por abajo, que se cortan en (−2, 3) y (2, 3).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => -(x ** 2) + 7
+const g = (x: number) => Math.abs(x ** 2 - 1)
+---
+
+<GraficaFuncion
+  xMin={-3.2}
+  xMax={3.2}
+  yMin={-0.8}
+  yMax={7.9}
+  marcasX={[-3, -2, -1, 1, 2, 3]}
+  marcasY={[1, 3, 5, 7]}
+  tramos={[
+    { f, desde: -2.9, hasta: 2.9, etiqueta: { texto: "f", x: -1.55, y: 5.7, ancla: "end" } },
+    { f: g, desde: -2.95, hasta: 2.95, color: "#b04a3a", etiqueta: { texto: "g", x: 2.75, y: 6.3, ancla: "end" } },
+  ]}
+  recinto={{ arriba: f, abajo: g, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: 3, texto: "(−2, 3)", dx: -10, dy: -8 },
+    { x: 2, y: 3, texto: "(2, 3)", dx: 10, dy: -8 },
+  ]}
+  descripcion="Parábola f(x) = −x² + 7, abierta hacia abajo con vértice en (0, 7), y gráfica de g(x) = |x² − 1|, que toca el eje X en x = −1 y x = 1 y tiene un pico en (0, 1). Se cortan en (−2, 3) y (2, 3). El recinto sombreado queda entre la parábola, por arriba, y g, por abajo, desde x = −2 hasta x = 2"
+/>

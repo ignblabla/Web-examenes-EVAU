@@ -1,0 +1,115 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera la recta $r \equiv \dfrac{x + 1}{2} = \dfrac{y - 2}{2} = 3 - z$ y el punto $P(0, 2, -4)$.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula el punto de $r$ a menor distancia de $P$.
+
+</div>
+
+<Solucion>
+
+**Punto y vector director de $r$.** Escribiendo $3 - z = \dfrac{z - 3}{-1}$, la recta pasa por $R(-1, 2, 3)$ con vector director $\vec{d} = (2, 2, -1)$:
+
+$$
+r \equiv (x,\ y,\ z) = (-1 + 2t,\ 2 + 2t,\ 3 - t)
+$$
+
+**Planteamiento.** El punto de $r$ más cercano a $P$ es el pie de la perpendicular desde $P$, que es el corte de $r$ con el plano que pasa por $P$ y es perpendicular a $r$.
+
+**Plano perpendicular a $r$ por $P$.** Su vector normal es $\vec{d}$: $2x + 2y - z + D = 0$. Pasa por $P(0, 2, -4)$: $0 + 4 + 4 + D = 0$, así que $D = -8$:
+
+$$
+\pi \equiv 2x + 2y - z - 8 = 0
+$$
+
+**Corte con $r$.**
+
+$$
+2(-1 + 2t) + 2(2 + 2t) - (3 - t) - 8 = 9t - 9 = 0 \quad\Rightarrow\quad t = 1
+$$
+
+El punto es $M(1, 4, 2)$. Comprobación: $\overrightarrow{PM} = (1, 2, 6)$ y $\overrightarrow{PM} \cdot \vec{d} = 2 + 4 - 6 = 0$.
+
+**Respuesta.** El punto de $r$ más cercano a $P$ es **$M(1, 4, 2)$**, a una distancia de $|\overrightarrow{PM}| = \sqrt{1 + 4 + 36} = \sqrt{41}$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla los puntos de $r$ cuya distancia a $P$ sea igual a $\sqrt{50}$.
+
+</div>
+
+<Solucion>
+
+**Distancia de $P$ a un punto genérico de $r$.** Para $X(-1 + 2t,\ 2 + 2t,\ 3 - t)$:
+
+$$
+\overrightarrow{PX} = (-1 + 2t,\ 2t,\ 7 - t)
+$$
+
+$$
+d(P, X)^2 = (-1 + 2t)^2 + (2t)^2 + (7 - t)^2 = (1 - 4t + 4t^2) + 4t^2 + (49 - 14t + t^2) = 9t^2 - 18t + 50
+$$
+
+**Condición.**
+
+$$
+9t^2 - 18t + 50 = 50 \quad\Rightarrow\quad 9t\,(t - 2) = 0 \quad\Rightarrow\quad t = 0, \quad t = 2
+$$
+
+**Puntos.** Con $t = 0$, $(-1, 2, 3)$; con $t = 2$, $(3, 6, 1)$.
+
+**Comprobación.** Desde $P(0, 2, -4)$: $(-1, 0, 7)$ da $1 + 0 + 49 = 50$ y $(3, 4, 5)$ da $9 + 16 + 25 = 50$.
+
+**Respuesta.** Los puntos son **$(-1, 2, 3)$ y $(3, 6, 1)$**. Son simétricos respecto del punto $M(1, 4, 2)$ del apartado a), que es su punto medio.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Sea $\pi_1$ el plano determinado por los puntos $A(1, 0, 0)$, $B(1, 1, -3)$ y $C(0, 1, 1)$, y sea $\pi_2 \equiv x - y + z - 1 = 0$. Determina la ecuación de la recta paralela a ambos planos que pasa por el origen.
+
+<Solucion>
+
+**Planteamiento.** Una recta es paralela a un plano si su vector director es perpendicular al vector normal del plano. Así que el vector director de la recta tiene que ser perpendicular a los dos vectores normales, y lo obtenemos con su producto vectorial.
+
+**Vector normal de $\pi_1$.** Con dos vectores del plano:
+
+$$
+\overrightarrow{AB} = (0,\ 1,\ -3), \qquad \overrightarrow{AC} = (-1,\ 1,\ 1)
+$$
+
+$$
+\vec{n}_1 = \overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 0 & 1 & -3 \\ -1 & 1 & 1 \end{vmatrix} = (1 + 3)\,\vec{i} - (0 - 3)\,\vec{j} + (0 + 1)\,\vec{k} = (4,\ 3,\ 1)
+$$
+
+(El plano es $4x + 3y + z - 4 = 0$.)
+
+**Vector normal de $\pi_2$.** $\vec{n}_2 = (1, -1, 1)$. No es proporcional a $\vec{n}_1$, así que los planos no son paralelos y la dirección común es única.
+
+**Vector director de la recta.**
+
+$$
+\vec{v} = \vec{n}_1 \times \vec{n}_2 = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 4 & 3 & 1 \\ 1 & -1 & 1 \end{vmatrix} = (3 + 1)\,\vec{i} - (4 - 1)\,\vec{j} + (-4 - 3)\,\vec{k} = (4,\ -3,\ -7)
+$$
+
+Comprobación: $\vec{v} \cdot \vec{n}_1 = 16 - 9 - 7 = 0$ y $\vec{v} \cdot \vec{n}_2 = 4 + 3 - 7 = 0$.
+
+**Respuesta.** La recta pasa por el origen con dirección $(4, -3, -7)$:
+
+$$
+s \equiv \frac{x}{4} = \frac{y}{-3} = \frac{z}{-7}
+$$
+
+</Solucion>

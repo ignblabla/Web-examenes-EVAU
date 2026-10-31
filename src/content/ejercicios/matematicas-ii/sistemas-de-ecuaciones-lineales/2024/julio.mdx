@@ -1,0 +1,85 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+Un proveedor de perfumerías vende a sus comerciantes tres tipos de perfumes A, B y C. En un primer pedido una tienda ha encargado $20$ perfumes de tipo A, $30$ de tipo B y $15$ de tipo C, por un importe de $2200$ euros. En un segundo pedido ha comprado $15$ perfumes de tipo A, $10$ de tipo B y $10$ de tipo C, por un importe de $1250$ euros.
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** ¿Cuánto tendremos que pagar por un pedido de $25$ perfumes de tipo A, $10$ perfumes de tipo B y $16$ de tipo C?
+
+</div>
+
+<Solucion>
+
+**Incógnitas y ecuaciones.** Llamamos $x$, $y$ y $z$ al precio, en euros, de un perfume de tipo A, B y C. Los dos pedidos dan, simplificando cada ecuación entre $5$:
+
+$$
+\begin{cases}
+20x + 30y + 15z = 2200 \\
+15x + 10y + 10z = 1250
+\end{cases}
+\quad\Rightarrow\quad
+\begin{cases}
+4x + 6y + 3z = 440 \\
+3x + 2y + 2z = 250
+\end{cases}
+$$
+
+**El sistema es compatible indeterminado.** Tiene dos ecuaciones independientes (los coeficientes no son proporcionales, porque $\frac{4}{3} \neq \frac{6}{2}$), así que el rango de la matriz de coeficientes y el de la ampliada es $2$, menor que las tres incógnitas. Por el teorema de Rouché-Frobenius tiene infinitas soluciones: con estos datos no se pueden conocer los tres precios.
+
+**Soluciones en función de $z$.** Multiplicando la segunda ecuación por $3$ y restándole la primera:
+
+$$
+(9x + 6y + 6z) - (4x + 6y + 3z) = 750 - 440 \quad\Rightarrow\quad 5x + 3z = 310 \quad\Rightarrow\quad x = \frac{310 - 3z}{5}
+$$
+
+Y de la segunda ecuación, $2y = 250 - 3x - 2z = \dfrac{1250 - 930 + 9z - 10z}{5} = \dfrac{320 - z}{5}$, así que $y = \dfrac{320 - z}{10}$.
+
+**Importe del nuevo pedido.** Aunque los precios no estén determinados, el importe sí lo está, porque $z$ se cancela:
+
+$$
+25x + 10y + 16z = 5\,(310 - 3z) + (320 - z) + 16z = 1550 - 15z + 320 - z + 16z = 1870
+$$
+
+Dicho de otro modo, el nuevo pedido es una combinación de los dos anteriores: $(25, 10, 16) = -\frac{2}{5}\,(20, 30, 15) + \frac{11}{5}\,(15, 10, 10)$, y su importe es $-\frac{2}{5} \cdot 2200 + \frac{11}{5} \cdot 1250 = -880 + 2750 = 1870$.
+
+**Respuesta.** Tendremos que pagar **$1870$ euros**, sean cuales sean los precios que cumplen los dos pedidos.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Si añadimos que el precio de un perfume de tipo C es $\dfrac{2}{5}$ del precio de una unidad de tipo A, ¿cuál es el precio de cada tipo de perfume?
+
+</div>
+
+<Solucion>
+
+**Planteamiento del sistema.** La nueva condición es $z = \frac{2}{5}x$, es decir, $2x - 5z = 0$:
+
+$$
+\begin{cases}
+4x + 6y + 3z = 440 \\
+3x + 2y + 2z = 250 \\
+2x - 5z = 0
+\end{cases}
+$$
+
+**Resolución.** Del apartado a), cualquier solución de las dos primeras ecuaciones cumple $5x + 3z = 310$. Sustituyendo $z = \frac{2}{5}x$:
+
+$$
+5x + \frac{6}{5}x = 310 \quad\Rightarrow\quad \frac{31}{5}x = 310 \quad\Rightarrow\quad x = 50
+$$
+
+Entonces $z = \frac{2}{5} \cdot 50 = 20$ e $y = \dfrac{320 - 20}{10} = 30$.
+
+**Comprobación.** Primer pedido: $20 \cdot 50 + 30 \cdot 30 + 15 \cdot 20 = 1000 + 900 + 300 = 2200$. Segundo: $15 \cdot 50 + 10 \cdot 30 + 10 \cdot 20 = 750 + 300 + 200 = 1250$.
+
+**Respuesta.** Un perfume de tipo A cuesta **$50$ euros**; uno de tipo B, **$30$ euros**, y uno de tipo C, **$20$ euros**.
+
+</Solucion>

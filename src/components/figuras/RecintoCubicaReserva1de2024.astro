@@ -1,0 +1,24 @@
+---
+// Matemáticas II, reserva 1 de 2024, ejercicio 3: f(x) = x³ − 6x² + 8x = x(x − 2)(x − 4) y los dos
+// recintos que forma con el eje X, uno por encima en [0, 2] y otro por debajo en [2, 4].
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x ** 3 - 6 * x ** 2 + 8 * x
+---
+
+<GraficaFuncion
+  xMin={-0.9}
+  xMax={5}
+  yMin={-4.2}
+  yMax={4.2}
+  marcasX={[1, 2, 3, 4]}
+  marcasY={[-3, -2, -1, 1, 2, 3]}
+  tramos={[{ f, desde: -0.45, hasta: 4.45 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 4 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: -8, dy: 16 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 8, dy: -8 },
+    { x: 4, y: 0, texto: "(4, 0)", dx: 8, dy: -8 },
+  ]}
+  descripcion="Gráfica de la cúbica f(x) = x³ − 6x² + 8x, que corta al eje X en x = 0, x = 2 y x = 4. Tiene un máximo relativo cerca de x = 0,85, con valor de unos 3,08, y un mínimo relativo cerca de x = 3,15, con valor de unos −3,08. Están sombreados los dos recintos que forma con el eje X: entre 0 y 2, por encima del eje, y entre 2 y 4, por debajo"
+/>

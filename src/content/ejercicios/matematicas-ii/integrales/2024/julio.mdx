@@ -1,0 +1,120 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+import RecintoValorAbsolutoJulio2024 from "../../../../../components/figuras/RecintoValorAbsolutoJulio2024.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Sean $f, g \colon \mathbb{R} \to \mathbb{R}$ las funciones definidas por $f(x) = -x^2 + 7$ y $g(x) = |x^2 - 1|$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Halla los puntos de intersección de las gráficas de $f$ y $g$. Realiza un esbozo del recinto acotado y limitado por dichas gráficas.
+
+</div>
+
+<Solucion>
+
+**$g$ a trozos.** $x^2 - 1 \geq 0$ cuando $|x| \geq 1$, así que
+
+$$
+g(x) = \begin{cases} x^2 - 1 & \text{si } x \leq -1 \text{ o } x \geq 1 \\ 1 - x^2 & \text{si } -1 < x < 1 \end{cases}
+$$
+
+**Puntos de intersección.** Igualamos $f$ con cada trozo de $g$:
+
+- Si $|x| \geq 1$: $-x^2 + 7 = x^2 - 1$, así que $x^2 = 4$ y $x = \pm 2$. Los dos valores cumplen $|x| \geq 1$, así que sirven.
+- Si $|x| < 1$: $-x^2 + 7 = 1 - x^2$ da $7 = 1$, que es imposible. No hay cortes en este tramo.
+
+Con $f(\pm 2) = -4 + 7 = 3$, los puntos de intersección son **$(-2, 3)$ y $(2, 3)$**.
+
+**Esbozo.** $f$ es una parábola abierta hacia abajo con vértice en $(0, 7)$. $g$ es la parábola $x^2 - 1$ con la parte que queda bajo el eje $X$ reflejada hacia arriba: toca el eje en $x = \pm 1$ y tiene un pico en $(0, 1)$. Entre $x = -2$ y $x = 2$, $f$ queda por encima de $g$ (en $x = 0$, $7 > 1$):
+
+<RecintoValorAbsolutoJulio2024 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula el área de dicho recinto.
+
+</div>
+
+<Solucion>
+
+**Área como suma de integrales.** El recinto va de $x = -2$ a $x = 2$, con $f$ por arriba. Como $g$ cambia de expresión en $x = -1$ y $x = 1$, separamos en tres integrales:
+
+$$
+A = \int_{-2}^{-1} \left[(-x^2 + 7) - (x^2 - 1)\right]dx + \int_{-1}^{1} \left[(-x^2 + 7) - (1 - x^2)\right]dx + \int_{1}^{2} \left[(-x^2 + 7) - (x^2 - 1)\right]dx
+$$
+
+$$
+A = \int_{-2}^{-1} (8 - 2x^2)\,dx + \int_{-1}^{1} 6\,dx + \int_{1}^{2} (8 - 2x^2)\,dx
+$$
+
+**Cálculo.** Las dos funciones son pares, así que la primera y la tercera integral valen lo mismo:
+
+$$
+\int_{1}^{2} (8 - 2x^2)\,dx = \left[8x - \frac{2x^3}{3}\right]_1^2 = \left(16 - \frac{16}{3}\right) - \left(8 - \frac{2}{3}\right) = \frac{32}{3} - \frac{22}{3} = \frac{10}{3}
+$$
+
+$$
+\int_{-1}^{1} 6\,dx = 6 \cdot 2 = 12
+$$
+
+**Respuesta.**
+
+$$
+A = \frac{10}{3} + 12 + \frac{10}{3} = \frac{56}{3} \approx 18{,}67 \text{ unidades cuadradas}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4.</u> (2,5 puntos)</strong></Bloque>
+
+Halla $\displaystyle\int_0^{\frac{\pi}{2}} e^x\cos(x)\,dx$.
+
+<Solucion>
+
+**Planteamiento.** Calculamos primero una primitiva, $I = \displaystyle\int e^x\cos(x)\,dx$, integrando por partes dos veces. Al final vuelve a aparecer $I$ y se despeja.
+
+**Primera integración por partes.** Con $u = \cos(x)$ y $dv = e^x\,dx$, de modo que $du = -\operatorname{sen}(x)\,dx$ y $v = e^x$:
+
+$$
+I = e^x\cos(x) + \int e^x\operatorname{sen}(x)\,dx
+$$
+
+**Segunda integración por partes.** Con $u = \operatorname{sen}(x)$ y $dv = e^x\,dx$, de modo que $du = \cos(x)\,dx$ y $v = e^x$:
+
+$$
+\int e^x\operatorname{sen}(x)\,dx = e^x\operatorname{sen}(x) - \int e^x\cos(x)\,dx = e^x\operatorname{sen}(x) - I
+$$
+
+**Despejamos $I$.**
+
+$$
+I = e^x\cos(x) + e^x\operatorname{sen}(x) - I \quad\Rightarrow\quad 2I = e^x\left(\operatorname{sen}(x) + \cos(x)\right)
+$$
+
+$$
+\int e^x\cos(x)\,dx = \frac{e^x\left(\operatorname{sen}(x) + \cos(x)\right)}{2} + C
+$$
+
+**Integral definida.** Por la regla de Barrow, con $\operatorname{sen}\left(\frac{\pi}{2}\right) = 1$, $\cos\left(\frac{\pi}{2}\right) = 0$, $\operatorname{sen}(0) = 0$ y $\cos(0) = 1$:
+
+$$
+\int_0^{\frac{\pi}{2}} e^x\cos(x)\,dx = \left[\frac{e^x\left(\operatorname{sen}(x) + \cos(x)\right)}{2}\right]_0^{\frac{\pi}{2}} = \frac{e^{\pi/2}\,(1 + 0)}{2} - \frac{e^0\,(0 + 1)}{2}
+$$
+
+**Respuesta.**
+
+$$
+\int_0^{\frac{\pi}{2}} e^x\cos(x)\,dx = \frac{e^{\pi/2} - 1}{2} \approx 1{,}91
+$$
+
+</Solucion>

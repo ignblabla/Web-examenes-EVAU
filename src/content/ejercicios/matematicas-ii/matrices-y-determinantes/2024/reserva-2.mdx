@@ -1,0 +1,77 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera las matrices $A = \begin{pmatrix} 1 & 0 & 1 \\ m & 1 & 0 \\ 1 & -1 & 2 \end{pmatrix}$ y $B = \begin{pmatrix} -4 & 8 & 0 \\ 0 & 4 & 4 \\ 4 & 12 & 20 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) **[0,75 puntos]** Determina los valores de $m$ para los que la matriz $A^2$ tiene inversa.
+
+</div>
+
+<Solucion>
+
+**Determinante de $A$.** Desarrollando por la primera fila:
+
+$$
+|A| = 1\begin{vmatrix} 1 & 0 \\ -1 & 2 \end{vmatrix} - 0 + 1\begin{vmatrix} m & 1 \\ 1 & -1 \end{vmatrix} = 2 + (-m - 1) = 1 - m
+$$
+
+**Determinante de $A^2$.** $|A^2| = |A|^2 = (1 - m)^2$, que solo se anula para $m = 1$.
+
+**Respuesta.** $A^2$ tiene inversa si y solo si su determinante no es nulo: **para todo $m \neq 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,75 puntos]** Para $m = 0$ calcula, si es posible, la matriz $X$ que verifica $A^2X = \dfrac{1}{2}(A + B)$.
+
+</div>
+
+<Solucion>
+
+**Despejamos $X$.** Con $m = 0$, $|A^2| = 1 \neq 0$, así que $A^2$ tiene inversa. Multiplicando por $(A^2)^{-1}$ por la izquierda:
+
+$$
+X = \frac{1}{2}\,(A^2)^{-1}(A + B)
+$$
+
+**Cálculo de $A^2$.**
+
+$$
+A^2 = \begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & -1 & 2 \end{pmatrix}\begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & -1 & 2 \end{pmatrix} = \begin{pmatrix} 2 & -1 & 3 \\ 0 & 1 & 0 \\ 3 & -3 & 5 \end{pmatrix}
+$$
+
+Su determinante, por la segunda fila, es $\begin{vmatrix} 2 & 3 \\ 3 & 5 \end{vmatrix} = 10 - 9 = 1$, como esperábamos.
+
+**Inversa de $A^2$.** Los adjuntos son $5$, $0$, $-3$ (primera fila), $-4$, $1$, $3$ (segunda) y $-3$, $0$, $2$ (tercera). Trasponiendo y dividiendo entre $|A^2| = 1$:
+
+$$
+(A^2)^{-1} = \begin{pmatrix} 5 & -4 & -3 \\ 0 & 1 & 0 \\ -3 & 3 & 2 \end{pmatrix}
+$$
+
+**Cálculo de $X$.**
+
+$$
+A + B = \begin{pmatrix} -3 & 8 & 1 \\ 0 & 5 & 4 \\ 5 & 11 & 22 \end{pmatrix}
+$$
+
+$$
+(A^2)^{-1}(A + B) = \begin{pmatrix} 5 & -4 & -3 \\ 0 & 1 & 0 \\ -3 & 3 & 2 \end{pmatrix}\begin{pmatrix} -3 & 8 & 1 \\ 0 & 5 & 4 \\ 5 & 11 & 22 \end{pmatrix} = \begin{pmatrix} -30 & -13 & -77 \\ 0 & 5 & 4 \\ 19 & 13 & 53 \end{pmatrix}
+$$
+
+**Comprobación.** Multiplicando $A^2$ por esta matriz vuelve a salir $A + B$. Por ejemplo, el primer elemento es $2 \cdot (-30) - 1 \cdot 0 + 3 \cdot 19 = -60 + 57 = -3$.
+
+**Respuesta.** Sí es posible, y la matriz es
+
+$$
+X = \frac{1}{2}\begin{pmatrix} -30 & -13 & -77 \\ 0 & 5 & 4 \\ 19 & 13 & 53 \end{pmatrix} = \begin{pmatrix} -15 & -13/2 & -77/2 \\ 0 & 5/2 & 2 \\ 19/2 & 13/2 & 53/2 \end{pmatrix}
+$$
+
+</Solucion>

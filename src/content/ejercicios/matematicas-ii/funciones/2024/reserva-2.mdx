@@ -1,0 +1,108 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Sea $f$ la función definida por $f(x) = \dfrac{ax^3 + bx^2 + x - 1}{x^2 - 1}$, para $x \neq \pm 1$. Sabiendo que su gráfica tiene una asíntota oblicua que pasa por el punto $(0, 1)$ y es paralela a la recta $y = 2x$, calcula la asíntota oblicua y los valores de $a$ y $b$.
+
+<Solucion>
+
+**La asíntota oblicua.** Es paralela a $y = 2x$, así que su pendiente es $2$, y pasa por $(0, 1)$, así que su ordenada en el origen es $1$:
+
+$$
+y = 2x + 1
+$$
+
+**Primera condición: la pendiente.** La pendiente de la asíntota oblicua es $m = \displaystyle\lim_{x \to \infty} \frac{f(x)}{x}$. Dividiendo numerador y denominador entre $x^3$:
+
+$$
+m = \lim_{x \to \infty} \frac{ax^3 + bx^2 + x - 1}{x^3 - x} = a
+$$
+
+Como $m = 2$, **$a = 2$**.
+
+**Segunda condición: la ordenada en el origen.** Es $n = \displaystyle\lim_{x \to \infty} \left(f(x) - 2x\right)$:
+
+$$
+f(x) - 2x = \frac{2x^3 + bx^2 + x - 1 - 2x\,(x^2 - 1)}{x^2 - 1} = \frac{bx^2 + 3x - 1}{x^2 - 1}
+$$
+
+$$
+n = \lim_{x \to \infty} \frac{bx^2 + 3x - 1}{x^2 - 1} = b
+$$
+
+Como $n = 1$, **$b = 1$**.
+
+**Comprobación.** Con $a = 2$ y $b = 1$, dividiendo: $2x^3 + x^2 + x - 1 = (2x + 1)(x^2 - 1) + (3x)$, así que $f(x) = 2x + 1 + \dfrac{3x}{x^2 - 1}$, y la fracción tiende a $0$ en $\pm\infty$.
+
+**Respuesta.** La asíntota oblicua es **$y = 2x + 1$**, y **$a = 2$, $b = 1$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \operatorname{arc\,tg}(x + \pi)$, donde $\operatorname{arc\,tg}$ denota la función arcotangente.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula los intervalos de concavidad y convexidad de $f$. Estudia y halla, si existen, los puntos de inflexión de $f$ (abscisas donde se obtienen y valores que se alcanzan).
+
+</div>
+
+<Solucion>
+
+**Primera derivada.** La derivada de $\operatorname{arc\,tg}(u)$ es $\dfrac{u'}{1 + u^2}$, con $u = x + \pi$ y $u' = 1$:
+
+$$
+f'(x) = \frac{1}{1 + (x + \pi)^2} = \left(1 + (x + \pi)^2\right)^{-1}
+$$
+
+**Segunda derivada.** Por la regla de la cadena:
+
+$$
+f''(x) = -\left(1 + (x + \pi)^2\right)^{-2} \cdot 2(x + \pi) = \frac{-2(x + \pi)}{\left(1 + (x + \pi)^2\right)^2}
+$$
+
+**Signo de la segunda derivada.** El denominador es siempre positivo, así que el signo de $f''$ es el de $-2(x + \pi)$, que se anula en $x = -\pi$. Donde $f'' > 0$ la función es convexa ($\cup$), y donde $f'' < 0$, cóncava ($\cap$):
+
+<div class="math-tabla">
+
+| | $(-\infty, -\pi)$ | $(-\pi, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f''$ | $+$ | $-$ |
+| $f$ | convexa | cóncava |
+
+</div>
+
+**Punto de inflexión.** La curvatura cambia en $x = -\pi$, y $f(-\pi) = \operatorname{arc\,tg}(0) = 0$.
+
+**Respuesta.** $f$ es **convexa en $(-\infty, -\pi)$** y **cóncava en $(-\pi, +\infty)$**. Tiene un único punto de inflexión, **$(-\pi, 0)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Calcula $\displaystyle\lim_{x \to -\pi} \frac{\operatorname{arc\,tg}(x + \pi)}{\operatorname{sen}(x)}$.
+
+</div>
+
+<Solucion>
+
+**Indeterminación.** En $x = -\pi$, el numerador vale $\operatorname{arc\,tg}(0) = 0$ y el denominador, $\operatorname{sen}(-\pi) = 0$. Es una indeterminación $\dfrac{0}{0}$.
+
+**Por qué se puede aplicar L'Hôpital.** Numerador y denominador son derivables cerca de $-\pi$, los dos tienden a $0$, y la derivada del denominador, $\cos(x)$, no se anula cerca de $-\pi$ (vale $-1$ en ese punto). Así que el límite es el del cociente de las derivadas, si existe.
+
+**Cálculo.** Con la derivada del apartado a):
+
+$$
+\lim_{x \to -\pi} \frac{\operatorname{arc\,tg}(x + \pi)}{\operatorname{sen}(x)} = \lim_{x \to -\pi} \frac{\dfrac{1}{1 + (x + \pi)^2}}{\cos(x)} = \frac{\dfrac{1}{1 + 0}}{\cos(-\pi)} = \frac{1}{-1} = -1
+$$
+
+**Respuesta.** El límite vale **$-1$**.
+
+</Solucion>

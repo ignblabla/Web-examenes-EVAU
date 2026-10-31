@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2024
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Sea la función derivable $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \begin{cases} a\,e^{-x} + b\ln(1 - x) & \text{si } x < 0 \\ x + \ln(1 + x) & \text{si } x \geq 0 \end{cases}$ donde $\ln$ denota la función logaritmo neperiano.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Determina $a$ y $b$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Cada trozo es derivable en su intervalo (para $x < 0$, $1 - x > 0$; para $x \geq 0$, $1 + x > 0$), así que solo hay que imponer las condiciones en $x = 0$. Una función derivable es continua, así que pedimos las dos cosas.
+
+**Condición de continuidad.** $f(0) = 0 + \ln 1 = 0$, y el límite por la izquierda es
+
+$$
+\lim_{x \to 0^-} \left(a\,e^{-x} + b\ln(1 - x)\right) = a \cdot 1 + b\ln 1 = a
+$$
+
+Para que $f$ sea continua en $0$, **$a = 0$**.
+
+**Condición de derivabilidad.** Las derivadas de cada trozo son
+
+$$
+f'(x) = \begin{cases} -a\,e^{-x} - \dfrac{b}{1 - x} & \text{si } x < 0 \\[2ex] 1 + \dfrac{1}{1 + x} & \text{si } x > 0 \end{cases}
+$$
+
+y las derivadas laterales en $0$:
+
+$$
+f'(0^-) = -a - b, \qquad f'(0^+) = 1 + 1 = 2
+$$
+
+Tienen que coincidir: $-a - b = 2$, y con $a = 0$, **$b = -2$**.
+
+**Respuesta.** **$a = 0$ y $b = -2$**, es decir, $f(x) = -2\ln(1 - x)$ para $x < 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Halla la ecuación de la recta tangente y de la recta normal a la gráfica de $f$ en el punto de abscisa $x = 0$.
+
+</div>
+
+<Solucion>
+
+**Punto y pendiente.** Del apartado a), $f(0) = 0$ y $f'(0) = 2$.
+
+**Recta tangente.** Pasa por $(0, 0)$ con pendiente $2$:
+
+$$
+y - 0 = 2\,(x - 0) \quad\Rightarrow\quad y = 2x
+$$
+
+**Recta normal.** Es perpendicular a la tangente, así que su pendiente es $-\dfrac{1}{f'(0)} = -\dfrac{1}{2}$:
+
+$$
+y - 0 = -\frac{1}{2}\,(x - 0) \quad\Rightarrow\quad y = -\frac{x}{2}
+$$
+
+**Respuesta.** La recta tangente es **$y = 2x$** y la normal, **$y = -\dfrac{x}{2}$**.
+
+</Solucion>

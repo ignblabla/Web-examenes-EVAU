@@ -96,6 +96,22 @@ const matematicasII2025: Cabecera = {
   ],
 }
 
+// Curso 2023-2024 (PEvAU): cuatro bloques con dos ejercicios cada uno.
+const matematicasII2024: Cabecera = {
+  ...matematicasII2026,
+  titulo: ["PRUEBA DE EVALUACIÓN DE BACHILLERATO PARA EL", "ACCESO A LA UNIVERSIDAD Y PRUEBAS DE ADMISIÓN"],
+  curso: "CURSO 2023-2024",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) Este examen consta de 8 ejercicios distribuidos en 4 bloques de 2 ejercicios cada uno.",
+    "d) Cada ejercicio tiene un valor máximo de 2,5 puntos.",
+    "e) Se realizará únicamente un ejercicio de cada bloque. En caso de responder a dos ejercicios de un bloque, sólo se corregirá el que aparezca físicamente en primer lugar.",
+    "f) Se permitirá el uso de calculadoras que no sean programables, ni gráficas ni con capacidad para almacenar o transmitir datos. No obstante, todos los procesos conducentes a la obtención de resultados deben estar suficientemente justificados.",
+    "g) En la puntuación máxima de cada ejercicio están contemplados 0,25 puntos para valorar la expresión correcta de los procesos y métodos utilizados.",
+  ],
+}
+
 // La reserva 3 dice "Se permite" en la instrucción f), en vez de "Se permitirá".
 const matematicasII2026Reserva3: Cabecera = {
   ...matematicasII2026,
@@ -414,6 +430,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
+  "matematicas-ii/2024/junio": matematicasII2024,
+  "matematicas-ii/2024/julio": matematicasII2024,
+  "matematicas-ii/2024/reserva-1": matematicasII2024,
+  "matematicas-ii/2024/reserva-2": matematicasII2024,
+  "matematicas-ii/2024/reserva-3": matematicasII2024,
+  "matematicas-ii/2024/reserva-4": matematicasII2024,
   "matematicas-ii/2025/junio": matematicasII2025,
   "matematicas-ii/2025/julio": matematicasII2025,
   "matematicas-ii/2025/reserva-1": matematicasII2025,

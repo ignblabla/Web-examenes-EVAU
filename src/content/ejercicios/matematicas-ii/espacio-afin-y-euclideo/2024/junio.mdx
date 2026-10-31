@@ -1,0 +1,142 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Halla el punto simétrico de $P(2, 2, 1)$ respecto de la recta $r \equiv \begin{cases} x - 2y + z = 2 \\ y - z = 1 \end{cases}$
+
+</div>
+
+<Solucion>
+
+**Ecuaciones paramétricas de $r$.** Tomando $z = t$, la segunda ecuación da $y = 1 + t$ y la primera, $x = 2 + 2y - z = 2 + 2 + 2t - t = 4 + t$:
+
+$$
+r \equiv (x,\ y,\ z) = (4 + t,\ 1 + t,\ t), \qquad \vec{d} = (1,\ 1,\ 1)
+$$
+
+**Planteamiento.** El simétrico $P'$ cumple que el punto medio de $P$ y $P'$ es el pie de la perpendicular desde $P$ a $r$, el punto $M$ de $r$ con $\overrightarrow{PM}$ perpendicular a $\vec{d}$.
+
+**Pie de la perpendicular.** Para un punto genérico de $r$, $\overrightarrow{PM} = (2 + t,\ -1 + t,\ -1 + t)$:
+
+$$
+\overrightarrow{PM} \cdot \vec{d} = (2 + t) + (-1 + t) + (-1 + t) = 3t = 0 \quad\Rightarrow\quad t = 0
+$$
+
+Así que $M = (4, 1, 0)$. Comprobación: está en $r$, porque $4 - 2 + 0 = 2$ y $1 - 0 = 1$.
+
+**Simétrico.** $M$ es el punto medio de $P$ y $P'$, así que $P' = 2M - P$:
+
+$$
+P' = (2 \cdot 4 - 2,\ 2 \cdot 1 - 2,\ 2 \cdot 0 - 1) = (6,\ 0,\ -1)
+$$
+
+**Respuesta.** El simétrico de $P$ respecto de $r$ es **$P'(6, 0, -1)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Halla el punto simétrico de $Q(1, -1, -3)$ respecto del plano $\pi \equiv x - 2y + z + 6 = 0$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $Q'$ está en la recta perpendicular a $\pi$ que pasa por $Q$, y el punto medio de $Q$ y $Q'$ es el corte $M$ de esa recta con $\pi$.
+
+**Recta perpendicular.** Su vector director es el normal del plano, $\vec{n} = (1, -2, 1)$:
+
+$$
+s \equiv (x,\ y,\ z) = (1 + \lambda,\ -1 - 2\lambda,\ -3 + \lambda)
+$$
+
+**Corte con el plano.**
+
+$$
+(1 + \lambda) - 2(-1 - 2\lambda) + (-3 + \lambda) + 6 = 6 + 6\lambda = 0 \quad\Rightarrow\quad \lambda = -1
+$$
+
+Así que $M = (0, 1, -4)$. Comprobación: $0 - 2 - 4 + 6 = 0$.
+
+**Simétrico.** $Q' = 2M - Q$:
+
+$$
+Q' = (2 \cdot 0 - 1,\ 2 \cdot 1 + 1,\ 2 \cdot (-4) + 3) = (-1,\ 3,\ -5)
+$$
+
+Comprobación: al sustituir en la ecuación del plano, $Q$ da $1 + 2 - 3 + 6 = 6$ y $Q'$ da $-1 - 6 - 5 + 6 = -6$. Son opuestos: los dos puntos están a la misma distancia, cada uno a un lado.
+
+**Respuesta.** El simétrico de $Q$ respecto de $\pi$ es **$Q'(-1, 3, -5)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera las rectas $r \equiv \begin{cases} y = 0 \\ 2x - z = 0 \end{cases}$ y $s \equiv \begin{cases} x + y + 7 = 0 \\ z = 0 \end{cases}$
+
+<div class="math-sub">
+
+a) **[1 punto]** Estudia la posición relativa de $r$ y $s$.
+
+</div>
+
+<Solucion>
+
+**Punto y vector director de cada recta.**
+
+- $r$: con $x = t$, queda $y = 0$ y $z = 2t$. Pasa por $R(0, 0, 0)$ con $\vec{d}_r = (1, 0, 2)$.
+- $s$: con $x = t$, queda $y = -7 - t$ y $z = 0$. Pasa por $S(0, -7, 0)$ con $\vec{d}_s = (1, -1, 0)$.
+
+**Direcciones.** $\vec{d}_r$ y $\vec{d}_s$ no son proporcionales, así que las rectas no son paralelas ni coincidentes: o se cortan o se cruzan.
+
+**¿Se cortan?** Se cortan si $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = (0, -7, 0)$ son coplanarios, es decir, si su determinante es $0$:
+
+$$
+\begin{vmatrix} 1 & 0 & 2 \\ 1 & -1 & 0 \\ 0 & -7 & 0 \end{vmatrix} = 1\,(0 - 0) - 0 + 2\,(-7 - 0) = -14 \neq 0
+$$
+
+**Respuesta.** Los tres vectores no son coplanarios: **las rectas $r$ y $s$ se cruzan**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula la ecuación del plano paralelo a $r$ y $s$ que equidista de ambas rectas.
+
+</div>
+
+<Solucion>
+
+**Vector normal.** Un plano paralelo a las dos rectas contiene sus dos direcciones, así que su vector normal es perpendicular a ambas:
+
+$$
+\vec{n} = \vec{d}_r \times \vec{d}_s = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 0 & 2 \\ 1 & -1 & 0 \end{vmatrix} = (0 + 2)\,\vec{i} - (0 - 2)\,\vec{j} + (-1 - 0)\,\vec{k} = (2,\ 2,\ -1)
+$$
+
+Los planos paralelos a $r$ y $s$ son $\pi \equiv 2x + 2y - z + D = 0$.
+
+**Condición de equidistancia.** Como el plano es paralelo a cada recta, todos los puntos de una recta están a la misma distancia de él, así que basta con medir desde $R(0, 0, 0)$ y desde $S(0, -7, 0)$. Con $\|\vec{n}\| = \sqrt{4 + 4 + 1} = 3$:
+
+$$
+d(R, \pi) = \frac{|D|}{3}, \qquad d(S, \pi) = \frac{|-14 + D|}{3}
+$$
+
+$$
+|D| = |D - 14|
+$$
+
+Si $D = D - 14$, no hay solución. Si $D = -(D - 14)$, entonces $2D = 14$ y $D = 7$.
+
+**Comprobación.** $d(R, \pi) = \dfrac{7}{3}$ y $d(S, \pi) = \dfrac{|-14 + 7|}{3} = \dfrac{7}{3}$. Además, el plano pasa por el punto medio de $R$ y $S$, $\left(0, -\frac{7}{2}, 0\right)$: $0 - 7 - 0 + 7 = 0$.
+
+**Respuesta.** El plano es **$2x + 2y - z + 7 = 0$**, a $\dfrac{7}{3}$ unidades de cada recta.
+
+</Solucion>

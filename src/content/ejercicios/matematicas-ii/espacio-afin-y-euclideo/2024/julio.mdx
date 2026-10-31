@@ -1,0 +1,106 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera el plano $\pi \equiv x - 2y + z - 2 = 0$ y la recta $r \equiv \begin{cases} x = 1 + 2\lambda \\ y = \lambda \\ z = 1 \end{cases}$ $\lambda \in \mathbb{R}$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Estudia la posición relativa de $\pi$ y $r$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La recta pasa por $R(1, 0, 1)$ con vector director $\vec{d} = (2, 1, 0)$, y el plano tiene vector normal $\vec{n} = (1, -2, 1)$. Si $\vec{d} \cdot \vec{n} \neq 0$, se cortan en un punto. Si $\vec{d} \cdot \vec{n} = 0$, la recta es paralela al plano o está contenida en él, según si $R$ está o no en el plano.
+
+**Producto escalar.**
+
+$$
+\vec{d} \cdot \vec{n} = 2 \cdot 1 + 1 \cdot (-2) + 0 \cdot 1 = 0
+$$
+
+**¿Está $R$ en el plano?** $1 - 2 \cdot 0 + 1 - 2 = 0$. Sí.
+
+(También se ve sustituyendo la recta en el plano: $(1 + 2\lambda) - 2\lambda + 1 - 2 = 0$ para todo $\lambda$.)
+
+**Respuesta.** **La recta $r$ está contenida en el plano $\pi$.**
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula la ecuación de la recta contenida en $\pi$ que pasa por el punto $P(2, -1, -2)$ y es perpendicular a $r$.
+
+</div>
+
+<Solucion>
+
+**$P$ está en $\pi$.** $2 + 2 - 2 - 2 = 0$, así que sí hay rectas de $\pi$ que pasan por $P$.
+
+**Vector director.** La recta buscada está contenida en $\pi$, así que su vector director $\vec{v}$ es perpendicular a $\vec{n}$. Y es perpendicular a $r$, así que $\vec{v}$ también es perpendicular a $\vec{d}$. Un vector perpendicular a los dos es su producto vectorial:
+
+$$
+\vec{v} = \vec{n} \times \vec{d} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -2 & 1 \\ 2 & 1 & 0 \end{vmatrix} = (0 - 1)\,\vec{i} - (0 - 2)\,\vec{j} + (1 + 4)\,\vec{k} = (-1,\ 2,\ 5)
+$$
+
+Comprobación: $\vec{v} \cdot \vec{n} = -1 - 4 + 5 = 0$ y $\vec{v} \cdot \vec{d} = -2 + 2 + 0 = 0$.
+
+**Respuesta.** La recta pasa por $P(2, -1, -2)$ con dirección $(-1, 2, 5)$:
+
+$$
+s \equiv \frac{x - 2}{-1} = \frac{y + 1}{2} = \frac{z + 2}{5}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera los puntos $A(4, 0, 0)$ y $B(0, 2, 0)$. Calcula los puntos del plano $OXZ$ que forman un triángulo equilátero con $A$ y $B$.
+
+<Solucion>
+
+**Planteamiento.** Los puntos del plano $OXZ$ tienen $y = 0$, así que buscamos $C(x, 0, z)$. El triángulo $ABC$ es equilátero si sus tres lados miden lo mismo: $d(C, A) = d(C, B) = d(A, B)$.
+
+**Lado $AB$.**
+
+$$
+d(A, B) = \sqrt{(0 - 4)^2 + (2 - 0)^2 + 0^2} = \sqrt{20}
+$$
+
+**Condiciones.** Elevando las distancias al cuadrado:
+
+$$
+\begin{cases}
+d(C, A)^2 = (x - 4)^2 + 0^2 + z^2 = 20 \\
+d(C, B)^2 = x^2 + (0 - 2)^2 + z^2 = 20
+\end{cases}
+$$
+
+**Resolución.** Restando la segunda ecuación a la primera desaparece $z^2$:
+
+$$
+(x - 4)^2 - x^2 - 4 = 0 \quad\Rightarrow\quad -8x + 16 - 4 = 0 \quad\Rightarrow\quad x = \frac{3}{2}
+$$
+
+Y de la segunda ecuación:
+
+$$
+z^2 = 20 - 4 - \frac{9}{4} = \frac{55}{4} \quad\Rightarrow\quad z = \pm\frac{\sqrt{55}}{2}
+$$
+
+**Comprobación.** $d(C, A)^2 = \left(\frac{3}{2} - 4\right)^2 + \frac{55}{4} = \frac{25}{4} + \frac{55}{4} = 20$ y $d(C, B)^2 = \frac{9}{4} + 4 + \frac{55}{4} = 20$.
+
+**Respuesta.** Hay dos puntos, simétricos respecto del plano $OXY$:
+
+$$
+C_1\left(\frac{3}{2},\ 0,\ \frac{\sqrt{55}}{2}\right) \qquad \text{y} \qquad C_2\left(\frac{3}{2},\ 0,\ -\frac{\sqrt{55}}{2}\right)
+$$
+
+</Solucion>

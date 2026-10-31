@@ -1,0 +1,102 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2024
+convocatoria: junio
+formato: matematicas
+---
+
+Considera el sistema
+
+$$
+\begin{cases}
+\phantom{(k - 1)x + {}} y + z = 1 \\
+(k - 1)x + y + z = k \\
+x + (k - 1)y + z = 0
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) **[1,75 puntos]** Discute el sistema según los valores de $k$.
+
+</div>
+
+<Solucion>
+
+**Matrices del sistema.** La matriz de coeficientes $A$ y la ampliada $A^*$ son
+
+$$
+A = \begin{pmatrix} 0 & 1 & 1 \\ k - 1 & 1 & 1 \\ 1 & k - 1 & 1 \end{pmatrix}, \qquad A^* = \left(\begin{array}{ccc|c} 0 & 1 & 1 & 1 \\ k - 1 & 1 & 1 & k \\ 1 & k - 1 & 1 & 0 \end{array}\right)
+$$
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = 0 - 1\begin{vmatrix} k - 1 & 1 \\ 1 & 1 \end{vmatrix} + 1\begin{vmatrix} k - 1 & 1 \\ 1 & k - 1 \end{vmatrix} = -(k - 2) + (k - 1)^2 - 1 = k^2 - 3k + 2
+$$
+
+**Puntos críticos.** $k^2 - 3k + 2 = (k - 1)(k - 2) = 0$ para $k = 1$ y $k = 2$.
+
+**Si $k \neq 1$ y $k \neq 2$.** $|A| \neq 0$, así que $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$, el número de incógnitas. Por el teorema de Rouché-Frobenius, el sistema es **compatible determinado**.
+
+**Si $k = 1$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 0 & 1 & 1 & 1 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 0 \end{array}\right)
+$$
+
+Las dos primeras filas son iguales, así que sobra una. El menor $\begin{vmatrix} 0 & 1 \\ 1 & 0 \end{vmatrix} = -1 \neq 0$ (filas 1 y 3, columnas 1 y 2) da $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 2 < 3$: el sistema es **compatible indeterminado**.
+
+**Si $k = 2$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 0 & 1 & 1 & 1 \\ 1 & 1 & 1 & 2 \\ 1 & 1 & 1 & 0 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, porque $|A| = 0$ y el menor $\begin{vmatrix} 0 & 1 \\ 1 & 1 \end{vmatrix} = -1 \neq 0$. Pero en la ampliada, con las columnas 1, 2 y 4:
+
+$$
+\begin{vmatrix} 0 & 1 & 1 \\ 1 & 1 & 2 \\ 1 & 1 & 0 \end{vmatrix} = 0 - 1\,(0 - 2) + 1\,(1 - 1) = 2 \neq 0
+$$
+
+Así que $\operatorname{rg}(A^*) = 3 \neq \operatorname{rg}(A)$ y el sistema es **incompatible**. Se ve también directamente: la segunda y la tercera ecuación dicen $x + y + z = 2$ y $x + y + z = 0$ a la vez.
+
+**Respuesta.**
+
+- $k \neq 1$ y $k \neq 2$: **compatible determinado**.
+- $k = 1$: **compatible indeterminado**.
+- $k = 2$: **incompatible**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[0,75 puntos]** Para $k = 1$ resuelve el sistema, si es posible. ¿Hay alguna solución en la que $y = 0$? En caso afirmativo, calcúlala. En caso negativo, justifica la respuesta.
+
+</div>
+
+<Solucion>
+
+**Resolución para $k = 1$.** Es compatible indeterminado, así que tiene infinitas soluciones. Quitando la ecuación repetida quedan
+
+$$
+\begin{cases}
+y + z = 1 \\
+x + z = 0
+\end{cases}
+$$
+
+Tomando $z = \lambda$ como parámetro, $y = 1 - \lambda$ y $x = -\lambda$:
+
+$$
+(x,\ y,\ z) = (-\lambda,\ 1 - \lambda,\ \lambda), \qquad \lambda \in \mathbb{R}
+$$
+
+**Solución con $y = 0$.** $1 - \lambda = 0$ da $\lambda = 1$, y entonces $x = -1$ y $z = 1$.
+
+**Comprobación.** Con $(-1, 0, 1)$ y $k = 1$: $0 + 1 = 1$; $0 \cdot (-1) + 0 + 1 = 1 = k$; $-1 + 0 \cdot 0 + 1 = 0$.
+
+**Respuesta.** Las soluciones son $(-\lambda,\ 1 - \lambda,\ \lambda)$ con $\lambda \in \mathbb{R}$. **Sí hay una con $y = 0$: $(x, y, z) = (-1, 0, 1)$**, y es la única, porque $y = 0$ fija el parámetro.
+
+</Solucion>

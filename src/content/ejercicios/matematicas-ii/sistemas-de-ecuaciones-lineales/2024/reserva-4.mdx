@@ -1,0 +1,89 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2024
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera el sistema de ecuaciones lineales
+
+$$
+\begin{cases}
+ax + y + z = 1 + a \\
+x + 2y - z = 1 - a \\
+x + (1 + a)y - az = 0
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula $a$ para que el sistema sea compatible indeterminado.
+
+</div>
+
+<Solucion>
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = \begin{vmatrix} a & 1 & 1 \\ 1 & 2 & -1 \\ 1 & 1 + a & -a \end{vmatrix} = a\,(-2a + 1 + a) - 1\,(-a + 1) + 1\,(1 + a - 2)
+$$
+
+$$
+= a - a^2 + a - 1 + a - 1 = -a^2 + 3a - 2 = -(a - 1)(a - 2)
+$$
+
+Se anula para $a = 1$ y $a = 2$. Para cualquier otro valor, $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$ y el sistema es compatible determinado.
+
+**Si $a = 1$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 1 & 1 & 1 & 2 \\ 1 & 2 & -1 & 0 \\ 1 & 2 & -1 & 0 \end{array}\right)
+$$
+
+La segunda y la tercera fila son iguales. El menor $\begin{vmatrix} 1 & 1 \\ 1 & 2 \end{vmatrix} = 1 \neq 0$ da $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 2 < 3$: **compatible indeterminado**.
+
+**Si $a = 2$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 2 & 1 & 1 & 3 \\ 1 & 2 & -1 & -1 \\ 1 & 3 & -2 & 0 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, por el menor $\begin{vmatrix} 2 & 1 \\ 1 & 2 \end{vmatrix} = 3 \neq 0$. Pero con las columnas 1, 2 y 4:
+
+$$
+\begin{vmatrix} 2 & 1 & 3 \\ 1 & 2 & -1 \\ 1 & 3 & 0 \end{vmatrix} = 2\,(0 + 3) - 1\,(0 + 1) + 3\,(3 - 2) = 8 \neq 0
+$$
+
+así que $\operatorname{rg}(A^*) = 3$ y el sistema es **incompatible**.
+
+**Respuesta.** El sistema es compatible indeterminado solo para **$a = 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Resuelve el sistema, si es posible, para $a = 0$.
+
+</div>
+
+<Solucion>
+
+**Es posible.** Con $a = 0$, $|A| = -(0 - 1)(0 - 2) = -2 \neq 0$: el sistema es compatible determinado. Queda
+
+$$
+\begin{cases}
+y + z = 1 \\
+x + 2y - z = 1 \\
+x + y = 0
+\end{cases}
+$$
+
+**Resolución.** De la tercera ecuación, $x = -y$. Sustituyendo en la segunda, $-y + 2y - z = 1$, es decir, $y - z = 1$. Sumándola con la primera, $2y = 2$, así que $y = 1$, $z = 0$ y $x = -1$.
+
+**Comprobación.** $1 + 0 = 1$; $-1 + 2 - 0 = 1$; $-1 + 1 = 0$.
+
+**Respuesta.** **$x = -1$, $y = 1$, $z = 0$**.
+
+</Solucion>

@@ -1,0 +1,136 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas $r \equiv x = y + a = \dfrac{z + 1}{2}$ y $s \equiv \begin{cases} x - 2y = 3a \\ x + z = 2 \end{cases}$
+
+<div class="math-sub">
+
+a) **[1,25 puntos]** Calcula $a$ para que las rectas se corten.
+
+</div>
+
+<Solucion>
+
+**Vectores directores y un punto de cada recta.**
+
+- $r \equiv \dfrac{x}{1} = \dfrac{y + a}{1} = \dfrac{z + 1}{2}$: pasa por $R(0, -a, -1)$ con $\vec{d}_r = (1, 1, 2)$.
+- $s$: tomando $x = t$, queda $y = \dfrac{t - 3a}{2}$ y $z = 2 - t$. Pasa por $S\left(0, -\frac{3a}{2}, 2\right)$ con vector director $\left(1, \frac{1}{2}, -1\right)$, o el proporcional $\vec{d}_s = (2, 1, -2)$.
+
+**Posición relativa.** $\vec{d}_r$ y $\vec{d}_s$ no son proporcionales, así que las rectas se cortan o se cruzan. Se cortan cuando $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = \left(0, -\frac{a}{2}, 3\right)$ son coplanarios, es decir, cuando su determinante es $0$:
+
+$$
+\begin{vmatrix} 1 & 1 & 2 \\ 2 & 1 & -2 \\ 0 & -a/2 & 3 \end{vmatrix} = 1\,(3 - a) - 1\,(6 - 0) + 2\,(-a - 0) = -3 - 3a
+$$
+
+$-3 - 3a = 0$ para $a = -1$.
+
+**Respuesta.** Las rectas se cortan para **$a = -1$**. Para cualquier otro valor, se cruzan.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,25 puntos]** Para $a = -1$, halla la recta que corta perpendicularmente a $r$ y $s$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Por el apartado a), con $a = -1$ las rectas se cortan en un punto $Q$, así que están en un mismo plano. La recta buscada tiene un vector director perpendicular a $\vec{d}_r$ y a $\vec{d}_s$, es decir, perpendicular a ese plano. Una recta así corta al plano en un solo punto, y para cortar a $r$ y a $s$ ese punto tiene que estar en las dos: es $Q$.
+
+**Punto de corte.** Con $a = -1$, $r \equiv (x, y, z) = (t,\ t + 1,\ -1 + 2t)$. Sustituyendo en las ecuaciones de $s$:
+
+$$
+t - 2(t + 1) = -3 \quad\Rightarrow\quad -t - 2 = -3 \quad\Rightarrow\quad t = 1
+$$
+
+y la otra ecuación también se cumple: $1 + (-1 + 2) = 2$. El punto de corte es $Q(1, 2, 1)$.
+
+**Vector director.**
+
+$$
+\vec{v} = \vec{d}_r \times \vec{d}_s = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 1 & 2 \\ 2 & 1 & -2 \end{vmatrix} = (-2 - 2)\,\vec{i} - (-2 - 4)\,\vec{j} + (1 - 2)\,\vec{k} = (-4,\ 6,\ -1)
+$$
+
+Comprobación: $\vec{v} \cdot \vec{d}_r = -4 + 6 - 2 = 0$ y $\vec{v} \cdot \vec{d}_s = -8 + 6 + 2 = 0$.
+
+**Respuesta.** Es la recta perpendicular, por el punto de corte, al plano que contiene a $r$ y a $s$:
+
+$$
+\frac{x - 1}{-4} = \frac{y - 2}{6} = \frac{z - 1}{-1}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8.</u> (2,5 puntos)</strong></Bloque>
+
+Considera los vectores $\vec{u} = (1, a, 2)$ y $\vec{v} = (-2, 1, a)$.
+
+<div class="math-sub">
+
+a) **[1 punto]** Calcula $a$ para que ambos vectores formen un ángulo de $\pi/3$ radianes.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El ángulo $\alpha$ entre dos vectores cumple $\cos\alpha = \dfrac{\vec{u} \cdot \vec{v}}{|\vec{u}|\,|\vec{v}|}$, y $\cos\dfrac{\pi}{3} = \dfrac{1}{2}$.
+
+**Producto escalar y módulos.**
+
+$$
+\vec{u} \cdot \vec{v} = -2 + a + 2a = 3a - 2, \qquad |\vec{u}| = \sqrt{1 + a^2 + 4} = \sqrt{5 + a^2}, \qquad |\vec{v}| = \sqrt{4 + 1 + a^2} = \sqrt{5 + a^2}
+$$
+
+**Ecuación.**
+
+$$
+\frac{3a - 2}{5 + a^2} = \frac{1}{2} \quad\Rightarrow\quad 6a - 4 = 5 + a^2 \quad\Rightarrow\quad a^2 - 6a + 9 = 0 \quad\Rightarrow\quad (a - 3)^2 = 0
+$$
+
+**Comprobación.** Con $a = 3$: $\vec{u} \cdot \vec{v} = 7$ y $|\vec{u}|\,|\vec{v}| = 14$, así que $\cos\alpha = \frac{1}{2}$.
+
+**Respuesta.** **$a = 3$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1,5 puntos]** Calcula $a$ para que el vector $(\vec{u} \times \vec{v}) - \vec{v}$ sea ortogonal a $\vec{u}$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Dos vectores son ortogonales si su producto escalar es $0$. Calculamos el vector y lo multiplicamos escalarmente por $\vec{u}$.
+
+**Producto vectorial.**
+
+$$
+\vec{u} \times \vec{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & a & 2 \\ -2 & 1 & a \end{vmatrix} = (a^2 - 2)\,\vec{i} - (a + 4)\,\vec{j} + (1 + 2a)\,\vec{k} = (a^2 - 2,\ -a - 4,\ 1 + 2a)
+$$
+
+**El vector $(\vec{u} \times \vec{v}) - \vec{v}$.**
+
+$$
+\vec{w} = (a^2 - 2 + 2,\ -a - 4 - 1,\ 1 + 2a - a) = (a^2,\ -a - 5,\ 1 + a)
+$$
+
+**Condición de ortogonalidad.**
+
+$$
+\vec{w} \cdot \vec{u} = a^2 + a\,(-a - 5) + 2\,(1 + a) = a^2 - a^2 - 5a + 2 + 2a = 2 - 3a = 0 \quad\Rightarrow\quad a = \frac{2}{3}
+$$
+
+**Otra forma de verlo.** $\vec{u} \times \vec{v}$ es siempre perpendicular a $\vec{u}$, así que $\vec{w} \cdot \vec{u} = 0 - \vec{v} \cdot \vec{u} = -(3a - 2)$, que se anula para el mismo valor.
+
+**Respuesta.** **$a = \dfrac{2}{3}$**.
+
+</Solucion>

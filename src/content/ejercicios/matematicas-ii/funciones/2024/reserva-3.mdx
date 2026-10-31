@@ -1,0 +1,113 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2024
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+De entre todos los rectángulos de área $25$ cm², determina las dimensiones de aquel en el que el producto de las longitudes de sus dos diagonales sea el menor posible.
+
+<Solucion>
+
+**Variables y restricción.** Llamamos $x$ e $y$ a la base y la altura del rectángulo, en cm, con $x > 0$ e $y > 0$. El área es $25$:
+
+$$
+xy = 25 \quad\Rightarrow\quad y = \frac{25}{x}
+$$
+
+**Función a minimizar.** Las dos diagonales de un rectángulo miden lo mismo, $d = \sqrt{x^2 + y^2}$ por el teorema de Pitágoras. Su producto es $d \cdot d = d^2$:
+
+$$
+P(x) = x^2 + y^2 = x^2 + \frac{625}{x^2}, \qquad x > 0
+$$
+
+**Puntos críticos.**
+
+$$
+P'(x) = 2x - \frac{1250}{x^3} = 0 \quad\Rightarrow\quad 2x^4 = 1250 \quad\Rightarrow\quad x^4 = 625 \quad\Rightarrow\quad x = 5
+$$
+
+(La otra raíz real, $x = -5$, no sirve porque $x > 0$.)
+
+**Es un mínimo.** $P''(x) = 2 + \dfrac{3750}{x^4} > 0$, así que en $x = 5$ hay un mínimo, y es el absoluto: es el único punto crítico en $(0, +\infty)$ y $P$ tiende a $+\infty$ en los dos extremos del intervalo.
+
+**Dimensiones.** $y = \dfrac{25}{5} = 5$. Cada diagonal mide $\sqrt{50} = 5\sqrt{2}$ cm, y su producto es $50$ cm².
+
+**Respuesta.** El rectángulo es **un cuadrado de $5$ cm de lado**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2.</u> (2,5 puntos)</strong></Bloque>
+
+Considera la función definida por $f(x) = \dfrac{ax^3 + x - 1}{x^2 + bx - 3}$, para $x^2 + bx - 3 \neq 0$.
+
+<div class="math-sub">
+
+a) **[1,5 puntos]** Calcula $a$ y $b$ para que $y = x - 2$ sea una asíntota oblicua de la gráfica de $f$.
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La asíntota oblicua $y = mx + n$ tiene $m = \displaystyle\lim_{x \to \infty} \frac{f(x)}{x}$ y $n = \displaystyle\lim_{x \to \infty} \left(f(x) - mx\right)$. Queremos $m = 1$ y $n = -2$.
+
+**Pendiente.** Dividiendo numerador y denominador entre $x^3$:
+
+$$
+m = \lim_{x \to \infty} \frac{ax^3 + x - 1}{x^3 + bx^2 - 3x} = a
+$$
+
+Como $m = 1$, **$a = 1$**.
+
+**Ordenada en el origen.** Con $a = 1$:
+
+$$
+f(x) - x = \frac{x^3 + x - 1 - x\,(x^2 + bx - 3)}{x^2 + bx - 3} = \frac{-bx^2 + 4x - 1}{x^2 + bx - 3}
+$$
+
+$$
+n = \lim_{x \to \infty} \frac{-bx^2 + 4x - 1}{x^2 + bx - 3} = -b
+$$
+
+Como $n = -2$, **$b = 2$**.
+
+**Respuesta.** **$a = 1$ y $b = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) **[1 punto]** Estudia y halla las asíntotas verticales de la gráfica de $f$ cuando $a = 0$ y $b = 2$.
+
+</div>
+
+<Solucion>
+
+**La función.** Con $a = 0$ y $b = 2$:
+
+$$
+f(x) = \frac{x - 1}{x^2 + 2x - 3}
+$$
+
+**Ceros del denominador.** $x^2 + 2x - 3 = 0$ da $x = \dfrac{-2 \pm \sqrt{4 + 12}}{2} = \dfrac{-2 \pm 4}{2}$, es decir, $x = 1$ y $x = -3$. Así que $x^2 + 2x - 3 = (x - 1)(x + 3)$. Las asíntotas verticales solo pueden estar ahí.
+
+**En $x = 1$.** El numerador también se anula, y simplificando:
+
+$$
+\lim_{x \to 1} \frac{x - 1}{(x - 1)(x + 3)} = \lim_{x \to 1} \frac{1}{x + 3} = \frac{1}{4}
+$$
+
+El límite es finito: **no hay asíntota vertical en $x = 1$** (la gráfica tiene un hueco en $\left(1, \frac{1}{4}\right)$).
+
+**En $x = -3$.** El numerador vale $-4 \neq 0$ y el denominador tiende a $0$, así que el límite es infinito:
+
+$$
+\lim_{x \to -3^-} \frac{1}{x + 3} = -\infty, \qquad \lim_{x \to -3^+} \frac{1}{x + 3} = +\infty
+$$
+
+**Respuesta.** La única asíntota vertical es **$x = -3$**.
+
+</Solucion>
