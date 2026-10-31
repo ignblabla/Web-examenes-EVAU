@@ -1,0 +1,69 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sea $f$ la función definida por $f(x) = \dfrac{ax^2 + b}{a - x}$ (para $x \neq a$).
+
+<div class="math-sub">
+
+a) Halla $a$ y $b$ sabiendo que la gráfica de $f$ pasa por el punto $(2, 3)$ y tiene una asíntota oblicua cuya pendiente vale $-4$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Relación entre $a$ y $b$ usando $f(2) = 3$.**
+
+$$
+\frac{4a + b}{a - 2} = 3 \quad\Rightarrow\quad 4a + b = 3a - 6 \quad\Rightarrow\quad b = -a - 6
+$$
+
+**Valor de $a$ con la pendiente de la asíntota oblicua.**
+
+$$
+m = \lim_{x \to \infty} \frac{f(x)}{x} = \lim_{x \to \infty} \frac{ax^2 + b}{ax - x^2} = -a
+$$
+
+Como la pendiente es $-4$, **$a = 4$**, y entonces **$b = -10$**.
+
+**Comprobación.** $f(x) = \dfrac{4x^2 - 10}{4 - x}$: $f(2) = \dfrac{16 - 10}{2} = 3$.
+
+**Respuesta.** **$a = 4$ y $b = -10$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $a = 2$ y $b = 3$, calcula las ecuaciones de las rectas tangente y normal a la gráfica de $f$ en el punto de abscisa $x = 1$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Punto.** $f(x) = \dfrac{2x^2 + 3}{2 - x}$ y $f(1) = \dfrac{5}{1} = 5$.
+
+**Derivada.** Por la regla del cociente (la derivada de $2 - x$ es $-1$):
+
+$$
+f'(x) = \frac{4x\,(2 - x) + (2x^2 + 3)}{(2 - x)^2} = \frac{-2x^2 + 8x + 3}{(2 - x)^2}, \qquad f'(1) = \frac{-2 + 8 + 3}{1} = 9
+$$
+
+**Recta tangente.**
+
+$$
+y - 5 = 9\,(x - 1) \quad\Rightarrow\quad y = 9x - 4
+$$
+
+**Recta normal.** Su pendiente es $-\dfrac{1}{9}$:
+
+$$
+y - 5 = -\frac{1}{9}\,(x - 1) \quad\Rightarrow\quad y = -\frac{x}{9} + \frac{46}{9}
+$$
+
+**Respuesta.** Tangente: **$y = 9x - 4$**. Normal: **$y = -\dfrac{x}{9} + \dfrac{46}{9}$**.
+
+</Solucion>

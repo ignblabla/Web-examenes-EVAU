@@ -1,0 +1,71 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+Considera la función continua $f \colon \mathbb{R} \to \mathbb{R}$ definida por
+
+$$
+f(x) = \begin{cases} (3x - 6)\,e^x & \text{si } x \leq 0 \\[1.5ex] \dfrac{36\left(\operatorname{sen}(x) - ax\right)}{x^3} & \text{si } x > 0 \end{cases}
+$$
+
+<div class="math-sub">
+
+a) Calcula $a$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** $f$ es continua, así que en $x = 0$ los límites laterales coinciden con $f(0)$.
+
+**Límite por la izquierda.** El primer trozo es continuo:
+
+$$
+\lim_{x \to 0^-} (3x - 6)\,e^x = -6 \cdot 1 = -6 = f(0)
+$$
+
+**Límite por la derecha.** En $x = 0$, el numerador y el denominador valen $0$: es $\dfrac{0}{0}$. Por L'Hôpital:
+
+$$
+\lim_{x \to 0^+} \frac{36\left(\operatorname{sen}(x) - ax\right)}{x^3} = \lim_{x \to 0^+} \frac{36\left(\cos(x) - a\right)}{3x^2}
+$$
+
+El denominador tiende a $0$ y el numerador, a $36(1 - a)$. Si $a \neq 1$, el límite sería infinito y $f$ no podría ser continua. Así que **$a = 1$**, y vuelve a ser $\dfrac{0}{0}$. Aplicando L'Hôpital otra vez:
+
+$$
+\lim_{x \to 0^+} \frac{12\left(\cos(x) - 1\right)}{x^2} = \lim_{x \to 0^+} \frac{-12\operatorname{sen}(x)}{2x} = -6 \lim_{x \to 0^+} \frac{\operatorname{sen}(x)}{x} = -6
+$$
+
+que coincide con el límite por la izquierda.
+
+**Respuesta.** **$a = 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla la ecuación de la recta tangente a la gráfica de $f$ en el punto de abscisa $x = -1$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Punto.** En $x = -1$ vale el primer trozo: $f(-1) = (-3 - 6)\,e^{-1} = -\dfrac{9}{e}$.
+
+**Derivada.** Por la regla del producto:
+
+$$
+f'(x) = 3e^x + (3x - 6)\,e^x = (3x - 3)\,e^x, \qquad f'(-1) = -6\,e^{-1} = -\frac{6}{e}
+$$
+
+**Respuesta.** La recta tangente es
+
+$$
+y + \frac{9}{e} = -\frac{6}{e}\,(x + 1) \quad\Rightarrow\quad y = -\frac{6}{e}\,x - \frac{15}{e}
+$$
+
+</Solucion>

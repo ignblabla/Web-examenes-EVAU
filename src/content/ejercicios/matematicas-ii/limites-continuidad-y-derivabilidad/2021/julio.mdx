@@ -1,0 +1,35 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+Calcula $a$ y $b$ sabiendo que $\displaystyle\lim_{x \to 0} \frac{a\left(1 - \cos(x)\right) + b\operatorname{sen}(x) - 2\left(e^x - 1\right)}{x^2} = 7$.
+
+<Solucion>
+
+**Indeterminación.** En $x = 0$, el numerador vale $a\,(1 - 1) + b \cdot 0 - 2\,(1 - 1) = 0$ y el denominador, $0$. Es una indeterminación $\dfrac{0}{0}$ para cualquier $a$ y $b$.
+
+**Primera aplicación de L'Hôpital.**
+
+$$
+\lim_{x \to 0} \frac{a\operatorname{sen}(x) + b\cos(x) - 2e^x}{2x}
+$$
+
+En $x = 0$, el denominador vale $0$ y el numerador, $b - 2$.
+
+**Valor de $b$.** Si $b \neq 2$, el cociente tiende a un número distinto de $0$ dividido entre $0$, y el límite sería infinito, no $7$. Así que **$b = 2$**, y vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.**
+
+$$
+\lim_{x \to 0} \frac{a\cos(x) - b\operatorname{sen}(x) - 2e^x}{2} = \frac{a - 0 - 2}{2} = \frac{a - 2}{2}
+$$
+
+**Valor de $a$.** $\dfrac{a - 2}{2} = 7$, así que $a - 2 = 14$ y $a = 16$.
+
+**Respuesta.** **$a = 16$ y $b = 2$**.
+
+</Solucion>

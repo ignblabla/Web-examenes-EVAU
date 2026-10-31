@@ -1,0 +1,106 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas
+
+$$
+r \equiv \frac{x}{1} = \frac{y + 2}{2} = \frac{z - 1}{1} \qquad \text{y} \qquad s \equiv \begin{cases} x - y + z = 2 \\ 3x - y - z = -4 \end{cases}
+$$
+
+Sabiendo que dos de los lados de un cuadrado están en las rectas $r$ y $s$, calcula su área.
+
+<Solucion>
+
+**Datos de las rectas.** $r$ pasa por $R(0, -2, 1)$ con vector director $\vec{d}_r = (1, 2, 1)$. El vector director de $s$ es perpendicular a los normales de los dos planos:
+
+$$
+(1,\ -1,\ 1) \times (3,\ -1,\ -1) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & -1 & 1 \\ 3 & -1 & -1 \end{vmatrix} = (1 + 1)\,\vec{i} - (-1 - 3)\,\vec{j} + (-1 + 3)\,\vec{k} = (2,\ 4,\ 2)
+$$
+
+proporcional a $(1, 2, 1)$. Un punto de $s$: con $x = 0$, $-y + z = 2$ y $-y - z = -4$; sumando, $y = 1$, y $z = 3$: el punto $S(0, 1, 3)$.
+
+**Planteamiento.** Las rectas son paralelas ($R$ no está en $s$, porque $0 + 2 + 1 = 3 \neq 2$), así que los lados que están sobre ellas son lados opuestos del cuadrado. El lado del cuadrado es la distancia entre las dos rectas, y el área, su cuadrado.
+
+**Distancia entre $r$ y $s$.** Es la distancia de $S$ a $r$. Con $\overrightarrow{RS} = (0, 3, 2)$:
+
+$$
+\overrightarrow{RS} \times \vec{d}_r = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 0 & 3 & 2 \\ 1 & 2 & 1 \end{vmatrix} = (3 - 4)\,\vec{i} - (0 - 2)\,\vec{j} + (0 - 3)\,\vec{k} = (-1,\ 2,\ -3)
+$$
+
+$$
+d(r, s) = \frac{\left|\overrightarrow{RS} \times \vec{d}_r\right|}{|\vec{d}_r|} = \frac{\sqrt{1 + 4 + 9}}{\sqrt{1 + 4 + 1}} = \frac{\sqrt{14}}{\sqrt{6}}
+$$
+
+**Respuesta.** El área del cuadrado es
+
+$$
+\left(\frac{\sqrt{14}}{\sqrt{6}}\right)^2 = \frac{14}{6} = \frac{7}{3} \approx 2{,}33 \text{ unidades cuadradas}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u> (2.5 puntos)</strong></Bloque>
+
+Considera las rectas
+
+$$
+r \equiv \begin{cases} x = 1 + \lambda \\ y = 1 + \lambda \\ z = 2 + m\lambda \end{cases} \qquad \text{y} \qquad s \equiv \begin{cases} x - y + 2z = 3 \\ x + z = 2 \end{cases}
+$$
+
+<div class="math-sub">
+
+a) Estudia la posición relativa de $r$ y $s$ según los valores de $m$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de las rectas.** $r$ pasa por $R(1, 1, 2)$ con vector director $\vec{d}_r = (1, 1, m)$. El de $s$ es perpendicular a los normales $(1, -1, 2)$ y $(1, 0, 1)$:
+
+$$
+\vec{d}_s = (1,\ -1,\ 2) \times (1,\ 0,\ 1) = (-1 - 0,\ 2 - 1,\ 0 + 1) = (-1,\ 1,\ 1)
+$$
+
+Un punto de $s$: con $z = 0$, $x = 2$ e $y = x - 3 = -1$, el punto $S(2, -1, 0)$.
+
+**No son paralelas.** $(1, 1, m)$ y $(-1, 1, 1)$ nunca son proporcionales (las dos primeras coordenadas dan cocientes $-1$ y $1$). Así que se cortan o se cruzan.
+
+**Planteamiento.** Se cortan si $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = (1, -2, -2)$ son coplanarios:
+
+$$
+\begin{vmatrix} 1 & 1 & m \\ -1 & 1 & 1 \\ 1 & -2 & -2 \end{vmatrix} = 1\,(-2 + 2) - 1\,(2 - 1) + m\,(2 - 1) = m - 1
+$$
+
+**Respuesta.**
+
+- Si **$m = 1$**, las rectas **se cortan** (en el punto $\left(\frac{1}{2}, \frac{1}{2}, \frac{3}{2}\right)$, con $\lambda = -\frac{1}{2}$).
+- Si **$m \neq 1$**, las rectas **se cruzan**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $m = 1$, calcula el coseno del ángulo que forman las rectas $r$ y $s$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El ángulo entre dos rectas es el (agudo) que forman sus vectores directores, $\vec{d}_r = (1, 1, 1)$ y $\vec{d}_s = (-1, 1, 1)$.
+
+**Cálculo.**
+
+$$
+\cos\alpha = \frac{|\vec{d}_r \cdot \vec{d}_s|}{|\vec{d}_r|\,|\vec{d}_s|} = \frac{|-1 + 1 + 1|}{\sqrt{3}\,\sqrt{3}} = \frac{1}{3}
+$$
+
+**Respuesta.** **$\cos\alpha = \dfrac{1}{3}$** (el ángulo mide unos $70{,}5^\circ$).
+
+</Solucion>

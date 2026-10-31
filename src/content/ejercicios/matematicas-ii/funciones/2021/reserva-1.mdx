@@ -1,0 +1,31 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Halla $a$, $b$ y $c$ sabiendo que la función $f \colon \mathbb{R} \to \mathbb{R}$ dada por $f(x) = a + b\operatorname{sen}(x) + c\operatorname{sen}(2x)$ tiene un punto crítico en el punto de abscisa $x = \pi$ y la recta $y = -\dfrac{1}{2}x + 3$ es normal a la gráfica de $f$ en el punto de abscisa $x = 0$.
+
+<Solucion>
+
+**Derivada de $f$.**
+
+$$
+f'(x) = b\cos(x) + 2c\cos(2x)
+$$
+
+**Tres condiciones.**
+
+- **Punto crítico en $x = \pi$:** $f'(\pi) = b\cos(\pi) + 2c\cos(2\pi) = -b + 2c = 0$.
+- **La normal en $x = 0$ tiene pendiente $-\frac{1}{2}$:** la tangente es perpendicular a ella, así que su pendiente es $2$: $f'(0) = b + 2c = 2$.
+- **La normal pasa por el punto de la gráfica en $x = 0$:** ese punto es $(0, f(0))$, y la recta en $x = 0$ vale $3$, así que $f(0) = a = 3$.
+
+**Resolución.** De la primera, $b = 2c$, y en la segunda, $4c = 2$, así que $c = \dfrac{1}{2}$ y $b = 1$.
+
+**Comprobación.** $f(x) = 3 + \operatorname{sen}(x) + \frac{1}{2}\operatorname{sen}(2x)$ y $f'(x) = \cos(x) + \cos(2x)$: $f'(\pi) = -1 + 1 = 0$, $f'(0) = 2$ y $f(0) = 3$.
+
+**Respuesta.** **$a = 3$, $b = 1$ y $c = \dfrac{1}{2}$**.
+
+</Solucion>

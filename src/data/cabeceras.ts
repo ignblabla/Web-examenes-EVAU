@@ -143,6 +143,27 @@ const matematicasII2022Reserva: Cabecera = {
   curso: "CURSO 2021-2022",
 }
 
+// Curso 2020-2021: como 2022-2023, con otro título, la convocatoria en el curso, letra con serifa
+// y punto decimal en las puntuaciones.
+const matematicasII2021Junio: Cabecera = {
+  ...matematicasII2023,
+  titulo: ["PRUEBA DE ACCESO Y ADMISIÓN A LA", "UNIVERSIDAD"],
+  curso: "CONVOCATORIA ORDINARIA, CURSO 2020-2021",
+  serifa: true,
+  instrucciones: matematicasII2023.instrucciones.map((i) => i.replace("2,5 puntos", "2.5 puntos").replace("0,25 puntos", "0.25 puntos")),
+}
+
+const matematicasII2021Julio: Cabecera = {
+  ...matematicasII2021Junio,
+  curso: "CONVOCATORIA EXTRAORDINARIA, CURSO 2020-2021",
+}
+
+// En las reservas de 2020-2021 el curso aparece sin la convocatoria y con raya, como en el PDF.
+const matematicasII2021Reserva: Cabecera = {
+  ...matematicasII2021Junio,
+  curso: "CURSO 2020–2021",
+}
+
 // La reserva 3 dice "Se permite" en la instrucción f), en vez de "Se permitirá".
 const matematicasII2026Reserva3: Cabecera = {
   ...matematicasII2026,
@@ -461,6 +482,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "matematicas-aplicadas/2026/reserva-2": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-3": matematicasAplicadas2026,
   "matematicas-aplicadas/2026/reserva-4": matematicasAplicadas2026,
+  "matematicas-ii/2021/junio": matematicasII2021Junio,
+  "matematicas-ii/2021/julio": matematicasII2021Julio,
+  "matematicas-ii/2021/reserva-1": matematicasII2021Reserva,
+  "matematicas-ii/2021/reserva-2": matematicasII2021Reserva,
+  "matematicas-ii/2021/reserva-3": matematicasII2021Reserva,
+  "matematicas-ii/2021/reserva-4": matematicasII2021Reserva,
   "matematicas-ii/2022/junio": matematicasII2022Junio,
   "matematicas-ii/2022/julio": matematicasII2022Julio,
   "matematicas-ii/2022/reserva-1": matematicasII2022Reserva,

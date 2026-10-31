@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Sea $f \colon \mathbb{R} \to \mathbb{R}$ la función definida por $f(x) = \dfrac{e^{2x} - 1}{e^{2x} + 1}$.
+
+<div class="math-sub">
+
+a) Estudia y halla las asíntotas de la gráfica de $f$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Asíntotas verticales.** No tiene: el denominador $e^{2x} + 1$ es siempre positivo, así que $f$ es continua en todo $\mathbb{R}$ y no tiende a infinito en ningún punto.
+
+**Asíntota horizontal en $+\infty$.** Dividiendo numerador y denominador entre $e^{2x}$:
+
+$$
+\lim_{x \to +\infty} \frac{e^{2x} - 1}{e^{2x} + 1} = \lim_{x \to +\infty} \frac{1 - e^{-2x}}{1 + e^{-2x}} = \frac{1 - 0}{1 + 0} = 1
+$$
+
+**$y = 1$ es asíntota horizontal en $+\infty$.**
+
+**Asíntota horizontal en $-\infty$.** Como $e^{2x} \to 0$:
+
+$$
+\lim_{x \to -\infty} \frac{e^{2x} - 1}{e^{2x} + 1} = \frac{0 - 1}{0 + 1} = -1
+$$
+
+**$y = -1$ es asíntota horizontal en $-\infty$.**
+
+**Respuesta.** No hay asíntotas verticales ni oblicuas. Las horizontales son **$y = 1$ (en $+\infty$)** e **$y = -1$ (en $-\infty$)**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina los intervalos de crecimiento y de decrecimiento de $f$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Primera derivada.** Por la regla del cociente:
+
+$$
+f'(x) = \frac{2e^{2x}\,(e^{2x} + 1) - (e^{2x} - 1)\,2e^{2x}}{(e^{2x} + 1)^2} = \frac{2e^{2x}\left(e^{2x} + 1 - e^{2x} + 1\right)}{(e^{2x} + 1)^2} = \frac{4e^{2x}}{(e^{2x} + 1)^2}
+$$
+
+**Signo.** Numerador y denominador son siempre positivos, así que $f'(x) > 0$ para todo $x$.
+
+**Respuesta.** $f$ es **creciente en todo $\mathbb{R}$** y no tiene intervalos de decrecimiento (pasa de $-1$ a $1$ sin alcanzarlos).
+
+</Solucion>

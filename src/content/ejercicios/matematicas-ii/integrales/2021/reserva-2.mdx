@@ -1,0 +1,93 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+import RecintoValorAbsolutoReserva2de2021 from "../../../../../components/figuras/RecintoValorAbsolutoReserva2de2021.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Calcula $\displaystyle\int_0^{\pi/2} \left(2\operatorname{sen}^2(x) - \cos^2(x)\right)dx$.
+
+<Solucion>
+
+**Simplificamos el integrando.** Con $\cos^2(x) = 1 - \operatorname{sen}^2(x)$:
+
+$$
+2\operatorname{sen}^2(x) - \cos^2(x) = 3\operatorname{sen}^2(x) - 1
+$$
+
+**Primitiva de $\operatorname{sen}^2(x)$.** Con la fórmula del ángulo doble, $\operatorname{sen}^2(x) = \dfrac{1 - \cos(2x)}{2}$:
+
+$$
+\int \operatorname{sen}^2(x)\,dx = \int \frac{1 - \cos(2x)}{2}\,dx = \frac{x}{2} - \frac{\operatorname{sen}(2x)}{4} + C
+$$
+
+**Primitiva del integrando.**
+
+$$
+\int \left(3\operatorname{sen}^2(x) - 1\right)dx = \frac{3x}{2} - \frac{3\operatorname{sen}(2x)}{4} - x = \frac{x}{2} - \frac{3\operatorname{sen}(2x)}{4} + C
+$$
+
+**Regla de Barrow.** Con $\operatorname{sen}(\pi) = \operatorname{sen}(0) = 0$:
+
+$$
+\int_0^{\pi/2} \left(2\operatorname{sen}^2(x) - \cos^2(x)\right)dx = \left[\frac{x}{2} - \frac{3\operatorname{sen}(2x)}{4}\right]_0^{\pi/2} = \frac{\pi}{4} - 0 - 0 = \frac{\pi}{4}
+$$
+
+**Respuesta.** **$\dfrac{\pi}{4} \approx 0{,}79$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Considera las funciones $f, g \colon \mathbb{R} \to \mathbb{R}$ definidas por $f(x) = |x| - 2$ y por $g(x) = 4 - x^2$.
+
+<div class="math-sub">
+
+a) Halla los puntos de corte de las gráficas de ambas funciones y esboza el recinto que delimitan. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Puntos de corte.** Las dos funciones son pares, así que basta con $x \geq 0$, donde $f(x) = x - 2$:
+
+$$
+x - 2 = 4 - x^2 \quad\Rightarrow\quad x^2 + x - 6 = 0 \quad\Rightarrow\quad x = 2 \quad (\text{la otra raíz, } x = -3, \text{ no es} \geq 0)
+$$
+
+Por simetría, también se cortan en $x = -2$. Con $f(\pm 2) = 0$, los puntos de corte son **$(-2, 0)$ y $(2, 0)$**.
+
+**Esbozo.** $g$ es una parábola abierta hacia abajo con vértice en $(0, 4)$ y $f$ es una V con vértice en $(0, -2)$. Entre los dos cortes, $g$ queda por encima (en $x = 0$, $4 > -2$):
+
+<RecintoValorAbsolutoReserva2de2021 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina el área del recinto anterior. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Área como integral definida.** Por la simetría respecto del eje $Y$, es el doble del área en $[0, 2]$, donde $f(x) = x - 2$:
+
+$$
+A = 2\int_0^2 \left[(4 - x^2) - (x - 2)\right]dx = 2\int_0^2 (6 - x - x^2)\,dx
+$$
+
+**Primitiva y regla de Barrow.**
+
+$$
+A = 2\left[6x - \frac{x^2}{2} - \frac{x^3}{3}\right]_0^2 = 2\left(12 - 2 - \frac{8}{3}\right) = 2 \cdot \frac{22}{3} = \frac{44}{3}
+$$
+
+**Respuesta.** El área es **$\dfrac{44}{3} \approx 14{,}67$ unidades cuadradas**.
+
+</Solucion>

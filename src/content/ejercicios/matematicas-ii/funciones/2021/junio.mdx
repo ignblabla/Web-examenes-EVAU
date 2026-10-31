@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+Se sabe que la gráfica de la función $f$ definida por $f(x) = \dfrac{ax^2 + bx + 2}{x - 1}$ (para $x \neq 1$) tiene una asíntota oblicua que pasa por el punto $(1, 1)$ y tiene pendiente $2$. Calcula $a$ y $b$.
+
+<Solucion>
+
+**La asíntota oblicua.** Tiene pendiente $2$ y pasa por $(1, 1)$: $y - 1 = 2(x - 1)$, es decir,
+
+$$
+y = 2x - 1
+$$
+
+**Primera condición: la pendiente.**
+
+$$
+m = \lim_{x \to \infty} \frac{f(x)}{x} = \lim_{x \to \infty} \frac{ax^2 + bx + 2}{x^2 - x} = a
+$$
+
+Como tiene que ser $2$, **$a = 2$**.
+
+**Segunda condición: la ordenada en el origen.** Con $a = 2$:
+
+$$
+n = \lim_{x \to \infty} \left(f(x) - 2x\right) = \lim_{x \to \infty} \frac{2x^2 + bx + 2 - 2x^2 + 2x}{x - 1} = \lim_{x \to \infty} \frac{(b + 2)\,x + 2}{x - 1} = b + 2
+$$
+
+Como tiene que ser $-1$, $b + 2 = -1$ y **$b = -3$**.
+
+**Comprobación.** Con $a = 2$ y $b = -3$, dividiendo: $2x^2 - 3x + 2 = (2x - 1)(x - 1) + 1$, así que $f(x) = 2x - 1 + \dfrac{1}{x - 1}$, y la fracción tiende a $0$ en el infinito.
+
+**Respuesta.** **$a = 2$ y $b = -3$**.
+
+</Solucion>

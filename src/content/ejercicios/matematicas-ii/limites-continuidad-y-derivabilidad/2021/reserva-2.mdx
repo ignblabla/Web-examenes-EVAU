@@ -1,0 +1,33 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Sea la función continua $f \colon \mathbb{R} \to \mathbb{R}$ definida por
+
+$$
+f(x) = \begin{cases} \dfrac{\ln(e^x + x^3)}{x} & \text{si } x < 0 \\[2ex] 4x^2 + a & \text{si } 0 \leq x < 1 \\[1ex] b + \operatorname{sen}(\pi x) & \text{si } 1 \leq x \end{cases}
+$$
+
+($\ln$ denota la función logaritmo neperiano). Determina $a$ y $b$.
+
+<Solucion>
+
+**Planteamiento.** $f$ es continua, así que en $x = 0$ y en $x = 1$ los límites laterales coinciden con el valor de la función.
+
+**Condición de continuidad en $x = 0$.** $f(0) = a$, que es también el límite por la derecha. Por la izquierda, en $x = 0$ el numerador vale $\ln(1 + 0) = 0$ y el denominador, $0$: es $\dfrac{0}{0}$. Por L'Hôpital, con la derivada de $\ln(e^x + x^3)$, que es $\dfrac{e^x + 3x^2}{e^x + x^3}$:
+
+$$
+\lim_{x \to 0^-} \frac{\ln(e^x + x^3)}{x} = \lim_{x \to 0^-} \frac{e^x + 3x^2}{e^x + x^3} = \frac{1 + 0}{1 + 0} = 1
+$$
+
+Así que **$a = 1$**.
+
+**Condición de continuidad en $x = 1$.** Por la izquierda, $\displaystyle\lim_{x \to 1^-} (4x^2 + a) = 4 + a = 5$. Y $f(1) = b + \operatorname{sen}(\pi) = b$. Así que **$b = 5$**.
+
+**Respuesta.** **$a = 1$ y $b = 5$**.
+
+</Solucion>

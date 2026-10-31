@@ -1,0 +1,131 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 5 y 6 son los dos de sistemas: van juntos y el rótulo del 6 va aquí. */}
+
+Considera el siguiente sistema de ecuaciones lineales
+
+$$
+\begin{cases}
+mx + 2y - z = 1 \\
+5x - 4y + 2z = 0 \\
+x + 3my = m + \frac{2}{5}
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) Discute el sistema según los valores de $m$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = \begin{vmatrix} m & 2 & -1 \\ 5 & -4 & 2 \\ 1 & 3m & 0 \end{vmatrix} = m\,(0 - 6m) - 2\,(0 - 2) - (15m + 4) = -6m^2 - 15m = -3m\,(2m + 5)
+$$
+
+**Valores críticos.** $m = 0$ y $m = -\dfrac{5}{2}$.
+
+**Si $m \neq 0$ y $m \neq -\frac{5}{2}$.** $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$: **compatible determinado**.
+
+**Si $m = 0$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 0 & 2 & -1 & 1 \\ 5 & -4 & 2 & 0 \\ 1 & 0 & 0 & 2/5 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, por el menor $\begin{vmatrix} 0 & 2 \\ 5 & -4 \end{vmatrix} = -10 \neq 0$. La segunda fila es $-2$ veces la primera más $5$ veces la tercera, también en los términos independientes: $-2 \cdot 1 + 5 \cdot \frac{2}{5} = 0$. Así que $\operatorname{rg}(A^*) = 2 < 3$: **compatible indeterminado**.
+
+**Si $m = -\frac{5}{2}$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} -5/2 & 2 & -1 & 1 \\ 5 & -4 & 2 & 0 \\ 1 & -15/2 & 0 & -21/10 \end{array}\right)
+$$
+
+Los coeficientes de la segunda ecuación son $-2$ veces los de la primera, pero su término independiente es $0$, no $-2$: las dos ecuaciones son incompatibles. $\operatorname{rg}(A) = 2$ (el menor $\begin{vmatrix} -5/2 & 2 \\ 1 & -15/2 \end{vmatrix} = \frac{67}{4} \neq 0$) y $\operatorname{rg}(A^*) = 3$: **incompatible**.
+
+**Respuesta.**
+
+- $m \neq 0$ y $m \neq -\frac{5}{2}$: **compatible determinado**.
+- $m = 0$: **compatible indeterminado**.
+- $m = -\frac{5}{2}$: **incompatible**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Resuelve el sistema para $m = 0$. ¿Hay alguna solución en la que $x = 0$? En caso afirmativo, calcúlala. En caso negativo, justifica la respuesta. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Resolución.** Con $m = 0$ es compatible indeterminado y basta con la primera y la tercera ecuación:
+
+$$
+\begin{cases}
+2y - z = 1 \\
+x = \frac{2}{5}
+\end{cases}
+$$
+
+Tomando $y = \lambda$, $z = 2\lambda - 1$:
+
+$$
+(x,\ y,\ z) = \left(\frac{2}{5},\ \lambda,\ 2\lambda - 1\right), \qquad \lambda \in \mathbb{R}
+$$
+
+**Comprobación.** En la segunda ecuación: $5 \cdot \frac{2}{5} - 4\lambda + 2(2\lambda - 1) = 2 - 2 = 0$.
+
+**¿Alguna con $x = 0$?** No: en todas las soluciones $x = \frac{2}{5}$, porque la tercera ecuación, con $m = 0$, es justamente $x = \frac{2}{5}$.
+
+**Respuesta.** Las soluciones son $\left(\frac{2}{5}, \lambda, 2\lambda - 1\right)$ con $\lambda \in \mathbb{R}$, y **no hay ninguna con $x = 0$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 6</u> (2.5 puntos)</strong></Bloque>
+
+En una empresa se fabrican tres tipos de productos plásticos: botellas, garrafas y bidones. Se utiliza como materia prima $10$ kg de polietileno cada hora. Se sabe que para fabricar cada botella se necesitan $50$ gramos, para cada garrafa $100$ gramos y $1$ kg para cada bidón.
+
+El gerente también nos dice que se debe producir el doble de botellas que de garrafas. Por último, se sabe que por motivos de capacidad de trabajo, en las máquinas se producen en total $52$ productos cada hora.
+
+¿Cuántas botellas, garrafas y bidones se producen cada hora?
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ al número de botellas, garrafas y bidones que se fabrican cada hora.
+
+**Planteamiento del sistema.** Trabajando en gramos ($10$ kg $= 10000$ g y $1$ kg $= 1000$ g):
+
+- Polietileno: $50x + 100y + 1000z = 10000$, o, dividiendo entre $50$, $x + 2y + 20z = 200$.
+- El doble de botellas que de garrafas: $x = 2y$, es decir, $x - 2y = 0$.
+- $52$ productos en total: $x + y + z = 52$.
+
+$$
+\begin{cases}
+x + 2y + 20z = 200 \\
+x - 2y = 0 \\
+x + y + z = 52
+\end{cases}
+$$
+
+**Resolución.** Sustituyendo $x = 2y$:
+
+- En la primera: $4y + 20z = 200$, es decir, $y + 5z = 50$.
+- En la tercera: $3y + z = 52$, es decir, $z = 52 - 3y$.
+
+Llevando la segunda a la primera: $y + 260 - 15y = 50$, así que $14y = 210$ e $y = 15$. Entonces $z = 52 - 45 = 7$ y $x = 30$.
+
+**Comprobación.** $30 \cdot 50 + 15 \cdot 100 + 7 \cdot 1000 = 1500 + 1500 + 7000 = 10000$ g; $30 = 2 \cdot 15$; $30 + 15 + 7 = 52$.
+
+**Respuesta.** Cada hora se fabrican **$30$ botellas, $15$ garrafas y $7$ bidones**.
+
+</Solucion>

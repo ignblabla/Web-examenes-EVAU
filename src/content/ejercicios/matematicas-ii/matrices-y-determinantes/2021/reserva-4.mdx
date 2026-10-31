@@ -1,0 +1,55 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} m & m & m \\ m & m + 1 & m \\ m & m & m + 2 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) ¿Para qué valores de $m$ existe la inversa de la matriz $A$? Razona la respuesta. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Valor del determinante.** Restar una fila a otra no cambia el determinante. Restando la primera fila a la segunda y a la tercera, queda una matriz triangular:
+
+$$
+|A| = \begin{vmatrix} m & m & m \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{vmatrix} = m \cdot 1 \cdot 2 = 2m
+$$
+
+**Razonamiento.** Una matriz cuadrada tiene inversa si y solo si su determinante no es $0$, y $2m = 0$ solo para $m = 0$.
+
+**Respuesta.** $A$ tiene inversa **para todo $m \neq 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Para $m = 1$, halla $\left(\dfrac{1}{2}A\right)^{-1}$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Propiedad.** Para un número $k \neq 0$, $(kA)^{-1} = \dfrac{1}{k}A^{-1}$, así que $\left(\frac{1}{2}A\right)^{-1} = 2A^{-1}$.
+
+**Cálculo de $A^{-1}$.** Con $m = 1$, $A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 3 \end{pmatrix}$ y $|A| = 2$. Sus adjuntos son $5$, $-2$, $-1$ (primera fila), $-2$, $2$, $0$ (segunda) y $-1$, $0$, $1$ (tercera). La matriz es simétrica, así que la adjunta también lo es:
+
+$$
+A^{-1} = \frac{1}{2}\begin{pmatrix} 5 & -2 & -1 \\ -2 & 2 & 0 \\ -1 & 0 & 1 \end{pmatrix}
+$$
+
+**Comprobación.** La primera fila de $A$ por las columnas de la adjunta da $5 - 2 - 1 = 2$, $-2 + 2 + 0 = 0$ y $-1 + 0 + 1 = 0$: es $2I$, como debe ser.
+
+**Respuesta.**
+
+$$
+\left(\frac{1}{2}A\right)^{-1} = 2A^{-1} = \begin{pmatrix} 5 & -2 & -1 \\ -2 & 2 & 0 \\ -1 & 0 & 1 \end{pmatrix}
+$$
+
+</Solucion>

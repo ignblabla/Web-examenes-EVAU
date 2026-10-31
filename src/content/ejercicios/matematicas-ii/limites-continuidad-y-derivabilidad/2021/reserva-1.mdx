@@ -1,0 +1,59 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Sea la función derivable $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \begin{cases} \dfrac{ax + b}{x - 1} & \text{si } x \leq 0 \\[2ex] \ln(1 + x) & \text{si } x > 0 \end{cases}$ ($\ln$ denota la función logaritmo neperiano).
+
+<div class="math-sub">
+
+a) Determina $a$ y $b$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Cada trozo es derivable en su intervalo ($x - 1 \neq 0$ para $x \leq 0$ y $1 + x > 0$ para $x > 0$). Una función derivable es continua, así que en $x = 0$ imponemos las dos condiciones.
+
+**Condición de continuidad.** $f(0) = \dfrac{b}{-1} = -b$, y el límite por la derecha es $\ln 1 = 0$. Así que **$b = 0$**.
+
+**Condición de derivabilidad.** Las derivadas de cada trozo son
+
+$$
+\left(\frac{ax + b}{x - 1}\right)' = \frac{a\,(x - 1) - (ax + b)}{(x - 1)^2} = \frac{-a - b}{(x - 1)^2}, \qquad \left(\ln(1 + x)\right)' = \frac{1}{1 + x}
+$$
+
+así que $f'(0^-) = -a - b = -a$ y $f'(0^+) = 1$. Igualando, **$a = -1$**.
+
+**Respuesta.** **$a = -1$ y $b = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla las ecuaciones de las rectas tangente y normal a la gráfica de $f$ en el punto de abscisa $x = 2$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Punto y pendiente.** En $x = 2$ vale el segundo trozo: $f(2) = \ln 3$ y $f'(2) = \dfrac{1}{3}$.
+
+**Recta tangente.**
+
+$$
+y - \ln 3 = \frac{1}{3}\,(x - 2) \quad\Rightarrow\quad y = \frac{x}{3} - \frac{2}{3} + \ln 3
+$$
+
+**Recta normal.** Su pendiente es $-\dfrac{1}{f'(2)} = -3$:
+
+$$
+y - \ln 3 = -3\,(x - 2) \quad\Rightarrow\quad y = -3x + 6 + \ln 3
+$$
+
+**Respuesta.** Tangente: **$y = \dfrac{x}{3} - \dfrac{2}{3} + \ln 3$**. Normal: **$y = -3x + 6 + \ln 3$**.
+
+</Solucion>

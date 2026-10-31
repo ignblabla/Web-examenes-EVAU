@@ -1,0 +1,93 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera el siguiente sistema de ecuaciones lineales
+
+$$
+\begin{cases}
+x + my + mz = 1 \\
+x + 2my + (m + 1)z = 1 \\
+2x + my + mz = 2
+\end{cases}
+$$
+
+<div class="math-sub">
+
+a) Discute el sistema según los valores de $m$. **(1.75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Determinante de la matriz de coeficientes.** Desarrollando por la primera fila:
+
+$$
+|A| = \begin{vmatrix} 1 & m & m \\ 1 & 2m & m + 1 \\ 2 & m & m \end{vmatrix} = (2m^2 - m^2 - m) - m\,(m - 2m - 2) + m\,(m - 4m) = -m^2 + m = m\,(1 - m)
+$$
+
+**Valores críticos.** $m = 0$ y $m = 1$.
+
+**Si $m \neq 0$ y $m \neq 1$.** $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 3$: **compatible determinado**.
+
+**Si $m = 0$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 2 & 0 & 0 & 2 \end{array}\right)
+$$
+
+La tercera fila es el doble de la primera, también en el término independiente. El menor $\begin{vmatrix} 1 & 0 \\ 1 & 1 \end{vmatrix} = 1 \neq 0$ (filas 1 y 2, columnas 1 y 3) da $\operatorname{rg}(A) = \operatorname{rg}(A^*) = 2 < 3$: **compatible indeterminado**.
+
+**Si $m = 1$.**
+
+$$
+A^* = \left(\begin{array}{ccc|c} 1 & 1 & 1 & 1 \\ 1 & 2 & 2 & 1 \\ 2 & 1 & 1 & 2 \end{array}\right)
+$$
+
+$\operatorname{rg}(A) = 2$, por el menor $\begin{vmatrix} 1 & 1 \\ 1 & 2 \end{vmatrix} = 1 \neq 0$. La tercera columna es igual a la segunda, así que en la ampliada basta con mirar las columnas 1, 2 y 4:
+
+$$
+\begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 1 \\ 2 & 1 & 2 \end{vmatrix} = 1\,(4 - 1) - 1\,(2 - 2) + 1\,(1 - 4) = 0
+$$
+
+Así que $\operatorname{rg}(A^*) = 2$: **compatible indeterminado**.
+
+**Respuesta.**
+
+- $m \neq 0$ y $m \neq 1$: **compatible determinado**.
+- $m = 0$ o $m = 1$: **compatible indeterminado**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Resuelve el sistema, si es posible, para $m = 1$. **(0.75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Resolución.** Es compatible indeterminado y basta con las dos primeras ecuaciones:
+
+$$
+\begin{cases}
+x + y + z = 1 \\
+x + 2y + 2z = 1
+\end{cases}
+$$
+
+Restándolas, $y + z = 0$, y entonces $x = 1$. Tomando $z = \lambda$, $y = -\lambda$.
+
+**Comprobación.** En la tercera ecuación: $2 \cdot 1 - \lambda + \lambda = 2$.
+
+**Respuesta.** Las soluciones son
+
+$$
+(x,\ y,\ z) = (1,\ -\lambda,\ \lambda), \qquad \lambda \in \mathbb{R}
+$$
+
+</Solucion>

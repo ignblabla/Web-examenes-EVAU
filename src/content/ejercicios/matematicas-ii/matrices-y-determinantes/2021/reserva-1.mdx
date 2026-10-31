@@ -1,0 +1,62 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} a & b & c \\ d & e & f \\ 1 & 2 & 3 \end{pmatrix}$, con determinante igual a $2$.
+
+<div class="math-sub">
+
+a) Calcula razonadamente $\left|\frac{1}{3}A^{-1}A^t\right|$. **(0.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Propiedades que usamos.** El determinante de un producto es el producto de los determinantes; $|A^{-1}| = \dfrac{1}{|A|}$; $|A^t| = |A|$; y, como $A$ es de orden $3$, $|kM| = k^3|M|$.
+
+**Cálculo.**
+
+$$
+\left|\frac{1}{3}A^{-1}A^t\right| = \left(\frac{1}{3}\right)^3 \cdot \frac{1}{|A|} \cdot |A| = \frac{1}{27} \cdot \frac{1}{2} \cdot 2 = \frac{1}{27}
+$$
+
+**Respuesta.** **$\dfrac{1}{27}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula razonadamente los determinantes $\begin{vmatrix} 6c & 2b & 2a \\ 3f & e & d \\ 9 & 2 & 1 \end{vmatrix}$ y $\begin{vmatrix} 2a - 2b & c & b \\ 2d - 2e & f & e \\ -2 & 3 & 2 \end{vmatrix}$. **(2 puntos)**
+
+</div>
+
+<Solucion>
+
+**Primer determinante.**
+
+- La primera fila es $2\,(3c, b, a)$: sacamos el $2$.
+- Después, la primera columna es $3\,(c, f, 3)$: sacamos el $3$.
+- Intercambiando la primera y la tercera columna, el determinante cambia de signo y queda $|A|$.
+
+$$
+\begin{vmatrix} 6c & 2b & 2a \\ 3f & e & d \\ 9 & 2 & 1 \end{vmatrix} = 2\begin{vmatrix} 3c & b & a \\ 3f & e & d \\ 9 & 2 & 1 \end{vmatrix} = 6\begin{vmatrix} c & b & a \\ f & e & d \\ 3 & 2 & 1 \end{vmatrix} = -6\begin{vmatrix} a & b & c \\ d & e & f \\ 1 & 2 & 3 \end{vmatrix} = -6 \cdot 2 = -12
+$$
+
+**Segundo determinante.**
+
+- La primera columna es $2\,(a - b, d - e, -1)$, y $-1 = 1 - 2$: sacamos el $2$.
+- La primera columna es entonces la resta de $(a, d, 1)$ y $(b, e, 2)$, así que el determinante se separa en dos.
+- El segundo de ellos tiene la primera y la tercera columna iguales, así que vale $0$.
+- En el primero, intercambiando la segunda y la tercera columna queda $|A|$ con el signo cambiado.
+
+$$
+\begin{vmatrix} 2a - 2b & c & b \\ 2d - 2e & f & e \\ -2 & 3 & 2 \end{vmatrix} = 2\left(\begin{vmatrix} a & c & b \\ d & f & e \\ 1 & 3 & 2 \end{vmatrix} - \begin{vmatrix} b & c & b \\ e & f & e \\ 2 & 3 & 2 \end{vmatrix}\right) = 2\left(-\begin{vmatrix} a & b & c \\ d & e & f \\ 1 & 2 & 3 \end{vmatrix} - 0\right) = 2 \cdot (-2) = -4
+$$
+
+**Respuesta.** El primer determinante vale **$-12$** y el segundo, **$-4$**.
+
+</Solucion>

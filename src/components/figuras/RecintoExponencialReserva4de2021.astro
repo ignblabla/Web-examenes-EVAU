@@ -1,0 +1,28 @@
+---
+// Matemáticas II, reserva 4 de 2021, ejercicio 4: recinto entre f(x) = xeˣ, por arriba, la recta
+// y = x, por abajo, y la recta x = 2. Las dos curvas solo se cortan en el origen.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => x * Math.exp(x)
+const g = (x: number) => x
+---
+
+<GraficaFuncion
+  xMin={-0.4}
+  xMax={2.6}
+  yMin={-1.2}
+  yMax={16.5}
+  marcasX={[1, 2]}
+  marcasY={[5, 10, 15]}
+  tramos={[
+    { f, desde: 0, hasta: 2.18, etiqueta: { texto: "f", x: 1.85, y: 12.5, ancla: "end" } },
+    { f: g, desde: -0.3, hasta: 2.5, color: "#b04a3a", etiqueta: { texto: "y = x", x: 2.5, y: 4.2, ancla: "end" } },
+  ]}
+  asintotas={[{ tipo: "v", valor: 2, etiqueta: "x = 2", recta: true, color: "#b04a3a", arriba: true }]}
+  recinto={{ arriba: f, abajo: g, desde: 0, hasta: 2 }}
+  puntos={[
+    { x: 0, y: 0, texto: "(0, 0)", dx: 8, dy: 16 },
+    { x: 2, y: 2 * Math.exp(2), texto: "(2, 2e²)", dx: 10, dy: 4 },
+  ]}
+  descripcion="Gráfica de f(x) = xeˣ para x ≥ 0, que sale del origen y crece cada vez más deprisa hasta (2, 2e²), unos 14,8. La recta y = x también sale del origen y queda por debajo. El recinto sombreado queda entre las dos curvas, desde x = 0 hasta la recta vertical x = 2"
+/>

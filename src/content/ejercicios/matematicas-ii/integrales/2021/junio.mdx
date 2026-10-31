@@ -1,0 +1,108 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+import CuarticaJunio2021 from "../../../../../components/figuras/CuarticaJunio2021.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 4x^3 - x^4$.
+
+<div class="math-sub">
+
+a) Determina los intervalos de crecimiento y de decrecimiento de $f$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Puntos críticos.**
+
+$$
+f'(x) = 12x^2 - 4x^3 = 4x^2\,(3 - x) = 0 \quad\Rightarrow\quad x = 0, \quad x = 3
+$$
+
+**Signo de la derivada.** $4x^2 \geq 0$ siempre, así que el signo de $f'$ es el de $3 - x$, salvo en $x = 0$, donde vale $0$:
+
+<div class="math-tabla">
+
+| | $(-\infty, 0)$ | $(0, 3)$ | $(3, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $+$ | $-$ |
+| $f$ | crece | crece | decrece |
+
+</div>
+
+En $x = 0$ la tangente es horizontal pero $f$ no cambia de crecimiento: no es un extremo. En $x = 3$ hay un máximo, $f(3) = 108 - 81 = 27$.
+
+**Respuesta.** $f$ **crece en $(-\infty, 3)$** y **decrece en $(3, +\infty)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Esboza la gráfica de $f$ y calcula el área del recinto limitado por dicha gráfica y el eje de abscisas. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Cortes con el eje de abscisas.** $4x^3 - x^4 = x^3\,(4 - x) = 0$ da $x = 0$ y $x = 4$.
+
+**Esbozo.** Con el apartado a): $f$ viene de $-\infty$ (el término $-x^4$ manda), pasa por el origen con tangente horizontal, sube hasta el máximo $(3, 27)$, corta el eje en $x = 4$ y baja hacia $-\infty$.
+
+<CuarticaJunio2021 />
+
+**Área como integral definida.** El recinto va de $x = 0$ a $x = 4$, y ahí $f \geq 0$:
+
+$$
+A = \int_0^4 (4x^3 - x^4)\,dx
+$$
+
+**Primitiva y regla de Barrow.**
+
+$$
+A = \left[x^4 - \frac{x^5}{5}\right]_0^4 = 256 - \frac{1024}{5} = \frac{256}{5}
+$$
+
+**Respuesta.** El área es **$\dfrac{256}{5} = 51{,}2$ unidades cuadradas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Considera la función $F \colon [0, +\infty) \to \mathbb{R}$ definida por
+
+$$
+F(x) = \int_0^x \left(2t + \sqrt{t}\right)dt.
+$$
+
+Halla la ecuación de la recta tangente a la gráfica de $F$ en el punto de abscisa $x = 1$.
+
+<Solucion>
+
+**Expresión de la recta tangente.** Es $y - F(1) = F'(1)\,(x - 1)$, así que necesitamos $F(1)$ y $F'(1)$.
+
+**Cálculo de $F(1)$.** Con $\sqrt{t} = t^{1/2}$, una primitiva de $t^{1/2}$ es $\frac{2}{3}t^{3/2}$:
+
+$$
+F(1) = \int_0^1 \left(2t + t^{1/2}\right)dt = \left[t^2 + \frac{2}{3}t^{3/2}\right]_0^1 = 1 + \frac{2}{3} = \frac{5}{3}
+$$
+
+**Cálculo de $F'(1)$.** El integrando es continuo en $[0, +\infty)$, así que, por el teorema fundamental del cálculo, $F'(x) = 2x + \sqrt{x}$ y
+
+$$
+F'(1) = 2 + 1 = 3
+$$
+
+**Respuesta.** La recta tangente es
+
+$$
+y - \frac{5}{3} = 3\,(x - 1) \quad\Rightarrow\quad y = 3x - \frac{4}{3}
+$$
+
+</Solucion>

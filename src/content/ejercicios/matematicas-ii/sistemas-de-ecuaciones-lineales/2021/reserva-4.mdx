@@ -1,0 +1,62 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+En una cafetería, tres cafés, una tostada y dos zumos de naranja cuestan $7.50$ €. Cuatro cafés, una tostada y un zumo de naranja cuestan $7.20$ €.
+
+<div class="math-sub">
+
+a) Calcula, de forma razonada, el precio total de dos cafés, una tostada y tres zumos de naranja. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento del sistema.** Llamamos $x$, $y$ y $z$ al precio, en euros, de un café, una tostada y un zumo:
+
+$$
+\begin{cases}
+3x + y + 2z = 7{,}50 \\
+4x + y + z = 7{,}20
+\end{cases}
+$$
+
+Son dos ecuaciones independientes con tres incógnitas: el sistema es compatible indeterminado, así que no se pueden conocer los tres precios.
+
+**Resolución en función de $z$.** Restando la primera ecuación a la segunda, $x - z = -0{,}30$, así que $x = z - 0{,}30$. Y de la primera:
+
+$$
+y = 7{,}50 - 3x - 2z = 7{,}50 - 3z + 0{,}90 - 2z = 8{,}40 - 5z
+$$
+
+**Precio del pedido.** El importe no depende de $z$:
+
+$$
+2x + y + 3z = 2z - 0{,}60 + 8{,}40 - 5z + 3z = 7{,}80
+$$
+
+Se ve también en que el pedido es el primero dos veces menos el segundo: $2\,(3, 1, 2) - (4, 1, 1) = (2, 1, 3)$, y $2 \cdot 7{,}50 - 7{,}20 = 7{,}80$.
+
+**Respuesta.** Cuestan **$7{,}80$ €**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) ¿El precio de un zumo de naranja podría ser de $2$ €? Razona la respuesta. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Con las soluciones del apartado a), comprobamos si $z = 2$ da precios aceptables (no negativos).
+
+**Cálculo.** Con $z = 2$: $x = 2 - 0{,}30 = 1{,}70$ € e $y = 8{,}40 - 10 = -1{,}60$ €.
+
+**Respuesta.** **No**: la tostada tendría un precio negativo, que no tiene sentido. (Para que los tres precios sean positivos hace falta $0{,}30 < z < 1{,}68$.)
+
+</Solucion>

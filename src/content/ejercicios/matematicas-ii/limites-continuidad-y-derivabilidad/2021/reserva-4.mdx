@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-ii
+tema: limites-continuidad-y-derivabilidad
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+Sabiendo que $\displaystyle\lim_{x \to 0} \left(\frac{x + 1}{\ln(x + 1)} - \frac{a}{x}\right)$ es finito, calcula $a$ y el valor del límite ($\ln$ denota la función logaritmo neperiano).
+
+<Solucion>
+
+**Indeterminación.** Cuando $x \to 0$, $\ln(x + 1) \to 0$ y los dos sumandos tienden a infinito: es una indeterminación del tipo $\infty - \infty$. Operando, se convierte en un cociente:
+
+$$
+\frac{x + 1}{\ln(x + 1)} - \frac{a}{x} = \frac{x\,(x + 1) - a\ln(x + 1)}{x\ln(x + 1)}
+$$
+
+En $x = 0$, numerador y denominador valen $0$: es $\dfrac{0}{0}$ para cualquier $a$, y se puede aplicar la regla de L'Hôpital.
+
+**Primera aplicación de L'Hôpital.** La derivada del numerador es $2x + 1 - \dfrac{a}{x + 1}$ y la del denominador, $\ln(x + 1) + \dfrac{x}{x + 1}$:
+
+$$
+\lim_{x \to 0} \frac{2x + 1 - \dfrac{a}{x + 1}}{\ln(x + 1) + \dfrac{x}{x + 1}}
+$$
+
+En $x = 0$, el denominador vale $0$ y el numerador, $1 - a$.
+
+**Valor de $a$.** Si $a \neq 1$, el límite sería infinito. Como es finito, **$a = 1$**, y vuelve a ser $\dfrac{0}{0}$.
+
+**Segunda aplicación de L'Hôpital.** Con $a = 1$, y como la derivada de $\dfrac{x}{x + 1}$ es $\dfrac{1}{(x + 1)^2}$:
+
+$$
+\lim_{x \to 0} \frac{2 + \dfrac{1}{(x + 1)^2}}{\dfrac{1}{x + 1} + \dfrac{1}{(x + 1)^2}} = \frac{2 + 1}{1 + 1} = \frac{3}{2}
+$$
+
+**Respuesta.** **$a = 1$** y el límite vale **$\dfrac{3}{2}$**.
+
+</Solucion>

@@ -1,0 +1,91 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = e^x$.
+
+<div class="math-sub">
+
+a) Calcula $a$ para que la recta tangente a la gráfica de $f$ en el punto $(a, f(a))$ pase por el origen de coordenadas. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Ecuación general de la recta tangente.** Como $f'(x) = e^x$, la tangente en $(a, e^a)$ es
+
+$$
+y - e^a = e^a\,(x - a) \quad\Rightarrow\quad y = e^a\,x + e^a\,(1 - a)
+$$
+
+**Pasa por el origen.** Sustituyendo $(0, 0)$: $0 = e^a\,(1 - a)$. Como $e^a > 0$, tiene que ser $a = 1$.
+
+**Respuesta.** **$a = 1$**, y la tangente es $y = ex$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula el área del recinto limitado por la gráfica de $f$, la recta tangente a la misma en el punto $(1, f(1))$ y el eje de ordenadas. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**El recinto.** Por el apartado a), la tangente en $(1, e)$ es $y = ex$. El recinto va del eje de ordenadas ($x = 0$) al punto de tangencia ($x = 1$), y ahí la exponencial queda por encima de su tangente, porque es convexa (en $x = 0$, $1 > 0$).
+
+**Área como integral definida.**
+
+$$
+A = \int_0^1 \left(e^x - ex\right)dx
+$$
+
+**Primitiva y regla de Barrow.**
+
+$$
+A = \left[e^x - \frac{ex^2}{2}\right]_0^1 = \left(e - \frac{e}{2}\right) - (1 - 0) = \frac{e}{2} - 1
+$$
+
+**Respuesta.** El área es **$\dfrac{e}{2} - 1 \approx 0{,}36$ unidades cuadradas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Calcula $\displaystyle\int_1^3 |x^2 - 3x + 2|\,dx$.
+
+<Solucion>
+
+**Signo de lo que está dentro del valor absoluto.** $x^2 - 3x + 2 = (x - 1)(x - 2)$ es negativo entre $1$ y $2$ y positivo a partir de $2$.
+
+**Suma de dos integrales sin valor absoluto.** En $[1, 2]$, $|x^2 - 3x + 2| = -(x^2 - 3x + 2)$, y en $[2, 3]$ es la expresión tal cual:
+
+$$
+\int_1^3 |x^2 - 3x + 2|\,dx = -\int_1^2 (x^2 - 3x + 2)\,dx + \int_2^3 (x^2 - 3x + 2)\,dx
+$$
+
+**Primitiva.** $F(x) = \dfrac{x^3}{3} - \dfrac{3x^2}{2} + 2x$, con
+
+$$
+F(1) = \frac{1}{3} - \frac{3}{2} + 2 = \frac{5}{6}, \qquad F(2) = \frac{8}{3} - 6 + 4 = \frac{2}{3}, \qquad F(3) = 9 - \frac{27}{2} + 6 = \frac{3}{2}
+$$
+
+**Cálculo.**
+
+$$
+-\left(F(2) - F(1)\right) + \left(F(3) - F(2)\right) = -\left(\frac{2}{3} - \frac{5}{6}\right) + \left(\frac{3}{2} - \frac{2}{3}\right) = \frac{1}{6} + \frac{5}{6} = 1
+$$
+
+**Respuesta.**
+
+$$
+\int_1^3 |x^2 - 3x + 2|\,dx = 1
+$$
+
+</Solucion>

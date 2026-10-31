@@ -1,0 +1,57 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} a & 2 & 1 \\ b & -1 & 1 \\ c & 1 & 1 \end{pmatrix}$, con determinante igual a $5$.
+
+<div class="math-sub">
+
+a) Calcula razonadamente el determinante de $2A^3$. **(0.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Propiedades.** Para una matriz de orden $3$, $|kM| = k^3|M|$, y el determinante de una potencia es la potencia del determinante.
+
+$$
+|2A^3| = 2^3\,|A|^3 = 8 \cdot 125 = 1000
+$$
+
+**Respuesta.** **$|2A^3| = 1000$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula razonadamente los determinantes $\begin{vmatrix} 2a & -1 & 3 \\ 2b & 1/2 & 3 \\ 2c & -1/2 & 3 \end{vmatrix}$ y $\begin{vmatrix} a & b & c \\ a + 4 & b - 2 & c + 2 \\ a + 1 & b + 1 & c + 1 \end{vmatrix}$. **(2 puntos)**
+
+</div>
+
+<Solucion>
+
+**Primer determinante.** Sus columnas son las de $A$ multiplicadas por números: la primera es $2\,(a, b, c)$, la segunda es $-\frac{1}{2}\,(2, -1, 1)$ y la tercera es $3\,(1, 1, 1)$. Sacando los tres factores:
+
+$$
+\begin{vmatrix} 2a & -1 & 3 \\ 2b & 1/2 & 3 \\ 2c & -1/2 & 3 \end{vmatrix} = 2 \cdot \left(-\frac{1}{2}\right) \cdot 3\begin{vmatrix} a & 2 & 1 \\ b & -1 & 1 \\ c & 1 & 1 \end{vmatrix} = -3 \cdot 5 = -15
+$$
+
+**Segundo determinante.** Restar una fila a otra no cambia el determinante. Restando la primera fila a la segunda y a la tercera:
+
+$$
+\begin{vmatrix} a & b & c \\ a + 4 & b - 2 & c + 2 \\ a + 1 & b + 1 & c + 1 \end{vmatrix} = \begin{vmatrix} a & b & c \\ 4 & -2 & 2 \\ 1 & 1 & 1 \end{vmatrix}
+$$
+
+Sacando el $2$ de la segunda fila, queda el determinante de $A^t$, que es igual al de $A$:
+
+$$
+= 2\begin{vmatrix} a & b & c \\ 2 & -1 & 1 \\ 1 & 1 & 1 \end{vmatrix} = 2\,|A^t| = 2\,|A| = 10
+$$
+
+**Respuesta.** El primer determinante vale **$-15$** y el segundo, **$10$**.
+
+</Solucion>

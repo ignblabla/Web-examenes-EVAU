@@ -1,0 +1,28 @@
+---
+// Matemáticas II, reserva 2 de 2021, ejercicio 4: recinto entre g(x) = 4 − x², por arriba, y
+// f(x) = |x| − 2, por abajo, que se cortan en (−2, 0) y (2, 0).
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => Math.abs(x) - 2
+const g = (x: number) => 4 - x ** 2
+---
+
+<GraficaFuncion
+  xMin={-3.4}
+  xMax={3.4}
+  yMin={-2.9}
+  yMax={4.9}
+  marcasX={[-3, -2, -1, 1, 2, 3]}
+  marcasY={[-2, -1, 1, 2, 3, 4]}
+  tramos={[
+    { f: g, desde: -2.75, hasta: 2.75, etiqueta: { texto: "g", x: 0.25, y: 4.35 } },
+    { f, desde: -3.3, hasta: 3.3, color: "#b04a3a", etiqueta: { texto: "f", x: 3.2, y: 1.6, ancla: "end" } },
+  ]}
+  recinto={{ arriba: g, abajo: f, desde: -2, hasta: 2 }}
+  puntos={[
+    { x: -2, y: 0, texto: "(−2, 0)", dx: -10, dy: -8 },
+    { x: 2, y: 0, texto: "(2, 0)", dx: 10, dy: -8 },
+    { x: 0, y: -2, texto: "(0, −2)", dx: 8, dy: 14 },
+  ]}
+  descripcion="Parábola g(x) = 4 − x², abierta hacia abajo con vértice en (0, 4), y gráfica de f(x) = |x| − 2, en forma de V con vértice en (0, −2). Se cortan en (−2, 0) y (2, 0). El recinto sombreado queda entre la parábola, por arriba, y la V, por abajo"
+/>

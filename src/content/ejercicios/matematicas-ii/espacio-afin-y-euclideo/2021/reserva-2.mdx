@@ -1,0 +1,133 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas
+
+$$
+r \equiv \begin{cases} x = 2 + 3\lambda \\ y = -1 + 2\lambda \\ z = 3 + \lambda \end{cases} \qquad \text{y} \qquad s \equiv \begin{cases} 2x - y - 2 = 0 \\ y + 2z - 4 = 0 \end{cases}
+$$
+
+<div class="math-sub">
+
+a) Halla el plano que contiene a $r$ y es paralelo a $s$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de las rectas.** $r$ pasa por $R(2, -1, 3)$ con vector director $\vec{d}_r = (3, 2, 1)$. El vector director de $s$ es perpendicular a los normales de los dos planos:
+
+$$
+(2,\ -1,\ 0) \times (0,\ 1,\ 2) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & -1 & 0 \\ 0 & 1 & 2 \end{vmatrix} = (-2 - 0)\,\vec{i} - (4 - 0)\,\vec{j} + (2 - 0)\,\vec{k} = (-2,\ -4,\ 2)
+$$
+
+o el proporcional $\vec{d}_s = (1, 2, -1)$.
+
+**Planteamiento.** El plano contiene a $r$, así que pasa por $R$ y tiene a $\vec{d}_r$ como vector director. Es paralelo a $s$, así que $\vec{d}_s$ es otro vector director.
+
+**Vector normal.**
+
+$$
+\vec{d}_r \times \vec{d}_s = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 3 & 2 & 1 \\ 1 & 2 & -1 \end{vmatrix} = (-2 - 2)\,\vec{i} - (-3 - 1)\,\vec{j} + (6 - 2)\,\vec{k} = (-4,\ 4,\ 4)
+$$
+
+o el proporcional $(1, -1, -1)$.
+
+**Ecuación.** Por $R(2, -1, 3)$: $(x - 2) - (y + 1) - (z - 3) = 0$, es decir, $x - y - z = 0$.
+
+**Comprobación.** Un punto de $s$ es $(1, 0, 2)$ (con $y = 0$), que da $1 - 0 - 2 = -1 \neq 0$: $s$ es paralela al plano, no está contenida en él.
+
+**Respuesta.** El plano es **$x - y - z = 0$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Deduce razonadamente que ningún plano perpendicular a $s$ contiene a $r$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Un plano perpendicular a $s$ tiene como vector normal el director de $s$, $\vec{d}_s = (1, 2, -1)$. Para contener a $r$, la dirección de $r$ tendría que ser perpendicular a ese vector normal, es decir, $\vec{d}_r \cdot \vec{d}_s = 0$.
+
+**Comprobación.**
+
+$$
+\vec{d}_r \cdot \vec{d}_s = 3 \cdot 1 + 2 \cdot 2 + 1 \cdot (-1) = 6 \neq 0
+$$
+
+**Conclusión.** $r$ no es perpendicular a $s$, así que $r$ no es paralela a ningún plano perpendicular a $s$: los corta a todos en un punto. Por tanto, **ningún plano perpendicular a $s$ puede contener a $r$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u> (2.5 puntos)</strong></Bloque>
+
+Considera los puntos $A(1, 2, 3)$, $B(-2, 4, -3)$ y $C(-10, 1, 0)$.
+
+<div class="math-sub">
+
+a) Halla el área del triángulo de vértices $A$, $B$ y $C$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El área del triángulo es la mitad del módulo del producto vectorial de dos lados que salen del mismo vértice:
+
+$$
+\overrightarrow{AB} = (-3,\ 2,\ -6), \qquad \overrightarrow{AC} = (-11,\ -1,\ -3)
+$$
+
+**Producto vectorial.**
+
+$$
+\overrightarrow{AB} \times \overrightarrow{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -3 & 2 & -6 \\ -11 & -1 & -3 \end{vmatrix} = (-6 - 6)\,\vec{i} - (9 - 66)\,\vec{j} + (3 + 22)\,\vec{k} = (-12,\ 57,\ 25)
+$$
+
+Su módulo es $\sqrt{144 + 3249 + 625} = \sqrt{4018} = 7\sqrt{82}$.
+
+**Respuesta.**
+
+$$
+\text{Área} = \frac{7\sqrt{82}}{2} \approx 31{,}69 \text{ unidades cuadradas}
+$$
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla el plano que equidista de $A$ y $B$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Los puntos que están a la misma distancia de $A$ y de $B$ forman el plano mediador del segmento $AB$: pasa por el punto medio y es perpendicular a $\overrightarrow{AB}$.
+
+**Punto medio y vector normal.**
+
+$$
+M = \left(\frac{1 - 2}{2},\ \frac{2 + 4}{2},\ \frac{3 - 3}{2}\right) = \left(-\frac{1}{2},\ 3,\ 0\right), \qquad \overrightarrow{AB} = (-3,\ 2,\ -6)
+$$
+
+**Ecuación.**
+
+$$
+-3\left(x + \frac{1}{2}\right) + 2\,(y - 3) - 6z = 0 \quad\Rightarrow\quad -3x + 2y - 6z - \frac{15}{2} = 0
+$$
+
+Multiplicando por $-2$: $6x - 4y + 12z + 15 = 0$.
+
+**Comprobación.** Por ejemplo, el punto $\left(-\frac{5}{2}, 0, 0\right)$ es del plano, y está a la misma distancia de los dos: $d^2$ a $A$ es $\frac{49}{4} + 4 + 9 = \frac{101}{4}$ y a $B$, $\frac{1}{4} + 16 + 9 = \frac{101}{4}$.
+
+**Respuesta.** El plano es **$6x - 4y + 12z + 15 = 0$**.
+
+</Solucion>

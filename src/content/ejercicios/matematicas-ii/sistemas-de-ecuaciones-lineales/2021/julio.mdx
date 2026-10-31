@@ -1,0 +1,65 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+Una empresa de mensajería opera en tres rutas distintas A, B y C. Semanalmente hace un total de $70$ viajes, y el número de viajes por la ruta B es igual a la suma de los viajes por las rutas A y C.
+
+<div class="math-sub">
+
+a) Si sabemos que el doble de la suma de los viajes por las rutas A y C es $70$, ¿podemos deducir el número de viajes por cada ruta? Razona la respuesta. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Incógnitas.** Llamamos $x$, $y$ y $z$ al número de viajes semanales por las rutas A, B y C.
+
+**Planteamiento del sistema.**
+
+- En total, $70$ viajes: $x + y + z = 70$.
+- Los de B son la suma de los de A y C: $y = x + z$, es decir, $x - y + z = 0$.
+- El doble de la suma de A y C es $70$: $2x + 2z = 70$.
+
+$$
+\begin{cases}
+x + y + z = 70 \\
+x - y + z = 0 \\
+2x + 2z = 70
+\end{cases}
+$$
+
+**El sistema es compatible indeterminado.** Sumando las dos primeras ecuaciones sale $2x + 2z = 70$, que es la tercera: no aporta información nueva. El determinante de la matriz de coeficientes es $0$ (la primera y la tercera columna son iguales) y el rango es $2$. De las dos primeras, $y = 35$ y $x + z = 35$, pero $x$ y $z$ pueden repartirse de infinitas formas.
+
+**Respuesta.** **No se puede deducir**: el sistema es compatible indeterminado. Solo se sabe que por la ruta B hay $35$ viajes y que entre A y C suman otros $35$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Si el doble de viajes por la ruta C es igual al número de viajes por la ruta B menos $5$, ¿cuántos viajes hace por cada ruta? **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Nueva ecuación.** $2z = y - 5$. Junto con las dos primeras condiciones:
+
+$$
+\begin{cases}
+x + y + z = 70 \\
+x - y + z = 0 \\
+-y + 2z = -5
+\end{cases}
+$$
+
+**Resolución.** De las dos primeras, como en el apartado a), $y = 35$ y $x + z = 35$. De la nueva, $2z = 30$, así que $z = 15$ y $x = 20$.
+
+**Comprobación.** $20 + 35 + 15 = 70$; $35 = 20 + 15$; $2 \cdot 15 = 35 - 5$.
+
+**Respuesta.** Hace **$20$ viajes por la ruta A, $35$ por la B y $15$ por la C**.
+
+</Solucion>

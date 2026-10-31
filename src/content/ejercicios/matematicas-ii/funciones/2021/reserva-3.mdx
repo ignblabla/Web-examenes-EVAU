@@ -1,0 +1,96 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 1 y 2 son los dos de funciones: van juntos y el rótulo del 2 va aquí. */}
+
+Calcula $a$, $b$, $c$ y $d$ sabiendo que la gráfica de la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = ax^3 + bx^2 + cx + d$ tiene un punto de inflexión en $(0, 4)$ y su recta normal en el punto $(1, 8)$ es paralela al eje de ordenadas.
+
+<Solucion>
+
+**Derivadas.** $f'(x) = 3ax^2 + 2bx + c$ y $f''(x) = 6ax + 2b$.
+
+**Condiciones en el punto $(0, 4)$.**
+
+- La gráfica pasa por $(0, 4)$: $f(0) = d = 4$.
+- Hay un punto de inflexión en $x = 0$: $f''(0) = 2b = 0$, así que $b = 0$.
+
+**Condiciones en el punto $(1, 8)$.**
+
+- La gráfica pasa por $(1, 8)$: $f(1) = a + b + c + d = 8$, es decir, $a + c = 4$.
+- La normal es paralela al eje de ordenadas, es decir, vertical. Entonces la tangente, que es perpendicular a ella, es horizontal: $f'(1) = 3a + 2b + c = 0$, es decir, $3a + c = 0$.
+
+**Resolución.** Restando $a + c = 4$ a $3a + c = 0$: $2a = -4$, así que $a = -2$ y $c = 6$.
+
+**Comprobación.** $f(x) = -2x^3 + 6x + 4$: $f(0) = 4$, $f(1) = 8$, $f'(1) = -6 + 6 = 0$, y $f''(x) = -12x$ cambia de signo en $0$, así que sí hay inflexión.
+
+**Respuesta.** **$a = -2$, $b = 0$, $c = 6$ y $d = 4$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 2</u> (2.5 puntos)</strong></Bloque>
+
+Considera la función $f$ definida por $f(x) = \dfrac{x^2 - 10}{x^2 + 2x - 3}$ (para $x \neq -3$, $x \neq 1$).
+
+<div class="math-sub">
+
+a) Estudia y halla las asíntotas de la gráfica de $f$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Asíntotas verticales.** El denominador es $(x + 3)(x - 1)$. En $x = -3$ el numerador vale $-1 \neq 0$, y en $x = 1$ vale $-9 \neq 0$, así que en los dos puntos $f$ tiende a infinito. Estudiando el signo:
+
+$$
+\lim_{x \to -3^-} f(x) = -\infty, \quad \lim_{x \to -3^+} f(x) = +\infty, \quad \lim_{x \to 1^-} f(x) = +\infty, \quad \lim_{x \to 1^+} f(x) = -\infty
+$$
+
+**$x = -3$ y $x = 1$ son asíntotas verticales.**
+
+**Asíntota horizontal.** Numerador y denominador tienen el mismo grado, así que el límite en $\pm\infty$ es el cociente de los coeficientes principales:
+
+$$
+\lim_{x \to \pm\infty} \frac{x^2 - 10}{x^2 + 2x - 3} = 1
+$$
+
+**$y = 1$ es asíntota horizontal** (en $-\infty$ y en $+\infty$), y entonces no hay oblicuas.
+
+**Respuesta.** Asíntotas verticales **$x = -3$ y $x = 1$**, y horizontal **$y = 1$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina los intervalos de crecimiento y de decrecimiento de $f$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Primera derivada.** Por la regla del cociente:
+
+$$
+f'(x) = \frac{2x\,(x^2 + 2x - 3) - (x^2 - 10)(2x + 2)}{(x^2 + 2x - 3)^2} = \frac{2x^2 + 14x + 20}{(x^2 + 2x - 3)^2} = \frac{2\,(x + 2)(x + 5)}{(x^2 + 2x - 3)^2}
+$$
+
+**Puntos de derivada nula.** $x = -5$ y $x = -2$.
+
+**Signo.** El denominador es positivo, así que el signo es el de $(x + 2)(x + 5)$: positivo fuera de $[-5, -2]$ y negativo dentro. Hay que separar también los puntos $-3$ y $1$, que no están en el dominio:
+
+<div class="math-tabla">
+
+| | $(-\infty, -5)$ | $(-5, -3)$ | $(-3, -2)$ | $(-2, 1)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $+$ | $-$ | $-$ | $+$ | $+$ |
+| $f$ | crece | decrece | decrece | crece | crece |
+
+</div>
+
+**Respuesta.** $f$ **crece en $(-\infty, -5) \cup (-2, 1) \cup (1, +\infty)$** y **decrece en $(-5, -3) \cup (-3, -2)$**. (Tiene un máximo relativo en $x = -5$, con $f(-5) = \frac{5}{4}$, y un mínimo relativo en $x = -2$, con $f(-2) = 2$.)
+
+</Solucion>

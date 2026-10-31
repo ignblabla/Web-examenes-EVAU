@@ -1,0 +1,115 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+La recta perpendicular desde el punto $A(1, 1, 0)$ a un cierto plano $\pi$ corta a éste en el punto $B\left(1, \dfrac{1}{2}, \dfrac{1}{2}\right)$.
+
+<div class="math-sub">
+
+a) Calcula la ecuación del plano $\pi$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** La recta $AB$ es perpendicular a $\pi$, así que $\overrightarrow{AB}$ es un vector normal del plano. Y $B$ es un punto del plano.
+
+**Vector normal.**
+
+$$
+\overrightarrow{AB} = \left(0,\ -\frac{1}{2},\ \frac{1}{2}\right)
+$$
+
+o el proporcional $(0, -1, 1)$.
+
+**Ecuación.** Por $B$: $0\,(x - 1) - \left(y - \frac{1}{2}\right) + \left(z - \frac{1}{2}\right) = 0$, es decir, $-y + z = 0$.
+
+**Respuesta.** El plano es **$y - z = 0$**. Comprobación: $B$ da $\frac{1}{2} - \frac{1}{2} = 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla la distancia del punto $A$ a su simétrico respecto a $\pi$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** $B$ es el pie de la perpendicular desde $A$, así que es el punto medio entre $A$ y su simétrico $A'$. La distancia pedida es el doble de la distancia entre $A$ y $B$.
+
+**Cálculo.**
+
+$$
+d(A, B) = \sqrt{0 + \frac{1}{4} + \frac{1}{4}} = \frac{\sqrt{2}}{2}, \qquad d(A, A') = 2 \cdot \frac{\sqrt{2}}{2} = \sqrt{2}
+$$
+
+**Comprobación.** $A' = 2B - A = (1, 0, 1)$, y $d(A, A') = \sqrt{0 + 1 + 1} = \sqrt{2}$.
+
+**Respuesta.** La distancia es **$\sqrt{2} \approx 1{,}41$ unidades**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u> (2.5 puntos)</strong></Bloque>
+
+Considera las rectas
+
+$$
+r \equiv \begin{cases} x = 3 + \lambda \\ y = 1 \\ z = -3 - \lambda \end{cases} \qquad \text{y} \qquad s \equiv \begin{cases} x + y = 1 \\ z = 0 \end{cases}
+$$
+
+<div class="math-sub">
+
+a) Estudia la posición relativa de $r$ y $s$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Datos de las rectas.** $r$ pasa por $R(3, 1, -3)$ con vector director $\vec{d}_r = (1, 0, -1)$. En $s$, tomando $x = t$: $y = 1 - t$ y $z = 0$, así que pasa por $S(0, 1, 0)$ con vector director $\vec{d}_s = (1, -1, 0)$.
+
+**Planteamiento.** $\vec{d}_r$ y $\vec{d}_s$ no son proporcionales, así que las rectas se cortan o se cruzan. Se cortan si $\vec{d}_r$, $\vec{d}_s$ y $\overrightarrow{RS} = (-3, 0, 3)$ son coplanarios:
+
+$$
+\begin{vmatrix} 1 & 0 & -1 \\ 1 & -1 & 0 \\ -3 & 0 & 3 \end{vmatrix} = 1\,(-3 - 0) - 0 + (-1)\,(0 - 3) = 0
+$$
+
+(De hecho, $\overrightarrow{RS} = -3\,\vec{d}_r$, así que $S$ está en $r$.)
+
+**Punto de corte.** Igualando, $y$: $1 = 1 - t$ da $t = 0$; $x$: $3 + \lambda = 0$ da $\lambda = -3$; y $z = -3 + 3 = 0$, que coincide. El punto es $S(0, 1, 0)$.
+
+**Respuesta.** **Las rectas se cortan en el punto $(0, 1, 0)$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla la recta que corta perpendicularmente a $r$ y a $s$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Las rectas se cortan, así que están en un mismo plano. La recta buscada tiene un vector director perpendicular a los dos, es decir, perpendicular a ese plano, y para cortar a las dos tiene que pasar por su punto de corte, $(0, 1, 0)$.
+
+**Vector director.**
+
+$$
+\vec{d}_r \times \vec{d}_s = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 0 & -1 \\ 1 & -1 & 0 \end{vmatrix} = (0 - 1)\,\vec{i} - (0 + 1)\,\vec{j} + (-1 - 0)\,\vec{k} = (-1,\ -1,\ -1)
+$$
+
+o el proporcional $(1, 1, 1)$. Comprobación: $(1, 1, 1) \cdot (1, 0, -1) = 0$ y $(1, 1, 1) \cdot (1, -1, 0) = 0$.
+
+**Respuesta.** La recta pasa por $(0, 1, 0)$ con dirección $(1, 1, 1)$:
+
+$$
+\frac{x}{1} = \frac{y - 1}{1} = \frac{z}{1}
+$$
+
+</Solucion>

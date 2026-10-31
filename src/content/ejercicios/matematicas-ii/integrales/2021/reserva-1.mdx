@@ -1,0 +1,119 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: reserva-1
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon (0, +\infty) \to \mathbb{R}$ definida por $f(x) = \left(\ln(x)\right)^2$ ($\ln$ denota la función logaritmo neperiano).
+
+<div class="math-sub">
+
+a) Determina los intervalos de crecimiento y de decrecimiento de $f$, así como sus extremos relativos (abscisas donde se obtienen y valores que se alcanzan). **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Derivada y punto crítico.** Por la regla de la cadena:
+
+$$
+f'(x) = 2\ln(x) \cdot \frac{1}{x} = \frac{2\ln(x)}{x}
+$$
+
+Como $x > 0$, $f'(x) = 0$ solo cuando $\ln(x) = 0$, es decir, en $x = 1$.
+
+**Signo de la derivada.** Es el de $\ln(x)$: negativo en $(0, 1)$ y positivo en $(1, +\infty)$.
+
+<div class="math-tabla">
+
+| | $(0, 1)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f'$ | $-$ | $+$ |
+| $f$ | decrece | crece |
+
+</div>
+
+**Respuesta.** $f$ **decrece en $(0, 1)$** y **crece en $(1, +\infty)$**. Tiene un **mínimo relativo en $x = 1$**, que vale $f(1) = 0$, y no tiene máximos relativos.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula el área de la región limitada por la gráfica de la función $f$ y las rectas $y = 0$, $x = 1$, $x = e$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Área como integral definida.** En $[1, e]$, $f(x) = (\ln x)^2 \geq 0$, así que
+
+$$
+A = \int_1^e (\ln x)^2\,dx
+$$
+
+**Primitiva.** Por partes, con $u = (\ln x)^2$ y $dv = dx$, de modo que $du = \dfrac{2\ln x}{x}\,dx$ y $v = x$:
+
+$$
+\int (\ln x)^2\,dx = x\,(\ln x)^2 - \int 2\ln x\,dx
+$$
+
+Y otra vez por partes, $\int \ln x\,dx = x\ln x - x$. Así que
+
+$$
+\int (\ln x)^2\,dx = x\,(\ln x)^2 - 2x\ln x + 2x + C
+$$
+
+**Regla de Barrow.** Con $\ln e = 1$ y $\ln 1 = 0$:
+
+$$
+A = \Big[x\,(\ln x)^2 - 2x\ln x + 2x\Big]_1^e = (e - 2e + 2e) - (0 - 0 + 2) = e - 2
+$$
+
+**Respuesta.** El área es **$e - 2 \approx 0{,}72$ unidades cuadradas**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Calcula $\displaystyle\int_0^2 \frac{1}{1 + \sqrt{e^x}}\,dx$. (Sugerencia: efectúa el cambio de variable $t = \sqrt{e^x}$.)
+
+<Solucion>
+
+**Cambio de variable.** Con $t = \sqrt{e^x} = e^{x/2}$, $x = 2\ln t$ y $dx = \dfrac{2}{t}\,dt$. Los límites: para $x = 0$, $t = 1$; para $x = 2$, $t = e$.
+
+$$
+\int_0^2 \frac{dx}{1 + \sqrt{e^x}} = \int_1^e \frac{1}{1 + t} \cdot \frac{2}{t}\,dt = \int_1^e \frac{2}{t\,(1 + t)}\,dt
+$$
+
+**Fracciones simples.**
+
+$$
+\frac{2}{t\,(1 + t)} = \frac{A}{t} + \frac{B}{1 + t} \quad\Rightarrow\quad 2 = A\,(1 + t) + Bt
+$$
+
+- Con $t = 0$: $A = 2$.
+- Con $t = -1$: $2 = -B$, así que $B = -2$.
+
+**Primitiva.** Como $t > 0$, no hacen falta valores absolutos:
+
+$$
+\int \left(\frac{2}{t} - \frac{2}{1 + t}\right)dt = 2\ln t - 2\ln(1 + t)
+$$
+
+**Regla de Barrow.**
+
+$$
+\Big[2\ln t - 2\ln(1 + t)\Big]_1^e = \left(2 - 2\ln(1 + e)\right) - (0 - 2\ln 2) = 2 + 2\ln\frac{2}{1 + e}
+$$
+
+**Respuesta.**
+
+$$
+\int_0^2 \frac{1}{1 + \sqrt{e^x}}\,dx = 2 + 2\ln\frac{2}{1 + e} \approx 0{,}76
+$$
+
+</Solucion>

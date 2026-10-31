@@ -1,0 +1,39 @@
+---
+asignatura: matematicas-ii
+tema: funciones
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+Halla $a > 0$ y $b > 0$ sabiendo que la gráfica de la función $f \colon \mathbb{R} \to \mathbb{R}$ dada por $f(x) = \dfrac{bx^2}{1 + ax^4}$ tiene en el punto $(1, 2)$ un punto crítico.
+
+<Solucion>
+
+**Planteamiento.** Que $(1, 2)$ sea un punto crítico de la gráfica significa dos cosas: el punto está en la gráfica, $f(1) = 2$, y la derivada se anula ahí, $f'(1) = 0$.
+
+**Condición $f(1) = 2$.**
+
+$$
+f(1) = \frac{b}{1 + a} = 2 \quad\Rightarrow\quad b = 2\,(1 + a)
+$$
+
+**Derivada de $f$.** Por la regla del cociente:
+
+$$
+f'(x) = \frac{2bx\,(1 + ax^4) - bx^2 \cdot 4ax^3}{(1 + ax^4)^2} = \frac{2bx + 2abx^5 - 4abx^5}{(1 + ax^4)^2} = \frac{2bx\,(1 - ax^4)}{(1 + ax^4)^2}
+$$
+
+**Condición $f'(1) = 0$.**
+
+$$
+f'(1) = \frac{2b\,(1 - a)}{(1 + a)^2} = 0
+$$
+
+Como $b > 0$, tiene que ser $1 - a = 0$, es decir, $a = 1$. Entonces $b = 2\,(1 + 1) = 4$.
+
+**Comprobación.** $f(x) = \dfrac{4x^2}{1 + x^4}$: $f(1) = \dfrac{4}{2} = 2$ y $f'(1) = \dfrac{8\,(1 - 1)}{4} = 0$.
+
+**Respuesta.** **$a = 1$ y $b = 4$**.
+
+</Solucion>

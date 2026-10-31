@@ -1,0 +1,83 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} 0 & 3 & 4 \\ 1 & -4 & -5 \\ -1 & 3 & 4 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) Comprueba que $A^2 = -A^{-1}$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Cálculo de $A^2$.**
+
+$$
+A^2 = \begin{pmatrix} 0 & 3 & 4 \\ 1 & -4 & -5 \\ -1 & 3 & 4 \end{pmatrix}\begin{pmatrix} 0 & 3 & 4 \\ 1 & -4 & -5 \\ -1 & 3 & 4 \end{pmatrix} = \begin{pmatrix} -1 & 0 & 1 \\ 1 & 4 & 4 \\ -1 & -3 & -3 \end{pmatrix}
+$$
+
+**Planteamiento.** $A^2 = -A^{-1}$ significa que $-A^2$ es la inversa de $A$, es decir, que $A \cdot (-A^2) = I$, o lo que es lo mismo, $A^3 = -I$.
+
+**Cálculo de $A^3 = A \cdot A^2$.**
+
+$$
+A \cdot A^2 = \begin{pmatrix} 0 & 3 & 4 \\ 1 & -4 & -5 \\ -1 & 3 & 4 \end{pmatrix}\begin{pmatrix} -1 & 0 & 1 \\ 1 & 4 & 4 \\ -1 & -3 & -3 \end{pmatrix} = \begin{pmatrix} -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1 \end{pmatrix} = -I
+$$
+
+**Conclusión.** $A\,(-A^2) = I$, así que $A$ es invertible y su inversa es $-A^2$: **$A^{-1} = -A^2$, es decir, $A^2 = -A^{-1}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Dadas las matrices $B = \begin{pmatrix} 1 & -1 \\ 3 & 0 \\ -4 & 5 \end{pmatrix}$ y $C = \begin{pmatrix} 2 & 0 \\ -3 & 2 \\ 1 & -1 \end{pmatrix}$, calcula la matriz $X$ que verifica $A^4X + B = AC$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Despejamos $X$.** $A^4$ es invertible porque $A$ lo es:
+
+$$
+A^4X = AC - B \quad\Rightarrow\quad X = (A^4)^{-1}(AC - B)
+$$
+
+**Cálculo de $(A^4)^{-1}$.** Por el apartado a), $A^3 = -I$, así que $A^4 = A^3A = -A$ y
+
+$$
+(A^4)^{-1} = (-A)^{-1} = -A^{-1} = A^2
+$$
+
+**Cálculo de $X$.** Como $A^2 \cdot A = A^3 = -I$:
+
+$$
+X = A^2\,(AC - B) = A^3C - A^2B = -C - A^2B
+$$
+
+$$
+A^2B = \begin{pmatrix} -1 & 0 & 1 \\ 1 & 4 & 4 \\ -1 & -3 & -3 \end{pmatrix}\begin{pmatrix} 1 & -1 \\ 3 & 0 \\ -4 & 5 \end{pmatrix} = \begin{pmatrix} -5 & 6 \\ -3 & 19 \\ 2 & -14 \end{pmatrix}
+$$
+
+$$
+X = -\begin{pmatrix} 2 & 0 \\ -3 & 2 \\ 1 & -1 \end{pmatrix} - \begin{pmatrix} -5 & 6 \\ -3 & 19 \\ 2 & -14 \end{pmatrix} = \begin{pmatrix} 3 & -6 \\ 6 & -21 \\ -3 & 15 \end{pmatrix}
+$$
+
+**Comprobación.** $A^4X + B = -AX + B$, y
+
+$$
+AX = \begin{pmatrix} 6 & -3 \\ -6 & 3 \\ 3 & 3 \end{pmatrix}, \qquad -AX + B = \begin{pmatrix} -5 & 2 \\ 9 & -3 \\ -7 & 2 \end{pmatrix} = AC
+$$
+
+**Respuesta.**
+
+$$
+X = \begin{pmatrix} 3 & -6 \\ 6 & -21 \\ -3 & 15 \end{pmatrix}
+$$
+
+</Solucion>

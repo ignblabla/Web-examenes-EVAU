@@ -1,0 +1,130 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: reserva-4
+formato: matematicas
+---
+
+import RecintoExponencialReserva4de2021 from "../../../../../components/figuras/RecintoExponencialReserva4de2021.astro"
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por $f(x) = x^2 + |x - 1|$.
+
+<div class="math-sub">
+
+a) Determina los intervalos de crecimiento y de decrecimiento de $f$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**$f$ a trozos.**
+
+$$
+f(x) = \begin{cases} x^2 - x + 1 & \text{si } x < 1 \\ x^2 + x - 1 & \text{si } x \geq 1 \end{cases}
+$$
+
+**Derivada.** Fuera de $x = 1$:
+
+$$
+f'(x) = \begin{cases} 2x - 1 & \text{si } x < 1 \\ 2x + 1 & \text{si } x > 1 \end{cases}
+$$
+
+En $x = 1$ las derivadas laterales son $1$ y $3$: $f$ no es derivable ahí.
+
+**Puntos críticos.** En el primer trozo, $2x - 1 = 0$ da $x = \frac{1}{2}$. En el segundo, $2x + 1 > 0$ para $x > 1$. Además, hay que tener en cuenta $x = 1$, donde no es derivable.
+
+**Signo de la derivada.**
+
+<div class="math-tabla">
+
+| | $\left(-\infty, \frac{1}{2}\right)$ | $\left(\frac{1}{2}, 1\right)$ | $(1, +\infty)$ |
+|:-:|:-:|:-:|:-:|
+| Signo de $f'$ | $-$ | $+$ | $+$ |
+| $f$ | decrece | crece | crece |
+
+</div>
+
+**Respuesta.** $f$ **decrece en $\left(-\infty, \frac{1}{2}\right)$** y **crece en $\left(\frac{1}{2}, +\infty\right)$** (al ser continua, sigue creciendo al pasar por $x = 1$). Tiene un mínimo en $x = \frac{1}{2}$, con $f\left(\frac{1}{2}\right) = \frac{3}{4}$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula $\displaystyle\int_0^2 f(x)\,dx$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Suma de dos integrales sin valor absoluto.** $f$ cambia de expresión en $x = 1$:
+
+$$
+\int_0^2 f(x)\,dx = \int_0^1 (x^2 - x + 1)\,dx + \int_1^2 (x^2 + x - 1)\,dx
+$$
+
+**Primitivas y regla de Barrow.**
+
+$$
+\int_0^1 (x^2 - x + 1)\,dx = \left[\frac{x^3}{3} - \frac{x^2}{2} + x\right]_0^1 = \frac{1}{3} - \frac{1}{2} + 1 = \frac{5}{6}
+$$
+
+$$
+\int_1^2 (x^2 + x - 1)\,dx = \left[\frac{x^3}{3} + \frac{x^2}{2} - x\right]_1^2 = \left(\frac{8}{3} + 2 - 2\right) - \left(\frac{1}{3} + \frac{1}{2} - 1\right) = \frac{8}{3} + \frac{1}{6} = \frac{17}{6}
+$$
+
+**Respuesta.**
+
+$$
+\int_0^2 f(x)\,dx = \frac{5}{6} + \frac{17}{6} = \frac{22}{6} = \frac{11}{3}
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Considera la función $f \colon [0, +\infty) \to \mathbb{R}$ definida por $f(x) = xe^x$.
+
+<div class="math-sub">
+
+a) Esboza el recinto limitado por la gráfica de $f$ y las rectas $x = 2$, $y = x$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**La gráfica de $f$.** $f(0) = 0$ y $f'(x) = (1 + x)\,e^x > 0$ en $[0, +\infty)$, así que $f$ sale del origen y crece. Además, $f''(x) = (2 + x)\,e^x > 0$: es convexa y crece cada vez más deprisa. En $x = 2$ vale $2e^2 \approx 14{,}78$.
+
+**Cortes con $y = x$.** $xe^x = x$ da $x\,(e^x - 1) = 0$, y como $e^x = 1$ solo para $x = 0$, el único corte es el origen. Para $x > 0$, $e^x > 1$, así que $xe^x > x$: la gráfica de $f$ queda por encima de la recta.
+
+**Esbozo.** El recinto va de $x = 0$ (donde se cortan) a la recta $x = 2$, entre $f$ por arriba y $y = x$ por abajo:
+
+<RecintoExponencialReserva4de2021 />
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Determina el área del recinto anterior. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Área como integral definida.**
+
+$$
+A = \int_0^2 \left(xe^x - x\right)dx
+$$
+
+**Primitiva.** Por partes, con $u = x$ y $dv = e^x\,dx$: $\displaystyle\int xe^x\,dx = xe^x - \int e^x\,dx = (x - 1)\,e^x$. Así que
+
+$$
+A = \left[(x - 1)\,e^x - \frac{x^2}{2}\right]_0^2 = (e^2 - 2) - (-1 - 0) = e^2 - 1
+$$
+
+**Respuesta.** El área es **$e^2 - 1 \approx 6{,}39$ unidades cuadradas**.
+
+</Solucion>

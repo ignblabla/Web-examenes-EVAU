@@ -1,0 +1,24 @@
+---
+// Matemáticas II, junio de 2021, ejercicio 3: f(x) = 4x³ − x⁴, con máximo en (3, 27) y tangente
+// horizontal en el origen, y el recinto que forma con el eje X entre x = 0 y x = 4.
+import GraficaFuncion from "./GraficaFuncion.astro"
+
+const f = (x: number) => 4 * x ** 3 - x ** 4
+---
+
+<GraficaFuncion
+  xMin={-1.4}
+  xMax={4.8}
+  yMin={-9}
+  yMax={31}
+  marcasX={[-1, 1, 2, 3, 4]}
+  marcasY={[-5, 5, 10, 15, 20, 25]}
+  tramos={[{ f, desde: -1.15, hasta: 4.45 }]}
+  recinto={{ arriba: f, abajo: () => 0, desde: 0, hasta: 4 }}
+  puntos={[
+    { x: 3, y: 27, texto: "Máximo (3, 27)", dx: -10, dy: -8 },
+    { x: 0, y: 0, texto: "(0, 0)", dx: -8, dy: 16 },
+    { x: 4, y: 0, texto: "(4, 0)", dx: 8, dy: -8 },
+  ]}
+  descripcion="Gráfica de f(x) = 4x³ − x⁴. Viene de −∞, pasa por el origen con tangente horizontal sin cambiar de crecimiento, sube hasta el máximo (3, 27) y baja cortando el eje X en x = 4 hacia −∞. El recinto sombreado queda entre la gráfica y el eje X, desde x = 0 hasta x = 4"
+/>

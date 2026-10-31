@@ -1,0 +1,95 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2021
+convocatoria: junio
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera las rectas
+
+$$
+r \equiv \begin{cases} 2x - 3y + z - 2 = 0 \\ -3x + 2y + 2z + 1 = 0 \end{cases} \qquad \text{y} \qquad s \equiv \begin{cases} x = 3 - 2\lambda \\ y = -1 + \lambda \\ z = -2 + 2\lambda \end{cases}
+$$
+
+<div class="math-sub">
+
+a) Calcula el plano perpendicular a la recta $s$ que pasa por el punto $P(1, 0, -5)$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Un plano perpendicular a $s$ tiene como vector normal el director de $s$, $\vec{d}_s = (-2, 1, 2)$.
+
+**Ecuación.** Por $P(1, 0, -5)$:
+
+$$
+-2\,(x - 1) + (y - 0) + 2\,(z + 5) = 0 \quad\Rightarrow\quad -2x + y + 2z + 12 = 0
+$$
+
+**Respuesta.** El plano es **$2x - y - 2z - 12 = 0$** (multiplicando por $-1$). Comprobación: $P$ da $2 - 0 + 10 - 12 = 0$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Calcula el seno del ángulo que forma la recta $r$ con el plano $\pi \equiv -2x + y + 2z = 0$. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Vector director de $r$.** Es perpendicular a los normales de los dos planos que la definen:
+
+$$
+\vec{d}_r = (2,\ -3,\ 1) \times (-3,\ 2,\ 2) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 2 & -3 & 1 \\ -3 & 2 & 2 \end{vmatrix} = (-6 - 2)\,\vec{i} - (4 + 3)\,\vec{j} + (4 - 9)\,\vec{k} = (-8,\ -7,\ -5)
+$$
+
+o el proporcional $(8, 7, 5)$.
+
+**Planteamiento.** El ángulo $\alpha$ entre una recta y un plano es el complementario del que forman el vector director de la recta y el normal del plano, así que
+
+$$
+\operatorname{sen}\alpha = \frac{|\vec{d}_r \cdot \vec{n}|}{|\vec{d}_r|\,|\vec{n}|}
+$$
+
+**Cálculo.** Con $\vec{n} = (-2, 1, 2)$, de módulo $3$, y $|\vec{d}_r| = \sqrt{64 + 49 + 25} = \sqrt{138}$:
+
+$$
+\operatorname{sen}\alpha = \frac{|-16 + 7 + 10|}{3\sqrt{138}} = \frac{1}{3\sqrt{138}} = \frac{\sqrt{138}}{414}
+$$
+
+**Respuesta.** **$\operatorname{sen}\alpha = \dfrac{1}{3\sqrt{138}} \approx 0{,}028$**: la recta es casi paralela al plano.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u> (2.5 puntos)</strong></Bloque>
+
+La recta $r \equiv \dfrac{x + 3}{2} = \dfrac{y + 4}{2} = \dfrac{z - 3}{3}$ y la recta $s$, que pasa por los puntos $P(1, 0, 2)$ y $Q(a, 1, 0)$, se cortan en un punto. Calcula el valor de $a$ y el punto de corte.
+
+<Solucion>
+
+**Datos de las rectas.** $r$ pasa por $R(-3, -4, 3)$ con vector director $\vec{d}_r = (2, 2, 3)$. $s$ pasa por $P(1, 0, 2)$ con vector director $\overrightarrow{PQ} = (a - 1, 1, -2)$.
+
+**Planteamiento.** Dos rectas no paralelas se cortan si $\vec{d}_r$, $\overrightarrow{PQ}$ y $\overrightarrow{RP} = (4, 4, -1)$ son coplanarios, es decir, si su determinante es $0$:
+
+$$
+\begin{vmatrix} 2 & 2 & 3 \\ a - 1 & 1 & -2 \\ 4 & 4 & -1 \end{vmatrix} = 2\,(-1 + 8) - 2\,(-a + 1 + 8) + 3\,(4a - 4 - 4) = 14a - 28
+$$
+
+**Valor de $a$.** $14a - 28 = 0$, así que $a = 2$. Entonces $\overrightarrow{PQ} = (1, 1, -2)$, que no es proporcional a $(2, 2, 3)$: las rectas no son paralelas, así que se cortan.
+
+**Punto de corte.** Con $r \equiv (-3 + 2t,\ -4 + 2t,\ 3 + 3t)$ y $s \equiv (1 + k,\ k,\ 2 - 2k)$:
+
+- De la $y$: $k = -4 + 2t$.
+- De la $x$: $-3 + 2t = 1 + k = -3 + 2t$, que se cumple siempre.
+- De la $z$: $3 + 3t = 2 - 2(-4 + 2t) = 10 - 4t$, así que $t = 1$ y $k = -2$.
+
+El punto es $(-1, -2, 6)$: en $r$ con $t = 1$ y en $s$ con $k = -2$.
+
+**Respuesta.** **$a = 2$** y el punto de corte es **$(-1, -2, 6)$**.
+
+</Solucion>

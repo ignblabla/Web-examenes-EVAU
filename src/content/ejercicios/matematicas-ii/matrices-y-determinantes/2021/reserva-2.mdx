@@ -1,0 +1,55 @@
+---
+asignatura: matematicas-ii
+tema: matrices-y-determinantes
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera las matrices $A = \begin{pmatrix} 1 & -1 & 0 \\ 1 & m & 1 \end{pmatrix}$ y $B = \begin{pmatrix} 1 & 1 \\ 0 & 2 \\ m & -1 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) Calcula $m$ para que $AB$ no tenga inversa. **(1 punto)**
+
+</div>
+
+<Solucion>
+
+**Cálculo de $AB$.** $A$ es $2 \times 3$ y $B$ es $3 \times 2$, así que $AB$ es $2 \times 2$:
+
+$$
+AB = \begin{pmatrix} 1 & -1 & 0 \\ 1 & m & 1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 2 \\ m & -1 \end{pmatrix} = \begin{pmatrix} 1 & -1 \\ 1 + m & 2m \end{pmatrix}
+$$
+
+**Condición.** $AB$ no tiene inversa cuando su determinante es $0$:
+
+$$
+|AB| = 2m + (1 + m) = 3m + 1 = 0 \quad\Rightarrow\quad m = -\frac{1}{3}
+$$
+
+**Respuesta.** **$m = -\dfrac{1}{3}$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Estudia el rango de la matriz $BA$ según los valores de $m$. **(1.5 puntos)**
+
+</div>
+
+<Solucion>
+
+**$BA$ no puede tener rango $3$.** $BA$ es $3 \times 3$, pero el rango de un producto no supera el rango de ninguno de los factores, y $A$, con solo dos filas, tiene rango como mucho $2$. Así que $\operatorname{rg}(BA) \leq 2$ para cualquier $m$.
+
+**Cálculo de $BA$.**
+
+$$
+BA = \begin{pmatrix} 1 & 1 \\ 0 & 2 \\ m & -1 \end{pmatrix}\begin{pmatrix} 1 & -1 & 0 \\ 1 & m & 1 \end{pmatrix} = \begin{pmatrix} 2 & m - 1 & 1 \\ 2 & 2m & 2 \\ m - 1 & -2m & -1 \end{pmatrix}
+$$
+
+**Rango $2$.** El menor de las filas 1 y 2 y las columnas 1 y 3 es $\begin{vmatrix} 2 & 1 \\ 2 & 2 \end{vmatrix} = 2 \neq 0$, sea cual sea $m$.
+
+**Respuesta.** **$\operatorname{rg}(BA) = 2$ para todo $m$**.
+
+</Solucion>

@@ -1,0 +1,72 @@
+---
+asignatura: matematicas-ii
+tema: sistemas-de-ecuaciones-lineales
+anio: 2021
+convocatoria: reserva-2
+formato: matematicas
+---
+
+Considera la matriz $A = \begin{pmatrix} 2 & 0 & 2 \\ -1 & 2 & 1 \\ 0 & 1 & 4 \end{pmatrix}$.
+
+<div class="math-sub">
+
+a) Estudia, según los valores de $\lambda$, el rango de la matriz $A - \lambda I$, siendo $I$ la matriz identidad de orden tres. **(1.75 puntos)**
+
+</div>
+
+<Solucion>
+
+**Determinante de $A - \lambda I$.** Desarrollando por la primera fila:
+
+$$
+|A - \lambda I| = \begin{vmatrix} 2 - \lambda & 0 & 2 \\ -1 & 2 - \lambda & 1 \\ 0 & 1 & 4 - \lambda \end{vmatrix} = (2 - \lambda)\left[(2 - \lambda)(4 - \lambda) - 1\right] + 2\,(-1 - 0)
+$$
+
+$$
+= (2 - \lambda)(\lambda^2 - 6\lambda + 7) - 2 = -\lambda^3 + 8\lambda^2 - 19\lambda + 12
+$$
+
+**Valores críticos.** $\lambda = 1$ es raíz: $-1 + 8 - 19 + 12 = 0$. Dividiendo por $\lambda - 1$ (Ruffini), queda $-(\lambda^2 - 7\lambda + 12) = -(\lambda - 3)(\lambda - 4)$:
+
+$$
+|A - \lambda I| = -(\lambda - 1)(\lambda - 3)(\lambda - 4)
+$$
+
+**Rango en los valores críticos.** El menor de las filas 2 y 3 y las columnas 1 y 2 es $\begin{vmatrix} -1 & 2 - \lambda \\ 0 & 1 \end{vmatrix} = -1 \neq 0$ para cualquier $\lambda$, así que el rango nunca baja de $2$.
+
+**Respuesta.**
+
+- $\lambda \neq 1$, $\lambda \neq 3$ y $\lambda \neq 4$: **$\operatorname{rg}(A - \lambda I) = 3$**.
+- $\lambda = 1$, $\lambda = 3$ o $\lambda = 4$: **$\operatorname{rg}(A - \lambda I) = 2$**.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Resuelve el sistema $(A - I)\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$ y halla, si existe, una solución en la que $x = 2$. **(0.75 puntos)**
+
+</div>
+
+<Solucion>
+
+**El sistema.** Por el apartado a), $A - I$ tiene rango $2$, así que el sistema homogéneo es compatible indeterminado, con un parámetro:
+
+$$
+\begin{cases}
+x + 2z = 0 \\
+-x + y + z = 0 \\
+y + 3z = 0
+\end{cases}
+$$
+
+**Resolución.** Con la primera y la tercera, tomando $z = t$: $x = -2t$ e $y = -3t$. La segunda también se cumple: $2t - 3t + t = 0$.
+
+$$
+(x,\ y,\ z) = (-2t,\ -3t,\ t), \qquad t \in \mathbb{R}
+$$
+
+**Solución con $x = 2$.** $-2t = 2$ da $t = -1$, y la solución es $(2, 3, -1)$.
+
+**Respuesta.** Las soluciones son $(-2t, -3t, t)$ con $t \in \mathbb{R}$. Sí existe una con $x = 2$: **$(x, y, z) = (2, 3, -1)$**.
+
+</Solucion>

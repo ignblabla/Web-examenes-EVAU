@@ -1,0 +1,117 @@
+---
+asignatura: matematicas-ii
+tema: espacio-afin-y-euclideo
+anio: 2021
+convocatoria: reserva-3
+formato: matematicas
+---
+
+{/* Los ejercicios 7 y 8 son los dos de geometría: van juntos y el rótulo del 8 va aquí. */}
+
+Considera el punto $P(1, 2, 6)$ y el plano $\pi \equiv 2x - y + z = 0$.
+
+<div class="math-sub">
+
+a) Halla las ecuaciones de los planos paralelos a $\pi$ cuya distancia a éste sea $\sqrt{6}$ unidades. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Los planos paralelos a $\pi$ son $2x - y + z + D = 0$. La distancia entre dos planos paralelos con el mismo vector normal es $\dfrac{|D_1 - D_2|}{|\vec{n}|}$, y aquí $|\vec{n}| = \sqrt{4 + 1 + 1} = \sqrt{6}$.
+
+**Condición.**
+
+$$
+\frac{|D - 0|}{\sqrt{6}} = \sqrt{6} \quad\Rightarrow\quad |D| = 6 \quad\Rightarrow\quad D = 6 \quad\text{o}\quad D = -6
+$$
+
+**Respuesta.** Los planos son **$2x - y + z + 6 = 0$** y **$2x - y + z - 6 = 0$**, uno a cada lado de $\pi$.
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Halla el simétrico del punto $P$ respecto al plano $\pi$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El simétrico $P'$ está en la recta perpendicular a $\pi$ por $P$, y el punto medio de $P$ y $P'$ es el corte $M$ de esa recta con el plano.
+
+**Recta perpendicular y corte.** Con dirección $(2, -1, 1)$: $(x, y, z) = (1 + 2t,\ 2 - t,\ 6 + t)$, y
+
+$$
+2(1 + 2t) - (2 - t) + (6 + t) = 6 + 6t = 0 \quad\Rightarrow\quad t = -1
+$$
+
+Así que $M = (-1, 3, 5)$. Comprobación: $-2 - 3 + 5 = 0$.
+
+**Simétrico.** $P' = 2M - P = (-2 - 1,\ 6 - 2,\ 10 - 6) = (-3,\ 4,\ 4)$.
+
+**Comprobación.** Al sustituir en $2x - y + z$, $P$ da $6$ y $P'$ da $-6 - 4 + 4 = -6$.
+
+**Respuesta.** El simétrico de $P$ es **$P'(-3, 4, 4)$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 8</u> (2.5 puntos)</strong></Bloque>
+
+Considera los puntos $B(-1, 0, -1)$, $C(0, 1, -3)$ y la recta $r \equiv \begin{cases} x = -\lambda \\ y = 1 + 2\lambda \\ z = -1 + \lambda \end{cases}$
+
+<div class="math-sub">
+
+a) Calcula un punto que esté en $r$ y equidiste de $B$ y $C$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** Un punto genérico de $r$ es $X = (-\lambda,\ 1 + 2\lambda,\ -1 + \lambda)$. Imponemos $d(X, B)^2 = d(X, C)^2$.
+
+**Distancias al cuadrado.**
+
+$$
+\overrightarrow{BX} = (1 - \lambda,\ 1 + 2\lambda,\ \lambda), \qquad d(X, B)^2 = (1 - \lambda)^2 + (1 + 2\lambda)^2 + \lambda^2 = 6\lambda^2 + 2\lambda + 2
+$$
+
+$$
+\overrightarrow{CX} = (-\lambda,\ 2\lambda,\ 2 + \lambda), \qquad d(X, C)^2 = \lambda^2 + 4\lambda^2 + (2 + \lambda)^2 = 6\lambda^2 + 4\lambda + 4
+$$
+
+**Condición.** $6\lambda^2 + 2\lambda + 2 = 6\lambda^2 + 4\lambda + 4$, así que $\lambda = -1$, y el punto es $(1, -1, -2)$.
+
+**Comprobación.** Sus distancias a $B$ y a $C$ son $\sqrt{4 + 1 + 1} = \sqrt{6}$ y $\sqrt{1 + 4 + 1} = \sqrt{6}$.
+
+**Respuesta.** El punto es **$(1, -1, -2)$** (es el punto $D$ del apartado b)).
+
+</Solucion>
+
+<div class="math-sub">
+
+b) Siendo $D(1, -1, -2)$, calcula el área del triángulo con vértices en los puntos $B$, $C$ y $D$. **(1.25 puntos)**
+
+</div>
+
+<Solucion>
+
+**Planteamiento.** El área es la mitad del módulo del producto vectorial de dos lados que salen del mismo vértice:
+
+$$
+\overrightarrow{BC} = (1,\ 1,\ -2), \qquad \overrightarrow{BD} = (2,\ -1,\ -1)
+$$
+
+**Producto vectorial.**
+
+$$
+\overrightarrow{BC} \times \overrightarrow{BD} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 1 & -2 \\ 2 & -1 & -1 \end{vmatrix} = (-1 - 2)\,\vec{i} - (-1 + 4)\,\vec{j} + (-1 - 2)\,\vec{k} = (-3,\ -3,\ -3)
+$$
+
+Su módulo es $\sqrt{27} = 3\sqrt{3}$.
+
+**Comprobación.** Los tres lados miden $\sqrt{6}$ (por el apartado a), $D$ está a $\sqrt{6}$ de $B$ y de $C$, y $|\overrightarrow{BC}| = \sqrt{6}$): el triángulo es equilátero, y su área es $\frac{\sqrt{3}}{4} \cdot 6 = \frac{3\sqrt{3}}{2}$.
+
+**Respuesta.** El área es **$\dfrac{3\sqrt{3}}{2} \approx 2{,}60$ unidades cuadradas**.
+
+</Solucion>

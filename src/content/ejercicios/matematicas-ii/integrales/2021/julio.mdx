@@ -1,0 +1,101 @@
+---
+asignatura: matematicas-ii
+tema: integrales
+anio: 2021
+convocatoria: julio
+formato: matematicas
+---
+
+{/* Los ejercicios 3 y 4 son los dos de integrales: van juntos y el rótulo del 4 va aquí. */}
+
+Considera la función $f \colon \mathbb{R} \to \mathbb{R}$ definida por
+
+$$
+f(x) = 1 + \int_0^x te^t\,dt.
+$$
+
+Determina los intervalos de concavidad y de convexidad de $f$ y sus puntos de inflexión (abscisas donde se obtienen y valores que se alcanzan).
+
+<Solucion>
+
+**Derivadas de $f$.** El integrando $te^t$ es continuo, así que, por el teorema fundamental del cálculo,
+
+$$
+f'(x) = xe^x, \qquad f''(x) = e^x + xe^x = (1 + x)\,e^x
+$$
+
+**Intervalos de concavidad y de convexidad.** Como $e^x > 0$, el signo de $f''$ es el de $1 + x$, que se anula en $x = -1$. Donde $f'' > 0$ la función es convexa ($\cup$), y donde $f'' < 0$, cóncava ($\cap$):
+
+<div class="math-tabla">
+
+| | $(-\infty, -1)$ | $(-1, +\infty)$ |
+|:-:|:-:|:-:|
+| Signo de $f''$ | $-$ | $+$ |
+| $f$ | cóncava | convexa |
+
+</div>
+
+La curvatura cambia en $x = -1$: ahí hay un punto de inflexión.
+
+**Primitiva.** Para calcular $f(-1)$ necesitamos $\int te^t\,dt$. Por partes, con $u = t$ y $dv = e^t\,dt$:
+
+$$
+\int te^t\,dt = te^t - \int e^t\,dt = (t - 1)\,e^t
+$$
+
+**Regla de Barrow.**
+
+$$
+f(-1) = 1 + \Big[(t - 1)\,e^t\Big]_0^{-1} = 1 + \left(-2e^{-1} - (-1)\right) = 2 - \frac{2}{e}
+$$
+
+**Respuesta.** $f$ es **cóncava en $(-\infty, -1)$** y **convexa en $(-1, +\infty)$**. Tiene un punto de inflexión en **$x = -1$**, donde vale **$2 - \dfrac{2}{e} \approx 1{,}26$**.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>EJERCICIO 4</u> (2.5 puntos)</strong></Bloque>
+
+Considera la función $f$ definida por $f(x) = \dfrac{x^2 + 1}{x^2 - 1}$ (para $x \neq -1$, $x \neq 1$). Halla una primitiva de $f$ cuya gráfica pase por el punto $(2, 4)$.
+
+<Solucion>
+
+**División.** Numerador y denominador tienen el mismo grado: $x^2 + 1 = (x^2 - 1) + 2$, así que
+
+$$
+\frac{x^2 + 1}{x^2 - 1} = 1 + \frac{2}{x^2 - 1}
+$$
+
+**Suma de fracciones elementales.** Con $x^2 - 1 = (x - 1)(x + 1)$:
+
+$$
+\frac{2}{(x - 1)(x + 1)} = \frac{A}{x - 1} + \frac{B}{x + 1} \quad\Rightarrow\quad 2 = A\,(x + 1) + B\,(x - 1)
+$$
+
+- Con $x = 1$: $2 = 2A$, así que $A = 1$.
+- Con $x = -1$: $2 = -2B$, así que $B = -1$.
+
+$$
+f(x) = 1 + \frac{1}{x - 1} - \frac{1}{x + 1}
+$$
+
+**Primitivas.**
+
+$$
+F(x) = x + \ln|x - 1| - \ln|x + 1| + C
+$$
+
+**Condición del punto.** Con $\ln 1 = 0$:
+
+$$
+F(2) = 2 + \ln 1 - \ln 3 + C = 4 \quad\Rightarrow\quad C = 2 + \ln 3
+$$
+
+**Respuesta.**
+
+$$
+F(x) = x + \ln|x - 1| - \ln|x + 1| + 2 + \ln 3
+$$
+
+(El punto $(2, 4)$ está en el intervalo $(1, +\infty)$, que es donde esta primitiva queda fijada.)
+
+</Solucion>
