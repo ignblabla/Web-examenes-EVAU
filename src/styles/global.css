@@ -314,6 +314,15 @@
   line-height: 1.65;
 }
 
+/* La introducción de cada asignatura es un párrafo largo: justificada salvo en móvil, como las
+   preguntas frecuentes de la portada. */
+@media (min-width: 561px) {
+  .subject-hero .hero-lead {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
 .hero-actions {
   display: flex;
   align-items: center;
