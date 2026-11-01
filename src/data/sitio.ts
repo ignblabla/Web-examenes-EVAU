@@ -31,6 +31,12 @@ export const autor = {
   ruta: "/sobre-el-autor/",
 }
 
+// Página de contacto, enlazada en el pie junto a "Sobre el autor".
+export const contacto = {
+  nombre: "Contacto",
+  ruta: "/contacto/",
+}
+
 // Nodo del autor, con el mismo @id en su página y en los exámenes que firma.
 export function persona(site: URL | undefined) {
   return {

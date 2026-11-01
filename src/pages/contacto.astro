@@ -1,0 +1,94 @@
+---
+import { titular } from "../data/legal"
+import { autor, contacto, editor, migas, persona } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+const { nombre, ruta } = contacto
+const url = new URL(ruta, Astro.site).href
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": "ContactPage",
+      "@id": `${url}#pagina`,
+      url,
+      name: `${nombre} · Selectividad resuelta`,
+      inLanguage: "es",
+      about: { "@id": new URL("/#editor", Astro.site).href },
+    },
+    migas(Astro.site, [{ nombre, ruta }]),
+  ],
+}
+---
+
+<Base
+  title="Contacto · Selectividad resuelta"
+  description="Escribe a Selectividad resuelta para avisar de una errata en una solución, proponer un examen o un tema que falte o hacer cualquier otra consulta sobre la web."
+  jsonLd={jsonLd}
+>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{nombre}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        {nombre}
+      </div>
+      <h1>
+        Contacto.
+        <br />
+        <em>Escríbeme.</em>
+      </h1>
+      <p class="hero-lead">
+        Si tienes una duda sobre una solución, has visto una errata o echas algo en falta en la
+        web, escríbeme a <a href={`mailto:${titular.email}`}>{titular.email}</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Reutiliza la hoja blanca de las páginas legales. -->
+  <section class="legal-body">
+    <article class="legal-sheet">
+      <h2>Correo electrónico</h2>
+      <p>
+        <a href={`mailto:${titular.email}`}><strong>{titular.email}</strong></a>
+      </p>
+      <p>
+        Leo todos los mensajes yo mismo, {autor.nombre}, el <a href={autor.ruta}>autor de las
+        soluciones</a>, y respondo en cuanto puedo.
+      </p>
+
+      <h2>Para qué puedes escribirme</h2>
+      <ul>
+        <li>
+          <strong>Erratas y dudas sobre una solución.</strong> Indica la asignatura, el año, la
+          convocatoria y el ejercicio, y la reviso con los criterios oficiales de corrección.
+        </li>
+        <li>
+          <strong>Exámenes o temas que faltan.</strong> Si necesitas un examen de otro año o de
+          otra asignatura, dímelo: me ayuda a decidir qué resolver después.
+        </li>
+        <li>
+          <strong>Sugerencias sobre la web.</strong> Cualquier cosa que te haga más fácil
+          preparar la Selectividad.
+        </li>
+        <li>
+          <strong>Privacidad y datos personales.</strong> Para ejercer tus derechos, consulta la
+          <a href="/politica-de-privacidad/">política de privacidad</a>.
+        </li>
+      </ul>
+
+      <p class="legal-note">
+        Esta web no está vinculada a las universidades andaluzas ni a la Junta de Andalucía. Para
+        cuestiones sobre la inscripción, las notas o las revisiones de la prueba, dirígete a tu
+        universidad o a tu centro.
+      </p>
+    </article>
+  </section>
+</Base>
