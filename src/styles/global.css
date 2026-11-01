@@ -940,9 +940,13 @@
   font-weight: 400;
 }
 
+/* Cuatro asignaturas no caben en una línea al lado del año: van en dos columnas. */
 .year-meta {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: start;
+  gap: 10px 20px;
+  min-width: 0;
   color: var(--ink-soft);
   font-size: 11px;
 }
@@ -956,6 +960,21 @@
 
 .year-row > svg {
   width: 19px;
+}
+
+/* Donde la fila es estrecha (página aún a dos columnas, o móvil grande), los enlaces bajan
+   debajo del año. */
+@media (min-width: 901px) and (max-width: 1280px), (min-width: 561px) and (max-width: 600px) {
+  .year-row {
+    grid-template-columns: 70px 1fr 24px;
+    gap: 14px 15px;
+    padding-block: 22px;
+  }
+
+  .year-meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 
 .closing {
@@ -1244,9 +1263,12 @@ footer {
     grid-template-columns: 34px 1fr;
   }
 
+  /* Los enlaces de las asignaturas no caben al lado del año: pasan a una fila propia debajo. */
   .year-row {
-    grid-template-columns: 55px auto 1fr;
-    min-height: 100px;
+    grid-template-columns: auto 1fr;
+    gap: 14px 15px;
+    min-height: 0;
+    padding-block: 22px;
   }
 
   .year-row strong {
@@ -1254,8 +1276,8 @@ footer {
   }
 
   .year-meta {
-    justify-content: flex-end;
-    gap: 14px;
+    grid-column: 1 / -1;
+    gap: 12px 18px;
   }
 
   .year-row > svg {
