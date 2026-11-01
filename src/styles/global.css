@@ -878,6 +878,14 @@
   line-height: 1.65;
 }
 
+/* Justificado solo donde la columna es ancha: en móvil deja huecos grandes entre palabras. */
+@media (min-width: 561px) {
+  .faq-grid p {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
 @media (max-width: 900px) {
   .faq-grid {
     grid-template-columns: 1fr;
