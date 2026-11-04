@@ -602,10 +602,44 @@
   line-height: 1.7;
 }
 
+.subject-group + .subject-group {
+  margin-top: 44px;
+}
+
+.subject-group-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.subject-group-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Cada grupo reparte su fila entre sus tarjetas (--columnas se fija en la portada). */
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--columnas, 4), minmax(0, 1fr));
   gap: 18px;
+}
+
+/* En los grupos de dos, las tarjetas son anchas: menos altas y con el dibujo a la derecha. */
+@media (min-width: 901px) {
+  .subject-grid--ancha .subject-card {
+    min-height: 400px;
+  }
+
+  .subject-grid--ancha .subject-symbol {
+    inset: 58px 0 auto 50%;
+  }
 }
 
 .subject-card {
@@ -623,7 +657,6 @@
   transform: translateY(-6px);
 }
 
-.subject-card--physics,
 .subject-card--math-two {
   background: var(--teal);
   color: white;
@@ -631,6 +664,16 @@
 
 .subject-card--math {
   background: var(--blue);
+}
+
+.subject-card--physics {
+  background: var(--lilac);
+}
+
+/* Sobre el lila, las órbitas del átomo van en tinta para que se vean. */
+.subject-card--physics .atom span,
+.subject-panel--physics .atom span {
+  border-color: rgba(23, 44, 39, 0.45);
 }
 
 .subject-card--french {
@@ -736,7 +779,7 @@
   z-index: 2;
 }
 
-.subject-content h3 {
+.subject-content h4 {
   margin: 0 0 12px;
   font-family: var(--serif);
   font-size: 35px;
@@ -1272,7 +1315,7 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .subject-content h3 {
+  .subject-content h4 {
     font-size: 40px;
   }
 
@@ -1421,16 +1464,19 @@ footer {
 }
 
 .subject-panel--math,
+.subject-panel--physics,
 .subject-panel--french,
 .subject-panel--english {
   color: var(--ink);
 }
 
 .subject-panel--math { background: var(--blue); }
+.subject-panel--physics { background: var(--lilac); }
 .subject-panel--french { background: var(--rose); }
 .subject-panel--english { background: var(--gold); }
 
 .subject-panel--math .subject-panel-list li,
+.subject-panel--physics .subject-panel-list li,
 .subject-panel--french .subject-panel-list li,
 .subject-panel--english .subject-panel-list li {
   border-top-color: rgba(23, 44, 39, 0.2);
@@ -1629,7 +1675,6 @@ footer {
   color: var(--ink);
 }
 
-.topics--physics,
 .topics--math-two {
   --tone-dark: #4f9887;
   --tone-light: #dcefe8;
@@ -1638,6 +1683,11 @@ footer {
 .topics--math {
   --tone-dark: #7fa6c1;
   --tone-light: #e3edf4;
+}
+
+.topics--physics {
+  --tone-dark: #8f7cc4;
+  --tone-light: #ece6f8;
 }
 
 .topics--french {

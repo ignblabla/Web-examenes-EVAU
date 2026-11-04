@@ -10,48 +10,69 @@ import { cursos, examenesDe, nombreExamen, rutaAnio, rutaExamen } from "../data/
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
-const subjects = [
+// Tarjetas de la portada, agrupadas por área. Solo se muestran las asignaturas publicadas (indexables).
+const tarjetas = [
   {
-    key: "01",
+    slug: "matematicas-ii",
+    grupo: "ciencias",
     symbol: "geometry",
     title: "Matemáticas II",
     description:
       "Los exámenes desde 2021 resueltos paso a paso, con el planteamiento, los cálculos y las figuras.",
     detail: "Álgebra · Geometría · Análisis · Probabilidad",
     className: "subject-card subject-card--math-two",
-    href: "/matematicas-ii/",
   },
   {
-    key: "02",
+    slug: "matematicas-aplicadas",
+    grupo: "ciencias",
     symbol: "graph",
     title: "Matemáticas aplicadas",
     description:
       "Los exámenes desde 2021 resueltos paso a paso, con el planteamiento, los cálculos y las gráficas.",
     detail: "Álgebra · Funciones · Probabilidad · Inferencia",
     className: "subject-card subject-card--math",
-    href: "/matematicas-aplicadas/",
   },
   {
-    key: "03",
+    slug: "fisica",
+    grupo: "ciencias",
+    symbol: "atom",
+    title: "Física",
+    description:
+      "Los exámenes resueltos paso a paso, con el planteamiento, los cálculos y los diagramas.",
+    detail: "Gravitación · Electromagnetismo · Ondas · Física moderna",
+    className: "subject-card subject-card--physics",
+  },
+  {
+    slug: "ingles",
+    grupo: "idiomas",
     symbol: "english",
     title: "Inglés",
     description:
       "Todos los exámenes desde 2021, con cada respuesta del Reading y del Use of English explicada en español.",
     detail: "Reading · Use of English · Writing",
     className: "subject-card subject-card--english",
-    href: "/ingles/",
   },
   {
-    key: "04",
+    slug: "frances",
+    grupo: "idiomas",
     symbol: "french",
     title: "Francés",
     description:
       "Todos los exámenes desde 2021, con cada respuesta de la compréhension y la compétence linguistique explicada.",
     detail: "Compréhension · Compétence linguistique · Expression",
     className: "subject-card subject-card--french",
-    href: "/frances/",
   },
 ] as const
+
+const visibles = tarjetas
+  .filter((t) => asignaturas.some((a) => a.slug === t.slug && a.indexable))
+  .map((t, i) => ({ ...t, key: String(i + 1).padStart(2, "0"), href: `/${t.slug}/` }))
+const grupos = [
+  { titulo: "Ciencias", tarjetas: visibles.filter((t) => t.grupo === "ciencias") },
+  { titulo: "Idiomas", tarjetas: visibles.filter((t) => t.grupo === "idiomas") },
+].filter((g) => g.tarjetas.length > 0)
+const numeros = ["Una", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho"]
+const cuantas = numeros[visibles.length - 1] ?? String(visibles.length)
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -167,7 +188,7 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
           <p class="section-kicker">Elige tu asignatura</p>
         </div>
         <h2>
-          Cuatro asignaturas.
+          {cuantas} asignaturas.
           <br />
           <em>Un objetivo claro.</em>
         </h2>
@@ -176,28 +197,36 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
           completas.
         </p>
       </div>
-      <div class="subject-grid">
-        {
-          subjects.map((subject) => (
-            <a href={subject.href} class={subject.className}>
-              <div class="subject-top">
-                <span class="subject-number">{subject.key}</span>
-                <span class="subject-arrow">
-                  <Icon name="arrow-up-right" />
-                </span>
-              </div>
-              <div class="subject-symbol" aria-hidden="true">
-                <SubjectSymbol type={subject.symbol} />
-              </div>
-              <div class="subject-content">
-                <h3>{subject.title}</h3>
-                <p>{subject.description}</p>
-                <span class="subject-detail">{subject.detail}</span>
-              </div>
-            </a>
-          ))
-        }
-      </div>
+      {
+        grupos.map((grupo) => (
+          <div class="subject-group">
+            <h3 class="subject-group-title">{grupo.titulo}</h3>
+            <div
+              class:list={["subject-grid", { "subject-grid--ancha": grupo.tarjetas.length <= 2 }]}
+              style={`--columnas: ${grupo.tarjetas.length}`}
+            >
+              {grupo.tarjetas.map((subject) => (
+                <a href={subject.href} class={subject.className}>
+                  <div class="subject-top">
+                    <span class="subject-number">{subject.key}</span>
+                    <span class="subject-arrow">
+                      <Icon name="arrow-up-right" />
+                    </span>
+                  </div>
+                  <div class="subject-symbol" aria-hidden="true">
+                    <SubjectSymbol type={subject.symbol} />
+                  </div>
+                  <div class="subject-content">
+                    <h4>{subject.title}</h4>
+                    <p>{subject.description}</p>
+                    <span class="subject-detail">{subject.detail}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
