@@ -77,10 +77,18 @@ const opciones = [
   `${termino} ${corto} ${prueba(anio)} Andalucía ${anio} con soluciones`,
   `${termino} ${corto} ${prueba(anio)} ${anio} con soluciones`,
   `${termino} ${corto} ${prueba(anio)} ${anio}`,
+  // Para temas de nombre largo (Límites, continuidad y derivabilidad), sin la prueba.
+  `${termino} ${corto} ${anio}`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 const examenesTexto = entradas.length === 1 ? "del examen" : `de los ${entradas.length} exámenes`
-const descripcion = `${termino} ${examenesTexto} de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}, con cada respuesta explicada y justificada.`
+// La descripción más completa que quepa en 160 caracteres.
+const inicioDescripcion = `${termino} ${examenesTexto} de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}`
+const descripciones = [
+  `${inicioDescripcion}, con cada respuesta explicada y justificada.`,
+  `${inicioDescripcion}, con cada respuesta explicada.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
 
 const jsonLd = {
