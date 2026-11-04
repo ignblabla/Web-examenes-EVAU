@@ -1466,6 +1466,11 @@ footer {
   transform: scale(1.35);
 }
 
+/* El átomo es más alto que los demás símbolos: ampliado como ellos pisaría la primera línea. */
+.subject-panel--physics .subject-panel-symbol > * {
+  transform: scale(1.05);
+}
+
 .subject-panel--math,
 .subject-panel--physics,
 .subject-panel--french,
@@ -1843,6 +1848,10 @@ footer {
 
   .subject-panel-symbol > * {
     transform: none;
+  }
+
+  .subject-panel--physics .subject-panel-symbol > * {
+    transform: translateY(-16px) scale(0.72);
   }
 
   .archive-panel {
