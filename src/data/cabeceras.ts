@@ -93,6 +93,20 @@ const fisica2026: Cabecera = {
   ],
 }
 
+// Física, curso 2024-2025: en cada bloque, el apartado a) obligatorio y un b) a elegir entre dos.
+const fisica2025: Cabecera = {
+  ...fisica2026,
+  curso: "CURSO 2024-2025",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 4 ejercicios correspondientes a los bloques A, B, C y D. Cada ejercicio contiene un apartado a) y dos apartados b). El alumno deberá responder al apartado a) y elegir un apartado b) entre los dos propuestos en cada bloque. En caso de responder a los dos apartados b), sólo será tenido en cuenta el respondido en primer lugar",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -424,6 +438,8 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2025/junio": fisica2025,
+  "fisica/2025/julio": fisica2025,
   "fisica/2026/junio": fisica2026,
   "fisica/2026/julio": fisica2026,
   "fisica/2026/reserva-1": fisica2026,

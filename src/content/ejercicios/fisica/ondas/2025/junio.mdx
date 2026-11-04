@@ -1,0 +1,47 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2025
+convocatoria: junio
+formato: fisica
+---
+
+**b1)** Por una cuerda tensa, se propaga en el sentido negativo del eje OX una onda armónica transversal de 0,1 m de amplitud, 5 Hz de frecuencia y una velocidad de propagación de 0,5 m s<sup>-1</sup>. Determine razonadamente: **i)** (0,75 puntos) la ecuación de la onda, sabiendo que para *t* = 0 s y *x* = 0 m se encuentra en la posición más alta de su oscilación; **ii)** (0,5 puntos) la diferencia de fase entre dos puntos de la cuerda separados 10 cm para un mismo instante; **iii)** (0,25 puntos) la distancia mínima entre dos puntos de la cuerda que se encuentren en oposición de fase en un mismo instante.
+
+<Solucion>
+
+**i) Ecuación de la onda.** Calculamos la frecuencia angular, la longitud de onda y el número de onda:
+
+$$
+\omega = 2\pi f = 2\pi \cdot 5 = 10\pi\ \text{rad/s}, \qquad
+\lambda = \frac{v}{f} = \frac{0{,}5}{5} = 0{,}1\ \text{m}, \qquad
+k = \frac{2\pi}{\lambda} = 20\pi\ \text{rad/m}
+$$
+
+Como la onda avanza en el sentido negativo del eje OX, la fase lleva el signo $+$ entre $\omega t$ y $kx$:
+
+$$
+y(x, t) = A\sin(\omega t + kx + \varphi_0)
+$$
+
+En $t = 0$ y $x = 0$ el punto está en la posición más alta, $y = A$, así que $\sin\varphi_0 = 1$ y $\varphi_0 = \pi/2$:
+
+$$
+y(x, t) = 0{,}1\sin\left(10\pi t + 20\pi x + \frac{\pi}{2}\right) = 0{,}1\cos(10\pi t + 20\pi x)\ \ \text{(S.I.)}
+$$
+
+**ii) Diferencia de fase entre puntos separados 10 cm.** En un mismo instante, la diferencia de fase entre dos puntos separados $\Delta x$ es $k\,\Delta x$:
+
+$$
+\Delta\varphi = k\,\Delta x = 20\pi \cdot 0{,}1 = 2\pi\ \text{rad}
+$$
+
+Los dos puntos están **en fase**: 10 cm es justo una longitud de onda.
+
+**iii) Distancia mínima en oposición de fase.** Dos puntos están en oposición de fase cuando su diferencia de fase es $\pi$ rad (o un múltiplo impar). La distancia mínima es media longitud de onda:
+
+$$
+k\,\Delta x = \pi \quad\Rightarrow\quad \Delta x = \frac{\pi}{20\pi} = \frac{\lambda}{2} = 0{,}05\ \text{m} = 5\ \text{cm}
+$$
+
+</Solucion>

@@ -1,0 +1,109 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2025
+convocatoria: junio
+formato: fisica
+---
+
+import FuerzasTiroOblicuo from "../../../../../components/figuras/fisica/FuerzasTiroOblicuo.astro"
+
+**a)** Considere dos masas puntuales iguales separadas una cierta distancia. Razone la veracidad de las siguientes afirmaciones: **i)** (0,5 puntos) el campo gravitatorio es nulo solamente en el punto medio entre las dos masas; **ii)** (0,5 puntos) el potencial gravitatorio solo se anula a distancia infinita.
+
+<Solucion>
+
+Cada masa $m$ crea en un punto a distancia $r$ un campo gravitatorio de módulo $g = G\,m/r^2$, dirigido hacia ella, y un potencial $V = -G\,m/r$ (con el origen de potenciales en el infinito). El campo total es la suma vectorial de los dos campos, y el potencial total, la suma de los dos potenciales.
+
+**i) Verdadera.** Para que el campo total sea nulo, los dos campos tienen que tener la misma dirección, sentidos opuestos y el mismo módulo:
+
+- Fuera de la recta que une las masas, los dos campos apuntan hacia puntos distintos y no tienen la misma dirección: no se pueden anular.
+- En la recta, pero fuera del segmento entre las masas, los dos campos apuntan en el mismo sentido (hacia las masas) y se suman.
+- Entre las masas, los campos tienen sentidos opuestos, y sus módulos solo son iguales si las distancias son iguales, $G\,m/r_1^2 = G\,m/r_2^2 \Rightarrow r_1 = r_2$: en el punto medio.
+
+Así que, a distancia finita, el campo solo se anula en el punto medio (lejos de las masas tiende a cero, pero solo es nulo en el infinito).
+
+**ii) Verdadera.** El potencial de cada masa es siempre negativo, porque la masa es positiva:
+
+$$
+V = -\frac{G\,m}{r_1} - \frac{G\,m}{r_2} < 0 \quad \text{para cualquier punto a distancia finita}
+$$
+
+La suma de dos números negativos nunca es cero, así que el potencial solo se anula en el infinito $(r_1, r_2 \to \infty)$. A diferencia del campo, el potencial no se anula en el punto medio: allí vale $V = -4\,G\,m/d$, siendo $d$ la distancia entre las masas.
+
+</Solucion>
+
+**b1)** Un asistente de vuelo arrastra con velocidad constante una maleta sin ruedas de 7 kg, por una superficie horizontal. Tira de la maleta con una correa que forma un ángulo de 63º con el suelo. El coeficiente de rozamiento entre la maleta y el suelo es 0,25. **i)** (0,25 puntos) Realice un esquema de las fuerzas que actúan sobre la maleta. **ii)** (1,25 puntos) Calcule razonadamente el trabajo realizado por cada una de las fuerzas que actúan sobre la maleta en un recorrido de 3,5 m.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre la maleta actúan cuatro fuerzas: el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, vertical y hacia arriba; la tensión $\vec{T}$ de la correa, a $63^\circ$ con el suelo; y el rozamiento $\vec{F}_r$, horizontal y opuesto al movimiento. Descomponemos la tensión en una componente horizontal $(T_x)$ y otra vertical $(T_y)$:
+
+<FuerzasTiroOblicuo angulo={63} descripcion="Maleta sobre un suelo horizontal que se mueve hacia la derecha a velocidad constante. El peso P apunta hacia abajo y la normal N hacia arriba; la tensión T de la correa forma 63 grados con el suelo y se descompone en Tx, horizontal hacia la derecha, y Ty, vertical hacia arriba; el rozamiento Fr apunta hacia la izquierda." />
+
+**ii) Trabajo de cada fuerza.** La maleta se mueve con velocidad constante, así que la resultante es nula (primera ley de Newton):
+
+$$
+\text{Vertical:}\quad N + T\sin 63^\circ = mg
+\qquad\qquad
+\text{Horizontal:}\quad T\cos 63^\circ = F_r = \mu N
+$$
+
+Sustituyendo $N = mg - T\sin 63^\circ$ en la segunda ecuación y despejando la tensión:
+
+$$
+T = \frac{\mu\,m\,g}{\cos 63^\circ + \mu\sin 63^\circ} = \frac{0{,}25 \cdot 7 \cdot 9{,}8}{0{,}454 + 0{,}25 \cdot 0{,}891} = \frac{17{,}15}{0{,}677} = 25{,}3\ \text{N}
+$$
+
+$$
+N = 68{,}6 - 25{,}3 \cdot 0{,}891 = 46{,}0\ \text{N}, \qquad F_r = \mu N = 0{,}25 \cdot 46{,}0 = 11{,}5\ \text{N}
+$$
+
+El trabajo de una fuerza constante es $W = F\,d\cos\alpha$, con $\alpha$ el ángulo entre la fuerza y el desplazamiento (horizontal, $d = 3{,}5$ m):
+
+- Tensión $(\alpha = 63^\circ)$: $W_T = 25{,}3 \cdot 3{,}5 \cdot \cos 63^\circ = 40{,}3$ J.
+- Rozamiento $(\alpha = 180^\circ)$: $W_{F_r} = -11{,}5 \cdot 3{,}5 = -40{,}3$ J.
+- Peso y normal, perpendiculares al desplazamiento $(\alpha = 90^\circ)$: $W_P = W_N = 0$.
+
+**Respuesta.** La tensión realiza un trabajo de **40,3 J**, el rozamiento de **−40,3 J**, y el peso y la normal **no realizan trabajo**. El trabajo total es nulo, como debe ser: la velocidad es constante, así que por el teorema de la energía cinética $W_{\text{total}} = \Delta E_c = 0$. Todo el trabajo que hace el asistente se disipa en calor por el rozamiento.
+
+</Solucion>
+
+**b2)** En los años 60 del siglo pasado, un satélite solía orbitar a 1,6·10<sup>4</sup> km sobre la superficie de la Tierra. Calcule razonadamente: **i)** (0,5 puntos) la energía potencial de un satélite de 1000 kg en esta órbita; **ii)** (0,5 puntos) la velocidad que lleva el satélite en esa órbita; **iii)** (0,5 puntos) la energía que tiene el satélite en dicha órbita.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+El radio de la órbita es la distancia al centro de la Tierra, no la altura sobre la superficie:
+
+$$
+r = R_T + h = 6{,}37 \cdot 10^6 + 1{,}6 \cdot 10^7 = 2{,}237 \cdot 10^{7}\ \text{m}
+$$
+
+**i) Energía potencial.** Con el origen de energía potencial en el infinito:
+
+$$
+E_p = -\frac{G\,M_T\,m}{r} = -\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 1000}{2{,}237 \cdot 10^{7}} = -1{,}78 \cdot 10^{10}\ \text{J}
+$$
+
+**ii) Velocidad orbital.** En una órbita circular, la fuerza gravitatoria es la fuerza centrípeta:
+
+$$
+\frac{G\,M_T\,m}{r^2} = \frac{m\,v^2}{r} \quad\Rightarrow\quad v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}{2{,}237 \cdot 10^{7}}} = 4{,}22 \cdot 10^{3}\ \text{m/s}
+$$
+
+**iii) Energía mecánica.** Es la suma de la cinética y la potencial:
+
+$$
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M_T\,m}{2r} = 8{,}92 \cdot 10^{9}\ \text{J}
+$$
+
+$$
+E_m = E_c + E_p = \frac{G\,M_T\,m}{2r} - \frac{G\,M_T\,m}{r} = -\frac{G\,M_T\,m}{2r} = -8{,}92 \cdot 10^{9}\ \text{J}
+$$
+
+**Respuesta.** El satélite tiene una energía potencial de **$-1{,}78 \cdot 10^{10}$ J**, se mueve a **$4{,}22 \cdot 10^3$ m/s** y su energía mecánica es **$-8{,}92 \cdot 10^9$ J**. Es negativa porque el satélite está ligado a la Tierra, y vale justo la mitad de la energía potencial, como en cualquier órbita circular.
+
+</Solucion>

@@ -59,8 +59,11 @@ const ctaSpan = `--cta-span-3: ${3 - (temas.length % 3)}; --cta-span-2: ${2 - (t
 // Si en algún curso no están las cuatro reservas, los textos no prometen cuatro.
 const reservasPorCurso = new Set(cursosAsignatura.map((c) => c.reservas.length))
 const cuatroReservas = reservasPorCurso.size === 1 && reservasPorCurso.has(4)
-const unaReserva = reservasPorCurso.size === 1 && reservasPorCurso.has(1)
-const reservasPanel = cuatroReservas ? "4 exámenes" : unaReserva ? "1 examen" : "Varias"
+// Si no, el panel da el total de reservas disponibles (en Física: solo la reserva 1 de 2026).
+const totalReservas = cursosAsignatura.reduce((n, c) => n + c.reservas.length, 0)
+const reservasPanel = cuatroReservas
+  ? "4 exámenes"
+  : `${totalReservas} ${totalReservas === 1 ? "examen" : "exámenes"}`
 
 const filas = [
   { titulo: "Exámenes oficiales", nota: "Ordinaria y extraordinaria", campo: "oficiales" },
@@ -210,7 +213,7 @@ const jsonLd = {
                 <p>{fila.nota}</p>
               </header>
               <ul class="archive-list">
-                {cursosAsignatura.map((c) => (
+                {cursosAsignatura.filter((c) => c[fila.campo].length > 0).map((c) => (
                   <li>
                     <strong>
                       {examenesDe(c).some((e) => publicado(c.anio, e)) ? (

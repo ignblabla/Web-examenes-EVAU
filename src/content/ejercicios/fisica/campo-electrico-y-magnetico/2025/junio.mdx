@@ -1,0 +1,117 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2025
+convocatoria: junio
+formato: fisica
+---
+
+import EspiraLadoMovil from "../../../../../components/figuras/fisica/EspiraLadoMovil.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Dos partículas cargadas se mueven perpendicularmente a un campo magnético uniforme con la misma velocidad. **i)** (0,5 puntos) Deduzca la expresión del radio de la trayectoria de una de ellas. **ii)** (0,5 puntos) Si la masa de la primera es veinte veces mayor y su carga es la mitad de la segunda, encuentre la razón entre los periodos de sus movimientos. Razone sus respuestas.
+
+<Solucion>
+
+**i) Radio de la trayectoria.** Sobre una partícula de carga $q$ que se mueve con velocidad $\vec{v}$ en un campo magnético $\vec{B}$ actúa la fuerza de Lorentz, $\vec{F} = q\,\vec{v} \times \vec{B}$. Si la velocidad es perpendicular al campo, su módulo es $F = |q|\,v\,B$, y como la fuerza es siempre perpendicular a la velocidad, no cambia su módulo: actúa como fuerza centrípeta y la partícula describe una circunferencia. Por la segunda ley de Newton:
+
+$$
+|q|\,v\,B = \frac{m\,v^2}{R} \quad\Rightarrow\quad R = \frac{m\,v}{|q|\,B}
+$$
+
+**ii) Razón entre los periodos.** El periodo es el tiempo que tarda en dar una vuelta completa:
+
+$$
+T = \frac{2\pi R}{v} = \frac{2\pi m}{|q|\,B}
+$$
+
+No depende de la velocidad, solo de la relación entre masa y carga. Con $m_1 = 20\,m_2$ y $q_1 = q_2/2$, en el mismo campo:
+
+$$
+\frac{T_1}{T_2} = \frac{m_1/|q_1|}{m_2/|q_2|} = \frac{20\,m_2}{m_2} \cdot \frac{|q_2|}{|q_2|/2} = 20 \cdot 2 = 40
+$$
+
+**Respuesta.** $R = \dfrac{m\,v}{|q|\,B}$, y el periodo de la primera partícula es **40 veces** el de la segunda: con más masa y menos carga, gira mucho más despacio.
+
+</Solucion>
+
+<EspiraLadoMovil />
+
+**b1)** El lado móvil de la espira rectangular de la figura, de longitud a = 0,15 m, se mueve con una velocidad constante de 0,2 m s<sup>-1</sup> dentro de un campo magnético uniforme de módulo igual a 2 T (saliente del papel, según el esquema). La resistencia eléctrica de la espira es igual a 50 Ω. Determine de forma razonada: **i)** (0,75 puntos) la fuerza electromotriz en valor absoluto; **ii)** (0,5 puntos) el valor de la intensidad de corriente; **iii)** (0,25 puntos) el sentido de la corriente inducida en la situación del esquema. Dibuje el campo inducido dentro de la espira.
+
+<Solucion>
+
+**i) Fuerza electromotriz.** Al moverse el lado móvil, cambia el área de la espira y con ella el flujo magnético. Si $x$ es la distancia que define el área $S = a\,x$, el flujo es $\Phi = B\,a\,x$ (el campo es perpendicular a la espira) y, por la ley de Faraday-Lenz:
+
+$$
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right| = B\,a\left|\frac{dx}{dt}\right| = B\,a\,v = 2 \cdot 0{,}15 \cdot 0{,}2 = 0{,}06\ \text{V}
+$$
+
+**ii) Intensidad.** Por la ley de Ohm:
+
+$$
+I = \frac{|\varepsilon|}{R} = \frac{0{,}06}{50} = 1{,}2 \cdot 10^{-3}\ \text{A} = 1{,}2\ \text{mA}
+$$
+
+**iii) Sentido de la corriente y campo inducido.** Las cargas del lado móvil se mueven con él, hacia la derecha, en un campo saliente. Sobre una carga positiva actúa la fuerza $\vec{F} = q\,\vec{v} \times \vec{B}$, que con $\vec{v}$ hacia la derecha y $\vec{B}$ hacia fuera del papel apunta **hacia abajo**: la corriente baja por el lado móvil.
+
+Tomamos como espira la que forma el lado móvil con la parte derecha del marco, donde está dibujado el campo. Al avanzar el lado móvil hacia la derecha, su área disminuye y el flujo saliente también. Por la ley de Lenz, la corriente inducida se opone a esa disminución: crea dentro de la espira un **campo inducido saliente**, en el mismo sentido que $\vec{B}$, y para eso circula en **sentido antihorario**, que es justo bajar por el lado móvil:
+
+<EspiraLadoMovil solucion />
+
+(Si se toma en cambio el circuito que queda a la izquierda del lado móvil, cuya área aumenta, la corriente sigue bajando por el lado móvil, pero en ese circuito circula en sentido horario y su campo inducido es entrante.)
+
+</Solucion>
+
+**b2)** Dos cargas puntuales de +10<sup>-6</sup> C y -10<sup>-6</sup> C se encuentran colocadas en las posiciones A (0,-4) m y B (0,4) m, respectivamente. **i)** (0,75 puntos) Calcule el potencial en las posiciones C (6,0) m y D (0,8) m. **ii)** (0,75 puntos) Determine el trabajo realizado por el campo al trasladar una carga de +4·10<sup>-4</sup> C desde el punto C al D. Interprete el signo del trabajo. Justifique todas sus respuestas.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Potencial en C y en D.** El potencial es una magnitud escalar: el de cada carga es $V = K\,q/r$ y el total es la suma.
+
+<Vectores
+  xMin={-1}
+  xMax={7}
+  yMin={-5}
+  yMax={9}
+  escala={20}
+  marcasX={[2, 4, 6]}
+  marcasY={[-4, 4, 8]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: -4, texto: "A: +10⁻⁶ C", tipo: "carga", dx: 12, dy: 4 },
+    { x: 0, y: 4, texto: "B: −10⁻⁶ C", tipo: "carga", signo: "−", dx: 12, dy: 4 },
+    { x: 6, y: 0, texto: "C", tipo: "punto", dx: 6, dy: -8 },
+    { x: 0, y: 8, texto: "D", tipo: "punto", dx: 10, dy: 4 },
+  ]}
+  vectores={[]}
+  segmentos={[
+    [0, -4, 6, 0],
+    [0, 4, 6, 0],
+  ]}
+  descripcion="Ejes x e y en metros. La carga positiva está en A(0, menos 4) y la negativa en B(0, 4). El punto C(6, 0) está a la misma distancia de las dos cargas; el punto D(0, 8) está en el eje y, a 4 m de B y a 12 m de A."
+/>
+
+C(6, 0) está a la misma distancia de las dos cargas, $r = \sqrt{6^2 + 4^2} = \sqrt{52} = 7{,}21$ m, y como las cargas son iguales y opuestas, sus potenciales se anulan:
+
+$$
+V_C = \frac{K \cdot 10^{-6}}{7{,}21} + \frac{K \cdot (-10^{-6})}{7{,}21} = 0\ \text{V}
+$$
+
+D(0, 8) está a 12 m de A y a 4 m de B:
+
+$$
+V_D = \frac{9 \cdot 10^9 \cdot 10^{-6}}{12} + \frac{9 \cdot 10^9 \cdot (-10^{-6})}{4} = 750 - 2250 = -1500\ \text{V}
+$$
+
+**ii) Trabajo del campo de C a D.** El campo eléctrico es conservativo, así que su trabajo es igual a menos la variación de energía potencial:
+
+$$
+W_{C \to D} = -\Delta E_p = q\,(V_C - V_D) = 4 \cdot 10^{-4} \cdot \left[0 - (-1500)\right] = 0{,}6\ \text{J}
+$$
+
+**Respuesta.** $V_C = 0$ V y $V_D = -1500$ V, y el campo realiza un trabajo de **0,6 J**. Es positivo: el traslado es espontáneo, porque una carga positiva tiende a ir hacia potenciales menores (D está cerca de la carga negativa). Su energía potencial disminuye en 0,6 J, y no hace falta ningún agente externo.
+
+</Solucion>

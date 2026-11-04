@@ -103,10 +103,11 @@ export const asignaturas: Asignatura[] = [
     simbolo: "atom",
     color: "physics",
     indexable: true,
-    desde: 2026,
-    reservas: { 2026: 1 },
+    desde: 2025,
+    // En 2025 no hay reservas y en 2026 solo la 1: son las únicas que se han encontrado.
+    reservas: { 2025: 0, 2026: 1 },
     intro:
-      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. Uno es obligatorio y en los otros tres se elige entre dos opciones. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
+      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Desde 2026 un bloque es obligatorio y en los otros tres se elige entre dos opciones de a) y de b); en 2025 el a) era obligatorio en todos los bloques y solo se elegía el b). Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
     resuelto: "todos los apartados paso a paso, con esquemas y unidades",
     temas: temas([
       {

@@ -1,0 +1,58 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: junio
+formato: fisica
+parte: 2
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+
+**b2)** Un recipiente contiene agua sobre la que se ha colocado una capa de aceite. Desde el aire se hace incidir sobre la capa de aceite un haz de luz monocromático que forma un ángulo de 50º con la normal. **i)** (0,5 puntos) Realice un esquema de la trayectoria que sigue el rayo cuando se refracta en los diferentes medios (aire, aceite y agua). **ii)** (0,75 puntos) Calcule los valores de los ángulos que forman con la normal el rayo refractado en el aceite y en el agua: **iii)** (0,25 puntos) Calcule la velocidad de la luz en el agua.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>agua</sub> = 1,33; n<sub>aceite</sub> = 1,47; n<sub>aire</sub> = 1</Datos>
+
+<Solucion>
+
+**i) Esquema.** En cada superficie de separación el rayo se refracta según la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Al pasar del aire al aceite (más refringente) se acerca a la normal; al pasar del aceite al agua (menos refringente que el aceite) se aleja de ella, aunque sigue más cerca de la normal que en el aire:
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Aceite", n: 1.47, color: "#f6e7b8" },
+    { nombre: "Agua", n: 1.33, color: "#d8e5ed" },
+  ]}
+  incidencia={50}
+  descripcion="Rayo que baja desde el aire formando 50 grados con la normal, se refracta en el aceite acercándose a la normal, con 31,4 grados, y al pasar al agua se aleja algo de ella, con 35,2 grados."
+/>
+
+**ii) Ángulos de refracción.** Del aire al aceite:
+
+$$
+n_{\text{aire}}\sin 50^\circ = n_{\text{aceite}}\sin\theta_{\text{aceite}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{aceite}} = \frac{1 \cdot 0{,}766}{1{,}47} = 0{,}521
+\quad\Rightarrow\quad \theta_{\text{aceite}} = 31{,}4^\circ
+$$
+
+Del aceite al agua. Las dos superficies son paralelas, así que el ángulo con el que el rayo llega al agua es el de refracción en el aceite:
+
+$$
+n_{\text{aceite}}\sin\theta_{\text{aceite}} = n_{\text{agua}}\sin\theta_{\text{agua}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{agua}} = \frac{1{,}47 \cdot 0{,}521}{1{,}33} = 0{,}576
+\quad\Rightarrow\quad \theta_{\text{agua}} = 35{,}2^\circ
+$$
+
+Como $n\sin\theta$ se conserva en todas las superficies, el ángulo en el agua es el mismo que si la luz pasara directamente del aire al agua: la capa de aceite solo desplaza el rayo.
+
+**iii) Velocidad de la luz en el agua.** Por la definición del índice de refracción, $n = c/v$:
+
+$$
+v_{\text{agua}} = \frac{c}{n_{\text{agua}}} = \frac{3 \cdot 10^8}{1{,}33} = 2{,}26 \cdot 10^{8}\ \text{m/s}
+$$
+
+**Respuesta.** El rayo forma **31,4°** con la normal en el aceite y **35,2°** en el agua, donde la luz viaja a **$2{,}26 \cdot 10^8$ m/s**.
+
+</Solucion>

@@ -1,0 +1,72 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: julio
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**a)** Razone, apoyándose en el esquema del trazado de rayos y explicando su construcción, si la siguiente afirmación es verdadera o falsa: “un espejo esférico convexo puede producir una imagen virtual con un aumento lateral mayor que la unidad”.
+
+<Solucion>
+
+**Falsa.** Un espejo convexo da siempre, de un objeto real, una imagen virtual, derecha y **más pequeña** que el objeto: su aumento lateral está siempre entre 0 y 1.
+
+**Trazado de rayos.** Con el criterio de signos DIN (la luz va de izquierda a derecha y el origen está en el vértice del espejo), el centro de curvatura $C$ y el foco $F$ de un espejo convexo están detrás del espejo. Desde el extremo del objeto trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refleja como si viniera del foco $F$.
+- **(2)** Un rayo dirigido hacia el centro de curvatura $C$, que incide perpendicularmente y se refleja sobre sí mismo.
+- **(3)** Un rayo dirigido hacia el foco $F$, que se refleja paralelo al eje.
+
+<TrazadoRayos tipo="convexo" f={2} s={-3} y={1} xMin={-4.4} xMax={4.6} descripcion="Espejo convexo con un objeto real delante. El rayo paralelo al eje se refleja como si viniera del foco F, detrás del espejo; el rayo dirigido al centro de curvatura C se refleja sobre sí mismo y el dirigido al foco sale paralelo. Los rayos reflejados divergen y sus prolongaciones se cortan detrás del espejo, entre el vértice y el foco: la imagen es virtual, derecha y más pequeña que el objeto." />
+
+Los rayos reflejados divergen; se cortan sus prolongaciones, detrás del espejo y **entre el vértice y el foco**. Ahí se forma una imagen virtual, derecha y menor que el objeto, sea cual sea la posición de este.
+
+Lo confirman las ecuaciones de los espejos. Con $s < 0$ (objeto real) y $f > 0$ (espejo convexo):
+
+$$
+\frac{1}{s'} = \frac{1}{f} - \frac{1}{s} = \frac{1}{f} + \frac{1}{|s|} > \frac{1}{f}
+\quad\Rightarrow\quad 0 < s' < f
+$$
+
+$$
+A = -\frac{s'}{s} = \frac{s'}{|s|}, \qquad 0 < A < 1
+$$
+
+porque la imagen está siempre más cerca del espejo que el objeto. Para obtener una imagen virtual y **mayor** hay que usar un espejo **cóncavo** con el objeto entre el foco y el espejo (como en un espejo de aumento para maquillarse).
+
+</Solucion>
+
+**b1)** Un haz de luz monocromática se propaga desde el aire al agua cambiando su longitud de onda de 700 a 525 nm. Calcule razonadamente: **i)** (0,5 puntos) la frecuencia del haz de luz; **ii)** (0,5 puntos) el índice de refracción del agua; **iii)** (0,5 puntos) su velocidad de propagación en el segundo medio.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1</Datos>
+
+<Solucion>
+
+**i) Frecuencia.** La frecuencia de la luz no cambia al pasar de un medio a otro (la fija el foco emisor), así que la calculamos en el aire, donde la luz viaja a $c$ $(n_{\text{aire}} = 1)$:
+
+$$
+f = \frac{c}{\lambda_{\text{aire}}} = \frac{3 \cdot 10^8}{700 \cdot 10^{-9}} = 4{,}29 \cdot 10^{14}\ \text{Hz}
+$$
+
+**ii) Índice de refracción del agua.** Como $n = c/v$ y $v = \lambda f$ con la misma frecuencia en los dos medios, los índices de refracción son inversamente proporcionales a las longitudes de onda:
+
+$$
+\frac{n_{\text{agua}}}{n_{\text{aire}}} = \frac{v_{\text{aire}}}{v_{\text{agua}}} = \frac{\lambda_{\text{aire}}}{\lambda_{\text{agua}}}
+\quad\Rightarrow\quad
+n_{\text{agua}} = 1 \cdot \frac{700}{525} = 1{,}33
+$$
+
+**iii) Velocidad en el agua.**
+
+$$
+v_{\text{agua}} = \frac{c}{n_{\text{agua}}} = \frac{3 \cdot 10^8}{1{,}333} = 2{,}25 \cdot 10^{8}\ \text{m/s}
+$$
+
+(También $v = \lambda_{\text{agua}}\,f = 525 \cdot 10^{-9} \cdot 4{,}29 \cdot 10^{14} = 2{,}25 \cdot 10^8$ m/s.)
+
+**Respuesta.** La frecuencia es **$4{,}29 \cdot 10^{14}$ Hz** (luz roja), el índice de refracción del agua es **1,33** y la luz viaja en ella a **$2{,}25 \cdot 10^8$ m/s**.
+
+</Solucion>

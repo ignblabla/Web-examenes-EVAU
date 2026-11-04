@@ -1,0 +1,73 @@
+---
+// Refracción de un rayo que atraviesa capas horizontales (Física, junio de 2025, C b2: aire,
+// aceite y agua). Cada capa da su índice; los ángulos con la normal se calculan con la ley de
+// Snell, n₁ sen θ₁ = n₂ sen θ₂, a partir del ángulo de incidencia en la primera superficie.
+interface Capa {
+  nombre: string
+  n: number
+  color: string
+}
+
+interface Props {
+  capas: Capa[]
+  incidencia: number
+  descripcion: string
+}
+
+const { capas, incidencia, descripcion } = Astro.props
+const ancho = 380
+const alto = 70
+const invariante = capas[0].n * Math.sin((incidencia * Math.PI) / 180)
+const angulos = capas.map((c) => Math.asin(invariante / c.n))
+// El rayo cruza cada capa de arriba abajo; en x avanza alto · tan θ.
+let x = 70
+const puntos = [{ x, y: 0 }]
+angulos.forEach((a, i) => {
+  x += alto * Math.tan(a)
+  puntos.push({ x, y: (i + 1) * alto })
+})
+const fmt = (v: number) => (v * 180 / Math.PI).toFixed(1).replace(".", ",")
+const id = `refraccion-${Math.round(Math.random() * 1e9)}`
+---
+
+<figure class="solution-figure">
+  <svg viewBox={`0 0 ${ancho} ${alto * capas.length + 4}`} role="img" aria-label={descripcion}>
+    <defs>
+      <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+    </defs>
+    {
+      capas.map((c, i) => (
+        <g>
+          <rect x="0" y={i * alto} width={ancho} height={alto} fill={c.color} />
+          <text x={ancho - 8} y={i * alto + 18} text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
+            {c.nombre} (n = {String(c.n).replace(".", ",")})
+          </text>
+        </g>
+      ))
+    }
+    <g stroke="#111" stroke-width="1">
+      {capas.slice(1).map((_, i) => <path d={`M0 ${(i + 1) * alto}H${ancho}`} />)}
+    </g>
+    <g stroke="#888" stroke-width="1" stroke-dasharray="4 3">
+      {puntos.slice(1, -1).map((p) => <path d={`M${p.x} ${p.y - 40}V${p.y + 40}`} />)}
+    </g>
+    <g stroke="#b04a3a" stroke-width="1.8" fill="none">
+      {
+        puntos.slice(0, -1).map((p, i) => (
+          <path d={`M${p.x.toFixed(1)} ${p.y}L${puntos[i + 1].x.toFixed(1)} ${puntos[i + 1].y}`} marker-end={`url(#${id})`} />
+        ))
+      }
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#b04a3a">
+      {
+        angulos.map((a, i) => (
+          <text x={puntos[i + 1].x + (i === 0 ? -8 : 8)} y={i === 0 ? alto - 14 : i * alto + 30} text-anchor={i === 0 ? "end" : "start"}>
+            {fmt(a)}°
+          </text>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

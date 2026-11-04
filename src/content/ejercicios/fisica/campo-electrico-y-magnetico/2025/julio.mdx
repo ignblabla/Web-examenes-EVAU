@@ -1,0 +1,149 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2025
+convocatoria: julio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Discuta la veracidad de las siguientes afirmaciones: **i)** (0,5 puntos) si no existe flujo magnético a través de una superficie, no existe campo magnético en esa región; **ii)** (0,5 puntos) si el valor del flujo magnético es muy grande, el valor de la fuerza electromotriz inducida en una espira será también muy grande.
+
+<Solucion>
+
+**i) Falsa.** El flujo magnético a través de una superficie plana en un campo uniforme es
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\alpha
+$$
+
+donde $\alpha$ es el ángulo entre el campo y el vector superficie. Puede haber un campo intenso y flujo nulo: basta con que las líneas de campo sean paralelas a la superficie $(\alpha = 90^\circ)$, porque entonces ninguna la atraviesa.
+
+**ii) Falsa.** Según la ley de Faraday-Lenz, la fuerza electromotriz inducida depende de lo rápido que cambia el flujo, no de su valor:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt}
+$$
+
+Un flujo muy grande pero constante no induce ninguna fuerza electromotriz $(d\Phi/dt = 0)$. Y al revés, un flujo pequeño que varía muy deprisa puede inducir una fuerza electromotriz grande.
+
+</Solucion>
+
+**b1)** Dos conductores rectilíneos muy largos se disponen paralelamente al eje OZ. El primero pasa por el punto A(0,1) m y el segundo por el punto B(0,4) m del plano XY. Por ellos circulan corrientes de 1 A y 2 A, respectivamente, hacia la parte positiva del eje OZ. **i)** (1 punto) Realice un esquema y calcule el vector campo magnético total en el punto C(0,3) m del plano XY. **ii)** (0,5 puntos) Calcule la fuerza por unidad de longitud que se ejerce sobre el conductor por el que pasa 2 A. Justifique sus respuestas.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Campo magnético en C.** Cada hilo crea un campo de módulo $B = \mu_0 I/(2\pi r)$, tangente a las circunferencias centradas en el hilo, con el sentido que da la regla de la mano derecha. Las corrientes salen del plano XY (sentido $+\vec{k}$). El punto C(0, 3) está a $r_1 = 2$ m del hilo 1 (por encima) y a $r_2 = 1$ m del hilo 2 (por debajo):
+
+- Hilo 1: el vector que va del hilo a C es $+\vec{j}$, y $\vec{k} \times \vec{j} = -\vec{i}$: su campo apunta hacia $-\vec{i}$.
+- Hilo 2: el vector que va del hilo a C es $-\vec{j}$, y $\vec{k} \times (-\vec{j}) = +\vec{i}$: su campo apunta hacia $+\vec{i}$.
+
+<Vectores
+  xMin={-2.2}
+  xMax={2.6}
+  yMin={-0.4}
+  yMax={4.8}
+  escala={48}
+  marcasY={[2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 1, texto: "A: I₁ = 1 A", tipo: "sale", dx: 12, dy: 4 },
+    { x: 0, y: 4, texto: "B: I₂ = 2 A", tipo: "sale", dx: 12, dy: -6 },
+    { x: 0, y: 3, texto: "C", tipo: "punto", dx: -8, dy: 14 },
+  ]}
+  vectores={[
+    { desde: [0, 3], v: [-24, 0], texto: "B", sub: "1", dx: -6, dy: -6 },
+    { desde: [0, 3], v: [96, 0], texto: "B", sub: "2", dx: -16, dy: -8 },
+    { desde: [0.05, 2.55], v: [72, 0], texto: "B (total)", color: "#b04a3a", dx: 4, dy: 4, discontinuo: true },
+    { desde: [0, 4], v: [0, -40], texto: "F/L sobre el hilo 2", color: "#2d6fa3", dx: 8, dy: -14 },
+  ]}
+  descripcion="Plano XY en metros. Los dos hilos atraviesan el plano con la corriente saliendo hacia el lector: el hilo 1 en A(0, 1) y el hilo 2 en B(0, 4). En C(0, 3), el campo B1 del hilo 1 apunta hacia la izquierda y es pequeño, y el campo B2 del hilo 2 apunta hacia la derecha y es cuatro veces mayor; el total B apunta hacia la derecha. Sobre el hilo 2 actúa una fuerza hacia el hilo 1, de atracción."
+/>
+
+$$
+B_1 = \frac{\mu_0\,I_1}{2\pi r_1} = \frac{4\pi \cdot 10^{-7} \cdot 1}{2\pi \cdot 2} = 10^{-7}\ \text{T}
+\qquad
+B_2 = \frac{\mu_0\,I_2}{2\pi r_2} = \frac{4\pi \cdot 10^{-7} \cdot 2}{2\pi \cdot 1} = 4 \cdot 10^{-7}\ \text{T}
+$$
+
+$$
+\vec{B} = \vec{B}_1 + \vec{B}_2 = -10^{-7}\,\vec{i} + 4 \cdot 10^{-7}\,\vec{i} = 3 \cdot 10^{-7}\,\vec{i}\ \ \text{T}
+$$
+
+**ii) Fuerza por unidad de longitud sobre el hilo de 2 A.** El hilo 2 está en el campo que crea el hilo 1 a una distancia $d = 3$ m, $B_1(d) = \mu_0 I_1/(2\pi d)$, y sobre un tramo de longitud $L$ actúa la fuerza $\vec{F} = I_2\,\vec{L} \times \vec{B}_1$:
+
+$$
+\frac{F}{L} = I_2\,B_1(d) = \frac{\mu_0\,I_1\,I_2}{2\pi d} = \frac{4\pi \cdot 10^{-7} \cdot 1 \cdot 2}{2\pi \cdot 3} = 1{,}33 \cdot 10^{-7}\ \text{N/m}
+$$
+
+Las dos corrientes van en el mismo sentido, así que los hilos se **atraen**: la fuerza sobre el hilo 2 apunta hacia el hilo 1, en el sentido de $-\vec{j}$. (En B, el campo del hilo 1 apunta hacia $-\vec{i}$, y $\vec{k} \times (-\vec{i}) = -\vec{j}$.)
+
+**Respuesta.** El campo en C es **$\vec{B} = 3 \cdot 10^{-7}\,\vec{i}$ T**, y sobre el hilo de 2 A actúa una fuerza por unidad de longitud **$\vec{F}/L = -1{,}33 \cdot 10^{-7}\,\vec{j}$ N/m**, de atracción hacia el otro hilo.
+
+</Solucion>
+
+**b2)** Una carga *q*<sub>1</sub> = 2·10<sup>-9</sup> C está fija en el origen de coordenadas y otra carga *q*<sub>2</sub> = -4·10<sup>-9</sup> C se encuentra fija en el punto A(2,0) m. **i)** (0,5 puntos) Determine y dibuje el campo eléctrico, debido a ambas cargas, en el punto B(4,0) m. **ii)** (1 punto) Calcule el trabajo que las fuerzas del campo realizan para trasladar una tercera carga *q*<sub>3</sub> = 1·10<sup>-9</sup> C, desde B hasta un punto C(0,4) m. Interprete el signo del trabajo.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo eléctrico en B.** El campo de una carga positiva se aleja de ella y el de una negativa apunta hacia ella. B(4, 0) está a 4 m de $q_1$ y a 2 m de $q_2$, todo sobre el eje X:
+
+- $q_1 > 0$, en el origen: su campo en B se aleja de ella, hacia $+\vec{i}$.
+- $q_2 < 0$, en A(2, 0): su campo en B apunta hacia ella, hacia $-\vec{i}$.
+
+<Vectores
+  xMin={-0.6}
+  xMax={5}
+  yMin={-0.8}
+  yMax={4.6}
+  escala={46}
+  marcasX={[1, 2, 3, 4]}
+  marcasY={[1, 2, 3, 4]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "q₁", tipo: "carga", dx: -12, dy: 18 },
+    { x: 2, y: 0, texto: "A: q₂", tipo: "carga", signo: "−", dx: -6, dy: 22 },
+    { x: 4, y: 0, texto: "B", tipo: "punto", dx: 4, dy: 22 },
+    { x: 0, y: 4, texto: "C", tipo: "punto", dx: 10, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [4, 0], v: [16, 0], texto: "E", sub: "1", dx: -2, dy: -10 },
+    { desde: [4, 0], v: [-80, 0], texto: "E", color: "#b04a3a", dx: -4, dy: -10 },
+  ]}
+  descripcion="Ejes x e y en metros. La carga positiva q1 está en el origen y la negativa q2 en A(2, 0). En B(4, 0), el campo E1 de q1 es pequeño y apunta hacia la derecha; el de q2, mucho mayor, apunta hacia la izquierda, de modo que el campo total E apunta hacia la izquierda, hacia q2. El punto C está en (0, 4)."
+/>
+
+$$
+E_1 = \frac{K\,q_1}{r_1^2} = \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-9}}{4^2} = 1{,}125\ \text{N/C}
+\qquad
+E_2 = \frac{K\,|q_2|}{r_2^2} = \frac{9 \cdot 10^9 \cdot 4 \cdot 10^{-9}}{2^2} = 9\ \text{N/C}
+$$
+
+$$
+\vec{E} = 1{,}125\,\vec{i} - 9\,\vec{i} = -7{,}875\,\vec{i}\ \ \text{N/C}
+$$
+
+**ii) Trabajo de B a C.** El campo eléctrico es conservativo: su trabajo es $W = -\Delta E_p = q_3\,(V_B - V_C)$. Calculamos los potenciales (suma escalar):
+
+$$
+V_B = \frac{K\,q_1}{4} + \frac{K\,q_2}{2} = \frac{18}{4} - \frac{36}{2} = 4{,}5 - 18 = -13{,}5\ \text{V}
+$$
+
+C(0, 4) está a 4 m de $q_1$ y a $\sqrt{2^2 + 4^2} = \sqrt{20} = 4{,}47$ m de $q_2$:
+
+$$
+V_C = \frac{18}{4} - \frac{36}{4{,}47} = 4{,}5 - 8{,}05 = -3{,}55\ \text{V}
+$$
+
+$$
+W_{B \to C} = q_3\,(V_B - V_C) = 10^{-9} \cdot (-13{,}5 + 3{,}55) = -9{,}95 \cdot 10^{-9}\ \text{J}
+$$
+
+**Respuesta.** El campo en B es **$\vec{E} = -7{,}875\,\vec{i}$ N/C**, y el trabajo del campo al llevar $q_3$ de B a C es **$-9{,}95 \cdot 10^{-9}$ J**. El signo negativo indica que el traslado no es espontáneo: la carga positiva $q_3$ va hacia un potencial mayor (se aleja de la carga negativa), su energía potencial aumenta y un agente externo tiene que realizar un trabajo de $+9{,}95 \cdot 10^{-9}$ J.
+
+</Solucion>

@@ -1,0 +1,113 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2025
+convocatoria: julio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Discuta razonadamente si los siguientes enunciados son verdaderos o falsos: **i)** (0,5 puntos) si se realiza trabajo sobre una partícula, su energía cinética aumenta; **ii)** (0,5 puntos) las fuerzas conservativas siempre realizan trabajo nulo.
+
+<Solucion>
+
+**i) Falso.** Por el teorema de la energía cinética, la variación de energía cinética es igual al trabajo total de todas las fuerzas, $W_{\text{total}} = \Delta E_c$. Ese trabajo puede ser positivo, y entonces la energía cinética aumenta, pero también negativo: el rozamiento sobre un bloque que se desliza por el suelo realiza un trabajo negativo y la energía cinética disminuye hasta que el bloque se para. Además, aunque una fuerza haga un trabajo positivo, la energía cinética puede no cambiar si otras fuerzas hacen un trabajo negativo igual, como al subir un cuerpo con velocidad constante.
+
+**ii) Falso.** Las fuerzas conservativas sí realizan trabajo: el peso de un cuerpo que cae realiza un trabajo positivo $mgh$ y le aumenta la energía cinética. Lo que caracteriza a una fuerza conservativa es que su trabajo solo depende de las posiciones inicial y final, $W = -\Delta E_p$, y no del camino. Por eso su trabajo **solo es nulo en una trayectoria cerrada**, que vuelve al punto de partida, o entre dos puntos con la misma energía potencial.
+
+</Solucion>
+
+**b1)** Dos masas puntuales de 200 kg están situadas en los puntos A(0,-3) m y B(0,3) m. Calcule razonadamente: **i)** (1 punto) el campo gravitatorio en el punto C(4,0) m, apoyándose en un esquema; **ii)** (0,5 puntos) la fuerza sobre una masa puntual de 3 kg situada en el origen.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** El campo gravitatorio de cada masa apunta hacia ella. Las dos masas están a la misma distancia de C, $r = \sqrt{4^2 + 3^2} = 5$ m, y son iguales, así que sus campos tienen el mismo módulo:
+
+$$
+g_A = g_B = \frac{G\,m}{r^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 200}{25} = 5{,}34 \cdot 10^{-10}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-0.6}
+  xMax={4.8}
+  yMin={-3.6}
+  yMax={3.6}
+  escala={46}
+  marcasX={[1, 2, 3, 4]}
+  marcasY={[-2, -1, 1, 2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: -3, texto: "A (200 kg)", tipo: "masa", dx: 12, dy: 16 },
+    { x: 0, y: 3, texto: "B (200 kg)", tipo: "masa", dx: 12, dy: -6 },
+    { x: 4, y: 0, texto: "C", tipo: "punto", dx: 6, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [4, 0], v: [-56, -42], texto: "g", sub: "A", dx: -6, dy: 14 },
+    { desde: [4, 0], v: [-56, 42], texto: "g", sub: "B", dx: -6, dy: -4 },
+    { desde: [4, 0], v: [-112, 0], texto: "g", color: "#b04a3a", dx: -4, dy: -6 },
+  ]}
+  segmentos={[
+    [0, -3, 4, 0],
+    [0, 3, 4, 0],
+  ]}
+  descripcion="Ejes x e y en metros. Las masas están en A(0, menos 3) y B(0, 3) y el punto C en (4, 0). En C, el campo gA apunta hacia A y el campo gB hacia B; sus componentes verticales se anulan y el campo total g apunta horizontalmente hacia la izquierda."
+/>
+
+Los vectores unitarios de C hacia A y hacia B son $\frac{1}{5}(-4, -3)$ y $\frac{1}{5}(-4, 3)$. Por simetría, las componentes verticales se anulan y las horizontales se suman:
+
+$$
+\vec{g} = \vec{g}_A + \vec{g}_B = 2 \cdot 5{,}34 \cdot 10^{-10} \cdot \left(-\frac{4}{5}\right)\vec{i} = -8{,}54 \cdot 10^{-10}\,\vec{i}\ \ \text{N/kg}
+$$
+
+**ii) Fuerza sobre una masa de 3 kg en el origen.** El origen es el punto medio entre A y B: las dos masas atraen a la de 3 kg con fuerzas del mismo módulo (están a 3 m) y sentidos opuestos, una hacia $-\vec{j}$ y otra hacia $+\vec{j}$:
+
+$$
+\vec{F} = \frac{G \cdot 200 \cdot 3}{3^2}\,(-\vec{j}) + \frac{G \cdot 200 \cdot 3}{3^2}\,(+\vec{j}) = \vec{0}\ \text{N}
+$$
+
+**Respuesta.** El campo en C es **$\vec{g} = -8{,}54 \cdot 10^{-10}\,\vec{i}$ N/kg**, dirigido hacia el origen, y la fuerza sobre la masa de 3 kg en el origen es **nula**: allí el campo gravitatorio total es cero.
+
+</Solucion>
+
+**b2)** Un satélite de 1400 kg en una órbita circular tarda un día y medio en dar la vuelta a la Tierra. Calcule razonadamente: **i)** (0,75 puntos) el radio de la órbita; **ii)** (0,75 puntos) la velocidad mínima que hay que suministrarle para que abandone el campo gravitatorio terrestre desde la órbita en la que se encuentra.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km; 1 día = 24h</Datos>
+
+<Solucion>
+
+**i) Radio de la órbita.** El periodo es $T = 1{,}5 \cdot 24 \cdot 3600 = 1{,}296 \cdot 10^5$ s. En una órbita circular, la fuerza gravitatoria es la centrípeta, y con $v = 2\pi r/T$ se obtiene la tercera ley de Kepler:
+
+$$
+\frac{G\,M_T\,m}{r^2} = m\,\frac{4\pi^2}{T^2}\,r \quad\Rightarrow\quad r = \sqrt[3]{\frac{G\,M_T\,T^2}{4\pi^2}}
+$$
+
+$$
+r = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot (1{,}296 \cdot 10^5)^2}{4\pi^2}} = 5{,}54 \cdot 10^{7}\ \text{m}
+$$
+
+Es unas 8,7 veces el radio terrestre (el satélite está a unos 49 000 km de altura), más lejos que un satélite geoestacionario, como corresponde a un periodo mayor de un día.
+
+**ii) Velocidad para abandonar el campo terrestre.** Para escapar, la energía mecánica del satélite tiene que llegar a cero (llegar al infinito con velocidad nula). Desde la órbita:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M_T\,m}{r} = 0 \quad\Rightarrow\quad v_e = \sqrt{\frac{2\,G\,M_T}{r}} = \sqrt{\frac{2 \cdot 3{,}99 \cdot 10^{14}}{5{,}54 \cdot 10^{7}}} = 3{,}80 \cdot 10^{3}\ \text{m/s}
+$$
+
+El satélite ya se mueve con la velocidad orbital:
+
+$$
+v_{\text{orb}} = \sqrt{\frac{G\,M_T}{r}} = 2{,}68 \cdot 10^{3}\ \text{m/s}
+$$
+
+así que el incremento mínimo de velocidad que hay que darle (en el sentido de su movimiento) es
+
+$$
+\Delta v = v_e - v_{\text{orb}} = 3{,}80 \cdot 10^{3} - 2{,}68 \cdot 10^{3} = 1{,}11 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** El radio de la órbita es **$5{,}54 \cdot 10^7$ m**. Para escapar desde ella, el satélite tiene que alcanzar la velocidad de escape, **$3{,}80 \cdot 10^3$ m/s**; como ya lleva $2{,}68 \cdot 10^3$ m/s, basta con aumentarle la velocidad en **$1{,}11 \cdot 10^3$ m/s**. En energía, hay que suministrarle $G\,M_T\,m/2r = 5{,}04 \cdot 10^9$ J.
+
+</Solucion>

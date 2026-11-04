@@ -1,0 +1,37 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: junio
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**a)** Se desea obtener una imagen virtual y de mayor tamaño que el objeto utilizando una lente delgada. Justifique, apoyándose en el esquema del trazado de rayos y explicando su construcción, qué tipo de lente debe usarse e indique dónde debe colocarse el objeto.
+
+<Solucion>
+
+**Qué lente.** Una lente divergente no sirve: de un objeto real da siempre una imagen virtual, derecha y **menor**. Hay que usar una **lente convergente** colocando el objeto **entre el foco objeto $F$ y la lente**, a una distancia menor que la distancia focal. Es como funciona una lupa.
+
+**Trazado de rayos.** Usamos el criterio de signos DIN (la luz va de izquierda a derecha y el origen está en la lente). Desde el extremo del objeto trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo cuya prolongación hacia atrás pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4.6} xMax={3.4} descripcion="Lupa: lente convergente con el objeto entre el foco objeto F y la lente. El rayo paralelo al eje se refracta por el foco imagen F', el rayo por el centro óptico no se desvía y el rayo que parece venir de F sale paralelo. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan al otro lado del foco objeto, donde se forma una imagen virtual, derecha y mayor que el objeto." />
+
+Los rayos que salen de la lente divergen y no se cortan; se cortan sus **prolongaciones** hacia atrás, del mismo lado que el objeto y más lejos de la lente. La imagen es **virtual, derecha y mayor** que el objeto.
+
+Lo confirma la ecuación de las lentes. Con $f' > 0$ y el objeto dentro de la distancia focal, $|s| < f'$:
+
+$$
+\frac{1}{s'} = \frac{1}{f'} + \frac{1}{s} = \frac{1}{f'} - \frac{1}{|s|} < 0
+\quad\Rightarrow\quad s' < 0 \ \text{(virtual)},
+\qquad A = \frac{s'}{s} > 1 \ \text{(derecha y mayor)}
+$$
+
+Si el objeto estuviera más lejos que el foco, la imagen sería real e invertida; y justo en el foco, no se formaría imagen.
+
+</Solucion>
