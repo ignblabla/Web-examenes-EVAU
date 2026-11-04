@@ -1,0 +1,59 @@
+---
+// Física, reserva 1 de 2025, B b1: espira cuadrada que avanza hacia la derecha y entra en una
+// región con campo magnético saliente (B en +k). i) Mientras entra, el flujo saliente aumenta:
+// el campo inducido es entrante y la corriente, horaria. ii) Dentro del campo el flujo no
+// cambia y no hay corriente inducida.
+const id = `entrando-${Math.round(Math.random() * 1e9)}`
+const puntosCampo = (x0: number) =>
+  [0, 1, 2, 3].flatMap((i) => [0, 1, 2].map((j) => ({ x: x0 + 14 + i * 26, y: 50 + j * 36 })))
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg viewBox="0 0 500 200" role="img" aria-label="Dos esquemas de una espira cuadrada que avanza hacia la derecha. A la derecha hay una región con campo magnético saliente. En el primero la espira está entrando: el campo inducido en su interior es entrante y la corriente inducida circula en sentido horario. En el segundo la espira está entera dentro del campo y no hay corriente inducida.">
+    <defs>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-v`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#195c51" />
+      </marker>
+    </defs>
+    {
+      [0, 250].map((x0, panel) => (
+        <g>
+          <rect x={x0 + 120} y="30" width="118" height="140" fill="rgba(201, 188, 232, 0.25)" stroke="#bbb" stroke-dasharray="4 3" />
+          <g fill="none" stroke="#aaa" stroke-width="1">
+            {puntosCampo(x0 + 120).map((p) => (
+              <circle cx={p.x} cy={p.y} r="4" />
+            ))}
+          </g>
+          <g fill="#aaa">
+            {puntosCampo(x0 + 120).map((p) => (
+              <circle cx={p.x} cy={p.y} r="1.2" />
+            ))}
+          </g>
+          <text x={x0 + 234} y="44" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#888">B (saliente)</text>
+          <rect x={panel === 0 ? x0 + 70 : x0 + 140} y="60" width="80" height="80" fill="none" stroke="#172c27" stroke-width="2" />
+          <path d={`M${(panel === 0 ? x0 + 70 : x0 + 140) - 40} 100h28`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
+          <text x={x0 + 8} y="20" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111">
+            {panel === 0 ? "i) Mientras entra" : "ii) Dentro del campo"}
+          </text>
+          {panel === 0 ? (
+            <g>
+              <path d={`M${x0 + 88} 52H${x0 + 132}`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <path d={`M${x0 + 158} 76V124`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <path d={`M${x0 + 132} 148H${x0 + 88}`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <path d={`M${x0 + 62} 124V76`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <circle cx={x0 + 110} cy="100" r="8" fill="#fff" stroke="#b04a3a" stroke-width="1.4" />
+              <path d={`M${x0 + 104.5} 94.5l11 11m0 -11l-11 11`} stroke="#b04a3a" stroke-width="1.4" />
+              <text x={x0 + 110} y="186" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#b04a3a">I horaria · B inducido entrante</text>
+            </g>
+          ) : (
+            <text x={x0 + 180} y="158" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">Φ constante: I = 0</text>
+          )}
+          <text x={(panel === 0 ? x0 + 70 : x0 + 140) - 26} y="92" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" font-weight="700" fill="#195c51">v</text>
+        </g>
+      ))
+    }
+  </svg>
+</figure>

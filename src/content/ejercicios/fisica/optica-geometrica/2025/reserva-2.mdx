@@ -1,0 +1,102 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: reserva-2
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**b1)** Un objeto de 4 cm de altura que está situado a 75 cm del vértice de un espejo esférico cóncavo produce una imagen invertida a 37,5 cm del espejo. **i)** (0,75 puntos) Indique el criterio de signos utilizado y halle el radio del espejo. **ii)** (0,25 puntos) Calcule la altura de la imagen. **iii)** (0,5 puntos) Realice el trazado de rayos y justifique su construcción.
+
+<Solucion>
+
+**i) Criterio de signos y radio.** Usamos el criterio DIN: la luz va de izquierda a derecha, el origen está en el vértice del espejo, las distancias son positivas a la derecha y las alturas, positivas hacia arriba. El objeto está delante del espejo, $s = -75$ cm. La imagen es invertida, así que es real y se forma también delante del espejo: $s' = -37{,}5$ cm. Por la ecuación de los espejos, con $f = R/2$:
+
+$$
+\frac{1}{s'} + \frac{1}{s} = \frac{2}{R}
+\quad\Rightarrow\quad
+\frac{2}{R} = \frac{1}{-37{,}5} + \frac{1}{-75} = -\frac{3}{75}\ \text{cm}^{-1}
+\quad\Rightarrow\quad
+R = -50\ \text{cm}
+$$
+
+El radio es negativo porque el centro de curvatura está delante del espejo, como en todo espejo cóncavo. Su distancia focal es $f = -25$ cm.
+
+**ii) Altura de la imagen.**
+
+$$
+A = \frac{y'}{y} = -\frac{s'}{s} = -\frac{-37{,}5}{-75} = -0{,}5
+\quad\Rightarrow\quad
+y' = -0{,}5 \cdot 4 = -2\ \text{cm}
+$$
+
+**iii) Trazado de rayos.** El objeto está más allá del centro de curvatura ($75$ cm $> 50$ cm). Desde su extremo trazamos tres rayos:
+
+- **(1)** El rayo paralelo al eje se refleja pasando por el foco $F$.
+- **(2)** El rayo que pasa por el centro de curvatura $C$ incide perpendicularmente y se refleja sobre sí mismo.
+- **(3)** El rayo que pasa por el foco se refleja paralelo al eje.
+
+<TrazadoRayos tipo="concavo" f={-25} s={-75} y={4} xMin={-90} xMax={8} descripcion="Espejo cóncavo con el centro de curvatura C a 50 cm y el foco F a 25 cm delante de él. El objeto está a 75 cm, más allá de C. El rayo paralelo se refleja por F, el que pasa por C vuelve sobre sí mismo y el que pasa por F sale paralelo. Los rayos reflejados se cortan a 37,5 cm del espejo, entre C y F, donde se forma una imagen real, invertida y de la mitad de tamaño." />
+
+En el esquema están dibujados los rayos (1) y (3); el (2) llega al espejo muy por debajo del eje, pero se corta con ellos en el mismo punto. Los rayos reflejados se cortan **entre $C$ y $F$**, a 37,5 cm del espejo.
+
+**Respuesta.** $R = -50$ cm (espejo cóncavo de 50 cm de radio) y la imagen mide **2 cm**: es real, invertida (de ahí el signo negativo) y de la mitad de tamaño que el objeto.
+
+</Solucion>
+
+**b2)** Una lámina de vidrio de caras planas y paralelas suspendida en el aire tiene un espesor de 8 cm. Un rayo de luz monocromática incide en la cara superior de la lámina con un ángulo de 45º respecto a la normal. **i)** (0,25 puntos) Realice un esquema de la trayectoria que sigue el rayo refractado en los diferentes medios. **ii)** (0,75 puntos) Calcule el valor del ángulo de refracción en el interior de la lámina y el del ángulo con el que emerge el rayo tras atravesar la lámina. **iii)** (0,5 puntos) Determine el tiempo que tarda el rayo en atravesar la lámina.
+
+<Datos>n<sub>aire</sub> = 1; n<sub>vidrio</sub> = 1,6</Datos>
+
+<Solucion>
+
+**i) Esquema.** Al entrar en el vidrio, más refringente, el rayo se acerca a la normal; al salir al aire, se aleja de ella y emerge paralelo al rayo incidente, solo desplazado lateralmente:
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Vidrio", n: 1.6, color: "#dcefe8" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+  ]}
+  incidencia={45}
+  descripcion="Rayo que incide desde el aire con 45 grados sobre una lámina de vidrio, se refracta acercándose a la normal, con 26,2 grados, y al salir al aire por la cara inferior vuelve a formar 45 grados con la normal, paralelo al rayo incidente."
+/>
+
+**ii) Ángulos de refracción y de salida.** Por la ley de Snell en la cara superior:
+
+$$
+n_{\text{aire}}\sin 45^\circ = n_{\text{vidrio}}\sin r
+\quad\Rightarrow\quad
+\sin r = \frac{0{,}707}{1{,}6} = 0{,}442
+\quad\Rightarrow\quad r = 26{,}2^\circ
+$$
+
+Las caras son paralelas, así que el rayo llega a la cara inferior con el mismo ángulo $r$. Aplicando de nuevo la ley de Snell:
+
+$$
+n_{\text{vidrio}}\sin r = n_{\text{aire}}\sin e
+\quad\Rightarrow\quad
+\sin e = 1{,}6 \cdot 0{,}442 = 0{,}707
+\quad\Rightarrow\quad e = 45^\circ
+$$
+
+**iii) Tiempo en atravesar la lámina.** Dentro del vidrio el rayo recorre, en diagonal, una distancia mayor que el espesor:
+
+$$
+L = \frac{d}{\cos r} = \frac{0{,}08}{\cos 26{,}2^\circ} = 8{,}92 \cdot 10^{-2}\ \text{m}
+$$
+
+y la luz viaja a $v = c/n$. El enunciado no da la velocidad de la luz, así que usamos su valor, $c = 3 \cdot 10^8$ m/s:
+
+$$
+v = \frac{3 \cdot 10^8}{1{,}6} = 1{,}875 \cdot 10^{8}\ \text{m/s}
+\qquad
+t = \frac{L}{v} = \frac{8{,}92 \cdot 10^{-2}}{1{,}875 \cdot 10^8} = 4{,}76 \cdot 10^{-10}\ \text{s}
+$$
+
+**Respuesta.** El rayo se refracta con **26,2°** dentro de la lámina, emerge con **45°** (paralelo al incidente) y tarda **$4{,}76 \cdot 10^{-10}$ s** en atravesarla.
+
+</Solucion>

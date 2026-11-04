@@ -1,0 +1,91 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2025
+convocatoria: reserva-1
+formato: fisica
+---
+
+import EspiraEntrandoCampo from "../../../../../components/figuras/fisica/EspiraEntrandoCampo.astro"
+
+**a)** Dos partículas cargadas, con el mismo valor absoluto de carga eléctrica, entran perpendicularmente con la misma velocidad en el seno de un campo magnético uniforme. Las partículas describen trayectorias circulares de sentidos contrarios y radios *R*<sub>1</sub> y *R*<sub>2</sub> (*R*<sub>2</sub> = 2 *R*<sub>1</sub>). **i)** (0,25 puntos) Explique qué puede decirse del signo de las cargas eléctricas de estas partículas. **ii)** (0,75 puntos) Obtenga la relación entre sus masas (*m*<sub>2</sub>/*m*<sub>1</sub>). Razone sus respuestas.
+
+<Solucion>
+
+Sobre cada partícula actúa la fuerza de Lorentz, $\vec{F} = q\,\vec{v} \times \vec{B}$, perpendicular a la velocidad, que la hace describir una circunferencia.
+
+**i) Signo de las cargas.** Las dos partículas entran con la misma velocidad en el mismo campo, así que $\vec{v} \times \vec{B}$ es el mismo vector para las dos. Si giran en sentidos contrarios, las fuerzas tienen sentidos opuestos, lo que solo es posible si las cargas tienen **signos opuestos**: una es positiva y la otra negativa.
+
+**ii) Relación entre las masas.** La fuerza magnética es la fuerza centrípeta:
+
+$$
+|q|\,v\,B = \frac{m\,v^2}{R} \quad\Rightarrow\quad R = \frac{m\,v}{|q|\,B}
+$$
+
+Con el mismo $|q|$, la misma $v$ y el mismo $B$, el radio es proporcional a la masa:
+
+$$
+\frac{m_2}{m_1} = \frac{R_2}{R_1} = 2
+$$
+
+La segunda partícula tiene el doble de masa que la primera.
+
+</Solucion>
+
+**b1)** Una espira cuadrada contenida en el plano XY, de 30 cm de lado y 1 Ω de resistencia, se mueve con una velocidad $\vec{v} = 10\,\vec{i}$ m s<sup>-1</sup>. La espira penetra en un campo magnético $\vec{B} = 0{,}05\,\vec{k}$ T. Calcule razonadamente el valor de la corriente inducida en la espira en los siguientes casos: **i)** (1 punto) mientras está entrando en el campo; **ii)** (0,5 puntos) mientras se mueve en el seno del campo. En ambas situaciones, realice un esquema indicando el campo inducido en el interior de la espira y la corriente inducida.
+
+<Solucion>
+
+El campo es perpendicular al plano de la espira, así que el flujo es $\Phi = B\,S$, donde $S$ es la parte de la espira que está dentro del campo.
+
+**i) Mientras entra en el campo.** Si $x$ es la longitud de la espira que ya ha entrado, $S = L\,x$ y $\Phi = B\,L\,x$, que aumenta porque $x$ crece a razón de $v$. Por la ley de Faraday-Lenz:
+
+$$
+|\varepsilon| = \frac{d\Phi}{dt} = B\,L\,v = 0{,}05 \cdot 0{,}3 \cdot 10 = 0{,}15\ \text{V}
+\qquad
+I = \frac{|\varepsilon|}{R} = \frac{0{,}15}{1} = 0{,}15\ \text{A}
+$$
+
+El flujo saliente (sentido $+\vec{k}$) aumenta, así que, por la ley de Lenz, el campo inducido dentro de la espira es **entrante** $(-\vec{k})$ y la corriente circula en **sentido horario** visto desde $+\vec{k}$.
+
+**ii) Mientras se mueve dentro del campo.** Toda la espira está en el campo uniforme, así que el flujo, $\Phi = B\,L^2$, es constante. Por tanto $\varepsilon = 0$ e **$I = 0$**: no hay corriente ni campo inducido.
+
+<EspiraEntrandoCampo />
+
+**Respuesta.** Mientras entra, la corriente inducida es de **0,15 A** en sentido horario, con un campo inducido entrante; mientras se mueve dentro del campo, **no hay corriente inducida**. (Al salir del campo volvería a haber 0,15 A, pero en sentido antihorario.)
+
+</Solucion>
+
+**b2)** Un electrón, inicialmente en reposo, que está situado en el seno de un campo eléctrico uniforme adquiere una aceleración de 10<sup>12</sup> m s<sup>-2</sup>, en sentido positivo del eje OX, por acción del campo. Obtenga razonadamente: **i)** (0,75 puntos) el vector campo eléctrico; **ii)** (0,75) el módulo de la velocidad y la energía cinética, a partir de consideraciones energéticas, cuando ha recorrido 0,5 m.
+
+<Datos>e = 1,6·10<sup>−19</sup> C; m<sub>e</sub> = 9,1·10<sup>−31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Campo eléctrico.** Por la segunda ley de Newton, la fuerza eléctrica sobre el electrón es
+
+$$
+\vec{F} = m_e\,\vec{a} = 9{,}1 \cdot 10^{-31} \cdot 10^{12}\,\vec{i} = 9{,}1 \cdot 10^{-19}\,\vec{i}\ \ \text{N}
+$$
+
+y como $\vec{F} = q\,\vec{E}$ con $q = -e$:
+
+$$
+\vec{E} = \frac{\vec{F}}{q} = \frac{9{,}1 \cdot 10^{-19}\,\vec{i}}{-1{,}6 \cdot 10^{-19}} = -5{,}69\,\vec{i}\ \ \text{N/C}
+$$
+
+El campo apunta en sentido contrario a la aceleración, porque la carga del electrón es negativa.
+
+**ii) Velocidad y energía cinética tras recorrer 0,5 m.** El trabajo de la fuerza eléctrica, constante y en el sentido del desplazamiento, se convierte en energía cinética (teorema de la energía cinética), y el electrón parte del reposo:
+
+$$
+E_c = W = F\,d = 9{,}1 \cdot 10^{-19} \cdot 0{,}5 = 4{,}55 \cdot 10^{-19}\ \text{J}
+$$
+
+$$
+v = \sqrt{\frac{2E_c}{m_e}} = \sqrt{\frac{2 \cdot 4{,}55 \cdot 10^{-19}}{9{,}1 \cdot 10^{-31}}} = 10^{6}\ \text{m/s}
+$$
+
+**Respuesta.** $\vec{E} = -5{,}69\,\vec{i}$ N/C, y tras recorrer 0,5 m el electrón tiene una energía cinética de **$4{,}55 \cdot 10^{-19}$ J** y se mueve a **$10^6$ m/s**.
+
+</Solucion>

@@ -1,0 +1,118 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2025
+convocatoria: reserva-4
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** La intensidad gravitatoria en la superficie de la Luna es 0,163 veces la de la Tierra y el radio de la Luna es 0,27 veces el de la Tierra. Razone la veracidad de la siguiente afirmación: la velocidad de escape de la Luna es la mitad que la velocidad de escape de la Tierra.
+
+<Solucion>
+
+**Falsa.** La velocidad de escape es la velocidad mínima con la que hay que lanzar un cuerpo desde la superficie para que llegue al infinito con velocidad nula. Por conservación de la energía:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M\,m}{R} = 0 \quad\Rightarrow\quad v_e = \sqrt{\frac{2\,G\,M}{R}} = \sqrt{2\,g_0\,R}
+$$
+
+usando que en la superficie $g_0 = G\,M/R^2$, es decir, $G\,M = g_0\,R^2$. Comparando la Luna con la Tierra:
+
+$$
+\frac{v_{e,L}}{v_{e,T}} = \sqrt{\frac{g_L\,R_L}{g_T\,R_T}} = \sqrt{0{,}163 \cdot 0{,}27} = \sqrt{0{,}0440} = 0{,}21
+$$
+
+La velocidad de escape de la Luna es aproximadamente **la quinta parte** de la terrestre, no la mitad (unos 2,4 km/s frente a 11,2 km/s).
+
+</Solucion>
+
+**b1)** Dos masas puntuales, de masas 2 kg y 3 kg, están colocadas en los puntos A(2,0) m y B(0,2) m, respectivamente. **i)** (0,25 puntos) Realice un esquema del campo gravitatorio en el punto C(3,1) m. **ii)** (0,75 puntos) Calcule el vector campo gravitatorio en dicho punto. **iii)** (0,5 puntos) Calcule el vector fuerza que experimenta la masa de 3 kg.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema.** El campo de cada masa apunta hacia ella:
+
+<Vectores
+  xMin={-0.6}
+  xMax={3.8}
+  yMin={-0.6}
+  yMax={2.8}
+  escala={64}
+  marcasX={[1, 3]}
+  marcasY={[1]}
+  unidad="m"
+  puntos={[
+    { x: 2, y: 0, texto: "A (2 kg)", tipo: "masa", dx: 10, dy: 18 },
+    { x: 0, y: 2, texto: "B (3 kg)", tipo: "masa", dx: 12, dy: -8 },
+    { x: 3, y: 1, texto: "C", tipo: "punto", dx: 8, dy: -6 },
+  ]}
+  vectores={[
+    { desde: [3, 1], v: [-46, -46], texto: "g", sub: "A", dx: 4, dy: 10 },
+    { desde: [3, 1], v: [-59, 20], texto: "g", sub: "B", dx: -8, dy: -6 },
+    { desde: [3, 1], v: [-105, -26], texto: "g", color: "#b04a3a", dx: -6, dy: 12 },
+  ]}
+  segmentos={[
+    [2, 0, 3, 1],
+    [0, 2, 3, 1],
+  ]}
+  descripcion="Ejes x e y en metros. La masa de 2 kg está en A(2, 0) y la de 3 kg en B(0, 2). En C(3, 1), el campo gA apunta hacia A, abajo a la izquierda; el campo gB apunta hacia B, a la izquierda y algo hacia arriba; el campo total g apunta a la izquierda y algo hacia abajo."
+/>
+
+**ii) Campo en C.** De C a A el vector es $(-1, -1)$, de módulo $\sqrt{2}$ m; de C a B, $(-3, 1)$, de módulo $\sqrt{10}$ m:
+
+$$
+\vec{g}_A = \frac{G \cdot 2}{(\sqrt{2})^2} \cdot \frac{(-1, -1)}{\sqrt{2}} = 6{,}67 \cdot 10^{-11} \cdot (-0{,}707,\ -0{,}707) = -4{,}72 \cdot 10^{-11}\,\vec{i} - 4{,}72 \cdot 10^{-11}\,\vec{j}\ \ \text{N/kg}
+$$
+
+$$
+\vec{g}_B = \frac{G \cdot 3}{(\sqrt{10})^2} \cdot \frac{(-3, 1)}{\sqrt{10}} = 2{,}00 \cdot 10^{-11} \cdot (-0{,}949,\ 0{,}316) = -1{,}90 \cdot 10^{-11}\,\vec{i} + 6{,}33 \cdot 10^{-12}\,\vec{j}\ \ \text{N/kg}
+$$
+
+$$
+\vec{g} = \vec{g}_A + \vec{g}_B = -6{,}61 \cdot 10^{-11}\,\vec{i} - 4{,}08 \cdot 10^{-11}\,\vec{j}\ \ \text{N/kg}, \qquad |\vec{g}| = 7{,}77 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**iii) Fuerza sobre la masa de 3 kg.** La masa de 3 kg, en B, sufre la atracción de la de 2 kg, en A, dirigida de B hacia A. El vector de B a A es $(2, -2)$, de módulo $\sqrt{8}$ m:
+
+$$
+\vec{F} = \frac{G \cdot 2 \cdot 3}{8} \cdot \frac{(2, -2)}{\sqrt{8}} = 5{,}00 \cdot 10^{-11} \cdot (0{,}707,\ -0{,}707) = 3{,}54 \cdot 10^{-11}\,\vec{i} - 3{,}54 \cdot 10^{-11}\,\vec{j}\ \ \text{N}
+$$
+
+**Respuesta.** $\vec{g}_C = -6{,}61 \cdot 10^{-11}\,\vec{i} - 4{,}08 \cdot 10^{-11}\,\vec{j}$ N/kg y la masa de 3 kg sufre una fuerza $\vec{F} = 3{,}54 \cdot 10^{-11}\,\vec{i} - 3{,}54 \cdot 10^{-11}\,\vec{j}$ N, hacia la masa de 2 kg. Por la tercera ley de Newton, la de 2 kg sufre una fuerza igual y opuesta.
+
+</Solucion>
+
+**b2)** Un bloque de 3 kg se halla en reposo en la parte superior de un plano rugoso de 4 m de altura que está inclinado 37º respecto a la horizontal. Al liberar el bloque, desliza por el plano y llega al final con una velocidad de 5 m s<sup>-1</sup>. Determine mediante razonamientos energéticos: **i)** (0,75 puntos) el trabajo realizado por cada una de las fuerzas que actúan sobre el bloque; **ii)** (0,75 puntos) el coeficiente de rozamiento entre el bloque y el plano.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+<PlanoInclinado angulo={37} mueve="baja" descripcion="Bloque que baja por un plano inclinado 37 grados. Actúan el peso P, vertical hacia abajo; la normal N, perpendicular al plano; y el rozamiento Fr, paralelo al plano y hacia arriba." />
+
+**i) Trabajo de cada fuerza.** Sobre el bloque actúan el peso, la normal y el rozamiento. La longitud del plano es $L = h/\sin 37^\circ = 4/0{,}602 = 6{,}65$ m.
+
+- **Normal**: es perpendicular al desplazamiento, $W_N = 0$.
+- **Peso**: es conservativo, $W_P = -\Delta E_p = m\,g\,h = 3 \cdot 9{,}8 \cdot 4 = 117{,}6$ J.
+- **Rozamiento**: por el teorema de la energía cinética, el trabajo total es igual a la variación de energía cinética. El bloque parte del reposo:
+
+$$
+W_P + W_N + W_{F_r} = \Delta E_c = \frac{1}{2} \cdot 3 \cdot 5^2 - 0 = 37{,}5\ \text{J}
+\quad\Rightarrow\quad
+W_{F_r} = 37{,}5 - 117{,}6 = -80{,}1\ \text{J}
+$$
+
+**ii) Coeficiente de rozamiento.** El rozamiento vale $F_r = \mu\,m\,g\cos 37^\circ$ y es opuesto al desplazamiento, así que $W_{F_r} = -\mu\,m\,g\cos 37^\circ \cdot L$:
+
+$$
+\mu = \frac{80{,}1}{m\,g\cos 37^\circ \cdot L} = \frac{80{,}1}{3 \cdot 9{,}8 \cdot 0{,}799 \cdot 6{,}65} = 0{,}513
+$$
+
+**Respuesta.** $W_P = 117{,}6$ J, $W_N = 0$, $W_{F_r} = -80{,}1$ J y $\mu = 0{,}513$. El rozamiento disipa en calor dos tercios de la energía potencial inicial; sin él, el bloque llegaría a $\sqrt{2gh} = 8{,}85$ m/s.
+
+</Solucion>

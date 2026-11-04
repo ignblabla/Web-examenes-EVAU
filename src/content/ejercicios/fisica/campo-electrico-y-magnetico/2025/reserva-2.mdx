@@ -1,0 +1,132 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2025
+convocatoria: reserva-2
+formato: fisica
+---
+
+import ElectronCampoB from "../../../../../components/figuras/fisica/ElectronCampoB.astro"
+import EspiraCircularHilo from "../../../../../components/figuras/fisica/EspiraCircularHilo.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Por un conductor rectilíneo muy largo, situado sobre el eje OY, circula una corriente *I* en sentido positivo del eje. A la derecha de este conductor, y en el plano XY, se sitúa una espira circular. Con ayuda de un esquema, en el que se incluyan el campo inducido dentro de la espira y la corriente inducida, razone en qué sentido circula la corriente inducida en la espira en los siguientes casos: **i)** (0,5 puntos) se aumenta la corriente en el conductor; **ii)** (0,5 puntos) se mantiene constante la corriente en el conductor y la espira se aleja de éste en el plano XY.
+
+<Solucion>
+
+El hilo crea un campo magnético de módulo $B = \mu_0 I/(2\pi r)$ cuyas líneas son circunferencias alrededor de él. Con la corriente hacia $+\vec{j}$, por la regla de la mano derecha, a la derecha del hilo (donde está la espira) el campo **entra en el papel** $(-\vec{k})$. Según la ley de Faraday-Lenz, se induce una corriente si cambia el flujo a través de la espira, y su sentido es el que se opone a ese cambio.
+
+<EspiraCircularHilo />
+
+**i) Aumenta la corriente del hilo.** El campo en la espira se hace más intenso y el flujo entrante **aumenta**. La corriente inducida se opone: crea dentro de la espira un **campo inducido saliente** $(+\vec{k})$, así que circula en **sentido antihorario**.
+
+**ii) La espira se aleja con la corriente constante.** El campo disminuye con la distancia, así que al alejarse la espira el flujo entrante **disminuye**. La corriente inducida se opone a esa disminución: crea un **campo inducido entrante** $(-\vec{k})$, en el mismo sentido que el del hilo, así que circula en **sentido horario**.
+
+</Solucion>
+
+**b1)** Un electrón, que parte del reposo, es acelerado mediante una diferencia de potencial y penetra con una velocidad $\vec{v} = 3 \cdot 10^5\,\vec{i}$ m s<sup>-1</sup> en el seno de un campo magnético uniforme de valor $\vec{B} = 0{,}2\,\vec{j}$ T. Determine razonadamente: **i)** (0,5 puntos) la trayectoria seguida por el electrón, ayudándose de un esquema; **ii)** (0,5 puntos) el valor del radio y el periodo de la órbita que describe el electrón; **iii)** (0,5 puntos) la diferencia de potencial necesaria para que el electrón adquiera la velocidad indicada.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Trayectoria.** Sobre el electrón $(q = -e)$ actúa la fuerza de Lorentz:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B} = (-1{,}6 \cdot 10^{-19}) \cdot \left(3 \cdot 10^5\,\vec{i} \times 0{,}2\,\vec{j}\right) = -1{,}6 \cdot 10^{-19} \cdot 6 \cdot 10^4\,\vec{k} = -9{,}6 \cdot 10^{-15}\,\vec{k}\ \ \text{N}
+$$
+
+La fuerza es perpendicular a la velocidad y al campo: no cambia el módulo de la velocidad, solo su dirección. Como la velocidad es perpendicular al campo, el electrón describe un **movimiento circular uniforme en el plano XZ** (perpendicular a $\vec{B}$); al entrar, la fuerza lo desvía hacia $-\vec{k}$.
+
+<ElectronCampoB />
+
+**ii) Radio y periodo.** La fuerza magnética es la centrípeta:
+
+$$
+e\,v\,B = \frac{m_e\,v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m_e\,v}{e\,B} = \frac{9{,}1 \cdot 10^{-31} \cdot 3 \cdot 10^5}{1{,}6 \cdot 10^{-19} \cdot 0{,}2} = 8{,}53 \cdot 10^{-6}\ \text{m}
+$$
+
+$$
+T = \frac{2\pi R}{v} = \frac{2\pi\,m_e}{e\,B} = \frac{2\pi \cdot 9{,}1 \cdot 10^{-31}}{1{,}6 \cdot 10^{-19} \cdot 0{,}2} = 1{,}79 \cdot 10^{-10}\ \text{s}
+$$
+
+**iii) Diferencia de potencial de aceleración.** El electrón parte del reposo, así que el trabajo del campo eléctrico se convierte en su energía cinética:
+
+$$
+e\,\Delta V = \frac{1}{2}m_e\,v^2
+\quad\Rightarrow\quad
+\Delta V = \frac{m_e\,v^2}{2e} = \frac{9{,}1 \cdot 10^{-31} \cdot (3 \cdot 10^5)^2}{2 \cdot 1{,}6 \cdot 10^{-19}} = 0{,}256\ \text{V}
+$$
+
+**Respuesta.** El electrón describe una circunferencia en el plano XZ de radio **$8{,}53 \cdot 10^{-6}$ m** y periodo **$1{,}79 \cdot 10^{-10}$ s**, y basta una diferencia de potencial de **0,256 V** para darle esa velocidad (el electrón se acelera hacia potenciales mayores).
+
+</Solucion>
+
+**b2)** Dos cargas de +2·10<sup>-6</sup> C y +4·10<sup>-6</sup> C están fijas en los puntos A(0,0) m y B(6,0) m, respectivamente. **i)** (0,75 puntos) Determine, apoyándose en un esquema, el punto donde podría dejarse una tercera carga para que permaneciera en reposo. **ii)** (0,5 puntos) Calcule los vectores fuerza que ejercen cada una de las dos primeras cargas sobre una carga de +3·10<sup>-6</sup> C situada en el punto anterior. **iii)** (0,25 puntos) Calcule la energía potencial de esa carga. Responda a las cuestiones de forma razonada.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Punto de equilibrio.** Una carga queda en reposo donde la fuerza total es nula, es decir, donde el campo eléctrico total es cero. Las dos cargas son positivas:
+
+- Fuera del segmento AB, los dos campos apuntan en el mismo sentido y se suman: no pueden anularse.
+- Fuera del eje X, los campos no tienen la misma dirección.
+- Entre A y B, los campos tienen sentidos opuestos (cada uno se aleja de su carga) y pueden anularse.
+
+<Vectores
+  xMin={-0.6}
+  xMax={6.6}
+  yMin={-1}
+  yMax={1.4}
+  escala={60}
+  marcasX={[1, 2, 3, 4, 5]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A: +2 μC", tipo: "carga", dx: -8, dy: -14 },
+    { x: 6, y: 0, texto: "B: +4 μC", tipo: "carga", dx: -20, dy: -14 },
+    { x: 2.485, y: 0, texto: "P (2,49; 0)", tipo: "punto", dx: -24, dy: 28 },
+  ]}
+  vectores={[
+    { desde: [2.485, 0], v: [56, 0], texto: "F", sub: "A", dx: -8, dy: -10 },
+    { desde: [2.485, 0], v: [-56, 0], texto: "F", sub: "B", dx: 0, dy: -10 },
+  ]}
+  ancha
+  descripcion="Eje x en metros. Las cargas positivas de 2 microculombios y 4 microculombios están en A(0, 0) y B(6, 0). En el punto P, a 2,49 m de A, una carga positiva sufre una fuerza de A hacia la derecha y otra de B hacia la izquierda, iguales, y queda en equilibrio."
+/>
+
+Llamando $x$ a la distancia del punto a A, el campo es nulo si
+
+$$
+\frac{K\,q_A}{x^2} = \frac{K\,q_B}{(6 - x)^2}
+\quad\Rightarrow\quad
+\frac{6 - x}{x} = \sqrt{\frac{q_B}{q_A}} = \sqrt{2}
+\quad\Rightarrow\quad
+x = \frac{6}{1 + \sqrt{2}} = 2{,}49\ \text{m}
+$$
+
+El punto es **P(2,49; 0) m**, más cerca de la carga menor. En él quedaría en reposo una carga de cualquier signo.
+
+**ii) Fuerzas sobre una carga de +3 μC en P.** P está a 2,49 m de A y a 3,51 m de B. Las dos cargas repelen a la carga positiva:
+
+$$
+\vec{F}_A = \frac{K\,q_A\,q}{x^2}\,\vec{i} = \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-6} \cdot 3 \cdot 10^{-6}}{2{,}49^2}\,\vec{i} = 8{,}74 \cdot 10^{-3}\,\vec{i}\ \ \text{N}
+$$
+
+$$
+\vec{F}_B = -\frac{K\,q_B\,q}{(6 - x)^2}\,\vec{i} = -\frac{9 \cdot 10^9 \cdot 4 \cdot 10^{-6} \cdot 3 \cdot 10^{-6}}{3{,}51^2}\,\vec{i} = -8{,}74 \cdot 10^{-3}\,\vec{i}\ \ \text{N}
+$$
+
+Son iguales y opuestas: la fuerza total es nula, como debe ser.
+
+**iii) Energía potencial de la carga en P.**
+
+$$
+E_p = K\,q\left(\frac{q_A}{x} + \frac{q_B}{6 - x}\right) = 9 \cdot 10^9 \cdot 3 \cdot 10^{-6}\left(\frac{2 \cdot 10^{-6}}{2{,}49} + \frac{4 \cdot 10^{-6}}{3{,}51}\right) = 5{,}25 \cdot 10^{-2}\ \text{J}
+$$
+
+**Respuesta.** La carga queda en reposo en **P(2,49; 0) m**; allí $\vec{F}_A = 8{,}74 \cdot 10^{-3}\,\vec{i}$ N y $\vec{F}_B = -8{,}74 \cdot 10^{-3}\,\vec{i}$ N, y su energía potencial es **$5{,}25 \cdot 10^{-2}$ J**. Es positiva porque todas las cargas son del mismo signo: habría que hacer trabajo para traerla desde el infinito.
+
+</Solucion>

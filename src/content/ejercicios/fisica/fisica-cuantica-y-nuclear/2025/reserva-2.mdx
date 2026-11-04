@@ -1,0 +1,81 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2025
+convocatoria: reserva-2
+formato: fisica
+---
+
+**a)** Se ilumina un metal con una luz roja observando que se produce efecto fotoeléctrico. Deduzca razonadamente si se modifica o no la energía cinética máxima de los fotoelectrones emitidos en los siguientes casos: **i)** (0,5 puntos) se duplica la intensidad de la luz roja aplicada; **ii)** (0,5 puntos) se ilumina el metal con una luz correspondiente a la región del ultravioleta.
+
+<Solucion>
+
+Según la ecuación de Einstein del efecto fotoeléctrico, cada electrón absorbe un único fotón de energía $hf$ y sale con una energía cinética máxima
+
+$$
+E_{c,\text{máx}} = hf - W_0
+$$
+
+que solo depende de la frecuencia de la luz y del trabajo de extracción del metal.
+
+**i) Se duplica la intensidad de la luz roja. No cambia.** Duplicar la intensidad de una luz monocromática es duplicar el número de fotones que llegan por segundo, pero cada fotón tiene la misma energía $hf$. Se emiten el doble de fotoelectrones (aumenta la corriente), pero cada uno con la misma energía cinética máxima.
+
+**ii) Se ilumina con luz ultravioleta. Aumenta.** La luz ultravioleta tiene una frecuencia mucho mayor que la roja, así que sus fotones tienen más energía. Como el trabajo de extracción es el mismo, $E_{c,\text{máx}} = hf_{\text{UV}} - W_0$ es mayor: los fotoelectrones salen más rápidos.
+
+</Solucion>
+
+**b1)** El cobalto-60 (<Nuclido a="60" z="27">Co</Nuclido>) se utiliza frecuentemente como fuente radiactiva en medicina. Su periodo de semidesintegración es 5,25 años. **i)** (0,75 puntos) ¿Cuántos años deben transcurrir para que su actividad disminuya a una octava parte del valor original? **ii)** (0,75 puntos) Calcule qué fracción de la muestra original queda al cabo de 8,32 años.
+
+<Solucion>
+
+La actividad es proporcional al número de núcleos sin desintegrar, $A = \lambda N$, así que ambos siguen la misma ley exponencial:
+
+$$
+A = A_0\,e^{-\lambda t}, \qquad \lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{5{,}25} = 0{,}132\ \text{años}^{-1}
+$$
+
+**i) Tiempo para que la actividad sea un octavo de la inicial.** Cada periodo de semidesintegración la actividad se reduce a la mitad, y $1/8 = (1/2)^3$, así que han de pasar tres periodos:
+
+$$
+\frac{A}{A_0} = \frac{1}{8} = \left(\frac{1}{2}\right)^{t/T_{1/2}}
+\quad\Rightarrow\quad
+t = 3\,T_{1/2} = 3 \cdot 5{,}25 = 15{,}75\ \text{años}
+$$
+
+**ii) Fracción que queda al cabo de 8,32 años.**
+
+$$
+\frac{N}{N_0} = e^{-\lambda t} = e^{-0{,}132 \cdot 8{,}32} = 2^{-8{,}32/5{,}25} = 0{,}333
+$$
+
+**Respuesta.** La actividad se reduce a un octavo en **15,75 años**, y al cabo de 8,32 años queda **un tercio** (0,333) de la muestra original.
+
+</Solucion>
+
+**b2)** Un microscopio electrónico utiliza electrones acelerados desde el reposo aplicando una diferencia de potencial de 5 kV. Determine razonadamente: **i)** (1 punto) su resolución, suponiendo que es igual a la longitud de onda de De Broglie de los electrones; **ii)** (0,5 puntos) la velocidad que deberían tener los electrones si se desea que la longitud de onda asociada sea 1,25·10<sup>-11</sup> m.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Resolución.** Los electrones parten del reposo, así que el trabajo del campo eléctrico se convierte en energía cinética:
+
+$$
+E_c = e\,\Delta V = 1{,}6 \cdot 10^{-19} \cdot 5000 = 8 \cdot 10^{-16}\ \text{J}
+$$
+
+Su longitud de onda de De Broglie es $\lambda = h/p$, con $p = \sqrt{2\,m_e\,E_c}$:
+
+$$
+\lambda = \frac{h}{\sqrt{2\,m_e\,E_c}} = \frac{6{,}63 \cdot 10^{-34}}{\sqrt{2 \cdot 9{,}1 \cdot 10^{-31} \cdot 8 \cdot 10^{-16}}} = \frac{6{,}63 \cdot 10^{-34}}{3{,}82 \cdot 10^{-23}} = 1{,}74 \cdot 10^{-11}\ \text{m}
+$$
+
+**ii) Velocidad para una longitud de onda de 1,25·10⁻¹¹ m.**
+
+$$
+v = \frac{h}{m_e\,\lambda} = \frac{6{,}63 \cdot 10^{-34}}{9{,}1 \cdot 10^{-31} \cdot 1{,}25 \cdot 10^{-11}} = 5{,}83 \cdot 10^{7}\ \text{m/s}
+$$
+
+**Respuesta.** La resolución es de **$1{,}74 \cdot 10^{-11}$ m**, miles de veces mejor que la de un microscopio óptico (cuya luz visible tiene $\lambda \sim 5 \cdot 10^{-7}$ m). Para bajarla a $1{,}25 \cdot 10^{-11}$ m, los electrones tendrían que ir a **$5{,}83 \cdot 10^7$ m/s**, casi el 20 % de la velocidad de la luz: a esas velocidades los efectos relativistas empiezan a notarse, pero con los datos del problema se usa la expresión clásica.
+
+</Solucion>

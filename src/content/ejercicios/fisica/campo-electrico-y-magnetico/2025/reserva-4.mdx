@@ -1,0 +1,139 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2025
+convocatoria: reserva-4
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Dos cargas de valores +*q* y -4*q* se encuentran separadas una distancia *d*. **i)** (0,5 puntos) Explique, con ayuda de un esquema, si puede ser nulo el campo eléctrico en algún punto de la línea que pasa por ambas cargas. **ii)** (0,5 puntos) En caso afirmativo, determine su posición en función de la distancia *d*.
+
+<Solucion>
+
+**i) Dónde puede anularse.** El campo de la carga positiva se aleja de ella y el de la negativa apunta hacia ella. Colocamos $+q$ en $x = 0$ y $-4q$ en $x = d$, y analizamos las tres zonas de la recta:
+
+- **Entre las cargas**: el campo de $+q$ apunta hacia la derecha (se aleja de ella) y el de $-4q$ también (hacia ella). Se suman: no puede anularse.
+- **A la derecha de $-4q$**: los campos son opuestos, pero el punto está más cerca de la carga mayor, así que su campo siempre domina.
+- **A la izquierda de $+q$**: los campos son opuestos (el de $+q$ hacia la izquierda, el de $-4q$ hacia la derecha) y el punto está más cerca de la carga menor, lo que compensa su menor valor. **Aquí sí puede anularse.**
+
+<Vectores
+  xMin={-1.4}
+  xMax={1.4}
+  yMin={-0.5}
+  yMax={0.7}
+  escala={150}
+  unidad=""
+  puntos={[
+    { x: -1, y: 0, texto: "P", tipo: "punto", dx: -4, dy: 18 },
+    { x: 0, y: 0, texto: "+q", tipo: "carga", dx: -10, dy: 26 },
+    { x: 1, y: 0, texto: "−4q", tipo: "carga", signo: "−", dx: -12, dy: 26 },
+  ]}
+  vectores={[
+    { desde: [-1, 0], v: [-50, 0], texto: "E", sub: "+q", dx: -10, dy: -8 },
+    { desde: [-1, 0], v: [50, 0], texto: "E", sub: "−4q", dx: -26, dy: -8 },
+  ]}
+  ancha
+  descripcion="Recta que pasa por las cargas: más q en el centro y menos 4q a una distancia d a la derecha. El punto P está a una distancia d a la izquierda de más q. En P, el campo de más q apunta hacia la izquierda y el de menos 4q hacia la derecha, con el mismo módulo: el campo total es nulo."
+/>
+
+**ii) Posición.** En un punto a una distancia $x$ a la izquierda de $+q$ (y a $x + d$ de $-4q$), el campo es nulo si sus módulos son iguales:
+
+$$
+\frac{K\,q}{x^2} = \frac{K\,4q}{(x + d)^2}
+\quad\Rightarrow\quad
+(x + d)^2 = 4x^2
+\quad\Rightarrow\quad
+x + d = 2x
+\quad\Rightarrow\quad
+x = d
+$$
+
+**Respuesta.** Sí: el campo se anula en un punto de la recta **a una distancia $d$ de la carga $+q$, en el lado opuesto a $-4q$** (a $2d$ de esta).
+
+</Solucion>
+
+**b1)** Una bobina circular, de 20 vueltas y 0,1 m de radio, se encuentra situada en un campo magnético, de forma que el flujo es máximo. Si el módulo del campo magnético es *B*(*t*) = 20 ∙ sen (4π*t*) (SI), calcule: **i)** (1 punto) la fuerza electromotriz máxima en la bobina; **ii)** (0,5 puntos) la fuerza electromotriz inducida, en el instante *t* = 0,125 s.
+
+<Solucion>
+
+**i) Fuerza electromotriz máxima.** El flujo es máximo, así que el campo es perpendicular a las espiras (paralelo al vector superficie). La superficie de cada espira es $S = \pi r^2 = \pi \cdot 0{,}1^2 = 3{,}14 \cdot 10^{-2}$ m², y el flujo a través de una espira:
+
+$$
+\Phi(t) = B(t)\,S = 20 \cdot 3{,}14 \cdot 10^{-2}\sin(4\pi t) = 0{,}628\sin(4\pi t)\ \text{Wb}
+$$
+
+Por la ley de Faraday-Lenz, para las $N = 20$ espiras:
+
+$$
+\varepsilon(t) = -N\,\frac{d\Phi}{dt} = -20 \cdot 0{,}628 \cdot 4\pi\cos(4\pi t) = -158\cos(4\pi t)\ \text{V}
+$$
+
+$$
+\varepsilon_{\text{máx}} = N\,B_0\,S\,\omega = 20 \cdot 20 \cdot 3{,}14 \cdot 10^{-2} \cdot 4\pi = 158\ \text{V}
+$$
+
+**ii) Fuerza electromotriz en t = 0,125 s.**
+
+$$
+\varepsilon(0{,}125) = -158\cos(4\pi \cdot 0{,}125) = -158\cos\frac{\pi}{2} = 0\ \text{V}
+$$
+
+**Respuesta.** La fuerza electromotriz máxima es de **158 V**, y en $t = 0{,}125$ s es **nula**: en ese instante el campo es máximo, $B = 20$ T, y el flujo deja de variar momentáneamente $(d\Phi/dt = 0)$.
+
+</Solucion>
+
+**b2) i)** (0,5 puntos) Un conductor rectilíneo muy largo está situado en el eje OX y está recorrido por una corriente *I* = 3 A en sentido negativo del mismo. Determine, apoyándose en un esquema, el vector fuerza que actúa sobre una carga *q* = 4·10<sup>-6</sup> C, que se encuentra en el eje OY en el punto *y* = 0,04 m y tiene una velocidad de módulo 4·10<sup>5</sup> m s<sup>-1</sup> en sentido positivo del eje OY. **ii)** (1 punto) Un segundo conductor, igual que el anterior, se coloca paralelamente al primero y corta el eje OY en *y* = 0,2 m. Calcule, apoyándose en un esquema, la intensidad que debe circular por el segundo conductor, indicando su sentido, para que la fuerza resultante sobre la carga sea nula.
+
+<Datos>μ<sub>0</sub> = 4 π ·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Fuerza sobre la carga.** El hilo crea en el punto (0; 0,04) m un campo de módulo
+
+$$
+B_1 = \frac{\mu_0\,I_1}{2\pi r_1} = \frac{4\pi \cdot 10^{-7} \cdot 3}{2\pi \cdot 0{,}04} = 1{,}5 \cdot 10^{-5}\ \text{T}
+$$
+
+Su sentido lo da la regla de la mano derecha: con la corriente hacia $-\vec{i}$ y el punto por encima del hilo $(+\vec{j})$, $(-\vec{i}) \times \vec{j} = -\vec{k}$. El campo **entra en el plano XY**: $\vec{B}_1 = -1{,}5 \cdot 10^{-5}\,\vec{k}$ T. La fuerza de Lorentz sobre la carga es
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B}_1 = 4 \cdot 10^{-6} \cdot \left(4 \cdot 10^5\,\vec{j} \times (-1{,}5 \cdot 10^{-5})\,\vec{k}\right) = 4 \cdot 10^{-6} \cdot 6\,(-\vec{i}) = -2{,}4 \cdot 10^{-5}\,\vec{i}\ \ \text{N}
+$$
+
+<Vectores
+  xMin={-12}
+  xMax={12}
+  yMin={-2}
+  yMax={23}
+  escala={9}
+  marcasY={[4, 20]}
+  unidad="cm"
+  hilos={[
+    { desde: [11, 0], hasta: [-11, 0], texto: "I₁ = 3 A" },
+    { desde: [11, 20], hasta: [-11, 20], texto: "I₂ = 12 A" },
+  ]}
+  puntos={[
+    { x: 0, y: 4, texto: "q", tipo: "carga", dx: 10, dy: 18 },
+    { x: 5, y: 4, texto: "B₁ (entrante)", tipo: "entra", dx: 12, dy: 4 },
+    { x: 5, y: 9, texto: "B₂ (saliente)", tipo: "sale", dx: 12, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [0, 4], v: [0, 44], texto: "v", dx: 6, dy: 6 },
+    { desde: [0, 4], v: [-54, 0], texto: "F (hilo 1)", color: "#b04a3a", dx: -4, dy: -6 },
+  ]}
+  descripcion="Plano XY en centímetros. El hilo 1 está sobre el eje x y el hilo 2 en y = 20 cm, ambos con la corriente hacia la izquierda. La carga está en y = 4 cm y se mueve hacia arriba. El campo del hilo 1 en la carga entra en el papel y le produce una fuerza hacia la izquierda; el campo del hilo 2, con 12 A en el mismo sentido, sale del papel y anula el anterior."
+/>
+
+**ii) Corriente en el segundo hilo para que la fuerza sea nula.** La fuerza magnética es $q\,\vec{v} \times \vec{B}$; como la velocidad no cambia, la fuerza total solo se anula si el **campo total en el punto es nulo**: el segundo hilo tiene que crear allí $\vec{B}_2 = +1{,}5 \cdot 10^{-5}\,\vec{k}$ T. El punto está a $r_2 = 0{,}2 - 0{,}04 = 0{,}16$ m del segundo hilo:
+
+$$
+I_2 = \frac{2\pi r_2\,B_2}{\mu_0} = \frac{2\pi \cdot 0{,}16 \cdot 1{,}5 \cdot 10^{-5}}{4\pi \cdot 10^{-7}} = 12\ \text{A}
+$$
+
+Sentido: el punto está **por debajo** del segundo hilo $(-\vec{j})$, y para que el campo salga del plano, $\vec{u}_I \times (-\vec{j}) = +\vec{k}$, la corriente tiene que ir hacia $-\vec{i}$: $(-\vec{i}) \times (-\vec{j}) = \vec{k}$.
+
+**Respuesta.** Sobre la carga actúa $\vec{F} = -2{,}4 \cdot 10^{-5}\,\vec{i}$ N, y para anularla por el segundo hilo tienen que circular **12 A en sentido negativo del eje OX**, el mismo sentido que en el primero. Es más intensa porque el segundo hilo está cuatro veces más lejos de la carga.
+
+</Solucion>

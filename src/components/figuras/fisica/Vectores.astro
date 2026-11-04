@@ -41,6 +41,8 @@ interface Props {
   vectores: Vector[]
   // Segmentos discontinuos entre puntos (distancias).
   segmentos?: [number, number, number, number][]
+  // Hilos contenidos en el plano: línea gruesa con una flecha en el sentido de la corriente.
+  hilos?: { desde: [number, number]; hasta: [number, number]; texto?: string }[]
   // Esquema apaisado: ocupa el ancho de las figuras anchas.
   ancha?: boolean
   descripcion: string
@@ -58,6 +60,7 @@ const {
   puntos,
   vectores,
   segmentos = [],
+  hilos = [],
   ancha = false,
   descripcion,
 } = Astro.props
@@ -106,6 +109,26 @@ const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
     <g stroke="#888" stroke-width="1" stroke-dasharray="3 3" fill="none">
       {segmentos.map(([x1, y1, x2, y2]) => <path d={`M${px(x1)} ${py(y1)}L${px(x2)} ${py(y2)}`} />)}
     </g>
+
+    {
+      hilos.map((h) => (
+        <g>
+          <path d={`M${px(h.desde[0])} ${py(h.desde[1])}L${px(h.hasta[0])} ${py(h.hasta[1])}`} stroke="#111" stroke-width="3" />
+          <path
+            d={`M${px(h.desde[0]) + 0.3 * (px(h.hasta[0]) - px(h.desde[0]))} ${py(h.desde[1]) + 0.3 * (py(h.hasta[1]) - py(h.desde[1]))}l${Math.sign(h.hasta[0] - h.desde[0]) * 22} ${-Math.sign(h.hasta[1] - h.desde[1]) * 22}`}
+            stroke="#111"
+            stroke-width="1.4"
+            marker-end={`url(#${id}-eje)`}
+            transform={`translate(0 ${h.desde[1] === h.hasta[1] ? -10 : 0})`}
+          />
+          {h.texto && (
+            <text x={px(h.desde[0]) + 0.3 * (px(h.hasta[0]) - px(h.desde[0])) + 8} y={py(h.desde[1]) + 0.3 * (py(h.hasta[1]) - py(h.desde[1])) - 16} font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#111">
+              {h.texto}
+            </text>
+          )}
+        </g>
+      ))
+    }
 
     <g stroke-width="1.8" fill="none">
       {

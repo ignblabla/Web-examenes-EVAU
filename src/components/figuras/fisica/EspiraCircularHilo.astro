@@ -1,0 +1,63 @@
+---
+// Física, reserva 2 de 2025, B a: hilo en el eje OY con la corriente hacia +y y una espira
+// circular a su derecha, donde el campo del hilo es entrante (⊗). i) Si la corriente aumenta,
+// el flujo entrante aumenta: campo inducido saliente y corriente antihoraria. ii) Si la espira
+// se aleja, el flujo entrante disminuye: campo inducido entrante y corriente horaria.
+const id = `espira-circular-${Math.round(Math.random() * 1e9)}`
+const paneles = [
+  { x0: 0, titulo: "i) Aumenta la corriente I", horaria: false, nota: "B inducido saliente · I antihoraria" },
+  { x0: 250, titulo: "ii) La espira se aleja", horaria: true, nota: "B inducido entrante · I horaria" },
+]
+const cruces = [0, 1, 2, 3].flatMap((i) => [0, 1, 2, 3].map((j) => ({ dx: 46 + i * 40, y: 46 + j * 38 })))
+// Arco de la corriente inducida: tres cuartos de circunferencia con la flecha en el sentido pedido.
+const arco = (cx: number, cy: number, r: number, horaria: boolean) =>
+  horaria
+    ? `M${cx} ${cy - r}A${r} ${r} 0 1 1 ${cx - r} ${cy}`
+    : `M${cx} ${cy - r}A${r} ${r} 0 1 0 ${cx + r} ${cy}`
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg viewBox="0 0 500 210" role="img" aria-label="Dos esquemas de un hilo vertical con la corriente hacia arriba y una espira circular a su derecha, donde el campo del hilo entra en el papel. Si aumenta la corriente, el campo inducido en la espira es saliente y la corriente inducida circula en sentido antihorario. Si la espira se aleja del hilo, el campo inducido es entrante y la corriente inducida circula en sentido horario.">
+    <defs>
+      <marker id={`${id}-n`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-v`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#195c51" />
+      </marker>
+    </defs>
+    {
+      paneles.map((p) => (
+        <g>
+          <text x={p.x0 + 6} y="16" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111">{p.titulo}</text>
+          <path d={`M${p.x0 + 24} 190V30`} stroke="#111" stroke-width="3" />
+          <path d={`M${p.x0 + 14} 130V80`} stroke="#111" stroke-width="1.4" marker-end={`url(#${id}-n)`} />
+          <text x={p.x0 + 10} y="112" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic">I</text>
+          <g stroke="#bbb" stroke-width="1">
+            {cruces.map((c) => (
+              <path d={`M${p.x0 + c.dx - 3} ${c.y - 3}l6 6m0 -6l-6 6`} />
+            ))}
+          </g>
+          <circle cx={p.x0 + 130} cy="104" r="44" fill="rgba(201, 188, 232, 0.25)" stroke="#172c27" stroke-width="2" />
+          <path d={arco(p.x0 + 130, 104, 32, p.horaria)} fill="none" stroke="#b04a3a" stroke-width="1.6" marker-end={`url(#${id}-r)`} />
+          <circle cx={p.x0 + 130} cy="104" r="8" fill="#fff" stroke="#b04a3a" stroke-width="1.4" />
+          {p.horaria ? (
+            <path d={`M${p.x0 + 124.5} 98.5l11 11m0 -11l-11 11`} stroke="#b04a3a" stroke-width="1.4" />
+          ) : (
+            <circle cx={p.x0 + 130} cy="104" r="2.2" fill="#b04a3a" />
+          )}
+          {p.horaria && (
+            <g>
+              <path d={`M${p.x0 + 180} 104h28`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
+              <text x={p.x0 + 194} y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" font-weight="700" fill="#195c51">v</text>
+            </g>
+          )}
+          <text x={p.x0 + 130} y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#b04a3a">{p.nota}</text>
+        </g>
+      ))
+    }
+  </svg>
+</figure>

@@ -1,0 +1,77 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: reserva-1
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**b1)** Se sitúa un objeto de 20 cm de altura a 2 m del vértice de un espejo esférico convexo. Si la distancia focal es 6 m, calcule, indicando el criterio de signos utilizado: **i)** (1 punto) la distancia a la que se forma la imagen justificando si la misma es real o virtual; **ii)** (0,5 puntos) la altura de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el vértice del espejo; las distancias son positivas a la derecha (detrás del espejo) y las alturas, positivas hacia arriba. El objeto está delante del espejo, $s = -2$ m, y en un espejo convexo el foco está detrás, $f = +6$ m.
+
+**i) Posición de la imagen.** Por la ecuación de los espejos esféricos:
+
+$$
+\frac{1}{s'} + \frac{1}{s} = \frac{1}{f}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{6} - \frac{1}{-2} = \frac{1}{6} + \frac{1}{2} = \frac{2}{3}\ \text{m}^{-1}
+\quad\Rightarrow\quad s' = 1{,}5\ \text{m}
+$$
+
+La distancia es positiva: la imagen se forma **1,5 m detrás del espejo**, donde no llega la luz. Se forma con las prolongaciones de los rayos reflejados, así que es **virtual**.
+
+<TrazadoRayos tipo="convexo" f={6} s={-2} y={20} xMin={-3} xMax={13} imagen="y′" descripcion="Espejo convexo con el foco a 6 m detrás de él y el objeto a 2 m delante. Los rayos reflejados divergen; sus prolongaciones se cortan 1,5 m detrás del espejo, donde se forma una imagen virtual, derecha y algo menor que el objeto." />
+
+**ii) Altura de la imagen.** El aumento lateral de un espejo es
+
+$$
+A = \frac{y'}{y} = -\frac{s'}{s} = -\frac{1{,}5}{-2} = 0{,}75
+\quad\Rightarrow\quad
+y' = 0{,}75 \cdot 20 = 15\ \text{cm}
+$$
+
+**Respuesta.** La imagen está a **1,5 m detrás del espejo**, es **virtual**, derecha (aumento positivo) y mide **15 cm**, como corresponde a un espejo convexo, que siempre da imágenes virtuales, derechas y menores.
+
+</Solucion>
+
+**b2)** Un rayo de luz amarilla, emitido por una lámpara de sodio, tiene una longitud de onda en el vacío de 5,89·10<sup>−7</sup> m. Determine: **i)** (0,5 puntos) su frecuencia; **ii)** (0,5 puntos) su velocidad de propagación y su longitud de onda en el interior de una fibra de cuarzo; **iii)** (0,5 puntos) el ángulo límite entre la lámina de cuarzo y el aire.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1; n<sub>cuarzo</sub> = 1,458</Datos>
+
+<Solucion>
+
+**i) Frecuencia.** En el vacío la luz viaja a $c$:
+
+$$
+f = \frac{c}{\lambda_0} = \frac{3 \cdot 10^8}{5{,}89 \cdot 10^{-7}} = 5{,}09 \cdot 10^{14}\ \text{Hz}
+$$
+
+**ii) Velocidad y longitud de onda en el cuarzo.** Por la definición del índice de refracción, $n = c/v$:
+
+$$
+v = \frac{c}{n_{\text{cuarzo}}} = \frac{3 \cdot 10^8}{1{,}458} = 2{,}06 \cdot 10^{8}\ \text{m/s}
+$$
+
+La frecuencia no cambia al cambiar de medio, así que la longitud de onda se reduce en la misma proporción que la velocidad:
+
+$$
+\lambda = \frac{v}{f} = \frac{\lambda_0}{n_{\text{cuarzo}}} = \frac{5{,}89 \cdot 10^{-7}}{1{,}458} = 4{,}04 \cdot 10^{-7}\ \text{m}
+$$
+
+**iii) Ángulo límite.** La reflexión total solo puede darse cuando la luz pasa del medio más refringente (cuarzo) al menos refringente (aire). El ángulo límite es el ángulo de incidencia para el que el refractado sale a $90^\circ$:
+
+$$
+n_{\text{cuarzo}}\sin L = n_{\text{aire}}\sin 90^\circ
+\quad\Rightarrow\quad
+\sin L = \frac{1}{1{,}458} = 0{,}686
+\quad\Rightarrow\quad L = 43{,}3^\circ
+$$
+
+**Respuesta.** $f = 5{,}09 \cdot 10^{14}$ Hz; en el cuarzo, $v = 2{,}06 \cdot 10^8$ m/s y $\lambda = 4{,}04 \cdot 10^{-7}$ m; y el ángulo límite es **43,3°**: los rayos que llegan a la superficie con más inclinación se reflejan totalmente, que es lo que mantiene la luz dentro de una fibra óptica.
+
+</Solucion>

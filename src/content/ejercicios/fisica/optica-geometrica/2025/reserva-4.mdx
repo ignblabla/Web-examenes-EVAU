@@ -1,0 +1,73 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2025
+convocatoria: reserva-4
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**a)** Un haz de luz monocromática triplica su longitud de onda al pasar del medio 1 al medio 2. Determine razonadamente: **i)** (0,5 puntos) la relación entre las velocidades y entre los índices de refracción en ambos medios; **ii)** (0,5 puntos) si puede darse el fenómeno de reflexión total.
+
+<Solucion>
+
+**i) Velocidades e índices de refracción.** Al cambiar de medio, la frecuencia de la luz no cambia (la fija el foco emisor), así que, con $v = \lambda f$, la velocidad es proporcional a la longitud de onda:
+
+$$
+\frac{v_2}{v_1} = \frac{\lambda_2\,f}{\lambda_1\,f} = \frac{\lambda_2}{\lambda_1} = 3
+$$
+
+La luz va **tres veces más deprisa** en el medio 2. Como $n = c/v$, los índices de refracción son inversamente proporcionales a las velocidades:
+
+$$
+\frac{n_2}{n_1} = \frac{v_1}{v_2} = \frac{1}{3} \quad\Rightarrow\quad n_1 = 3\,n_2
+$$
+
+**ii) Reflexión total. Sí puede darse.** La luz pasa del medio 1 al medio 2, que es menos refringente $(n_2 < n_1)$, así que el rayo refractado se aleja de la normal. Para ángulos de incidencia mayores que el ángulo límite no hay refracción y toda la luz se refleja:
+
+$$
+\sin L = \frac{n_2}{n_1} = \frac{1}{3} \quad\Rightarrow\quad L = 19{,}5^\circ
+$$
+
+Habrá reflexión total si el ángulo de incidencia supera los 19,5°.
+
+</Solucion>
+
+**b1)** Un objeto de 3 cm de altura se sitúa 25 cm delante de una lente delgada convergente. Si la distancia focal es 20 cm, calcule: **i)** (1 punto) la posición de la imagen, indicando el criterio de signos utilizado y justificando si la misma es real o virtual; **ii)** (0,5 puntos) la altura de la imagen y la potencia de la lente.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha, el origen está en la lente, las distancias son positivas a la derecha y las alturas, positivas hacia arriba. Así, $s = -25$ cm, $f' = +20$ cm (lente convergente) e $y = 3$ cm.
+
+**i) Posición de la imagen.** Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{20} + \frac{1}{-25} = \frac{5 - 4}{100} = \frac{1}{100}\ \text{cm}^{-1}
+\quad\Rightarrow\quad
+s' = 100\ \text{cm}
+$$
+
+La imagen se forma 1 m detrás de la lente, del lado al que llega la luz refractada: los rayos se cortan de verdad allí, así que es **real** (se podría recoger en una pantalla). El objeto está entre $F$ y $2F$, y por eso la imagen es real y mayor:
+
+<TrazadoRayos tipo="convergente" f={20} s={-25} y={3} xMin={-32} xMax={110} descripcion="Lente convergente con el objeto 25 cm a su izquierda, entre el foco objeto y el doble de la distancia focal. El rayo paralelo se refracta por el foco imagen F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Los rayos se cortan 100 cm a la derecha de la lente, donde se forma una imagen real, invertida y cuatro veces mayor." />
+
+**ii) Altura de la imagen y potencia.**
+
+$$
+A = \frac{y'}{y} = \frac{s'}{s} = \frac{100}{-25} = -4
+\quad\Rightarrow\quad
+y' = -4 \cdot 3 = -12\ \text{cm}
+$$
+
+La potencia de una lente es la inversa de su distancia focal imagen, en metros:
+
+$$
+P = \frac{1}{f'} = \frac{1}{0{,}20\ \text{m}} = 5\ \text{dioptrías}
+$$
+
+**Respuesta.** La imagen está **100 cm detrás de la lente**, es **real**, invertida y mide **12 cm** (cuatro veces el objeto), y la lente tiene una potencia de **5 dioptrías**.
+
+</Solucion>

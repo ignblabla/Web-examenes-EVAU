@@ -1,0 +1,91 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2025
+convocatoria: reserva-1
+formato: fisica
+---
+
+**a)** Razone, indicando los principios en los que se basa, si las siguientes reacciones nucleares son posibles:
+
+<div className="official-reactions">
+  <p>**i)** (0,5 puntos) <Nuclido a="27" z="13">Al</Nuclido> + <Nuclido a="1" z="0">n</Nuclido> ⟶ <Nuclido a="27" z="12">Mg</Nuclido> + <Nuclido a="1" z="1">H</Nuclido></p>
+  <p>**ii)** (0,5 puntos) <Nuclido a="14" z="7">N</Nuclido> + <Nuclido a="4" z="2">He</Nuclido> ⟶ <Nuclido a="17" z="8">O</Nuclido> + 2&thinsp;<Nuclido a="1" z="1">H</Nuclido></p>
+</div>
+
+<Solucion>
+
+Una reacción nuclear solo es posible si cumple, entre otras, dos leyes de conservación:
+
+- **Conservación de la carga eléctrica**: la suma de los números atómicos $Z$ es la misma en los dos miembros.
+- **Conservación del número de nucleones** (número bariónico): la suma de los números másicos $A$ es la misma en los dos miembros.
+
+**i) Posible.**
+
+$$
+A:\ 27 + 1 = 27 + 1 = 28 \qquad\qquad Z:\ 13 + 0 = 12 + 1 = 13
+$$
+
+Se conservan los dos: un neutrón choca con el aluminio-27 y se obtiene magnesio-27 y un protón.
+
+**ii) No es posible.**
+
+$$
+A:\ 14 + 4 = 18 \neq 17 + 2 \cdot 1 = 19 \qquad\qquad Z:\ 7 + 2 = 9 \neq 8 + 2 \cdot 1 = 10
+$$
+
+No se conservan ni el número de nucleones ni la carga. Sobra un protón: la reacción posible (la que usó Rutherford en 1919 para obtener la primera transmutación artificial) es ${}^{14}_{7}\text{N} + {}^{4}_{2}\text{He} \rightarrow {}^{17}_{8}\text{O} + {}^{1}_{1}\text{H}$, con un solo protón.
+
+</Solucion>
+
+**b1)** Una luz ultravioleta de longitud de onda 2,54·10<sup>-7</sup> m incide sobre una superficie metálica. En estas condiciones, el potencial de frenado que detiene la emisión de fotoelectrones es de 0,181 V. Calcule razonadamente: **i)** (0,5 puntos) energía cinética máxima de los fotoelectrones; **ii)** (0,5 puntos) el trabajo de extracción de dicha superficie; **iii)** (0,5 puntos) la longitud de onda umbral del metal.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; c = 3·10<sup>8</sup> m s<sup>-1</sup>; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Energía cinética máxima.** El potencial de frenado detiene justo a los electrones más rápidos, así que
+
+$$
+E_{c,\text{máx}} = e\,V_f = 1{,}6 \cdot 10^{-19} \cdot 0{,}181 = 2{,}90 \cdot 10^{-20}\ \text{J}
+$$
+
+**ii) Trabajo de extracción.** Por la ecuación de Einstein del efecto fotoeléctrico, $hf = W_0 + E_{c,\text{máx}}$, con $f = c/\lambda$:
+
+$$
+E_{\text{fotón}} = \frac{h\,c}{\lambda} = \frac{6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8}{2{,}54 \cdot 10^{-7}} = 7{,}83 \cdot 10^{-19}\ \text{J}
+$$
+
+$$
+W_0 = E_{\text{fotón}} - E_{c,\text{máx}} = 7{,}83 \cdot 10^{-19} - 0{,}29 \cdot 10^{-19} = 7{,}54 \cdot 10^{-19}\ \text{J}
+$$
+
+**iii) Longitud de onda umbral.** Es la de un fotón cuya energía es justo el trabajo de extracción:
+
+$$
+\lambda_0 = \frac{h\,c}{W_0} = \frac{6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8}{7{,}54 \cdot 10^{-19}} = 2{,}64 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** $E_{c,\text{máx}} = 2{,}90 \cdot 10^{-20}$ J, $W_0 = 7{,}54 \cdot 10^{-19}$ J (unos 4,7 eV) y $\lambda_0 = 2{,}64 \cdot 10^{-7}$ m. La longitud de onda umbral es solo un poco mayor que la de la luz usada, por eso los electrones salen con tan poca energía cinética.
+
+</Solucion>
+
+**b2)** Los rayos cósmicos bombardean al <Nuclido a="14" z="7">N</Nuclido> en la atmósfera que, por reacción nuclear, producen el isótopo radiactivo <Nuclido a="14" z="6">C</Nuclido>. Este isótopo tiene un periodo de semidesintegración de 5730 años. Se mezcla uniformemente en la atmósfera y es captado por las plantas en su crecimiento. Después de que muera una planta, el C-14 decae en los años siguientes. ¿Cuál es la antigüedad de un pedazo de madera encontrado en un yacimiento arqueológico que tiene el 9% del contenido original de C-14?
+
+<Solucion>
+
+Mientras la planta vive, intercambia carbono con la atmósfera y su proporción de carbono-14 se mantiene constante. Al morir deja de incorporarlo, y el que tiene se desintegra según la ley de desintegración radiactiva:
+
+$$
+N = N_0\,e^{-\lambda t}, \qquad \lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{5730} = 1{,}21 \cdot 10^{-4}\ \text{años}^{-1}
+$$
+
+Queda el 9 % del contenido original, $N = 0{,}09\,N_0$:
+
+$$
+0{,}09 = e^{-\lambda t} \quad\Rightarrow\quad t = \frac{\ln(1/0{,}09)}{\lambda} = \frac{2{,}408}{1{,}21 \cdot 10^{-4}} = 1{,}99 \cdot 10^{4}\ \text{años}
+$$
+
+**Respuesta.** La madera tiene unos **19 900 años** de antigüedad. Es razonable: tras cuatro periodos de semidesintegración (22 920 años) quedaría el 6,25 %, y tras tres (17 190 años), el 12,5 %; el 9 % cae entre ambos.
+
+</Solucion>

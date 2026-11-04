@@ -1,0 +1,119 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2025
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** Se deja caer un objeto de masa *m* desde una altura *h* sobre la superficie de la Tierra y llega al suelo sin que actúe ninguna fuerza de rozamiento. Considerando que la altura es mucho menor que el radio terrestre, y mediante razonamientos energéticos, calcule: **i)** (0,5 puntos) el trabajo que realiza la fuerza peso en ese trayecto; **ii)** (0,5 puntos) la velocidad con que el cuerpo llega al suelo.
+
+<Solucion>
+
+Como $h \ll R_T$, el campo gravitatorio es prácticamente constante durante la caída, $g = G\,M_T/R_T^2$, y la energía potencial se puede escribir como $E_p = m\,g\,y$, tomando el nivel cero en el suelo.
+
+**i) Trabajo del peso.** El peso es una fuerza conservativa, así que su trabajo es igual a menos la variación de energía potencial:
+
+$$
+W_P = -\Delta E_p = -(0 - m\,g\,h) = m\,g\,h
+$$
+
+Es positivo: el peso tiene el mismo sentido que el desplazamiento (hacia abajo).
+
+**ii) Velocidad al llegar al suelo.** Sin rozamiento, solo actúa el peso y la energía mecánica se conserva. El objeto se deja caer, así que parte del reposo:
+
+$$
+m\,g\,h + 0 = 0 + \frac{1}{2}m\,v^2 \quad\Rightarrow\quad v = \sqrt{2\,g\,h}
+$$
+
+Lo mismo sale del teorema de la energía cinética, $W_P = \Delta E_c$: el trabajo del peso, $m\,g\,h$, se convierte en energía cinética. La velocidad no depende de la masa del objeto.
+
+</Solucion>
+
+**b1)** Dos masas puntuales de 400 kg están situadas en los puntos A(2,2) m y B(2,-2) m. Calcule razonadamente: **i)** (0,5 puntos) el potencial gravitatorio en el punto C(2,0) m; **ii)** (1 punto) el trabajo que hay que realizar para desplazar una masa de 3 kg, inicialmente en reposo en C, hasta dejarla en reposo en el origen de coordenadas.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m² kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+<Vectores
+  xMin={-0.6}
+  xMax={3}
+  yMin={-2.6}
+  yMax={2.6}
+  escala={52}
+  marcasX={[1]}
+  marcasY={[-1, 1]}
+  unidad="m"
+  puntos={[
+    { x: 2, y: 2, texto: "A (400 kg)", tipo: "masa", dx: 12, dy: -6 },
+    { x: 2, y: -2, texto: "B (400 kg)", tipo: "masa", dx: 12, dy: 16 },
+    { x: 2, y: 0, texto: "C", tipo: "punto", dx: 8, dy: 16 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -12, dy: 16 },
+  ]}
+  vectores={[]}
+  segmentos={[
+    [2, 2, 2, -2],
+    [0, 0, 2, 2],
+    [0, 0, 2, -2],
+  ]}
+  descripcion="Ejes x e y en metros. Las dos masas de 400 kg están en A(2, 2) y B(2, menos 2). El punto C(2, 0) está en el punto medio entre ellas, a 2 m de cada una; el origen O está a la raíz de 8 metros, unos 2,83 m, de cada masa."
+/>
+
+**i) Potencial en C.** El potencial gravitatorio es una magnitud escalar: el de cada masa es $V = -G\,m/r$ y el total, la suma. C(2, 0) está a 2 m de cada masa:
+
+$$
+V_C = -\frac{G \cdot 400}{2} - \frac{G \cdot 400}{2} = -400\,G = -2{,}67 \cdot 10^{-8}\ \text{J/kg}
+$$
+
+**ii) Trabajo para llevar la masa de C al origen.** El origen está a $\sqrt{2^2 + 2^2} = \sqrt{8} = 2{,}83$ m de cada masa:
+
+$$
+V_O = -2 \cdot \frac{G \cdot 400}{2{,}83} = -1{,}89 \cdot 10^{-8}\ \text{J/kg}
+$$
+
+La masa empieza y termina en reposo, así que la energía cinética no cambia y el trabajo que hay que realizar (el de un agente externo) es igual a la variación de energía potencial:
+
+$$
+W_{\text{ext}} = \Delta E_p = m\,(V_O - V_C) = 3 \cdot \left(-1{,}89 \cdot 10^{-8} + 2{,}67 \cdot 10^{-8}\right) = 2{,}34 \cdot 10^{-8}\ \text{J}
+$$
+
+**Respuesta.** $V_C = -2{,}67 \cdot 10^{-8}$ J/kg, y hay que realizar un trabajo de **$2{,}34 \cdot 10^{-8}$ J**. Es positivo porque la masa se aleja de A y B, en contra de la atracción gravitatoria: el campo realiza un trabajo de $-2{,}34 \cdot 10^{-8}$ J y el agente externo tiene que compensarlo.
+
+</Solucion>
+
+**b2)** Para salir de la Luna, los astronautas del Apolo tuvieron que despegar de su superficie en su módulo lunar de 15000 kg. Calcule razonadamente: **i)** (0,5 puntos) la velocidad de escape de la Luna, **ii)** (0,5 puntos) la energía cinética mínima necesaria para que el vehículo escape de la Luna; **iii)** (0,5 puntos) la velocidad con la que llegaría a la Tierra una nave, inicialmente en reposo, desde una altura de 2,5·10<sup>4</sup> km sobre la superficie terrestre. Considere despreciable el rozamiento con el aire y el efecto de la Luna.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>L</sub> = 7,35·10<sup>22</sup> kg; R<sub>L</sub> = 1740 km; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Velocidad de escape de la Luna.** Es la velocidad mínima para que el módulo llegue al infinito con velocidad nula, es decir, con energía mecánica cero. Por conservación de la energía:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M_L\,m}{R_L} = 0 \quad\Rightarrow\quad v_e = \sqrt{\frac{2\,G\,M_L}{R_L}} = \sqrt{\frac{2 \cdot 6{,}67 \cdot 10^{-11} \cdot 7{,}35 \cdot 10^{22}}{1{,}74 \cdot 10^{6}}} = 2{,}37 \cdot 10^{3}\ \text{m/s}
+$$
+
+**ii) Energía cinética mínima.**
+
+$$
+E_c = \frac{1}{2}m\,v_e^2 = \frac{G\,M_L\,m}{R_L} = \frac{1}{2} \cdot 15\,000 \cdot (2{,}37 \cdot 10^3)^2 = 4{,}23 \cdot 10^{10}\ \text{J}
+$$
+
+**iii) Velocidad de llegada a la Tierra.** La nave parte del reposo a una distancia $r_1 = R_T + h = 6{,}37 \cdot 10^6 + 2{,}5 \cdot 10^7 = 3{,}137 \cdot 10^7$ m del centro de la Tierra. Como la altura es comparable al radio terrestre, no podemos usar $m\,g\,h$: aplicamos la conservación de la energía con la expresión general de la energía potencial gravitatoria:
+
+$$
+-\frac{G\,M_T\,m}{r_1} = \frac{1}{2}m\,v^2 - \frac{G\,M_T\,m}{R_T}
+\quad\Rightarrow\quad
+v = \sqrt{2\,G\,M_T\left(\frac{1}{R_T} - \frac{1}{r_1}\right)}
+$$
+
+$$
+v = \sqrt{2 \cdot 6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}\left(\frac{1}{6{,}37 \cdot 10^6} - \frac{1}{3{,}137 \cdot 10^7}\right)} = 9{,}99 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** La velocidad de escape de la Luna es **$2{,}37 \cdot 10^3$ m/s** (casi cinco veces menor que la de la Tierra), la energía cinética mínima del módulo es **$4{,}23 \cdot 10^{10}$ J** y la nave llegaría a la Tierra a **$9{,}99 \cdot 10^3$ m/s**, algo menos que la velocidad de escape terrestre (11,2 km/s), porque no cae desde el infinito.
+
+</Solucion>

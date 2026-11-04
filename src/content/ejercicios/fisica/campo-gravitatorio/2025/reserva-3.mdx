@@ -1,0 +1,122 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2025
+convocatoria: reserva-3
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**a)** El periodo de rotación de Júpiter alrededor del Sol es 12 veces mayor que el periodo de rotación de la Tierra alrededor del Sol. Considerando sus órbitas circulares, conteste razonadamente la veracidad de la siguiente afirmación: la distancia de Júpiter al Sol es 3,2 veces mayor que la distancia entre la Tierra y el Sol.
+
+<Solucion>
+
+**Falsa.** En una órbita circular, la fuerza gravitatoria del Sol es la fuerza centrípeta. Con $v = 2\pi r/T$:
+
+$$
+\frac{G\,M_S\,m}{r^2} = m\,\frac{4\pi^2}{T^2}\,r
+\quad\Rightarrow\quad
+T^2 = \frac{4\pi^2}{G\,M_S}\,r^3
+$$
+
+Es la tercera ley de Kepler: el cuadrado del periodo es proporcional al cubo del radio de la órbita, con la misma constante para todos los planetas. Comparando Júpiter con la Tierra:
+
+$$
+\left(\frac{T_J}{T_T}\right)^2 = \left(\frac{r_J}{r_T}\right)^3
+\quad\Rightarrow\quad
+\frac{r_J}{r_T} = \left(\frac{T_J}{T_T}\right)^{2/3} = 12^{2/3} = 5{,}24
+$$
+
+Júpiter está unas **5,2 veces** más lejos del Sol que la Tierra, no 3,2 veces. (Si el radio fuera 3,2 veces mayor, el periodo sería $3{,}2^{3/2} = 5{,}7$ veces mayor, no 12.)
+
+</Solucion>
+
+**b1)** Dos masas puntuales de 300 kg y 400 kg están situadas en los puntos A(0,4) m y B(3,0) m, respectivamente. Calcule razonadamente: **i)** (0,5 puntos) el potencial gravitatorio en el punto C(3,4) m, apoyándose de un esquema; **ii)** (1 punto) el trabajo que realiza la fuerza gravitatoria para desplazar una tercera masa de 1,2 kg desde el origen de coordenadas al punto C.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+<Vectores
+  xMin={-0.6}
+  xMax={4}
+  yMin={-0.6}
+  yMax={4.8}
+  escala={52}
+  marcasX={[1, 2]}
+  marcasY={[1, 2, 3]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 4, texto: "A (300 kg)", tipo: "masa", dx: 12, dy: -8 },
+    { x: 3, y: 0, texto: "B (400 kg)", tipo: "masa", dx: 8, dy: -12 },
+    { x: 3, y: 4, texto: "C", tipo: "punto", dx: 8, dy: -8 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -12, dy: 16 },
+  ]}
+  vectores={[]}
+  segmentos={[
+    [0, 4, 3, 4],
+    [3, 0, 3, 4],
+    [0, 4, 3, 0],
+  ]}
+  descripcion="Ejes x e y en metros. La masa de 300 kg está en A(0, 4) y la de 400 kg en B(3, 0). El punto C(3, 4) está a 3 m de A y a 4 m de B; el origen O está a 4 m de A y a 3 m de B."
+/>
+
+**i) Potencial en C.** El potencial es una magnitud escalar: se suman los de las dos masas, $V = -G\,m/r$. C(3, 4) está a 3 m de A y a 4 m de B:
+
+$$
+V_C = -G\left(\frac{300}{3} + \frac{400}{4}\right) = -200\,G = -1{,}33 \cdot 10^{-8}\ \text{J/kg}
+$$
+
+**ii) Trabajo del campo del origen a C.** El origen está a 4 m de A y a 3 m de B:
+
+$$
+V_O = -G\left(\frac{300}{4} + \frac{400}{3}\right) = -208{,}3\,G = -1{,}39 \cdot 10^{-8}\ \text{J/kg}
+$$
+
+La fuerza gravitatoria es conservativa, así que su trabajo es menos la variación de energía potencial:
+
+$$
+W_{O \to C} = -\Delta E_p = m\,(V_O - V_C) = 1{,}2 \cdot (-208{,}3 + 200)\,G = -10\,G = -6{,}67 \cdot 10^{-10}\ \text{J}
+$$
+
+**Respuesta.** $V_C = -1{,}33 \cdot 10^{-8}$ J/kg y el campo realiza un trabajo de **$-6{,}67 \cdot 10^{-10}$ J**. Es negativo porque C tiene un potencial mayor (menos negativo) que el origen: la masa se mueve en contra del campo, su energía potencial aumenta y un agente externo tiene que aportar ese trabajo.
+
+</Solucion>
+
+**b2)** Un bloque de 5 kg asciende con velocidad inicial de 8 m s<sup>-1</sup> por un plano inclinado 35º respecto a la horizontal y con rozamiento. El bloque se detiene después de recorrer 2,5 m a lo largo del plano. **i)** (0,25 puntos) Realice un esquema de las fuerzas que intervienen durante el ascenso. **ii)** (0,5 puntos) Determine el aumento de energía potencial. **iii)** (0,75 puntos) Calcule, por razonamientos energéticos, el coeficiente de rozamiento entre el bloque y el plano.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Durante el ascenso actúan el peso $\vec{P}$, la normal $\vec{N}$ y el rozamiento $\vec{F}_r$, que apunta hacia abajo del plano porque se opone al movimiento. No hay ninguna fuerza que empuje el bloque: sube por la velocidad inicial y frena.
+
+<PlanoInclinado angulo={35} mueve="sube" componentes descripcion="Bloque que sube por un plano inclinado 35 grados. El peso P es vertical y se descompone en Px, paralela al plano hacia abajo, y Py, perpendicular; la normal N es perpendicular al plano y el rozamiento Fr es paralelo al plano y hacia abajo, opuesto al movimiento." />
+
+**ii) Aumento de energía potencial.** Al recorrer $d = 2{,}5$ m por el plano, el bloque sube una altura $h = d\sin 35^\circ$:
+
+$$
+\Delta E_p = m\,g\,d\sin 35^\circ = 5 \cdot 9{,}8 \cdot 2{,}5 \cdot 0{,}574 = 70{,}3\ \text{J}
+$$
+
+**iii) Coeficiente de rozamiento.** El trabajo del rozamiento (única fuerza no conservativa que trabaja) es igual a la variación de la energía mecánica. El bloque empieza con energía cinética y termina parado:
+
+$$
+E_{c,0} = \frac{1}{2}m\,v_0^2 = \frac{1}{2} \cdot 5 \cdot 8^2 = 160\ \text{J}
+$$
+
+$$
+W_{F_r} = \Delta E_m = (0 + 70{,}3) - (160 + 0) = -89{,}7\ \text{J}
+$$
+
+Como $W_{F_r} = -\mu\,m\,g\cos 35^\circ \cdot d$:
+
+$$
+\mu = \frac{89{,}7}{m\,g\cos 35^\circ \cdot d} = \frac{89{,}7}{5 \cdot 9{,}8 \cdot 0{,}819 \cdot 2{,}5} = 0{,}894
+$$
+
+**Respuesta.** La energía potencial aumenta **70,3 J** y el coeficiente de rozamiento es **$\mu = 0{,}894$**. Es un rozamiento muy grande: más de la mitad de la energía cinética inicial (89,7 J de 160 J) se disipa en calor. Como $\mu > \tan 35^\circ = 0{,}70$, una vez parado el bloque se queda quieto y no vuelve a bajar.
+
+</Solucion>

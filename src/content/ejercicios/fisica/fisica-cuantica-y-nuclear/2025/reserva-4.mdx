@@ -1,0 +1,91 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2025
+convocatoria: reserva-4
+formato: fisica
+---
+
+**a)** Discuta la veracidad de la siguiente afirmación: en un proceso de desintegración radiactiva, la relación entre los núcleos que quedan sin desintegrar entre dos tiempos *t*<sub>1</sub> y *t*<sub>2</sub> (*t*<sub>2</sub> &gt; *t*<sub>1</sub>), que distan 2*T*<sub>1/2</sub>, es *N*(*t*<sub>2</sub>)/*N*(*t*<sub>1</sub>)=1/4.
+
+<Solucion>
+
+**Verdadera.** Por la ley de desintegración radiactiva, $N(t) = N_0\,e^{-\lambda t}$, con $\lambda = \ln 2/T_{1/2}$. El cociente entre dos instantes solo depende del tiempo transcurrido entre ellos, no del instante inicial:
+
+$$
+\frac{N(t_2)}{N(t_1)} = \frac{N_0\,e^{-\lambda t_2}}{N_0\,e^{-\lambda t_1}} = e^{-\lambda(t_2 - t_1)}
+$$
+
+Con $t_2 - t_1 = 2\,T_{1/2}$:
+
+$$
+\frac{N(t_2)}{N(t_1)} = e^{-\frac{\ln 2}{T_{1/2}} \cdot 2T_{1/2}} = e^{-2\ln 2} = \frac{1}{4}
+$$
+
+Dicho de otro modo: en cada periodo de semidesintegración se desintegra la mitad de los núcleos que quedan, así que tras dos periodos queda la mitad de la mitad, la cuarta parte, sea cual sea el momento en que se empiece a contar.
+
+</Solucion>
+
+**b1)** Tras iluminar un metal caracterizado por un trabajo de extracción de 5·10<sup>-18</sup> J con radiación a una determinada frecuencia, se comprueba que el potencial de frenado es 4,5 V. Calcule razonadamente: **i)** (0,25 puntos) la frecuencia umbral de extracción del metal; **ii)** (0,5 puntos) la energía cinética máxima de los electrones y su velocidad; **iii)** (0,75 puntos) la frecuencia y longitud de onda de la radiación incidente.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Frecuencia umbral.** Es la de un fotón cuya energía es justo el trabajo de extracción:
+
+$$
+f_0 = \frac{W_0}{h} = \frac{5 \cdot 10^{-18}}{6{,}63 \cdot 10^{-34}} = 7{,}54 \cdot 10^{15}\ \text{Hz}
+$$
+
+**ii) Energía cinética máxima y velocidad.** El potencial de frenado detiene justo a los electrones más rápidos:
+
+$$
+E_{c,\text{máx}} = e\,V_f = 1{,}6 \cdot 10^{-19} \cdot 4{,}5 = 7{,}2 \cdot 10^{-19}\ \text{J}
+\qquad
+v_{\text{máx}} = \sqrt{\frac{2E_{c,\text{máx}}}{m_e}} = \sqrt{\frac{2 \cdot 7{,}2 \cdot 10^{-19}}{9{,}1 \cdot 10^{-31}}} = 1{,}26 \cdot 10^{6}\ \text{m/s}
+$$
+
+**iii) Frecuencia y longitud de onda de la radiación.** Por la ecuación de Einstein, $hf = W_0 + E_{c,\text{máx}}$:
+
+$$
+f = \frac{W_0 + E_{c,\text{máx}}}{h} = \frac{5 \cdot 10^{-18} + 0{,}72 \cdot 10^{-18}}{6{,}63 \cdot 10^{-34}} = 8{,}63 \cdot 10^{15}\ \text{Hz}
+\qquad
+\lambda = \frac{c}{f} = \frac{3 \cdot 10^8}{8{,}63 \cdot 10^{15}} = 3{,}48 \cdot 10^{-8}\ \text{m}
+$$
+
+**Respuesta.** $f_0 = 7{,}54 \cdot 10^{15}$ Hz; los electrones salen con $E_{c,\text{máx}} = 7{,}2 \cdot 10^{-19}$ J y $v_{\text{máx}} = 1{,}26 \cdot 10^6$ m/s; y la radiación tiene $f = 8{,}63 \cdot 10^{15}$ Hz y $\lambda = 3{,}48 \cdot 10^{-8}$ m, en el ultravioleta lejano. El trabajo de extracción del enunciado (unos 31 eV) es mucho mayor que el de los metales reales, de pocos electronvoltios, pero son los datos del problema.
+
+</Solucion>
+
+**b2) i)** (1 punto) Determine razonadamente la energía de enlace del <Nuclido a="226" z="88">Ra</Nuclido>. **ii)** (0,5 puntos) Sabiendo que la energía de enlace por nucleón del <Nuclido a="60" z="28">Ni</Nuclido> es aproximadamente 9 MeV/nucleón, justifique cuál de estos dos núcleos es más estable.
+
+<Datos>m(<Nuclido a="226" z="88">Ra</Nuclido>) = 226,025410 u; m<sub>p</sub> = 1,007276 u; m<sub>n</sub> = 1,008665 u; 1 u = 1,66·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Energía de enlace del radio-226.** El núcleo tiene $Z = 88$ protones y $A - Z = 226 - 88 = 138$ neutrones. Su defecto de masa es la diferencia entre la masa de sus nucleones por separado y la del núcleo:
+
+$$
+\Delta m = 88\,m_p + 138\,m_n - m({}^{226}_{88}\text{Ra}) = 88 \cdot 1{,}007276 + 138 \cdot 1{,}008665 - 226{,}025410 = 1{,}810648\ \text{u}
+$$
+
+$$
+E_e = \Delta m\,c^2 = 1{,}810648 \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 2{,}71 \cdot 10^{-10}\ \text{J}
+$$
+
+En megaelectronvoltios $(1\ \text{MeV} = 1{,}6 \cdot 10^{-13}\ \text{J})$:
+
+$$
+E_e = \frac{2{,}71 \cdot 10^{-10}}{1{,}6 \cdot 10^{-13}} = 1{,}69 \cdot 10^{3}\ \text{MeV}
+$$
+
+**ii) Comparación de estabilidad.** La estabilidad la mide la energía de enlace **por nucleón**:
+
+$$
+\frac{E_e}{A} = \frac{1691}{226} = 7{,}48\ \text{MeV/nucleón}
+$$
+
+El níquel-60 tiene unos 9 MeV/nucleón, más que el radio-226, así que **el níquel-60 es más estable**. Aunque la energía de enlace total del radio es mucho mayor (tiene muchos más nucleones), cada nucleón está menos ligado. Los núcleos más estables son los de masa intermedia, cerca del hierro y el níquel; los muy pesados, como el radio, tienden a desintegrarse (el radio-226 es radiactivo).
+
+</Solucion>
