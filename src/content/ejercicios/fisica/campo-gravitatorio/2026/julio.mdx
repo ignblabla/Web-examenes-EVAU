@@ -1,0 +1,154 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2026
+convocatoria: julio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Razone la veracidad de las siguientes afirmaciones: **i)** (0,5 puntos) si el trabajo total realizado sobre una partícula es positivo, su energía cinética necesariamente aumenta; **ii)** (0,5 puntos) si la fuerza resultante es siempre perpendicular a la trayectoria del movimiento del cuerpo, esta no realiza trabajo y, por tanto, no puede variar el módulo de la velocidad.
+
+<Solucion>
+
+**i) Verdadera.** Por el teorema de la energía cinética (o de las fuerzas vivas), el trabajo total realizado sobre una partícula, es decir, el trabajo de la fuerza resultante, es igual a la variación de su energía cinética:
+
+$$
+W_{\text{total}} = \Delta E_c = E_{c,f} - E_{c,i}
+$$
+
+Si $W_{\text{total}} > 0$, entonces $E_{c,f} > E_{c,i}$: la energía cinética aumenta necesariamente. No importa qué fuerzas actúen ni si son conservativas o no.
+
+**ii) Verdadera.** El trabajo elemental de una fuerza es $dW = \vec{F} \cdot d\vec{r} = F\,dr\cos\alpha$. El desplazamiento $d\vec{r}$ es siempre tangente a la trayectoria, así que si la fuerza resultante es siempre perpendicular a ella, $\alpha = 90^\circ$, $\cos\alpha = 0$ y su trabajo es nulo. Por el teorema de la energía cinética:
+
+$$
+W_{\text{total}} = 0 \quad\Rightarrow\quad \Delta E_c = 0 \quad\Rightarrow\quad \frac{1}{2}mv^2 = \text{cte} \quad\Rightarrow\quad |\vec{v}| = \text{cte}
+$$
+
+Una fuerza perpendicular a la trayectoria solo cambia la dirección de la velocidad, no su módulo. Es lo que ocurre en un movimiento circular uniforme (la fuerza centrípeta) o en un satélite en órbita circular, donde la fuerza gravitatoria apunta siempre al centro.
+
+</Solucion>
+
+**a2)** Discuta razonadamente la veracidad de las siguientes afirmaciones. Al aumentar el radio de la órbita de un satélite que gira alrededor de la Tierra: **i)** (0,5 puntos) aumenta su energía cinética; **ii)** (0,5 puntos) aumenta su energía mecánica.
+
+<Solucion>
+
+En una órbita circular de radio $r$, la fuerza gravitatoria de la Tierra es la fuerza centrípeta que mantiene al satélite en su órbita:
+
+$$
+\frac{G\,M_T\,m}{r^2} = \frac{m\,v^2}{r} \quad\Rightarrow\quad v^2 = \frac{G\,M_T}{r}
+$$
+
+**i) Falsa.** La energía cinética del satélite es
+
+$$
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M_T\,m}{2r}
+$$
+
+que es inversamente proporcional al radio: **al aumentar el radio de la órbita, la energía cinética disminuye**. Cuanto más lejos está el satélite, más despacio se mueve.
+
+**ii) Verdadera.** La energía mecánica es la suma de la cinética y la potencial gravitatoria, $E_p = -G\,M_T\,m/r$:
+
+$$
+E_m = E_c + E_p = \frac{G\,M_T\,m}{2r} - \frac{G\,M_T\,m}{r} = -\frac{G\,M_T\,m}{2r}
+$$
+
+Es negativa (el satélite está ligado a la Tierra) y su valor absoluto disminuye al aumentar $r$, así que se hace menos negativa: **la energía mecánica aumenta**. Por eso, para pasar un satélite a una órbita más alta hay que darle energía (encender sus motores): la energía potencial aumenta más de lo que disminuye la cinética.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** Para subir un mueble de 40 kg a la parte trasera de una furgoneta se utiliza una rampa con una inclinación de 30º respecto al suelo y 45 cm de altura. La persona que lo sube ejerce una fuerza paralela a la rampa de 230 N y el coeficiente de rozamiento dinámico entre el mueble y el plano es 0,10. **i)** (0,75 puntos) Realice un esquema con las fuerzas que actúan sobre el cuerpo cuando desliza sobre el plano inclinado y determine el módulo de estas. **ii)** (0,75 puntos) Calcule el trabajo que realiza cada fuerza a lo largo de la rampa y el trabajo total sobre el mueble.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema y módulo de las fuerzas.** Mientras el mueble sube por la rampa actúan sobre él cuatro fuerzas: la fuerza $\vec{F}$ de la persona, paralela a la rampa y hacia arriba; el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, perpendicular a la rampa; y el rozamiento $\vec{F}_r$, paralelo a la rampa y hacia abajo, porque se opone al movimiento de subida.
+
+<PlanoInclinado angulo={30} mueve="sube" aplicada="F" componentes descripcion="Mueble subiendo por una rampa inclinada 30 grados. La fuerza F de la persona es paralela a la rampa y hacia arriba; el peso P es vertical y se descompone en Px, paralela a la rampa hacia abajo, y Py, perpendicular a ella; la normal N es perpendicular a la rampa y el rozamiento Fr, paralelo a la rampa y hacia abajo." />
+
+$$
+F = 230\ \text{N}, \qquad P = mg = 40 \cdot 9{,}8 = 392\ \text{N}
+$$
+
+En la dirección perpendicular a la rampa no hay movimiento, así que la normal equilibra la componente perpendicular del peso:
+
+$$
+N = mg\cos 30^\circ = 392 \cdot 0{,}866 = 339{,}5\ \text{N}
+$$
+
+$$
+F_r = \mu N = 0{,}10 \cdot 339{,}5 = 33{,}95\ \text{N}
+$$
+
+(La componente del peso paralela a la rampa, hacia abajo, es $P_x = mg\sin 30^\circ = 196$ N.)
+
+**ii) Trabajo de cada fuerza.** La longitud de la rampa es
+
+$$
+L = \frac{h}{\sin 30^\circ} = \frac{0{,}45}{0{,}5} = 0{,}9\ \text{m}
+$$
+
+y el trabajo de una fuerza constante es $W = F\,L\cos\alpha$, con $\alpha$ el ángulo entre la fuerza y el desplazamiento (rampa arriba):
+
+- Fuerza de la persona, en el sentido del desplazamiento $(\alpha = 0^\circ)$: $W_F = 230 \cdot 0{,}9 = 207$ J.
+- Peso: solo trabaja su componente paralela, que va en contra del movimiento. Equivale a $-mgh$: $W_P = -mg\sin 30^\circ \cdot L = -196 \cdot 0{,}9 = -176{,}4$ J.
+- Normal, perpendicular al desplazamiento $(\alpha = 90^\circ)$: $W_N = 0$.
+- Rozamiento, en contra del desplazamiento $(\alpha = 180^\circ)$: $W_{F_r} = -33{,}95 \cdot 0{,}9 = -30{,}55$ J (con dos decimales, porque el trabajo total sale muy pequeño).
+
+El trabajo total es la suma de todos:
+
+$$
+W_{\text{total}} = 207 - 176{,}4 + 0 - 30{,}55 = 0{,}05\ \text{J} \approx 0
+$$
+
+**Respuesta.** Las fuerzas valen $F = 230$ N, $P = 392$ N, $N = 339{,}5$ N y $F_r = 33{,}95$ N, y sus trabajos son $W_F = 207$ J, $W_P = -176{,}4$ J, $W_N = 0$ y $W_{F_r} = -30{,}55$ J. El **trabajo total es prácticamente nulo**: la fuerza de la persona compensa casi exactamente la componente del peso y el rozamiento $(230 \approx 196 + 33{,}95)$, así que la resultante es casi cero y el mueble sube con velocidad prácticamente constante. Por el teorema de la energía cinética, su energía cinética apenas cambia.
+
+</Solucion>
+
+**b2)** Marte es un planeta más pequeño y menos masivo que la Tierra con un radio aproximado de 0,532 veces el radio terrestre y una masa de 0,107 veces la masa de la Tierra. Determine: **i)** (0,5 puntos) el peso en la superficie de Marte de un objeto que en la Tierra pesa 400 N; **ii)** (1 punto) la velocidad de escape desde la superficie de Marte.
+
+<Datos>g = 9,8 m s<sup>-2</sup>; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Peso en Marte.** La intensidad del campo gravitatorio en la superficie de un planeta es $g = G\,M/R^2$. Como no tenemos $G$ ni la masa de la Tierra, comparamos Marte con la Tierra:
+
+$$
+\frac{g_M}{g_T} = \frac{G\,M_M/R_M^2}{G\,M_T/R_T^2} = \frac{M_M}{M_T}\left(\frac{R_T}{R_M}\right)^2 = \frac{0{,}107}{0{,}532^2} = 0{,}378
+$$
+
+$$
+g_M = 0{,}378 \cdot 9{,}8 = 3{,}70\ \text{m/s}^2
+$$
+
+La masa del objeto es la misma en los dos planetas, así que su peso es proporcional a $g$:
+
+$$
+P_M = m\,g_M = P_T\,\frac{g_M}{g_T} = 400 \cdot 0{,}378 = 151\ \text{N}
+$$
+
+**ii) Velocidad de escape.** Es la velocidad mínima con la que hay que lanzar un objeto desde la superficie para que llegue al infinito con velocidad nula. Por conservación de la energía mecánica entre la superficie y el infinito (donde $E_c = 0$ y $E_p = 0$):
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M_M\,m}{R_M} = 0 \quad\Rightarrow\quad v_e = \sqrt{\frac{2\,G\,M_M}{R_M}}
+$$
+
+Como $G\,M_M = g_M\,R_M^2$, la expresión queda en función de datos conocidos:
+
+$$
+v_e = \sqrt{2\,g_M\,R_M}, \qquad R_M = 0{,}532 \cdot 6370\ \text{km} = 3{,}39 \cdot 10^{6}\ \text{m}
+$$
+
+$$
+v_e = \sqrt{2 \cdot 3{,}70 \cdot 3{,}39 \cdot 10^{6}} = 5{,}01 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** El objeto pesa **151 N** en Marte y la velocidad de escape desde su superficie es **$5{,}01 \cdot 10^3$ m/s** (unos 5 km/s), menos de la mitad que la de la Tierra (11,2 km/s), porque Marte tiene mucha menos masa.
+
+</Solucion>

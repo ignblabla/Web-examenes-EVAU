@@ -2,19 +2,25 @@
 import { getEntry, render } from "astro:content"
 import SolucionPlegable from "../SolucionPlegable.astro"
 import Bloque from "./Bloque.astro"
+import Datos from "./Datos.astro"
+import Ecuacion from "./Ecuacion.astro"
+import Nuclido from "./Nuclido.astro"
 
 // Bloques del examen con sus soluciones: la parte de este examen que corresponde a un tema,
 // tal como está en src/content/ejercicios. Así el examen completo y la página del tema
 // comparten el mismo texto. En el examen completo las soluciones empiezan plegadas.
+// Con parte (2, 3…), el tramo siguiente de un tema cuyos apartados no van seguidos en el examen.
 interface Props {
   tema: string
+  parte?: number
 }
 
 const { asignatura, anio, examen } = Astro.params
-const id = `${asignatura}/${Astro.props.tema}/${anio}/${examen}`
+const { tema, parte } = Astro.props
+const id = `${asignatura}/${tema}/${anio}/${examen}${parte ? `-${parte}` : ""}`
 const entrada = await getEntry("ejercicios", id)
 if (!entrada) throw new Error(`Faltan los ejercicios resueltos de ${id}`)
 const { Content } = await render(entrada)
 ---
 
-<Content components={{ Bloque, Solucion: SolucionPlegable }} />
+<Content components={{ Bloque, Datos, Ecuacion, Nuclido, Solucion: SolucionPlegable }} />

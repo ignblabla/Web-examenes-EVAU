@@ -1,0 +1,130 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2026
+convocatoria: junio
+formato: fisica
+---
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Se produce emisión de fotoelectrones en una superficie metálica cuando la frecuencia mínima de la radiación monocromática incidente corresponde a luz amarilla. Razone: **i)** (0,5 puntos) ¿qué sucede si se irradia el metal con luz roja? **ii)** (0,5 puntos) ¿Y si se aumenta la intensidad de la radiación monocromática amarilla?
+
+<Solucion>
+
+Según la explicación de Einstein del efecto fotoeléctrico, la luz está formada por fotones de energía $E = hf$, y cada electrón absorbe un único fotón. Solo sale del metal si la energía del fotón supera el trabajo de extracción $W_0 = hf_0$; el resto se convierte en energía cinética:
+
+$$
+hf = W_0 + E_{c,\text{máx}}
+$$
+
+Aquí la frecuencia umbral $f_0$ es la de la luz amarilla.
+
+**i) Luz roja.** La luz roja tiene una frecuencia menor que la amarilla (su longitud de onda es mayor). Sus fotones tienen una energía $hf_{\text{roja}} < hf_0 = W_0$, insuficiente para arrancar un electrón, así que **no hay emisión de fotoelectrones**, por intensa que sea la luz y por mucho tiempo que se ilumine el metal: un electrón no puede acumular la energía de varios fotones.
+
+**ii) Más intensidad de luz amarilla.** Aumentar la intensidad de una radiación monocromática significa que llegan más fotones por segundo, pero cada uno con la misma energía $hf_0$. Por tanto:
+
+- Se arrancan **más electrones por segundo** (aumenta la corriente fotoeléctrica), porque hay más fotones que absorber.
+- La energía cinética máxima de cada electrón **no cambia**: como la luz amarilla corresponde justo a la frecuencia umbral, $E_{c,\text{máx}} = hf_0 - W_0 = 0$, y los electrones salen prácticamente sin energía cinética, sea cual sea la intensidad.
+
+</Solucion>
+
+**a2)** Un protón tiene una masa 1,9 veces mayor que la de un mesón K. Razone: **i)** (0,5 puntos) si tuviesen la misma longitud de onda asociada de De Broglie, ¿cuál de ellos tendría menor velocidad?; **ii)** (0,5 puntos) si tuviesen la misma velocidad, ¿cuál de ellos tendría menor longitud de onda asociada?
+
+<Solucion>
+
+Según la hipótesis de De Broglie, toda partícula con cantidad de movimiento $p = mv$ tiene asociada una onda de longitud
+
+$$
+\lambda = \frac{h}{p} = \frac{h}{m\,v}
+$$
+
+y en este caso $m_p = 1{,}9\,m_K$.
+
+**i) Misma longitud de onda.** Si $\lambda_p = \lambda_K$, las dos partículas tienen la misma cantidad de movimiento, $m_p v_p = m_K v_K$, así que
+
+$$
+\frac{v_p}{v_K} = \frac{m_K}{m_p} = \frac{1}{1{,}9} \approx 0{,}53
+$$
+
+**El protón tiene menor velocidad**: al ser más pesado, necesita menos velocidad para tener la misma cantidad de movimiento.
+
+**ii) Misma velocidad.** Si $v_p = v_K$, la longitud de onda es inversamente proporcional a la masa:
+
+$$
+\frac{\lambda_p}{\lambda_K} = \frac{m_K}{m_p} = \frac{1}{1{,}9} \approx 0{,}53
+$$
+
+**El protón tiene menor longitud de onda**: con la misma velocidad, su cantidad de movimiento es 1,9 veces mayor.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** El cátodo de una célula fotoeléctrica de cobre se ilumina simultáneamente con dos radiaciones monocromáticas de frecuencias *f*<sub>1</sub> = 9,6·10<sup>14</sup> Hz y *f*<sub>2</sub> = 5,5·10<sup>15</sup> Hz. Si el trabajo de extracción del cobre es 4,7 eV: **i)** (0,75 puntos) ¿cuál de las dos radiaciones produce efecto fotoeléctrico?; **ii)** (0,75 puntos) calcule la velocidad máxima de los fotoelectrones emitidos por la radiación que produce dicho efecto. Razone sus respuestas.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Qué radiación produce efecto fotoeléctrico.** Hay efecto fotoeléctrico si la energía de cada fotón, $E = hf$, es mayor que el trabajo de extracción. Pasamos el trabajo de extracción a julios:
+
+$$
+W_0 = 4{,}7\ \text{eV} \cdot 1{,}6 \cdot 10^{-19}\ \frac{\text{J}}{\text{eV}} = 7{,}52 \cdot 10^{-19}\ \text{J}
+$$
+
+$$
+E_1 = hf_1 = 6{,}63 \cdot 10^{-34} \cdot 9{,}6 \cdot 10^{14} = 6{,}36 \cdot 10^{-19}\ \text{J}\ (3{,}98\ \text{eV}) < W_0
+$$
+
+$$
+E_2 = hf_2 = 6{,}63 \cdot 10^{-34} \cdot 5{,}5 \cdot 10^{15} = 3{,}65 \cdot 10^{-18}\ \text{J}\ (22{,}8\ \text{eV}) > W_0
+$$
+
+Equivalentemente, la frecuencia umbral del cobre es $f_0 = W_0/h = 1{,}13 \cdot 10^{15}$ Hz, y solo $f_2$ la supera.
+
+**Solo la radiación de frecuencia $f_2$ produce efecto fotoeléctrico.** Que las dos radiaciones lleguen a la vez no cambia nada: cada electrón absorbe un único fotón, así que las energías de los fotones de $f_1$ no se suman a las de los de $f_2$.
+
+**ii) Velocidad máxima de los fotoelectrones.** Por la ecuación de Einstein del efecto fotoeléctrico:
+
+$$
+E_{c,\text{máx}} = hf_2 - W_0 = 3{,}65 \cdot 10^{-18} - 7{,}52 \cdot 10^{-19} = 2{,}89 \cdot 10^{-18}\ \text{J}
+$$
+
+$$
+v_{\text{máx}} = \sqrt{\frac{2E_{c,\text{máx}}}{m_e}} = \sqrt{\frac{2 \cdot 2{,}89 \cdot 10^{-18}}{9{,}1 \cdot 10^{-31}}} = 2{,}52 \cdot 10^{6}\ \text{m/s}
+$$
+
+**Respuesta.** Los fotoelectrones salen con una velocidad máxima de **$2{,}52 \cdot 10^6$ m/s**. Es menos del 1 % de la velocidad de la luz, así que la expresión clásica de la energía cinética es válida.
+
+</Solucion>
+
+**b2)** Un protón y un electrón son acelerados por una diferencia de potencial de 0,075 V. **i)** (0,75 puntos) Determine la energía cinética de ambas partículas. **ii)** (0,75 puntos) Determine, razonadamente, las longitudes de onda de De Broglie asociadas a ambas partículas.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg; m<sub>p</sub> = 1,67·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Energía cinética.** Suponemos que las dos partículas parten del reposo. El trabajo del campo eléctrico al acelerarlas se convierte en energía cinética, $E_c = |q|\,\Delta V$. El protón y el electrón tienen cargas del mismo valor absoluto, $e$ (cada uno se acelera en el sentido que le corresponde), así que adquieren la misma energía cinética:
+
+$$
+E_c = e\,\Delta V = 1{,}6 \cdot 10^{-19} \cdot 0{,}075 = 1{,}2 \cdot 10^{-20}\ \text{J}
+$$
+
+**ii) Longitudes de onda de De Broglie.** La longitud de onda asociada es $\lambda = h/p$. Expresamos la cantidad de movimiento a partir de la energía cinética, $E_c = p^2/2m \Rightarrow p = \sqrt{2mE_c}$:
+
+$$
+\lambda = \frac{h}{\sqrt{2\,m\,E_c}}
+$$
+
+$$
+\lambda_e = \frac{6{,}63 \cdot 10^{-34}}{\sqrt{2 \cdot 9{,}1 \cdot 10^{-31} \cdot 1{,}2 \cdot 10^{-20}}} = \frac{6{,}63 \cdot 10^{-34}}{1{,}48 \cdot 10^{-25}} = 4{,}49 \cdot 10^{-9}\ \text{m}
+$$
+
+$$
+\lambda_p = \frac{6{,}63 \cdot 10^{-34}}{\sqrt{2 \cdot 1{,}67 \cdot 10^{-27} \cdot 1{,}2 \cdot 10^{-20}}} = \frac{6{,}63 \cdot 10^{-34}}{6{,}33 \cdot 10^{-24}} = 1{,}05 \cdot 10^{-10}\ \text{m}
+$$
+
+**Respuesta.** Las dos partículas tienen **$E_c = 1{,}2 \cdot 10^{-20}$ J**, y sus longitudes de onda son **$\lambda_e = 4{,}49 \cdot 10^{-9}$ m** y **$\lambda_p = 1{,}05 \cdot 10^{-10}$ m**. Con la misma energía cinética, la longitud de onda es inversamente proporcional a $\sqrt{m}$: la del protón es $\sqrt{m_p/m_e} \approx 43$ veces menor que la del electrón.
+
+</Solucion>

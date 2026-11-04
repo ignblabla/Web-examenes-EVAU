@@ -1,0 +1,161 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2026
+convocatoria: reserva-1
+formato: fisica
+---
+
+import ParticulasCampoMagnetico from "../../../../../components/figuras/fisica/ParticulasCampoMagnetico.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Una espira cuadrada gira alrededor de uno de sus ejes de simetría (contenido en el plano de la espira) con velocidad angular constante en una región en la que existe un campo magnético uniforme perpendicular al eje de rotación. Discuta razonadamente cómo varía el valor máximo de la fuerza electromotriz inducida en la espira si se triplica el lado de la espira manteniendo la frecuencia constante, y si se cuadruplica su frecuencia de giro manteniendo el lado constante.
+
+<Solucion>
+
+Al girar la espira, el ángulo entre el campo y el vector superficie cambia con el tiempo, $\alpha = \omega t$, y el flujo que la atraviesa es
+
+$$
+\Phi(t) = B\,S\cos(\omega t), \qquad S = L^2
+$$
+
+donde $L$ es el lado de la espira. Por la ley de Faraday-Lenz, la fuerza electromotriz inducida es
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t)
+\quad\Rightarrow\quad
+\varepsilon_{\text{máx}} = B\,S\,\omega = B\,L^2 \cdot 2\pi f
+$$
+
+**Si se triplica el lado (con la misma frecuencia).** La superficie depende del cuadrado del lado, así que se multiplica por $3^2 = 9$, y la fuerza electromotriz máxima también:
+
+$$
+\varepsilon'_{\text{máx}} = B\,(3L)^2 \cdot 2\pi f = 9\,\varepsilon_{\text{máx}}
+$$
+
+**Si se cuadruplica la frecuencia (con el mismo lado).** La frecuencia angular $\omega = 2\pi f$ se multiplica por 4, y la fuerza electromotriz máxima también, porque el flujo varía cuatro veces más deprisa:
+
+$$
+\varepsilon''_{\text{máx}} = B\,L^2 \cdot 2\pi\,(4f) = 4\,\varepsilon_{\text{máx}}
+$$
+
+**Respuesta.** Triplicando el lado, la fuerza electromotriz máxima **se multiplica por 9**; cuadruplicando la frecuencia, **se multiplica por 4**.
+
+</Solucion>
+
+**a2)** Un electrón y un protón entran con la misma velocidad en una región con un campo magnético constante y uniforme en dirección perpendicular a dicha velocidad. **i)** (0,5 puntos) Explique razonadamente, apoyándose en un esquema, sobre cuál de las partículas actúa una fuerza mayor. **ii)** (0,5 puntos) Explique cuál de ellas describirá una trayectoria con mayor radio.
+
+<Solucion>
+
+**i) Fuerza sobre cada partícula.** Sobre una carga que se mueve en un campo magnético actúa la fuerza de Lorentz:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B} \quad\Rightarrow\quad F = |q|\,v\,B\sin 90^\circ = |q|\,v\,B
+$$
+
+El electrón y el protón tienen cargas del mismo valor absoluto, $e$, y entran con la misma velocidad en el mismo campo, así que **sobre las dos actúa una fuerza del mismo módulo**, $F = e\,v\,B$. Lo que cambia es el sentido: como sus cargas tienen signos opuestos, las fuerzas son opuestas y las partículas se desvían hacia lados contrarios. En el esquema, con el campo entrante en el papel y la velocidad hacia la derecha, la fuerza sobre el protón apunta hacia arriba y la del electrón, hacia abajo.
+
+<ParticulasCampoMagnetico />
+
+**ii) Radio de la trayectoria.** La fuerza magnética es perpendicular a la velocidad, así que no cambia su módulo y actúa como fuerza centrípeta: las partículas describen circunferencias. Igualando:
+
+$$
+|q|\,v\,B = \frac{m\,v^2}{R} \quad\Rightarrow\quad R = \frac{m\,v}{|q|\,B}
+$$
+
+Con la misma carga, velocidad y campo, el radio es proporcional a la masa. **El protón describe la circunferencia de mayor radio**, porque su masa es unas 1836 veces la del electrón: con la misma fuerza, su aceleración centrípeta es mucho menor y su trayectoria se curva mucho menos.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** Un sensor de frenado ABS, que funciona mediante inducción magnética, se modela como una bobina formada por 800 espiras. El mecanismo del sistema hace que el flujo que atraviesa una espira varíe como *ϕ*(*t*) = 10<sup>-6</sup> cos (2π*f t*) Wb. Si la frecuencia, *f*, vale 350 Hz y el circuito posee una resistencia de 50 Ω: **i)** (0,5 puntos) determine la fuerza electromotriz inducida en la bobina en función del tiempo; **ii)** (0,5 puntos) calcule la intensidad de corriente máxima que circula por la espira; **iii)** (0,5 puntos) si se reduce la frecuencia a la mitad, ¿qué variación sufre la fuerza electromotriz inducida máxima?
+
+<Solucion>
+
+**i) Fuerza electromotriz en la bobina.** La frecuencia angular es $\omega = 2\pi f = 2\pi \cdot 350 = 700\pi$ rad/s, así que el flujo a través de cada espira es $\phi(t) = 10^{-6}\cos(700\pi t)$ Wb. La bobina tiene $N = 800$ espiras y en cada una se induce la misma fuerza electromotriz, así que por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -N\,\frac{d\phi}{dt} = -800 \cdot \left[-10^{-6} \cdot 700\pi\sin(700\pi t)\right] = 0{,}56\pi\sin(700\pi t)
+$$
+
+$$
+\varepsilon(t) = 1{,}76\sin(700\pi t)\ \text{V}
+$$
+
+**ii) Intensidad máxima.** Por la ley de Ohm, con la fuerza electromotriz máxima $\varepsilon_{\text{máx}} = 1{,}76$ V:
+
+$$
+I_{\text{máx}} = \frac{\varepsilon_{\text{máx}}}{R} = \frac{1{,}76}{50} = 3{,}52 \cdot 10^{-2}\ \text{A} = 35{,}2\ \text{mA}
+$$
+
+**iii) Si la frecuencia se reduce a la mitad.** La fuerza electromotriz máxima es
+
+$$
+\varepsilon_{\text{máx}} = N\,\phi_0 \cdot 2\pi f
+$$
+
+directamente proporcional a la frecuencia: si el flujo varía la mitad de rápido, la fuerza electromotriz inducida es la mitad. Si $f$ pasa a 175 Hz, **la fuerza electromotriz máxima se reduce a la mitad**, de 1,76 V a **0,88 V**. Por eso el sensor ABS mide la velocidad de la rueda: la señal que genera es proporcional a lo rápido que gira.
+
+</Solucion>
+
+**b2)** Dos hilos conductores rectilíneos, muy largos y paralelos al eje OZ, pasan por el origen de coordenadas A(0,0) cm y por el punto B(20,0) cm. Por ambos hilos circulan corrientes de intensidades *I*<sub>1</sub>= 10 A e *I*<sub>2</sub>= 5 A, respectivamente, dirigidas hacia la parte positiva del eje OZ. Un electrón se encuentra en el punto P(5,0) cm. Calcule, ayudándose de un esquema: **i)** (0,75 puntos) el vector campo magnético total en el punto P; **ii)** (0,75 puntos) el vector fuerza magnética que actúa sobre un electrón en el instante en que penetra en el punto P con una velocidad v = 10<sup>5</sup> m s<sup>−1</sup> de la misma dirección y sentido que las intensidades.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>−7</sup> T m A<sup>−1</sup>; e = 1,6·10<sup>−19</sup> C</Datos>
+
+<Solucion>
+
+**i) Campo magnético en P.** Cada hilo crea un campo de módulo $B = \mu_0 I/(2\pi r)$, tangente a las circunferencias centradas en el hilo; su sentido lo da la regla de la mano derecha. Las corrientes salen del plano XY (sentido $+\vec{k}$). El punto P(5, 0) cm está a $r_1 = 5$ cm del hilo 1 y a $r_2 = 15$ cm del hilo 2:
+
+- P está a la derecha del hilo 1, así que su campo apunta hacia $+\vec{j}$: $\ \vec{k} \times \vec{i} = \vec{j}$.
+- P está a la izquierda del hilo 2, así que su campo apunta hacia $-\vec{j}$: $\ \vec{k} \times (-\vec{i}) = -\vec{j}$.
+
+<Vectores
+  xMin={-2}
+  xMax={23}
+  yMin={-3}
+  yMax={5.5}
+  escala={18}
+  ancha
+  marcasX={[5, 10, 15, 20]}
+  unidad="cm"
+  puntos={[
+    { x: 0, y: 0, texto: "A (I₁)", tipo: "sale", dx: -10, dy: -12 },
+    { x: 20, y: 0, texto: "B (I₂)", tipo: "sale", dx: 10, dy: -12 },
+    { x: 5, y: 0, texto: "P", tipo: "punto", dx: -8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [5, 0], v: [0, 72], texto: "B", sub: "1", dx: 6, dy: 8 },
+    { desde: [5, 0], v: [0, -22], texto: "B", sub: "2", dx: 6, dy: 10 },
+    { desde: [5, 0], v: [50, 0], texto: "F", color: "#b04a3a", dx: 4, dy: -6 },
+  ]}
+  descripcion="Plano XY en centímetros. Los dos hilos atraviesan el plano con la corriente saliendo hacia el lector: el hilo 1 en A(0, 0) y el hilo 2 en B(20, 0). En el punto P(5, 0), el campo B1 del hilo 1 apunta hacia arriba (más largo) y el campo B2 del hilo 2 apunta hacia abajo (más corto). La fuerza F sobre el electrón, que sale del plano con la corriente, apunta hacia la derecha, hacia el hilo 2."
+/>
+
+$$
+B_1 = \frac{\mu_0\,I_1}{2\pi r_1} = \frac{4\pi \cdot 10^{-7} \cdot 10}{2\pi \cdot 0{,}05} = 4 \cdot 10^{-5}\ \text{T}
+\qquad
+B_2 = \frac{\mu_0\,I_2}{2\pi r_2} = \frac{4\pi \cdot 10^{-7} \cdot 5}{2\pi \cdot 0{,}15} = 6{,}67 \cdot 10^{-6}\ \text{T}
+$$
+
+$$
+\vec{B} = \vec{B}_1 + \vec{B}_2 = 4 \cdot 10^{-5}\,\vec{j} - 6{,}67 \cdot 10^{-6}\,\vec{j} = 3{,}33 \cdot 10^{-5}\,\vec{j}\ \ \text{T}
+$$
+
+**ii) Fuerza sobre el electrón.** Por la ley de Lorentz, con $q = -e$ y $\vec{v} = 10^5\,\vec{k}$ m/s:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B} = (-1{,}6 \cdot 10^{-19}) \cdot \left(10^5\,\vec{k} \times 3{,}33 \cdot 10^{-5}\,\vec{j}\right)
+$$
+
+Como $\vec{k} \times \vec{j} = -\vec{i}$:
+
+$$
+\vec{F} = (-1{,}6 \cdot 10^{-19}) \cdot 3{,}33 \cdot (-\vec{i}) = 5{,}33 \cdot 10^{-19}\,\vec{i}\ \ \text{N}
+$$
+
+**Respuesta.** El campo magnético en P es **$\vec{B} = 3{,}33 \cdot 10^{-5}\,\vec{j}$ T** y la fuerza sobre el electrón es **$\vec{F} = 5{,}33 \cdot 10^{-19}\,\vec{i}$ N**, dirigida hacia el hilo 2. Un protón con la misma velocidad sufriría una fuerza del mismo módulo y sentido contrario.
+
+</Solucion>

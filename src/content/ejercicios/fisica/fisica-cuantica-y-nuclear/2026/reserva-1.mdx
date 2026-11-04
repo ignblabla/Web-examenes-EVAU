@@ -1,0 +1,60 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2026
+convocatoria: reserva-1
+formato: fisica
+---
+
+<Bloque nivel={3}><strong><u>Responda a y b</u></strong></Bloque>
+
+**a)** Una placa de sodio se ilumina con luz monocromática provocando la emisión de fotoelectrones. Razone: **i)** (0,5 puntos) si la intensidad de la radiación se duplica, ¿cómo cambia la velocidad máxima de los fotoelectrones emitidos?; **ii)** (0,5 puntos) si disminuye paulatinamente la frecuencia de la luz incidente, ¿qué ocurre con el número de fotoelectrones emitidos?
+
+<Solucion>
+
+Según la explicación de Einstein del efecto fotoeléctrico, la luz está formada por fotones de energía $E = hf$; cada electrón absorbe un solo fotón y sale con una energía cinética máxima
+
+$$
+E_{c,\text{máx}} = \frac{1}{2}m_e\,v_{\text{máx}}^2 = hf - W_0
+$$
+
+donde $W_0 = hf_0$ es el trabajo de extracción del sodio.
+
+**i) Si se duplica la intensidad.** Duplicar la intensidad de una luz monocromática es duplicar el número de fotones que llegan por segundo, pero cada fotón tiene la misma energía $hf$. Por la ecuación de Einstein, la energía cinética máxima, que solo depende de $f$ y de $W_0$, no cambia, así que **la velocidad máxima de los fotoelectrones no cambia**. Lo que se duplica es el número de fotoelectrones emitidos por segundo (la corriente fotoeléctrica).
+
+**ii) Si disminuye poco a poco la frecuencia.** Cada fotón lleva cada vez menos energía:
+
+- Mientras la frecuencia sea mayor que la umbral $(f > f_0)$, los fotones siguen arrancando electrones. El número de fotoelectrones depende del número de fotones que llegan, no de su frecuencia, así que si llegan los mismos fotones por segundo se emiten los mismos electrones, aunque cada vez con menos energía cinética.
+- Cuando la frecuencia baja de la umbral $(f < f_0)$, ningún fotón tiene energía suficiente para arrancar un electrón y **el número de fotoelectrones cae a cero**, por intensa que sea la luz.
+
+</Solucion>
+
+**b)** Para detectar la radiación ultravioleta procedente del sol se puede utilizar una célula fotoeléctrica de cobalto. Al iluminar el cátodo de cobalto con luz de frecuencia 1,66·10<sup>15</sup> Hz se emiten fotoelectrones cuyo potencial de frenado es 1,88 V. Calcule razonadamente: **i)** (0,75 puntos) la energía cinética máxima y la velocidad de los fotoelectrones emitidos; **ii)** (0,75 puntos) el trabajo de extracción del cobalto.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Energía cinética máxima y velocidad.** El potencial de frenado es la diferencia de potencial que hay que aplicar para detener los fotoelectrones más rápidos: el trabajo del campo eléctrico frenándolos es igual a su energía cinética máxima.
+
+$$
+E_{c,\text{máx}} = e\,V_f = 1{,}6 \cdot 10^{-19} \cdot 1{,}88 = 3{,}01 \cdot 10^{-19}\ \text{J}
+$$
+
+$$
+v_{\text{máx}} = \sqrt{\frac{2E_{c,\text{máx}}}{m_e}} = \sqrt{\frac{2 \cdot 3{,}01 \cdot 10^{-19}}{9{,}1 \cdot 10^{-31}}} = 8{,}13 \cdot 10^{5}\ \text{m/s}
+$$
+
+**ii) Trabajo de extracción.** Por la ecuación de Einstein del efecto fotoeléctrico, $hf = W_0 + E_{c,\text{máx}}$:
+
+$$
+W_0 = hf - E_{c,\text{máx}} = 6{,}63 \cdot 10^{-34} \cdot 1{,}66 \cdot 10^{15} - 3{,}01 \cdot 10^{-19}
+$$
+
+$$
+W_0 = 1{,}10 \cdot 10^{-18} - 3{,}01 \cdot 10^{-19} = 8{,}00 \cdot 10^{-19}\ \text{J}
+$$
+
+**Respuesta.** Los fotoelectrones salen con una energía cinética máxima de **$3{,}01 \cdot 10^{-19}$ J** y una velocidad máxima de **$8{,}13 \cdot 10^5$ m/s**, y el trabajo de extracción del cobalto es **$8{,}00 \cdot 10^{-19}$ J**, unos 5,0 eV. Su frecuencia umbral, $f_0 = W_0/h = 1{,}21 \cdot 10^{15}$ Hz, está en el ultravioleta, así que la célula solo responde a esa radiación, que es justo lo que se quiere detectar.
+
+</Solucion>

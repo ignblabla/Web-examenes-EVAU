@@ -1,0 +1,85 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2026
+convocatoria: junio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+<Bloque nivel={3}><strong><u>Responda a y b</u></strong></Bloque>
+
+**a)** Razone la veracidad de las siguientes afirmaciones: **i)** (0,5 puntos) para que la energía mecánica se conserve es necesario que la resultante de todas las fuerzas que actúan sobre un cuerpo sea nula; **ii)** (0,5 puntos) la energía mecánica se conserva cuando sobre un cuerpo actúan solo fuerzas conservativas.
+
+<Solucion>
+
+La clave de las dos afirmaciones es el teorema de la energía mecánica. El trabajo total sobre un cuerpo es igual a la variación de su energía cinética, $W_{\text{total}} = \Delta E_c$, y el trabajo de las fuerzas conservativas es igual a menos la variación de la energía potencial, $W_c = -\Delta E_p$. Restando las dos igualdades:
+
+$$
+W_{nc} = W_{\text{total}} - W_c = \Delta E_c + \Delta E_p = \Delta E_m
+$$
+
+La energía mecánica solo cambia por el trabajo de las fuerzas no conservativas $(W_{nc})$.
+
+**i) Falsa.** Para que la energía mecánica se conserve basta con que el trabajo de las fuerzas no conservativas sea nulo; la resultante no tiene por qué ser cero. Por ejemplo, en una caída libre la única fuerza es el peso, así que la resultante no es nula $(\vec{F} = m\vec{g})$, y sin embargo la energía mecánica se conserva: lo que gana el cuerpo en energía cinética lo pierde en potencial.
+
+Tampoco al revés: si se sube un cuerpo con velocidad constante tirando de una cuerda, la resultante es nula y la energía cinética no cambia, pero la potencial aumenta, así que la energía mecánica aumenta (la tensión de la cuerda hace un trabajo positivo).
+
+**ii) Verdadera.** Si sobre el cuerpo solo actúan fuerzas conservativas (el peso, la fuerza elástica, la fuerza eléctrica…), no hay trabajo de fuerzas no conservativas, $W_{nc} = 0$, y por tanto $\Delta E_m = 0$: la energía mecánica se conserva. Es el principio de conservación de la energía mecánica.
+
+</Solucion>
+
+**b)** Un niño de 15 kg resbala desde el reposo a lo largo de un tobogán de 2 m de altura cuya inclinación con respecto a la horizontal es de 30º. Sabiendo que el coeficiente de rozamiento dinámico es 0,25: **i)** (0,75 puntos) realice un esquema con las fuerzas que actúan sobre el niño y determine el trabajo de la fuerza de rozamiento. **ii)** (0,75 puntos) Calcule la energía cinética del niño al final del tobogán y la velocidad con la que llega. Responda razonadamente.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre el niño actúan el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, perpendicular al tobogán; y la fuerza de rozamiento $\vec{F}_r$, paralela al tobogán y hacia arriba, porque se opone al deslizamiento. Descomponemos el peso en una componente paralela al plano $(\vec{P}_x)$ y otra perpendicular $(\vec{P}_y)$:
+
+<PlanoInclinado angulo={30} mueve="baja" componentes descripcion="Niño en un tobogán inclinado 30 grados que baja hacia la derecha. El peso P es vertical hacia abajo y se descompone en Px, paralela al plano hacia abajo, y Py, perpendicular al plano. La normal N es perpendicular al plano hacia fuera y la fuerza de rozamiento Fr es paralela al plano y hacia arriba." />
+
+$$
+P = mg = 15 \cdot 9{,}8 = 147\ \text{N}
+$$
+
+En la dirección perpendicular al plano no hay movimiento, así que la normal equilibra la componente perpendicular del peso:
+
+$$
+N = P_y = mg\cos 30^\circ = 147 \cdot 0{,}866 = 127{,}3\ \text{N}
+$$
+
+$$
+F_r = \mu N = 0{,}25 \cdot 127{,}3 = 31{,}8\ \text{N}
+$$
+
+La longitud del tobogán sale de su altura y de su inclinación:
+
+$$
+L = \frac{h}{\sin 30^\circ} = \frac{2}{0{,}5} = 4\ \text{m}
+$$
+
+El rozamiento tiene sentido contrario al desplazamiento (forman $180^\circ$), así que su trabajo es negativo:
+
+$$
+W_{F_r} = F_r\, L \cos 180^\circ = -31{,}8 \cdot 4 = -127{,}3\ \text{J}
+$$
+
+**ii) Energía cinética y velocidad al final.** El rozamiento es la única fuerza no conservativa que trabaja (la normal es perpendicular al desplazamiento y no hace trabajo), así que $W_{F_r} = \Delta E_m$. Tomando el nivel cero de energía potencial al pie del tobogán, y como el niño parte del reposo:
+
+$$
+W_{F_r} = (E_{c,f} + 0) - (0 + mgh) \quad\Rightarrow\quad E_{c,f} = mgh + W_{F_r}
+$$
+
+$$
+E_{c,f} = 15 \cdot 9{,}8 \cdot 2 - 127{,}3 = 294 - 127{,}3 = 166{,}7\ \text{J}
+$$
+
+$$
+v = \sqrt{\frac{2E_{c,f}}{m}} = \sqrt{\frac{2 \cdot 166{,}7}{15}} = 4{,}71\ \text{m/s}
+$$
+
+**Respuesta.** El trabajo del rozamiento es **$W_{F_r} = -127{,}3$ J**, y el niño llega al final del tobogán con **$E_c = 166{,}7$ J** y una velocidad de **$4{,}71$ m/s**. Sin rozamiento llegaría con $\sqrt{2gh} = 6{,}26$ m/s: el rozamiento disipa en calor el 43 % de la energía potencial inicial.
+
+</Solucion>

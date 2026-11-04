@@ -35,33 +35,40 @@ if (!tema) throw new Error(`Tema desconocido: ${slug}/${temaSlug}`)
 const curso = cursos.find((c) => c.anio === anio)
 const examenes = curso ? examenesDe(curso) : []
 
-// Los ejercicios se ordenan como las convocatorias: junio, julio y las reservas.
-const entradas = (await getCollection("ejercicios"))
+// Los ejercicios se ordenan como las convocatorias: junio, julio y las reservas, y dentro de
+// cada examen, por partes (cuando los apartados del tema no van seguidos en el examen).
+const archivos = (await getCollection("ejercicios"))
   .filter((e) => e.data.asignatura === slug && e.data.tema === temaSlug && e.data.anio === anio)
-  .map((entrada) => ({
-    entrada,
-    orden: examenes.findIndex((e) => e.slug === entrada.data.convocatoria),
-    examen: examenes.find((e) => e.slug === entrada.data.convocatoria),
-  }))
+  .sort((a, b) => (a.data.parte ?? 1) - (b.data.parte ?? 1))
+const entradas = [...new Set(archivos.map((e) => e.data.convocatoria))]
+  .map((convocatoria) => {
+    const partes = archivos.filter((e) => e.data.convocatoria === convocatoria)
+    return {
+      entrada: partes[0],
+      partes,
+      orden: examenes.findIndex((e) => e.slug === convocatoria),
+      examen: examenes.find((e) => e.slug === convocatoria),
+    }
+  })
   .sort((a, b) => a.orden - b.orden)
 
 const examenesPublicados = new Set((await getCollection("examenes")).map((e) => e.id))
 
 const secciones = await Promise.all(
-  entradas.map(async ({ entrada, examen }) => {
-    const { Content } = await render(entrada)
+  entradas.map(async ({ entrada, partes, examen }) => {
+    const contenidos = await Promise.all(partes.map(async (p) => (await render(p)).Content))
     const nombre = examen?.titulo ?? entrada.data.convocatoria
     const tipo = examen ? tipoLargo(examen.tipo) : ""
     const enlace =
       examen && examenesPublicados.has(`${slug}/${anio}/${examen.slug}`)
         ? rutaExamen(slug, anio, examen)
         : undefined
-    return { entrada, Content, nombre, tipo, enlace }
+    return { entrada, contenidos, nombre, tipo, enlace }
   }),
 )
 
 const termino = tema.termino ?? tema.titulo
-const { publicado, modificado } = fechas(entradas.map((e) => e.entrada.filePath ?? ""))
+const { publicado, modificado } = fechas(archivos.map((e) => e.filePath ?? ""))
 
 // El title más completo que quepa en 60 caracteres.
 const corto = nombreSeo(asignatura)
@@ -156,7 +163,7 @@ const jsonLd = {
   <section class="exam-body">
     <div class="container">
       {
-        secciones.map(({ entrada, Content, nombre, tipo, enlace }) => (
+        secciones.map(({ entrada, contenidos, nombre, tipo, enlace }) => (
           <details class="topic-exam" id={entrada.data.convocatoria}>
             <summary class="topic-exam-head">
               <div>
@@ -183,9 +190,11 @@ const jsonLd = {
                 class={`official-statement official-statement--${entrada.data.formato}`}
                 lang={asignatura.idioma}
               >
-                <Content
-                  components={{ Bloque: BloqueTema, Datos, Ecuacion, Ejercicio, Nuclido, Solucion }}
-                />
+                {contenidos.map((Content) => (
+                  <Content
+                    components={{ Bloque: BloqueTema, Datos, Ecuacion, Ejercicio, Nuclido, Solucion }}
+                  />
+                ))}
               </div>
             </div>
           </details>

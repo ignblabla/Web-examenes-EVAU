@@ -1,0 +1,43 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2026
+convocatoria: junio
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**a1)** Se sitúa un objeto luminoso delante de una lente divergente. Dibuje el trazado de rayos e indique razonadamente las características de la imagen obtenida.
+
+<Solucion>
+
+**Trazado de rayos.** Usamos el criterio de signos DIN: la luz viaja de izquierda a derecha, el origen está en la lente y el objeto queda a la izquierda $(s < 0)$. En una lente divergente la distancia focal imagen es negativa, así que el foco imagen $F'$ está a la izquierda de la lente y el foco objeto $F$, a la derecha. Desde el extremo superior del objeto trazamos dos rayos (con un tercero de comprobación):
+
+- **(1)** El rayo paralelo al eje sale de la lente alejándose del eje, como si viniera del foco imagen $F'$.
+- **(2)** El rayo que pasa por el centro óptico no se desvía.
+- **(3)** El rayo que se dirige hacia el foco objeto $F$ sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4.6} xMax={3.6} descripcion="Trazado de rayos de una lente divergente con el objeto a la izquierda, más allá del foco. El rayo paralelo al eje sale divergiendo como si viniera del foco imagen F', a la izquierda; el rayo por el centro óptico no se desvía; el rayo dirigido al foco objeto F, a la derecha, sale paralelo. Las prolongaciones hacia atrás de los rayos se cortan entre F' y la lente, donde se forma una imagen virtual, derecha y más pequeña que el objeto." />
+
+Los rayos que salen de la lente divergen y no se cortan; son sus **prolongaciones** hacia atrás (en discontinua) las que se cortan, entre el foco $F'$ y la lente.
+
+**Características de la imagen.** La imagen es:
+
+- **Virtual**, porque se forma con las prolongaciones de los rayos, no con los rayos mismos, y no se puede recoger en una pantalla.
+- **Derecha**, con la misma orientación que el objeto.
+- **Más pequeña** que el objeto.
+- Situada al mismo lado que el objeto, **entre el foco imagen y la lente**.
+
+Lo confirma la ecuación de las lentes delgadas. Con $s < 0$ y $f' < 0$:
+
+$$
+\frac{1}{s'} = \frac{1}{f'} + \frac{1}{s} < 0
+\quad\Rightarrow\quad s' < 0 \ \text{y}\ |s'| < |f'|,\ |s'| < |s|
+\qquad
+A = \frac{y'}{y} = \frac{s'}{s},\quad 0 < A < 1
+$$
+
+Estas características no dependen de dónde esté el objeto: una lente divergente da siempre, de un objeto real, una imagen virtual, derecha y menor.
+
+</Solucion>

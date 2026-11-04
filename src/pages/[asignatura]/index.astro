@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content"
 import Icon from "../../components/Icon.astro"
 import SubjectSymbol from "../../components/SubjectSymbol.astro"
-import { asignaturas, nombreSeo, type Asignatura } from "../../data/asignaturas"
+import { asignaturas, cursoDe, nombreSeo, type Asignatura } from "../../data/asignaturas"
 import {
   cursos,
   examenesDe,
@@ -33,7 +33,8 @@ const { slug, temas } = asignatura
 
 // Cursos de la asignatura: desde su primer año con exámenes hasta el último.
 const desde = asignatura.desde ?? primerAnio
-const cursosAsignatura = cursos.filter((c) => c.anio >= desde)
+// Cada curso, con solo los exámenes de reserva que existen en la asignatura.
+const cursosAsignatura = cursos.filter((c) => c.anio >= desde).map((c) => cursoDe(asignatura, c))
 const totalExamenes = cursosAsignatura.reduce((n, c) => n + examenesDe(c).length, 0)
 
 // Solo se enlazan los exámenes que ya están publicados; el resto se muestran sin enlace.
@@ -55,9 +56,19 @@ const tono = (i: number) =>
 // La tarjeta final ocupa los huecos que dejan los temas en la última fila.
 const ctaSpan = `--cta-span-3: ${3 - (temas.length % 3)}; --cta-span-2: ${2 - (temas.length % 2)}`
 
+// Si en algún curso no están las cuatro reservas, los textos no prometen cuatro.
+const reservasPorCurso = new Set(cursosAsignatura.map((c) => c.reservas.length))
+const cuatroReservas = reservasPorCurso.size === 1 && reservasPorCurso.has(4)
+const unaReserva = reservasPorCurso.size === 1 && reservasPorCurso.has(1)
+const reservasPanel = cuatroReservas ? "4 exámenes" : unaReserva ? "1 examen" : "Varias"
+
 const filas = [
   { titulo: "Exámenes oficiales", nota: "Ordinaria y extraordinaria", campo: "oficiales" },
-  { titulo: "Exámenes de reserva", nota: "Cuatro modelos por curso", campo: "reservas" },
+  {
+    titulo: "Exámenes de reserva",
+    nota: cuatroReservas ? "Cuatro modelos por curso" : "Los modelos disponibles",
+    campo: "reservas",
+  },
 ] as const
 
 // El title más completo que quepa en 60 caracteres.
@@ -162,7 +173,7 @@ const jsonLd = {
           </li>
           <li>
             <span>Reservas</span>
-            <strong>4 exámenes</strong>
+            <strong>{reservasPanel}</strong>
           </li>
         </ul>
       </aside>
@@ -182,8 +193,11 @@ const jsonLd = {
           <em>Cada año.</em>
         </h2>
         <p>
-          Cada curso tiene una convocatoria ordinaria en junio, una extraordinaria en julio y
-          cuatro exámenes de reserva.
+          {
+            cuatroReservas
+              ? "Cada curso tiene una convocatoria ordinaria en junio, una extraordinaria en julio y cuatro exámenes de reserva."
+              : "Cada curso tiene una convocatoria ordinaria en junio, una extraordinaria en julio y los exámenes de reserva que se han podido encontrar."
+          }
         </p>
       </div>
 

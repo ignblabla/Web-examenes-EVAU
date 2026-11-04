@@ -1,0 +1,29 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2026
+convocatoria: reserva-1
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**a1)** Suponiendo un objeto real, justifique, apoyándose de un trazado de rayos, qué tipo de imagen se obtiene indicando sus características: **i)** (0,5 puntos) con una lente divergente; **ii)** (0,5 puntos) con un espejo esférico convexo.
+
+<Solucion>
+
+Usamos el criterio de signos DIN: la luz va de izquierda a derecha, el origen está en la lente o en el espejo y el objeto real queda a la izquierda $(s < 0)$.
+
+**i) Lente divergente.** Su distancia focal imagen es negativa: el foco imagen $F'$ queda a la izquierda de la lente y el foco objeto $F$, a la derecha. Trazamos desde el extremo del objeto el rayo paralelo al eje, que sale como si viniera de $F'$; el rayo por el centro óptico, que no se desvía; y el rayo dirigido hacia $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4.6} xMax={3.6} descripcion="Trazado de rayos de una lente divergente con un objeto real a la izquierda. El rayo paralelo al eje sale divergiendo como si viniera del foco imagen F', el rayo por el centro óptico no se desvía y el rayo dirigido al foco objeto F sale paralelo. Las prolongaciones de los rayos se cortan entre F' y la lente: la imagen es virtual, derecha y menor." />
+
+Los rayos refractados divergen; se cortan sus prolongaciones, entre $F'$ y la lente. La imagen es **virtual, derecha y de menor tamaño** que el objeto, y está al mismo lado que este, entre el foco imagen y la lente. Así es para cualquier posición del objeto: con $s < 0$ y $f' < 0$, la ecuación $1/s' = 1/f' + 1/s$ da siempre $s' < 0$ con $|s'| < |s|$, y el aumento $A = s'/s$ está entre 0 y 1.
+
+**ii) Espejo esférico convexo.** Su centro de curvatura $C$ y su foco $F$ están detrás del espejo (a la derecha), con $f = R/2 > 0$. Trazamos el rayo paralelo al eje, que se refleja como si viniera del foco; el rayo dirigido hacia el centro de curvatura, que se refleja sobre sí mismo; y el rayo dirigido hacia el foco, que se refleja paralelo al eje.
+
+<TrazadoRayos tipo="convexo" f={2} s={-3} y={1} xMin={-4.4} xMax={4.6} descripcion="Trazado de rayos de un espejo convexo con un objeto real a la izquierda. El rayo paralelo al eje se refleja como si viniera del foco F, situado detrás del espejo; el rayo dirigido al centro de curvatura C se refleja sobre sí mismo; el rayo dirigido al foco se refleja paralelo al eje. Las prolongaciones de los rayos reflejados se cortan detrás del espejo, entre el espejo y el foco: la imagen es virtual, derecha y menor." />
+
+Los rayos reflejados divergen y son sus prolongaciones las que se cortan, detrás del espejo, entre este y el foco. La imagen es **virtual, derecha y de menor tamaño** que el objeto, también para cualquier posición del objeto. Es la razón por la que se usan espejos convexos en los retrovisores y en los cruces de calles: dan una imagen derecha y reducida con un gran campo de visión.
+
+</Solucion>

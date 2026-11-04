@@ -1,0 +1,175 @@
+---
+// Trazado de rayos de una lente delgada o de un espejo esférico, con el criterio de signos
+// DIN: la luz va de izquierda a derecha, el elemento está en x = 0 y el objeto a la izquierda
+// (s < 0). Para una lente, f es la distancia focal imagen f'; para un espejo, f = R/2 (positiva
+// en un espejo convexo). La imagen se calcula con las ecuaciones y los rayos se trazan hacia
+// ella, así que el dibujo siempre es coherente con el cálculo. El eje vertical se amplía si el
+// objeto es muy pequeño frente a las distancias (no está a escala).
+interface Props {
+  tipo: "convergente" | "divergente" | "concavo" | "convexo"
+  f: number
+  s: number
+  y: number
+  xMin: number
+  xMax: number
+  descripcion: string
+  // Texto de las etiquetas del objeto y de la imagen.
+  objeto?: string
+  imagen?: string
+}
+
+const { tipo, f, s, y, xMin, xMax, descripcion, objeto = "y", imagen = "y′" } = Astro.props
+const lente = tipo === "convergente" || tipo === "divergente"
+
+// Ecuaciones: lente 1/s' − 1/s = 1/f', A = s'/s; espejo 1/s' + 1/s = 1/f, A = −s'/s.
+const sp = lente ? 1 / (1 / f + 1 / s) : 1 / (1 / f - 1 / s)
+const yp = (lente ? sp / s : -sp / s) * y
+// La imagen es virtual si está detrás de la lente por el lado del objeto, o detrás del espejo.
+const virtual = lente ? sp < 0 : sp > 0
+const salida = lente ? 1 : -1
+
+const anchoSvg = 460
+const altoSvg = 220
+const eje = altoSvg / 2
+const ky = 72 / Math.max(Math.abs(y), Math.abs(yp))
+const px = (x: number) => 20 + ((x - xMin) / (xMax - xMin)) * (anchoSvg - 40)
+const py = (v: number) => eje - v * ky
+const p = (x: number, v: number) => `${px(x).toFixed(1)} ${py(v).toFixed(1)}`
+
+// Rayos principales: paralelo al eje, por el centro óptico (lente) o el centro de curvatura
+// (espejo), y por el foco objeto (lente) o el foco (espejo), que sale paralelo.
+const objetivos = lente ? [null, 0, -f] : [null, 2 * f, f]
+const rayos = objetivos.flatMap((q) => {
+  const h = q === null ? y : y + ((0 - s) * (0 - y)) / (q - s)
+  if (!Number.isFinite(h) || Math.abs(h * ky) > 105) return []
+  // Dirección de salida: hacia la imagen si es real y alejándose de ella si es virtual.
+  let dx = sp
+  let dy = yp - h
+  if (Math.sign(dx) !== salida) {
+    dx = -dx
+    dy = -dy
+  }
+  const borde = salida > 0 ? xMax : xMin
+  const t = (borde - 0) / dx
+  const fin = { x: borde, y: h + dy * t }
+  // Si la salida se va fuera por arriba o por abajo, se recorta al alto del dibujo.
+  const limite = 104 / ky
+  if (Math.abs(fin.y) > limite) {
+    const tt = (Math.sign(fin.y) * limite - h) / dy
+    fin.x = dx * tt
+    fin.y = Math.sign(fin.y) * limite
+  }
+  // Prolongación hacia el punto al que apunta el rayo incidente, si está al otro lado.
+  const apunta = q !== null && q > 0 ? `M${p(0, h)}L${p(q, 0)}` : ""
+  return [
+    {
+      entrada: `M${p(s, y)}L${p(0, h)}`,
+      salida: `M${p(0, h)}L${p(fin.x, fin.y)}`,
+      prolongacion: virtual ? `M${p(0, h)}L${p(sp, yp)}` : "",
+      apunta,
+    },
+  ]
+})
+
+const focos = lente
+  ? [
+      { x: -f, texto: "F" },
+      { x: f, texto: "F′" },
+    ]
+  : [
+      { x: f, texto: "F" },
+      { x: 2 * f, texto: "C" },
+    ]
+const alturaElemento = 92
+const id = `rayos-${Math.round(Math.random() * 1e9)}`
+const x0 = px(0)
+
+// Rayitas en la cara de atrás del espejo (la derecha). La curva del espejo se aproxima por
+// x = x0 ± 8 (v/H)², la misma que traza la curva de Bézier del dibujo.
+const curva = (v: number) => x0 + (tipo === "convexo" ? 8 : -8) * (v / alturaElemento) ** 2
+const rayitas = Array.from({ length: 12 }, (_, i) => {
+  const v = -alturaElemento + 10 + i * 15
+  const x = curva(v)
+  return `M${(x + 1).toFixed(1)} ${(eje + v).toFixed(1)}l7 -7`
+})
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg viewBox={`0 0 ${anchoSvg} ${altoSvg}`} role="img" aria-label={descripcion}>
+    <defs>
+      <marker id={`${id}-o`} viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#195c51" />
+      </marker>
+      <marker id={`${id}-l`} viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+    </defs>
+
+    <path d={`M10 ${eje}H${anchoSvg - 10}`} stroke="#111" stroke-width="1" />
+
+    {
+      lente ? (
+        tipo === "convergente" ? (
+          <path
+            d={`M${x0} ${eje + alturaElemento}V${eje - alturaElemento}`}
+            stroke="#111"
+            stroke-width="1.6"
+            marker-start={`url(#${id}-l)`}
+            marker-end={`url(#${id}-l)`}
+          />
+        ) : (
+          <g stroke="#111" stroke-width="1.6" fill="none">
+            <path d={`M${x0} ${eje + alturaElemento}V${eje - alturaElemento}`} />
+            <path d={`M${x0 - 6} ${eje - alturaElemento - 7}L${x0} ${eje - alturaElemento}L${x0 + 6} ${eje - alturaElemento - 7}`} />
+            <path d={`M${x0 - 6} ${eje + alturaElemento + 7}L${x0} ${eje + alturaElemento}L${x0 + 6} ${eje + alturaElemento + 7}`} />
+          </g>
+        )
+      ) : (
+        <g stroke="#111" fill="none">
+          <path
+            d={
+              tipo === "convexo"
+                ? `M${x0 + 8} ${eje - alturaElemento}Q${x0 - 8} ${eje} ${x0 + 8} ${eje + alturaElemento}`
+                : `M${x0 - 8} ${eje - alturaElemento}Q${x0 + 8} ${eje} ${x0 - 8} ${eje + alturaElemento}`
+            }
+            stroke-width="1.8"
+          />
+          {rayitas.map((r) => (
+            <path d={r} stroke-width="0.9" />
+          ))}
+        </g>
+      )
+    }
+
+    <g stroke="#b04a3a" stroke-width="1.2" fill="none">
+      {rayos.map((r) => <path d={r.entrada} />)}
+      {rayos.map((r) => <path d={r.salida} />)}
+    </g>
+    <g stroke="#b04a3a" stroke-width="1" fill="none" stroke-dasharray="4 3" opacity="0.75">
+      {rayos.map((r) => r.prolongacion && <path d={r.prolongacion} />)}
+      {rayos.map((r) => r.apunta && <path d={r.apunta} />)}
+    </g>
+
+    <path d={`M${px(s)} ${eje}V${py(y)}`} stroke="#195c51" stroke-width="2.4" marker-end={`url(#${id}-o)`} />
+    <path
+      d={`M${px(sp)} ${eje}V${py(yp)}`}
+      stroke="#195c51"
+      stroke-width="2.4"
+      stroke-dasharray={virtual ? "5 3" : undefined}
+      marker-end={`url(#${id}-o)`}
+    />
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11">
+      {
+        focos.map((foco) => (
+          <g>
+            <circle cx={px(foco.x)} cy={eje} r="2.5" fill="#111" />
+            <text x={px(foco.x)} y={eje + 15} text-anchor="middle">{foco.texto}</text>
+          </g>
+        ))
+      }
+      <text x={px(s) - 5} y={py(y / 2) + 4} text-anchor="end" font-style="italic" fill="#195c51" font-weight="700">{objeto}</text>
+      <text x={px(sp) + 7} y={py(yp) + (yp > 0 ? 2 : 8)} font-style="italic" fill="#195c51" font-weight="700">{imagen}</text>
+    </g>
+  </svg>
+</figure>

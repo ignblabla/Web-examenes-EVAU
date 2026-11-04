@@ -5,8 +5,8 @@ import portada from "../assets/examen-selectividad-andalucia.png"
 import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
 import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
-import { asignaturas } from "../data/asignaturas"
-import { cursos, examenesDe, nombreExamen, rutaAnio, rutaExamen } from "../data/examenes"
+import { asignaturas, cursoDe } from "../data/asignaturas"
+import { cursos, nombreExamen, rutaAnio, rutaExamen } from "../data/examenes"
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
@@ -38,7 +38,7 @@ const tarjetas = [
     symbol: "atom",
     title: "Física",
     description:
-      "Los exámenes resueltos paso a paso, con el planteamiento, los cálculos y los diagramas.",
+      "Los exámenes de 2026 resueltos paso a paso, con los esquemas, los cálculos y las unidades.",
     detail: "Gravitación · Electromagnetismo · Ondas · Física moderna",
     className: "subject-card subject-card--physics",
   },
@@ -122,7 +122,10 @@ const ultimosExamenes: Enlace[] = ultimo
         })),
     )
   : []
-const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.length : 0
+// Número de reservas del último curso, solo si es el mismo en todas las asignaturas publicadas
+// (en Física de 2026 solo está la reserva 1).
+const conteosReservas = new Set(ultimo ? publicadas.map((a) => cursoDe(a, ultimo).reservas.length) : [])
+const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : undefined
 ---
 
 <Base
@@ -240,7 +243,7 @@ const reservasUltimo = ultimo ? examenesDe(ultimo).length - ultimo.oficiales.len
       {
         ultimo && (
           <p class="latest-note">
-            Y los {reservasUltimo} exámenes de reserva de {ultimo.anio} en{" "}
+            Y los {reservasUltimo && `${reservasUltimo} `}exámenes de reserva de {ultimo.anio} en{" "}
             {publicadas.map((a, i) => (
               <>
                 {i > 0 && (i === publicadas.length - 1 ? " y " : ", ")}

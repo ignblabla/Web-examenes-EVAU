@@ -1,4 +1,4 @@
-import type { Tema } from "./examenes"
+import type { Curso, Tema } from "./examenes"
 
 export interface Asignatura {
   slug: string
@@ -19,6 +19,15 @@ export interface Asignatura {
   desde?: number
   // Nombre para los title y las meta descripciones, si el nombre completo no cabe.
   nombreCorto?: string
+  // Exámenes de reserva que existen en un curso, si no son los cuatro (en Física de 2026
+  // solo se ha encontrado la reserva 1). Las demás no se muestran.
+  reservas?: Record<number, number>
+}
+
+// El curso con solo las reservas que existen en la asignatura.
+export function cursoDe(asignatura: Asignatura, curso: Curso): Curso {
+  const n = asignatura.reservas?.[curso.anio]
+  return n === undefined ? curso : { ...curso, reservas: curso.reservas.slice(0, n) }
 }
 
 export function nombreSeo(asignatura: Asignatura) {
@@ -85,6 +94,46 @@ export const asignaturas: Asignatura[] = [
       "Probabilidad",
       "Distribución binomial",
       "Inferencia estadística",
+    ]),
+  },
+  {
+    slug: "fisica",
+    nombre: "Física",
+    titulo: "Física.",
+    simbolo: "atom",
+    color: "physics",
+    indexable: false,
+    desde: 2026,
+    reservas: { 2026: 1 },
+    intro:
+      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. Uno es obligatorio y en los otros tres se elige entre dos opciones. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
+    resuelto: "todos los apartados paso a paso, con esquemas y unidades",
+    temas: temas([
+      {
+        titulo: "Campo gravitatorio",
+        intro:
+          "El bloque A del examen: gravitación (campo, potencial, satélites y velocidad de escape) y trabajo y energía, con planos inclinados y rozamiento. Cada ejercicio lleva su esquema de fuerzas y el balance de energía.",
+      },
+      {
+        titulo: "Campo eléctrico y magnético",
+        intro:
+          "El bloque B del examen: campo y potencial eléctricos de cargas puntuales, fuerzas magnéticas sobre cargas y corrientes, e inducción electromagnética con las leyes de Faraday y Lenz.",
+      },
+      {
+        titulo: "Ondas",
+        intro:
+          "La parte de vibraciones y ondas del bloque C: movimiento armónico simple, ecuación de una onda armónica, ondas estacionarias y paso de una onda de un medio a otro.",
+      },
+      {
+        titulo: "Óptica geométrica",
+        intro:
+          "La parte de óptica del bloque C: lentes y espejos esféricos, con el trazado de rayos y las ecuaciones de las lentes y los espejos con el criterio de signos indicado en cada problema.",
+      },
+      {
+        titulo: "Física cuántica y nuclear",
+        intro:
+          "El bloque D del examen: efecto fotoeléctrico, longitud de onda de De Broglie, reacciones nucleares y energía de enlace por nucleón.",
+      },
     ]),
   },
   {

@@ -1,0 +1,192 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2026
+convocatoria: reserva-1
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Dos masas puntuales, *m*<sub>1</sub> = m y *m*<sub>2</sub> = 4m, crean potenciales gravitatorios *V*<sub>1</sub> y *V*<sub>2</sub> respectivamente en un punto P. Considerando en ambos casos que el potencial en el infinito es nulo y sabiendo que *V*<sub>2</sub> = 2*V*<sub>1</sub>: **i)** (0,75 puntos) determine razonadamente la relación entre las distancias, *r*<sub>1</sub> y *r*<sub>2</sub>, de las masas al punto P; **ii)** (0,25 puntos) indique razonadamente qué masa se encuentra más alejada de P.
+
+<Solucion>
+
+**i) Relación entre las distancias.** El potencial gravitatorio que crea una masa puntual $M$ a una distancia $r$, tomando el origen de potenciales en el infinito, es
+
+$$
+V = -\frac{G\,M}{r}
+$$
+
+Para las dos masas:
+
+$$
+V_1 = -\frac{G\,m}{r_1}, \qquad V_2 = -\frac{G \cdot 4m}{r_2}
+$$
+
+Imponemos la condición $V_2 = 2V_1$:
+
+$$
+-\frac{4\,G\,m}{r_2} = 2\left(-\frac{G\,m}{r_1}\right)
+\quad\Rightarrow\quad
+\frac{4}{r_2} = \frac{2}{r_1}
+\quad\Rightarrow\quad
+r_2 = 2\,r_1
+$$
+
+**ii) Qué masa está más lejos.** Como $r_2 = 2r_1$, **la masa $m_2 = 4m$ está más alejada de P**, al doble de distancia que $m_1$. Tiene sentido: aunque $m_2$ es cuatro veces mayor, su potencial solo es el doble que el de $m_1$ (ambos negativos), así que tiene que estar más lejos.
+
+</Solucion>
+
+**a2)** Si sobre un sistema actúan fuerzas no conservativas, razone la veracidad de las siguientes afirmaciones: **i)** (0,5 puntos) la energía mecánica del sistema nunca puede aumentar; **ii)** (0,5 puntos) la energía cinética siempre permanece constante.
+
+<Solucion>
+
+Por el teorema de la energía mecánica, la energía mecánica de un sistema solo cambia por el trabajo de las fuerzas no conservativas:
+
+$$
+W_{nc} = \Delta E_m
+$$
+
+**i) Falsa.** El trabajo de las fuerzas no conservativas puede ser negativo, como el del rozamiento, que disminuye la energía mecánica; pero también puede ser positivo, y entonces la energía mecánica aumenta. Por ejemplo, una persona que levanta una caja o el motor de un ascensor que lo sube realizan un trabajo positivo: la energía potencial del sistema aumenta sin que disminuya la cinética, y $\Delta E_m = W_{nc} > 0$.
+
+**ii) Falsa.** La energía cinética varía según el trabajo total de todas las fuerzas, $W_{\text{total}} = \Delta E_c$, y no tiene por qué ser constante. Por ejemplo, un bloque que se desliza por un suelo horizontal con rozamiento va frenando hasta pararse: el rozamiento (no conservativo) realiza un trabajo negativo y la energía cinética disminuye. Solo sería constante si el trabajo total fuera nulo.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** Dos masas puntuales *m*<sub>1</sub> = *m*<sub>2</sub> = 3 kg están situadas en los puntos A(0,2) m y B(0,-2) m. **i)** (1 punto) Represente gráficamente los campos creados por cada masa y el campo total en el punto C(3,0) m, y calcule el campo gravitatorio total en dicho punto. **ii)** (0,5 puntos) Determine el trabajo realizado por el campo gravitatorio cuando se traslada una tercera masa de 1,5 kg desde el punto C hasta el infinito.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo gravitatorio en C.** El campo gravitatorio de cada masa apunta hacia ella (es atractivo). Las dos masas están a la misma distancia de C:
+
+$$
+r = \overline{AC} = \overline{BC} = \sqrt{3^2 + 2^2} = \sqrt{13} = 3{,}61\ \text{m}
+$$
+
+y son iguales, así que los dos campos tienen el mismo módulo:
+
+$$
+g_1 = g_2 = \frac{G\,m}{r^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 3}{13} = 1{,}54 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-0.6}
+  xMax={3.8}
+  yMin={-2.6}
+  yMax={2.6}
+  escala={52}
+  marcasX={[1, 2, 3]}
+  marcasY={[-1, 1]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 2, texto: "A (m₁)", tipo: "masa", dx: 12, dy: -6 },
+    { x: 0, y: -2, texto: "B (m₂)", tipo: "masa", dx: 12, dy: 16 },
+    { x: 3, y: 0, texto: "C", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [3, 0], v: [-62, 41], texto: "g", sub: "1", dx: -4, dy: -6 },
+    { desde: [3, 0], v: [-62, -41], texto: "g", sub: "2", dx: -4, dy: 14 },
+    { desde: [3, 0], v: [-124, 0], texto: "g", color: "#b04a3a", dx: -4, dy: -6 },
+  ]}
+  segmentos={[
+    [0, 2, 3, 0],
+    [0, -2, 3, 0],
+  ]}
+  descripcion="Ejes x e y en metros. Las masas m1 y m2 están en A(0, 2) y B(0, menos 2), y el punto C en (3, 0). En C, el campo g1 apunta hacia A, el campo g2 apunta hacia B y el campo total g, su suma, apunta horizontalmente hacia la izquierda, porque las componentes verticales se anulan."
+/>
+
+Los vectores unitarios de C hacia A y de C hacia B son $\frac{1}{\sqrt{13}}(-3, 2)$ y $\frac{1}{\sqrt{13}}(-3, -2)$, así que
+
+$$
+\vec{g}_1 = 1{,}54 \cdot 10^{-11}\,\frac{-3\,\vec{i} + 2\,\vec{j}}{\sqrt{13}} = -1{,}28 \cdot 10^{-11}\,\vec{i} + 8{,}54 \cdot 10^{-12}\,\vec{j}\ \ \text{N/kg}
+$$
+
+$$
+\vec{g}_2 = 1{,}54 \cdot 10^{-11}\,\frac{-3\,\vec{i} - 2\,\vec{j}}{\sqrt{13}} = -1{,}28 \cdot 10^{-11}\,\vec{i} - 8{,}54 \cdot 10^{-12}\,\vec{j}\ \ \text{N/kg}
+$$
+
+Por simetría, las componentes verticales se anulan y las horizontales se suman:
+
+$$
+\vec{g} = \vec{g}_1 + \vec{g}_2 = -2{,}56 \cdot 10^{-11}\,\vec{i}\ \ \text{N/kg}
+$$
+
+**ii) Trabajo del campo de C al infinito.** El campo gravitatorio es conservativo, así que su trabajo es igual a menos la variación de energía potencial, $W = -\Delta E_p = E_{p,C} - E_{p,\infty}$, con $E_{p,\infty} = 0$. La energía potencial de la masa $m_3 = 1{,}5$ kg en C, debida a las dos masas, es
+
+$$
+E_{p,C} = -\frac{G\,m_1\,m_3}{r} - \frac{G\,m_2\,m_3}{r} = -2 \cdot \frac{6{,}67 \cdot 10^{-11} \cdot 3 \cdot 1{,}5}{3{,}61} = -1{,}66 \cdot 10^{-10}\ \text{J}
+$$
+
+$$
+W_{C \to \infty} = E_{p,C} - 0 = -1{,}66 \cdot 10^{-10}\ \text{J}
+$$
+
+**Respuesta.** El campo en C es **$\vec{g} = -2{,}56 \cdot 10^{-11}\,\vec{i}$ N/kg**, y el trabajo del campo al llevar la tercera masa al infinito es **$W = -1{,}66 \cdot 10^{-10}$ J**. Es negativo porque el campo atrae la masa hacia A y B, en contra del desplazamiento: para alejarla hasta el infinito, un agente externo tiene que realizar un trabajo de $+1{,}66 \cdot 10^{-10}$ J.
+
+</Solucion>
+
+**b2)** Una niña montada en un trineo desciende, partiendo del reposo, por una colina nevada que forma un ángulo de 37º con la horizontal desde una altura de 25 m. Cuando llega al final de la colina, recorre una cierta distancia hasta detenerse. Sabiendo que el coeficiente de rozamiento dinámico con la nieve es de 0,1 y que la masa del sistema (niña-trineo) es 75 kg: **i)** (0,5 puntos) realice un esquema con las fuerzas que actúan sobre el sistema cuando desliza por la colina y por la superficie horizontal; **ii)** (1 punto) determine, mediante consideraciones energéticas, la velocidad con la que llega al final de la colina y la distancia recorrida en el tramo horizontal hasta detenerse.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** En la colina actúan el peso $\vec{P}$ (vertical, hacia abajo), la normal $\vec{N}$ (perpendicular a la pendiente) y el rozamiento $\vec{F}_r$ (paralelo a la pendiente y hacia arriba, contra el movimiento). En el tramo horizontal actúan el peso, la normal, ahora vertical y hacia arriba, y el rozamiento, horizontal y opuesto al movimiento, que es el que frena el trineo:
+
+<PlanoInclinado angulo={37} mueve="baja" componentes horizontal descripcion="Trineo en una colina inclinada 37 grados y después en un tramo horizontal. En la colina, el peso P es vertical y se descompone en Px, paralela a la pendiente, y Py, perpendicular; la normal N es perpendicular a la pendiente y el rozamiento Fr, paralelo y hacia arriba. En el tramo horizontal, el trineo avanza hacia la derecha con el peso hacia abajo, la normal hacia arriba y el rozamiento hacia la izquierda." />
+
+Sus módulos:
+
+$$
+P = mg = 75 \cdot 9{,}8 = 735\ \text{N}
+$$
+
+$$
+\text{Colina:}\quad N_1 = mg\cos 37^\circ = 735 \cdot 0{,}799 = 587\ \text{N}, \qquad F_{r1} = \mu N_1 = 58{,}7\ \text{N}
+$$
+
+$$
+\text{Tramo horizontal:}\quad N_2 = mg = 735\ \text{N}, \qquad F_{r2} = \mu N_2 = 73{,}5\ \text{N}
+$$
+
+**ii) Velocidad al final de la colina.** El rozamiento es la única fuerza no conservativa que trabaja, así que $W_{F_r} = \Delta E_m$. La longitud de la pendiente es
+
+$$
+L = \frac{h}{\sin 37^\circ} = \frac{25}{0{,}602} = 41{,}5\ \text{m}
+$$
+
+$$
+W_{F_{r1}} = -F_{r1}\,L = -58{,}7 \cdot 41{,}5 = -2{,}44 \cdot 10^{3}\ \text{J}
+$$
+
+Tomando el nivel cero de energía potencial al pie de la colina y como el trineo parte del reposo:
+
+$$
+W_{F_{r1}} = E_{c,B} - mgh \quad\Rightarrow\quad E_{c,B} = mgh + W_{F_{r1}} = 75 \cdot 9{,}8 \cdot 25 - 2{,}44 \cdot 10^3
+$$
+
+$$
+E_{c,B} = 18\,375 - 2438 = 1{,}59 \cdot 10^{4}\ \text{J}
+\qquad
+v_B = \sqrt{\frac{2E_{c,B}}{m}} = \sqrt{\frac{2 \cdot 15\,937}{75}} = 20{,}6\ \text{m/s}
+$$
+
+**Distancia en el tramo horizontal.** En el suelo horizontal la energía potencial no cambia, y el rozamiento consume toda la energía cinética hasta que el trineo se para:
+
+$$
+W_{F_{r2}} = \Delta E_c \quad\Rightarrow\quad -\mu\,m\,g\,d = 0 - E_{c,B}
+\quad\Rightarrow\quad
+d = \frac{E_{c,B}}{\mu\,m\,g} = \frac{15\,937}{73{,}5} = 217\ \text{m}
+$$
+
+**Respuesta.** El trineo llega al final de la colina a **20,6 m/s** y recorre **217 m** en el tramo horizontal hasta detenerse.
+
+</Solucion>

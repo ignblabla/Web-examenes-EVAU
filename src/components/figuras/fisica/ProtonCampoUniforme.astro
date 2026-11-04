@@ -1,0 +1,37 @@
+---
+// Física, julio de 2026, B a2: protón en reposo en un campo eléctrico uniforme. La fuerza
+// F = qE tiene el sentido del campo y el protón se mueve hacia potenciales menores.
+const id = `proton-${Math.round(Math.random() * 1e9)}`
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 340 190" role="img" aria-label="Campo eléctrico uniforme dirigido hacia la derecha entre dos placas; el potencial es mayor a la izquierda y menor a la derecha. Un protón, inicialmente en reposo, sufre una fuerza en el sentido del campo y se mueve hacia la derecha.">
+    <defs>
+      <marker id={`${id}-g`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#999" />
+      </marker>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-v`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#195c51" />
+      </marker>
+    </defs>
+    <rect x="30" y="20" width="8" height="140" fill="#f8dcd5" stroke="#111" />
+    <rect x="302" y="20" width="8" height="140" fill="#d8e5ed" stroke="#111" />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
+      <text x="34" y="176" text-anchor="middle">V mayor</text>
+      <text x="306" y="176" text-anchor="middle">V menor</text>
+    </g>
+    <g stroke="#999" stroke-width="1" marker-end={`url(#${id}-g)`}>
+      {[36, 64, 116, 144].map((y) => <path d={`M46 ${y}H294`} />)}
+    </g>
+    <text x="280" y="58" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#777">E</text>
+    <circle cx="96" cy="90" r="10" fill="#f8dcd5" stroke="#111" />
+    <text x="96" y="94" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">+</text>
+    <path d="M108 90H166" stroke="#b04a3a" stroke-width="2" marker-end={`url(#${id}-r)`} />
+    <text x="170" y="94" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#b04a3a">F = qE</text>
+    <path d="M110 112H226" stroke="#195c51" stroke-width="1.4" stroke-dasharray="5 3" marker-end={`url(#${id}-v)`} />
+    <text x="168" y="128" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#195c51">movimiento (MRUA)</text>
+  </svg>
+</figure>

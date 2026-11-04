@@ -1,0 +1,183 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2026
+convocatoria: julio
+formato: fisica
+---
+
+import EspiraHilo from "../../../../../components/figuras/fisica/EspiraHilo.astro"
+import ProtonCampoUniforme from "../../../../../components/figuras/fisica/ProtonCampoUniforme.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Considere una espira cuadrada de lado *a*, que se encuentra a una distancia *d* de un hilo recto muy largo por el que circula una corriente *I* constante. La espira y el hilo son coplanarios. Razone, ayudándose de un esquema, si se produce corriente inducida y justifique el sentido de esta si: **i)** (0,5 puntos) la espira se mueve paralela al hilo; **ii)** (0,5 puntos) la espira se mueve alejándose perpendicularmente al hilo a velocidad constante.
+
+<Solucion>
+
+El hilo crea un campo magnético cuyas líneas son circunferencias concéntricas con él, de módulo
+
+$$
+B = \frac{\mu_0\,I}{2\pi r}
+$$
+
+que disminuye con la distancia $r$ al hilo. En el plano del hilo y la espira, el campo es perpendicular a ese plano. Dibujamos el hilo vertical, con la corriente hacia arriba, y la espira a su derecha: por la regla de la mano derecha, en la zona de la espira el campo **entra en el papel** $(\otimes)$.
+
+Según la ley de Faraday-Lenz, solo hay corriente inducida si cambia el flujo magnético a través de la espira, $\varepsilon = -d\Phi/dt$, y su sentido es el que se opone a ese cambio.
+
+<EspiraHilo />
+
+**i) La espira se mueve paralela al hilo.** Cada punto de la espira se mantiene a la misma distancia del hilo, así que el campo en cada punto no cambia y el flujo a través de la espira es constante. Por tanto $d\Phi/dt = 0$, $\varepsilon = 0$ y **no se induce corriente**.
+
+**ii) La espira se aleja del hilo.** Al alejarse, la espira pasa a zonas donde el campo es más débil, así que el flujo entrante a través de ella **disminuye**. Se induce una corriente que, según la ley de Lenz, se opone a esa disminución: crea en el interior de la espira un campo magnético en el mismo sentido que el del hilo, es decir, también entrante. Por la regla de la mano derecha, **la corriente inducida circula en sentido horario** (con el hilo a la izquierda y la corriente hacia arriba, como en el esquema; si la corriente del hilo fuera hacia abajo, sería antihoraria).
+
+</Solucion>
+
+**a2)** En los tratamientos de protónterapia, se utilizan campos eléctricos uniformes para acelerar protones y dirigirlos hacia tejidos tumorales. Un protón se encuentra inicialmente en reposo en una región donde existe un campo eléctrico uniforme. **i)** (0,5 puntos) Razone, ayudándose de un esquema, hacia dónde se moverá el protón si se deja libre en dicho campo. **ii)** (0,5 puntos) Razone cómo varían las energías potencial y cinética del protón en su movimiento.
+
+<Solucion>
+
+**i) Hacia dónde se mueve.** Sobre el protón actúa la fuerza eléctrica
+
+$$
+\vec{F} = q\,\vec{E}
+$$
+
+Como la carga del protón es positiva $(q = +e)$, la fuerza tiene la misma dirección y el mismo sentido que el campo. El campo es uniforme, así que la fuerza es constante y el protón, que parte del reposo, **se mueve en línea recta en el sentido del campo** con un movimiento uniformemente acelerado, $a = eE/m_p$. Las líneas de campo van de mayor a menor potencial, así que el protón se dirige hacia potenciales menores.
+
+<ProtonCampoUniforme />
+
+**ii) Cómo varían las energías.** La fuerza eléctrica es conservativa, así que la energía mecánica del protón se conserva:
+
+$$
+\Delta E_c + \Delta E_p = 0 \quad\Rightarrow\quad \Delta E_c = -\Delta E_p
+$$
+
+El protón avanza hacia potenciales menores, y como su energía potencial es $E_p = qV$ con $q > 0$, **la energía potencial disminuye**. La misma cantidad de energía la gana como cinética: **la energía cinética aumenta** (el protón se acelera). Dicho de otro modo, el campo realiza un trabajo positivo sobre el protón, $W = q\,E\,d > 0$, que es igual a la ganancia de energía cinética.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** Una placa de inducción calienta una base metálica (idealizada como una espira circular conductora) mediante un campo magnético variable. El campo magnético, uniforme en la zona de la espira y perpendicular a su plano, viene dado por *B*(*t*) = 1,2·10<sup>-3</sup> sen(2π*f t*) (T), con *f* = 25 kHz. La espira tiene un radio de 12 cm y una resistencia de 0,4 Ω. **i)** (0,5 puntos) Obtenga la expresión de la fuerza electromotriz inducida en función del tiempo. **ii)** (0,5 puntos) Calcule la intensidad de corriente inducida en función del tiempo y su valor máximo. **iii)** (0,5 puntos) ¿Qué le sucede a la intensidad de corriente máxima si la frecuencia *f* disminuye en un factor 10? Razone todas sus respuestas.
+
+<Solucion>
+
+**i) Fuerza electromotriz.** El campo es perpendicular al plano de la espira, así que es paralelo al vector superficie $(\cos 0^\circ = 1)$ y el flujo es $\Phi = B\,S$. La superficie de la espira y la frecuencia angular son
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}12^2 = 4{,}52 \cdot 10^{-2}\ \text{m}^2, \qquad
+\omega = 2\pi f = 2\pi \cdot 25 \cdot 10^3 = 5\pi \cdot 10^4\ \text{rad/s}
+$$
+
+$$
+\Phi(t) = B(t)\,S = 1{,}2 \cdot 10^{-3} \cdot 4{,}52 \cdot 10^{-2}\sin(5\pi \cdot 10^4\,t) = 5{,}43 \cdot 10^{-5}\sin(5\pi \cdot 10^4\,t)\ \text{Wb}
+$$
+
+Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -5{,}43 \cdot 10^{-5} \cdot 5\pi \cdot 10^4\cos(5\pi \cdot 10^4\,t)
+$$
+
+$$
+\varepsilon(t) = -8{,}53\cos(5\pi \cdot 10^4\,t)\ \text{V}
+$$
+
+El signo menos expresa la ley de Lenz: la corriente inducida se opone a la variación del flujo.
+
+**ii) Intensidad inducida.** Por la ley de Ohm:
+
+$$
+I(t) = \frac{\varepsilon(t)}{R} = \frac{-8{,}53\cos(5\pi \cdot 10^4\,t)}{0{,}4} = -21{,}3\cos(5\pi \cdot 10^4\,t)\ \text{A}
+$$
+
+Su valor máximo es la amplitud: $I_{\text{máx}} = 21{,}3$ A.
+
+**iii) Si la frecuencia se divide entre 10.** La intensidad máxima es
+
+$$
+I_{\text{máx}} = \frac{\varepsilon_{\text{máx}}}{R} = \frac{B_0\,S \cdot 2\pi f}{R}
+$$
+
+que es directamente proporcional a la frecuencia: el flujo varía más despacio y la fuerza electromotriz inducida es menor. Si $f$ disminuye en un factor 10, **la intensidad máxima también se divide entre 10**:
+
+$$
+I'_{\text{máx}} = \frac{21{,}3}{10} = 2{,}13\ \text{A}
+$$
+
+Por eso las placas de inducción trabajan a frecuencias altas, de decenas de kilohercios: así consiguen corrientes inducidas grandes que calientan el recipiente.
+
+</Solucion>
+
+**b2)** Dos cargas iguales *q*<sub>1</sub> = *q*<sub>2</sub> = +2 μC se sitúan en los puntos A(2,0) y B(0,3) m, respectivamente. **i)** (0,75 puntos) Haga un esquema y calcule el vector campo eléctrico en el punto C(2,3) m. **ii)** (0,75 puntos) Calcule el potencial eléctrico en el punto medio entre las cargas.
+
+<Datos>k = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo eléctrico en C.** El campo total es la suma vectorial de los campos de las dos cargas (principio de superposición). Cada carga es positiva, así que su campo en C se aleja de ella:
+
+- Desde A(2, 0) hasta C(2, 3) el vector es $(0, 3)$, de módulo $r_1 = 3$ m: el campo $\vec{E}_1$ apunta en el sentido de $+\vec{j}$.
+- Desde B(0, 3) hasta C(2, 3) el vector es $(2, 0)$, de módulo $r_2 = 2$ m: el campo $\vec{E}_2$ apunta en el sentido de $+\vec{i}$.
+
+<Vectores
+  xMin={0}
+  xMax={3.4}
+  yMin={0}
+  yMax={3.7}
+  escala={60}
+  marcasX={[1]}
+  marcasY={[1, 2]}
+  unidad="m"
+  puntos={[
+    { x: 2, y: 0, texto: "A(2, 0): q₁", tipo: "carga", dx: -12, dy: -10 },
+    { x: 0, y: 3, texto: "B(0, 3): q₂", tipo: "carga", dx: 12, dy: 20 },
+    { x: 2, y: 3, texto: "C(2, 3)", tipo: "punto", dx: -8, dy: 18 },
+    { x: 1, y: 1.5, texto: "M", tipo: "punto", dx: 8, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [2, 3], v: [0, 40], texto: "E", sub: "1", dx: -16, dy: 4 },
+    { desde: [2, 3], v: [72, 0], texto: "E", sub: "2", dx: -10, dy: 16 },
+    { desde: [2, 3], v: [72, 40], texto: "E", color: "#b04a3a", dx: 6, dy: 4 },
+  ]}
+  segmentos={[
+    [2, 0, 2, 3],
+    [0, 3, 2, 3],
+    [2, 0, 0, 3],
+  ]}
+  descripcion="Ejes x e y en metros. La carga q1 está en A(2, 0) y la carga q2 en B(0, 3); el punto C(2, 3) está justo encima de A y a la derecha de B. En C, el campo E1 de q1 apunta hacia arriba, el campo E2 de q2 apunta hacia la derecha y el campo total E es su suma, en diagonal hacia arriba y a la derecha. M es el punto medio del segmento AB."
+/>
+
+Sus módulos, por la ley de Coulomb:
+
+$$
+E_1 = \frac{k\,q_1}{r_1^2} = \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-6}}{3^2} = 2000\ \text{N/C}
+\qquad
+E_2 = \frac{k\,q_2}{r_2^2} = \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-6}}{2^2} = 4500\ \text{N/C}
+$$
+
+$$
+\vec{E} = \vec{E}_1 + \vec{E}_2 = 4500\,\vec{i} + 2000\,\vec{j}\ \ \text{N/C}
+$$
+
+$$
+|\vec{E}| = \sqrt{4500^2 + 2000^2} = 4{,}92 \cdot 10^{3}\ \text{N/C}
+$$
+
+**ii) Potencial en el punto medio.** El punto medio entre A(2, 0) y B(0, 3) es M(1; 1,5), que está a la misma distancia de las dos cargas, la mitad de la distancia AB:
+
+$$
+r = \frac{\overline{AB}}{2} = \frac{\sqrt{2^2 + 3^2}}{2} = \frac{\sqrt{13}}{2} = 1{,}80\ \text{m}
+$$
+
+El potencial es una magnitud escalar, así que los potenciales de las dos cargas se suman sin más:
+
+$$
+V_M = \frac{k\,q_1}{r} + \frac{k\,q_2}{r} = 2 \cdot \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-6}}{1{,}80} = 2{,}00 \cdot 10^{4}\ \text{V}
+$$
+
+**Respuesta.** El campo en C es **$\vec{E} = 4500\,\vec{i} + 2000\,\vec{j}$ N/C**, de módulo $4{,}92 \cdot 10^3$ N/C, y el potencial en el punto medio de las cargas es **$V_M = 2{,}00 \cdot 10^4$ V**. Aunque en M el campo es nulo (los campos de las dos cargas, iguales y opuestos, se anulan), el potencial no lo es.
+
+</Solucion>

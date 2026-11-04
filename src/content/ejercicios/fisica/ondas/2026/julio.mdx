@@ -1,0 +1,87 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2026
+convocatoria: julio
+formato: fisica
+---
+
+import EnergiasMAS from "../../../../../components/figuras/fisica/EnergiasMAS.astro"
+
+<Bloque nivel={3}><strong><u>Responda a y b</u></strong></Bloque>
+
+**a) i)** (0,5 puntos) Represente gráficamente, en función de la posición, las energías cinética, potencial y mecánica de una partícula que vibra con movimiento armónico simple. **ii)** (0,5 puntos) ¿Se duplicaría la energía mecánica de la partícula si se duplicase la frecuencia angular del movimiento armónico simple? Razone la respuesta.
+
+<Solucion>
+
+**i) Gráfica de las energías.** En un movimiento armónico simple de amplitud $A$, la fuerza recuperadora es $F = -kx$, con $k = m\,\omega^2$. Las energías en función de la posición $x$ son:
+
+- Energía potencial elástica: $E_p = \frac{1}{2}k\,x^2$, una parábola con mínimo nulo en el centro $(x = 0)$ y máxima en los extremos $(x = \pm A)$.
+- Energía cinética: $E_c = \frac{1}{2}m\,v^2 = \frac{1}{2}k\,(A^2 - x^2)$, una parábola invertida, máxima en el centro y nula en los extremos, donde la partícula se para.
+- Energía mecánica: $E_m = E_c + E_p = \frac{1}{2}k\,A^2$, constante, porque la fuerza recuperadora es conservativa. Es una recta horizontal.
+
+<EnergiasMAS />
+
+En cada posición la suma de las dos parábolas es igual a la recta: lo que la partícula pierde en energía cinética al alejarse del centro lo gana en energía potencial.
+
+**ii) Si se duplica la frecuencia angular.** Expresamos la energía mecánica en función de $\omega$ usando $k = m\,\omega^2$:
+
+$$
+E_m = \frac{1}{2}k\,A^2 = \frac{1}{2}m\,\omega^2 A^2
+$$
+
+La energía mecánica es proporcional al cuadrado de la frecuencia angular. Si se duplica $\omega$ manteniendo la masa y la amplitud:
+
+$$
+E'_m = \frac{1}{2}m\,(2\omega)^2 A^2 = 4 \cdot \frac{1}{2}m\,\omega^2 A^2 = 4\,E_m
+$$
+
+**No se duplicaría: se cuadruplicaría.**
+
+</Solucion>
+
+**b)** Las ondas sísmicas S, que viajan a través de la Tierra generando oscilaciones durante los terremotos, producen daños sobre edificios y estructuras. Una onda armónica S, que se propaga por el interior de la corteza terrestre, obedece a la ecuación:
+
+<Ecuacion nota="(S.I.)">*y*(*x*,*t*) = 0,6 sen(3,125·10<sup>-7</sup> *x* − 1,25·10<sup>-3</sup> *t*)</Ecuacion>
+
+**i)** (0,75 puntos) Calcule la longitud de onda, frecuencia y velocidad de propagación de la onda. **ii)** (0,75 puntos) Si se produce un seísmo a una distancia de 400 km de una ciudad, ¿cuánto tiempo transcurre hasta que se perciben los efectos del seísmo en la población? ¿Con qué velocidad máxima oscilarán las partículas del medio?
+
+<Solucion>
+
+**i) Longitud de onda, frecuencia y velocidad.** Comparamos con la ecuación general de una onda armónica que se propaga en el sentido positivo del eje X, $y(x, t) = A\sin(kx - \omega t)$:
+
+$$
+A = 0{,}6\ \text{m}, \qquad k = 3{,}125 \cdot 10^{-7}\ \text{rad/m}, \qquad \omega = 1{,}25 \cdot 10^{-3}\ \text{rad/s}
+$$
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{3{,}125 \cdot 10^{-7}} = 2{,}01 \cdot 10^{7}\ \text{m}
+$$
+
+$$
+f = \frac{\omega}{2\pi} = \frac{1{,}25 \cdot 10^{-3}}{2\pi} = 1{,}99 \cdot 10^{-4}\ \text{Hz}
+$$
+
+$$
+v = \frac{\omega}{k} = \frac{1{,}25 \cdot 10^{-3}}{3{,}125 \cdot 10^{-7}} = 4000\ \text{m/s}
+$$
+
+(Se comprueba con $v = \lambda f = 2{,}01 \cdot 10^7 \cdot 1{,}99 \cdot 10^{-4} = 4000$ m/s, una velocidad típica de las ondas S en la corteza.)
+
+**ii) Tiempo de llegada y velocidad máxima de oscilación.** La onda avanza a velocidad constante, así que tarda en recorrer los 400 km
+
+$$
+t = \frac{d}{v} = \frac{4 \cdot 10^5}{4000} = 100\ \text{s}
+$$
+
+La velocidad de oscilación de las partículas del medio es la derivada de la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = -A\,\omega\cos(kx - \omega t)
+\quad\Rightarrow\quad
+v_{y,\text{máx}} = A\,\omega = 0{,}6 \cdot 1{,}25 \cdot 10^{-3} = 7{,}5 \cdot 10^{-4}\ \text{m/s}
+$$
+
+**Respuesta.** Los efectos del seísmo se perciben en la ciudad **100 s** después, y las partículas del medio oscilan con una velocidad máxima de **$7{,}5 \cdot 10^{-4}$ m/s**. Esta velocidad de oscilación no tiene nada que ver con la de propagación (4000 m/s): una es la de cada partícula alrededor de su posición de equilibrio y la otra, la de avance de la perturbación.
+
+</Solucion>

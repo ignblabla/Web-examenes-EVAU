@@ -1,0 +1,61 @@
+---
+// Física, julio de 2026, B a1: espira cuadrada coplanaria con un hilo recto por el que sube
+// una corriente I. A la derecha del hilo el campo entra en el papel (⊗) y es más débil cuanto
+// más lejos. i) La espira se mueve paralela al hilo: no hay corriente inducida. ii) Se aleja:
+// el flujo entrante disminuye y la corriente inducida circula en sentido horario.
+const id = `espira-${Math.round(Math.random() * 1e9)}`
+const panel = (x: number) => ({ hilo: x + 26, espira: x + 76 })
+const paneles = [
+  { ...panel(0), titulo: "i) Se mueve paralela al hilo", sube: true },
+  { ...panel(240), titulo: "ii) Se aleja del hilo", sube: false },
+]
+// Cruces del campo: más juntas cerca del hilo, como guía visual de que B disminuye con la distancia.
+const cruces = [0, 22, 48, 80, 118].flatMap((d) => [44, 84, 124, 164].map((y) => ({ d, y })))
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg viewBox="0 0 480 220" role="img" aria-label="Dos esquemas de un hilo vertical con corriente hacia arriba y una espira cuadrada a su derecha, en el mismo plano. El campo del hilo entra en el papel. En el primero la espira se mueve hacia arriba, paralela al hilo, y no hay corriente inducida. En el segundo se aleja del hilo y la corriente inducida circula en sentido horario.">
+    <defs>
+      <marker id={`${id}-n`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-v`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#195c51" />
+      </marker>
+    </defs>
+    {
+      paneles.map((p) => (
+        <g>
+          <path d={`M${p.hilo} 200V30`} stroke="#111" stroke-width="3" />
+          <path d={`M${p.hilo} 120V70`} stroke="#111" stroke-width="1.5" marker-end={`url(#${id}-n)`} transform={`translate(-10 0)`} />
+          <text x={p.hilo - 16} y="104" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic">I</text>
+          <g stroke="#aaa" stroke-width="1">
+            {cruces.map((c) => (
+              <path d={`M${p.hilo + 18 + c.d * 1.5 - 3} ${c.y - 3}l6 6m0 -6l-6 6`} />
+            ))}
+          </g>
+          <rect x={p.espira} y="76" width="80" height="80" fill="rgba(201, 188, 232, 0.25)" stroke="#172c27" stroke-width="2" />
+          {p.sube ? (
+            <>
+              <path d={`M${p.espira + 40} 68V36`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
+              <text x={p.espira + 48} y="46" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" font-weight="700" fill="#195c51">v</text>
+              <text x={p.espira + 40} y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">Φ constante: I = 0</text>
+            </>
+          ) : (
+            <>
+              <path d={`M${p.espira + 88} 116H${p.espira + 118}`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
+              <text x={p.espira + 104} y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" font-weight="700" fill="#195c51">v</text>
+              <path d={`M${p.espira + 18} 70H${p.espira + 62}`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <path d={`M${p.espira + 62} 162H${p.espira + 18}`} stroke="#b04a3a" stroke-width="1.8" marker-end={`url(#${id}-r)`} />
+              <text x={p.espira + 40} y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#b04a3a">I inducida: sentido horario</text>
+            </>
+          )}
+          <text x={p.hilo - 18} y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111">{p.titulo}</text>
+        </g>
+      ))
+    }
+  </svg>
+</figure>

@@ -1,0 +1,55 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2026
+convocatoria: junio
+formato: fisica
+parte: 2
+---
+
+**b2)** La cuerda de una guitarra vibra de acuerdo con la ecuación:
+
+<Ecuacion nota="(S.I.)">*y*(*x*,*t*) = 0,01 sen(10π*x*) cos(200π*t*)</Ecuacion>
+
+**i)** (0,25 puntos) Indique qué tipo de onda es. **ii)** (0,75 puntos) Calcule la amplitud y la velocidad de propagación de las ondas cuya superposición da lugar a dicha onda. **iii)** (0,5 puntos) Determine la velocidad de oscilación de un punto de la cuerda situada en el punto *x* = 10 cm. Razone su respuesta.
+
+<Solucion>
+
+**i) Tipo de onda.** Es una **onda estacionaria**. Su ecuación tiene la forma $y = A_r(x)\cos(\omega t)$, con una amplitud $A_r(x) = 0{,}01\sin(10\pi x)$ que depende de la posición: cada punto de la cuerda oscila con su propia amplitud, y no aparece la combinación $kx \pm \omega t$ de una onda que viaja. Hay puntos que no vibran nunca (nodos) y puntos que vibran con la amplitud máxima (vientres). Se forma por la superposición de dos ondas iguales que se propagan en sentidos opuestos, la que avanza por la cuerda y la que se refleja en sus extremos fijos.
+
+**ii) Ondas que se superponen.** Sumamos dos ondas armónicas de la misma amplitud $A$, número de onda $k$ y frecuencia angular $\omega$ que viajan en sentidos opuestos, y usamos $\sin a + \sin b = 2\sin\frac{a+b}{2}\cos\frac{a-b}{2}$:
+
+$$
+y_1 + y_2 = A\sin(kx - \omega t) + A\sin(kx + \omega t) = 2A\sin(kx)\cos(\omega t)
+$$
+
+Comparando con la ecuación del enunciado:
+
+$$
+2A = 0{,}01\ \text{m} \ \Rightarrow\ A = 5 \cdot 10^{-3}\ \text{m}, \qquad
+k = 10\pi\ \text{rad/m}, \qquad \omega = 200\pi\ \text{rad/s}
+$$
+
+La velocidad de propagación de cada onda es
+
+$$
+v = \frac{\omega}{k} = \frac{200\pi}{10\pi} = 20\ \text{m/s}
+$$
+
+(equivale a $\lambda = 2\pi/k = 0{,}2$ m y $f = \omega/2\pi = 100$ Hz, con $v = \lambda f = 20$ m/s).
+
+**iii) Velocidad de oscilación en x = 10 cm.** La velocidad de oscilación de un punto es la derivada de la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = -0{,}01 \cdot 200\pi\sin(10\pi x)\sin(200\pi t) = -2\pi\sin(10\pi x)\sin(200\pi t)\ \text{m/s}
+$$
+
+En $x = 10\ \text{cm} = 0{,}1$ m:
+
+$$
+\sin(10\pi \cdot 0{,}1) = \sin\pi = 0 \quad\Rightarrow\quad v_y(0{,}1;\ t) = 0\ \text{m/s}
+$$
+
+**Respuesta.** La velocidad de oscilación en $x = 10$ cm es **nula en todo instante**: ese punto es un **nodo**. Los nodos están donde $\sin(10\pi x) = 0$, es decir, en $x = 0;\ 0{,}1;\ 0{,}2\ \text{m}\ldots$, separados media longitud de onda.
+
+</Solucion>

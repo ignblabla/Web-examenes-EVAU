@@ -1,0 +1,136 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2026
+convocatoria: junio
+formato: fisica
+---
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Indique, razonando sus respuestas, si los siguientes enunciados son ciertos: **i)** (0,5 puntos) si el flujo magnético a través de una superficie es cero entonces necesariamente el campo magnético es nulo; **ii)** (0,5 puntos) la fuerza electromotriz inducida será no nula si el flujo es no nulo.
+
+<Solucion>
+
+**i) Falso.** El flujo magnético a través de una superficie plana en un campo uniforme es
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\alpha
+$$
+
+donde $\alpha$ es el ángulo entre el campo y el vector superficie (perpendicular a la superficie). El flujo puede ser nulo aunque el campo no lo sea: basta con que las líneas de campo sean paralelas a la superficie $(\alpha = 90^\circ$, $\cos\alpha = 0)$, porque entonces ninguna la atraviesa. Por ejemplo, una espira con su plano paralelo a $\vec{B}$ tiene flujo cero.
+
+**ii) Falso.** Según la ley de Faraday-Lenz, la fuerza electromotriz inducida no depende del valor del flujo, sino de su variación con el tiempo:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt}
+$$
+
+Si el flujo es distinto de cero pero constante (un imán quieto frente a una espira quieta), $d\Phi/dt = 0$ y no se induce ninguna fuerza electromotriz. Y al revés: en una espira que gira, el flujo se anula en algunos instantes justo cuando la fuerza electromotriz es máxima.
+
+</Solucion>
+
+**a2)** Dos partículas idénticas, de carga *q* y masa *m*, están separadas una distancia *d*. Se mantiene fija una de las partículas y se deja que la otra se aleje por acción de la fuerza electrostática hasta duplicar la distancia inicial con la primera. **i)** (0,75 puntos) Determine la expresión del módulo de la velocidad que adquiere la partícula en el punto final. **ii)** (0,25 puntos) Indique como cambiaría el módulo de la velocidad si se duplicase el valor de las cargas.
+
+<Solucion>
+
+**i)** Las dos cargas son iguales, así que se repelen y la partícula libre se aleja ganando velocidad. La fuerza electrostática es conservativa, por lo que se conserva la energía mecánica: la energía potencial que pierde la partícula se convierte en energía cinética. La energía potencial electrostática de dos cargas puntuales separadas una distancia $r$ es $E_p = k\,q^2/r$.
+
+Al principio la partícula está en reposo a una distancia $d$ y al final se mueve con velocidad $v$ a una distancia $2d$:
+
+$$
+E_{c,i} + E_{p,i} = E_{c,f} + E_{p,f} \quad\Rightarrow\quad 0 + \frac{k\,q^2}{d} = \frac{1}{2}mv^2 + \frac{k\,q^2}{2d}
+$$
+
+$$
+\frac{1}{2}mv^2 = \frac{k\,q^2}{d} - \frac{k\,q^2}{2d} = \frac{k\,q^2}{2d}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{k\,q^2}{m\,d}} = |q|\sqrt{\frac{k}{m\,d}}
+$$
+
+**ii)** La velocidad es proporcional al valor de la carga. Si se duplican las dos cargas, la energía potencial (que depende de $q^2$) se multiplica por 4, la energía cinética final también se multiplica por 4 y la velocidad, que va con la raíz de la energía cinética, **se duplica**:
+
+$$
+v' = \sqrt{\frac{k\,(2q)^2}{m\,d}} = 2\sqrt{\frac{k\,q^2}{m\,d}} = 2v
+$$
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** En un parque eólico del estrecho de Gibraltar, un aerogenerador posee una espira circular de área 40 cm<sup>2</sup> que gira a 1500 rpm alrededor de un eje que pasa por su diámetro y es perpendicular a un campo magnético uniforme de módulo 0,25 T. La espira tiene una resistencia de 10 Ω. Considere que en *t* = 0 s el flujo es máximo. **i)** (0,75 puntos) Determine el flujo magnético en función del tiempo. **ii)** (0,75 puntos) Calcule la fuerza electromotriz y la intensidad de corriente inducida en la espira en función del tiempo. ¿La corriente en la espira es continua o alterna?
+
+<Solucion>
+
+**i) Flujo magnético.** Pasamos los datos al Sistema Internacional:
+
+$$
+S = 40\ \text{cm}^2 = 4 \cdot 10^{-3}\ \text{m}^2, \qquad
+\omega = 1500\ \frac{\text{rev}}{\text{min}} \cdot \frac{2\pi\ \text{rad}}{1\ \text{rev}} \cdot \frac{1\ \text{min}}{60\ \text{s}} = 50\pi\ \text{rad/s}
+$$
+
+Al girar la espira, el ángulo entre $\vec{B}$ y el vector superficie cambia con el tiempo, $\alpha = \omega t + \varphi_0$. Como en $t = 0$ el flujo es máximo, en ese instante $\vec{B}$ y $\vec{S}$ son paralelos y $\varphi_0 = 0$:
+
+$$
+\Phi(t) = B\,S\cos(\omega t) = 0{,}25 \cdot 4 \cdot 10^{-3}\cos(50\pi t)
+$$
+
+$$
+\Phi(t) = 10^{-3}\cos(50\pi t)\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz e intensidad.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t) = 10^{-3} \cdot 50\pi\sin(50\pi t)
+$$
+
+$$
+\varepsilon(t) = 0{,}05\pi\sin(50\pi t) \approx 0{,}157\sin(50\pi t)\ \text{V}
+$$
+
+Por la ley de Ohm, la intensidad inducida es
+
+$$
+I(t) = \frac{\varepsilon(t)}{R} = \frac{0{,}157\sin(50\pi t)}{10} \approx 1{,}57 \cdot 10^{-2}\sin(50\pi t)\ \text{A}
+$$
+
+**La corriente es alterna**: su valor sigue una función seno, que cambia de signo cada medio periodo, así que la corriente invierte su sentido periódicamente. Su frecuencia es la del giro de la espira, $f = \omega/2\pi = 25$ Hz.
+
+</Solucion>
+
+**b2)** Un electrón se lanza desde el infinito con una velocidad inicial de 10<sup>7</sup> m s<sup>−1</sup> hacia una carga puntual de −5 μC que permanece fija. **i)** (1 punto) Determine la distancia a la carga puntual en la que se anula la velocidad del electrón. **ii)** (0,5 puntos) Calcule el módulo y carácter (atractiva o repulsiva) de la fuerza a esa distancia.
+
+<Datos>k = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup>; e = 1,6·10<sup>−19</sup> C; m<sub>e</sub> = 9,1·10<sup>−31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Distancia de máximo acercamiento.** El electrón $(q = -e)$ y la carga fija $(Q = -5\ \mu\text{C})$ son negativos, así que se repelen: al acercarse, el electrón va frenando hasta pararse y luego vuelve. La fuerza electrostática es conservativa, así que se conserva la energía mecánica entre el infinito (donde $E_p = 0$) y el punto en el que la velocidad se anula, a una distancia $r$:
+
+$$
+\frac{1}{2}m_e v_0^2 + 0 = 0 + \frac{k\,Q\,q}{r}
+\quad\Rightarrow\quad
+r = \frac{2\,k\,Q\,q}{m_e v_0^2}
+$$
+
+La energía cinética inicial del electrón es
+
+$$
+E_{c,0} = \frac{1}{2}m_e v_0^2 = \frac{1}{2} \cdot 9{,}1 \cdot 10^{-31} \cdot (10^7)^2 = 4{,}55 \cdot 10^{-17}\ \text{J}
+$$
+
+$$
+r = \frac{9 \cdot 10^9 \cdot (-5 \cdot 10^{-6}) \cdot (-1{,}6 \cdot 10^{-19})}{4{,}55 \cdot 10^{-17}} = \frac{7{,}2 \cdot 10^{-15}}{4{,}55 \cdot 10^{-17}} = 158\ \text{m}
+$$
+
+La distancia es grande porque la energía cinética del electrón es muy pequeña (unos 284 eV) frente a la energía potencial que crea una carga de varios microculombios.
+
+**ii) Fuerza a esa distancia.** Por la ley de Coulomb:
+
+$$
+F = \frac{k\,|Q|\,|q|}{r^2} = \frac{9 \cdot 10^9 \cdot 5 \cdot 10^{-6} \cdot 1{,}6 \cdot 10^{-19}}{158^2} = \frac{7{,}2 \cdot 10^{-15}}{2{,}50 \cdot 10^{4}} = 2{,}88 \cdot 10^{-19}\ \text{N}
+$$
+
+**Respuesta.** El electrón se para a **158 m** de la carga. Allí la fuerza vale **$2{,}88 \cdot 10^{-19}$ N** y es **repulsiva**, porque las dos cargas son negativas: está dirigida desde la carga fija hacia el electrón y lo devuelve hacia el infinito.
+
+</Solucion>

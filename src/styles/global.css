@@ -2541,6 +2541,20 @@ footer {
   padding-left: 40px;
 }
 
+/* Formato "fisica": "A) CAMPO GRAVITATORIO" en negrita y "Responda a1 o a2" en negrita subrayada. */
+.official-statement--fisica h2.official-block {
+  margin: 28px 0 10px;
+}
+
+.official-statement--fisica h3.official-block {
+  margin: 14px 0 6px;
+}
+
+.official-statement--fisica .official-block:first-child,
+.official-statement--fisica h2.official-block + h3.official-block {
+  margin-top: 0;
+}
+
 /* Cabecera con serifa (curso 2020-2021). */
 .official-header.is-serif .official-title-main,
 .official-header.is-serif .official-title-year,
@@ -3220,6 +3234,11 @@ footer {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Esquemas de Física más anchos que altos (planos inclinados, trazados de rayos). */
+.solution-figure--wide {
+  max-width: 540px;
 }
 
 .official-statement .solution blockquote {

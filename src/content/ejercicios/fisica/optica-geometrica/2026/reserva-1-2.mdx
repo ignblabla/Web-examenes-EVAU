@@ -1,0 +1,44 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2026
+convocatoria: reserva-1
+formato: fisica
+parte: 2
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**b1)** Se sitúa un objeto a 3 m de un espejo esférico convexo. El tamaño de la imagen que se forma es 1/5 del tamaño del objeto. Realice el trazado de rayos y calcule, indicando el criterio de signos utilizado, la posición donde se forma la imagen y el radio de curvatura del espejo.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el vértice del espejo. Las distancias son positivas a la derecha del espejo y negativas a la izquierda; las alturas, positivas por encima del eje. El objeto está delante del espejo: $s = -3$ m.
+
+**Trazado de rayos.** Un espejo convexo da siempre, de un objeto real, una imagen virtual, derecha y menor, detrás del espejo, entre el vértice y el foco:
+
+<TrazadoRayos tipo="convexo" f={0.75} s={-3} y={1} xMin={-3.5} xMax={1.9} descripcion="Espejo convexo con el objeto 3 m a su izquierda. El foco F está a 0,75 m detrás del espejo y el centro de curvatura C a 1,5 m. El rayo paralelo al eje se refleja como si viniera de F, el dirigido a C se refleja sobre sí mismo y el dirigido a F sale paralelo. Las prolongaciones se cortan 0,6 m detrás del espejo, donde se forma una imagen virtual, derecha y cinco veces menor." />
+
+**Posición de la imagen.** La imagen de un espejo convexo es derecha, así que el aumento lateral es positivo, $A = +1/5$. En un espejo, $A = y'/y = -s'/s$:
+
+$$
+\frac{1}{5} = -\frac{s'}{-3} \quad\Rightarrow\quad s' = \frac{3}{5} = 0{,}6\ \text{m}
+$$
+
+La distancia es positiva: la imagen se forma **0,6 m detrás del espejo** y es virtual.
+
+**Radio de curvatura.** Por la ecuación de los espejos esféricos, con $f = R/2$:
+
+$$
+\frac{1}{s'} + \frac{1}{s} = \frac{2}{R}
+\quad\Rightarrow\quad
+\frac{2}{R} = \frac{1}{0{,}6} + \frac{1}{-3} = 1{,}667 - 0{,}333 = 1{,}333\ \text{m}^{-1}
+$$
+
+$$
+R = \frac{2}{1{,}333} = 1{,}5\ \text{m}
+$$
+
+**Respuesta.** La imagen se forma a **0,6 m detrás del espejo** $(s' = +0{,}6$ m) y el radio de curvatura es **$R = 1{,}5$ m**. El signo positivo de $R$ indica que el centro de curvatura está detrás del espejo, como corresponde a un espejo convexo; su distancia focal es $f = 0{,}75$ m.
+
+</Solucion>

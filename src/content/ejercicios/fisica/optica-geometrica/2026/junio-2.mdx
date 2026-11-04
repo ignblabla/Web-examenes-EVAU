@@ -1,0 +1,54 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2026
+convocatoria: junio
+formato: fisica
+parte: 2
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**b1)** Se quiere proyectar un objeto de 0,2 milímetros de altura con una lente convergente en una pantalla. Se coloca la pantalla a 28 cm a la derecha del objeto. Entre el objeto y la pantalla, a 3,8 cm del objeto, se coloca la lente convergente. Realice un esquema y determine razonadamente, indicando el criterio de signos utilizado: **i)** (1 puntos) la distancia focal de la lente necesaria para que la imagen del objeto se enfoque sobre la pantalla; **ii)** (0,5 puntos) el tamaño de la imagen formada sobre la pantalla.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente. Las distancias son positivas a la derecha de la lente y negativas a la izquierda, y las alturas, positivas por encima del eje y negativas por debajo.
+
+El objeto está 3,8 cm a la izquierda de la lente y la pantalla, a $28 - 3{,}8 = 24{,}2$ cm a su derecha. Para que la imagen se vea en la pantalla tiene que ser real y formarse justo en ella:
+
+$$
+s = -3{,}8\ \text{cm}, \qquad s' = +24{,}2\ \text{cm}, \qquad y = 0{,}2\ \text{mm}
+$$
+
+**Esquema.** El objeto queda entre $F$ y $2F$, y la imagen es real, invertida y mayor, detrás de la lente (las alturas no están a escala):
+
+<TrazadoRayos tipo="convergente" f={3.2843} s={-3.8} y={0.2} xMin={-6} xMax={27} descripcion="Lente convergente con el objeto a 3,8 cm a su izquierda, justo por fuera del foco objeto F, y la pantalla a 24,2 cm a su derecha. El rayo paralelo al eje se refracta pasando por el foco imagen F', el rayo por el centro óptico no se desvía y el rayo que pasa por F sale paralelo. Los tres se cortan en la pantalla, donde se forma una imagen real, invertida y mucho mayor que el objeto." />
+
+**i) Distancia focal.** Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{f'} = \frac{1}{24{,}2} - \frac{1}{-3{,}8} = 0{,}0413 + 0{,}2632 = 0{,}3045\ \text{cm}^{-1}
+$$
+
+$$
+f' = \frac{1}{0{,}3045} = 3{,}28\ \text{cm}
+$$
+
+La distancia focal es positiva, como corresponde a una lente convergente. El objeto está un poco más lejos de la lente que el foco $(3{,}8\ \text{cm} > 3{,}28\ \text{cm})$, que es la condición para que una lente convergente dé una imagen real.
+
+**ii) Tamaño de la imagen.** El aumento lateral de una lente es
+
+$$
+A = \frac{y'}{y} = \frac{s'}{s} = \frac{24{,}2}{-3{,}8} = -6{,}37
+$$
+
+$$
+y' = A\,y = -6{,}37 \cdot 0{,}2 = -1{,}27\ \text{mm}
+$$
+
+**Respuesta.** La lente debe tener una distancia focal **$f' = 3{,}28$ cm**. La imagen en la pantalla mide **1,27 mm**: es real, **invertida** (de ahí el signo negativo) y 6,37 veces mayor que el objeto.
+
+</Solucion>

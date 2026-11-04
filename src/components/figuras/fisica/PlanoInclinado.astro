@@ -1,0 +1,177 @@
+---
+// Diagrama de fuerzas sobre un cuerpo en un plano inclinado (que baja hacia la derecha).
+// Dibuja el peso, la normal y el rozamiento (opuesto al movimiento) y, si se piden, una fuerza
+// aplicada paralela al plano hacia arriba y las componentes del peso. Con horizontal, añade un
+// tramo horizontal al pie del plano con el cuerpo frenando por el rozamiento.
+// Las longitudes de las flechas son orientativas: el diagrama no está a escala.
+interface Props {
+  angulo: number
+  // Sentido del movimiento a lo largo del plano.
+  mueve: "baja" | "sube"
+  // Nombre de la fuerza aplicada paralela al plano y hacia arriba, si la hay.
+  aplicada?: string
+  componentes?: boolean
+  horizontal?: boolean
+  descripcion: string
+}
+
+const { angulo, mueve, aplicada, componentes = false, horizontal = false, descripcion } = Astro.props
+
+const th = (angulo * Math.PI) / 180
+const base = 250
+const alto = base * Math.tan(th)
+const x0 = 30
+const y0 = alto + 46
+const arriba = { x: x0, y: y0 - alto }
+const pie = { x: x0 + base, y: y0 }
+const ancho = x0 + base + (horizontal ? 230 : 40)
+const altoTotal = y0 + (horizontal ? 50 : 34)
+
+// Vectores unitarios en coordenadas de pantalla (y hacia abajo): d baja por el plano y n es
+// la normal hacia fuera.
+const d = { x: Math.cos(th), y: Math.sin(th) }
+const n = { x: Math.sin(th), y: -Math.cos(th) }
+const sobre = { x: arriba.x + 0.36 * (pie.x - arriba.x), y: arriba.y + 0.36 * (pie.y - arriba.y) }
+const c = { x: sobre.x + 15 * n.x, y: sobre.y + 15 * n.y }
+
+const id = `plano-${Math.round(Math.random() * 1e9)}`
+const colores = { peso: "#111", normal: "#195c51", roce: "#b04a3a", aplicada: "#2d6fa3" }
+
+interface Flecha {
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+  color: string
+  texto: string
+  sub?: string
+  discontinua?: boolean
+  // Desplazamiento de la etiqueta respecto a la punta, en píxeles.
+  ex?: number
+  ey?: number
+}
+
+const flechas: Flecha[] = []
+const desde = (o: { x: number; y: number }, v: { x: number; y: number }, l: number) => ({
+  x1: o.x,
+  y1: o.y,
+  x2: o.x + v.x * l,
+  y2: o.y + v.y * l,
+})
+
+const lp = 84
+flechas.push({ ...desde(c, { x: 0, y: 1 }, lp), color: colores.peso, texto: "P", ex: 8, ey: 4 })
+flechas.push({ ...desde(c, n, 62), color: colores.normal, texto: "N", ex: 6, ey: -2 })
+const sentidoRoce = mueve === "baja" ? -1 : 1
+flechas.push({
+  ...desde(c, { x: d.x * sentidoRoce, y: d.y * sentidoRoce }, 56),
+  color: colores.roce,
+  texto: "F",
+  sub: "r",
+  ex: mueve === "baja" ? -4 : 4,
+  ey: mueve === "baja" ? -8 : 14,
+})
+if (aplicada)
+  flechas.push({
+    ...desde(c, { x: -d.x, y: -d.y }, 80),
+    color: colores.aplicada,
+    texto: aplicada,
+    ex: -6,
+    ey: -8,
+  })
+if (componentes) {
+  flechas.push({
+    ...desde(c, d, lp * Math.sin(th)),
+    color: colores.peso,
+    texto: "P",
+    sub: "x",
+    discontinua: true,
+    ex: 4,
+    ey: -6,
+  })
+  flechas.push({
+    ...desde(c, { x: -n.x, y: -n.y }, lp * Math.cos(th)),
+    color: colores.peso,
+    texto: "P",
+    sub: "y",
+    discontinua: true,
+    ex: -16,
+    ey: 6,
+  })
+}
+
+// Tramo horizontal: el cuerpo avanza hacia la derecha y el rozamiento lo frena.
+const c2 = { x: pie.x + 120, y: y0 - 14 }
+if (horizontal) {
+  flechas.push({ x1: c2.x, y1: c2.y, x2: c2.x, y2: c2.y + 44, color: colores.peso, texto: "P", ex: 6, ey: 2 })
+  flechas.push({ x1: c2.x, y1: c2.y, x2: c2.x, y2: c2.y - 44, color: colores.normal, texto: "N", ex: 6, ey: 4 })
+  flechas.push({ x1: c2.x, y1: c2.y, x2: c2.x - 44, y2: c2.y, color: colores.roce, texto: "F", sub: "r", ex: -4, ey: -6 })
+}
+
+const marcadores = [...new Set(flechas.map((f) => f.color))]
+const marca = (color: string) => `${id}-${marcadores.indexOf(color)}`
+const r = 36
+const arco = `M${pie.x - r} ${pie.y}A${r} ${r} 0 0 1 ${pie.x - r * Math.cos(th)} ${pie.y - r * Math.sin(th)}`
+const etiquetaAngulo = { x: pie.x - (r + 16) * Math.cos(th / 2), y: pie.y - (r + 16) * Math.sin(th / 2) + 4 }
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg viewBox={`0 0 ${ancho} ${altoTotal}`} role="img" aria-label={descripcion}>
+    <defs>
+      {
+        marcadores.map((color, i) => (
+          <marker id={`${id}-${i}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill={color} />
+          </marker>
+        ))
+      }
+    </defs>
+
+    <path d={`M${x0} ${y0}L${arriba.x} ${arriba.y}L${pie.x} ${pie.y}Z`} fill="#e9e4d8" stroke="#111" stroke-width="1.2" />
+    <path d={`M${x0 - 10} ${y0}H${ancho - 10}`} stroke="#111" stroke-width="1.2" />
+    <path d={arco} fill="none" stroke="#111" stroke-width="1" />
+    <text x={etiquetaAngulo.x} y={etiquetaAngulo.y} text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11">{angulo}°</text>
+
+    <rect
+      x={c.x - 22}
+      y={c.y - 14}
+      width="44"
+      height="28"
+      fill="#c9bce8"
+      stroke="#111"
+      stroke-width="1.2"
+      transform={`rotate(${angulo} ${c.x} ${c.y})`}
+    />
+    {horizontal && <rect x={c2.x - 22} y={c2.y - 14} width="44" height="28" fill="#c9bce8" stroke="#111" stroke-width="1.2" />}
+    {
+      horizontal && (
+        <g>
+          <path d={`M${c2.x + 30} ${c2.y - 24}h30`} stroke="#555" stroke-width="1" marker-end={`url(#${marca("#111")})`} />
+          <text x={c2.x + 64} y={c2.y - 20} font-family="Arial, Helvetica, sans-serif" font-size="11" font-style="italic" fill="#555">v</text>
+        </g>
+      )
+    }
+
+    <g stroke-width="1.6" fill="none">
+      {
+        flechas.map((f) => (
+          <path
+            d={`M${f.x1.toFixed(1)} ${f.y1.toFixed(1)}L${f.x2.toFixed(1)} ${f.y2.toFixed(1)}`}
+            stroke={f.color}
+            stroke-dasharray={f.discontinua ? "4 3" : undefined}
+            marker-end={`url(#${marca(f.color)})`}
+          />
+        ))
+      }
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
+      {
+        flechas.map((f) => (
+          <text x={(f.x2 + (f.ex ?? 0)).toFixed(1)} y={(f.y2 + (f.ey ?? 0)).toFixed(1)} fill={f.color} text-anchor={(f.ex ?? 0) < 0 ? "end" : "start"}>
+            {f.texto}{f.sub && <tspan dy="3" font-size="9">{f.sub}</tspan>}
+          </text>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

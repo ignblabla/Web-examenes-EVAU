@@ -1,0 +1,175 @@
+---
+// Esquema en el plano XY con puntos (cargas, masas, hilos perpendiculares al plano o puntos
+// de cálculo) y vectores dibujados desde ellos. Las posiciones van en unidades del problema y
+// los vectores, en píxeles (x hacia la derecha, y hacia arriba): su longitud es orientativa.
+interface Punto {
+  x: number
+  y: number
+  texto: string
+  // "carga": círculo con su signo; "masa": círculo relleno; "sale"/"entra": corriente
+  // perpendicular al plano (⊙ / ⊗); "punto": punto pequeño.
+  tipo: "carga" | "masa" | "sale" | "entra" | "punto"
+  signo?: "+" | "−"
+  // Desplazamiento de la etiqueta en píxeles (por defecto, arriba a la derecha).
+  dx?: number
+  dy?: number
+}
+
+interface Vector {
+  desde: [number, number]
+  v: [number, number]
+  texto: string
+  sub?: string
+  color?: string
+  discontinuo?: boolean
+  dx?: number
+  dy?: number
+}
+
+interface Props {
+  xMin: number
+  xMax: number
+  yMin: number
+  yMax: number
+  // Píxeles por unidad.
+  escala: number
+  // Marcas de los ejes (en unidades) y texto de la unidad.
+  marcasX?: number[]
+  marcasY?: number[]
+  unidad?: string
+  puntos: Punto[]
+  vectores: Vector[]
+  // Segmentos discontinuos entre puntos (distancias).
+  segmentos?: [number, number, number, number][]
+  // Esquema apaisado: ocupa el ancho de las figuras anchas.
+  ancha?: boolean
+  descripcion: string
+}
+
+const {
+  xMin,
+  xMax,
+  yMin,
+  yMax,
+  escala,
+  marcasX = [],
+  marcasY = [],
+  unidad = "",
+  puntos,
+  vectores,
+  segmentos = [],
+  ancha = false,
+  descripcion,
+} = Astro.props
+
+const margen = 34
+const ancho = (xMax - xMin) * escala + 2 * margen
+const alto = (yMax - yMin) * escala + 2 * margen
+const px = (x: number) => margen + (x - xMin) * escala
+const py = (y: number) => margen + (yMax - y) * escala
+const ejeX = py(0)
+const ejeY = px(0)
+
+const colores = [...new Set(vectores.map((v) => v.color ?? "#195c51"))]
+const id = `vectores-${Math.round(Math.random() * 1e9)}`
+const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
+---
+
+<figure class:list={["solution-figure", { "solution-figure--wide": ancha }]}>
+  <svg viewBox={`0 0 ${ancho} ${alto}`} role="img" aria-label={descripcion}>
+    <defs>
+      {
+        colores.map((color, i) => (
+          <marker id={`${id}-${i}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill={color} />
+          </marker>
+        ))
+      }
+      <marker id={`${id}-eje`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+    </defs>
+
+    <g stroke="#111" stroke-width="1" fill="none">
+      <path d={`M${px(xMin) - 10} ${ejeX}H${px(xMax) + 18}`} marker-end={`url(#${id}-eje)`} />
+      <path d={`M${ejeY} ${py(yMin) + 10}V${py(yMax) - 18}`} marker-end={`url(#${id}-eje)`} />
+      {marcasX.map((m) => <path d={`M${px(m)} ${ejeX - 3}v6`} />)}
+      {marcasY.map((m) => <path d={`M${ejeY - 3} ${py(m)}h6`} />)}
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555">
+      {marcasX.map((m) => <text x={px(m)} y={ejeX + 14} text-anchor="middle">{String(m).replace(".", ",").replace("-", "−")}</text>)}
+      {marcasY.map((m) => <text x={ejeY - 6} y={py(m) + 3} text-anchor="end">{String(m).replace(".", ",").replace("-", "−")}</text>)}
+      <text x={px(xMax) + 18} y={ejeX - 6} text-anchor="end" font-style="italic">x{unidad && ` (${unidad})`}</text>
+      <text x={ejeY + 6} y={py(yMax) - 12} font-style="italic">y{unidad && ` (${unidad})`}</text>
+    </g>
+
+    <g stroke="#888" stroke-width="1" stroke-dasharray="3 3" fill="none">
+      {segmentos.map(([x1, y1, x2, y2]) => <path d={`M${px(x1)} ${py(y1)}L${px(x2)} ${py(y2)}`} />)}
+    </g>
+
+    <g stroke-width="1.8" fill="none">
+      {
+        vectores.map((v) => (
+          <path
+            d={`M${px(v.desde[0])} ${py(v.desde[1])}l${v.v[0]} ${-v.v[1]}`}
+            stroke={v.color ?? "#195c51"}
+            stroke-dasharray={v.discontinuo ? "4 3" : undefined}
+            marker-end={marca(v.color ?? "#195c51")}
+          />
+        ))
+      }
+    </g>
+
+    {
+      puntos.map((p) => (
+        <g>
+          {p.tipo === "carga" && (
+            <>
+              <circle cx={px(p.x)} cy={py(p.y)} r="8" fill={p.signo === "−" ? "#d8e5ed" : "#f8dcd5"} stroke="#111" stroke-width="1" />
+              <text x={px(p.x)} y={py(p.y) + 4} text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
+                {p.signo ?? "+"}
+              </text>
+            </>
+          )}
+          {p.tipo === "masa" && <circle cx={px(p.x)} cy={py(p.y)} r="7" fill="#172c27" />}
+          {(p.tipo === "sale" || p.tipo === "entra") && (
+            <>
+              <circle cx={px(p.x)} cy={py(p.y)} r="8" fill="#fff" stroke="#111" stroke-width="1.2" />
+              {p.tipo === "sale" ? (
+                <circle cx={px(p.x)} cy={py(p.y)} r="2.2" fill="#111" />
+              ) : (
+                <path d={`M${px(p.x) - 4.5} ${py(p.y) - 4.5}l9 9m0 -9l-9 9`} stroke="#111" stroke-width="1.2" />
+              )}
+            </>
+          )}
+          {p.tipo === "punto" && <circle cx={px(p.x)} cy={py(p.y)} r="3" fill="#111" />}
+          <text
+            x={px(p.x) + (p.dx ?? 10)}
+            y={py(p.y) + (p.dy ?? -10)}
+            text-anchor={(p.dx ?? 10) < 0 ? "end" : "start"}
+            font-family="Arial, Helvetica, sans-serif"
+            font-size="11"
+            fill="#111"
+          >
+            {p.texto}
+          </text>
+        </g>
+      ))
+    }
+
+    <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
+      {
+        vectores.map((v) => (
+          <text
+            x={px(v.desde[0]) + v.v[0] + (v.dx ?? 6)}
+            y={py(v.desde[1]) - v.v[1] + (v.dy ?? -4)}
+            text-anchor={(v.dx ?? 6) < 0 ? "end" : "start"}
+            fill={v.color ?? "#195c51"}
+          >
+            {v.texto}{v.sub && <tspan dy="3" font-size="9">{v.sub}</tspan>}
+          </text>
+        ))
+      }
+    </g>
+  </svg>
+</figure>

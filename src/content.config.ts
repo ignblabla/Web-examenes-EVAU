@@ -16,7 +16,8 @@ const examenes = defineCollection({
     // "ingles": texto de comprensión con las líneas numeradas y opciones a dos columnas.
     // "frances": texto en párrafos justificados y preguntas sangradas por bloques (I, II y III).
     // "matematicas": ejercicios con su rótulo subrayado (EJERCICIO 1…) y apartados sangrados.
-    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas"]).default("normal"),
+    // "fisica": bloques A) a D) en negrita y "Responda a1 o a2" subrayado, como el enunciado de Física.
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas", "fisica"]).default("normal"),
     // Texto para la meta descripción; si falta se genera uno.
     descripcion: z.string().optional(),
   }),
@@ -33,7 +34,11 @@ const ejercicios = defineCollection({
     tema: z.string(),
     anio: z.number(),
     convocatoria: z.string(),
-    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas"]).default("normal"),
+    formato: z.enum(["normal", "sangrado", "bloque", "ingles", "frances", "matematicas", "fisica"]).default("normal"),
+    // Si los apartados de un tema no van seguidos en el examen (en Física, óptica y ondas se
+    // alternan en el bloque C), cada tramo es un archivo: junio.mdx es la parte 1 y
+    // junio-2.mdx, con parte: 2, la siguiente. La página del tema las junta en orden.
+    parte: z.number().int().min(2).optional(),
   }),
 })
 

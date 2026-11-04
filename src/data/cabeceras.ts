@@ -79,6 +79,20 @@ const matematicasII2026: Cabecera = {
   ],
 }
 
+// Física, curso 2025-2026: cuatro bloques (A-D), uno obligatorio y tres con dos opciones.
+const fisica2026: Cabecera = {
+  ...comun2026,
+  asignatura: "FÍSICA",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 4 ejercicios (un ejercicio por cada bloque A, B, C y D de los cuales uno será obligatorio y tres optativos). El estudiante debe desarrollar un apartado a) y un apartado b) por cada bloque. En caso de responder a dos apartados a) o b) de un mismo bloque en los ejercicios optativos, solo será tenido en cuenta el respondido en primer lugar.",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado a) hasta 1 punto y b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -410,6 +424,9 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2026/junio": fisica2026,
+  "fisica/2026/julio": fisica2026,
+  "fisica/2026/reserva-1": fisica2026,
   "frances/2021/junio": frances2021Junio,
   "frances/2021/julio": frances2021Julio,
   "frances/2021/reserva-1": frances2021Junio,

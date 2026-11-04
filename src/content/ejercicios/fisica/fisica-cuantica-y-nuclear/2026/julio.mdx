@@ -1,0 +1,157 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2026
+convocatoria: julio
+formato: fisica
+---
+
+<Bloque nivel={3}><strong><u>Responda a1 o a2</u></strong></Bloque>
+
+**a1)** Ajuste razonadamente las siguientes reacciones nucleares indicando las leyes físicas utilizadas:
+
+<div className="official-reactions">
+  <p>**i)** <Nuclido a="27" z="13">Al</Nuclido> + <Nuclido a="4" z="2">He</Nuclido> → <Nuclido a="30" z="15">P</Nuclido> + <Nuclido a="A" z="Z">X</Nuclido></p>
+  <p>**ii)** <Nuclido a="1" z="0">n</Nuclido> + <Nuclido a="235" z="92">U</Nuclido> → <Nuclido a="A" z="56">Ba</Nuclido> + <Nuclido a="95" z="Z">Kr</Nuclido> + 2&thinsp;<Nuclido a="1" z="0">n</Nuclido></p>
+</div>
+
+<Solucion>
+
+En toda reacción nuclear se cumplen dos leyes de conservación:
+
+- **Conservación de la carga eléctrica**: la suma de los números atómicos $Z$ (las cargas, en unidades de $e$) es la misma antes y después de la reacción.
+- **Conservación del número de nucleones** (número bariónico): la suma de los números másicos $A$ es la misma antes y después.
+
+**i)** Igualamos los números másicos y los atómicos de los dos miembros:
+
+$$
+A:\ 27 + 4 = 30 + A \ \Rightarrow\ A = 1 \qquad\qquad Z:\ 13 + 2 = 15 + Z \ \Rightarrow\ Z = 0
+$$
+
+Una partícula con $A = 1$ y $Z = 0$ es un **neutrón**:
+
+$$
+{}^{27}_{13}\text{Al} + {}^{4}_{2}\text{He} \longrightarrow {}^{30}_{15}\text{P} + {}^{1}_{0}\text{n}
+$$
+
+Es la reacción con la que los Joliot-Curie obtuvieron el primer isótopo radiactivo artificial.
+
+**ii)** Es una fisión del uranio-235 provocada por un neutrón:
+
+$$
+A:\ 1 + 235 = A + 95 + 2 \cdot 1 \ \Rightarrow\ A = 139 \qquad\qquad Z:\ 0 + 92 = 56 + Z + 2 \cdot 0 \ \Rightarrow\ Z = 36
+$$
+
+$$
+{}^{1}_{0}\text{n} + {}^{235}_{92}\text{U} \longrightarrow {}^{139}_{56}\text{Ba} + {}^{95}_{36}\text{Kr} + 2\,{}^{1}_{0}\text{n}
+$$
+
+$Z = 36$ es, en efecto, el número atómico del kriptón.
+
+</Solucion>
+
+**a2)** Discuta razonadamente si al reducir a la mitad la longitud de onda asociada de un electrón se duplica el valor de su energía cinética.
+
+<Solucion>
+
+**Es falso: la energía cinética se cuadruplica.** Según la hipótesis de De Broglie, la longitud de onda asociada al electrón es $\lambda = h/p$, y (sin efectos relativistas) su energía cinética se relaciona con la cantidad de movimiento por $E_c = p^2/2m$. Despejando $p = h/\lambda$:
+
+$$
+E_c = \frac{p^2}{2m} = \frac{h^2}{2m\,\lambda^2}
+$$
+
+La energía cinética es inversamente proporcional al cuadrado de la longitud de onda. Si $\lambda' = \lambda/2$:
+
+$$
+E'_c = \frac{h^2}{2m\,(\lambda/2)^2} = 4\,\frac{h^2}{2m\,\lambda^2} = 4\,E_c
+$$
+
+Al reducir la longitud de onda a la mitad se duplica la cantidad de movimiento (y la velocidad), y como la energía cinética depende del cuadrado de la velocidad, se multiplica por 4.
+
+</Solucion>
+
+<Bloque nivel={3}><strong><u>Responda b1 o b2</u></strong></Bloque>
+
+**b1)** En 1952 Estados Unidos detonó la primera bomba de hidrógeno de la historia en una remota isla del Pacífico. En dicha detonación se forma helio <Nuclido a="4" z="2">He</Nuclido> a partir de deuterio <Nuclido a="2" z="1">H</Nuclido> y tritio <Nuclido a="3" z="1">H</Nuclido>. **i)** (0,5 puntos) Deduzca razonadamente la reacción nuclear que tiene lugar en dicho proceso. **ii)** (0,75 puntos) Calcule la energía liberada al formarse un núcleo de helio. **iii)** (0,25 puntos) Calcule la energía de enlace por nucleón para el <Nuclido a="4" z="2">He</Nuclido>.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; m(<Nuclido a="4" z="2">He</Nuclido>)= 4,002603 u; m(<Nuclido a="3" z="1">H</Nuclido>) = 3,016049 u; m(<Nuclido a="2" z="1">H</Nuclido>)= 2,014102 u; m<sub>n</sub> = 1,008665 u; m<sub>p</sub> = 1,007276 u; 1 u = 1,66·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** Es una fusión: un núcleo de deuterio y uno de tritio se unen para formar helio y una partícula X que hay que identificar. Por la conservación del número de nucleones $(A)$ y de la carga $(Z)$:
+
+$$
+{}^{2}_{1}\text{H} + {}^{3}_{1}\text{H} \longrightarrow {}^{4}_{2}\text{He} + {}^{A}_{Z}\text{X}
+\qquad
+A:\ 2 + 3 = 4 + A \ \Rightarrow\ A = 1 \qquad Z:\ 1 + 1 = 2 + Z \ \Rightarrow\ Z = 0
+$$
+
+La partícula es un neutrón:
+
+$$
+{}^{2}_{1}\text{H} + {}^{3}_{1}\text{H} \longrightarrow {}^{4}_{2}\text{He} + {}^{1}_{0}\text{n}
+$$
+
+**ii) Energía liberada.** La masa de los productos es menor que la de los reactivos. Esa diferencia de masa (defecto de masa) se libera como energía, según la equivalencia de Einstein $E = \Delta m\,c^2$:
+
+$$
+\Delta m = \left[m({}^{2}_{1}\text{H}) + m({}^{3}_{1}\text{H})\right] - \left[m({}^{4}_{2}\text{He}) + m_n\right]
+$$
+
+$$
+\Delta m = (2{,}014102 + 3{,}016049) - (4{,}002603 + 1{,}008665) = 0{,}018883\ \text{u}
+$$
+
+$$
+\Delta m = 0{,}018883 \cdot 1{,}66 \cdot 10^{-27} = 3{,}13 \cdot 10^{-29}\ \text{kg}
+$$
+
+$$
+E = \Delta m\,c^2 = 3{,}13 \cdot 10^{-29} \cdot (3 \cdot 10^8)^2 = 2{,}82 \cdot 10^{-12}\ \text{J}
+$$
+
+Son unos 17,6 MeV por cada núcleo de helio formado.
+
+**iii) Energía de enlace por nucleón del helio-4.** La energía de enlace es la que corresponde al defecto de masa del núcleo: la diferencia entre la masa de sus nucleones por separado (2 protones y 2 neutrones) y la del núcleo:
+
+$$
+\Delta m = 2m_p + 2m_n - m({}^{4}_{2}\text{He}) = 2 \cdot 1{,}007276 + 2 \cdot 1{,}008665 - 4{,}002603 = 0{,}029279\ \text{u}
+$$
+
+$$
+E_e = \Delta m\,c^2 = 0{,}029279 \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 4{,}37 \cdot 10^{-12}\ \text{J}
+$$
+
+$$
+\frac{E_e}{A} = \frac{4{,}37 \cdot 10^{-12}}{4} = 1{,}09 \cdot 10^{-12}\ \text{J/nucleón}
+$$
+
+**Respuesta.** La reacción es ${}^{2}_{1}\text{H} + {}^{3}_{1}\text{H} \rightarrow {}^{4}_{2}\text{He} + {}^{1}_{0}\text{n}$, en cada fusión se liberan **$2{,}82 \cdot 10^{-12}$ J**, y la energía de enlace por nucleón del helio-4 es **$1{,}09 \cdot 10^{-12}$ J** (unos 6,8 MeV), un valor muy alto para un núcleo tan ligero: el helio-4 es especialmente estable.
+
+</Solucion>
+
+**b2)** Un núcleo de helio se acelera aplicando una diferencia de potencial, siendo su longitud de onda de De Broglie 3·10<sup>-11</sup> m. Calcule razonadamente: **i)** (1 punto) la velocidad y la energía cinética del núcleo de helio; **ii)** (0,5 puntos) la diferencia de potencial aplicada. h = 6,63·10<sup>-34</sup> J s, e = 1,6·10<sup>-19</sup> C, m<sub>He</sub> = 6,64·10<sup>-27</sup> kg
+
+<Solucion>
+
+**i) Velocidad y energía cinética.** Por la relación de De Broglie, $\lambda = h/(m\,v)$:
+
+$$
+v = \frac{h}{m_{He}\,\lambda} = \frac{6{,}63 \cdot 10^{-34}}{6{,}64 \cdot 10^{-27} \cdot 3 \cdot 10^{-11}} = 3{,}33 \cdot 10^{3}\ \text{m/s}
+$$
+
+La velocidad es muy pequeña frente a la de la luz, así que usamos la expresión clásica de la energía cinética:
+
+$$
+E_c = \frac{1}{2}m_{He}\,v^2 = \frac{1}{2} \cdot 6{,}64 \cdot 10^{-27} \cdot (3{,}33 \cdot 10^3)^2 = 3{,}68 \cdot 10^{-20}\ \text{J}
+$$
+
+**ii) Diferencia de potencial.** Suponiendo que el núcleo parte del reposo, el trabajo del campo eléctrico se convierte en energía cinética, $E_c = q\,\Delta V$. Un núcleo de helio (partícula alfa) tiene dos protones, así que su carga es $q = 2e = 3{,}2 \cdot 10^{-19}$ C:
+
+$$
+\Delta V = \frac{E_c}{q} = \frac{3{,}68 \cdot 10^{-20}}{2 \cdot 1{,}6 \cdot 10^{-19}} = 0{,}115\ \text{V}
+$$
+
+**Respuesta.** El núcleo de helio se mueve a **$3{,}33 \cdot 10^3$ m/s** con una energía cinética de **$3{,}68 \cdot 10^{-20}$ J**, y la diferencia de potencial aplicada es de **0,115 V**. Si se tomara por error la carga $e$ en vez de $2e$, saldría el doble, 0,23 V.
+
+</Solucion>
