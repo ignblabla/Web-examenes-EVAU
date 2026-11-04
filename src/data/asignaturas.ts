@@ -102,7 +102,7 @@ export const asignaturas: Asignatura[] = [
     titulo: "Física.",
     simbolo: "atom",
     color: "physics",
-    indexable: false,
+    indexable: true,
     desde: 2026,
     reservas: { 2026: 1 },
     intro:

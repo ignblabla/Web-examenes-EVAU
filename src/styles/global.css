@@ -180,7 +180,7 @@
   font-weight: 600;
 }
 
-/* Con cinco enlaces, el menú se aprieta antes de pasar al menú móvil. */
+/* Con siete enlaces, el menú se aprieta antes de pasar al menú móvil. */
 @media (max-width: 1100px) {
   .desktop-nav {
     gap: 20px;
@@ -1143,11 +1143,8 @@ footer {
   color: var(--lime);
 }
 
-@media (max-width: 900px) {
-  .container {
-    width: min(100% - 32px, 680px);
-  }
-
+/* Con siete enlaces, por debajo de 1080 px el menú no cabe en una línea: pasa al menú móvil. */
+@media (max-width: 1080px) {
   .header-inner {
     min-height: 74px;
     grid-template-columns: 1fr auto;
@@ -1174,6 +1171,12 @@ footer {
     border-bottom: 1px solid var(--line);
     font-size: 14px;
     font-weight: 600;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 32px, 680px);
   }
 
   .hero-grid {
