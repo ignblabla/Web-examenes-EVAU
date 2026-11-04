@@ -624,10 +624,15 @@
   background: var(--line);
 }
 
-/* Cada grupo reparte su fila entre sus tarjetas (--columnas se fija en la portada). */
+/* Cada tarjeta mide lo que una de las --columnas del grupo más grande, y un grupo con menos
+   tarjetas (--tarjetas) queda centrado. Las dos variables se fijan en la portada. */
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(var(--columnas, 4), minmax(0, 1fr));
+  grid-template-columns: repeat(
+    var(--tarjetas, 4),
+    calc((100% - (var(--columnas, 4) - 1) * 18px) / var(--columnas, 4))
+  );
+  justify-content: center;
   gap: 18px;
 }
 

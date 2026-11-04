@@ -59,7 +59,7 @@ const tarjetas = [
     title: "Francés",
     description:
       "Todos los exámenes desde 2021, con cada respuesta de la compréhension y la compétence linguistique explicada.",
-    detail: "Compréhension · Compétence linguistique · Expression",
+    detail: "Compréhension · Compétence · Expression",
     className: "subject-card subject-card--french",
   },
 ] as const
@@ -71,6 +71,9 @@ const grupos = [
   { titulo: "Ciencias", tarjetas: visibles.filter((t) => t.grupo === "ciencias") },
   { titulo: "Idiomas", tarjetas: visibles.filter((t) => t.grupo === "idiomas") },
 ].filter((g) => g.tarjetas.length > 0)
+// Todas las tarjetas miden lo que una columna del grupo más grande; los grupos con menos
+// tarjetas se centran. Si ningún grupo pasa de dos, las tarjetas son anchas.
+const columnas = Math.max(...grupos.map((g) => g.tarjetas.length))
 const numeros = ["Una", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho"]
 const cuantas = numeros[visibles.length - 1] ?? String(visibles.length)
 
@@ -205,8 +208,8 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           <div class="subject-group">
             <h3 class="subject-group-title">{grupo.titulo}</h3>
             <div
-              class:list={["subject-grid", { "subject-grid--ancha": grupo.tarjetas.length <= 2 }]}
-              style={`--columnas: ${grupo.tarjetas.length}`}
+              class:list={["subject-grid", { "subject-grid--ancha": columnas <= 2 }]}
+              style={`--columnas: ${columnas}; --tarjetas: ${grupo.tarjetas.length}`}
             >
               {grupo.tarjetas.map((subject) => (
                 <a href={subject.href} class={subject.className}>
