@@ -1,0 +1,162 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: reserva-4
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una carga positiva *q* se encuentra próxima a una carga negativa *Q*. Razone si aumenta o disminuye la energía potencial eléctrica de *q* en las siguientes situaciones: **i)** si se aleja de *Q* siguiendo una línea de campo; **ii)** si se mueve en torno a *Q* siguiendo una trayectoria circular.
+
+<Solucion>
+
+La energía potencial eléctrica de la carga $q$ a una distancia $r$ de $Q$ es:
+
+$$
+E_p = K\,\frac{q\,Q}{r}
+$$
+
+Como $q > 0$ y $Q < 0$, es **negativa**: $E_p = -K\,q\,|Q|/r$. Las cargas se atraen.
+
+**i) Se aleja de Q siguiendo una línea de campo: aumenta.** Las líneas de campo de una carga negativa son radiales y apuntan hacia ella; alejarse siguiendo una de ellas es moverse en dirección radial, aumentando $r$. Al aumentar $r$, $E_p = -Kq|Q|/r$ se hace menos negativa: **aumenta** (tiende a cero). Es coherente con que la fuerza sea atractiva: para separar las cargas hay que hacer trabajo contra la fuerza eléctrica, cuyo trabajo es negativo, y $\Delta E_p = -W > 0$.
+
+**ii) Se mueve en una circunferencia en torno a Q: no cambia.** La distancia a $Q$ es constante en todo momento, así que la energía potencial **no varía**. La circunferencia está sobre una superficie equipotencial (una esfera centrada en $Q$), y la fuerza eléctrica, radial, es perpendicular al desplazamiento y no realiza trabajo.
+
+</Solucion>
+
+**b)** Dos cargas positivas de valor 2·10<sup>-6</sup> C se encuentran en los puntos A(-2,0) y B(2,0) m. **i)** Determine el vector campo eléctrico en el punto C(0,3) m. **ii)** Calcule el trabajo que realiza el campo eléctrico cuando una tercera carga de valor -3·10<sup>-6</sup> C se traslada del punto C al origen de coordenadas.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo eléctrico en C.** Las dos cargas están a la misma distancia de C:
+
+$$
+r = \sqrt{2^2 + 3^2} = \sqrt{13}\ \text{m}
+\quad\Rightarrow\quad
+E_A = E_B = K\,\frac{q}{r^2} = 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-6}}{13} = 1385\ \text{N/C}
+$$
+
+Son positivas, así que sus campos se alejan de ellas. El de A apunta según el vector de A a C, $(2\,\vec{i} + 3\,\vec{j})/\sqrt{13}$, y el de B según el vector de B a C, $(-2\,\vec{i} + 3\,\vec{j})/\sqrt{13}$:
+
+<Vectores
+  xMin={-2.6}
+  xMax={3.2}
+  yMin={-0.6}
+  yMax={4.6}
+  escala={50}
+  unidad="m"
+  puntos={[
+    { x: -2, y: 0, texto: "A (+2 μC)", tipo: "carga", signo: "+", dx: -8, dy: 22 },
+    { x: 2, y: 0, texto: "B (+2 μC)", tipo: "carga", signo: "+", dx: -8, dy: 22 },
+    { x: 0, y: 3, texto: "C(0, 3)", tipo: "punto", dx: -50, dy: -2 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -12, dy: 14 },
+  ]}
+  vectores={[
+    { desde: [0, 3], v: [22, 33], texto: "E", sub: "A", color: "#b04a3a" },
+    { desde: [0, 3], v: [-22, 33], texto: "E", sub: "B", color: "#b04a3a", dx: -6 },
+    { desde: [0, 3], v: [0, 66], texto: "E", color: "#195c51", dx: 6, dy: 4 },
+  ]}
+  segmentos={[[-2, 0, 0, 3], [2, 0, 0, 3]]}
+  descripcion="Dos cargas positivas iguales en A, de coordenadas menos 2, 0, y en B, de coordenadas 2, 0. En el punto C, de coordenadas 0, 3, el campo de A apunta hacia arriba y a la derecha, en la dirección de A a C, y el de B hacia arriba y a la izquierda. Sus componentes horizontales se anulan y el campo total apunta verticalmente hacia arriba."
+/>
+
+Por simetría, las componentes X se anulan y las componentes Y se suman:
+
+$$
+\vec{E}_C = 2 \cdot 1385 \cdot \frac{3}{\sqrt{13}}\,\vec{j} = 2304\,\vec{j}\ \text{N/C}
+$$
+
+**ii) Trabajo del campo de C a O.** El potencial es escalar; en cada punto se suman los de las dos cargas:
+
+$$
+V_C = 2\,K\,\frac{q}{\sqrt{13}} = 2 \cdot 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-6}}{3{,}606} = 9985\ \text{V},
+\qquad
+V_O = 2\,K\,\frac{q}{2} = 2 \cdot 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-6}}{2} = 18\,000\ \text{V}
+$$
+
+El trabajo del campo es igual a menos la variación de la energía potencial de la carga $q' = -3 \cdot 10^{-6}$ C:
+
+$$
+W = -q'\,(V_O - V_C) = -(-3 \cdot 10^{-6}) \cdot (18\,000 - 9985) = 2{,}40 \cdot 10^{-2}\ \text{J}
+$$
+
+**Respuesta.** El campo en C es $\vec{E}_C = 2304\,\vec{j}$ **N/C** y el campo eléctrico realiza un trabajo de **$2{,}40 \cdot 10^{-2}$ J**. Es positivo porque la carga negativa es atraída por las dos cargas positivas y se acerca a ellas: se mueve hacia potenciales mayores, donde su energía potencial ($q'V$, con $q' < 0$) es menor. Ese desplazamiento lo haría espontáneamente.
+
+</Solucion>
+
+**B2. a)** Una partícula de masa *m* y carga *q* se mueve en un campo magnético uniforme $\vec{B}$ describiendo una trayectoria circular de radio *R*. **i)** Deduzca razonadamente la expresión del radio en función del campo, la masa, la carga y la velocidad de la partícula. **ii)** Determine la relación entre las velocidades de dos partículas de igual masa y cargas *q* y 3*q* que describen trayectorias circulares de igual radio *R* en el seno de un mismo campo magnético.
+
+<Solucion>
+
+**i) Radio de la trayectoria.** Si la partícula describe una circunferencia, su velocidad es perpendicular al campo. La fuerza de Lorentz, $\vec{F} = q\,\vec{v} \times \vec{B}$, tiene entonces módulo $F = |q|\,v B$ y es perpendicular a la velocidad: no cambia su módulo, solo su dirección, y actúa como fuerza centrípeta:
+
+$$
+|q|\,v B = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+**ii) Relación entre las velocidades.** Despejando la velocidad, $v = |q|\,B R/m$. Con la misma masa, el mismo radio y el mismo campo, la velocidad es proporcional a la carga:
+
+$$
+\frac{v_{3q}}{v_q} = \frac{3q\,B R/m}{q\,B R/m} = 3
+$$
+
+La partícula de carga $3q$ va **tres veces más rápida**: sufre una fuerza magnética mayor y necesita más velocidad para describir la misma circunferencia.
+
+</Solucion>
+
+**b)** Por un hilo conductor muy largo, situado en el eje OX, circula una corriente de intensidad 5 A en el sentido positivo de dicho eje. Un protón que se encuentra en el punto P de coordenadas *x* = 0, *y* = 10, *z* = 0 cm tiene una velocidad de 2·10<sup>6</sup> $\vec{i}$ m s<sup>-1</sup>. **i)** Realice un esquema incluyendo los vectores velocidad, campo magnético y fuerza sobre el protón, razonando su dirección y sentido. **ii)** Determine el vector campo eléctrico que habría que aplicar para que la velocidad del protón permanezca constante.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Campo magnético, fuerza y esquema.** El hilo crea en P, a $d = 0{,}10$ m, un campo de módulo:
+
+$$
+B = \frac{\mu_0\,I}{2\pi d} = \frac{4\pi \cdot 10^{-7} \cdot 5}{2\pi \cdot 0{,}10} = 1 \cdot 10^{-5}\ \text{T}
+$$
+
+Por la regla de la mano derecha (pulgar en el sentido de la corriente, $+\vec{i}$), en un punto del semieje Y positivo el campo tiene el sentido de $\vec{i} \times \vec{j} = +\vec{k}$: sale del plano XY. La fuerza de Lorentz sobre el protón es:
+
+$$
+\vec{F} = e\,\vec{v} \times \vec{B} = 1{,}6 \cdot 10^{-19} \cdot 2 \cdot 10^{6} \cdot 10^{-5}\,(\vec{i} \times \vec{k}) = -3{,}2 \cdot 10^{-18}\,\vec{j}\ \text{N}
+$$
+
+Apunta hacia el hilo: el protón, al moverse en el sentido de la corriente, equivale a una corriente paralela, y las corrientes paralelas del mismo sentido se atraen.
+
+<Vectores
+  xMin={-32}
+  xMax={18}
+  yMin={-5}
+  yMax={17}
+  escala={7}
+  unidad="cm"
+  hilos={[{ desde: [-31, 0], hasta: [16, 0], texto: "I = 5 A" }]}
+  puntos={[{ x: 0, y: 10, texto: "P(0, 10) · B ⊙", tipo: "sale", dx: -14, dy: -14 }]}
+  vectores={[
+    { desde: [0, 10], v: [60, 0], texto: "v", color: "#b04a3a", dy: -6 },
+    { desde: [0, 10], v: [0, -42], texto: "F", sub: "B", color: "#195c51", dx: 8, dy: 8 },
+    { desde: [-22, 10], v: [0, 34], texto: "E", color: "#2d6fa3", dx: -16, dy: 8 },
+  ]}
+  descripcion="Hilo sobre el eje X con una corriente de 5 amperios hacia la derecha. En el punto P, a 10 centímetros sobre el hilo, el campo magnético sale del papel. El protón se mueve hacia la derecha y la fuerza magnética apunta hacia abajo, hacia el hilo. El campo eléctrico que la compensa apunta hacia arriba."
+/>
+
+**ii) Campo eléctrico para que la velocidad sea constante.** Para que el protón siga en línea recta con velocidad constante, la fuerza total tiene que ser nula: la fuerza eléctrica, $e\,\vec{E}$, tiene que compensar la magnética:
+
+$$
+e\,\vec{E} + e\,\vec{v} \times \vec{B} = \vec{0}
+\quad\Rightarrow\quad
+\vec{E} = -\vec{v} \times \vec{B} = \frac{3{,}2 \cdot 10^{-18}}{1{,}6 \cdot 10^{-19}}\,\vec{j} = 20\,\vec{j}\ \text{N/C}
+$$
+
+Su módulo es $E = v\,B = 2 \cdot 10^6 \cdot 10^{-5} = 20$ N/C.
+
+**Respuesta.** El campo magnético en P es $\vec{B} = 10^{-5}\,\vec{k}$ T y la fuerza sobre el protón, $\vec{F} = -3{,}2 \cdot 10^{-18}\,\vec{j}$ N, hacia el hilo. Para que su velocidad no cambie hay que aplicar un campo eléctrico $\vec{E} = 20\,\vec{j}$ **N/C**. Es lo que hace un selector de velocidades: con campos eléctrico y magnético cruzados, solo pasan sin desviarse las partículas con $v = E/B$. Como el protón se mueve paralelo al hilo, siempre a 10 cm de él, el campo magnético es el mismo en toda su trayectoria y basta con un campo eléctrico uniforme.
+
+</Solucion>

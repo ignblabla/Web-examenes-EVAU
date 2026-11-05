@@ -1,0 +1,81 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: reserva-3
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+
+**C2. a)** Un rayo de luz reduce su velocidad a la mitad al pasar de un medio a otro. **i)** Determine razonadamente la relación entre los índices de refracción de ambos medios. **ii)** Represente la trayectoria de un rayo que incide con un ángulo no nulo con respecto a la normal, y justifique si puede producirse el fenómeno de reflexión total.
+
+<Solucion>
+
+**i) Relación entre los índices.** El índice de refracción es $n = c/v$. Si la velocidad se reduce a la mitad, $v_2 = v_1/2$:
+
+$$
+n_2 = \frac{c}{v_2} = \frac{c}{v_1/2} = 2\,\frac{c}{v_1} = 2\,n_1
+$$
+
+El índice del segundo medio es **el doble** que el del primero.
+
+**ii) Trayectoria y reflexión total.** Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$, así que $\sin\theta_2 = \frac{1}{2}\sin\theta_1$: el ángulo de refracción es menor que el de incidencia y el rayo **se acerca a la normal**. Por ejemplo, con $\theta_1 = 40^\circ$, $\sin\theta_2 = 0{,}321$ y $\theta_2 = 18{,}7^\circ$:
+
+<RefraccionCapas
+  incidencia={40}
+  capas={[
+    { nombre: "Medio 1", n: 1, color: "#f4f8fb", texto: "Medio 1 (n₁)" },
+    { nombre: "Medio 2", n: 2, color: "#dfe9f0", texto: "Medio 2 (n₂ = 2 n₁)" },
+  ]}
+  descripcion="Rayo que pasa a un medio en el que la luz va a la mitad de velocidad. Incide con 40 grados respecto a la normal y se refracta acercándose a ella, con 18,7 grados."
+/>
+
+**No puede producirse reflexión total.** La reflexión total solo ocurre cuando la luz pasa a un medio **menos** refringente, en el que se aleja de la normal: al aumentar el ángulo de incidencia, el de refracción llega a $90^\circ$. Aquí ocurre lo contrario: aunque el rayo incida rasante $(\theta_1 = 90^\circ)$, el ángulo de refracción solo llega a $\theta_2 = \arcsin(1/2) = 30^\circ$, y siempre hay rayo refractado. (La reflexión total sí podría darse en el sentido contrario, del medio 2 al medio 1, con un ángulo límite de $30^\circ$.)
+
+</Solucion>
+
+**b)** Un rayo de luz con una longitud de onda de 5,5·10<sup>-7</sup> m que se propaga a través del aire incide sobre la superficie de un objeto de vidrio. Como consecuencia, la longitud de onda del rayo en el vidrio cambia a 5·10<sup>-7</sup> m. **i)** Calcule su frecuencia y la velocidad de propagación en el vidrio. **ii)** Sabiendo que el rayo sale refractado formando un ángulo de 30º con respecto a la normal, realice un esquema con la trayectoria de los rayos y determine razonadamente el ángulo de incidencia.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Frecuencia y velocidad en el vidrio.** La frecuencia no cambia al pasar de un medio a otro; la calculamos en el aire:
+
+$$
+f = \frac{c}{\lambda_{\text{aire}}} = \frac{3 \cdot 10^8}{5{,}5 \cdot 10^{-7}} = 5{,}45 \cdot 10^{14}\ \text{Hz}
+$$
+
+$$
+v = \lambda_{\text{vidrio}}\,f = 5 \cdot 10^{-7} \cdot 5{,}45 \cdot 10^{14} = 2{,}73 \cdot 10^{8}\ \text{m/s}
+$$
+
+**ii) Ángulo de incidencia.** El índice de refracción del vidrio es:
+
+$$
+n = \frac{c}{v} = \frac{\lambda_{\text{aire}}}{\lambda_{\text{vidrio}}} = \frac{5{,}5 \cdot 10^{-7}}{5 \cdot 10^{-7}} = 1{,}1
+$$
+
+Por la ley de Snell, con el ángulo de refracción de $30^\circ$:
+
+$$
+n_{\text{aire}}\sin i = n\sin 30^\circ
+\quad\Rightarrow\quad
+\sin i = 1{,}1 \cdot 0{,}5 = 0{,}55
+\quad\Rightarrow\quad
+i = 33{,}4^\circ
+$$
+
+<RefraccionCapas
+  incidencia={33.367}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Vidrio", n: 1.1, color: "#dfe9f0", texto: "Vidrio (n = 1,1)" },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre un vidrio de índice 1,1 formando 33,4 grados con la normal y se refracta acercándose a ella, con 30 grados."
+/>
+
+**Respuesta.** La luz tiene una frecuencia de **$5{,}45 \cdot 10^{14}$ Hz** y en el vidrio se propaga a **$2{,}73 \cdot 10^8$ m/s**. El ángulo de incidencia es de **33,4°**, algo mayor que el de refracción, porque el rayo se acerca a la normal al entrar en el vidrio. (Un índice de 1,1 es bajo para un vidrio real, que suele estar en torno a 1,5, pero es el que se deduce de los datos.)
+
+</Solucion>

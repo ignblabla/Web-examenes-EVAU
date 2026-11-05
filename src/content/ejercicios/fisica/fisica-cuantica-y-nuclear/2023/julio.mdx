@@ -1,0 +1,113 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2023
+convocatoria: julio
+formato: fisica
+---
+
+**D1. a)** Se tienen dos muestras radiactivas de dos elementos diferentes, ambas con el mismo número inicial de núcleos. La constante radiactiva de un elemento es el doble que la del otro. **i)** Deduzca cómo cambia con el tiempo la relación entre el número de núcleos de las dos muestras. **ii)** Determine cómo varía con el tiempo la relación entre las actividades de las dos muestras.
+
+<Solucion>
+
+Según la ley de desintegración radiactiva, el número de núcleos sin desintegrar disminuye exponencialmente con el tiempo, $N = N_0\,e^{-\lambda t}$. Llamamos 1 a la muestra de constante $\lambda$ y 2 a la de constante $2\lambda$, las dos con $N_0$ núcleos iniciales.
+
+**i) Relación entre los números de núcleos.**
+
+$$
+\frac{N_2}{N_1} = \frac{N_0\,e^{-2\lambda t}}{N_0\,e^{-\lambda t}} = e^{-\lambda t}
+$$
+
+Al principio la relación vale 1 (las dos muestras tienen los mismos núcleos) y después **disminuye exponencialmente** con el tiempo, tendiendo a cero: la muestra 2 se desintegra más deprisa y le quedan cada vez menos núcleos en comparación con la 1. Por ejemplo, cuando ha pasado el periodo de semidesintegración de la muestra 1, $T_1 = \ln 2/\lambda$, la relación es $1/2$: a la muestra 1 le queda la mitad de los núcleos y a la 2, la cuarta parte.
+
+**ii) Relación entre las actividades.** La actividad es el número de desintegraciones por unidad de tiempo, $A = \lambda N$:
+
+$$
+\frac{A_2}{A_1} = \frac{2\lambda\,N_0\,e^{-2\lambda t}}{\lambda\,N_0\,e^{-\lambda t}} = 2\,e^{-\lambda t}
+$$
+
+Al principio la muestra 2 tiene **el doble de actividad**, porque con los mismos núcleos se desintegra el doble de rápido. Pero la relación disminuye exponencialmente: en $t = \ln 2/\lambda$ (el periodo de semidesintegración de la muestra 1) las dos actividades son iguales, y a partir de ese momento la muestra 2 es la menos activa, porque le quedan muchos menos núcleos.
+
+</Solucion>
+
+**b)** El tritio, con un periodo de semidesintegración de 12,33 años, se puede usar para analizar la antigüedad de vinos, ya que estos contienen agua. En el año 2023 se toma una muestra del vino hallado en una antigua bodega y se obtiene que la actividad de la muestra es 1,24·10<sup>-3</sup> veces la inicial. **i)** Calcule la constante radiactiva del tritio. **ii)** Determine el tiempo que ha estado embotellado el vino. **iii)** Justifique si es compatible de la datación radiactiva con la suposición de que el vino fue embotellado entre los años 1900 y 1935.
+
+<Solucion>
+
+**i) Constante radiactiva.** En un periodo de semidesintegración el número de núcleos se reduce a la mitad: $N_0/2 = N_0\,e^{-\lambda T_{1/2}}$, de donde $\lambda = \ln 2/T_{1/2}$:
+
+$$
+\lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{12{,}33} = 5{,}62 \cdot 10^{-2}\ \text{años}^{-1}
+$$
+
+En unidades del S.I., dividiendo por los segundos de un año $(3{,}156 \cdot 10^{7}$ s$)$: $\lambda = 1{,}78 \cdot 10^{-9}$ s⁻¹.
+
+**ii) Tiempo embotellado.** La actividad es proporcional al número de núcleos, $A = \lambda N$, así que disminuye con la misma ley: $A = A_0\,e^{-\lambda t}$. Con $A/A_0 = 1{,}24 \cdot 10^{-3}$:
+
+$$
+e^{-\lambda t} = 1{,}24 \cdot 10^{-3}
+\quad\Rightarrow\quad
+t = \frac{-\ln(1{,}24 \cdot 10^{-3})}{\lambda} = \frac{6{,}69}{5{,}62 \cdot 10^{-2}} = 119\ \text{años}
+$$
+
+**iii) Compatibilidad con la fecha supuesta.** Si en 2023 el vino lleva 119 años embotellado, se embotelló hacia el año
+
+$$
+2023 - 119 = 1904
+$$
+
+que está dentro del intervalo entre 1900 y 1935: la datación **es compatible** con esa suposición. Un vino embotellado en 1935 tendría 88 años y su actividad sería mayor, $e^{-0{,}0562 \cdot 88} = 7{,}1 \cdot 10^{-3}$ veces la inicial; y uno de 1900 tendría 123 años y una actividad de $1{,}0 \cdot 10^{-3}$ veces la inicial. El valor medido está entre los dos, mucho más cerca del de 1900.
+
+**Respuesta.** La constante radiactiva del tritio es **$5{,}62 \cdot 10^{-2}$ años⁻¹** ($1{,}78 \cdot 10^{-9}$ s⁻¹), el vino lleva **unos 119 años** embotellado (desde 1904) y la datación es **compatible** con que se embotellara entre 1900 y 1935. Han pasado casi diez periodos de semidesintegración: por eso queda poco más de una milésima de la actividad inicial $(2^{-10} \approx 10^{-3})$.
+
+</Solucion>
+
+**D2. a)** Una molécula de oxígeno y otra de nitrógeno tienen la misma energía cinética. Determine razonadamente la relación entre las longitudes de onda de estas dos moléculas sabiendo que la masa de la molécula de oxígeno es 1,14 veces mayor que la masa de la de nitrógeno.
+
+<Solucion>
+
+Según De Broglie, una partícula de momento lineal $p$ tiene asociada una onda de longitud $\lambda = h/p$. Expresamos el momento lineal en función de la energía cinética: $E_c = \dfrac{p^2}{2m}$, así que $p = \sqrt{2m\,E_c}$ y
+
+$$
+\lambda = \frac{h}{\sqrt{2m\,E_c}}
+$$
+
+Con la misma energía cinética, la longitud de onda es inversamente proporcional a la raíz cuadrada de la masa:
+
+$$
+\frac{\lambda_{\text{O}_2}}{\lambda_{\text{N}_2}} = \sqrt{\frac{m_{\text{N}_2}}{m_{\text{O}_2}}} = \sqrt{\frac{1}{1{,}14}} = 0{,}937
+$$
+
+La longitud de onda de la molécula de oxígeno es **0,937 veces la de la molécula de nitrógeno**: con la misma energía cinética, la molécula de mayor masa tiene mayor momento lineal y menor longitud de onda.
+
+</Solucion>
+
+**b)** En un microscopio electrónico se aplica una diferencia de potencial de 3000 V a electrones que inicialmente están en reposo. Determine razonadamente: **i)** la longitud de onda de De Broglie de los electrones; **ii)** la longitud de onda de De Broglie si la diferencia de potencial se reduce a 50 V.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; e = 1,6·10<sup>-19</sup> C; m<sub>e</sub> = 9,1·10<sup>-31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Longitud de onda con 3000 V.** Al acelerarse desde el reposo a través de una diferencia de potencial $\Delta V$, el campo eléctrico realiza sobre cada electrón un trabajo $e\,\Delta V$, que se convierte en energía cinética:
+
+$$
+E_c = e\,\Delta V = 1{,}6 \cdot 10^{-19} \cdot 3000 = 4{,}8 \cdot 10^{-16}\ \text{J}
+$$
+
+Su momento lineal es $p = \sqrt{2 m_e E_c}$ (la velocidad es mucho menor que la de la luz, unos $3 \cdot 10^7$ m/s, así que podemos usar la expresión clásica), y su longitud de onda:
+
+$$
+\lambda = \frac{h}{\sqrt{2\,m_e\,e\,\Delta V}} = \frac{6{,}63 \cdot 10^{-34}}{\sqrt{2 \cdot 9{,}1 \cdot 10^{-31} \cdot 4{,}8 \cdot 10^{-16}}} = \frac{6{,}63 \cdot 10^{-34}}{2{,}96 \cdot 10^{-23}} = 2{,}24 \cdot 10^{-11}\ \text{m}
+$$
+
+**ii) Longitud de onda con 50 V.**
+
+$$
+\lambda' = \frac{6{,}63 \cdot 10^{-34}}{\sqrt{2 \cdot 9{,}1 \cdot 10^{-31} \cdot 1{,}6 \cdot 10^{-19} \cdot 50}} = \frac{6{,}63 \cdot 10^{-34}}{3{,}82 \cdot 10^{-24}} = 1{,}74 \cdot 10^{-10}\ \text{m}
+$$
+
+La longitud de onda es inversamente proporcional a $\sqrt{\Delta V}$: al dividir el potencial entre 60, la longitud de onda se multiplica por $\sqrt{60} = 7{,}75$.
+
+**Respuesta.** Con 3000 V los electrones tienen una longitud de onda de **$2{,}24 \cdot 10^{-11}$ m**, y con 50 V, de **$1{,}74 \cdot 10^{-10}$ m**. Por eso los microscopios electrónicos trabajan con altas tensiones: cuanto menor es la longitud de onda, más pequeños son los detalles que se pueden distinguir, y estas longitudes de onda son miles de veces menores que las de la luz visible.
+
+</Solucion>

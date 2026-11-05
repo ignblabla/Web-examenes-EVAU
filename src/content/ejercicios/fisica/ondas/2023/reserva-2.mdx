@@ -1,0 +1,79 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2023
+convocatoria: reserva-2
+formato: fisica
+---
+
+**C2. a)** Indique las características que deben tener dos ondas que se propagan por una cuerda tensa para que la superposición de ambas origine una onda estacionaria. Escriba las ecuaciones de dichas ondas y de la onda estacionaria resultante.
+
+<Solucion>
+
+Una onda estacionaria se forma por la superposición de **dos ondas armónicas idénticas** (misma amplitud, misma frecuencia y, por tanto, misma longitud de onda, porque se propagan por la misma cuerda) que se propagan **en la misma dirección y en sentidos opuestos**. Es lo que ocurre en una cuerda con los extremos fijos: la onda se refleja en los extremos y se superpone con la que llega.
+
+Las ecuaciones de las dos ondas, una hacia la izquierda y otra hacia la derecha, son:
+
+$$
+y_1 = A\sin(kx + \omega t), \qquad y_2 = A\sin(kx - \omega t)
+$$
+
+Sumándolas, con $\sin a + \sin b = 2\sin\frac{a+b}{2}\cos\frac{a-b}{2}$:
+
+$$
+y = y_1 + y_2 = 2A\sin(kx)\cos(\omega t)
+$$
+
+Cada punto de la cuerda oscila con un MAS de frecuencia $\omega$ y amplitud $2A\sin(kx)$, que depende de su posición. Hay puntos que no oscilan nunca (**nodos**, donde $\sin kx = 0$) y puntos que oscilan con amplitud máxima $2A$ (**vientres**). La onda no avanza: la energía no se propaga a lo largo de la cuerda.
+
+</Solucion>
+
+**b)** Una cuerda vibra de acuerdo a la ecuación: *y*(*x*,*t*) = 10·sen(π/3 *x*)·cos(20π *t*) (S.I.). Calcule razonadamente: **i)** la longitud de onda y la distancia entre el segundo y el quinto nodo; **ii)** la velocidad de vibración del punto situado en *x* = 4,5 m en el instante *t* = 0,4 s.
+
+<Solucion>
+
+Comparando con $y = 2A\sin(kx)\cos(\omega t)$: $2A = 10$ m, $k = \pi/3$ rad/m y $\omega = 20\pi$ rad/s.
+
+**i) Longitud de onda y distancia entre nodos.**
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{\pi/3} = 6\ \text{m}
+$$
+
+Los nodos son los puntos en los que la amplitud es nula en todo momento:
+
+$$
+\sin\left(\frac{\pi}{3}x\right) = 0
+\quad\Rightarrow\quad
+\frac{\pi}{3}x = n\pi
+\quad\Rightarrow\quad
+x = 3n\ \text{m}, \quad n = 0, 1, 2, \ldots
+$$
+
+Están en $x = 0$, 3, 6, 9, 12… m: dos nodos consecutivos están separados $\lambda/2 = 3$ m. Entre el segundo nodo ($x = 3$ m) y el quinto ($x = 12$ m) hay tres de esas separaciones:
+
+$$
+d = 3 \cdot \frac{\lambda}{2} = 3 \cdot 3 = 9\ \text{m}
+$$
+
+**ii) Velocidad de vibración.** Derivamos la elongación respecto del tiempo:
+
+$$
+v(x, t) = \frac{\partial y}{\partial t} = -10 \cdot 20\pi \sin\left(\frac{\pi}{3}x\right)\sin(20\pi t) = -200\pi\sin\left(\frac{\pi}{3}x\right)\sin(20\pi t)
+$$
+
+En $x = 4{,}5$ m y $t = 0{,}4$ s:
+
+$$
+\sin\left(\frac{\pi}{3} \cdot 4{,}5\right) = \sin\left(\frac{3\pi}{2}\right) = -1,
+\qquad
+\sin(20\pi \cdot 0{,}4) = \sin(8\pi) = 0
+$$
+
+$$
+v = -200\pi \cdot (-1) \cdot 0 = 0
+$$
+
+**Respuesta.** La longitud de onda es de **6 m** y entre el segundo y el quinto nodo hay **9 m**. En $t = 0{,}4$ s la velocidad del punto $x = 4{,}5$ m es **nula**. Ese punto es un **vientre** (está a medio camino entre los nodos de 3 y 6 m, con amplitud máxima, 10 m) y en ese instante $\cos(8\pi) = 1$: está en un extremo de su oscilación, donde la velocidad se anula para cambiar de sentido.
+
+</Solucion>

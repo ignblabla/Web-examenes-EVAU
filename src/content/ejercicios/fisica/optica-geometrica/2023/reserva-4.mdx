@@ -1,0 +1,61 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: reserva-4
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C2. a)** **i)** Realice el trazado de rayos para un objeto situado a una distancia mayor que el doble de la distancia focal de una lente delgada convergente. **ii)** Justifique las características de la imagen.
+
+<Solucion>
+
+**i) Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), el objeto está a la izquierda de $2F$. Desde su extremo trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-5} y={1} xMin={-5.8} xMax={5} descripcion="Lente convergente con el objeto más allá del doble de la distancia focal. El rayo paralelo al eje se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan al otro lado de la lente, entre F' y el doble de la distancia focal: la imagen es real, invertida y menor que el objeto." />
+
+**ii) Características de la imagen.** Los rayos refractados se cortan al otro lado de la lente, **entre $F'$ y $2F'$**. La imagen es:
+
+- **Real**: la forman los propios rayos, que se cortan, y se puede recoger en una pantalla.
+- **Invertida**: queda por debajo del eje.
+- **Menor que el objeto**.
+
+Se comprueba con las ecuaciones: si $s < -2f'$, la ecuación de las lentes da $f' < s' < 2f'$ y el aumento $A = s'/s$ es negativo y de valor absoluto menor que 1. Es lo que hace el objetivo de una cámara de fotos: forma en el sensor una imagen pequeña e invertida de objetos lejanos.
+
+</Solucion>
+
+**b)** Una lente divergente produce una imagen derecha 4 veces menor que un objeto situado a 10 cm de la lente. **i)** Determine, indicando el criterio de signos utilizado, la posición de la imagen, así como la distancia focal de la lente. **ii)** Realice el trazado de rayos correspondiente.
+
+<Solucion>
+
+**i) Posición de la imagen y distancia focal.** Usamos el **criterio DIN**: la luz va de izquierda a derecha, el origen está en el centro óptico de la lente, las distancias son negativas a la izquierda y positivas a la derecha, y las alturas, positivas por encima del eje. El objeto está delante de la lente, $s = -10$ cm, y la imagen es derecha y 4 veces menor, así que el aumento lateral es $A = +1/4$:
+
+$$
+A = \frac{s'}{s} = \frac{1}{4}
+\quad\Rightarrow\quad
+s' = \frac{s}{4} = \frac{-10}{4} = -2{,}5\ \text{cm}
+$$
+
+La imagen está **2,5 cm a la izquierda de la lente**, en el mismo lado que el objeto: es virtual. La distancia focal, por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{f'} = \frac{1}{s'} - \frac{1}{s} = \frac{1}{-2{,}5} - \frac{1}{-10} = -0{,}4 + 0{,}1 = -0{,}3\ \text{cm}^{-1}
+\quad\Rightarrow\quad
+f' = -3{,}33\ \text{cm}
+$$
+
+Es negativa, como corresponde a una lente divergente (su potencia es $P = 1/f' = -30$ dioptrías).
+
+**ii) Trazado de rayos.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta como si viniera del foco imagen $F'$ (a 3,33 cm a la izquierda de la lente); uno por el centro óptico, que no se desvía; y uno dirigido hacia el foco objeto $F$, que sale paralelo al eje. Las prolongaciones de los rayos refractados se cortan delante de la lente:
+
+<TrazadoRayos tipo="divergente" f={-3.333} s={-10} y={1} xMin={-11.5} xMax={4} descripcion="Lente divergente de 3,33 centímetros de distancia focal con el objeto a 10 centímetros. El rayo paralelo al eje se refracta como si viniera del foco imagen F', el que pasa por el centro óptico no se desvía y el que se dirige al foco objeto F sale paralelo. Las prolongaciones de los rayos refractados se cortan a 2,5 centímetros delante de la lente, donde se forma una imagen virtual, derecha y cuatro veces menor." />
+
+**Respuesta.** La imagen se forma **2,5 cm a la izquierda de la lente** (virtual, derecha y cuatro veces menor) y la distancia focal de la lente es **$f' = -3{,}33$ cm**.
+
+</Solucion>

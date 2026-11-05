@@ -1,0 +1,73 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2023
+convocatoria: reserva-1
+formato: fisica
+---
+
+**C1. a)** Una onda armónica se propaga por una cuerda tensa. Si duplicamos el periodo sin que varíe la velocidad de propagación, indique razonadamente cómo se modifican: **i)** la longitud de onda; **ii)** la frecuencia angular.
+
+<Solucion>
+
+**i) Longitud de onda.** La longitud de onda es la distancia que avanza la onda en un periodo:
+
+$$
+\lambda = v\,T
+$$
+
+Si la velocidad de propagación no cambia y el periodo se duplica, la longitud de onda **se duplica**: $\lambda' = v\,(2T) = 2\lambda$.
+
+**ii) Frecuencia angular.** La frecuencia angular es inversamente proporcional al periodo:
+
+$$
+\omega = \frac{2\pi}{T}
+\quad\Rightarrow\quad
+\omega' = \frac{2\pi}{2T} = \frac{\omega}{2}
+$$
+
+La frecuencia angular **se reduce a la mitad**: cada punto de la cuerda oscila el doble de despacio. El número de onda $k = 2\pi/\lambda$ también se reduce a la mitad, de modo que la velocidad $v = \omega/k$ no cambia, como dice el enunciado. (La velocidad de propagación depende de la cuerda, de su tensión y su densidad, no del periodo con que se agite.)
+
+</Solucion>
+
+**b)** La ecuación de una onda armónica transversal en una cuerda tensa viene dada por: *y*(*x*,*t*) = 3·sen(π/2 *t* − π *x*) (S.I.). Determine razonadamente: **i)** la velocidad de propagación de la onda y la velocidad máxima de vibración de un punto cualquiera; **ii)** la distancia a la que se encuentran dos puntos de la cuerda si en un instante dado hay entre ellos una diferencia de fase de 3π/2.
+
+<Solucion>
+
+Comparamos con la ecuación general de una onda armónica que se propaga en el sentido positivo del eje X, $y = A\sin(\omega t - kx)$:
+
+$$
+A = 3\ \text{m}, \qquad \omega = \frac{\pi}{2}\ \text{rad/s}, \qquad k = \pi\ \text{rad/m}
+$$
+
+**i) Velocidad de propagación y velocidad máxima de vibración.** La velocidad de propagación es:
+
+$$
+v = \frac{\omega}{k} = \frac{\pi/2}{\pi} = 0{,}5\ \text{m/s}
+$$
+
+en el sentido positivo del eje X. La velocidad de vibración de un punto se obtiene derivando la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = A\,\omega\cos(\omega t - kx) = \frac{3\pi}{2}\cos\left(\frac{\pi}{2}t - \pi x\right)
+$$
+
+Su valor máximo, cuando el coseno vale ±1, es:
+
+$$
+v_{y,\text{máx}} = A\,\omega = 3 \cdot \frac{\pi}{2} = 4{,}71\ \text{m/s}
+$$
+
+Las dos velocidades son distintas: la de propagación (0,5 m/s) es la del avance de la perturbación a lo largo de la cuerda, y la de vibración es la de cada punto que sube y baja, perpendicularmente a la cuerda, y cambia con el tiempo.
+
+**ii) Distancia entre dos puntos con un desfase de $3\pi/2$.** En un mismo instante, la diferencia de fase entre dos puntos de la cuerda solo depende de su separación:
+
+$$
+\Delta\varphi = k\,\Delta x
+\quad\Rightarrow\quad
+\Delta x = \frac{\Delta\varphi}{k} = \frac{3\pi/2}{\pi} = 1{,}5\ \text{m}
+$$
+
+**Respuesta.** La onda se propaga a **0,5 m/s**, la velocidad máxima de vibración es **4,71 m/s** y los dos puntos están separados **1,5 m**. Como $\lambda = 2\pi/k = 2$ m, esa separación son tres cuartos de longitud de onda. (Si se admiten desfases que difieran en vueltas completas, $3\pi/2 + 2\pi n$, las distancias posibles son $1{,}5 + 2n$ m; la menor es 1,5 m.)
+
+</Solucion>

@@ -1,0 +1,177 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Deduzca la relación entre la velocidad orbital y la velocidad de escape de un satélite que se encuentra orbitando a una distancia *r* del centro de la Tierra.
+
+<Solucion>
+
+**Velocidad orbital.** En una órbita circular de radio $r$, la atracción gravitatoria de la Tierra es la fuerza centrípeta que mantiene al satélite en su órbita:
+
+$$
+G\,\frac{M_T\,m}{r^2} = m\,\frac{v_{\text{orb}}^2}{r}
+\quad\Rightarrow\quad
+v_{\text{orb}} = \sqrt{\frac{G\,M_T}{r}}
+$$
+
+**Velocidad de escape desde la órbita.** Es la velocidad mínima que hay que comunicar al satélite en ese punto para que llegue al infinito (donde la energía potencial es nula) con velocidad nula. Su energía mecánica tiene que ser cero:
+
+$$
+\frac{1}{2}m\,v_e^2 - G\,\frac{M_T\,m}{r} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M_T}{r}}
+$$
+
+**Relación.** Dividiendo las dos expresiones:
+
+$$
+\frac{v_e}{v_{\text{orb}}} = \sqrt{2}
+\quad\Rightarrow\quad
+v_e = \sqrt{2}\;v_{\text{orb}} \approx 1{,}41\,v_{\text{orb}}
+$$
+
+A cualquier distancia, la velocidad de escape es $\sqrt{2}$ veces la orbital: para que un satélite escape desde su órbita basta con aumentar su velocidad un 41 % (su energía cinética, al doble).
+
+</Solucion>
+
+**b)** El satélite español Paz, que se lanzó en febrero de 2018, tiene una masa de 1400 kg y se mantiene en una órbita circular a una velocidad de 7,6 km s<sup>-1</sup>. **i)** Determine razonadamente el radio de la órbita. **ii)** ¿Cuántas vueltas dará alrededor de la Tierra en 1 día? **iii)** Calcule la diferencia de energía potencial del satélite en su órbita con respecto a la que tendría en la superficie terrestre.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; R<sub>T</sub> = 6370 km; M<sub>T</sub> = 5,98·10<sup>24</sup> kg</Datos>
+
+<Solucion>
+
+**i) Radio de la órbita.** De la expresión de la velocidad orbital del apartado a), $v = \sqrt{GM_T/r}$:
+
+$$
+r = \frac{G\,M_T}{v^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}{(7{,}6 \cdot 10^{3})^2} = 6{,}91 \cdot 10^{6}\ \text{m}
+$$
+
+El satélite orbita a una altura de $6{,}91 \cdot 10^6 - 6{,}37 \cdot 10^6 = 5{,}4 \cdot 10^5$ m, unos 540 km: es una órbita baja.
+
+**ii) Vueltas en un día.** El satélite recorre la circunferencia de su órbita con velocidad constante, así que su periodo es:
+
+$$
+T = \frac{2\pi r}{v} = \frac{2\pi \cdot 6{,}91 \cdot 10^{6}}{7{,}6 \cdot 10^{3}} = 5{,}71 \cdot 10^{3}\ \text{s} \approx 95\ \text{min}
+$$
+
+En un día ($86\,400$ s) da:
+
+$$
+n = \frac{86\,400}{5{,}71 \cdot 10^{3}} = 15{,}1\ \text{vueltas}
+$$
+
+Es decir, **15 vueltas completas** (y empieza la decimosexta).
+
+**iii) Diferencia de energía potencial.** La energía potencial gravitatoria a una distancia $r$ del centro de la Tierra es $E_p = -G M_T m/r$:
+
+$$
+\Delta E_p = E_p(r) - E_p(R_T) = G\,M_T\,m\left(\frac{1}{R_T} - \frac{1}{r}\right)
+$$
+
+$$
+\Delta E_p = 6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 1400 \left(\frac{1}{6{,}37 \cdot 10^{6}} - \frac{1}{6{,}91 \cdot 10^{6}}\right) = 6{,}80 \cdot 10^{9}\ \text{J}
+$$
+
+**Respuesta.** El radio de la órbita es **$6{,}91 \cdot 10^6$ m**, el satélite da **15 vueltas** al día y su energía potencial en la órbita es **$6{,}80 \cdot 10^9$ J mayor** que en la superficie. Es positiva porque al alejarse de la Tierra la energía potencial aumenta (se hace menos negativa).
+
+</Solucion>
+
+**A2. a)** Dos satélites A y B describen órbitas circulares alrededor de la Tierra. Razone cuál de los dos satélites tiene mayor energía cinética en cada una de las situaciones siguientes: **i)** las masas de ambos son idénticas y el radio de la órbita del satélite A es mayor que el de B; **ii)** los radios de sus órbitas son iguales pero la masa del satélite B es mayor que la de A.
+
+<Solucion>
+
+En una órbita circular la atracción gravitatoria es la fuerza centrípeta:
+
+$$
+G\,\frac{M_T\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v^2 = \frac{G\,M_T}{r}
+\quad\Rightarrow\quad
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M_T\,m}{2r}
+$$
+
+La energía cinética es proporcional a la masa del satélite e inversamente proporcional al radio de la órbita.
+
+**i) Misma masa, $r_A > r_B$.** Tiene **más energía cinética el satélite B**, el de la órbita más baja: cuanto más cerca de la Tierra, mayor es la atracción y más rápido tiene que ir el satélite para mantenerse en órbita.
+
+**ii) Mismo radio, $m_B > m_A$.** En la misma órbita los dos van a la misma velocidad, $v = \sqrt{GM_T/r}$, que no depende de la masa del satélite. Pero la energía cinética es proporcional a la masa, así que **B tiene más energía cinética**: $E_{c,B}/E_{c,A} = m_B/m_A > 1$.
+
+</Solucion>
+
+**b)** Dos masas puntuales de 10 y 5 kg están situadas en los puntos A(0,3) y B(4,0) m, respectivamente. **i)** Represente el campo gravitatorio producido por cada una de las masas en el punto C(4,3) m y calcule el campo gravitatorio en dicho punto. **ii)** Calcule el potencial gravitatorio en el punto C. **iii)** Determine el trabajo que realiza la fuerza gravitatoria para desplazar una masa de 4 kg desde C hasta el punto D(0,0) m. Discuta el signo del trabajo obtenido.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo gravitatorio en C.** Cada masa crea un campo de módulo $g = G\,m/r^2$ dirigido hacia ella. El punto C(4,3) está a 4 m de A, en horizontal, y a 3 m de B, en vertical:
+
+- **Masa A** (10 kg): el campo apunta hacia A, en el sentido de $-\vec{i}$:
+
+$$
+g_A = G\,\frac{m_A}{r_{AC}^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{10}{4^2} = 4{,}17 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+- **Masa B** (5 kg): el campo apunta hacia B, en el sentido de $-\vec{j}$:
+
+$$
+g_B = G\,\frac{m_B}{r_{BC}^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{5}{3^2} = 3{,}71 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-0.5}
+  xMax={4.8}
+  yMin={-0.5}
+  yMax={3.8}
+  escala={55}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 3, texto: "A(0, 3) · 10 kg", tipo: "masa", dx: 10, dy: -12 },
+    { x: 4, y: 0, texto: "B(4, 0) · 5 kg", tipo: "masa", dx: -10, dy: 22 },
+    { x: 4, y: 3, texto: "C(4, 3)", tipo: "punto", dx: 8, dy: -10 },
+    { x: 0, y: 0, texto: "D", tipo: "punto", dx: -10, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [4, 3], v: [-62, 0], texto: "g", sub: "A", color: "#2d6fa3", dx: -6, dy: -8 },
+    { desde: [4, 3], v: [0, -55], texto: "g", sub: "B", color: "#2d6fa3", dx: 8, dy: 6 },
+    { desde: [4, 3], v: [-62, -55], texto: "g", color: "#195c51", dx: -16, dy: 14 },
+  ]}
+  segmentos={[[0, 3, 4, 3], [4, 0, 4, 3]]}
+  descripcion="Masa de 10 kilos en A, de coordenadas 0, 3, y masa de 5 kilos en B, de coordenadas 4, 0. En el punto C, de coordenadas 4, 3, el campo de A apunta hacia la izquierda, hacia A, y el de B hacia abajo, hacia B. El campo total apunta hacia abajo y a la izquierda. El punto D es el origen."
+/>
+
+$$
+\vec{g}_C = \vec{g}_A + \vec{g}_B = \left(-4{,}17 \cdot 10^{-11}\,\vec{i} - 3{,}71 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+$$
+|\vec{g}_C| = \sqrt{(4{,}17 \cdot 10^{-11})^2 + (3{,}71 \cdot 10^{-11})^2} = 5{,}58 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**ii) Potencial en C.** El potencial es escalar: se suman los de las dos masas.
+
+$$
+V_C = -G\left(\frac{m_A}{r_{AC}} + \frac{m_B}{r_{BC}}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{10}{4} + \frac{5}{3}\right) = -2{,}78 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**iii) Trabajo de C a D.** El origen D está a 3 m de A y a 4 m de B:
+
+$$
+V_D = -6{,}67 \cdot 10^{-11}\left(\frac{10}{3} + \frac{5}{4}\right) = -3{,}06 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+La fuerza gravitatoria es conservativa, así que su trabajo es igual a menos la variación de la energía potencial de la masa $m' = 4$ kg:
+
+$$
+W = -m'\,(V_D - V_C) = -4 \cdot \left(-3{,}06 \cdot 10^{-10} + 2{,}78 \cdot 10^{-10}\right) = 1{,}11 \cdot 10^{-10}\ \text{J}
+$$
+
+**Respuesta.** El campo en C es $\vec{g}_C = (-4{,}17 \cdot 10^{-11}\,\vec{i} - 3{,}71 \cdot 10^{-11}\,\vec{j})$ N/kg, de módulo $5{,}58 \cdot 10^{-11}$ N/kg; el potencial en C vale $-2{,}78 \cdot 10^{-10}$ J/kg, y la fuerza gravitatoria realiza un trabajo de **$1{,}11 \cdot 10^{-10}$ J**. El trabajo es **positivo** porque D tiene un potencial menor que C: la masa más grande (la de 10 kg) queda más cerca en D que en C, y la masa de 4 kg se desplaza hacia donde disminuye su energía potencial. Ese desplazamiento lo haría espontáneamente, por la acción del propio campo.
+
+</Solucion>

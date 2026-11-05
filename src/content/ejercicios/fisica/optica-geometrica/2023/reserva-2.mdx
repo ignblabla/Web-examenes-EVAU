@@ -1,0 +1,61 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: reserva-2
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Razone, basándose en el trazado de rayos, dónde hay que colocar un objeto con respecto a una lente delgada convergente para que: **i)** la imagen formada sea real e invertida; **ii)** la imagen formada sea virtual y derecha.
+
+<Solucion>
+
+Usamos el criterio DIN (la luz va de izquierda a derecha y el origen está en la lente). Desde el extremo del objeto trazamos tres rayos principales: **(1)** uno paralelo al eje, que se refracta pasando por el foco imagen $F'$; **(2)** uno por el centro óptico, que no se desvía; y **(3)** uno que pasa por el foco objeto $F$ (o cuya prolongación pasa por él), que sale paralelo al eje.
+
+**i) Imagen real e invertida.** El objeto debe estar **más lejos de la lente que el foco objeto $F$** (a una distancia mayor que la focal). Los rayos refractados convergen y se cortan al otro lado de la lente, por debajo del eje:
+
+<TrazadoRayos tipo="convergente" f={2} s={-3} y={1} xMin={-4.4} xMax={7} descripcion="Lente convergente con el objeto más allá del foco objeto F. El rayo paralelo al eje se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan al otro lado de la lente, por debajo del eje: la imagen es real e invertida." />
+
+El tamaño de la imagen depende de dónde esté el objeto: si está entre $F$ y $2F$, la imagen es mayor (como en el dibujo); si está en $2F$, igual; y si está más allá de $2F$, menor.
+
+**ii) Imagen virtual y derecha.** El objeto debe estar **entre el foco objeto $F$ y la lente**. Los rayos refractados divergen y no se cortan; sus prolongaciones hacia atrás se cortan por el mismo lado del objeto, por encima del eje. La imagen es virtual, derecha y mayor que el objeto (es una lupa):
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4.6} xMax={3.4} descripcion="Lente convergente con el objeto entre el foco objeto F y la lente. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan delante de la lente, más lejos que el objeto, donde se forma una imagen virtual, derecha y mayor." />
+
+Si el objeto está justo en el foco, los rayos salen paralelos y no se forma imagen.
+
+</Solucion>
+
+**b)** Un objeto está situado 6 cm a la izquierda de una lente delgada convergente de 4 cm de distancia focal. **i)** Realice el trazado de rayos correspondiente. **ii)** Determine la distancia entre la imagen y la lente, indicando el criterio de signos utilizado. **iii)** Determine razonadamente el aumento lateral y, a partir del valor obtenido, indique si la imagen aumenta o disminuye y si es derecha o invertida.
+
+<Solucion>
+
+**i) Trazado de rayos.** El objeto está entre $F$ y $2F$ (entre 4 y 8 cm de la lente). Desde su extremo trazamos un rayo paralelo al eje, que se refracta por $F'$; uno por el centro óptico, que no se desvía; y uno por $F$, que sale paralelo al eje. Se cortan al otro lado de la lente:
+
+<TrazadoRayos tipo="convergente" f={4} s={-6} y={1} xMin={-8} xMax={15} descripcion="Lente convergente de 4 centímetros de distancia focal con el objeto a 6 centímetros, entre F y 2F. El rayo paralelo se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan 12 centímetros a la derecha de la lente, donde se forma una imagen real, invertida y el doble de grande." />
+
+**ii) Distancia entre la imagen y la lente.** Usamos el **criterio DIN**: la luz va de izquierda a derecha, el origen está en el centro óptico de la lente, las distancias son negativas a su izquierda y positivas a su derecha, y las alturas, positivas por encima del eje. Así, $s = -6$ cm y $f' = 4$ cm. Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{4} + \frac{1}{-6} = \frac{3 - 2}{12} = \frac{1}{12}
+\quad\Rightarrow\quad
+s' = 12\ \text{cm}
+$$
+
+La imagen se forma **12 cm a la derecha de la lente**: es real.
+
+**iii) Aumento lateral.**
+
+$$
+A = \frac{y'}{y} = \frac{s'}{s} = \frac{12}{-6} = -2
+$$
+
+Como $|A| = 2 > 1$, la imagen es **mayor** que el objeto (el doble), y como $A < 0$, es **invertida**.
+
+**Respuesta.** La imagen está a **12 cm** de la lente, al otro lado del objeto; el aumento lateral es **−2**, así que la imagen es real, invertida y el doble de grande.
+
+</Solucion>

@@ -1,0 +1,43 @@
+---
+// Cuerpo que desliza hacia la derecha por un suelo horizontal con rozamiento y sin más fuerzas
+// aplicadas (Física, reserva 4 de 2023, A2 b): el peso, la normal y el rozamiento, que se opone
+// al movimiento. Las flechas no están a escala.
+interface Props {
+  nota?: string
+  descripcion: string
+}
+
+const { nota = "v (frena)", descripcion } = Astro.props
+const c = { x: 170, y: 116 }
+const id = `horizontal-${Math.round(Math.random() * 1e9)}`
+const colores = ["#111", "#195c51", "#b04a3a"]
+const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 340 200" role="img" aria-label={descripcion}>
+    <defs>
+      {
+        colores.map((color, i) => (
+          <marker id={`${id}-${i}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill={color} />
+          </marker>
+        ))
+      }
+    </defs>
+    <path d="M20 136H320" stroke="#111" stroke-width="1.2" />
+    <rect x={c.x - 30} y={c.y - 20} width="60" height="40" fill="#c9bce8" stroke="#111" stroke-width="1.2" />
+    <g stroke-width="1.6" fill="none">
+      <path d={`M${c.x} ${c.y}V${c.y + 70}`} stroke="#111" marker-end={marca("#111")} />
+      <path d={`M${c.x} ${c.y}V${c.y - 70}`} stroke="#195c51" marker-end={marca("#195c51")} />
+      <path d={`M${c.x - 30} ${c.y + 14}h-60`} stroke="#b04a3a" marker-end={marca("#b04a3a")} />
+      <path d={`M${c.x + 40} ${c.y - 32}h40`} stroke="#555" stroke-width="1" marker-end={marca("#111")} />
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
+      <text x={c.x + 8} y={c.y + 70} fill="#111">P</text>
+      <text x={c.x + 8} y={c.y - 62} fill="#195c51">N</text>
+      <text x={c.x - 96} y={c.y + 8} fill="#b04a3a">F<tspan dy="3" font-size="9">r</tspan></text>
+      <text x={c.x + 86} y={c.y - 28} fill="#555" font-weight="400" font-style="italic" font-size="11">{nota}</text>
+    </g>
+  </svg>
+</figure>

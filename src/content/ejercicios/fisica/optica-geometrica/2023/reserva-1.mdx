@@ -1,0 +1,73 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: reserva-1
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import ReflexionTotal from "../../../../../components/figuras/fisica/ReflexionTotal.astro"
+
+**C2. a)** Un rayo de luz pasa de un medio a otro, observándose que en el segundo medio se desvía alejándose de la normal. Justifique: **i)** en qué medio se propaga el rayo con mayor velocidad; **ii)** en qué medio tiene menor longitud de onda.
+
+<Solucion>
+
+Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Si el rayo se aleja de la normal, $\theta_2 > \theta_1$, así que $\sin\theta_2 > \sin\theta_1$ y, para que se cumpla la ley, $n_1 > n_2$: el primer medio es más refringente.
+
+<RefraccionCapas
+  incidencia={25}
+  capas={[
+    { nombre: "Medio 1", n: 1.5, color: "#dfe9f0", texto: "Medio 1 (n₁ mayor)" },
+    { nombre: "Medio 2", n: 1, color: "#f4f8fb", texto: "Medio 2 (n₂ menor)" },
+  ]}
+  descripcion="Rayo que pasa de un medio más refringente a otro menos refringente. Incide con 25 grados respecto a la normal y se refracta alejándose de ella, con 39,3 grados (índices de ejemplo 1,5 y 1)."
+/>
+
+**i) Velocidad.** El índice de refracción es $n = c/v$, así que $v = c/n$: la luz es más rápida en el medio de menor índice. El rayo se propaga con **mayor velocidad en el segundo medio**.
+
+**ii) Longitud de onda.** Al pasar de un medio a otro la frecuencia no cambia, porque la fija la fuente, y $\lambda = v/f$. La longitud de onda es proporcional a la velocidad, así que es **menor en el primer medio**, donde la luz va más despacio:
+
+$$
+\frac{\lambda_1}{\lambda_2} = \frac{v_1}{v_2} = \frac{n_2}{n_1} < 1
+$$
+
+</Solucion>
+
+**b)** Un rayo de luz está propagándose inicialmente en el interior de un material plástico. Cuando incide sobre la superficie que separa este material del aire con un ángulo superior a 35º respecto a la normal se produce reflexión total. **i)** Calcule de forma justificada, y apoyándose en un esquema, el índice de refracción del plástico. **ii)** Determine la velocidad, la frecuencia y la longitud de onda del rayo de luz en el interior del plástico sabiendo que su longitud de onda en el aire es de 6,5·10<sup>-7</sup> m.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Índice de refracción del plástico.** Al pasar del plástico al aire, la luz va a un medio menos refringente y se aleja de la normal. Al aumentar el ángulo de incidencia, el de refracción llega a $90^\circ$ (el rayo sale rasante): ese ángulo de incidencia es el **ángulo límite**, y para ángulos mayores no hay refracción y la luz se refleja totalmente. Según el enunciado, el ángulo límite es $\theta_L = 35^\circ$:
+
+<ReflexionTotal />
+
+En el esquema, el medio 1 es el plástico y el medio 2 el aire. Aplicamos la ley de Snell con el ángulo límite:
+
+$$
+n_{\text{plástico}}\sin\theta_L = n_{\text{aire}}\sin 90^\circ
+\quad\Rightarrow\quad
+n_{\text{plástico}} = \frac{1}{\sin 35^\circ} = \frac{1}{0{,}574} = 1{,}74
+$$
+
+**ii) Velocidad, frecuencia y longitud de onda en el plástico.**
+
+$$
+v = \frac{c}{n} = \frac{3 \cdot 10^8}{1{,}74} = 1{,}72 \cdot 10^{8}\ \text{m/s}
+$$
+
+La frecuencia es la misma que en el aire:
+
+$$
+f = \frac{c}{\lambda_{\text{aire}}} = \frac{3 \cdot 10^8}{6{,}5 \cdot 10^{-7}} = 4{,}62 \cdot 10^{14}\ \text{Hz}
+$$
+
+$$
+\lambda = \frac{v}{f} = \frac{\lambda_{\text{aire}}}{n} = \frac{6{,}5 \cdot 10^{-7}}{1{,}74} = 3{,}73 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** El índice de refracción del plástico es **1,74**. En su interior la luz va a **$1{,}72 \cdot 10^8$ m/s**, con una frecuencia de **$4{,}62 \cdot 10^{14}$ Hz** (la misma que en el aire) y una longitud de onda de **$3{,}73 \cdot 10^{-7}$ m**.
+
+</Solucion>

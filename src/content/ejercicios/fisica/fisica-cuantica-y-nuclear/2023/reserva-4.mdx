@@ -1,0 +1,115 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2023
+convocatoria: reserva-4
+formato: fisica
+---
+
+**D1. a)** **i)** Explique el concepto de periodo de semidesintegración de una muestra radiactiva. **ii)** Obtenga de forma razonada la relación entre el periodo de semidesintegración y la constante radiactiva.
+
+<Solucion>
+
+**i) Periodo de semidesintegración.** Es el **tiempo que tarda en desintegrarse la mitad de los núcleos** de una muestra radiactiva. Es característico de cada isótopo y no depende de la cantidad inicial de muestra ni del momento en que se empiece a contar: en cada periodo de semidesintegración, el número de núcleos que quedan se reduce a la mitad ($N_0$, $N_0/2$, $N_0/4$…). Se representa como $T_{1/2}$ y se mide en segundos (en la práctica, también en días o años).
+
+**ii) Relación con la constante radiactiva.** Según la ley de desintegración radiactiva, el número de núcleos sin desintegrar disminuye exponencialmente:
+
+$$
+N = N_0\,e^{-\lambda t}
+$$
+
+donde $\lambda$ es la constante radiactiva. Para $t = T_{1/2}$ queda la mitad de los núcleos:
+
+$$
+\frac{N_0}{2} = N_0\,e^{-\lambda T_{1/2}}
+\quad\Rightarrow\quad
+\ln\frac{1}{2} = -\lambda\,T_{1/2}
+\quad\Rightarrow\quad
+T_{1/2} = \frac{\ln 2}{\lambda}
+$$
+
+El periodo de semidesintegración es inversamente proporcional a la constante radiactiva: cuanto más probable es la desintegración de cada núcleo, antes se desintegra la mitad de la muestra.
+
+</Solucion>
+
+**b)** El $^{60}_{27}\text{Co}$ es un isótopo radiactivo utilizado en medicina para el tratamiento de diversas enfermedades. Sabiendo que el periodo de semidesintegración del $^{60}_{27}\text{Co}$ es de 5,27 años, calcule: **i)** el tiempo que tardan en desintegrarse 4/5 partes de una muestra inicial; **ii)** la masa de cobalto que habrá dentro de 50 años para una muestra que inicialmente posee una masa de 150 g.
+
+<Solucion>
+
+La constante radiactiva del cobalto-60 es:
+
+$$
+\lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{5{,}27} = 0{,}1315\ \text{años}^{-1}
+$$
+
+**i) Tiempo para que se desintegren 4/5 de la muestra.** Si se desintegran 4/5 de los núcleos, queda 1/5:
+
+$$
+\frac{N_0}{5} = N_0\,e^{-\lambda t}
+\quad\Rightarrow\quad
+t = \frac{\ln 5}{\lambda} = \frac{1{,}609}{0{,}1315} = 12{,}2\ \text{años}
+$$
+
+**ii) Masa que queda al cabo de 50 años.** La masa de cobalto-60 que queda es proporcional al número de núcleos sin desintegrar, así que sigue la misma ley:
+
+$$
+m = m_0\,e^{-\lambda t} = 150 \cdot e^{-0{,}1315 \cdot 50} = 150 \cdot e^{-6{,}58} = 0{,}209\ \text{g}
+$$
+
+**Respuesta.** Las 4/5 partes de la muestra se desintegran en **12,2 años** (algo más de dos periodos: tras dos queda 1/4, y tras $\log_2 5 = 2{,}32$ periodos, 1/5), y de 150 g de cobalto-60 quedarán **0,209 g** dentro de 50 años. Han pasado casi 9,5 periodos, y la masa se ha reducido unas 700 veces $(2^{9{,}5} \approx 720)$. (La masa total de la muestra no disminuye tanto: el cobalto-60 se transforma en níquel-60, que se queda en ella.)
+
+</Solucion>
+
+**D2. a)** Responda razonadamente si las siguientes afirmaciones son ciertas o falsas: **i)** La masa de un núcleo atómico es siempre igual a la suma de las masas de los nucleones que lo componen. **ii)** Un proceso de fisión nuclear ocurre cuando dos núcleos se unen para formar un núcleo más estable que los dos iniciales.
+
+<Solucion>
+
+**i) Falsa.** La masa de un núcleo es siempre **menor** que la suma de las masas de sus protones y neutrones por separado. La diferencia es el **defecto de masa**:
+
+$$
+\Delta m = Z\,m_p + (A - Z)\,m_n - m_{\text{núcleo}} > 0
+$$
+
+Al formarse el núcleo se libera una energía, la energía de enlace, $E_b = \Delta m\,c^2$, que corresponde a esa masa perdida según la equivalencia de Einstein. Para separar el núcleo en sus nucleones habría que aportar esa misma energía.
+
+**ii) Falsa.** Esa es la definición de **fusión** nuclear: dos núcleos ligeros se unen para formar uno más pesado y más estable, como en las estrellas. La **fisión** es el proceso contrario: un núcleo pesado (como el uranio-235 o el plutonio-239), normalmente al absorber un neutrón, **se divide en dos núcleos más ligeros** (y emite varios neutrones). En los dos procesos se libera energía porque los productos tienen mayor energía de enlace por nucleón, es decir, son más estables que el núcleo o los núcleos de partida.
+
+</Solucion>
+
+**b)** Tras la absorción de un neutrón, el isótopo del plutonio $^{239}_{94}\text{Pu}$ emite dos neutrones y se desintegra en el isótopo del cesio $^{A}_{55}\text{Cs}$ y en un elemento $^{99}_{Z}\text{X}$. **i)** Escriba la reacción nuclear del proceso descrito y calcule el número másico del $^{A}_{55}\text{Cs}$ y el número atómico del $^{99}_{Z}\text{X}$. **ii)** Calcule la energía liberada por cada núcleo de $^{239}_{94}\text{Pu}$ en la reacción anterior.
+
+<Datos>m($^{239}_{94}$Pu) = 239,0521634 u; m($^{A}_{55}$Cs) = 138,913364 u; m($^{99}_{Z}$X) = 98,924148 u; m<sub>n</sub> = 1,008665 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** Es una fisión: el plutonio absorbe un neutrón, $^{1}_{0}\text{n}$, y se divide en dos núcleos más ligeros, emitiendo dos neutrones:
+
+$$
+^{1}_{0}\text{n} + {}^{239}_{94}\text{Pu} \longrightarrow {}^{A}_{55}\text{Cs} + {}^{99}_{Z}\text{X} + 2\,{}^{1}_{0}\text{n}
+$$
+
+Se conservan el número másico y el número atómico:
+
+$$
+1 + 239 = A + 99 + 2 \;\Rightarrow\; A = 139, \qquad 0 + 94 = 55 + Z + 0 \;\Rightarrow\; Z = 39
+$$
+
+Se forman **cesio-139**, $^{139}_{55}\text{Cs}$, y un núcleo de número atómico 39, que es el **itrio**: $^{99}_{39}\text{Y}$.
+
+**ii) Energía liberada.** El defecto de masa es la diferencia entre la masa de los reactivos y la de los productos. Un neutrón aparece a cada lado, así que en el balance queda uno solo en los productos:
+
+$$
+\Delta m = m(\text{Pu}) + m_n - m(\text{Cs}) - m(\text{X}) - 2\,m_n = m(\text{Pu}) - m(\text{Cs}) - m(\text{X}) - m_n
+$$
+
+$$
+\Delta m = 239{,}0521634 - 138{,}913364 - 98{,}924148 - 1{,}008665 = 0{,}2059864\ \text{u}
+$$
+
+$$
+E = \Delta m\,c^2 = 0{,}2059864 \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 3{,}08 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** La reacción es $^{1}_{0}\text{n} + {}^{239}_{94}\text{Pu} \to {}^{139}_{55}\text{Cs} + {}^{99}_{39}\text{Y} + 2\,{}^{1}_{0}\text{n}$, con $A = 139$ y $Z = 39$, y por cada núcleo de plutonio se liberan **$3{,}08 \cdot 10^{-11}$ J** (unos 190 MeV). Es la energía típica de una fisión, millones de veces mayor que la de una reacción química por átomo. Los dos neutrones emitidos pueden provocar nuevas fisiones: es la base de la reacción en cadena.
+
+</Solucion>

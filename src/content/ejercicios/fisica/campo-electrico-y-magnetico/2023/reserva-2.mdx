@@ -1,0 +1,135 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: reserva-2
+formato: fisica
+---
+
+import ImanEspira from "../../../../../components/figuras/fisica/ImanEspira.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Dos partículas cargadas, A y B, penetran perpendicularmente a un campo magnético uniforme con la misma velocidad. Sabiendo que la masa de B es el triple de la de A y que los radios descritos por ambas partículas son idénticos, razone la relación entre las cargas de ambas partículas.
+
+<Solucion>
+
+Una partícula que entra perpendicularmente a un campo magnético uniforme sufre la fuerza de Lorentz, $F = |q|\,v B$, perpendicular a su velocidad. Esa fuerza no cambia el módulo de la velocidad, solo su dirección: es la fuerza centrípeta de un movimiento circular uniforme.
+
+$$
+|q|\,v B = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+Las dos partículas tienen la misma velocidad, están en el mismo campo y describen el mismo radio, así que:
+
+$$
+\frac{m_A}{|q_A|} = \frac{m_B}{|q_B|}
+\quad\Rightarrow\quad
+\frac{|q_B|}{|q_A|} = \frac{m_B}{m_A} = 3
+$$
+
+La carga de B es **el triple** de la de A (en valor absoluto): para curvar con el mismo radio una partícula tres veces más pesada hace falta una fuerza tres veces mayor. Los signos de las cargas no se pueden deducir del radio; si fueran opuestos, las partículas girarían en sentidos contrarios.
+
+</Solucion>
+
+**b)** Por un hilo rectilíneo muy largo circula una intensidad de corriente de 3 A. **i)** Determine razonadamente el módulo de la fuerza magnética que actúa sobre una carga de 4·10<sup>-3</sup> C que se mueve con una velocidad de 8 m s<sup>-1</sup> paralela al hilo y a una distancia de 2 m del mismo. **ii)** Un segundo hilo, por el que circula una corriente de 1 A en el mismo sentido, se sitúa paralelo al primero a una distancia de 1 m. Determine justificadamente a qué distancia del primer hilo se anula el campo magnético.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Fuerza sobre la carga.** El campo magnético que crea el hilo a 2 m es:
+
+$$
+B = \frac{\mu_0\,I}{2\pi d} = \frac{4\pi \cdot 10^{-7} \cdot 3}{2\pi \cdot 2} = 3 \cdot 10^{-7}\ \text{T}
+$$
+
+Las líneas de campo son circunferencias alrededor del hilo, así que el campo es perpendicular al hilo y, por tanto, a la velocidad de la carga, que es paralela al hilo. La fuerza de Lorentz tiene entonces su valor máximo, $F = q\,v B\sin 90^\circ$:
+
+$$
+F = 4 \cdot 10^{-3} \cdot 8 \cdot 3 \cdot 10^{-7} = 9{,}6 \cdot 10^{-9}\ \text{N}
+$$
+
+La fuerza va en la dirección radial (hacia el hilo o alejándose de él, según el sentido del movimiento y el signo de la carga).
+
+**ii) Punto en el que se anula el campo.** Con las corrientes en el mismo sentido, entre los dos hilos sus campos tienen sentidos opuestos, así que es ahí donde pueden anularse (fuera de los hilos tienen el mismo sentido y se suman). Llamamos $x$ a la distancia al primer hilo, de modo que el punto está a $1 - x$ del segundo:
+
+$$
+\frac{\mu_0\,I_1}{2\pi x} = \frac{\mu_0\,I_2}{2\pi (1-x)}
+\quad\Rightarrow\quad
+\frac{3}{x} = \frac{1}{1-x}
+\quad\Rightarrow\quad
+3 - 3x = x
+\quad\Rightarrow\quad
+x = 0{,}75\ \text{m}
+$$
+
+<Vectores
+  xMin={-0.3}
+  xMax={1.3}
+  yMin={-0.6}
+  yMax={0.6}
+  escala={220}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "I₁ = 3 A", tipo: "sale", dx: -10, dy: -14 },
+    { x: 1, y: 0, texto: "I₂ = 1 A", tipo: "sale", dx: 10, dy: -14 },
+    { x: 0.75, y: 0, texto: "P (x = 0,75 m)", tipo: "punto", dx: -8, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [0.75, 0], v: [0, 40], texto: "B", sub: "1", color: "#b04a3a" },
+    { desde: [0.75, 0], v: [0, -40], texto: "B", sub: "2", color: "#2d6fa3", dx: 8, dy: 4 },
+  ]}
+  descripcion="Dos hilos paralelos perpendiculares al papel, con corrientes que salen del papel: 3 amperios en el origen y 1 amperio a 1 metro. En el punto P, a 0,75 metros del primero, el campo del primer hilo apunta hacia arriba y el del segundo hacia abajo, con el mismo módulo: se anulan."
+/>
+
+**Respuesta.** La fuerza sobre la carga es de **$9{,}6 \cdot 10^{-9}$ N** y el campo se anula entre los dos hilos, a **0,75 m del primero** (y 0,25 m del segundo): más cerca del hilo de menor corriente, para que su campo, más débil, iguale al del otro.
+
+</Solucion>
+
+**B2. a)** Indique el sentido de la corriente inducida en una espira cuando el polo norte de un imán: **i)** se acerca a la espira; **ii)** se aleja de la espira. Justifique las respuestas con la ayuda de un esquema.
+
+<Solucion>
+
+Las líneas de campo de un imán salen de su polo norte, así que el campo del imán atraviesa la espira alejándose del polo norte. Al mover el imán cambia el flujo a través de la espira y, por la **ley de Faraday**, se induce una corriente. Por la **ley de Lenz**, la corriente inducida crea un campo magnético que se opone a la variación del flujo. En los esquemas la espira se ve de canto: $\otimes$ y $\odot$ indican que la corriente entra o sale del papel en sus extremos.
+
+**i) El polo norte se acerca.** El campo del imán en la espira aumenta, y con él el flujo. La corriente inducida crea un campo **opuesto al del imán**, que apunta hacia el imán: la cara de la espira que mira al imán se comporta como un polo norte y lo repele. Vista desde el imán, la corriente circula en **sentido antihorario**:
+
+<ImanEspira caso="acerca" />
+
+**ii) El polo norte se aleja.** El flujo disminuye. La corriente inducida crea un campo **en el mismo sentido que el del imán**, para compensar la disminución: la cara de la espira que mira al imán se comporta como un polo sur y lo atrae. Vista desde el imán, la corriente circula en **sentido horario**:
+
+<ImanEspira caso="aleja" />
+
+En los dos casos la espira se opone al movimiento del imán (lo repele cuando se acerca y lo atrae cuando se aleja): por eso hay que hacer trabajo para mover el imán, y ese trabajo es la energía que aparece en la corriente inducida.
+
+</Solucion>
+
+**b)** Una espira de 12 cm de radio se coloca en un campo magnético uniforme de 0,5 T y se hace girar con una frecuencia de 20 Hz en torno a uno de sus diámetros. En el instante inicial el plano de la espira es perpendicular al campo. **i)** Escriba la expresión del flujo magnético que atraviesa la espira en función del tiempo; **ii)** determine el valor máximo de la fuerza electromotriz inducida.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** El área de la espira es:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}12^2 = 4{,}52 \cdot 10^{-2}\ \text{m}^2
+$$
+
+En el instante inicial el plano de la espira es perpendicular al campo, así que su vector superficie es paralelo a él: el ángulo entre ambos es $\theta(0) = 0$. Al girar con $\omega = 2\pi f = 2\pi \cdot 20 = 40\pi$ rad/s, el ángulo es $\theta = \omega t$ y el flujo:
+
+$$
+\Phi(t) = B\,S\cos(\omega t) = 0{,}5 \cdot 4{,}52 \cdot 10^{-2}\cos(40\pi t) = 2{,}26 \cdot 10^{-2}\cos(40\pi t)\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz máxima.** Por la ley de Faraday:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t)
+\quad\Rightarrow\quad
+\varepsilon_{\text{máx}} = B\,S\,\omega = 2{,}26 \cdot 10^{-2} \cdot 40\pi = 2{,}84\ \text{V}
+$$
+
+**Respuesta.** El flujo es $\Phi(t) = 2{,}26 \cdot 10^{-2}\cos(40\pi t)$ Wb y la fuerza electromotriz máxima vale **2,84 V**. Se alcanza cuando el plano de la espira es paralelo al campo: el flujo es nulo en ese instante, pero es cuando cambia más deprisa.
+
+</Solucion>

@@ -1,0 +1,133 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: reserva-4
+formato: fisica
+---
+
+import FuerzasHorizontal from "../../../../../components/figuras/fisica/FuerzasHorizontal.astro"
+
+**A1. a)** Dos satélites de igual masa se encuentran en órbitas de igual radio alrededor de la Tierra y de Marte. Sabiendo que la masa de la Tierra es 9 veces la masa de Marte: **i)** deduzca la expresión de sus periodos orbitales y la relación entre ambos; **ii)** determine la relación entre las energías cinéticas de los satélites.
+
+<Solucion>
+
+**i) Periodos orbitales.** En una órbita circular de radio $r$ alrededor de un planeta de masa $M$, la atracción gravitatoria es la fuerza centrípeta. Con $v = 2\pi r/T$:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r} = m\,\frac{4\pi^2 r}{T^2}
+\quad\Rightarrow\quad
+T = 2\pi\sqrt{\frac{r^3}{G\,M}}
+$$
+
+Con el mismo radio, el periodo es inversamente proporcional a la raíz de la masa del planeta. Con $M_T = 9\,M_M$:
+
+$$
+\frac{T_M}{T_T} = \sqrt{\frac{M_T}{M_M}} = \sqrt{9} = 3
+$$
+
+El satélite de Marte tarda **el triple** en dar una vuelta: el planeta lo atrae menos y gira más despacio.
+
+**ii) Energías cinéticas.** De la condición de órbita, $m v^2 = G M m/r$:
+
+$$
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M\,m}{2r}
+\quad\Rightarrow\quad
+\frac{E_{c,T}}{E_{c,M}} = \frac{M_T}{M_M} = 9
+$$
+
+El satélite que orbita la Tierra tiene **9 veces más energía cinética**: va tres veces más rápido, y la energía cinética depende del cuadrado de la velocidad.
+
+</Solucion>
+
+**b)** El satélite meteorológico chino FY-3 tiene una masa de 2300 kg y orbita alrededor de la Tierra con un periodo de 102,85 minutos. Determine razonadamente: **i)** la altura de la órbita de FY-3; **ii)** la velocidad orbital; **iii)** la energía que hay que suministrar a FY-3 desde su órbita para que escape del campo gravitatorio terrestre.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; R<sub>T</sub> = 6370 km; M<sub>T</sub> = 5,98·10<sup>24</sup> kg</Datos>
+
+<Solucion>
+
+**i) Altura de la órbita.** El periodo es $T = 102{,}85 \cdot 60 = 6171$ s. De la expresión del periodo del apartado a) (tercera ley de Kepler):
+
+$$
+r = \sqrt[3]{\frac{G\,M_T\,T^2}{4\pi^2}} = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 6171^2}{4\pi^2}} = 7{,}27 \cdot 10^{6}\ \text{m}
+$$
+
+Ese es el radio de la órbita, medido desde el centro de la Tierra. La altura sobre la superficie es:
+
+$$
+h = r - R_T = 7{,}27 \cdot 10^{6} - 6{,}37 \cdot 10^{6} = 9{,}0 \cdot 10^{5}\ \text{m} = 900\ \text{km}
+$$
+
+**ii) Velocidad orbital.**
+
+$$
+v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}{7{,}27 \cdot 10^{6}}} = 7{,}41 \cdot 10^{3}\ \text{m/s}
+$$
+
+(Se obtiene lo mismo con $v = 2\pi r/T$.)
+
+**iii) Energía para escapar.** En la órbita, la energía mecánica del satélite es:
+
+$$
+E_m = \frac{1}{2}m v^2 - \frac{G M_T m}{r} = -\frac{G\,M_T\,m}{2r}
+$$
+
+Para escapar del campo gravitatorio tiene que llegar al infinito con, como mínimo, energía mecánica nula. La energía que hay que suministrarle es:
+
+$$
+\Delta E = 0 - E_m = \frac{G\,M_T\,m}{2r} = \frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 2300}{2 \cdot 7{,}27 \cdot 10^{6}} = 6{,}31 \cdot 10^{10}\ \text{J}
+$$
+
+**Respuesta.** FY-3 orbita a unos **900 km** de altura, con una velocidad de **$7{,}41 \cdot 10^3$ m/s**, y para que escape hay que suministrarle **$6{,}31 \cdot 10^{10}$ J**, justo lo mismo que su energía cinética en la órbita.
+
+</Solucion>
+
+**A2. a)** Razone si son ciertas las siguientes afirmaciones: **i)** La variación de energía mecánica de un cuerpo es siempre diferente de cero si sobre él actúan fuerzas no conservativas. **ii)** La variación de energía cinética de un cuerpo es siempre nula si las fuerzas no conservativas que actúan sobre el cuerpo no realizan trabajo.
+
+<Solucion>
+
+Por el teorema de las fuerzas vivas, el trabajo de todas las fuerzas es igual a la variación de la energía cinética. Separando el trabajo de las fuerzas conservativas, $W_c = -\Delta E_p$, y el de las no conservativas, $W_{nc}$:
+
+$$
+W_c + W_{nc} = \Delta E_c
+\quad\Rightarrow\quad
+W_{nc} = \Delta E_c + \Delta E_p = \Delta E_m
+$$
+
+**i) Falsa.** La energía mecánica solo cambia si el trabajo **total** de las fuerzas no conservativas es distinto de cero, y puede actuar una fuerza no conservativa sin que eso ocurra. Por ejemplo, la normal sobre un cuerpo que desliza sin rozamiento por un plano inclinado es perpendicular al desplazamiento y no realiza trabajo: actúa, pero la energía mecánica se conserva. Tampoco cambia si actúan varias fuerzas no conservativas cuyos trabajos se compensan, como al arrastrar una caja con velocidad constante por un suelo con rozamiento.
+
+**ii) Falsa.** Si las fuerzas no conservativas no hacen trabajo, lo que se conserva es la **energía mecánica**, no la cinética: $\Delta E_c = W_c = -\Delta E_p$. Las fuerzas conservativas sí pueden cambiar la energía cinética. Por ejemplo, en la caída libre de un cuerpo solo actúa el peso, y su energía cinética aumenta a costa de la potencial.
+
+</Solucion>
+
+**b)** Un cuerpo de 10 kg desliza, con una velocidad inicial de 3 m s<sup>-1</sup>, por una superficie horizontal con coeficiente de rozamiento 0,2. **i)** Realice un esquema de las fuerzas que actúan sobre el cuerpo. **ii)** Determine mediante consideraciones energéticas la distancia que recorre el cuerpo hasta detenerse y el trabajo realizado por la fuerza de rozamiento.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre el cuerpo actúan el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, vertical y hacia arriba; y el rozamiento $\vec{F}_r$, horizontal y opuesto al movimiento, que es el que lo va frenando:
+
+<FuerzasHorizontal descripcion="Cuerpo que desliza hacia la derecha por un suelo horizontal y va frenando. El peso apunta hacia abajo, la normal hacia arriba y el rozamiento, en la base del cuerpo, hacia la izquierda, opuesto a la velocidad." />
+
+En vertical no hay movimiento, así que $N = P = mg = 10 \cdot 9{,}8 = 98$ N, y el rozamiento vale:
+
+$$
+F_r = \mu\,N = 0{,}2 \cdot 98 = 19{,}6\ \text{N}
+$$
+
+**ii) Distancia hasta detenerse y trabajo del rozamiento.** El peso y la normal son perpendiculares al desplazamiento y no realizan trabajo. La única fuerza que hace trabajo es el rozamiento, y por el teorema de las fuerzas vivas ese trabajo es igual a la variación de la energía cinética:
+
+$$
+W_{F_r} = \Delta E_c = 0 - \frac{1}{2}m v_0^2 = -\frac{1}{2} \cdot 10 \cdot 3^2 = -45\ \text{J}
+$$
+
+Como el rozamiento es constante y opuesto al desplazamiento, $W_{F_r} = -F_r\,d$:
+
+$$
+d = \frac{45}{19{,}6} = 2{,}30\ \text{m}
+$$
+
+**Respuesta.** El cuerpo recorre **2,30 m** hasta detenerse, y el rozamiento realiza un trabajo de **−45 J**: toda la energía cinética inicial se disipa en forma de calor. La distancia no depende de la masa, $d = v_0^2/(2\mu g)$: un cuerpo más pesado tiene más energía, pero también sufre un rozamiento proporcionalmente mayor.
+
+</Solucion>

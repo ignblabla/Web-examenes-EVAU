@@ -1,0 +1,167 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: julio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Un satélite artificial describe una órbita circular alrededor de la Tierra. La velocidad de escape desde la órbita es la cuarta parte de la velocidad de escape desde la superficie terrestre. **i)** Deduzca la relación que existe entre el radio de la órbita y el radio terrestre. **ii)** Determine la relación entre la aceleración de la gravedad en la superficie terrestre y en la órbita del satélite.
+
+<Solucion>
+
+**i) Radio de la órbita.** La velocidad de escape desde un punto a una distancia $r$ del centro de la Tierra es la velocidad mínima para que un cuerpo llegue al infinito con velocidad nula. Allí su energía mecánica es cero, así que:
+
+$$
+\frac{1}{2}m\,v_e^2 - G\,\frac{M_T\,m}{r} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M_T}{r}}
+$$
+
+Desde la superficie $(r = R_T)$ y desde la órbita $(r)$, con $v_{e,\text{órbita}} = \frac{1}{4}\,v_{e,\text{sup}}$:
+
+$$
+\sqrt{\frac{2\,G\,M_T}{r}} = \frac{1}{4}\sqrt{\frac{2\,G\,M_T}{R_T}}
+\quad\Rightarrow\quad
+\frac{1}{r} = \frac{1}{16\,R_T}
+\quad\Rightarrow\quad
+r = 16\,R_T
+$$
+
+El radio de la órbita es **16 veces el radio terrestre** (el satélite está a una altura de $15\,R_T$).
+
+**ii) Relación entre las gravedades.** La intensidad del campo gravitatorio a una distancia $r$ del centro es $g = G\,M_T/r^2$:
+
+$$
+\frac{g_0}{g_{\text{órbita}}} = \frac{G\,M_T/R_T^2}{G\,M_T/r^2} = \frac{r^2}{R_T^2} = 16^2 = 256
+$$
+
+En la órbita la gravedad es **256 veces menor** que en la superficie: la velocidad de escape disminuye con $1/\sqrt{r}$, pero la gravedad lo hace con $1/r^2$.
+
+</Solucion>
+
+**b)** Un planeta tiene un radio de 5000 km y la gravedad en su superficie es 8,2 m s<sup>-2</sup>. Este planeta orbita en torno a una estrella que tiene una masa de 8·10<sup>31</sup> kg. Determine: **i)** la masa del planeta; **ii)** la velocidad de escape desde su superficie; **iii)** el radio de la órbita en la que la energía mecánica del planeta tiene un valor de -8,15·10<sup>33</sup> J.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Masa del planeta.** La gravedad en la superficie de un planeta de masa $M$ y radio $R$ es $g_0 = G\,M/R^2$. Con $R = 5 \cdot 10^6$ m:
+
+$$
+M = \frac{g_0\,R^2}{G} = \frac{8{,}2 \cdot (5 \cdot 10^6)^2}{6{,}67 \cdot 10^{-11}} = 3{,}07 \cdot 10^{24}\ \text{kg}
+$$
+
+**ii) Velocidad de escape.** Como en el apartado a), $v_e = \sqrt{2GM/R}$; y como $GM = g_0 R^2$:
+
+$$
+v_e = \sqrt{\frac{2\,G\,M}{R}} = \sqrt{2\,g_0\,R} = \sqrt{2 \cdot 8{,}2 \cdot 5 \cdot 10^6} = 9{,}06 \cdot 10^{3}\ \text{m/s}
+$$
+
+**iii) Radio de la órbita.** En una órbita circular, la atracción de la estrella (de masa $M_E$) es la fuerza centrípeta:
+
+$$
+G\,\frac{M_E\,M}{r^2} = M\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+\frac{1}{2}M\,v^2 = \frac{G\,M_E\,M}{2r}
+$$
+
+La energía mecánica del planeta es la suma de la cinética y la potencial:
+
+$$
+E_m = \frac{G\,M_E\,M}{2r} - \frac{G\,M_E\,M}{r} = -\frac{G\,M_E\,M}{2r}
+$$
+
+Despejamos el radio:
+
+$$
+r = -\frac{G\,M_E\,M}{2\,E_m} = \frac{6{,}67 \cdot 10^{-11} \cdot 8 \cdot 10^{31} \cdot 3{,}07 \cdot 10^{24}}{2 \cdot 8{,}15 \cdot 10^{33}} = 1{,}01 \cdot 10^{12}\ \text{m}
+$$
+
+**Respuesta.** El planeta tiene una masa de **$3{,}07 \cdot 10^{24}$ kg** (la mitad de la de la Tierra), su velocidad de escape es **$9{,}06$ km/s** y el radio de la órbita es **$1{,}01 \cdot 10^{12}$ m**, unas siete veces la distancia de la Tierra al Sol, para una estrella de unas 40 masas solares. La energía mecánica es negativa, como corresponde a una órbita ligada.
+
+</Solucion>
+
+**A2. a)** Una masa puntual *m* se encuentra en las inmediaciones de otra masa puntual *M*. Razone cómo se modifica la energía potencial gravitatoria cuando: **i)** las dos masas se acercan; **ii)** aumenta el valor de la masa *m*.
+
+<Solucion>
+
+La energía potencial gravitatoria de dos masas puntuales separadas una distancia $r$, tomando el origen en el infinito, es:
+
+$$
+E_p = -G\,\frac{M\,m}{r}
+$$
+
+Es siempre negativa, y vale cero cuando las masas están infinitamente alejadas.
+
+**i) Las masas se acercan.** Al disminuir $r$, el cociente $Mm/r$ aumenta, y la energía potencial se hace **más negativa: disminuye**. Es coherente con que la fuerza gravitatoria sea atractiva: si las masas se acercan libremente, la fuerza realiza un trabajo positivo, $W = -\Delta E_p > 0$, y la energía potencial que se pierde se convierte en cinética.
+
+**ii) Aumenta la masa m.** La energía potencial es proporcional a $m$: a la misma distancia, su valor absoluto aumenta y, como es negativa, **disminuye** (se hace más negativa). Por ejemplo, si $m$ se duplica, la energía potencial se duplica, $E_p' = 2E_p$. Hace falta más energía para separar las masas hasta el infinito.
+
+</Solucion>
+
+**b)** Dos masas de 5 kg se encuentran en los puntos A(0,2) y B(2,0) m. Determine razonadamente: **i)** el valor de la intensidad del campo gravitatorio en el punto C(0,0) m; **ii)** el potencial gravitatorio en el mismo punto; **iii)** el trabajo realizado por la fuerza gravitatoria para desplazar una masa de 3 kg desde C hasta el punto D(2,2) m. Justifique el resultado obtenido.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo gravitatorio en C.** El campo que crea cada masa tiene módulo $g = G\,m/r^2$ y apunta hacia la masa que lo crea. El punto C(0,0) está a 2 m de A y a 2 m de B:
+
+$$
+g_A = g_B = G\,\frac{m}{r^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{5}{2^2} = 8{,}34 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+El campo de A apunta hacia A, en el sentido de $+\vec{j}$, y el de B hacia B, en el sentido de $+\vec{i}$:
+
+<Vectores
+  xMin={-0.4}
+  xMax={2.6}
+  yMin={-0.4}
+  yMax={2.6}
+  escala={70}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 2, texto: "A(0, 2) · 5 kg", tipo: "masa" },
+    { x: 2, y: 0, texto: "B(2, 0) · 5 kg", tipo: "masa", dx: 8, dy: 22 },
+    { x: 0, y: 0, texto: "C", tipo: "punto", dx: -10, dy: 16 },
+    { x: 2, y: 2, texto: "D(2, 2)", tipo: "punto" },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [0, 56], texto: "g", sub: "A", color: "#2d6fa3", dx: -20, dy: 6 },
+    { desde: [0, 0], v: [56, 0], texto: "g", sub: "B", color: "#2d6fa3", dy: 16 },
+    { desde: [0, 0], v: [56, 56], texto: "g", color: "#195c51" },
+  ]}
+  segmentos={[[0, 2, 2, 2], [2, 0, 2, 2]]}
+  descripcion="Masas de 5 kilos en A, de coordenadas 0, 2, y en B, de coordenadas 2, 0. En el origen C, el campo de A apunta hacia arriba, hacia A, y el de B hacia la derecha, hacia B; el campo total apunta en diagonal hacia arriba y a la derecha. El punto D, de coordenadas 2, 2, está también a 2 metros de cada masa."
+/>
+
+$$
+\vec{g}_C = \vec{g}_A + \vec{g}_B = \left(8{,}34 \cdot 10^{-11}\,\vec{i} + 8{,}34 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+$$
+|\vec{g}_C| = \sqrt{2} \cdot 8{,}34 \cdot 10^{-11} = 1{,}18 \cdot 10^{-10}\ \text{N/kg}
+$$
+
+**ii) Potencial gravitatorio en C.** El potencial es escalar: se suman los potenciales de las dos masas, ambos negativos:
+
+$$
+V_C = -G\,\frac{m_A}{r_{AC}} - G\,\frac{m_B}{r_{BC}} = -6{,}67 \cdot 10^{-11}\left(\frac{5}{2} + \frac{5}{2}\right) = -3{,}34 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**iii) Trabajo de C a D.** La fuerza gravitatoria es conservativa, así que su trabajo solo depende de los puntos inicial y final: $W = -\Delta E_p = -m'\,(V_D - V_C)$. El punto D(2,2) está a 2 m de A y a 2 m de B, igual que C:
+
+$$
+V_D = -6{,}67 \cdot 10^{-11}\left(\frac{5}{2} + \frac{5}{2}\right) = -3{,}34 \cdot 10^{-10}\ \text{J/kg} = V_C
+$$
+
+$$
+W = -3 \cdot (V_D - V_C) = 0
+$$
+
+**Respuesta.** El campo en C es $\vec{g}_C = (8{,}34 \cdot 10^{-11}\,\vec{i} + 8{,}34 \cdot 10^{-11}\,\vec{j})$ N/kg, de módulo $1{,}18 \cdot 10^{-10}$ N/kg; el potencial vale $-3{,}34 \cdot 10^{-10}$ J/kg, y el trabajo de la fuerza gravitatoria de C a D es **nulo**. C y D son simétricos respecto de la recta AB: están a la misma distancia de las dos masas y tienen el mismo potencial. A lo largo del camino la fuerza puede hacer trabajo positivo en unos tramos y negativo en otros, pero como es conservativa, el total entre dos puntos de igual potencial es cero.
+
+</Solucion>

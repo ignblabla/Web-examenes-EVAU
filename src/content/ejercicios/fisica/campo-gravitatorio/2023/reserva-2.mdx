@@ -1,0 +1,168 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: reserva-2
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Una partícula se mueve en un campo gravitatorio uniforme. **i)** ¿Aumenta o disminuye su energía potencial gravitatoria al moverse en la dirección y sentido del campo? **ii)** ¿Y si se moviera en una dirección perpendicular al campo? Razone sus respuestas.
+
+<Solucion>
+
+En un campo gravitatorio uniforme $\vec{g}$, la fuerza sobre una partícula de masa $m$ es su peso, $\vec{P} = m\,\vec{g}$, constante. Es una fuerza conservativa: su trabajo en un desplazamiento $\Delta\vec{r}$ es igual a menos la variación de la energía potencial:
+
+$$
+\Delta E_p = -W = -m\,\vec{g} \cdot \Delta\vec{r}
+$$
+
+**i) En el sentido del campo: disminuye.** La fuerza y el desplazamiento tienen el mismo sentido, el trabajo del peso es positivo y la energía potencial disminuye: $\Delta E_p = -m g\,d < 0$. Es lo que ocurre cuando un cuerpo cae: el campo apunta hacia abajo y al bajar la energía potencial $mgh$ disminuye.
+
+**ii) Perpendicular al campo: no cambia.** El peso es perpendicular al desplazamiento y no realiza trabajo: $\Delta E_p = 0$. La partícula se mueve sobre una superficie equipotencial (en las proximidades de la Tierra, a la misma altura).
+
+</Solucion>
+
+**b)** Dos masas puntuales de 1 y 4 kg están situadas en los puntos A(-3,1) y B(0,3) m, respectivamente. **i)** Realice un esquema y calcule la intensidad del campo gravitatorio en el punto C(0,0) m. **ii)** Calcule el potencial gravitatorio en el punto C. **iii)** Calcule el trabajo necesario para llevar una tercera masa de 2 kg desde C hasta el punto D(3,0) m. Justifique el signo del trabajo y razone si su valor depende de la trayectoria seguida.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo gravitatorio en C.** Cada masa crea un campo de módulo $g = G\,m/r^2$ dirigido hacia ella.
+
+- **Masa A** (1 kg): la distancia de A a C es $r_{AC} = \sqrt{3^2 + 1^2} = \sqrt{10}$ m. El campo apunta de C hacia A, según el vector unitario $(-3\,\vec{i} + \vec{j})/\sqrt{10}$:
+
+$$
+g_A = G\,\frac{m_A}{r_{AC}^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{1}{10} = 6{,}67 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+$$
+\vec{g}_A = 6{,}67 \cdot 10^{-12} \cdot \frac{-3\,\vec{i} + \vec{j}}{\sqrt{10}} = \left(-6{,}33 \cdot 10^{-12}\,\vec{i} + 2{,}11 \cdot 10^{-12}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+- **Masa B** (4 kg): está a 3 m de C, sobre el eje Y, y su campo apunta hacia $+\vec{j}$:
+
+$$
+g_B = 6{,}67 \cdot 10^{-11} \cdot \frac{4}{3^2} = 2{,}96 \cdot 10^{-11}\ \text{N/kg}
+\quad\Rightarrow\quad
+\vec{g}_B = 2{,}96 \cdot 10^{-11}\,\vec{j}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-4.8}
+  xMax={3.6}
+  yMin={-0.6}
+  yMax={3.6}
+  escala={52}
+  unidad="m"
+  puntos={[
+    { x: -3, y: 1, texto: "A(−3, 1) · 1 kg", tipo: "masa", dx: -12, dy: -12 },
+    { x: 0, y: 3, texto: "B(0, 3) · 4 kg", tipo: "masa", dx: 12, dy: 4 },
+    { x: 0, y: 0, texto: "C", tipo: "punto", dx: -10, dy: 16 },
+    { x: 3, y: 0, texto: "D(3, 0)", tipo: "punto", dx: -8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [-30, 10], texto: "g", sub: "A", color: "#2d6fa3", dx: -6, dy: -6 },
+    { desde: [0, 0], v: [0, 80], texto: "g", sub: "B", color: "#2d6fa3", dx: 8, dy: 10 },
+    { desde: [0, 0], v: [-30, 90], texto: "g", color: "#195c51", dx: -16, dy: 4 },
+  ]}
+  segmentos={[[-3, 1, 0, 0]]}
+  descripcion="Masa de 1 kilo en A, de coordenadas menos 3, 1, y masa de 4 kilos en B, de coordenadas 0, 3. En el origen C, el campo de A apunta hacia A, hacia la izquierda y algo hacia arriba, y es pequeño; el de B apunta hacia arriba, hacia B, y es unas cuatro veces mayor. El campo total apunta hacia arriba y ligeramente a la izquierda. D está en el punto 3, 0."
+/>
+
+Sumando:
+
+$$
+\vec{g}_C = \left(-6{,}33 \cdot 10^{-12}\,\vec{i} + 3{,}18 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg},
+\qquad
+|\vec{g}_C| = 3{,}24 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**ii) Potencial en C.**
+
+$$
+V_C = -G\left(\frac{m_A}{r_{AC}} + \frac{m_B}{r_{BC}}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{1}{\sqrt{10}} + \frac{4}{3}\right) = -1{,}10 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**iii) Trabajo para llevar la masa de C a D.** El punto D(3,0) está a $\sqrt{6^2 + 1^2} = \sqrt{37}$ m de A y a $\sqrt{3^2 + 3^2} = \sqrt{18}$ m de B:
+
+$$
+V_D = -6{,}67 \cdot 10^{-11}\left(\frac{1}{\sqrt{37}} + \frac{4}{\sqrt{18}}\right) = -7{,}39 \cdot 10^{-11}\ \text{J/kg}
+$$
+
+El trabajo necesario (el que hay que hacer contra el campo, trasladando la masa sin cambiar su energía cinética) es igual a la variación de su energía potencial:
+
+$$
+W = m'\,(V_D - V_C) = 2 \cdot \left(-7{,}39 \cdot 10^{-11} + 1{,}10 \cdot 10^{-10}\right) = 7{,}24 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** El campo en C es $\vec{g}_C = (-6{,}33 \cdot 10^{-12}\,\vec{i} + 3{,}18 \cdot 10^{-11}\,\vec{j})$ N/kg (módulo $3{,}24 \cdot 10^{-11}$ N/kg), el potencial vale $-1{,}10 \cdot 10^{-10}$ J/kg y el trabajo necesario es **$7{,}24 \cdot 10^{-11}$ J**. Es **positivo** porque la masa se aleja de las dos masas que la atraen y pasa a un punto de mayor potencial: hay que aportar energía desde fuera (el campo, por su parte, realiza un trabajo negativo, $-7{,}24 \cdot 10^{-11}$ J). El valor **no depende de la trayectoria**: la fuerza gravitatoria es conservativa, y el trabajo solo depende de los potenciales de los puntos inicial y final.
+
+</Solucion>
+
+**A2. a)** **i)** Escriba las expresiones del campo y el potencial gravitatorio creados por una masa puntual e indique las unidades en el S.I. para cada una de las magnitudes que intervienen. **ii)** Explique la relación que existe entre los campos gravitatorios a una distancia *r* y 2*r*.
+
+<Solucion>
+
+**i) Campo y potencial de una masa puntual.** Una masa puntual $M$ crea, en un punto situado a una distancia $r$, un campo gravitatorio y un potencial:
+
+$$
+\vec{g} = -G\,\frac{M}{r^2}\,\vec{u}_r, \qquad V = -G\,\frac{M}{r}
+$$
+
+- $\vec{g}$: intensidad del campo gravitatorio, en **N/kg** (equivalente a m/s²). El signo menos y el vector unitario $\vec{u}_r$, que apunta desde $M$ hacia el punto, indican que el campo está dirigido hacia la masa: es atractivo.
+- $V$: potencial gravitatorio, en **J/kg**. Es negativo, con el origen en el infinito.
+- $G = 6{,}67 \cdot 10^{-11}$ **N m² kg⁻²**: constante de gravitación universal.
+- $M$: masa que crea el campo, en **kg**.
+- $r$: distancia desde la masa al punto, en **m**.
+
+**ii) Relación entre los campos a $r$ y a $2r$.** El módulo del campo es inversamente proporcional al cuadrado de la distancia:
+
+$$
+\frac{g(2r)}{g(r)} = \frac{G M/(2r)^2}{G M/r^2} = \frac{1}{4}
+$$
+
+Al duplicar la distancia el campo se reduce a **la cuarta parte**; su dirección y su sentido son los mismos (hacia la masa) si los dos puntos están en la misma recta que pasa por $M$.
+
+</Solucion>
+
+**b)** Un cuerpo de 5 kg desliza con una velocidad inicial de 6 m s<sup>-1</sup> por una superficie horizontal de 5 m de longitud y coeficiente de rozamiento 0,2. A continuación, asciende por un plano inclinado sin rozamiento que forma 30º con la horizontal. **i)** Realice un esquema con las fuerzas que actúan sobre el cuerpo cuando desliza por la superficie horizontal y por el plano inclinado. Utilizando consideraciones energéticas, determine: **ii)** la velocidad con la que el cuerpo llega al final de la superficie horizontal; **iii)** la altura máxima a la que asciende el cuerpo por el plano inclinado.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** En la superficie horizontal actúan el peso $\vec{P}$, la normal $\vec{N}$ (iguales en módulo, $N = mg$) y el rozamiento $\vec{F}_r$, opuesto al movimiento. En el plano inclinado, que no tiene rozamiento, solo actúan el peso y la normal, perpendicular al plano; la componente del peso paralela al plano, $P_x = mg\sin 30^\circ$, frena al cuerpo mientras sube:
+
+<PlanoInclinado angulo={30} mueve="sube" componentes horizontal horizontalHaciaPlano sinRozamientoPlano descripcion="A la derecha, un tramo horizontal por el que el cuerpo avanza hacia la izquierda, hacia el plano: actúan el peso hacia abajo, la normal hacia arriba y el rozamiento hacia la derecha, opuesto al movimiento. A la izquierda, el plano inclinado 30 grados sin rozamiento, por el que el cuerpo sube: actúan el peso, con sus componentes paralela y perpendicular al plano, y la normal." />
+
+**ii) Velocidad al final del tramo horizontal.** En el tramo horizontal la energía potencial no cambia, y el trabajo del rozamiento (la única fuerza que hace trabajo) es igual a la variación de la energía cinética:
+
+$$
+F_r = \mu\,m g = 0{,}2 \cdot 5 \cdot 9{,}8 = 9{,}8\ \text{N},
+\qquad
+W_{F_r} = -F_r\,d = -9{,}8 \cdot 5 = -49\ \text{J}
+$$
+
+$$
+\frac{1}{2}m v_1^2 = \frac{1}{2}m v_0^2 + W_{F_r} = \frac{1}{2} \cdot 5 \cdot 6^2 - 49 = 90 - 49 = 41\ \text{J}
+$$
+
+$$
+v_1 = \sqrt{\frac{2 \cdot 41}{5}} = 4{,}05\ \text{m/s}
+$$
+
+**iii) Altura máxima en el plano.** En el plano no hay rozamiento y la normal no hace trabajo, así que se conserva la energía mecánica. El cuerpo sube hasta que toda su energía cinética se ha convertido en potencial:
+
+$$
+\frac{1}{2}m v_1^2 = m g h
+\quad\Rightarrow\quad
+h = \frac{v_1^2}{2g} = \frac{41}{5 \cdot 9{,}8} = 0{,}837\ \text{m}
+$$
+
+**Respuesta.** El cuerpo llega al final de la superficie horizontal a **4,05 m/s** y sube por el plano hasta una altura de **0,837 m** (recorre $0{,}837/\sin 30^\circ = 1{,}67$ m de plano). Sin el tramo con rozamiento habría llegado a $6^2/(2 \cdot 9{,}8) = 1{,}84$ m: el rozamiento le ha quitado 49 de sus 90 J iniciales. La altura no depende del ángulo del plano, porque no hay rozamiento en él.
+
+</Solucion>

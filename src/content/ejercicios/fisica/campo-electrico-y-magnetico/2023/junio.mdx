@@ -1,0 +1,207 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: junio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** En una región del espacio hay un campo eléctrico uniforme. Una carga eléctrica negativa entra en dicha región con una velocidad $\vec{v}$, en la misma dirección y sentido del campo, deteniéndose tras recorrer una distancia *d*. Razone si es positivo, negativo o nulo el valor de: **i)** el trabajo realizado por el campo eléctrico; **ii)** la variación de la energía cinética, potencial y mecánica.
+
+<Solucion>
+
+La fuerza que el campo ejerce sobre una carga es $\vec{F} = q\,\vec{E}$. Como la carga es **negativa**, la fuerza tiene **sentido contrario al campo**, y por tanto contrario a la velocidad: la carga va frenando hasta detenerse.
+
+**i) Trabajo del campo.** La fuerza y el desplazamiento tienen sentidos opuestos, así que el trabajo es **negativo**:
+
+$$
+W = F\,d\cos 180^\circ = -|q|\,E\,d < 0
+$$
+
+**ii) Variaciones de energía.**
+
+- **Energía cinética: negativa.** La carga pasa de tener velocidad $v$ a detenerse, $\Delta E_c = 0 - \frac{1}{2}m v^2 < 0$. Es lo que dice el teorema de las fuerzas vivas: la única fuerza que actúa es la eléctrica, y $\Delta E_c = W < 0$.
+- **Energía potencial: positiva.** La fuerza eléctrica es conservativa, así que $\Delta E_p = -W > 0$. También se ve con el potencial: la carga avanza en el sentido del campo, hacia potenciales menores $(\Delta V < 0)$, y como $q < 0$, $\Delta E_p = q\,\Delta V > 0$.
+- **Energía mecánica: nula.** Solo actúa una fuerza conservativa, así que la energía mecánica se conserva: $\Delta E_m = \Delta E_c + \Delta E_p = 0$. Toda la energía cinética que pierde la carga se transforma en energía potencial.
+
+</Solucion>
+
+**b)** Dos cargas de 2 y -3 mC se encuentran, respectivamente, en los puntos A(0,0) y B(1,1) m. **i)** Represente y calcule el vector campo eléctrico en el punto C(1,0) m. **ii)** Calcule el trabajo necesario para trasladar una carga de 1 mC desde el punto C al punto D(0,1) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo eléctrico en C.** El campo que crea una carga puntual tiene módulo $E = K\,|q|/r^2$; se aleja de la carga si es positiva y apunta hacia ella si es negativa. El punto C(1,0) está a 1 m de las dos cargas:
+
+- **Carga de A** $(q_A = 2 \cdot 10^{-3}$ C, positiva$)$: C está a su derecha, así que su campo apunta en el sentido de $+\vec{i}$:
+
+$$
+E_A = K\,\frac{q_A}{r_{AC}^2} = 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-3}}{1^2} = 1{,}8 \cdot 10^{7}\ \text{N/C}
+\quad\Rightarrow\quad
+\vec{E}_A = 1{,}8 \cdot 10^{7}\,\vec{i}\ \text{N/C}
+$$
+
+- **Carga de B** $(q_B = -3 \cdot 10^{-3}$ C, negativa$)$: B está justo encima de C y su campo apunta hacia ella, en el sentido de $+\vec{j}$:
+
+$$
+E_B = K\,\frac{|q_B|}{r_{BC}^2} = 9 \cdot 10^9 \cdot \frac{3 \cdot 10^{-3}}{1^2} = 2{,}7 \cdot 10^{7}\ \text{N/C}
+\quad\Rightarrow\quad
+\vec{E}_B = 2{,}7 \cdot 10^{7}\,\vec{j}\ \text{N/C}
+$$
+
+<Vectores
+  xMin={-0.3}
+  xMax={1.6}
+  yMin={-0.3}
+  yMax={1.4}
+  escala={120}
+  marcasX={[1]}
+  marcasY={[1]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A (+2 mC)", tipo: "carga", signo: "+", dx: 10, dy: 22 },
+    { x: 1, y: 1, texto: "B (−3 mC)", tipo: "carga", signo: "−", dx: 12, dy: -8 },
+    { x: 1, y: 0, texto: "C", tipo: "punto", dx: -8, dy: 16 },
+    { x: 0, y: 1, texto: "D", tipo: "punto", dx: 8, dy: -8 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [48, 0], texto: "E", sub: "A", color: "#b04a3a", dy: 16 },
+    { desde: [1, 0], v: [0, 72], texto: "E", sub: "B", color: "#2d6fa3", dx: -24, dy: 8 },
+    { desde: [1, 0], v: [48, 72], texto: "E", color: "#195c51" },
+  ]}
+  segmentos={[[0, 0, 1, 1]]}
+  descripcion="Carga positiva de 2 milicoulombs en el origen A y carga negativa de 3 milicoulombs en B, de coordenadas 1, 1. En el punto C, de coordenadas 1, 0, el campo de A apunta hacia la derecha, alejándose de A, y el de B apunta hacia arriba, hacia B. El campo total es la suma de los dos y apunta hacia arriba y a la derecha. El punto D, de coordenadas 0, 1, está también a 1 metro de las dos cargas."
+/>
+
+El campo total es la suma vectorial:
+
+$$
+\vec{E}_C = \vec{E}_A + \vec{E}_B = \left(1{,}8 \cdot 10^{7}\,\vec{i} + 2{,}7 \cdot 10^{7}\,\vec{j}\right)\ \text{N/C}
+$$
+
+$$
+|\vec{E}_C| = \sqrt{(1{,}8 \cdot 10^7)^2 + (2{,}7 \cdot 10^7)^2} = 3{,}24 \cdot 10^{7}\ \text{N/C}
+$$
+
+Forma un ángulo $\arctan(2{,}7/1{,}8) = 56{,}3^\circ$ con el eje X.
+
+**ii) Trabajo para llevar la carga de C a D.** El trabajo que hay que hacer para trasladar una carga $q'$ lentamente (sin cambiar su energía cinética) es igual a la variación de su energía potencial, $W = q'\,(V_D - V_C)$. El potencial es escalar y se suman las contribuciones de las dos cargas:
+
+$$
+V_C = K\left(\frac{q_A}{r_{AC}} + \frac{q_B}{r_{BC}}\right) = 9 \cdot 10^9 \left(\frac{2 \cdot 10^{-3}}{1} + \frac{-3 \cdot 10^{-3}}{1}\right) = -9 \cdot 10^{6}\ \text{V}
+$$
+
+El punto D(0,1) también está a 1 m de A y a 1 m de B, así que tiene el mismo potencial:
+
+$$
+V_D = 9 \cdot 10^9 \left(\frac{2 \cdot 10^{-3}}{1} + \frac{-3 \cdot 10^{-3}}{1}\right) = -9 \cdot 10^{6}\ \text{V}
+$$
+
+$$
+W = q'\,(V_D - V_C) = 10^{-3} \cdot 0 = 0
+$$
+
+**Respuesta.** El campo en C es $\vec{E}_C = (1{,}8 \cdot 10^{7}\,\vec{i} + 2{,}7 \cdot 10^{7}\,\vec{j})$ N/C, de módulo $3{,}24 \cdot 10^7$ N/C. El trabajo para llevar la carga de C a D es **nulo**: C y D son simétricos respecto de la recta AB, están a la misma distancia de cada carga y tienen el mismo potencial. El campo realiza trabajo durante el camino, pero el total entre dos puntos de igual potencial es cero, sea cual sea la trayectoria.
+
+</Solucion>
+
+**B2. a)** Por dos hilos conductores rectilíneos paralelos, separados una cierta distancia, circulan corrientes de igual intensidad. Explique razonadamente, apoyándose en un esquema, si puede ser cero el campo magnético en algún punto entre los dos hilos, suponiendo que las corrientes circulan en sentidos: **i)** iguales; **ii)** opuestos.
+
+<Solucion>
+
+Un hilo rectilíneo e indefinido crea un campo magnético de módulo $B = \dfrac{\mu_0\,I}{2\pi r}$, cuyas líneas son circunferencias alrededor del hilo; su sentido lo da la regla de la mano derecha (el pulgar en el sentido de la corriente y los dedos en el del campo). En los puntos del segmento que une los dos hilos, los dos campos son perpendiculares a ese segmento, así que solo pueden anularse si tienen sentidos opuestos y el mismo módulo.
+
+Dibujamos los hilos perpendiculares al papel, con $\odot$ para una corriente que sale y $\otimes$ para una que entra, y los campos en el punto medio P.
+
+**i) Corrientes del mismo sentido.** Entre los hilos, los dos campos tienen **sentidos opuestos**: el del hilo 1 apunta hacia arriba y el del hilo 2 hacia abajo. Como las intensidades son iguales, sus módulos son iguales en el punto que está a la misma distancia de los dos: **el campo es nulo en el punto medio** del segmento que los une.
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.6}
+  yMin={-0.8}
+  yMax={0.8}
+  escala={70}
+  puntos={[
+    { x: -1.2, y: 0, texto: "I₁", tipo: "sale", dx: -12, dy: -12 },
+    { x: 1.2, y: 0, texto: "I₂", tipo: "sale", dx: 12, dy: -12 },
+    { x: 0, y: 0, texto: "P", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [0, 40], texto: "B", sub: "1", color: "#b04a3a" },
+    { desde: [0, 0], v: [0, -40], texto: "B", sub: "2", color: "#2d6fa3", dy: 10 },
+  ]}
+  descripcion="Dos hilos perpendiculares al papel con corrientes iguales que salen del papel. En el punto medio P, el campo del hilo de la izquierda apunta hacia arriba y el del hilo de la derecha hacia abajo, con el mismo módulo: se anulan."
+/>
+
+**ii) Corrientes de sentidos opuestos.** Ahora los dos campos tienen el **mismo sentido** en todos los puntos entre los hilos (en el esquema, hacia arriba), así que se suman y **el campo no puede ser nulo** en ningún punto entre ellos. En el punto medio, por ejemplo, vale el doble del que crea cada hilo.
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.6}
+  yMin={-0.4}
+  yMax={1.3}
+  escala={70}
+  puntos={[
+    { x: -1.2, y: 0, texto: "I₁", tipo: "sale", dx: -12, dy: -12 },
+    { x: 1.2, y: 0, texto: "I₂", tipo: "entra", dx: 12, dy: -12 },
+    { x: 0, y: 0, texto: "P", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [0, 38], texto: "B", sub: "1", color: "#b04a3a", dx: 8, dy: 30 },
+    { desde: [0, 38 / 70], v: [0, 38], texto: "B", sub: "2", color: "#2d6fa3" },
+  ]}
+  descripcion="Dos hilos perpendiculares al papel con corrientes iguales: la de la izquierda sale del papel y la de la derecha entra. En el punto medio P, los campos de los dos hilos apuntan hacia arriba y se suman: el campo total es el doble del de cada hilo."
+/>
+
+</Solucion>
+
+**b)** Dos conductores rectilíneos paralelos por los que circula la misma intensidad de corriente están separados una distancia de 20 cm y se atraen con una fuerza por unidad de longitud de 5·10<sup>-8</sup> N m<sup>-1</sup>. **i)** Justifique si el sentido de la corriente es el mismo en ambos hilos, representando en un esquema el campo magnético y la fuerza entre ambos. **ii)** Calcule el valor de la intensidad de corriente que circula por cada conductor.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Sentido de las corrientes.** Cada hilo está dentro del campo magnético que crea el otro y sufre una fuerza $\vec{F} = I\,\vec{L} \times \vec{B}$. Supongamos las dos corrientes saliendo del papel $(+\vec{k})$, con el hilo 1 a la izquierda y el 2 a la derecha:
+
+- El hilo 1 crea en el hilo 2 un campo $\vec{B}_1$ hacia arriba $(+\vec{j})$, por la regla de la mano derecha. La fuerza sobre el hilo 2 es $\vec{F}_2 \propto \vec{k} \times \vec{j} = -\vec{i}$: hacia la izquierda, **hacia el hilo 1**.
+- El hilo 2 crea en el hilo 1 un campo $\vec{B}_2$ hacia abajo $(-\vec{j})$, y la fuerza sobre el hilo 1 es $\vec{F}_1 \propto \vec{k} \times (-\vec{j}) = +\vec{i}$: hacia la derecha, **hacia el hilo 2**.
+
+<Vectores
+  xMin={-1.5}
+  xMax={1.5}
+  yMin={-0.9}
+  yMax={0.9}
+  escala={80}
+  puntos={[
+    { x: -1, y: 0, texto: "I₁", tipo: "sale", dx: -14, dy: -12 },
+    { x: 1, y: 0, texto: "I₂", tipo: "sale", dx: 12, dy: -12 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [0, 48], texto: "B", sub: "1", color: "#2d6fa3" },
+    { desde: [1, 0], v: [-56, 0], texto: "F", sub: "2", color: "#b04a3a", dx: -8, dy: 18 },
+    { desde: [-1, 0], v: [0, -48], texto: "B", sub: "2", color: "#2d6fa3", dy: 10 },
+    { desde: [-1, 0], v: [56, 0], texto: "F", sub: "1", color: "#b04a3a", dx: 0, dy: 18 },
+  ]}
+  descripcion="Dos hilos paralelos, perpendiculares al papel, separados 20 centímetros, con corrientes iguales que salen del papel. El hilo 1 crea en el hilo 2 un campo hacia arriba, y la fuerza sobre el hilo 2 apunta hacia el hilo 1. El hilo 2 crea en el hilo 1 un campo hacia abajo, y la fuerza sobre el hilo 1 apunta hacia el hilo 2. Los hilos se atraen."
+/>
+
+Los hilos se atraen. Si una de las corrientes cambiara de sentido, cambiaría el sentido de las dos fuerzas y se repelerían. Por tanto, como se atraen, **las corrientes circulan en el mismo sentido**.
+
+**ii) Intensidad de corriente.** La fuerza por unidad de longitud entre dos hilos paralelos separados una distancia $d$ es:
+
+$$
+\frac{F}{L} = I\,B = I\,\frac{\mu_0\,I}{2\pi d} = \frac{\mu_0\,I^2}{2\pi d}
+$$
+
+Despejamos la intensidad, con $d = 0{,}20$ m:
+
+$$
+I = \sqrt{\frac{2\pi d}{\mu_0}\,\frac{F}{L}} = \sqrt{\frac{2\pi \cdot 0{,}20}{4\pi \cdot 10^{-7}} \cdot 5 \cdot 10^{-8}} = \sqrt{0{,}05} = 0{,}224\ \text{A}
+$$
+
+**Respuesta.** Las corrientes circulan **en el mismo sentido** y por cada conductor pasan **0,224 A**. Es una corriente pequeña, coherente con una fuerza por unidad de longitud tan débil ($5 \cdot 10^{-8}$ N por cada metro de hilo).
+
+</Solucion>

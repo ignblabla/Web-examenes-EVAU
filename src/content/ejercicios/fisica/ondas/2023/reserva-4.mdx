@@ -1,0 +1,78 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2023
+convocatoria: reserva-4
+formato: fisica
+---
+
+**C1. a)** **i)** Escriba la ecuación de una onda estacionaria definiendo qué son los nodos y los vientres. **ii)** Deduzca la posición de los nodos y los vientres en función de la longitud de onda.
+
+<Solucion>
+
+**i) Ecuación de la onda estacionaria.** Una onda estacionaria resulta de la superposición de dos ondas armónicas iguales (misma amplitud $A$, frecuencia y longitud de onda) que se propagan en la misma dirección y sentidos opuestos, $y_1 = A\sin(kx - \omega t)$ e $y_2 = A\sin(kx + \omega t)$:
+
+$$
+y(x, t) = y_1 + y_2 = 2A\sin(kx)\cos(\omega t)
+$$
+
+Cada punto oscila con un MAS de frecuencia angular $\omega$ y una amplitud que depende de su posición, $A_x = 2A\sin(kx)$.
+
+- **Nodos**: puntos que no oscilan nunca, porque su amplitud es nula.
+- **Vientres**: puntos que oscilan con la amplitud máxima, $2A$.
+
+**ii) Posición de los nodos y los vientres.** Con $k = 2\pi/\lambda$:
+
+- **Nodos**: $\sin(kx) = 0$:
+
+$$
+k\,x = n\pi
+\quad\Rightarrow\quad
+x = \frac{n\pi}{2\pi/\lambda} = n\,\frac{\lambda}{2}, \qquad n = 0, 1, 2, \ldots
+$$
+
+- **Vientres**: $\sin(kx) = \pm 1$:
+
+$$
+k\,x = (2n+1)\frac{\pi}{2}
+\quad\Rightarrow\quad
+x = (2n+1)\,\frac{\lambda}{4}, \qquad n = 0, 1, 2, \ldots
+$$
+
+Dos nodos (o dos vientres) consecutivos están separados media longitud de onda, $\lambda/2$, y cada vientre está en el punto medio entre dos nodos, a $\lambda/4$ de cada uno.
+
+</Solucion>
+
+**b)** Por una cuerda tensa se propaga una onda armónica cuya ecuación es: *y*(*x*,*t*) = 3·sen(0,5π *t* − π *x*) (S.I.). Determine razonadamente: **i)** la velocidad máxima de vibración de un punto de la cuerda; **ii)** el valor de la aceleración para el punto *x* = 1 m para *t* = 4 s.
+
+<Solucion>
+
+Comparando con $y = A\sin(\omega t - kx)$: $A = 3$ m, $\omega = 0{,}5\pi$ rad/s y $k = \pi$ rad/m.
+
+**i) Velocidad máxima de vibración.** La velocidad de vibración de un punto es la derivada de la elongación respecto del tiempo:
+
+$$
+v(x, t) = \frac{\partial y}{\partial t} = A\,\omega\cos(\omega t - kx) = 1{,}5\pi\cos(0{,}5\pi t - \pi x)
+$$
+
+Su valor máximo, cuando el coseno vale ±1, es:
+
+$$
+v_{\text{máx}} = A\,\omega = 3 \cdot 0{,}5\pi = 4{,}71\ \text{m/s}
+$$
+
+**ii) Aceleración en $x = 1$ m y $t = 4$ s.** Derivando otra vez:
+
+$$
+a(x, t) = \frac{\partial v}{\partial t} = -A\,\omega^2\sin(\omega t - kx) = -\omega^2\,y
+$$
+
+La fase en ese punto y ese instante es $0{,}5\pi \cdot 4 - \pi \cdot 1 = \pi$ rad, y $\sin\pi = 0$:
+
+$$
+a = -3 \cdot (0{,}5\pi)^2 \cdot \sin\pi = 0
+$$
+
+**Respuesta.** La velocidad máxima de vibración es **4,71 m/s** y la aceleración del punto $x = 1$ m en $t = 4$ s es **nula**. En ese instante el punto pasa por su posición de equilibrio $(y = 0)$: allí la aceleración es nula y la velocidad es máxima (en valor absoluto, 4,71 m/s; como $\cos\pi = -1$, en ese momento el punto se mueve hacia abajo).
+
+</Solucion>

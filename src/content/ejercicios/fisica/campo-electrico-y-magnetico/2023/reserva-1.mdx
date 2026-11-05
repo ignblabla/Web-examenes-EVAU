@@ -1,0 +1,182 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: reserva-1
+formato: fisica
+---
+
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una espira se encuentra en reposo en el plano XY dentro de un campo magnético uniforme $\vec{B} = B_0\,\vec{k}$. Explique con la ayuda de un esquema el sentido de la corriente inducida si la espira: **i)** aumenta progresivamente su superficie; **ii)** disminuye progresivamente su superficie.
+
+<Solucion>
+
+El flujo magnético a través de la espira es $\Phi = \vec{B} \cdot \vec{S} = B_0\,S$, porque la espira está en el plano XY y su vector superficie es paralelo al campo. Aunque el campo sea constante, el flujo cambia si cambia la superficie, y por la **ley de Faraday** se induce una fuerza electromotriz $\varepsilon = -d\Phi/dt$. Por la **ley de Lenz**, la corriente inducida circula en el sentido que crea un campo magnético que se opone a la variación del flujo.
+
+Miramos la espira desde el semieje Z positivo, de modo que el campo $B_0\,\vec{k}$ sale del papel $(\odot)$.
+
+**i) La superficie aumenta.** El flujo saliente aumenta. La corriente inducida crea dentro de la espira un campo **entrante** $(-\vec{k})$, que se opone al aumento; por la regla de la mano derecha, eso corresponde a una corriente en **sentido horario**:
+
+<EspiraCampoVariable
+  forma="circular"
+  notas={["B ⊙ (uniforme)", "I horaria", "B inducido ⊗"]}
+  pie="La superficie de la espira aumenta (vista desde el semieje Z positivo)"
+  descripcion="Espira en el plano XY vista desde arriba, dentro de un campo magnético uniforme saliente del papel. Su superficie aumenta, así que el flujo saliente crece: la corriente inducida circula en sentido horario y crea en el interior un campo entrante, que se opone al aumento del flujo."
+/>
+
+**ii) La superficie disminuye.** El flujo saliente disminuye. La corriente inducida crea un campo **saliente** $(+\vec{k})$, que refuerza el campo exterior para compensar la disminución: la corriente circula en **sentido antihorario**:
+
+<EspiraCampoVariable
+  forma="circular"
+  horaria={false}
+  notas={["B ⊙ (uniforme)", "I antihoraria", "B inducido ⊙"]}
+  pie="La superficie de la espira disminuye (vista desde el semieje Z positivo)"
+  descripcion="Espira en el plano XY vista desde arriba, dentro de un campo magnético uniforme saliente del papel. Su superficie disminuye, así que el flujo saliente decrece: la corriente inducida circula en sentido antihorario y crea en el interior un campo saliente, que se opone a la disminución del flujo."
+/>
+
+En los dos casos, la corriente dura solo mientras la superficie está cambiando; si deja de cambiar, el flujo es constante y no hay corriente inducida.
+
+</Solucion>
+
+**b)** Una bobina plana formada por 100 espiras circulares de 0,2 m de radio, con su eje inicialmente orientado en el eje OZ, gira en torno a uno de sus diámetros con una frecuencia de 50 Hz dentro de un campo magnético uniforme $\vec{B} = 0{,}1\,\vec{k}$ T. Determine razonadamente: **i)** el flujo magnético que atraviesa la bobina en función del tiempo; **ii)** la fuerza electromotriz inducida máxima.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** El área de cada espira es:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}2^2 = 0{,}126\ \text{m}^2
+$$
+
+Al girar la bobina, el ángulo $\theta$ entre su vector superficie (su eje) y el campo cambia con el tiempo. Como al principio el eje está en la dirección OZ, la del campo, $\theta(0) = 0$, y con velocidad angular $\omega = 2\pi f = 2\pi \cdot 50 = 100\pi$ rad/s, el ángulo es $\theta = \omega t$. El flujo a través de una espira es:
+
+$$
+\Phi_1(t) = B\,S\cos(\omega t) = 0{,}1 \cdot 0{,}126 \cos(100\pi t) = 1{,}26 \cdot 10^{-2}\cos(100\pi t)\ \text{Wb}
+$$
+
+Y a través de las 100 espiras de la bobina:
+
+$$
+\Phi(t) = N\,B\,S\cos(\omega t) = 100 \cdot 1{,}26 \cdot 10^{-2}\cos(100\pi t) = 1{,}26\cos(100\pi t)\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz máxima.** Por la ley de Faraday:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = N\,B\,S\,\omega\sin(\omega t)
+$$
+
+Su valor máximo se alcanza cuando $\sin(\omega t) = \pm 1$, es decir, cuando el plano de la bobina es paralelo al campo y el flujo es nulo pero cambia más deprisa:
+
+$$
+\varepsilon_{\text{máx}} = N\,B\,S\,\omega = 100 \cdot 0{,}1 \cdot 0{,}126 \cdot 100\pi = 395\ \text{V}
+$$
+
+**Respuesta.** El flujo a través de la bobina es $\Phi(t) = 1{,}26\cos(100\pi t)$ Wb ($1{,}26 \cdot 10^{-2}\cos(100\pi t)$ Wb por espira) y la fuerza electromotriz máxima es de **395 V**. Es el principio del alternador: al girar la bobina se genera una fuerza electromotriz alterna de 50 Hz, la frecuencia de la red eléctrica.
+
+</Solucion>
+
+**B2. a)** Justifique razonadamente, con la ayuda de un esquema, la trayectoria descrita por una carga positiva al entrar con una velocidad $\vec{v} = v_0\,\vec{i}$ en una región en la que existe: **i)** un campo magnético uniforme $\vec{B} = B_0\,\vec{i}$; **ii)** un campo magnético uniforme $\vec{B} = B_0\,\vec{j}$.
+
+<Solucion>
+
+Sobre una carga que se mueve en un campo magnético actúa la fuerza de Lorentz, $\vec{F} = q\,\vec{v} \times \vec{B}$, perpendicular a la velocidad y al campo.
+
+**i) Campo paralelo a la velocidad.** Con $\vec{B} = B_0\,\vec{i}$:
+
+$$
+\vec{F} = q\,v_0 B_0\,(\vec{i} \times \vec{i}) = \vec{0}
+$$
+
+No actúa ninguna fuerza, así que la carga sigue en **línea recta con velocidad constante** (movimiento rectilíneo uniforme) a lo largo del eje X, como si el campo no existiera.
+
+<Vectores
+  xMin={-0.4}
+  xMax={4.4}
+  yMin={-0.6}
+  yMax={0.8}
+  escala={60}
+  puntos={[{ x: 1, y: 0, texto: "q > 0", tipo: "carga", signo: "+", dx: -8, dy: -14 }]}
+  vectores={[
+    { desde: [1.2, 0], v: [60, 0], texto: "v", color: "#b04a3a", dy: -8 },
+    { desde: [1.2, 0.45], v: [90, 0], texto: "B", color: "#2d6fa3", dy: -4 },
+  ]}
+  segmentos={[[2.3, 0, 4.2, 0]]}
+  descripcion="Carga positiva que se mueve a lo largo del eje X con velocidad paralela al campo magnético, también en la dirección del eje X. La fuerza magnética es nula y la carga sigue en línea recta."
+/>
+
+**ii) Campo perpendicular a la velocidad.** Con $\vec{B} = B_0\,\vec{j}$:
+
+$$
+\vec{F} = q\,v_0 B_0\,(\vec{i} \times \vec{j}) = q\,v_0 B_0\,\vec{k}
+$$
+
+La fuerza es perpendicular a la velocidad en todo momento, así que no cambia su módulo, solo su dirección: actúa como fuerza centrípeta y la carga describe un **movimiento circular uniforme** en el plano XZ, perpendicular al campo. Al entrar, la fuerza apunta hacia $+\vec{k}$, así que la carga empieza a curvarse hacia arriba (hacia Z positivo). El radio de la circunferencia se obtiene igualando la fuerza magnética a la centrípeta: $q v_0 B_0 = m v_0^2/R$, de donde $R = m v_0/(q B_0)$.
+
+En el esquema, el plano XZ con X hacia la derecha y Z hacia arriba; el eje Y, y con él el campo, entra en el papel $(\otimes)$:
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.6}
+  yMin={-0.4}
+  yMax={2.4}
+  escala={60}
+  ejes={["x", "z"]}
+  puntos={[{ x: 0, y: 0, texto: "q > 0", tipo: "carga", signo: "+", dx: -12, dy: 20 }]}
+  vectores={[
+    { desde: [0, 0], v: [56, 0], texto: "v", color: "#b04a3a", dy: 14 },
+    { desde: [0, 0], v: [0, 46], texto: "F", color: "#195c51", dx: -16, dy: 6 },
+  ]}
+  circulos={[{ centro: [0, 1], r: 1 }]}
+  descripcion="Plano XZ con el campo magnético entrando en el papel, en la dirección del eje Y. Una carga positiva entra con velocidad en el sentido del eje X; la fuerza magnética apunta hacia Z positivo, hacia el centro de la circunferencia que describe la carga, en sentido antihorario."
+/>
+
+La carga gira en sentido antihorario visto desde este lado (con el campo entrando en el papel).
+
+</Solucion>
+
+**b)** Por un hilo conductor muy largo situado en el eje OX circula una corriente de intensidad *I* en el sentido positivo de dicho eje. Si el campo magnético en el punto P de coordenadas *x* = 0, *y* = 10, *z* = 0 cm tiene un módulo de 4·10<sup>-5</sup> T, determine con ayuda de un esquema: **i)** la corriente eléctrica que circula por el conductor; **ii)** el vector fuerza magnética que el hilo conductor ejerce sobre un electrón que se encuentra en el punto P y se mueve con una velocidad de 2·10<sup>7</sup> $\vec{i}$ m s<sup>-1</sup>.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Intensidad de corriente.** Un hilo rectilíneo e indefinido crea a una distancia $d$ un campo de módulo $B = \mu_0 I/(2\pi d)$. El punto P está a $d = 0{,}10$ m del hilo:
+
+$$
+I = \frac{2\pi d\,B}{\mu_0} = \frac{2\pi \cdot 0{,}10 \cdot 4 \cdot 10^{-5}}{4\pi \cdot 10^{-7}} = 20\ \text{A}
+$$
+
+**Dirección del campo.** Por la regla de la mano derecha (pulgar en el sentido de la corriente, $+\vec{i}$), las líneas de campo son circunferencias en torno al eje X, y en un punto del semieje Y positivo el campo apunta en el sentido de $\vec{i} \times \vec{j} = +\vec{k}$, saliendo del plano XY:
+
+$$
+\vec{B} = 4 \cdot 10^{-5}\,\vec{k}\ \text{T}
+$$
+
+**ii) Fuerza sobre el electrón.** Por la ley de Lorentz, con la carga del electrón $q = -e$:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B} = -1{,}6 \cdot 10^{-19} \cdot 2 \cdot 10^{7} \cdot 4 \cdot 10^{-5}\,(\vec{i} \times \vec{k}) = -1{,}28 \cdot 10^{-16}\,(-\vec{j}) = 1{,}28 \cdot 10^{-16}\,\vec{j}\ \text{N}
+$$
+
+<Vectores
+  xMin={-32}
+  xMax={18}
+  yMin={-5}
+  yMax={19}
+  escala={7}
+  unidad="cm"
+  hilos={[{ desde: [-31, 0], hasta: [16, 0], texto: "I" }]}
+  puntos={[{ x: 0, y: 10, texto: "P(0, 10) · B ⊙", tipo: "sale", dx: -14, dy: -12 }]}
+  vectores={[
+    { desde: [0, 10], v: [60, 0], texto: "v", color: "#b04a3a", dy: -6 },
+    { desde: [0, 10], v: [0, 46], texto: "F", color: "#195c51", dx: 8, dy: 6 },
+  ]}
+  descripcion="Hilo sobre el eje X con la corriente hacia la derecha. En el punto P, a 10 centímetros sobre el hilo, el campo magnético sale del papel. El electrón se mueve hacia la derecha y la fuerza magnética sobre él apunta hacia arriba, alejándolo del hilo."
+/>
+
+**Respuesta.** Por el hilo circulan **20 A** y la fuerza sobre el electrón es $\vec{F} = 1{,}28 \cdot 10^{-16}\,\vec{j}$ **N**: apunta en el sentido positivo del eje Y, alejando al electrón del hilo. Es lógico: el electrón, al moverse en el mismo sentido que la corriente, equivale a una corriente de sentido contrario, y dos corrientes opuestas se repelen.
+
+</Solucion>

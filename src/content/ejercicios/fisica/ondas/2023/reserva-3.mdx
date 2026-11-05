@@ -1,0 +1,80 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2023
+convocatoria: reserva-3
+formato: fisica
+---
+
+**C1. a)** **i)** Escriba la ecuación de una onda armónica transversal que se propaga en una cuerda tensa en el sentido negativo del eje OX y que tiene una fase inicial no nula. Identifique cada una de las magnitudes que aparecen en la expresión. **ii)** Explique la diferencia entre la velocidad de propagación y la velocidad de vibración de un punto de la cuerda y escriba sus ecuaciones para esta onda.
+
+<Solucion>
+
+**i) Ecuación de la onda.** Una onda armónica que se propaga en el sentido negativo del eje X tiene el signo $+$ entre los términos en $t$ y en $x$:
+
+$$
+y(x, t) = A\sin(\omega t + kx + \varphi_0)
+$$
+
+- $y$: elongación (desplazamiento transversal) del punto de la cuerda situado en $x$, en el instante $t$ (m).
+- $A$: amplitud, la elongación máxima (m).
+- $\omega = 2\pi f = 2\pi/T$: frecuencia angular (rad/s); $f$ es la frecuencia (Hz) y $T$ el periodo (s).
+- $k = 2\pi/\lambda$: número de onda (rad/m); $\lambda$ es la longitud de onda (m).
+- $\varphi_0$: fase inicial (rad), distinta de cero: la elongación del punto $x = 0$ en $t = 0$ es $A\sin\varphi_0$.
+- $\omega t + kx + \varphi_0$: fase de la onda (rad).
+
+**ii) Velocidad de propagación y velocidad de vibración.**
+
+- La **velocidad de propagación** es la velocidad con la que avanza la perturbación a lo largo de la cuerda. Es constante, solo depende del medio (la tensión y la densidad de la cuerda) y tiene la dirección de la cuerda, en este caso el sentido negativo del eje X:
+
+$$
+v = \frac{\omega}{k} = \frac{\lambda}{T} = \lambda f \qquad\Rightarrow\qquad \vec{v} = -\frac{\omega}{k}\,\vec{i}
+$$
+
+- La **velocidad de vibración** es la velocidad con la que cada punto de la cuerda sube y baja, perpendicular a la dirección de propagación (la onda es transversal). Cambia con el tiempo y de un punto a otro; se obtiene derivando la elongación respecto del tiempo:
+
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = A\,\omega\cos(\omega t + kx + \varphi_0)
+$$
+
+Su valor máximo es $A\omega$, que no tiene nada que ver con la velocidad de propagación: depende de la amplitud y la frecuencia con que se agite la cuerda.
+
+</Solucion>
+
+**b)** En una cuerda tensa con sus extremos fijos se ha generado una onda de ecuación: *y*(*x*,*t*) = 0,2·sen(3π *x*)·cos(6π *t*) (S.I.). **i)** Determine la longitud de onda y la velocidad de propagación de las ondas armónicas cuya superposición da lugar a la onda anterior. **ii)** Calcule razonadamente la distancia entre dos nodos consecutivos y la distancia entre un vientre y un nodo consecutivos.
+
+<Solucion>
+
+Es una onda estacionaria, de la forma $y = 2A\sin(kx)\cos(\omega t)$: la superposición de dos ondas armónicas iguales que se propagan en sentidos opuestos, $A\sin(kx \pm \omega t)$, con $A = 0{,}1$ m, $k = 3\pi$ rad/m y $\omega = 6\pi$ rad/s.
+
+**i) Longitud de onda y velocidad de propagación.** Las ondas que se superponen tienen el mismo número de onda y la misma frecuencia angular que la onda estacionaria:
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{3\pi} = \frac{2}{3}\ \text{m} = 0{,}667\ \text{m}
+$$
+
+$$
+v = \frac{\omega}{k} = \frac{6\pi}{3\pi} = 2\ \text{m/s}
+$$
+
+**ii) Distancias entre nodos y vientres.** Los nodos son los puntos con amplitud nula, donde $\sin(3\pi x) = 0$:
+
+$$
+3\pi x = n\pi \quad\Rightarrow\quad x = \frac{n}{3}\ \text{m}
+$$
+
+Dos nodos consecutivos están separados $\lambda/2$:
+
+$$
+d_{\text{nodos}} = \frac{\lambda}{2} = \frac{1}{3}\ \text{m} = 0{,}333\ \text{m}
+$$
+
+Los vientres, puntos de amplitud máxima, están donde $|\sin(3\pi x)| = 1$, es decir, en $x = \frac{1}{6} + \frac{n}{3}$ m: justo en medio de cada dos nodos. La distancia entre un vientre y el nodo siguiente es $\lambda/4$:
+
+$$
+d_{\text{vientre-nodo}} = \frac{\lambda}{4} = \frac{1}{6}\ \text{m} = 0{,}167\ \text{m}
+$$
+
+**Respuesta.** Las ondas que forman la onda estacionaria tienen una longitud de onda de **0,667 m** y se propagan a **2 m/s**. Dos nodos consecutivos están separados **0,333 m**, y un vientre y el nodo contiguo, **0,167 m**.
+
+</Solucion>

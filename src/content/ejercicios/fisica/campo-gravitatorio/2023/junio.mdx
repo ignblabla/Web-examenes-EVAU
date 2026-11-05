@@ -1,0 +1,131 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: junio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** Un satélite de masa *m* orbita a una altura *h* sobre un planeta de masa *M* y radio *R*. **i)** Deduzca la expresión de la velocidad orbital del satélite y exprese el resultado en función de *M*, *R* y *h*. **ii)** ¿Cómo cambia su velocidad si la masa del planeta se duplica? ¿Y si se duplica la masa del satélite?
+
+<Solucion>
+
+**i) Velocidad orbital.** El satélite describe una órbita circular de radio $r = R + h$ alrededor del centro del planeta. La única fuerza que actúa sobre él es la atracción gravitatoria, que apunta hacia el centro de la órbita y es la fuerza centrípeta que lo mantiene en ella:
+
+$$
+G\,\frac{M\,m}{(R+h)^2} = m\,\frac{v^2}{R+h}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M}{R+h}}
+$$
+
+**ii) Cambios en la velocidad.**
+
+- **Si se duplica la masa del planeta**, la velocidad orbital (a la misma altura) se multiplica por $\sqrt{2}$: $v' = \sqrt{G\,(2M)/(R+h)} = \sqrt{2}\,v approx 1{,}41\,v$. La atracción del planeta es el doble, y para seguir en la misma órbita el satélite tiene que ir más deprisa.
+- **Si se duplica la masa del satélite**, la velocidad **no cambia**: la masa $m$ se simplifica en la ecuación, porque la fuerza gravitatoria y la fuerza centrípeta necesaria son ambas proporcionales a $m$. Todos los satélites que giran en la misma órbita lo hacen a la misma velocidad, sea cual sea su masa.
+
+</Solucion>
+
+**b)** Un cuerpo de 5 kg desciende con velocidad constante desde una altura de 15 m por un plano inclinado con rozamiento que forma 30º con respecto a la horizontal. Sobre el cuerpo actúa una fuerza de 20 N paralela al plano y dirigida en sentido ascendente. **i)** Realice un esquema con las fuerzas que actúan sobre el cuerpo. **ii)** Determine razonadamente el trabajo realizado por cada una de las fuerzas hasta que el cuerpo llega al final del plano.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre el cuerpo actúan cuatro fuerzas: el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, perpendicular al plano; la fuerza $\vec{F}$ de 20 N, paralela al plano y hacia arriba; y el rozamiento $\vec{F}_r$, también paralelo al plano y hacia arriba, porque se opone al movimiento, que es de bajada. Descomponemos el peso en una componente paralela al plano, $P_x = mg\sin 30^\circ$, y otra perpendicular, $P_y = mg\cos 30^\circ$:
+
+<PlanoInclinado angulo={30} mueve="baja" aplicada="F" componentes descripcion="Cuerpo que baja por un plano inclinado 30 grados. El peso P apunta verticalmente hacia abajo y se descompone en Px, paralela al plano y hacia abajo, y Py, perpendicular al plano. La normal N es perpendicular al plano y hacia fuera. La fuerza F de 20 newtons y el rozamiento Fr son paralelos al plano y apuntan hacia arriba." />
+
+**ii) Trabajo de cada fuerza.** El cuerpo baja una altura $h = 15$ m, así que la longitud del plano que recorre es:
+
+$$
+d = \frac{h}{\sin 30^\circ} = \frac{15}{0{,}5} = 30\ \text{m}
+$$
+
+El trabajo de una fuerza constante es $W = F\,d\cos\alpha$, siendo $\alpha$ el ángulo entre la fuerza y el desplazamiento (plano abajo):
+
+- **Peso.** Es una fuerza conservativa: su trabajo es menos la variación de energía potencial, $W_P = -\Delta E_p = m g h$. Es lo mismo que el trabajo de su componente paralela, $P_x\,d$:
+
+$$
+W_P = m g h = 5 \cdot 9{,}8 \cdot 15 = 735\ \text{J}
+$$
+
+- **Normal.** Es perpendicular al desplazamiento $(\alpha = 90^\circ)$: $W_N = 0$.
+
+- **Fuerza $\vec{F}$.** Va plano arriba, en sentido contrario al desplazamiento $(\alpha = 180^\circ)$:
+
+$$
+W_F = F\,d\cos 180^\circ = -20 \cdot 30 = -600\ \text{J}
+$$
+
+- **Rozamiento.** No conocemos el coeficiente, pero el cuerpo baja con **velocidad constante**: su energía cinética no cambia y, por el teorema de las fuerzas vivas, el trabajo total de todas las fuerzas es nulo:
+
+$$
+W_P + W_N + W_F + W_{F_r} = \Delta E_c = 0
+\quad\Rightarrow\quad
+W_{F_r} = -(735 + 0 - 600) = -135\ \text{J}
+$$
+
+Se comprueba con las fuerzas: como la velocidad es constante, la resultante paralela al plano es nula, $P_x = F + F_r$, así que $F_r = 5 \cdot 9{,}8 \cdot 0{,}5 - 20 = 4{,}5$ N, y $W_{F_r} = -4{,}5 \cdot 30 = -135$ J.
+
+**Respuesta.** El peso realiza **735 J**, la normal **0 J**, la fuerza de 20 N **−600 J** y el rozamiento **−135 J**. El trabajo positivo del peso lo compensan exactamente los trabajos negativos de $\vec{F}$ y del rozamiento, por eso el cuerpo no se acelera: la energía potencial que pierde (735 J) no se convierte en cinética.
+
+</Solucion>
+
+**A2. a)** **i)** Escriba la expresión del potencial gravitatorio creado por una masa puntual *M*, indicando las magnitudes que aparecen en la misma. **ii)** Razone el signo del trabajo realizado por la fuerza gravitatoria cuando una masa *m*, inicialmente en reposo en las proximidades de *M*, se desplaza por acción del campo gravitatorio.
+
+<Solucion>
+
+**i) Potencial gravitatorio.** El potencial que crea una masa puntual $M$ en un punto situado a una distancia $r$ de ella es:
+
+$$
+V = -\frac{G\,M}{r}
+$$
+
+donde $G = 6{,}67 \cdot 10^{-11}$ N m² kg⁻² es la constante de gravitación universal, $M$ es la masa que crea el campo (en kg) y $r$ es la distancia desde la masa al punto (en m). Se mide en J/kg. Es la energía potencial por unidad de masa, con el origen (potencial cero) en el infinito; por eso es siempre **negativo** y aumenta (se acerca a cero) al alejarse de $M$.
+
+**ii) Signo del trabajo.** Si la masa $m$ parte del reposo y se mueve solo por la acción del campo, se mueve en el sentido de la fuerza gravitatoria: **se acerca a $M$**. La fuerza y el desplazamiento tienen el mismo sentido, así que el trabajo de la fuerza gravitatoria es **positivo**.
+
+Lo mismo se ve con la energía. La fuerza gravitatoria es conservativa y su trabajo es $W = -\Delta E_p = -m\,(V_f - V_i)$. Al acercarse a $M$, $r$ disminuye y el potencial se hace más negativo, $V_f < V_i$, de modo que $W > 0$: la energía potencial disminuye y se convierte en energía cinética. En general, cualquier desplazamiento espontáneo en un campo conservativo se produce hacia donde disminuye la energía potencial, y el campo realiza un trabajo positivo.
+
+</Solucion>
+
+**b)** Recientemente la NASA envió la nave ORION-Artemis a las proximidades de la Luna. Sabiendo que la masa de la Tierra es 81 veces la de la Luna y la distancia entre sus centros es 3,84·10<sup>5</sup> km: **i)** calcule en qué punto, entre la Tierra y la Luna, la fuerza ejercida por ambos cuerpos sobre la nave es cero; **ii)** determine la energía potencial de la nave en ese punto sabiendo que su masa es de 5000 kg.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg</Datos>
+
+<Solucion>
+
+**i) Punto donde la fuerza es nula.** En un punto del segmento que une la Tierra y la Luna, la Tierra atrae a la nave hacia ella y la Luna en sentido contrario. La fuerza total es cero donde las dos atracciones tienen el mismo módulo. Llamamos $x$ a la distancia desde el centro de la Tierra y $d = 3{,}84 \cdot 10^8$ m a la distancia Tierra-Luna, de modo que la nave está a $d - x$ de la Luna:
+
+$$
+G\,\frac{M_T\,m}{x^2} = G\,\frac{M_L\,m}{(d-x)^2}
+\quad\Rightarrow\quad
+\frac{x^2}{(d-x)^2} = \frac{M_T}{M_L} = 81
+\quad\Rightarrow\quad
+\frac{x}{d-x} = 9
+$$
+
+(Tomamos la raíz positiva, porque el punto está entre los dos cuerpos.) Despejando:
+
+$$
+x = 9\,(d - x) \quad\Rightarrow\quad x = \frac{9}{10}\,d = 0{,}9 \cdot 3{,}84 \cdot 10^8 = 3{,}456 \cdot 10^8\ \text{m}
+$$
+
+La fuerza es nula a **$3{,}456 \cdot 10^5$ km del centro de la Tierra**, es decir, a $3{,}84 \cdot 10^4$ km del centro de la Luna. Está mucho más cerca de la Luna porque su masa es 81 veces menor.
+
+**ii) Energía potencial en ese punto.** La energía potencial es una magnitud escalar: se suman las contribuciones de la Tierra y de la Luna. La masa de la Luna es $M_L = M_T/81 = 7{,}38 \cdot 10^{22}$ kg:
+
+$$
+E_p = -G\,m\left(\frac{M_T}{x} + \frac{M_L}{d-x}\right)
+= -6{,}67 \cdot 10^{-11} \cdot 5000 \left(\frac{5{,}98 \cdot 10^{24}}{3{,}456 \cdot 10^{8}} + \frac{7{,}38 \cdot 10^{22}}{3{,}84 \cdot 10^{7}}\right)
+$$
+
+$$
+E_p = -3{,}335 \cdot 10^{-7}\,\left(1{,}730 \cdot 10^{16} + 1{,}92 \cdot 10^{15}\right) = -6{,}41 \cdot 10^{9}\ \text{J}
+$$
+
+**Respuesta.** La fuerza sobre la nave es nula a **$3{,}456 \cdot 10^8$ m del centro de la Tierra**, y allí su energía potencial gravitatoria es **$-6{,}41 \cdot 10^9$ J**. Aunque la fuerza total sea cero, la energía potencial no lo es: son magnitudes distintas. La fuerza es vectorial y las dos atracciones se anulan; la energía potencial es escalar, las dos contribuciones son negativas y se suman.
+
+</Solucion>

@@ -122,6 +122,19 @@ const fisica2024: Cabecera = {
   ],
 }
 
+// Física, curso 2022-2023 (PEvAU): ocho ejercicios, dos por bloque, y se eligen cuatro libremente.
+const fisica2023: Cabecera = {
+  ...fisica2024,
+  curso: "CURSO 2022-2023",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) El examen consta de 8 ejercicios (dos ejercicios por cada bloque A, B, C y D). Debe desarrollar en total cuatro ejercicios, elegidos libremente (puede seleccionar más de un ejercicio por bloque). En caso de responder a más ejercicios de los requeridos, serán tenidos en cuenta los 4 respondidos en primer lugar.",
+    "c) Puede utilizar regla y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "d) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "e) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -453,6 +466,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2023/junio": fisica2023,
+  "fisica/2023/julio": fisica2023,
+  "fisica/2023/reserva-1": fisica2023,
+  "fisica/2023/reserva-2": fisica2023,
+  "fisica/2023/reserva-3": fisica2023,
+  "fisica/2023/reserva-4": fisica2023,
   "fisica/2024/junio": fisica2024,
   "fisica/2024/julio": fisica2024,
   "fisica/2024/reserva-1": fisica2024,

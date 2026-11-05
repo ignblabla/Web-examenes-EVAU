@@ -1,0 +1,126 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2023
+convocatoria: reserva-3
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** Dos cuerpos idénticos de masa *m* caen partiendo del reposo desde alturas *h* y 2*h*, respectivamente. Razone mediante consideraciones energéticas la relación entre: **i)** sus velocidades al llegar al suelo; **ii)** sus energías cinéticas al llegar al suelo.
+
+<Solucion>
+
+Si despreciamos el rozamiento con el aire, sobre cada cuerpo solo actúa el peso, que es una fuerza conservativa: se conserva la energía mecánica. Toda la energía potencial que pierde el cuerpo al caer se convierte en energía cinética. Partiendo del reposo desde una altura $H$:
+
+$$
+m g H = \frac{1}{2}m v^2
+\quad\Rightarrow\quad
+v = \sqrt{2 g H}, \qquad E_c = m g H
+$$
+
+**i) Velocidades.** La velocidad es proporcional a la raíz cuadrada de la altura:
+
+$$
+\frac{v_2}{v_1} = \sqrt{\frac{2g\,(2h)}{2g\,h}} = \sqrt{2}
+$$
+
+El cuerpo que cae desde $2h$ llega con una velocidad **$\sqrt{2}$ veces mayor** (un 41 % más), no el doble.
+
+**ii) Energías cinéticas.** La energía cinética es proporcional a la altura:
+
+$$
+\frac{E_{c,2}}{E_{c,1}} = \frac{m g\,(2h)}{m g\,h} = 2
+$$
+
+El cuerpo que cae desde $2h$ llega con **el doble de energía cinética**, porque ha perdido el doble de energía potencial.
+
+</Solucion>
+
+**b)** Un cuerpo de 2 kg asciende con velocidad constante por un plano inclinado 30º con respecto a la horizontal. Además de la fuerza de rozamiento, sobre el cuerpo actúa una fuerza de 10 N paralela a dicho plano. **i)** Realice un esquema con las fuerzas que actúan sobre el cuerpo. **ii)** Determine mediante consideraciones energéticas el trabajo realizado por cada una de las fuerzas cuando el cuerpo asciende una altura de 10 m.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre el cuerpo actúan el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, perpendicular al plano; la fuerza $\vec{F}$ de 10 N, paralela al plano y hacia arriba (es la que hace subir al cuerpo); y el rozamiento $\vec{F}_r$, paralelo al plano y hacia abajo, porque se opone al movimiento:
+
+<PlanoInclinado angulo={30} mueve="sube" aplicada="F" componentes descripcion="Cuerpo que sube por un plano inclinado 30 grados. El peso P apunta verticalmente hacia abajo y se descompone en Px, paralela al plano y hacia abajo, y Py, perpendicular al plano. La normal N es perpendicular al plano. La fuerza F de 10 newtons es paralela al plano y hacia arriba, y el rozamiento Fr es paralelo al plano y hacia abajo." />
+
+**ii) Trabajo de cada fuerza.** Para subir una altura $h = 10$ m, el cuerpo recorre a lo largo del plano:
+
+$$
+d = \frac{h}{\sin 30^\circ} = \frac{10}{0{,}5} = 20\ \text{m}
+$$
+
+- **Peso.** Es conservativo: $W_P = -\Delta E_p = -m g h = -2 \cdot 9{,}8 \cdot 10 = -196$ J. Es negativo porque el cuerpo sube.
+- **Normal.** Es perpendicular al desplazamiento: $W_N = 0$.
+- **Fuerza $\vec{F}$.** Tiene el sentido del desplazamiento: $W_F = F\,d = 10 \cdot 20 = 200$ J.
+- **Rozamiento.** El cuerpo sube con velocidad constante, así que su energía cinética no cambia y, por el teorema de las fuerzas vivas, el trabajo total es nulo:
+
+$$
+W_P + W_N + W_F + W_{F_r} = \Delta E_c = 0
+\quad\Rightarrow\quad
+W_{F_r} = -(-196 + 0 + 200) = -4\ \text{J}
+$$
+
+Se comprueba con las fuerzas: con velocidad constante, $F = mg\sin 30^\circ + F_r$, así que $F_r = 10 - 9{,}8 = 0{,}2$ N y $W_{F_r} = -0{,}2 \cdot 20 = -4$ J.
+
+**Respuesta.** El peso realiza **−196 J**, la normal **0 J**, la fuerza de 10 N **200 J** y el rozamiento **−4 J**. De los 200 J que aporta la fuerza, 196 J se convierten en energía potencial y 4 J se disipan por rozamiento: el rozamiento es muy pequeño, de solo 0,2 N.
+
+</Solucion>
+
+**A2. a)** Un planeta tiene una masa igual a 27 veces la masa de la Tierra, su radio es 3 veces el terrestre. **i)** Determine la relación entre los valores de la aceleración de la gravedad en la superficie de este planeta y la que tenemos en la superficie de la Tierra. **ii)** Obtenga la relación entre las velocidades de escape desde la superficie de ambos planetas.
+
+<Solucion>
+
+**i) Gravedad en la superficie.** La gravedad en la superficie de un planeta de masa $M$ y radio $R$ es $g_0 = G M/R^2$. Con $M_P = 27\,M_T$ y $R_P = 3\,R_T$:
+
+$$
+\frac{g_P}{g_T} = \frac{G M_P/R_P^2}{G M_T/R_T^2} = \frac{M_P}{M_T}\left(\frac{R_T}{R_P}\right)^2 = 27 \cdot \frac{1}{9} = 3
+$$
+
+En la superficie del planeta la gravedad es **el triple** que en la Tierra.
+
+**ii) Velocidad de escape.** Es la velocidad mínima para que un cuerpo lanzado desde la superficie llegue al infinito; su energía mecánica tiene que ser nula, $\frac{1}{2}m v_e^2 - G M m/R = 0$:
+
+$$
+v_e = \sqrt{\frac{2\,G\,M}{R}}
+\quad\Rightarrow\quad
+\frac{v_{e,P}}{v_{e,T}} = \sqrt{\frac{M_P}{M_T}\,\frac{R_T}{R_P}} = \sqrt{27 \cdot \frac{1}{3}} = 3
+$$
+
+La velocidad de escape del planeta es **el triple** que la de la Tierra (unos $3 \cdot 11{,}2 = 33{,}6$ km/s).
+
+</Solucion>
+
+**b)** Un satélite de 1000 kg en órbita alrededor de la Tierra da 12 vueltas al día. Determine razonadamente: **i)** el radio de la órbita; **ii)** la velocidad orbital; **iii)** la energía mecánica del satélite en dicha órbita. Razone el signo obtenido.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg</Datos>
+
+<Solucion>
+
+**i) Radio de la órbita.** Si da 12 vueltas al día, su periodo es $T = 24/12 = 2$ h $= 7200$ s. En una órbita circular la atracción gravitatoria es la fuerza centrípeta, y con $v = 2\pi r/T$ se obtiene la tercera ley de Kepler:
+
+$$
+G\,\frac{M_T\,m}{r^2} = m\,\frac{4\pi^2 r}{T^2}
+\quad\Rightarrow\quad
+r = \sqrt[3]{\frac{G\,M_T\,T^2}{4\pi^2}} = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 7200^2}{4\pi^2}} = 8{,}06 \cdot 10^{6}\ \text{m}
+$$
+
+**ii) Velocidad orbital.**
+
+$$
+v = \frac{2\pi r}{T} = \frac{2\pi \cdot 8{,}06 \cdot 10^{6}}{7200} = 7{,}03 \cdot 10^{3}\ \text{m/s}
+$$
+
+**iii) Energía mecánica.** Es la suma de la energía cinética, $\frac{1}{2}m v^2 = \frac{G M_T m}{2r}$, y la potencial, $-\frac{G M_T m}{r}$:
+
+$$
+E_m = -\frac{G\,M_T\,m}{2r} = -\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 1000}{2 \cdot 8{,}06 \cdot 10^{6}} = -2{,}47 \cdot 10^{10}\ \text{J}
+$$
+
+**Respuesta.** El satélite orbita a **$8{,}06 \cdot 10^6$ m** del centro de la Tierra (unos 1700 km de altura), con una velocidad de **$7{,}03 \cdot 10^3$ m/s** y una energía mecánica de **$-2{,}47 \cdot 10^{10}$ J**. La energía mecánica es **negativa** porque el satélite está ligado a la Tierra: su energía cinética no basta para escapar. Para llevarlo al infinito (energía mecánica nula) habría que aportarle $2{,}47 \cdot 10^{10}$ J.
+
+</Solucion>

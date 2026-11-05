@@ -1,0 +1,128 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2023
+convocatoria: reserva-3
+formato: fisica
+---
+
+import EnergiaEnlaceNucleon from "../../../../../components/figuras/fisica/EnergiaEnlaceNucleon.astro"
+
+**D1. a)** Un haz luminoso produce efecto fotoeléctrico al incidir sobre un determinado metal. Explique razonadamente cómo se modifica el número de fotoelectrones y su energía cinética máxima si aumenta la frecuencia de la luz incidente.
+
+<Solucion>
+
+Según Einstein, la luz está formada por fotones de energía $E = hf$, y cada fotón absorbido cede toda su energía a un electrón. Parte de ella se emplea en arrancarlo del metal (el trabajo de extracción $W_0$) y el resto es energía cinética:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+\quad\Rightarrow\quad
+E_{c,\text{máx}} = h\,f - W_0
+$$
+
+- **Energía cinética máxima: aumenta.** Crece linealmente con la frecuencia: cada fotón lleva más energía y, como el trabajo de extracción es el mismo, sobra más para el electrón.
+- **Número de fotoelectrones: no cambia** si llega el mismo número de fotones por segundo (la misma intensidad, entendida como número de fotones). Cada fotón arranca como mucho un electrón, y el número de electrones depende del número de fotones, no de su energía. (Si lo que se mantiene es la potencia del haz, al ser cada fotón más energético llegan menos por segundo, y el número de electrones disminuye.)
+
+</Solucion>
+
+**b)** Un metal es iluminado con luz de frecuencia 9·10<sup>14</sup> Hz emitiendo fotoelectrones que pueden ser detenidos con un potencial de frenado de 0,6 V. Por otro lado, si dicho metal se ilumina con luz de longitud de onda 2,38·10<sup>-7</sup> m el potencial de frenado pasa a ser de 2,1 V. Calcule de forma razonada: **i)** el valor de la constante de Planck; **ii)** el trabajo de extracción del metal.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Constante de Planck.** El potencial de frenado mide la energía cinética máxima de los electrones, $E_{c,\text{máx}} = e\,V_f$. Escribimos la ecuación de Einstein para las dos luces. La frecuencia de la segunda es:
+
+$$
+f_2 = \frac{c}{\lambda_2} = \frac{3 \cdot 10^8}{2{,}38 \cdot 10^{-7}} = 1{,}26 \cdot 10^{15}\ \text{Hz}
+$$
+
+$$
+h\,f_1 = W_0 + e\,V_1, \qquad h\,f_2 = W_0 + e\,V_2
+$$
+
+Restando las dos ecuaciones se elimina el trabajo de extracción, que es el mismo porque el metal es el mismo:
+
+$$
+h\,(f_2 - f_1) = e\,(V_2 - V_1)
+\quad\Rightarrow\quad
+h = \frac{e\,(V_2 - V_1)}{f_2 - f_1} = \frac{1{,}6 \cdot 10^{-19} \cdot (2{,}1 - 0{,}6)}{1{,}2605 \cdot 10^{15} - 9 \cdot 10^{14}} = 6{,}66 \cdot 10^{-34}\ \text{J s}
+$$
+
+**ii) Trabajo de extracción.** Con la primera luz:
+
+$$
+W_0 = h\,f_1 - e\,V_1 = 6{,}66 \cdot 10^{-34} \cdot 9 \cdot 10^{14} - 1{,}6 \cdot 10^{-19} \cdot 0{,}6 = 5{,}99 \cdot 10^{-19} - 0{,}96 \cdot 10^{-19} = 5{,}03 \cdot 10^{-19}\ \text{J}
+$$
+
+(Con la segunda luz se obtiene el mismo valor.)
+
+**Respuesta.** De estas medidas se obtiene una constante de Planck de **$6{,}66 \cdot 10^{-34}$ J s**, muy próxima al valor aceptado ($6{,}63 \cdot 10^{-34}$ J s), y un trabajo de extracción de **$5{,}03 \cdot 10^{-19}$ J** (unos 3,1 eV). Es el método con el que Millikan midió $h$: la pendiente de la recta $V_f$ frente a $f$ es $h/e$.
+
+</Solucion>
+
+**D2. a)** **i)** Explique el defecto de masa del núcleo y su relación con la estabilidad nuclear. **ii)** Apoyándose en una gráfica, indique cómo varía la estabilidad nuclear con el número másico.
+
+<Solucion>
+
+**i) Defecto de masa.** La masa de un núcleo es siempre **menor** que la suma de las masas de los protones y neutrones que lo forman por separado. Esa diferencia es el defecto de masa:
+
+$$
+\Delta m = Z\,m_p + (A - Z)\,m_n - m_{\text{núcleo}}
+$$
+
+Al formarse el núcleo a partir de sus nucleones se libera energía, y esa energía corresponde, según la equivalencia de Einstein, a la masa que "desaparece". Es la **energía de enlace**: la energía que habría que aportar para separar el núcleo en sus nucleones:
+
+$$
+E_b = \Delta m\,c^2
+$$
+
+Cuanto mayor es la energía de enlace **por nucleón**, $E_b/A$, más ligados están los nucleones y **más estable es el núcleo**. No basta con mirar la energía de enlace total, porque crece con el número de nucleones.
+
+**ii) Estabilidad frente al número másico.** La gráfica representa la energía de enlace por nucleón frente al número másico:
+
+<EnergiaEnlaceNucleon />
+
+- En los **núcleos ligeros** la energía de enlace por nucleón crece rápidamente con $A$ (con un pico en el helio-4, especialmente estable).
+- Alcanza un **máximo** de unos 8,8 MeV por nucleón en torno a $A \approx 56$ (el hierro y el níquel): son los núcleos más estables.
+- En los **núcleos pesados** disminuye lentamente (unos 7,6 MeV en el uranio-238), porque la repulsión eléctrica entre los protones crece y la fuerza nuclear, de corto alcance, no la compensa igual.
+
+Por eso se libera energía tanto al **fusionar** núcleos ligeros como al **fisionar** núcleos pesados: en los dos casos los productos están más cerca del máximo de la curva y son más estables.
+
+</Solucion>
+
+**b)** Se hace incidir un núcleo de $^{2}_{1}\text{H}$ sobre otro de $^{13}_{6}\text{C}$ produciéndose un nuevo núcleo $^{A}_{Z}\text{Q}$ y un protón. **i)** Escriba la reacción nuclear del proceso y determine *A* y *Z*. **ii)** Calcule la energía que se libera en el proceso por cada núcleo de $^{13}_{6}\text{C}$ que reacciona.
+
+<Datos>m($^{13}_{6}$C) = 13,003355 u; m($^{A}_{Z}$Q) = 14,003242 u; m($^{1}_{1}$H) = 1,007825 u; m($^{2}_{1}$H) = 2,014102 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** El protón es un núcleo de hidrógeno-1, $^{1}_{1}\text{H}$. En la reacción se conservan el número másico y el número atómico:
+
+$$
+^{2}_{1}\text{H} + {}^{13}_{6}\text{C} \longrightarrow {}^{A}_{Z}\text{Q} + {}^{1}_{1}\text{H}
+$$
+
+$$
+2 + 13 = A + 1 \;\Rightarrow\; A = 14, \qquad 1 + 6 = Z + 1 \;\Rightarrow\; Z = 6
+$$
+
+El núcleo que se forma es **carbono-14**, $^{14}_{6}\text{C}$: el carbono-13 captura un neutrón del deuterio, que pierde su protón.
+
+**ii) Energía liberada.** Calculamos el defecto de masa, la diferencia entre las masas de los reactivos y de los productos:
+
+$$
+\Delta m = (2{,}014102 + 13{,}003355) - (14{,}003242 + 1{,}007825) = 0{,}006390\ \text{u}
+$$
+
+$$
+\Delta m = 0{,}006390 \cdot 1{,}66 \cdot 10^{-27} = 1{,}061 \cdot 10^{-29}\ \text{kg}
+$$
+
+$$
+E = \Delta m\,c^2 = 1{,}061 \cdot 10^{-29} \cdot (3 \cdot 10^8)^2 = 9{,}55 \cdot 10^{-13}\ \text{J}
+$$
+
+**Respuesta.** La reacción es $^{2}_{1}\text{H} + {}^{13}_{6}\text{C} \to {}^{14}_{6}\text{C} + {}^{1}_{1}\text{H}$, con $A = 14$ y $Z = 6$, y por cada núcleo de carbono-13 se liberan **$9{,}55 \cdot 10^{-13}$ J** (unos 6 MeV). Como la masa de los productos es menor que la de los reactivos, la reacción desprende energía.
+
+</Solucion>

@@ -16,10 +16,12 @@ interface Capa {
 interface Props {
   capas: Capa[]
   incidencia: number
+  // Dibuja también el rayo reflejado en la primera superficie, con el mismo ángulo.
+  reflejado?: boolean
   descripcion: string
 }
 
-const { capas, incidencia, descripcion } = Astro.props
+const { capas, incidencia, reflejado = false, descripcion } = Astro.props
 const altos = capas.map((c) => c.alto ?? 70)
 const techos = altos.map((_, i) => altos.slice(0, i).reduce((a, b) => a + b, 0))
 const altoTotal = altos.reduce((a, b) => a + b, 0)
@@ -43,6 +45,9 @@ const id = `refraccion-${Math.round(Math.random() * 1e9)}`
     <defs>
       <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#2d6fa3" />
       </marker>
     </defs>
     {
@@ -68,6 +73,22 @@ const id = `refraccion-${Math.round(Math.random() * 1e9)}`
         ))
       }
     </g>
+    {
+      reflejado && (
+        <g>
+          <path
+            d={`M${puntos[1].x.toFixed(1)} ${altos[0]}l${((altos[0] - 12) * Math.tan(angulos[0])).toFixed(1)} ${-(altos[0] - 12)}`}
+            stroke="#2d6fa3"
+            stroke-width="1.8"
+            fill="none"
+            marker-end={`url(#${id}-r)`}
+          />
+          <text x={puntos[1].x + 8} y={altos[0] - 14} font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#2d6fa3">
+            {fmt(angulos[0])}° (reflejado)
+          </text>
+        </g>
+      )
+    }
     <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#b04a3a">
       {
         angulos.map((a, i) => (

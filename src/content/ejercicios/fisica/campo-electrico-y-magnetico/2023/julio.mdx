@@ -1,0 +1,154 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: julio
+formato: fisica
+---
+
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import FlujoEspira from "../../../../../components/figuras/fisica/FlujoEspira.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una carga *q* positiva está separada una distancia *d* de otra carga *Q*. **i)** Razone, ayudándose de un esquema, cuál debe ser el signo de *Q* para que el campo eléctrico se anule en algún punto del segmento que las une. **ii)** Razone cuál debe ser el signo de *Q* para que se anule el potencial eléctrico en algún punto del segmento que las une.
+
+<Solucion>
+
+**i) Campo eléctrico nulo.** El campo eléctrico es un vector: para que se anule en un punto P del segmento, los campos de las dos cargas tienen que tener **sentidos opuestos** (y el mismo módulo). El campo de una carga positiva se aleja de ella, y el de una negativa apunta hacia ella. Colocamos $q$ a la izquierda y $Q$ a la derecha:
+
+- **Si $Q$ es positiva**, en P el campo de $q$ apunta hacia la derecha (se aleja de $q$) y el de $Q$ hacia la izquierda (se aleja de $Q$). Tienen sentidos opuestos, y como el de $q$ crece al acercarse a $q$ y el de $Q$ al acercarse a $Q$, hay un punto en el que sus módulos son iguales: **el campo se anula**.
+
+<Vectores
+  xMin={-0.4}
+  xMax={4.4}
+  yMin={-0.6}
+  yMax={0.6}
+  escala={70}
+  puntos={[
+    { x: 0, y: 0, texto: "q", tipo: "carga", signo: "+", dx: -4, dy: -14 },
+    { x: 4, y: 0, texto: "Q > 0", tipo: "carga", signo: "+", dx: -12, dy: -14 },
+    { x: 1.8, y: 0, texto: "P", tipo: "punto", dx: -3, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [1.8, 0], v: [44, 0], texto: "E", sub: "q", color: "#b04a3a", dy: -6 },
+    { desde: [1.8, 0], v: [-44, 0], texto: "E", sub: "Q", color: "#2d6fa3", dx: -6, dy: -6 },
+  ]}
+  descripcion="Dos cargas positivas, q a la izquierda y Q a la derecha. En un punto P entre ellas, el campo de q apunta hacia la derecha y el de Q hacia la izquierda: tienen sentidos opuestos y pueden anularse."
+/>
+
+- **Si $Q$ es negativa**, en P el campo de $q$ apunta hacia la derecha y el de $Q$ también (hacia $Q$). Los dos campos se suman y el campo **no puede anularse** en ningún punto del segmento.
+
+<Vectores
+  xMin={-0.4}
+  xMax={4.4}
+  yMin={-0.6}
+  yMax={0.6}
+  escala={70}
+  puntos={[
+    { x: 0, y: 0, texto: "q", tipo: "carga", signo: "+", dx: -4, dy: -14 },
+    { x: 4, y: 0, texto: "Q < 0", tipo: "carga", signo: "−", dx: -12, dy: -14 },
+    { x: 1.4, y: 0, texto: "P", tipo: "punto", dx: -3, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [1.4, 0], v: [40, 0], texto: "E", sub: "q", color: "#b04a3a", dx: -26, dy: -8 },
+    { desde: [1.4 + 40 / 70, 0], v: [32, 0], texto: "E", sub: "Q", color: "#2d6fa3", dy: -6 },
+  ]}
+  descripcion="Carga positiva q a la izquierda y carga negativa Q a la derecha. En un punto P entre ellas, el campo de q y el de Q apuntan los dos hacia la derecha: se suman y no pueden anularse."
+/>
+
+Por tanto, para que el campo se anule en el segmento, **$Q$ debe ser positiva**, del mismo signo que $q$.
+
+**ii) Potencial nulo.** El potencial es un escalar: $V = K\,q/r_1 + K\,Q/r_2$. Con $q$ positiva, su potencial es positivo en todos los puntos. Si $Q$ también fuera positiva, la suma sería siempre positiva y no podría anularse. Para que se anule, el potencial de $Q$ tiene que ser negativo, así que **$Q$ debe ser negativa**. En ese caso hay un punto del segmento en el que $K\,q/r_1 = K\,|Q|/r_2$: más cerca de la carga de menor valor absoluto (en el punto medio, si $|Q| = q$).
+
+</Solucion>
+
+**b)** Una carga *Q* situada en el origen de coordenadas crea un potencial de 3000 V en el punto A(5,0) m. **i)** Determine el valor de la carga *Q*. **ii)** Si se sitúa una segunda carga de 2·10<sup>-5</sup> C en el punto A, calcule la variación de la energía potencial eléctrica y de la energía cinética de dicha carga cuando se desplaza al punto B(10,0) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Valor de la carga.** El potencial que crea una carga puntual a una distancia $r$ es $V = K\,Q/r$. El punto A está a 5 m del origen:
+
+$$
+Q = \frac{V_A\,r_A}{K} = \frac{3000 \cdot 5}{9 \cdot 10^9} = 1{,}67 \cdot 10^{-6}\ \text{C}
+$$
+
+Es positiva, porque crea un potencial positivo.
+
+**ii) Variaciones de energía.** El punto B está a 10 m de la carga, el doble que A, así que su potencial es la mitad:
+
+$$
+V_B = K\,\frac{Q}{r_B} = 9 \cdot 10^9 \cdot \frac{1{,}67 \cdot 10^{-6}}{10} = 1500\ \text{V}
+$$
+
+La variación de energía potencial de la carga $q' = 2 \cdot 10^{-5}$ C es:
+
+$$
+\Delta E_p = q'\,(V_B - V_A) = 2 \cdot 10^{-5} \cdot (1500 - 3000) = -0{,}03\ \text{J}
+$$
+
+Si sobre la carga solo actúa la fuerza eléctrica, que es conservativa, la energía mecánica se conserva y la energía potencial que se pierde se convierte en cinética:
+
+$$
+\Delta E_c = -\Delta E_p = 0{,}03\ \text{J}
+$$
+
+**Respuesta.** La carga vale **$Q = 1{,}67 \cdot 10^{-6}$ C**. Al pasar de A a B, la energía potencial de la segunda carga disminuye **0,03 J** $(\Delta E_p = -0{,}03$ J$)$ y su energía cinética aumenta **0,03 J**. Es lo esperable: las dos cargas son positivas y se repelen, así que la segunda se aleja espontáneamente de $Q$ y gana velocidad.
+
+</Solucion>
+
+**B2. a)** **i)** Defina el concepto de flujo magnético e indique sus unidades en el S.I. **ii)** Una espira conductora plana se sitúa en el seno de un campo magnético uniforme $\vec{B} = B_0\,\vec{k}$. Represente gráficamente y explique para qué orientaciones de la espira el flujo magnético a través de ella es máximo y nulo.
+
+<Solucion>
+
+**i) Flujo magnético.** El flujo magnético a través de una superficie mide el número de líneas de campo que la atraviesan. Para una superficie plana de área $S$ en un campo uniforme $\vec{B}$, es el producto escalar del campo por el **vector superficie** $\vec{S}$, perpendicular a la superficie y de módulo igual a su área:
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\theta
+$$
+
+donde $\theta$ es el ángulo entre $\vec{B}$ y $\vec{S}$. En el S.I. se mide en **weber (Wb)**: $1\ \text{Wb} = 1\ \text{T} \cdot \text{m}^2$.
+
+**ii) Orientaciones de flujo máximo y nulo.** El campo tiene la dirección del eje Z. El flujo depende del ángulo entre $\vec{B}$ y el vector superficie de la espira:
+
+<FlujoEspira />
+
+- **Flujo máximo**, $\Phi = B_0\,S$: cuando $\cos\theta = 1$, es decir, $\vec{S}$ es paralelo a $\vec{B}$. La espira está **perpendicular al campo**, en un plano horizontal (paralelo al plano XY), y la atraviesa el mayor número posible de líneas de campo.
+- **Flujo nulo**, $\Phi = 0$: cuando $\cos\theta = 0$, es decir, $\vec{S}$ es perpendicular a $\vec{B}$. La espira está **paralela al campo**, en un plano vertical que contiene al eje Z (como el plano XZ o el YZ): las líneas de campo pasan rozando la espira y ninguna la atraviesa.
+
+En las orientaciones intermedias el flujo vale $B_0\,S\cos\theta$, entre esos dos valores.
+
+</Solucion>
+
+**b)** Una espira rectangular de lados 10 y 15 cm se encuentra situada en el plano XY dentro de un campo magnético variable con el tiempo $\vec{B}(t) = 2t^3\,\vec{k}$ T (*t* en segundos). **i)** Calcule el flujo magnético en *t* = 2 s. **ii)** Determine la fuerza electromotriz inducida en *t* = 2 s. **iii)** Razone el sentido de la corriente inducida con la ayuda de un esquema.
+
+<Solucion>
+
+**i) Flujo magnético.** La espira está en el plano XY, así que su vector superficie tiene la dirección del eje Z, la misma del campo $(\theta = 0)$. Su área es $S = 0{,}10 \cdot 0{,}15 = 0{,}015$ m², y el flujo en cada instante es:
+
+$$
+\Phi(t) = B(t)\,S = 2t^3 \cdot 0{,}015 = 0{,}03\,t^3\ \text{Wb}
+$$
+
+$$
+\Phi(2) = 0{,}03 \cdot 2^3 = 0{,}24\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz inducida.** Por la ley de Faraday-Lenz, la fuerza electromotriz inducida es igual a menos la derivada del flujo respecto del tiempo:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt} = -0{,}09\,t^2
+\quad\Rightarrow\quad
+\varepsilon(2) = -0{,}09 \cdot 2^2 = -0{,}36\ \text{V}
+$$
+
+En $t = 2$ s se induce una fuerza electromotriz de **0,36 V**; el signo negativo expresa que se opone al aumento del flujo.
+
+**iii) Sentido de la corriente inducida.** El campo apunta en el sentido de $+\vec{k}$ y su módulo aumenta con el tiempo, así que el flujo a través de la espira **aumenta**. Por la ley de Lenz, la corriente inducida circula en el sentido que crea un campo magnético que se opone a ese aumento: un campo inducido en el sentido de $-\vec{k}$ dentro de la espira. Por la regla de la mano derecha, eso corresponde a una corriente en **sentido horario** vista desde el semieje Z positivo (desde arriba):
+
+<EspiraCampoVariable />
+
+**Respuesta.** En $t = 2$ s el flujo es **0,24 Wb** y la fuerza electromotriz inducida vale **0,36 V** en valor absoluto; la corriente circula en **sentido horario** visto desde el semieje Z positivo. Mientras el campo siga creciendo, la fuerza electromotriz también crece, porque el flujo aumenta cada vez más deprisa $(\varepsilon \propto t^2)$.
+
+</Solucion>

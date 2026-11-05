@@ -1,0 +1,88 @@
+---
+// Imán que se acerca o se aleja de una espira por su polo norte (Física, reserva 2 de 2023,
+// B2 a). La espira se ve de canto: ⊗ y ⊙ en sus extremos indican el sentido de la corriente
+// inducida. Al acercarse, el flujo hacia la derecha aumenta y el campo inducido apunta hacia el
+// imán (la cara de la espira que mira al imán es un polo norte: se repelen); al alejarse, el
+// campo inducido apunta hacia la derecha (cara sur: se atraen).
+interface Props {
+  caso: "acerca" | "aleja"
+}
+
+const { caso } = Astro.props
+const acerca = caso === "acerca"
+const ex = 270
+const cy = 100
+const id = `iman-espira-${Math.round(Math.random() * 1e9)}`
+// Arriba entra (⊗) y abajo sale (⊙) si el campo inducido apunta hacia la izquierda.
+const arriba = acerca ? "entra" : "sale"
+const abajo = acerca ? "sale" : "entra"
+---
+
+<figure class="solution-figure">
+  <svg
+    viewBox="0 0 400 210"
+    role="img"
+    aria-label={
+      acerca
+        ? "Imán con el polo norte hacia una espira, acercándose. El flujo del campo del imán a través de la espira aumenta, así que la corriente inducida crea un campo que apunta hacia el imán: la cara de la espira que mira al imán se comporta como un polo norte y lo repele. Vista desde el imán, la corriente circula en sentido antihorario."
+        : "Imán con el polo norte hacia una espira, alejándose. El flujo del campo del imán a través de la espira disminuye, así que la corriente inducida crea un campo en el mismo sentido que el del imán, alejándose de él: la cara de la espira que mira al imán se comporta como un polo sur y lo atrae. Vista desde el imán, la corriente circula en sentido horario."
+    }
+  >
+    <defs>
+      <marker id={`${id}-n`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+      <marker id={`${id}-b`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#2d6fa3" />
+      </marker>
+      <marker id={`${id}-r`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+    </defs>
+
+    <rect x="40" y={cy - 18} width="70" height="36" fill="#cfd8e3" stroke="#111" stroke-width="1.2" />
+    <rect x="110" y={cy - 18} width="70" height="36" fill="#e8a99c" stroke="#111" stroke-width="1.2" />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+      <text x="75" y={cy + 5}>S</text>
+      <text x="145" y={cy + 5}>N</text>
+    </g>
+    <path d={acerca ? `M90 ${cy - 34}h50` : `M140 ${cy - 34}h-50`} stroke="#111" stroke-width="1.4" marker-end={`url(#${id}-n)`} />
+    <text x="115" y={cy - 42} text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic">v</text>
+
+    <g stroke="#2d6fa3" stroke-width="1" fill="none" opacity="0.8">
+      <path d={`M184 ${cy}H${ex + 50}`} marker-end={`url(#${id}-b)`} />
+      <path d={`M184 ${cy - 10}Q230 ${cy - 26} ${ex + 44} ${cy - 40}`} marker-end={`url(#${id}-b)`} />
+    </g>
+    <text x={ex + 56} y={cy + 4} font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#2d6fa3">B imán</text>
+
+    <ellipse cx={ex} cy={cy} rx="12" ry="54" fill="none" stroke="#111" stroke-width="2" />
+    {
+      [
+        { y: cy - 54, tipo: arriba },
+        { y: cy + 54, tipo: abajo },
+      ].map((p) => (
+        <g>
+          <circle cx={ex} cy={p.y} r="8" fill="#fff" stroke="#b04a3a" stroke-width="1.4" />
+          {p.tipo === "sale" ? (
+            <circle cx={ex} cy={p.y} r="2.2" fill="#b04a3a" />
+          ) : (
+            <path d={`M${ex - 4.5} ${p.y - 4.5}l9 9m0 -9l-9 9`} stroke="#b04a3a" stroke-width="1.4" />
+          )}
+        </g>
+      ))
+    }
+    <path
+      d={acerca ? `M${ex + 22} ${cy + 22}h-58` : `M${ex - 36} ${cy + 22}h58`}
+      stroke="#b04a3a"
+      stroke-width="2.2"
+      marker-end={`url(#${id}-r)`}
+    />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#b04a3a" font-weight="700">
+      <text x={ex - 18} y={cy + 42} text-anchor="end">B inducido</text>
+      <text x={ex + 20} y={cy - 58}>I</text>
+    </g>
+    <text x="200" y="196" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#555">
+      {acerca ? "El flujo aumenta: I antihoraria vista desde el imán (repulsión)" : "El flujo disminuye: I horaria vista desde el imán (atracción)"}
+    </text>
+  </svg>
+</figure>

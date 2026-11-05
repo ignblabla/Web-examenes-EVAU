@@ -1,0 +1,123 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2023
+convocatoria: junio
+formato: fisica
+---
+
+import EnergiaEnlaceNucleon from "../../../../../components/figuras/fisica/EnergiaEnlaceNucleon.astro"
+
+**D1. a)** Considere un núcleo de <sup>28</sup>Si y otro de <sup>56</sup>Fe. La masa del núcleo de hierro es el doble que la del núcleo de silicio. Determine, de forma justificada, la relación entre sus longitudes de onda de De Broglie en las siguientes situaciones: **i)** si el momento lineal o cantidad de movimiento es el mismo para los dos; **ii)** si los dos núcleos se mueven con la misma energía cinética.
+
+<Solucion>
+
+Según la hipótesis de De Broglie, toda partícula en movimiento lleva asociada una onda cuya longitud de onda es inversamente proporcional a su momento lineal:
+
+$$
+\lambda = \frac{h}{p} = \frac{h}{m\,v}
+$$
+
+**i) Mismo momento lineal.** Si $p_{\text{Fe}} = p_{\text{Si}}$, las longitudes de onda son **iguales**:
+
+$$
+\frac{\lambda_{\text{Fe}}}{\lambda_{\text{Si}}} = \frac{h/p_{\text{Fe}}}{h/p_{\text{Si}}} = 1
+$$
+
+La longitud de onda solo depende del momento lineal: el núcleo de hierro, con el doble de masa, se mueve a la mitad de velocidad.
+
+**ii) Misma energía cinética.** Expresamos el momento en función de la energía cinética: $E_c = \dfrac{p^2}{2m}$, así que $p = \sqrt{2m\,E_c}$ y
+
+$$
+\lambda = \frac{h}{\sqrt{2m\,E_c}}
+\quad\Rightarrow\quad
+\frac{\lambda_{\text{Fe}}}{\lambda_{\text{Si}}} = \sqrt{\frac{m_{\text{Si}}}{m_{\text{Fe}}}} = \sqrt{\frac{1}{2}} = 0{,}707
+$$
+
+Con la misma energía cinética, el núcleo más pesado tiene más momento lineal y su longitud de onda es **$\sqrt{2}$ veces menor**: $\lambda_{\text{Fe}} = \lambda_{\text{Si}}/\sqrt{2}$.
+
+</Solucion>
+
+**b)** Los neutrones que se emiten en un proceso de fisión nuclear tienen una energía cinética de 1,6·10<sup>-13</sup> J. **i)** Determine razonadamente su longitud de onda de De Broglie y su velocidad. **ii)** Calcule la longitud de onda de De Broglie cuando la velocidad de los neutrones se reduce a la mitad.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; m<sub>n</sub> = 1,67·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Longitud de onda y velocidad.** A partir de la energía cinética calculamos el momento lineal (la velocidad resultará mucho menor que la de la luz, así que podemos usar las expresiones clásicas):
+
+$$
+p = \sqrt{2\,m_n\,E_c} = \sqrt{2 \cdot 1{,}67 \cdot 10^{-27} \cdot 1{,}6 \cdot 10^{-13}} = 2{,}31 \cdot 10^{-20}\ \text{kg m/s}
+$$
+
+$$
+\lambda = \frac{h}{p} = \frac{6{,}63 \cdot 10^{-34}}{2{,}31 \cdot 10^{-20}} = 2{,}87 \cdot 10^{-14}\ \text{m}
+$$
+
+$$
+v = \frac{p}{m_n} = \frac{2{,}31 \cdot 10^{-20}}{1{,}67 \cdot 10^{-27}} = 1{,}38 \cdot 10^{7}\ \text{m/s}
+$$
+
+Es un 5 % de la velocidad de la luz, así que el tratamiento clásico es una buena aproximación. La longitud de onda es del orden del tamaño de un núcleo $(10^{-14}$ m$)$.
+
+**ii) Con la mitad de velocidad.** La longitud de onda es inversamente proporcional a la velocidad, $\lambda = h/(m v)$: si la velocidad se reduce a la mitad, la longitud de onda se **duplica**:
+
+$$
+\lambda' = \frac{h}{m_n\,(v/2)} = 2\,\lambda = 2 \cdot 2{,}87 \cdot 10^{-14} = 5{,}74 \cdot 10^{-14}\ \text{m}
+$$
+
+**Respuesta.** Los neutrones tienen una longitud de onda de **$2{,}87 \cdot 10^{-14}$ m** y una velocidad de **$1{,}38 \cdot 10^7$ m/s**; a la mitad de velocidad, la longitud de onda pasa a ser **$5{,}74 \cdot 10^{-14}$ m**.
+
+</Solucion>
+
+**D2. a)** Basándose en la gráfica, razone si las siguientes afirmaciones son verdaderas o falsas: **i)** El $^{238}_{92}\text{U}$ es más estable que el $^{56}_{26}\text{Fe}$. **ii)** El $^{4}_{2}\text{He}$ es más estable que el $^{2}_{1}\text{H}$, por lo que al producirse la fusión nuclear de dos núcleos de $^{2}_{1}\text{H}$ se desprende energía.
+
+<Solucion>
+
+La gráfica representa la **energía de enlace por nucleón**, $E_b/A$: la energía que hay que aportar, por término medio, para separar cada nucleón del núcleo. Cuanto mayor es, más ligados están los nucleones y **más estable es el núcleo**.
+
+<EnergiaEnlaceNucleon />
+
+**i) Falsa.** El hierro-56 está en el máximo de la curva (unos 8,8 MeV por nucleón), mientras que el uranio-238 está en la zona de los núcleos pesados, donde la curva ha bajado (unos 7,6 MeV por nucleón). El hierro es **más estable** que el uranio; de hecho, es de los núcleos más estables que existen.
+
+**ii) Verdadera.** El helio-4 tiene una energía de enlace por nucleón mucho mayor (unos 7,1 MeV) que el deuterio (unos 1,1 MeV), así que es más estable. En la fusión $^{2}_{1}\text{H} + {}^{2}_{1}\text{H} \to {}^{4}_{2}\text{He}$ se forma un núcleo con los nucleones más ligados: la energía de enlace total del producto es mayor que la de los reactivos, y esa diferencia se libera. Equivalentemente, la masa del helio-4 es menor que la de los dos núcleos de deuterio, y el defecto de masa se libera como energía, $E = \Delta m\,c^2$. En los núcleos ligeros, cualquier fusión que avance hacia el máximo de la curva desprende energía.
+
+</Solucion>
+
+**b)** En algunas estrellas se produce una reacción nuclear en la que el $^{28}_{14}\text{Si}$, tras capturar siete partículas alfa, se transforma en $^{A}_{Z}\text{Ni}$. **i)** Escriba la reacción nuclear descrita y calcule *A* y *Z*. **ii)** Calcule la energía liberada por cada núcleo de silicio.
+
+<Datos>m($^{28}_{14}$Si) = 27,976927 u; m($^{A}_{Z}$Ni) = 55,942129 u; m($^{4}_{2}$He) = 4,002603 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** Una partícula alfa es un núcleo de helio-4, $^{4}_{2}\text{He}$. En la reacción se conservan el número másico (número de nucleones) y el número atómico (carga):
+
+$$
+^{28}_{14}\text{Si} + 7\,{}^{4}_{2}\text{He} \longrightarrow {}^{A}_{Z}\text{Ni}
+$$
+
+$$
+A = 28 + 7 \cdot 4 = 56, \qquad Z = 14 + 7 \cdot 2 = 28
+$$
+
+Se forma **níquel-56**, $^{56}_{28}\text{Ni}$ (el níquel tiene, en efecto, número atómico 28).
+
+**ii) Energía liberada.** La energía liberada procede del defecto de masa: la masa de los reactivos es mayor que la del producto:
+
+$$
+\Delta m = m(\text{Si}) + 7\,m(\text{He}) - m(\text{Ni}) = 27{,}976927 + 7 \cdot 4{,}002603 - 55{,}942129 = 0{,}053019\ \text{u}
+$$
+
+Pasamos a kilogramos y aplicamos la equivalencia masa-energía de Einstein:
+
+$$
+\Delta m = 0{,}053019 \cdot 1{,}66 \cdot 10^{-27} = 8{,}801 \cdot 10^{-29}\ \text{kg}
+$$
+
+$$
+E = \Delta m\,c^2 = 8{,}801 \cdot 10^{-29} \cdot (3 \cdot 10^8)^2 = 7{,}92 \cdot 10^{-12}\ \text{J}
+$$
+
+**Respuesta.** La reacción es $^{28}_{14}\text{Si} + 7\,{}^{4}_{2}\text{He} \to {}^{56}_{28}\text{Ni}$, con $A = 56$ y $Z = 28$, y por cada núcleo de silicio se liberan **$7{,}92 \cdot 10^{-12}$ J** (unos 49,5 MeV). Es una reacción de fusión: los núcleos ligeros forman otro más cercano al máximo de la curva de energía de enlace por nucleón, y por eso desprende energía.
+
+</Solucion>

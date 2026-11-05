@@ -1,0 +1,114 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: julio
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Un rayo de luz pasa del aire a otro medio con un índice de refracción mayor. Razone cómo cambian el ángulo con la normal, la frecuencia, la longitud de onda y la velocidad de propagación.
+
+<Solucion>
+
+- **Velocidad de propagación: disminuye.** El índice de refracción es $n = c/v$, así que $v = c/n$: en el medio de mayor índice la luz va más despacio.
+- **Frecuencia: no cambia.** La frecuencia la impone la fuente que emite la luz; al pasar de un medio a otro, cada frente de onda que llega a la superficie genera uno en el segundo medio, al mismo ritmo.
+- **Longitud de onda: disminuye.** Como $\lambda = v/f$ y la frecuencia no cambia, la longitud de onda es proporcional a la velocidad: $\lambda_2 = \lambda_1\,n_1/n_2 < \lambda_1$.
+- **Ángulo con la normal: disminuye** (el rayo se acerca a la normal). Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$; si $n_2 > n_1$, entonces $\sin\theta_2 < \sin\theta_1$ y $\theta_2 < \theta_1$. Solo si el rayo incide perpendicularmente $(\theta_1 = 0)$ no se desvía.
+
+</Solucion>
+
+**b)** Un haz de luz con una longitud de onda de 5,5·10<sup>-7</sup> m que se propaga a través del aire incide sobre la superficie de un material transparente. El haz incidente forma un ángulo de 40º con la normal, mientras que el haz refractado forma un ángulo de 26º con la normal. **i)** Realice un esquema con la trayectoria de los rayos y calcule el índice de refracción del material. **ii)** Determine razonadamente su longitud de onda en el interior del mismo.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Esquema e índice de refracción.** El rayo pasa del aire al material y se acerca a la normal ($26^\circ < 40^\circ$), así que el material es más refringente que el aire. Por la ley de Snell:
+
+$$
+n_{\text{aire}}\sin 40^\circ = n\sin 26^\circ
+\quad\Rightarrow\quad
+n = \frac{\sin 40^\circ}{\sin 26^\circ} = \frac{0{,}643}{0{,}438} = 1{,}47
+$$
+
+<RefraccionCapas
+  incidencia={40}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Material", n: 1.4663, color: "#dfe9f0", texto: "Material (n = 1,47)" },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre un material transparente formando 40 grados con la normal y se refracta acercándose a ella, con 26 grados."
+/>
+
+**ii) Longitud de onda en el material.** La frecuencia no cambia al pasar de un medio a otro, y la velocidad en el material es $v = c/n$. Por tanto, la longitud de onda se reduce en el mismo factor que la velocidad:
+
+$$
+\lambda = \frac{v}{f} = \frac{c/n}{c/\lambda_0} = \frac{\lambda_0}{n} = \frac{5{,}5 \cdot 10^{-7}}{1{,}47} = 3{,}75 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** El índice de refracción del material es **1,47** y la longitud de onda de la luz en su interior es **$3{,}75 \cdot 10^{-7}$ m**. (La frecuencia, la misma en los dos medios, es $f = c/\lambda_0 = 5{,}45 \cdot 10^{14}$ Hz.)
+
+</Solucion>
+
+**C2. a)** **i)** Realice el trazado de rayos para un objeto situado a la izquierda del foco imagen de una lente delgada divergente. **ii)** Justifique las características de la imagen formada.
+
+<Solucion>
+
+**i) Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), en una lente divergente el foco imagen $F'$ está **a la izquierda** de la lente, en el lado por el que llega la luz, y el foco objeto $F$ a la derecha. El objeto está a la izquierda de $F'$, más lejos de la lente que el foco. Desde su extremo trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta alejándose del eje como si viniera del foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo dirigido hacia el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4.2} xMax={3} descripcion="Lente divergente con el objeto a la izquierda del foco imagen F'. El rayo paralelo al eje se refracta como si viniera de F', el que pasa por el centro óptico no se desvía y el que se dirige al foco objeto F sale paralelo. Los rayos refractados divergen y sus prolongaciones se cortan entre F' y la lente: la imagen es virtual, derecha y menor que el objeto." />
+
+**ii) Características de la imagen.** Los rayos refractados divergen y no se cortan; se cortan sus **prolongaciones** hacia atrás, a la izquierda de la lente, **entre el foco imagen y la lente**. La imagen es:
+
+- **Virtual**: la forman las prolongaciones de los rayos, no los rayos, y no se puede recoger en una pantalla.
+- **Derecha**: queda por encima del eje, como el objeto.
+- **Menor que el objeto**.
+
+Una lente divergente da estas mismas características para cualquier posición de un objeto real; lo único que cambia es el tamaño de la imagen, que es más pequeña cuanto más lejos está el objeto.
+
+</Solucion>
+
+**b)** Una lente delgada convergente, de 10 cm de distancia focal, forma una imagen de 4 cm de altura situada 10 cm a la izquierda de la lente. **i)** Calcule la posición y el tamaño del objeto, indicando el criterio de signos aplicado. **ii)** Realice el trazado de rayos e indique las características de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente: las distancias son negativas a la izquierda y positivas a la derecha; las alturas, positivas por encima del eje. Así, $f' = +10$ cm, la imagen está en $s' = -10$ cm y mide $y' = 4$ cm (suponemos que está por encima del eje).
+
+**i) Posición y tamaño del objeto.** Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s} = \frac{1}{s'} - \frac{1}{f'} = \frac{1}{-10} - \frac{1}{10} = -\frac{2}{10}
+\quad\Rightarrow\quad
+s = -5\ \text{cm}
+$$
+
+El objeto está **5 cm a la izquierda de la lente**, entre el foco objeto y la lente. Su tamaño, a partir del aumento lateral:
+
+$$
+A = \frac{s'}{s} = \frac{-10}{-5} = 2
+\quad\Rightarrow\quad
+y = \frac{y'}{A} = \frac{4}{2} = 2\ \text{cm}
+$$
+
+**ii) Trazado de rayos y características.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$; uno por el centro óptico, que no se desvía; y uno cuya prolongación pasa por el foco objeto $F$, que sale paralelo al eje:
+
+<TrazadoRayos tipo="convergente" f={10} s={-5} y={2} xMin={-14} xMax={14} descripcion="Lente convergente de 10 centímetros de distancia focal con un objeto de 2 centímetros a 5 centímetros a la izquierda, entre el foco objeto y la lente. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a 10 centímetros a la izquierda de la lente, justo en el foco objeto, donde se forma una imagen virtual, derecha y del doble de tamaño, de 4 centímetros." />
+
+Los rayos refractados divergen y se cortan sus prolongaciones, a la izquierda de la lente. La imagen es:
+
+- **Virtual**: se forma con las prolongaciones de los rayos, en el mismo lado que el objeto $(s' < 0)$.
+- **Derecha**: $A > 0$.
+- **Mayor que el objeto**: el doble de su tamaño $(A = 2)$.
+
+**Respuesta.** El objeto está a **5 cm a la izquierda** de la lente y mide **2 cm**; la imagen es virtual, derecha y el doble de grande. Es la situación de una lupa: el objeto se coloca entre el foco y la lente.
+
+</Solucion>

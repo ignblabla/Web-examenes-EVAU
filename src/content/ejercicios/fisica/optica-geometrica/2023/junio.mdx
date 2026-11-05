@@ -1,0 +1,158 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2023
+convocatoria: junio
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Con una lente delgada queremos obtener una imagen virtual mayor que el objeto. Realice razonadamente el trazado de rayos correspondiente, justifique qué tipo de lente debemos usar y dónde debe estar situado el objeto.
+
+<Solucion>
+
+**Tipo de lente.** Hay que usar una **lente convergente**. Una lente divergente da siempre, de un objeto real, una imagen virtual, derecha y **menor**; nunca mayor. La lente convergente sí da imágenes virtuales y mayores, siempre que el objeto esté **entre el foco objeto $F$ y la lente**, a una distancia menor que la distancia focal. Es lo que hace una lupa.
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), trazamos desde el extremo del objeto:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo cuya prolongación hacia atrás pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4.6} xMax={3.4} descripcion="Lente convergente con el objeto entre el foco objeto F y la lente. El rayo paralelo al eje se refracta por el foco imagen F', el que pasa por el centro óptico no se desvía y el que parece venir de F sale paralelo. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan delante de la lente, más lejos que el objeto, donde se forma una imagen virtual, derecha y mayor." />
+
+Como el objeto está más cerca de la lente que el foco, los rayos refractados siguen **divergiendo** y no llegan a cortarse. Sus **prolongaciones** hacia atrás sí se cortan, por el mismo lado del objeto y más lejos de la lente. Ahí se forma la imagen: **virtual** (no se puede recoger en una pantalla), **derecha** y **mayor** que el objeto.
+
+</Solucion>
+
+**b)** Sobre una pantalla se desea proyectar la imagen de un objeto que mide 5 cm de alto. Para ello contamos con una lente delgada convergente, de distancia focal 20 cm, y una pantalla situada a la derecha de la lente, a una distancia de 1 m. **i)** Indique el criterio de signos usado y determine a qué distancia de la lente debe colocarse el objeto para que la imagen se forme en la pantalla. **ii)** Determine el tamaño de la imagen. **iii)** Construya gráficamente la imagen del objeto formado por la lente.
+
+<Solucion>
+
+**i) Criterio de signos y posición del objeto.** Usamos el **criterio DIN**: la luz va de izquierda a derecha y el origen está en el centro óptico de la lente; las distancias son negativas a la izquierda de la lente y positivas a la derecha, y las alturas, positivas por encima del eje. Así, $f' = +0{,}20$ m, la imagen se forma en la pantalla, $s' = +1$ m, y el objeto mide $y = 5$ cm.
+
+Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s} = \frac{1}{s'} - \frac{1}{f'} = \frac{1}{1} - \frac{1}{0{,}20} = 1 - 5 = -4\ \text{m}^{-1}
+\quad\Rightarrow\quad
+s = -0{,}25\ \text{m}
+$$
+
+El objeto debe colocarse **25 cm a la izquierda de la lente**, entre $F$ y $2F$ (entre 20 y 40 cm), que es donde una lente convergente da imágenes reales y mayores.
+
+**ii) Tamaño de la imagen.** Aumento lateral:
+
+$$
+A = \frac{y'}{y} = \frac{s'}{s} = \frac{1}{-0{,}25} = -4
+\quad\Rightarrow\quad
+y' = A\,y = -4 \cdot 5 = -20\ \text{cm}
+$$
+
+La imagen mide **20 cm** y el signo negativo indica que está **invertida**.
+
+**iii) Construcción gráfica.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta por el foco imagen $F'$; uno por el centro óptico, que no se desvía; y uno por el foco objeto $F$, que sale paralelo al eje. Los tres se cortan detrás de la lente, en la pantalla:
+
+<TrazadoRayos tipo="convergente" f={0.2} s={-0.25} y={0.05} xMin={-0.36} xMax={1.12} descripcion="Lente convergente de 20 centímetros de distancia focal con el objeto, de 5 centímetros, a 25 centímetros a la izquierda. El rayo paralelo al eje se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan a 1 metro a la derecha de la lente, en la pantalla, donde se forma una imagen real, invertida y cuatro veces mayor, de 20 centímetros." />
+
+**Respuesta.** El objeto debe estar a **25 cm a la izquierda** de la lente, y en la pantalla se forma una imagen **real, invertida y de 20 cm**, cuatro veces mayor que el objeto. Es el funcionamiento de un proyector: el objeto se coloca algo más allá del foco y la imagen ampliada se forma lejos, sobre la pantalla.
+
+</Solucion>
+
+**C2. a)** Un rayo de luz monocromática duplica su velocidad al pasar de un medio a otro. **i)** Represente la trayectoria de un rayo que incide con un ángulo no nulo respecto a la normal, y justifique si puede producirse el fenómeno de la reflexión total. **ii)** Determine razonadamente la relación entre las longitudes de onda en ambos medios.
+
+<Solucion>
+
+**i) Trayectoria y reflexión total.** El índice de refracción de un medio es $n = c/v$. Si la velocidad se duplica, $v_2 = 2v_1$, el índice se reduce a la mitad:
+
+$$
+n_2 = \frac{c}{v_2} = \frac{c}{2v_1} = \frac{n_1}{2}
+$$
+
+La luz pasa a un medio **menos refringente**. Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$, de modo que $\sin\theta_2 = 2\sin\theta_1$: el ángulo de refracción es mayor que el de incidencia y el rayo **se aleja de la normal**. Por ejemplo, con $\theta_1 = 20^\circ$, $\sin\theta_2 = 2 \sin 20^\circ = 0{,}684$ y $\theta_2 = 43{,}2^\circ$:
+
+<RefraccionCapas
+  incidencia={20}
+  capas={[
+    { nombre: "Medio 1", n: 2, color: "#dfe9f0", texto: "Medio 1 (n₁ = 2 n₂)" },
+    { nombre: "Medio 2", n: 1, color: "#f4f8fb", texto: "Medio 2 (velocidad doble)" },
+  ]}
+  descripcion="Rayo que pasa de un medio a otro en el que la luz va el doble de rápido. Incide con 20 grados respecto a la normal y se refracta alejándose de ella, con 43,2 grados."
+/>
+
+**Sí puede producirse reflexión total**, precisamente porque la luz pasa a un medio de menor índice. Al aumentar el ángulo de incidencia, el de refracción llega a $90^\circ$ para el **ángulo límite**:
+
+$$
+n_1\sin\theta_L = n_2\sin 90^\circ
+\quad\Rightarrow\quad
+\sin\theta_L = \frac{n_2}{n_1} = \frac{1}{2}
+\quad\Rightarrow\quad
+\theta_L = 30^\circ
+$$
+
+Si el rayo incide con un ángulo mayor que $30^\circ$, no hay rayo refractado y toda la luz se refleja hacia el primer medio.
+
+**ii) Relación entre las longitudes de onda.** Al pasar de un medio a otro la frecuencia no cambia, porque la fija la fuente. Como $\lambda = v/f$, la longitud de onda es proporcional a la velocidad:
+
+$$
+\frac{\lambda_2}{\lambda_1} = \frac{v_2/f}{v_1/f} = \frac{v_2}{v_1} = 2
+\quad\Rightarrow\quad
+\lambda_2 = 2\,\lambda_1
+$$
+
+En el segundo medio la longitud de onda es el doble.
+
+</Solucion>
+
+**b)** Un rayo de luz de 8,22·10<sup>14</sup> Hz se propaga por el interior de un líquido con una longitud de onda de 1,46·10<sup>-7</sup> m. **i)** Calcule su longitud de onda en el aire. **ii)** Calcule la velocidad del rayo en el líquido y el índice de refracción del líquido. **iii)** Si el rayo se propaga por el líquido e incide en la superficie de separación con el aire con un ángulo de 10º respecto a la normal, realice un esquema con la trayectoria de los rayos y calcule los ángulos de refracción y de reflexión.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Longitud de onda en el aire.** La frecuencia es la misma en el líquido y en el aire. En el aire la luz se propaga a $c$:
+
+$$
+\lambda_{\text{aire}} = \frac{c}{f} = \frac{3 \cdot 10^8}{8{,}22 \cdot 10^{14}} = 3{,}65 \cdot 10^{-7}\ \text{m}
+$$
+
+**ii) Velocidad en el líquido e índice de refracción.**
+
+$$
+v = \lambda_{\text{líq}}\,f = 1{,}46 \cdot 10^{-7} \cdot 8{,}22 \cdot 10^{14} = 1{,}20 \cdot 10^{8}\ \text{m/s}
+$$
+
+$$
+n = \frac{c}{v} = \frac{3 \cdot 10^8}{1{,}20 \cdot 10^8} = 2{,}5
+$$
+
+**iii) Ángulos de reflexión y refracción.** Cuando el rayo llega a la superficie, una parte se refleja hacia el líquido y otra se refracta al aire.
+
+- **Reflexión.** Por la ley de la reflexión, el ángulo de reflexión es igual al de incidencia: **$10^\circ$**.
+- **Refracción.** Por la ley de Snell, pasando de un medio de índice 2,5 al aire:
+
+$$
+n\sin 10^\circ = n_{\text{aire}}\sin r
+\quad\Rightarrow\quad
+\sin r = 2{,}5 \cdot \sin 10^\circ = 2{,}5 \cdot 0{,}174 = 0{,}434
+\quad\Rightarrow\quad
+r = 25{,}7^\circ
+$$
+
+<RefraccionCapas
+  incidencia={10}
+  reflejado
+  capas={[
+    { nombre: "Líquido", n: 2.5, color: "#dfe9f0", texto: "Líquido (n = 2,5)" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+  ]}
+  descripcion="Rayo que se propaga por un líquido de índice 2,5 e incide en la superficie con el aire formando 10 grados con la normal. Una parte se refleja hacia el líquido con el mismo ángulo, 10 grados, y otra se refracta al aire alejándose de la normal, con 25,7 grados."
+/>
+
+**Respuesta.** En el aire la longitud de onda es **$3{,}65 \cdot 10^{-7}$ m**; en el líquido la luz va a **$1{,}20 \cdot 10^8$ m/s** y su índice de refracción es **2,5**. El rayo reflejado forma **$10^\circ$** con la normal y el refractado **$25{,}7^\circ$**: al salir al aire, menos refringente, se aleja de la normal. Como el líquido es mucho más refringente que el aire, su ángulo límite es pequeño, $\theta_L = \arcsin(1/2{,}5) = 23{,}6^\circ$; con $10^\circ$ estamos por debajo y sí hay refracción.
+
+</Solucion>

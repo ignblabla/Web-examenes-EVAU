@@ -1,0 +1,85 @@
+---
+// Física, julio de 2023, B2 a: flujo de un campo uniforme B = B₀ k a través de una espira plana
+// según su orientación. Tres casos con el campo vertical: la espira perpendicular al campo (su
+// vector superficie S, paralelo a B: flujo máximo), inclinada un ángulo θ (Φ = B S cos θ) y
+// paralela al campo (S perpendicular a B: flujo nulo). La espira se dibuja en perspectiva como
+// una elipse.
+const casos = [
+  { cx: 70, angulo: 0, titulo: "Φ = B S (máximo)", sub: "S ∥ B" },
+  { cx: 200, angulo: 40, titulo: "Φ = B S cos θ", sub: "" },
+  { cx: 330, angulo: 90, titulo: "Φ = 0 (nulo)", sub: "S ⊥ B" },
+]
+const cy = 118
+const g = (a: number) => (a * Math.PI) / 180
+const id = `flujo-espira-${Math.round(Math.random() * 1e9)}`
+---
+
+<figure class="solution-figure solution-figure--wide">
+  <svg
+    viewBox="0 0 400 230"
+    role="img"
+    aria-label="Tres orientaciones de una espira plana en un campo magnético uniforme vertical, en la dirección del eje Z. Primera: la espira es horizontal, perpendicular al campo, y su vector superficie es paralelo a B: el flujo es máximo, B por S. Segunda: la espira está inclinada y su vector superficie forma un ángulo theta con B: el flujo es B por S por el coseno de theta. Tercera: la espira es vertical, paralela al campo, y su vector superficie es perpendicular a B: ninguna línea de campo la atraviesa y el flujo es nulo."
+  >
+    <defs>
+      <marker id={`${id}-b`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#2d6fa3" />
+      </marker>
+      <marker id={`${id}-s`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+    </defs>
+    {
+      casos.map((c) => (
+        <g>
+          <g stroke="#2d6fa3" stroke-width="1" opacity="0.75">
+            {[-36, -12, 12, 36].map((dx) => (
+              <path d={`M${c.cx + dx} ${cy + 72}V${cy - 74}`} marker-end={`url(#${id}-b)`} />
+            ))}
+          </g>
+          <ellipse
+            cx={c.cx}
+            cy={cy}
+            rx="44"
+            ry="13"
+            fill="#c9bce8"
+            fill-opacity="0.55"
+            stroke="#111"
+            stroke-width="1.8"
+            transform={`rotate(${c.angulo} ${c.cx} ${cy})`}
+          />
+          <path
+            d={`M${c.cx} ${cy}l${(56 * Math.sin(g(c.angulo))).toFixed(1)} ${(-56 * Math.cos(g(c.angulo))).toFixed(1)}`}
+            stroke="#b04a3a"
+            stroke-width="2"
+            marker-end={`url(#${id}-s)`}
+          />
+          <text
+            x={c.angulo === 90 ? c.cx + 46 : c.cx + 60 * Math.sin(g(c.angulo)) + (c.angulo ? 4 : 6)}
+            y={c.angulo === 90 ? cy - 8 : cy - 60 * Math.cos(g(c.angulo)) + 2}
+            font-family="Arial, Helvetica, sans-serif"
+            font-size="12"
+            font-weight="700"
+            fill="#b04a3a"
+          >
+            S
+          </text>
+          {c.angulo > 0 && c.angulo < 90 && (
+            <g>
+              <path d={`M${c.cx} ${cy - 30}A30 30 0 0 1 ${c.cx + 30 * Math.sin(g(c.angulo))} ${cy - 30 * Math.cos(g(c.angulo))}`} fill="none" stroke="#111" stroke-width="1" />
+              <text x={c.cx + 6} y={cy - 36} font-family="Arial, Helvetica, sans-serif" font-size="11" font-style="italic">θ</text>
+            </g>
+          )}
+          <text x={c.cx} y="214" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#111">
+            {c.titulo}
+          </text>
+          {c.sub && (
+            <text x={c.cx} y="228" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#555">
+              {c.sub}
+            </text>
+          )}
+        </g>
+      ))
+    }
+    <text x="8" y="22" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#2d6fa3">B = B₀ k</text>
+  </svg>
+</figure>

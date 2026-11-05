@@ -1,0 +1,106 @@
+---
+// Espira (rectangular o circular) dentro de un campo magnético perpendicular al papel, vista
+// desde el lado hacia el que apunta el campo (⊙, saliente), con el sentido de la corriente
+// inducida y tres notas a la derecha. Por defecto, la de Física, julio de 2023, B2 b: espira de
+// 15 cm × 10 cm en el plano XY con B = 2t³ k, que aumenta: corriente horaria y campo inducido
+// entrante.
+interface Props {
+  forma?: "rectangular" | "circular"
+  horaria?: boolean
+  // Rótulos de los lados (ancho, alto) en la espira rectangular; null para no ponerlos.
+  cotas?: [string, string] | null
+  // Notas de la derecha: campo, corriente y campo inducido.
+  notas?: [string, string, string]
+  pie?: string
+  // Figura del enunciado: solo la espira y el campo, sin corriente ni notas.
+  enunciado?: boolean
+  descripcion?: string
+}
+
+const {
+  forma = "rectangular",
+  horaria = true,
+  cotas = ["15 cm", "10 cm"],
+  notas = ["B ⊙ (aumenta)", "I horaria", "B inducido ⊗"],
+  pie = "Vista desde el semieje Z positivo (k sale del papel)",
+  enunciado = false,
+  descripcion = "Espira rectangular de 15 por 10 centímetros en el plano XY, vista desde arriba, dentro de un campo magnético saliente del papel que aumenta con el tiempo. La corriente inducida circula en sentido horario, de modo que el campo que crea en el interior de la espira es entrante y se opone al aumento del flujo.",
+} = Astro.props
+
+const x0 = 60
+const y0 = 30
+const an = 210
+const al = 140
+const cx = x0 + an / 2
+const cy = y0 + al / 2
+const radio = 68
+const circular = forma === "circular"
+const campo = [0, 1, 2, 3]
+  .flatMap((i) => [0, 1, 2].map((j) => ({ x: x0 + 30 + i * 50, y: y0 + 26 + j * 44 })))
+  .filter((p) => !circular || Math.hypot(p.x - cx, p.y - cy) < radio - 12 || Math.hypot(p.x - cx, p.y - cy) > radio + 12)
+const id = `espira-variable-${Math.round(Math.random() * 1e9)}`
+// Flechas de la corriente en sentido horario (arriba hacia la derecha, derecha hacia abajo…);
+// en sentido antihorario se invierten.
+const s = horaria ? 1 : -1
+const flechas = circular
+  ? [0, 90, 180, 270].map((a) => {
+      const t = (a * Math.PI) / 180
+      const p = { x: cx + radio * Math.sin(t), y: cy - radio * Math.cos(t) }
+      const d = { x: s * Math.cos(t), y: s * Math.sin(t) }
+      return `M${(p.x - 16 * d.x).toFixed(1)} ${(p.y - 16 * d.y).toFixed(1)}l${(32 * d.x).toFixed(1)} ${(32 * d.y).toFixed(1)}`
+    })
+  : [
+      `M${cx - 16 * s} ${y0}h${32 * s}`,
+      `M${x0 + an} ${cy - 16 * s}v${32 * s}`,
+      `M${cx + 16 * s} ${y0 + al}h${-32 * s}`,
+      `M${x0} ${cy + 16 * s}v${-32 * s}`,
+    ]
+---
+
+<figure class={enunciado ? "official-figure" : "solution-figure"}>
+  <svg viewBox={enunciado ? "76 24 180 152" : "0 0 400 236"} role="img" aria-label={descripcion}>
+    <defs>
+      <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+    </defs>
+    {
+      circular ? (
+        <circle cx={cx} cy={cy} r={radio} fill="#f4f8fb" stroke="#111" stroke-width="2" />
+      ) : (
+        <path d={`M${x0} ${y0}h${an}v${al}h${-an}Z`} fill="#f4f8fb" stroke="#111" stroke-width="2" />
+      )
+    }
+    {
+      campo.map((p) => (
+        <g>
+          <circle cx={p.x} cy={p.y} r="6" fill="#fff" stroke="#2d6fa3" stroke-width="1" />
+          <circle cx={p.x} cy={p.y} r="1.8" fill="#2d6fa3" />
+        </g>
+      ))
+    }
+    <g stroke="#b04a3a" stroke-width="2.2" fill="none">
+      {!enunciado && flechas.map((d) => <path d={d} marker-end={`url(#${id})`} />)}
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
+      {
+        !circular && cotas && (
+          <>
+            <text x={cx} y={y0 + al + 18} text-anchor="middle">{cotas[0]}</text>
+            <text x={x0 - 8} y={cy + 4} text-anchor="end">{cotas[1]}</text>
+          </>
+        )
+      }
+      {enunciado ? <text x={cx - 17} y={cy - 4} fill="#2d6fa3" font-weight="700" font-size="14">B</text> : <text x={x0 + an + 14} y={y0 + 14} fill="#2d6fa3" font-weight="700">{notas[0]}</text>}
+      {
+        !enunciado && (
+          <>
+            <text x={x0 + an + 14} y={cy + 4} fill="#b04a3a" font-weight="700">{notas[1]}</text>
+            <text x={x0 + an + 14} y={y0 + al - 6} fill="#b04a3a">{notas[2]}</text>
+          </>
+        )
+      }
+      {pie && !enunciado && <text x="200" y="228" text-anchor="middle" fill="#555">{pie}</text>}
+    </g>
+  </svg>
+</figure>

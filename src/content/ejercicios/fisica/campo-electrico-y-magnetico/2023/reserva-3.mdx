@@ -1,0 +1,118 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2023
+convocatoria: reserva-3
+formato: fisica
+---
+
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Un electrón penetra en una región en la que existe un campo eléctrico uniforme $\vec{E}$, con una velocidad inicial $\vec{v}_0$ paralela a dicho campo, deteniéndose después de recorrer una distancia *d*. **i)** Justifique y represente los vectores velocidad, campo y fuerza eléctrica. **ii)** Deduzca la expresión de la distancia recorrida en función de la masa del electrón, la carga, la velocidad inicial y el módulo del campo eléctrico.
+
+<Solucion>
+
+**i) Vectores.** La fuerza eléctrica sobre el electrón es $\vec{F} = -e\,\vec{E}$: como su carga es negativa, la fuerza tiene **sentido contrario al campo**. Para que el electrón se detenga, la fuerza tiene que oponerse a su movimiento, es decir, tener sentido contrario a la velocidad. Por tanto, la **velocidad tiene el mismo sentido que el campo**: el electrón entra moviéndose en el sentido del campo y la fuerza lo va frenando.
+
+<Vectores
+  xMin={-1.6}
+  xMax={2.4}
+  yMin={-0.6}
+  yMax={1.2}
+  escala={70}
+  puntos={[{ x: 0, y: 0, texto: "e⁻", tipo: "carga", signo: "−", dx: -6, dy: 22 }]}
+  vectores={[
+    { desde: [0.15, 0], v: [70, 0], texto: "v", sub: "0", color: "#b04a3a", dy: -6 },
+    { desde: [-0.15, 0], v: [-60, 0], texto: "F", color: "#195c51", dx: -6, dy: -6 },
+    { desde: [-1, 0.8], v: [200, 0], texto: "E", color: "#2d6fa3", dy: -2 },
+  ]}
+  descripcion="Electrón en un campo eléctrico uniforme que apunta hacia la derecha. Su velocidad inicial también apunta hacia la derecha, y la fuerza eléctrica, opuesta al campo por ser negativa la carga, apunta hacia la izquierda y lo frena."
+/>
+
+**ii) Distancia recorrida.** El campo es uniforme, así que la fuerza, de módulo $F = eE$, es constante. Su trabajo a lo largo de la distancia $d$ es negativo, porque se opone al desplazamiento, y por el teorema de las fuerzas vivas es igual a la variación de la energía cinética (el electrón acaba en reposo):
+
+$$
+W = -e\,E\,d = 0 - \frac{1}{2}m\,v_0^2
+\quad\Rightarrow\quad
+d = \frac{m\,v_0^2}{2\,e\,E}
+$$
+
+La distancia crece con el cuadrado de la velocidad inicial y disminuye al aumentar el campo.
+
+</Solucion>
+
+**b)** En una región del espacio existe un campo eléctrico uniforme de 2·10<sup>5</sup> V m<sup>-1</sup> en el sentido positivo del eje OY. Para un protón que se encuentra inicialmente en reposo en un punto de dicha región, calcule: **i)** la fuerza que actúa sobre el protón; **ii)** el trabajo realizado por la fuerza eléctrica cuando el protón ha recorrido una distancia de 5·10<sup>-2</sup> m; **iii)** la velocidad final tras recorrer dicha distancia.
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Fuerza.** El protón tiene carga positiva, así que la fuerza tiene el sentido del campo:
+
+$$
+\vec{F} = e\,\vec{E} = 1{,}6 \cdot 10^{-19} \cdot 2 \cdot 10^{5}\,\vec{j} = 3{,}2 \cdot 10^{-14}\,\vec{j}\ \text{N}
+$$
+
+**ii) Trabajo de la fuerza eléctrica.** El protón parte del reposo y se mueve en la dirección y el sentido de la fuerza (eje Y positivo). La fuerza es constante y paralela al desplazamiento:
+
+$$
+W = F\,d = 3{,}2 \cdot 10^{-14} \cdot 5 \cdot 10^{-2} = 1{,}6 \cdot 10^{-15}\ \text{J}
+$$
+
+**iii) Velocidad final.** Por el teorema de las fuerzas vivas, todo ese trabajo se convierte en energía cinética:
+
+$$
+W = \frac{1}{2}m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2W}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-15}}{1{,}7 \cdot 10^{-27}}} = 1{,}37 \cdot 10^{6}\ \text{m/s}
+$$
+
+**Respuesta.** Sobre el protón actúa una fuerza $\vec{F} = 3{,}2 \cdot 10^{-14}\,\vec{j}$ N, que realiza un trabajo de **$1{,}6 \cdot 10^{-15}$ J** en los 5 cm, y el protón alcanza una velocidad de **$1{,}37 \cdot 10^6$ m/s** en el sentido positivo del eje Y. El protón ha atravesado una diferencia de potencial de $E\,d = 10^4$ V.
+
+</Solucion>
+
+<EspiraCampoVariable forma="circular" enunciado descripcion="Espira circular dentro de un campo magnético uniforme B, saliente del papel, que ocupa toda la región dibujada." />
+
+**B2. a)** La espira de la figura está dentro de un campo magnético uniforme $\vec{B}$. Explique si existe fuerza electromotriz inducida y el sentido de la corriente en los siguientes casos: **i)** la espira se desplaza hacia la derecha sin salir del campo; **ii)** la espira permanece en reposo y aumenta la intensidad del campo magnético.
+
+<Solucion>
+
+Según la figura, el campo es saliente del papel $(\odot)$ y perpendicular al plano de la espira. El flujo a través de la espira es $\Phi = B\,S$. Por la **ley de Faraday**, solo se induce una fuerza electromotriz si el flujo cambia con el tiempo, $\varepsilon = -d\Phi/dt$; y por la **ley de Lenz**, la corriente inducida se opone a ese cambio.
+
+**i) La espira se desplaza sin salir del campo.** El campo es uniforme y la espira sigue entera dentro de él, con la misma superficie y la misma orientación: el flujo **no cambia**. Por tanto, **no hay fuerza electromotriz inducida ni corriente**.
+
+**ii) La espira en reposo y el campo aumenta.** El flujo saliente aumenta, así que **sí se induce una fuerza electromotriz**. La corriente inducida crea dentro de la espira un campo entrante $(\otimes)$, que se opone al aumento; por la regla de la mano derecha, la corriente circula en **sentido horario**:
+
+<EspiraCampoVariable
+  forma="circular"
+  notas={["B ⊙ (aumenta)", "I horaria", "B inducido ⊗"]}
+  pie="La espira, en reposo, dentro del campo que sale del papel"
+  descripcion="Espira circular en reposo dentro de un campo magnético uniforme saliente del papel cuya intensidad aumenta. La corriente inducida circula en sentido horario y crea en el interior de la espira un campo entrante, que se opone al aumento del flujo."
+/>
+
+</Solucion>
+
+**b)** Una bobina de 300 espiras circulares de radio 10 cm está situada en un campo magnético uniforme de módulo 0,5 T y perpendicular al plano de las espiras. Si el campo disminuye linealmente hasta anularse en un intervalo de tiempo de 0,5 s, determine: **i)** la fuerza electromotriz inducida en la bobina; **ii)** el sentido de la corriente inducida con la ayuda de un esquema.
+
+<Solucion>
+
+**i) Fuerza electromotriz inducida.** El área de cada espira es $S = \pi r^2 = \pi \cdot 0{,}1^2 = 3{,}14 \cdot 10^{-2}$ m². El campo es perpendicular al plano de las espiras, así que el flujo a través de la bobina es $\Phi = N\,B\,S$. Como el campo disminuye linealmente, el flujo cambia a ritmo constante y la fuerza electromotriz es constante durante esos 0,5 s:
+
+$$
+\varepsilon = -\frac{\Delta\Phi}{\Delta t} = -N\,S\,\frac{\Delta B}{\Delta t} = -300 \cdot 3{,}14 \cdot 10^{-2} \cdot \frac{0 - 0{,}5}{0{,}5} = 9{,}42\ \text{V}
+$$
+
+**ii) Sentido de la corriente.** Tomamos el campo saliente del papel $(\odot)$. El flujo saliente disminuye; por la ley de Lenz, la corriente inducida crea un campo **también saliente**, que compensa la disminución. Por la regla de la mano derecha, la corriente circula en **sentido antihorario** vista desde el lado hacia el que apunta el campo:
+
+<EspiraCampoVariable
+  forma="circular"
+  horaria={false}
+  notas={["B ⊙ (disminuye)", "I antihoraria", "B inducido ⊙"]}
+  pie="Bobina vista desde el lado hacia el que apunta el campo"
+  descripcion="Bobina circular dentro de un campo magnético uniforme saliente del papel que disminuye hasta anularse. La corriente inducida circula en sentido antihorario y crea en el interior un campo saliente, que se opone a la disminución del flujo."
+/>
+
+**Respuesta.** Mientras el campo disminuye se induce una fuerza electromotriz de **9,42 V**, y la corriente circula en **sentido antihorario** vista desde el lado hacia el que apunta el campo (horario si se mira desde el otro lado). Cuando el campo se anula y deja de cambiar, la corriente desaparece.
+
+</Solucion>
