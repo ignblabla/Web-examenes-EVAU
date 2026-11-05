@@ -653,7 +653,7 @@
   .subject-card .geometry-symbol { transform: scale(1.4); }
   .subject-card .graph { transform: scale(1.4); }
   .subject-card .atom { transform: scale(1.15); }
-  .subject-card .english-symbol { transform: scale(1.3); }
+  .subject-card .english-symbol { transform: scale(1.25); }
   .subject-card .french-symbol { transform: scale(1.25); }
 
   .subject-grid--ancha .subject-card {
@@ -670,7 +670,7 @@
   .subject-card .geometry-symbol { transform: scale(1.15); }
   .subject-card .graph { transform: none; }
   .subject-card .atom { transform: none; }
-  .subject-card .english-symbol { transform: scale(1.05); }
+  .subject-card .english-symbol { transform: none; }
   .subject-card .french-symbol { transform: none; }
 }
 
@@ -802,7 +802,6 @@
 }
 
 .english-symbol {
-  width: 155px;
   color: var(--teal);
 }
 
