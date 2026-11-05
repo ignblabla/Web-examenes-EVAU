@@ -9,17 +9,54 @@ export interface Enlace {
   href: string
 }
 
-interface Props {
-  id: string
+// Con grupos, los enlaces se reparten en columnas con un subtítulo cada una (en la portada,
+// Ciencias e Idiomas); los grupos vacíos no se muestran.
+export interface GrupoEnlaces {
   titulo: string
   enlaces: Enlace[]
 }
 
-const { id, titulo, enlaces } = Astro.props
+interface Props {
+  id: string
+  titulo: string
+  enlaces?: Enlace[]
+  grupos?: GrupoEnlaces[]
+}
+
+const { id, titulo, enlaces = [], grupos = [] } = Astro.props
+const conEnlaces = grupos.filter((g) => g.enlaces.length > 0)
 ---
 
 {
-  enlaces.length > 0 && (
+  conEnlaces.length > 0 && (
+    <section class="related" aria-labelledby={id}>
+      <h2 id={id} class="related-title">
+        {titulo}
+      </h2>
+      <div class="related-groups">
+        {conEnlaces.map((grupo) => (
+          <div class="related-group">
+            <h3 class="subject-group-title">{grupo.titulo}</h3>
+            <ul class="related-grid">
+              {grupo.enlaces.map((enlace) => (
+                <li>
+                  <a href={enlace.href} class="related-card">
+                    <span class="related-label">{enlace.etiqueta}</span>
+                    <span class="related-text">{enlace.texto}</span>
+                    <Icon name="arrow-up-right" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+{
+  conEnlaces.length === 0 && enlaces.length > 0 && (
     <section class="related" aria-labelledby={id}>
       <h2 id={id} class="related-title">
         {titulo}

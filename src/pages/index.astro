@@ -2,7 +2,7 @@
 import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 import portada from "../assets/examen-selectividad-andalucia.png"
-import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
+import EnlacesRelacionados, { type Enlace, type GrupoEnlaces } from "../components/EnlacesRelacionados.astro"
 import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
 import { asignaturas, cursoDe } from "../data/asignaturas"
@@ -125,6 +125,12 @@ const ultimosExamenes: Enlace[] = ultimo
         })),
     )
   : []
+// Los mismos enlaces repartidos en dos mitades, Ciencias e Idiomas, según el grupo de cada tarjeta.
+const grupoDe = (href: string) => tarjetas.find((t) => href.startsWith(`/${t.slug}/`))?.grupo
+const ultimosGrupos: GrupoEnlaces[] = grupos.map((g) => ({
+  titulo: g.titulo,
+  enlaces: ultimosExamenes.filter((e) => grupoDe(e.href) === g.tarjetas[0].grupo),
+}))
 // Número de reservas del último curso, solo si es el mismo en todas las asignaturas publicadas
 // (en Física de 2026 solo está la reserva 1).
 const conteosReservas = new Set(ultimo ? publicadas.map((a) => cursoDe(a, ultimo).reservas.length) : [])
@@ -241,7 +247,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
       <EnlacesRelacionados
         id="ultimos-examenes"
         titulo={`Últimos exámenes resueltos: Selectividad ${ultimo?.anio ?? ""}`}
-        enlaces={ultimosExamenes}
+        grupos={ultimosGrupos}
       />
       {
         ultimo && (

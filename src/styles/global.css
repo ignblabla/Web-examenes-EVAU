@@ -920,6 +920,29 @@
   margin-top: 0;
 }
 
+/* Últimos exámenes: Ciencias e Idiomas en dos mitades, con las tarjetas a dos columnas. */
+.related-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 40px;
+}
+
+.related-groups .related-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 980px) {
+  .related-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .related-groups .related-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .latest-note {
   margin: 22px 0 0;
   color: var(--ink-soft);
