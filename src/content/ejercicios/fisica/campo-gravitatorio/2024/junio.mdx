@@ -1,0 +1,135 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2024
+convocatoria: junio
+formato: fisica
+---
+
+import FuerzasTiroOblicuo from "../../../../../components/figuras/fisica/FuerzasTiroOblicuo.astro"
+
+**A1. a)** Razone si son verdaderos los siguientes enunciados: **i)** El trabajo total realizado por las fuerzas no conservativas es igual a la variación de la energía mecánica. **ii)** Siempre que actúen fuerzas no conservativas la energía mecánica varía.
+
+<Solucion>
+
+Partimos del teorema de las fuerzas vivas: el trabajo de todas las fuerzas que actúan sobre un cuerpo es igual a la variación de su energía cinética, $W_{\text{total}} = \Delta E_c$. Separamos ese trabajo en el de las fuerzas conservativas y el de las no conservativas. El de las conservativas es igual a menos la variación de la energía potencial, $W_c = -\Delta E_p$, así que:
+
+$$
+W_c + W_{nc} = \Delta E_c \quad\Rightarrow\quad -\Delta E_p + W_{nc} = \Delta E_c \quad\Rightarrow\quad W_{nc} = \Delta E_c + \Delta E_p = \Delta E_m
+$$
+
+**i) Verdadero.** Es justo la relación que acabamos de deducir: el trabajo total de las fuerzas no conservativas es igual a la variación de la energía mecánica, $W_{nc} = \Delta E_m$.
+
+**ii) Falso.** La energía mecánica solo varía si el trabajo **total** de las fuerzas no conservativas es distinto de cero, y puede actuar una fuerza no conservativa sin que eso ocurra:
+
+- Si la fuerza es perpendicular al desplazamiento, no realiza trabajo. Por ejemplo, la normal sobre un cuerpo que desliza sin rozamiento por un plano inclinado: actúa durante todo el movimiento, pero $W_N = 0$ y la energía mecánica se conserva.
+- Si actúan varias fuerzas no conservativas cuyos trabajos se compensan. Por ejemplo, al arrastrar una caja con velocidad constante por un suelo horizontal, el trabajo positivo de la fuerza que tira es igual al trabajo negativo del rozamiento: $W_{nc} = 0$ y $\Delta E_m = 0$.
+
+</Solucion>
+
+**b)** Un bloque de masa 150 kg desliza por una superficie horizontal con rozamiento. El bloque se mueve hacia la derecha con velocidad inicial 3 m s<sup>-1</sup>. Sobre el bloque actúa una fuerza de módulo 20 N dirigida hacia la izquierda y que forma un ángulo de 30º sobre la horizontal, recorriendo 25 m hasta detenerse. **i)** Realice un esquema de las fuerzas ejercidas sobre el bloque. **ii)** Calcule las variaciones de energía cinética, potencial y mecánica del bloque en el trayecto descrito. **iii)** Calcule el trabajo realizado por cada una de las fuerzas aplicadas sobre el bloque.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** Sobre el bloque actúan cuatro fuerzas: el peso $\vec{P}$, vertical y hacia abajo; la normal $\vec{N}$, vertical y hacia arriba; la fuerza $\vec{F}$ de 20 N, hacia la izquierda y a $30^\circ$ sobre la horizontal; y el rozamiento $\vec{F}_r$, horizontal y hacia la izquierda, porque se opone al movimiento, que es hacia la derecha. Descomponemos $\vec{F}$ en una componente horizontal $(F_x)$, opuesta al movimiento, y otra vertical $(F_y)$, hacia arriba:
+
+<FuerzasTiroOblicuo angulo={30} izquierda fuerza="F" nota="v (frena)" descripcion="Bloque sobre un suelo horizontal que se mueve hacia la derecha y va frenando. El peso P apunta hacia abajo y la normal N hacia arriba; la fuerza F tira hacia la izquierda y hacia arriba, a 30 grados sobre la horizontal, y se descompone en Fx, horizontal hacia la izquierda, y Fy, vertical hacia arriba; el rozamiento Fr, en la base del bloque, apunta hacia la izquierda." />
+
+$$
+P = mg = 150 \cdot 9{,}8 = 1470\ \text{N}, \qquad F_x = 20\cos 30^\circ = 17{,}3\ \text{N}, \qquad F_y = 20\sin 30^\circ = 10\ \text{N}
+$$
+
+En vertical el bloque no se mueve, así que $N + F_y = P$ y la normal vale $N = 1470 - 10 = 1460$ N.
+
+**ii) Variaciones de energía.** El bloque pasa de $3$ m/s a quedarse parado:
+
+$$
+\Delta E_c = \frac{1}{2}m\,v_f^2 - \frac{1}{2}m\,v_0^2 = 0 - \frac{1}{2} \cdot 150 \cdot 3^2 = -675\ \text{J}
+$$
+
+La superficie es horizontal: el bloque no cambia de altura y su energía potencial gravitatoria no varía, $\Delta E_p = mg\,\Delta h = 0$. Por tanto:
+
+$$
+\Delta E_m = \Delta E_c + \Delta E_p = -675\ \text{J}
+$$
+
+**iii) Trabajo de cada fuerza.** El trabajo de una fuerza constante es $W = F\,d\cos\alpha$, siendo $\alpha$ el ángulo entre la fuerza y el desplazamiento (hacia la derecha, $d = 25$ m):
+
+- **Peso y normal**, perpendiculares al desplazamiento $(\alpha = 90^\circ)$: $W_P = W_N = 0$.
+- **Fuerza $\vec{F}$**: apunta hacia la izquierda y $30^\circ$ hacia arriba, así que forma $\alpha = 180^\circ - 30^\circ = 150^\circ$ con el desplazamiento:
+
+$$
+W_F = F\,d\cos 150^\circ = 20 \cdot 25 \cdot (-0{,}866) = -433\ \text{J}
+$$
+
+- **Rozamiento.** No conocemos el coeficiente de rozamiento, pero sí la variación de energía mecánica. Las fuerzas no conservativas son $\vec{F}$, $\vec{N}$ y $\vec{F}_r$, y su trabajo total es $\Delta E_m$ (apartado a):
+
+$$
+W_F + W_N + W_{F_r} = \Delta E_m \quad\Rightarrow\quad W_{F_r} = -675 - (-433) = -242\ \text{J}
+$$
+
+**Respuesta.** El peso y la normal **no realizan trabajo**, la fuerza de 20 N realiza **−433 J** y el rozamiento **−242 J**. Los dos trabajos son negativos porque las dos fuerzas frenan el bloque, y entre ambos suman los $-675$ J de energía cinética que pierde. (El rozamiento vale $F_r = 242/25 = 9{,}68$ N, y como $N = 1460$ N, el coeficiente es $\mu = 9{,}68/1460 = 6{,}6 \cdot 10^{-3}$: un suelo muy deslizante, lógico para que un bloque de 150 kg recorra 25 m.)
+
+</Solucion>
+
+**A2. a)** **i)** Deduzca razonadamente la expresión de la velocidad de escape de un cuerpo desde la superficie de un planeta. **ii)** La masa y el radio de la Tierra son 81 y 3,67 veces la masa y el radio de la Luna, respectivamente. ¿Qué relación existe entre las velocidades de escape desde las superficies de la Tierra y la Luna? Razone su respuesta.
+
+<Solucion>
+
+**i) Velocidad de escape.** Es la velocidad mínima con la que hay que lanzar un cuerpo desde la superficie de un planeta de masa $M$ y radio $R$ para que se aleje indefinidamente, es decir, para que llegue al infinito (donde $E_p = 0$) con velocidad nula. Como solo actúa la fuerza gravitatoria, que es conservativa, la energía mecánica se conserva:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M\,m}{R} = 0 + 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M}{R}}
+$$
+
+No depende de la masa $m$ del cuerpo que se lanza (ni de la dirección del lanzamiento), solo de la masa y el radio del planeta.
+
+**ii) Relación Tierra-Luna.** Dividimos las dos velocidades de escape, con $M_T = 81\,M_L$ y $R_T = 3{,}67\,R_L$:
+
+$$
+\frac{v_{e,T}}{v_{e,L}} = \sqrt{\frac{2\,G\,M_T/R_T}{2\,G\,M_L/R_L}} = \sqrt{\frac{M_T}{M_L}\cdot\frac{R_L}{R_T}} = \sqrt{\frac{81}{3{,}67}} = \sqrt{22{,}1} = 4{,}70
+$$
+
+La velocidad de escape desde la Tierra es **4,7 veces** la de la Luna. Aunque la Tierra es más grande, lo que pesa más es su masa, 81 veces mayor: a más masa (y menos radio), más energía hay que dar al cuerpo para escapar.
+
+</Solucion>
+
+**b)** Se desea poner alrededor de Júpiter un satélite artificial en órbita circular estacionaria (igual periodo que el planeta). Un día en Júpiter es 0,41 veces el día terrestre y la masa de Júpiter es 318 veces la de la Tierra. Determine: **i)** el radio orbital alrededor de Júpiter; **ii)** la relación que existe entre los radios orbitales de dos satélites que orbitan estacionariamente alrededor de la Tierra y de Júpiter.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>Júpiter</sub> = 1,9·10<sup>27</sup> kg; T<sub>Tierra</sub> = 24 h</Datos>
+
+<Solucion>
+
+**i) Radio de la órbita estacionaria de Júpiter.** En una órbita circular, la fuerza gravitatoria es la fuerza centrípeta. Escribiendo la velocidad en función del periodo, $v = 2\pi r/T$, se obtiene la tercera ley de Kepler:
+
+$$
+\frac{G\,M\,m}{r^2} = m\,\frac{v^2}{r} = m\,\frac{4\pi^2 r}{T^2}
+\quad\Rightarrow\quad
+r^3 = \frac{G\,M\,T^2}{4\pi^2}
+$$
+
+El satélite es estacionario si su periodo es el de rotación de Júpiter:
+
+$$
+T_J = 0{,}41 \cdot 24\ \text{h} = 9{,}84\ \text{h} = 9{,}84 \cdot 3600 = 3{,}54 \cdot 10^{4}\ \text{s}
+$$
+
+$$
+r_J = \sqrt[3]{\frac{G\,M_J\,T_J^2}{4\pi^2}} = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 1{,}9 \cdot 10^{27} \cdot (3{,}54 \cdot 10^{4})^2}{4\pi^2}} = \sqrt[3]{4{,}03 \cdot 10^{24}} = 1{,}59 \cdot 10^{8}\ \text{m}
+$$
+
+**ii) Relación entre los radios de las órbitas estacionarias.** Aplicamos $r^3 = G\,M\,T^2/(4\pi^2)$ a los dos planetas y dividimos; $G$ y $4\pi^2$ se simplifican:
+
+$$
+\frac{r_J^3}{r_T^3} = \frac{M_J}{M_T}\cdot\frac{T_J^2}{T_T^2} = 318 \cdot 0{,}41^2 = 53{,}5
+\quad\Rightarrow\quad
+\frac{r_J}{r_T} = \sqrt[3]{53{,}5} = 3{,}77
+$$
+
+**Respuesta.** El satélite estacionario de Júpiter debe orbitar a **$1{,}59 \cdot 10^8$ m** del centro del planeta, y ese radio es **3,77 veces** el de la órbita geoestacionaria terrestre. Comprobación: $r_T = 1{,}59 \cdot 10^8 / 3{,}77 = 4{,}22 \cdot 10^7$ m, unos 42 000 km, que es el radio conocido de la órbita geoestacionaria. Júpiter gira más deprisa que la Tierra, lo que acercaría la órbita, pero su masa es tan grande que el efecto dominante es el de la masa.
+
+</Solucion>

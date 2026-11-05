@@ -107,6 +107,21 @@ const fisica2025: Cabecera = {
   ],
 }
 
+// Física, curso 2023-2024 (PEvAU): cuatro bloques con dos ejercicios cada uno, de los que se elige uno.
+const fisica2024: Cabecera = {
+  ...fisica2026,
+  titulo: ["PRUEBA DE EVALUACIÓN DE BACHILLERATO PARA EL", "ACCESO A LA UNIVERSIDAD Y PRUEBAS DE ADMISIÓN"],
+  curso: "CURSO 2023-2024",
+  instrucciones: [
+    "a) Duración: 1 hora y 30 minutos.",
+    "b) Todas las cuestiones deben responderse en el papel entregado para la realización del examen y nunca en los folios que contienen los enunciados.",
+    "c) El examen consta de 8 ejercicios (dos ejercicios por cada bloque A, B, C y D). El alumno/a debe desarrollar un ejercicio por cada bloque. En caso de responder a más ejercicios de los requeridos, solo será tenido en cuenta el respondido en primer lugar en cada bloque.",
+    "d) Puede utilizar regla, compás y calculadora que no sea programable, ni gráfica ni con capacidad para almacenar o transmitir datos.",
+    "e) Cada ejercicio se calificará entre 0 y 2,5 puntos: apartado (a) hasta 1 punto y (b) hasta 1,5 puntos.",
+    "f) En cada ejercicio solo se pueden utilizar los datos proporcionados en su enunciado.",
+  ],
+}
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -438,6 +453,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2024/junio": fisica2024,
+  "fisica/2024/julio": fisica2024,
+  "fisica/2024/reserva-1": fisica2024,
+  "fisica/2024/reserva-2": fisica2024,
+  "fisica/2024/reserva-3": fisica2024,
+  "fisica/2024/reserva-4": fisica2024,
   "fisica/2025/junio": fisica2025,
   "fisica/2025/julio": fisica2025,
   "fisica/2025/reserva-1": fisica2025,

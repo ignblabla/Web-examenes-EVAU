@@ -1,0 +1,73 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: reserva-2
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** ¿Puede una lente delgada convergente crear una imagen virtual? Razone su respuesta realizando el trazado de rayos correspondiente y explicando cómo se construye la imagen a partir de dicho trazado. Indique claramente la posición del objeto respecto a dicha lente y respecto al foco.
+
+<Solucion>
+
+**Sí**, cuando el objeto está **entre el foco objeto $F$ y la lente**, a una distancia de la lente menor que la distancia focal. Es lo que ocurre en una lupa.
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), trazamos desde el extremo del objeto:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo cuya prolongación hacia atrás pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4.6} xMax={3.4} descripcion="Lente convergente con el objeto entre el foco objeto F y la lente. El rayo paralelo al eje se refracta por el foco imagen F', el que pasa por el centro óptico no se desvía y el que parece venir de F sale paralelo. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan delante de la lente, más lejos que el objeto, donde se forma una imagen virtual, derecha y mayor." />
+
+**Construcción de la imagen.** Como el objeto está más cerca de la lente que el foco, la lente no consigue hacer converger los rayos: después de refractarse siguen **divergiendo** y no se cortan. Sus **prolongaciones** hacia atrás sí se cortan, en el mismo lado que el objeto y más lejos de la lente. Ahí está la imagen, que es:
+
+- **virtual**: la forman las prolongaciones de los rayos, no los rayos, y no se puede recoger en una pantalla;
+- **derecha**: queda por encima del eje, como el objeto;
+- **mayor que el objeto**.
+
+Si el objeto está más lejos que el foco, la imagen de una lente convergente es siempre real; y si está justo en el foco, los rayos salen paralelos y no se forma imagen.
+
+</Solucion>
+
+**b)** Un objeto de 3 cm de altura se sitúa a 10 cm de un espejo cóncavo cuyo radio de curvatura mide 30 cm. **i)** Calcule la posición y el tamaño de la imagen, indicando el criterio de signos aplicado. **ii)** Realice el trazado de rayos e indique las características de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz llega de izquierda a derecha y el origen está en el vértice del espejo. Son negativas las distancias a la izquierda del espejo (delante de él, por donde llega la luz) y positivas las de detrás; las alturas son positivas por encima del eje. En un espejo cóncavo el centro de curvatura está delante del espejo, así que $R = -30$ cm y la distancia focal es $f = R/2 = -15$ cm. El objeto está en $s = -10$ cm y mide $y = 3$ cm.
+
+**i) Posición y tamaño de la imagen.** Ecuación de los espejos:
+
+$$
+\frac{1}{s'} + \frac{1}{s} = \frac{1}{f}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{-15} - \frac{1}{-10} = \frac{-2 + 3}{30} = \frac{1}{30}
+\quad\Rightarrow\quad
+s' = 30\ \text{cm}
+$$
+
+Aumento lateral y tamaño:
+
+$$
+A = \frac{y'}{y} = -\frac{s'}{s} = -\frac{30}{-10} = 3
+\quad\Rightarrow\quad
+y' = 3 \cdot 3 = 9\ \text{cm}
+$$
+
+La imagen está **30 cm detrás del espejo** y mide **9 cm**.
+
+**ii) Trazado de rayos y características.** El objeto está entre el foco y el espejo. Trazamos un rayo paralelo al eje, que se refleja pasando por el foco $F$, y otro dirigido como si viniera del centro de curvatura $C$, que se refleja sobre sí mismo:
+
+<TrazadoRayos tipo="concavo" f={-15} s={-10} y={3} xMin={-34} xMax={36} descripcion="Espejo cóncavo de 30 centímetros de radio con un objeto de 3 centímetros a 10 centímetros, entre el foco y el espejo. Los rayos reflejados divergen; sus prolongaciones se cortan detrás del espejo, a 30 centímetros, donde se forma una imagen virtual, derecha y tres veces mayor." />
+
+Los rayos reflejados divergen; sus prolongaciones se cortan detrás del espejo. La imagen es:
+
+- **Virtual**: se forma detrás del espejo $(s' > 0)$, por el corte de las prolongaciones.
+- **Derecha**: $A > 0$.
+- **Mayor que el objeto**: tres veces su tamaño $(A = 3)$.
+
+Es lo que ocurre en los espejos de aumento para maquillarse o afeitarse: al acercar la cara a menos de la distancia focal se ve una imagen derecha y ampliada.
+
+</Solucion>

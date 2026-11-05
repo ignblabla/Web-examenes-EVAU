@@ -1,0 +1,87 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2024
+convocatoria: junio
+formato: fisica
+---
+
+**C1. a)** Demuestre razonadamente, a partir de la ecuación de onda, cómo varían la velocidad y la aceleración máxima de oscilación de una onda armónica en las siguientes situaciones: **i)** se duplica la amplitud sin modificar el periodo; **ii)** se duplica la frecuencia sin modificar la amplitud.
+
+<Solucion>
+
+Partimos de la ecuación de una onda armónica que se propaga en el sentido positivo del eje OX:
+
+$$
+y(x, t) = A\sin(\omega t - kx), \qquad \omega = \frac{2\pi}{T} = 2\pi f
+$$
+
+Derivando respecto del tiempo obtenemos la velocidad y la aceleración de oscilación de cada punto:
+
+$$
+v(x, t) = \frac{\partial y}{\partial t} = A\,\omega\cos(\omega t - kx), \qquad
+a(x, t) = \frac{\partial v}{\partial t} = -A\,\omega^2\sin(\omega t - kx)
+$$
+
+Como el seno y el coseno valen como máximo 1, los valores máximos son:
+
+$$
+v_{\text{máx}} = A\,\omega = 2\pi f A, \qquad a_{\text{máx}} = A\,\omega^2 = 4\pi^2 f^2 A
+$$
+
+**i) Se duplica la amplitud con el mismo periodo.** Con el periodo no cambia $\omega$, y las dos magnitudes son proporcionales a $A$:
+
+$$
+v'_{\text{máx}} = (2A)\,\omega = 2\,v_{\text{máx}}, \qquad a'_{\text{máx}} = (2A)\,\omega^2 = 2\,a_{\text{máx}}
+$$
+
+La velocidad máxima y la aceleración máxima **se duplican**.
+
+**ii) Se duplica la frecuencia con la misma amplitud.** Ahora $\omega' = 2\pi(2f) = 2\omega$:
+
+$$
+v'_{\text{máx}} = A\,(2\omega) = 2\,v_{\text{máx}}, \qquad a'_{\text{máx}} = A\,(2\omega)^2 = 4\,a_{\text{máx}}
+$$
+
+La velocidad máxima **se duplica** y la aceleración máxima **se cuadruplica**, porque depende del cuadrado de la frecuencia.
+
+</Solucion>
+
+**b)** En una cuerda se propaga una onda armónica cuya ecuación viene dada por: *y*(*x*,*t*) = 0,2·cos(0,2π *x* + 0,25π *t* + π) (S.I.). Calcule razonadamente: **i)** la frecuencia y la longitud de onda; **ii)** la velocidad de propagación de la onda, especificando su dirección y sentido de propagación; **iii)** la velocidad máxima de oscilación de la onda.
+
+<Solucion>
+
+Comparamos con la ecuación general $y(x, t) = A\cos(\omega t \pm kx + \varphi_0)$ y leemos:
+
+$$
+A = 0{,}2\ \text{m}, \qquad k = 0{,}2\pi\ \text{rad/m}, \qquad \omega = 0{,}25\pi\ \text{rad/s}, \qquad \varphi_0 = \pi\ \text{rad}
+$$
+
+**i) Frecuencia y longitud de onda.**
+
+$$
+f = \frac{\omega}{2\pi} = \frac{0{,}25\pi}{2\pi} = 0{,}125\ \text{Hz}, \qquad
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{0{,}2\pi} = 10\ \text{m}
+$$
+
+**ii) Velocidad de propagación.**
+
+$$
+v = \frac{\omega}{k} = \lambda f = 10 \cdot 0{,}125 = 1{,}25\ \text{m/s}
+$$
+
+La onda se propaga en la **dirección del eje OX** (la variable espacial es $x$) y en **sentido negativo**, porque los términos $kx$ y $\omega t$ tienen el mismo signo: para que la fase se mantenga constante al aumentar $t$, $x$ tiene que disminuir.
+
+**iii) Velocidad máxima de oscilación.** Derivamos respecto del tiempo:
+
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = -0{,}2 \cdot 0{,}25\pi\,\sin(0{,}2\pi x + 0{,}25\pi t + \pi)\ \text{m/s}
+$$
+
+$$
+v_{y,\text{máx}} = A\,\omega = 0{,}2 \cdot 0{,}25\pi = 0{,}05\pi = 0{,}157\ \text{m/s}
+$$
+
+**Respuesta.** La onda tiene una frecuencia de **0,125 Hz** y una longitud de onda de **10 m**; se propaga a **1,25 m/s** a lo largo del eje OX en **sentido negativo**, y los puntos de la cuerda oscilan con una velocidad máxima de **0,157 m/s**. No hay que confundir las dos velocidades: la de propagación es la de la onda a lo largo de la cuerda y es constante; la de oscilación es la de cada punto de la cuerda, perpendicular a ella, y varía con el tiempo.
+
+</Solucion>

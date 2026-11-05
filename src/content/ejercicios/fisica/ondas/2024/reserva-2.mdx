@@ -1,0 +1,83 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2024
+convocatoria: reserva-2
+formato: fisica
+---
+
+**C2. a)** Dos partículas, una de masa *m* y otra de masa *2m*, unidas a resortes horizontales de igual constante elástica *k*, describen movimientos armónicos simples de igual amplitud. Determine razonadamente la relación que existe entre: **i)** la energía mecánica de ambas partículas; **ii)** la velocidad máxima de oscilación de ambas partículas.
+
+<Solucion>
+
+En un movimiento armónico simple de amplitud $A$ producido por un resorte de constante $k$, la frecuencia angular es $\omega = \sqrt{k/m}$. Llamamos 1 a la partícula de masa $m$ y 2 a la de masa $2m$.
+
+**i) Energía mecánica.** En los extremos de la oscilación la partícula está en reposo y toda la energía es potencial elástica, así que:
+
+$$
+E_m = \frac{1}{2}k\,A^2
+$$
+
+Solo depende de la constante del resorte y de la amplitud, que son iguales en los dos casos:
+
+$$
+\frac{E_{m,1}}{E_{m,2}} = \frac{\frac{1}{2}k\,A^2}{\frac{1}{2}k\,A^2} = 1
+$$
+
+Las dos partículas tienen **la misma energía mecánica**.
+
+**ii) Velocidad máxima.** La velocidad máxima se alcanza en la posición de equilibrio y vale $v_{\text{máx}} = A\,\omega = A\sqrt{k/m}$:
+
+$$
+\frac{v_{\text{máx},1}}{v_{\text{máx},2}} = \frac{A\sqrt{k/m}}{A\sqrt{k/(2m)}} = \sqrt{2} = 1{,}41
+$$
+
+La partícula de masa $m$ tiene una velocidad máxima **$\sqrt{2}$ veces** mayor. Es coherente con el apartado anterior: en el punto de equilibrio toda la energía es cinética, $\frac{1}{2}m\,v_{\text{máx}}^2 = \frac{1}{2}k\,A^2$, y con la misma energía, la partícula más ligera va más rápido.
+
+</Solucion>
+
+**b)** Una masa de 3 kg está unida a un muelle de constante elástica de 12 N m<sup>-1</sup> sobre una superficie horizontal sin rozamiento. El muelle se alarga 4 cm y se suelta en el instante inicial *t* = 0 s. Determine: **i)** el periodo de oscilación; **ii)** la expresión de la posición de la masa en función del tiempo; **iii)** la velocidad y la aceleración para *t* = 3,5 s.
+
+<Solucion>
+
+**i) Periodo.** Sin rozamiento, la masa describe un movimiento armónico simple de frecuencia angular:
+
+$$
+\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{12}{3}} = 2\ \text{rad/s}
+\quad\Rightarrow\quad
+T = \frac{2\pi}{\omega} = \frac{2\pi}{2} = \pi\ \text{s} = 3{,}14\ \text{s}
+$$
+
+**ii) Posición en función del tiempo.** Se suelta desde el reposo con el muelle alargado 4 cm: esa es la elongación máxima, así que la amplitud es $A = 0{,}04$ m y en $t = 0$ la masa está en $x = +A$. Escribimos $x(t) = A\cos(\omega t + \varphi_0)$ e imponemos $x(0) = A$:
+
+$$
+A\cos\varphi_0 = A \quad\Rightarrow\quad \varphi_0 = 0
+$$
+
+$$
+x(t) = 0{,}04\cos(2\,t)\ \text{m}
+$$
+
+(Equivalentemente, $x(t) = 0{,}04\sin\left(2\,t + \dfrac{\pi}{2}\right)$ m.)
+
+**iii) Velocidad y aceleración en $t = 3{,}5$ s.** Derivamos respecto del tiempo:
+
+$$
+v(t) = \frac{dx}{dt} = -0{,}04 \cdot 2\sin(2\,t) = -0{,}08\sin(2\,t)\ \text{m/s}
+$$
+
+$$
+a(t) = \frac{dv}{dt} = -0{,}08 \cdot 2\cos(2\,t) = -0{,}16\cos(2\,t)\ \text{m/s}^2 \quad (= -\omega^2 x)
+$$
+
+En $t = 3{,}5$ s la fase es $2 \cdot 3{,}5 = 7$ rad (con la calculadora en radianes: $\sin 7 = 0{,}657$ y $\cos 7 = 0{,}754$):
+
+$$
+v(3{,}5) = -0{,}08 \cdot 0{,}657 = -5{,}26 \cdot 10^{-2}\ \text{m/s}
+\qquad
+a(3{,}5) = -0{,}16 \cdot 0{,}754 = -0{,}121\ \text{m/s}^2
+$$
+
+**Respuesta.** El periodo es **π s ≈ 3,14 s**, la posición es **$x(t) = 0{,}04\cos(2t)$ m**, y en $t = 3{,}5$ s la velocidad es **$-5{,}26 \cdot 10^{-2}$ m/s** y la aceleración **$-0{,}121$ m/s²**. En ese instante la masa está en $x = 0{,}04 \cdot 0{,}754 = 0{,}030$ m, al lado del alargamiento, y vuelve hacia el equilibrio: velocidad y aceleración negativas (la aceleración siempre apunta hacia la posición de equilibrio).
+
+</Solucion>

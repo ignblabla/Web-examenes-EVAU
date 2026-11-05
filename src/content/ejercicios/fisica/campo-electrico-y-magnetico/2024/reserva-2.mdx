@@ -1,0 +1,137 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2024
+convocatoria: reserva-2
+formato: fisica
+---
+
+import ParticulasCampoMagnetico from "../../../../../components/figuras/fisica/ParticulasCampoMagnetico.astro"
+import ProtonAceleradoCampoB from "../../../../../components/figuras/fisica/ProtonAceleradoCampoB.astro"
+import RielesLadoMovil from "../../../../../components/figuras/fisica/RielesLadoMovil.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una espira se encuentra en un campo magnético $\vec{B}$ uniforme perpendicular al plano de la misma y tiene un lado móvil que se mueve con velocidad $\vec{v}$, tal como se indica en la figura. Responda razonadamente a las siguientes preguntas: **i)** ¿Se induce fuerza electromotriz en la espira mientras el lado móvil está en movimiento? En caso afirmativo, señale el sentido de la corriente inducida. **ii)** Si el lado móvil se detiene ¿habrá fuerza electromotriz inducida?
+
+<RielesLadoMovil />
+
+<Solucion>
+
+La espira es la que forman el marco, cerrado por la izquierda, y el lado móvil. Su área es $S = L\,x$, siendo $L$ la longitud del lado móvil y $x$ su distancia al lado izquierdo del marco. El campo es perpendicular a la espira, así que el flujo es $\Phi = B\,S = B\,L\,x$.
+
+**i) Sí.** Mientras el lado móvil avanza hacia la derecha, $x$ aumenta, el área de la espira crece y el flujo también. Por la ley de Faraday-Lenz se induce una f.e.m.:
+
+$$
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right| = B\,L\,\frac{dx}{dt} = B\,L\,v
+$$
+
+**Sentido de la corriente.** El flujo **saliente** aumenta. Según la ley de Lenz, la corriente inducida se opone a ese aumento: crea dentro de la espira un campo **entrante**, y para eso circula en **sentido horario** (baja por el lado móvil):
+
+<RielesLadoMovil solucion />
+
+Se llega a lo mismo con la fuerza de Lorentz sobre las cargas del lado móvil: con $\vec{v}$ hacia la derecha y $\vec{B}$ saliente, $\vec{F} = q\,\vec{v}\times\vec{B}$ apunta hacia abajo para una carga positiva, así que la corriente baja por el lado móvil.
+
+**ii) No.** Si el lado móvil se detiene, el área de la espira ya no cambia; el campo es uniforme y constante, así que el flujo tampoco varía, $d\Phi/dt = 0$, y **no se induce f.e.m.** La espira sigue atravesada por un flujo, pero lo que induce corriente es su variación, no su valor.
+
+</Solucion>
+
+**b)** Una espira cuadrada de lado 4 cm está inmersa en un campo magnético $\vec{B} = 3\,\vec{i}$ T. La espira está inicialmente situada en el plano XY de forma que el flujo magnético en la espira es nulo, y comienza a girar con una velocidad angular de 10 rad s<sup>-1</sup> en torno al eje OY. **i)** Calcule, ayudándose de un esquema, el flujo magnético en función del tiempo. **ii)** Calcule la resistencia eléctrica de la espira, si la intensidad inducida máxima es de 0,25 A.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** La superficie de la espira es $S = 0{,}04^2 = 1{,}6 \cdot 10^{-3}$ m². En $t = 0$ la espira está en el plano XY, así que su vector superficie $\vec{S}$ tiene la dirección del eje OZ, perpendicular al campo (que va según OX): el flujo es nulo, como dice el enunciado.
+
+Al girar en torno al eje OY, el vector superficie gira en el plano XZ. Tras un tiempo $t$ ha girado un ángulo $\omega t$ desde el eje OZ, y el ángulo que forma con $\vec{B}$ es $\theta = 90^\circ - \omega t$. Vemos el plano XZ desde el eje OY:
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.8}
+  yMin={-1.3}
+  yMax={1.5}
+  escala={80}
+  unidad=""
+  ejes={["x", "z"]}
+  puntos={[{ x: 0, y: 0, texto: "eje OY", tipo: "punto", dx: -52, dy: 16 }]}
+  vectores={[
+    { desde: [0, 0], v: [56, 68], texto: "S", dx: 6, dy: 2 },
+    { desde: [-1.4, 1.1], v: [60, 0], texto: "B", color: "#2d6fa3", dx: 4, dy: -6 },
+    { desde: [-1.4, -1.1], v: [60, 0], texto: "B", color: "#2d6fa3", dx: 4, dy: -6 },
+  ]}
+  segmentos={[[-0.62, 0.51, 0.62, -0.51]]}
+  descripcion="Vista del plano XZ desde el eje OY, que sale del papel en el origen. La espira, vista de canto, es un segmento que pasa por el origen y gira; su vector superficie S, perpendicular a ella, forma un ángulo omega t con el eje Z. El campo B es horizontal, en la dirección del eje X."
+/>
+
+$$
+\Phi(t) = B\,S\cos(90^\circ - \omega t) = B\,S\sin(\omega t) = 3 \cdot 1{,}6 \cdot 10^{-3}\,\sin(10\,t) = 4{,}8 \cdot 10^{-3}\sin(10\,t)\ \text{Wb}
+$$
+
+**ii) Resistencia de la espira.** La f.e.m. inducida es:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -4{,}8 \cdot 10^{-3} \cdot 10\cos(10\,t) = -4{,}8 \cdot 10^{-2}\cos(10\,t)\ \text{V}
+$$
+
+Su valor máximo es $\varepsilon_{\text{máx}} = B\,S\,\omega = 4{,}8 \cdot 10^{-2}$ V, y se alcanza cuando la espira es paralela al campo (flujo nulo, pero cambiando lo más deprisa posible). Por la ley de Ohm, la intensidad máxima es $I_{\text{máx}} = \varepsilon_{\text{máx}}/R$:
+
+$$
+R = \frac{\varepsilon_{\text{máx}}}{I_{\text{máx}}} = \frac{4{,}8 \cdot 10^{-2}}{0{,}25} = 0{,}192\ \Omega
+$$
+
+**Respuesta.** El flujo es **$\Phi(t) = 4{,}8 \cdot 10^{-3}\sin(10\,t)$ Wb** y la resistencia de la espira es **0,192 Ω**. Es el principio de un alternador: al girar la espira, el flujo y la f.e.m. varían de forma sinusoidal.
+
+</Solucion>
+
+**B2. a)** En una región del espacio en la que existe un campo magnético uniforme entran perpendicularmente al campo un electrón y un protón con igual velocidad. **i)** Deduzca y represente gráficamente la trayectoria de cada una de las partículas. **ii)** ¿Cómo varían sus respectivas energías cinéticas a lo largo de su trayectoria?
+
+<Solucion>
+
+**i) Trayectorias.** Sobre cada partícula actúa la fuerza magnética de Lorentz, $\vec{F} = q\,\vec{v}\times\vec{B}$. Como $\vec{v}$ es perpendicular a $\vec{B}$, su módulo es $F = |q|\,v\,B$, y es siempre perpendicular a la velocidad: no cambia su módulo, solo su dirección. Es una fuerza centrípeta constante, y cada partícula describe un **movimiento circular uniforme**:
+
+$$
+|q|\,v\,B = \frac{m\,v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+El electrón y el protón tienen cargas del mismo valor absoluto, $e$, y la misma velocidad, así que el radio es proporcional a la masa:
+
+$$
+\frac{R_p}{R_e} = \frac{m_p}{m_e} \approx 1836
+$$
+
+- El **protón** describe una circunferencia mucho mayor que la del electrón.
+- Como las cargas tienen signos opuestos, las fuerzas tienen sentidos opuestos y las partículas **giran en sentidos contrarios**: con el campo entrante, el protón gira en sentido antihorario y el electrón en sentido horario.
+
+<ParticulasCampoMagnetico />
+
+**ii) Energía cinética.** La fuerza magnética es perpendicular a la velocidad en todo momento, así que **no realiza trabajo** $(W = \int \vec{F}\cdot d\vec{r} = 0)$. Por el teorema de las fuerzas vivas, la energía cinética de cada partícula **no varía**: las dos se mueven con velocidad de módulo constante.
+
+</Solucion>
+
+**b)** Un protón, después de ser acelerado mediante una diferencia de potencial de 10<sup>5</sup> V, entra en una región del espacio donde existe un campo magnético de 0,15 T perpendicular a su velocidad. **i)** Calcule la velocidad del protón tras ser acelerado. **ii)** Realice un esquema indicando la trayectoria y calcule el valor de su radio.
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Velocidad tras ser acelerado.** Suponemos que el protón parte del reposo. El campo eléctrico realiza sobre él un trabajo $W = e\,\Delta V$, que se convierte en energía cinética:
+
+$$
+e\,\Delta V = \frac{1}{2}m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,e\,\Delta V}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-19} \cdot 10^5}{1{,}7 \cdot 10^{-27}}} = 4{,}34 \cdot 10^{6}\ \text{m/s}
+$$
+
+**ii) Trayectoria y radio.** Dentro del campo magnético, la fuerza de Lorentz es perpendicular a la velocidad y actúa como fuerza centrípeta: el protón describe un movimiento circular uniforme. Con la velocidad hacia la derecha y el campo entrante, $\vec{F} = e\,\vec{v}\times\vec{B}$ apunta hacia arriba, y el protón gira en sentido antihorario; da media vuelta y sale del campo:
+
+<ProtonAceleradoCampoB descripcion="Un protón parte del reposo junto a la placa positiva, se acelera hasta la placa negativa y entra hacia la derecha en una región con un campo magnético entrante. Allí la fuerza magnética, perpendicular a la velocidad y dirigida hacia el centro, le hace describir media circunferencia de radio r en sentido antihorario, y sale del campo moviéndose hacia la izquierda." />
+
+$$
+e\,v\,B = \frac{m_p\,v^2}{r}
+\quad\Rightarrow\quad
+r = \frac{m_p\,v}{e\,B} = \frac{1{,}7 \cdot 10^{-27} \cdot 4{,}34 \cdot 10^{6}}{1{,}6 \cdot 10^{-19} \cdot 0{,}15} = 0{,}307\ \text{m}
+$$
+
+**Respuesta.** El protón sale acelerado a **$4{,}34 \cdot 10^6$ m/s** (un 1,4 % de la velocidad de la luz, así que el cálculo clásico es válido) y describe en el campo una circunferencia de radio **0,307 m**.
+
+</Solucion>

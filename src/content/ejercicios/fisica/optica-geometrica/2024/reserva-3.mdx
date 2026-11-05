@@ -1,0 +1,78 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: reserva-3
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+
+**C1. a)** Un rayo viaja por un medio de índice de refracción *n*<sub>1</sub> e incide sobre la superficie de un segundo medio de índice de refracción *n*<sub>2</sub>. Si se cumple que *n*<sub>1</sub> = 3 *n*<sub>2</sub>, determine razonadamente: **i)** la relación entre las velocidades del rayo en ambos medios; **ii)** el valor mínimo del ángulo de incidencia para que no se produzca refracción.
+
+<Solucion>
+
+**i) Relación entre las velocidades.** El índice de refracción de un medio es el cociente entre la velocidad de la luz en el vacío y en el medio, $n = c/v$, así que $v = c/n$:
+
+$$
+\frac{v_2}{v_1} = \frac{c/n_2}{c/n_1} = \frac{n_1}{n_2} = 3
+$$
+
+En el segundo medio la luz va **tres veces más rápida** que en el primero.
+
+**ii) Ángulo mínimo para que no haya refracción.** La luz pasa de un medio de mayor índice a otro de menor índice, así que se aleja de la normal. Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Al aumentar el ángulo de incidencia, el de refracción llega a $90^\circ$; ese ángulo de incidencia es el **ángulo límite**:
+
+$$
+n_1\sin\theta_L = n_2\sin 90^\circ
+\quad\Rightarrow\quad
+\sin\theta_L = \frac{n_2}{n_1} = \frac{1}{3}
+\quad\Rightarrow\quad
+\theta_L = 19{,}5^\circ
+$$
+
+Para ángulos de incidencia **iguales o mayores que $19{,}5^\circ$** no hay rayo refractado: la luz se refleja totalmente hacia el primer medio (reflexión total).
+
+</Solucion>
+
+**b)** Un haz de luz monocromática de longitud de onda 8,3·10<sup>-7</sup> m se propaga por el aire e incide sobre la superficie de separación con otro medio, formando un ángulo de 30º respecto a la normal. Si al refractarse al segundo medio su longitud de onda pasa a ser 4,8·10<sup>-7</sup> m, calcule razonadamente: **i)** la frecuencia del haz en el segundo medio; **ii)** el índice de refracción del segundo medio; **iii)** el ángulo de refracción.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1</Datos>
+
+<Solucion>
+
+**i) Frecuencia.** La frecuencia de una onda no cambia al pasar de un medio a otro: la impone la fuente. La calculamos en el aire, donde la luz va a $c$:
+
+$$
+f = \frac{c}{\lambda_{\text{aire}}} = \frac{3 \cdot 10^8}{8{,}3 \cdot 10^{-7}} = 3{,}61 \cdot 10^{14}\ \text{Hz}
+$$
+
+En el segundo medio la frecuencia es la misma, **$3{,}61 \cdot 10^{14}$ Hz**.
+
+**ii) Índice de refracción.** En el segundo medio la velocidad es $v_2 = \lambda_2\,f$, y como $n = c/v$:
+
+$$
+n_2 = \frac{c}{\lambda_2\,f} = \frac{\lambda_{\text{aire}}}{\lambda_2} = \frac{8{,}3 \cdot 10^{-7}}{4{,}8 \cdot 10^{-7}} = 1{,}73
+$$
+
+**iii) Ángulo de refracción.** Por la ley de Snell:
+
+$$
+n_{\text{aire}}\sin 30^\circ = n_2\sin r
+\quad\Rightarrow\quad
+\sin r = \frac{0{,}5}{1{,}73} = 0{,}289
+\quad\Rightarrow\quad
+r = 16{,}8^\circ
+$$
+
+<RefraccionCapas
+  incidencia={30}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Medio 2", n: 1.729, color: "#dfe9f0", texto: "Medio 2 (n = 1,73)" },
+  ]}
+  descripcion="Rayo que incide desde el aire con 30 grados respecto a la normal y se refracta en un medio de índice 1,73, acercándose a la normal: forma 16,8 grados con ella."
+/>
+
+**Respuesta.** En el segundo medio la frecuencia sigue siendo **$3{,}61 \cdot 10^{14}$ Hz**, el índice de refracción es **1,73** y el rayo se refracta con un ángulo de **16,8°**, acercándose a la normal porque pasa a un medio más refringente.
+
+</Solucion>

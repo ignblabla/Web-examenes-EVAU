@@ -1,0 +1,151 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2024
+convocatoria: reserva-2
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Dos satélites, A y B, describen órbitas circulares concéntricas alrededor de la Tierra. Razone cuál de los dos tiene mayor energía cinética en las siguientes situaciones: **i)** sus masas son iguales y el radio orbital de A es mayor que el de B; **ii)** los dos satélites están en la misma órbita y la masa de A es menor que la de B.
+
+<Solucion>
+
+En una órbita circular de radio $r$, la fuerza gravitatoria de la Tierra es la fuerza centrípeta:
+
+$$
+\frac{G\,M_T\,m}{r^2} = \frac{m\,v^2}{r}
+\quad\Rightarrow\quad
+v^2 = \frac{G\,M_T}{r}
+\quad\Rightarrow\quad
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M_T\,m}{2\,r}
+$$
+
+La energía cinética es proporcional a la masa del satélite e inversamente proporcional al radio de la órbita.
+
+**i) Masas iguales, $r_A > r_B$.** $\dfrac{E_{c,A}}{E_{c,B}} = \dfrac{r_B}{r_A} < 1$: **B tiene más energía cinética**. Al estar en una órbita más baja, la atracción de la Tierra es mayor y necesita más velocidad para mantenerse en ella.
+
+**ii) Misma órbita, $m_A < m_B$.** La velocidad orbital no depende de la masa del satélite, así que los dos van igual de rápido, pero $\dfrac{E_{c,B}}{E_{c,A}} = \dfrac{m_B}{m_A} > 1$: **B tiene más energía cinética**, porque tiene más masa.
+
+</Solucion>
+
+**b)** Dos masas puntuales de 10 y 5 kg están situadas en los puntos A(0,3) m y B(4,0) m, respectivamente. **i)** Realice un esquema del campo gravitatorio producido por cada una de las masas en el punto C(4,3) m y calcule su valor en dicho punto. **ii)** Determine el trabajo necesario para desplazar una tercera masa de 4 kg desde el punto C hasta el punto O(0,0) m. Discuta el signo del trabajo.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** La masa de A está a 4 m de C, a su izquierda, y crea un campo hacia la izquierda $(-\vec{i})$; la de B está a 3 m, debajo, y su campo apunta hacia abajo $(-\vec{j})$:
+
+<Vectores
+  xMin={-0.8}
+  xMax={5.4}
+  yMin={-0.8}
+  yMax={4.2}
+  escala={44}
+  marcasX={[1, 2, 3, 4]}
+  marcasY={[1, 2, 3]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 3, texto: "A: 10 kg", tipo: "masa", dx: 10, dy: -12 },
+    { x: 4, y: 0, texto: "B: 5 kg", tipo: "masa", dx: 12, dy: -6 },
+    { x: 4, y: 3, texto: "C", tipo: "punto", dx: 8, dy: -10 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -16, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [4, 3], v: [-62, 0], texto: "g", sub: "A", dx: -10, dy: -10 },
+    { desde: [4, 3], v: [0, -55], texto: "g", sub: "B", dx: 6, dy: 6 },
+    { desde: [4, 3], v: [-62, -55], texto: "g", color: "#b04a3a", discontinuo: true, dx: -18, dy: 10 },
+  ]}
+  descripcion="Masa de 10 kg en A(0,3) y masa de 5 kg en B(4,0). En C(4,3), el campo de A apunta hacia la izquierda, hacia A, y el de B hacia abajo, hacia B; el campo total, su suma, apunta hacia abajo a la izquierda."
+/>
+
+$$
+g_A = \frac{G\,m_A}{r_A^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 10}{4^2} = 4{,}17 \cdot 10^{-11}\ \text{N/kg}
+\qquad
+g_B = \frac{G\,m_B}{r_B^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 5}{3^2} = 3{,}71 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+$$
+\vec{g}_A = -4{,}17 \cdot 10^{-11}\,\vec{i}\ \text{N/kg}, \qquad \vec{g}_B = -3{,}71 \cdot 10^{-11}\,\vec{j}\ \text{N/kg}
+$$
+
+El campo total en C es su suma:
+
+$$
+\vec{g}_C = (-4{,}17 \cdot 10^{-11}\,\vec{i} - 3{,}71 \cdot 10^{-11}\,\vec{j})\ \text{N/kg}, \qquad
+|\vec{g}_C| = \sqrt{4{,}17^2 + 3{,}71^2} \cdot 10^{-11} = 5{,}58 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**ii) Trabajo necesario de C a O.** Calculamos el potencial en los dos puntos. Las distancias son $r_{AC} = 4$ m, $r_{BC} = 3$ m, $r_{AO} = 3$ m y $r_{BO} = 4$ m:
+
+$$
+V_C = -G\left(\frac{10}{4} + \frac{5}{3}\right) = -6{,}67 \cdot 10^{-11} \cdot 4{,}167 = -2{,}78 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+V_O = -G\left(\frac{10}{3} + \frac{5}{4}\right) = -6{,}67 \cdot 10^{-11} \cdot 4{,}583 = -3{,}06 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+El trabajo **necesario** (el que debe hacer un agente externo, sin variar la energía cinética) es igual a la variación de energía potencial de la masa de 4 kg:
+
+$$
+W_{\text{ext}} = \Delta E_p = m\,(V_O - V_C) = 4 \cdot \left(-3{,}06 \cdot 10^{-10} - (-2{,}78 \cdot 10^{-10})\right) = -1{,}11 \cdot 10^{-10}\ \text{J}
+$$
+
+**Respuesta.** En C los campos son $g_A = 4{,}17 \cdot 10^{-11}$ N/kg y $g_B = 3{,}71 \cdot 10^{-11}$ N/kg, y el total vale **$\vec{g}_C = (-4{,}17\,\vec{i} - 3{,}71\,\vec{j}) \cdot 10^{-11}$ N/kg**. El trabajo necesario es **$-1{,}11 \cdot 10^{-10}$ J**. Es **negativo** porque O está más cerca de la masa mayor y tiene un potencial menor (más negativo) que C: la masa va espontáneamente de C a O, el campo realiza un trabajo positivo de $1{,}11 \cdot 10^{-10}$ J, y no hace falta aportar energía (al contrario, hay que frenarla para que llegue sin ganar velocidad).
+
+</Solucion>
+
+**A2. a)** Sobre una partícula que describe una trayectoria cerrada actúan distintas fuerzas. Razone si son verdaderos los siguientes enunciados: **i)** El trabajo de las fuerzas conservativas es mayor que cero. **ii)** El trabajo de la fuerza de rozamiento, que actúa en sentido opuesto al desplazamiento, es mayor que cero.
+
+<Solucion>
+
+**i) Falso.** Una fuerza es conservativa cuando su trabajo entre dos puntos no depende del camino, solo de los puntos inicial y final: $W_c = -\Delta E_p = -(E_{p,B} - E_{p,A})$. En una trayectoria cerrada el punto final coincide con el inicial, así que $\Delta E_p = 0$ y el trabajo de las fuerzas conservativas es **nulo**:
+
+$$
+\oint \vec{F}_c\cdot d\vec{r} = 0
+$$
+
+**ii) Falso.** La fuerza de rozamiento es opuesta al desplazamiento en cada tramo, así que forma $180^\circ$ con él y su trabajo es negativo en todos los tramos: $dW = F_r\,dr\cos 180^\circ = -F_r\,dr$. Al sumar todo el recorrido, el trabajo es **negativo** (menor que cero), aunque la trayectoria sea cerrada. Por eso el rozamiento no es conservativo: en un recorrido cerrado su trabajo no es nulo, y la energía mecánica disminuye al volver al punto de partida.
+
+</Solucion>
+
+**b)** Un bloque de masa 5 kg se lanza hacia arriba con una velocidad inicial de 7 m s<sup>-1</sup> por un plano inclinado 20º respecto a la horizontal y sin rozamiento. El bloque asciende hasta una altura de 2 m y, a continuación, se desplaza por un plano horizontal con rozamiento. **i)** Realice un esquema de las fuerzas ejercidas sobre el bloque en cada superficie. **ii)** Calcule la velocidad del bloque cuando llega al final del plano inclinado. **iii)** Calcule el trabajo realizado por la fuerza de rozamiento desde el instante inicial hasta que el cuerpo se detiene.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Esquema de fuerzas.** En el plano inclinado, sin rozamiento, actúan solo el peso $\vec{P}$, vertical y hacia abajo, y la normal $\vec{N}_1$, perpendicular al plano. Arriba, en el plano horizontal, actúan el peso, la normal $\vec{N}_2$, vertical y hacia arriba, y el rozamiento $\vec{F}_r$, opuesto al movimiento:
+
+<PlanoInclinado angulo={20} mueve="sube" sinRozamientoPlano horizontalArriba descripcion="Bloque que sube por un plano inclinado 20 grados sin rozamiento y sigue por un plano horizontal en lo alto, moviéndose hacia la izquierda. En el plano inclinado actúan solo el peso, vertical hacia abajo, y la normal, perpendicular al plano; en el plano horizontal actúan el peso, la normal hacia arriba y el rozamiento hacia la derecha, opuesto al movimiento." />
+
+$$
+P = mg = 5 \cdot 9{,}8 = 49\ \text{N}, \qquad N_1 = mg\cos 20^\circ = 46{,}0\ \text{N}, \qquad N_2 = mg = 49\ \text{N}
+$$
+
+**ii) Velocidad al final del plano inclinado.** En el plano inclinado no hay rozamiento y la normal no trabaja, así que solo trabaja el peso y la energía mecánica se conserva. Con el origen de energía potencial en el punto de lanzamiento:
+
+$$
+\frac{1}{2}m\,v_0^2 = \frac{1}{2}m\,v^2 + m\,g\,h
+\quad\Rightarrow\quad
+v = \sqrt{v_0^2 - 2\,g\,h} = \sqrt{7^2 - 2 \cdot 9{,}8 \cdot 2} = \sqrt{9{,}8} = 3{,}13\ \text{m/s}
+$$
+
+**iii) Trabajo del rozamiento hasta que se detiene.** El único trabajo no conservativo es el del rozamiento, que actúa en el tramo horizontal. Es igual a la variación de la energía mecánica entre el lanzamiento y el punto en que el bloque se para, a 2 m de altura:
+
+$$
+E_{m,i} = \frac{1}{2}m\,v_0^2 = \frac{1}{2} \cdot 5 \cdot 7^2 = 122{,}5\ \text{J}, \qquad
+E_{m,f} = m\,g\,h = 5 \cdot 9{,}8 \cdot 2 = 98\ \text{J}
+$$
+
+$$
+W_{F_r} = E_{m,f} - E_{m,i} = 98 - 122{,}5 = -24{,}5\ \text{J}
+$$
+
+**Respuesta.** El bloque llega arriba con **3,13 m/s** y el rozamiento realiza un trabajo de **−24,5 J**. Es justo la energía cinética que el bloque tenía al empezar el tramo horizontal, $\frac{1}{2} \cdot 5 \cdot 9{,}8 = 24{,}5$ J: el rozamiento la disipa entera hasta pararlo.
+
+</Solucion>

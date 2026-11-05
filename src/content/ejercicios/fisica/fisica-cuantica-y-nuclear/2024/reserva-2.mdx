@@ -1,0 +1,135 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2024
+convocatoria: reserva-2
+formato: fisica
+---
+
+**D1. a)** El estudio del efecto fotoeléctrico sobre un metal se realiza con dos fuentes luminosas diferentes: una fuente *A* de intensidad *I* y frecuencia *2f*, y otra *B* de intensidad *2I* y frecuencia *f*. Sabiendo que *f* es superior a la frecuencia umbral del metal, responda razonadamente: **i)** ¿Con qué fuente luminosa se emiten los electrones a mayor velocidad? **ii)** ¿Con qué fuente luminosa se emite mayor número de electrones?
+
+<Solucion>
+
+Según la explicación de Einstein, la luz está formada por fotones de energía $h\,f$; cada fotón absorbido arranca como mucho un electrón, y le cede su energía menos el trabajo de extracción $W_0$:
+
+$$
+E_{c,\text{máx}} = h\,f - W_0
+$$
+
+Las dos fuentes tienen frecuencias superiores a la umbral, así que las dos producen efecto fotoeléctrico.
+
+**i) Mayor velocidad: fuente A.** La energía cinética máxima de los electrones solo depende de la frecuencia, no de la intensidad. Con la fuente A, de frecuencia $2f$:
+
+$$
+E_{c,A} = 2h\,f - W_0 > E_{c,B} = h\,f - W_0
+$$
+
+Los electrones salen con **más energía cinética y, por tanto, a mayor velocidad con la fuente A**.
+
+**ii) Mayor número de electrones: fuente B.** El número de electrones emitidos por segundo es proporcional al número de fotones que llegan por segundo. La intensidad es la energía que llega por unidad de tiempo y de superficie, y es igual al número de fotones por la energía de cada uno, $I = n\,h\,f$ (por unidad de tiempo y superficie). Así:
+
+$$
+n_A = \frac{I}{h\,(2f)}, \qquad n_B = \frac{2I}{h\,f}
+\quad\Rightarrow\quad
+\frac{n_B}{n_A} = \frac{2I/(h\,f)}{I/(2h\,f)} = 4
+$$
+
+La fuente B lleva cuatro veces más fotones por segundo (el doble de energía repartida en fotones que tienen la mitad de energía), así que **con la fuente B se emiten más electrones**: unas cuatro veces más.
+
+</Solucion>
+
+**b)** Al iluminar un metal con luz de longitud de onda en el vacío de 7·10<sup>-7</sup> m, se emiten electrones con una energía cinética máxima de 7,21·10<sup>-20</sup> J. Se cambia la longitud de onda de la luz incidente y se mide de nuevo la energía cinética máxima, obteniéndose un valor de 2,39·10<sup>-19</sup> J. Calcule razonadamente: **i)** la frecuencia de la luz utilizada en la segunda medida; **ii)** la frecuencia a partir de la cual no se producirá el efecto fotoeléctrico en el metal.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; h = 6,63·10<sup>-34</sup> J s</Datos>
+
+<Solucion>
+
+Aplicamos la ecuación de Einstein, $h\,f = W_0 + E_{c,\text{máx}}$. Con la primera luz calculamos el trabajo de extracción del metal:
+
+$$
+f_1 = \frac{c}{\lambda_1} = \frac{3 \cdot 10^8}{7 \cdot 10^{-7}} = 4{,}29 \cdot 10^{14}\ \text{Hz}
+$$
+
+$$
+W_0 = h\,f_1 - E_{c,1} = 6{,}63 \cdot 10^{-34} \cdot 4{,}29 \cdot 10^{14} - 7{,}21 \cdot 10^{-20} = 2{,}84 \cdot 10^{-19} - 0{,}72 \cdot 10^{-19} = 2{,}12 \cdot 10^{-19}\ \text{J}
+$$
+
+**i) Frecuencia de la segunda luz.** El metal es el mismo, así que $W_0$ no cambia:
+
+$$
+f_2 = \frac{W_0 + E_{c,2}}{h} = \frac{2{,}12 \cdot 10^{-19} + 2{,}39 \cdot 10^{-19}}{6{,}63 \cdot 10^{-34}} = \frac{4{,}51 \cdot 10^{-19}}{6{,}63 \cdot 10^{-34}} = 6{,}80 \cdot 10^{14}\ \text{Hz}
+$$
+
+**ii) Frecuencia umbral.** Es la frecuencia mínima para arrancar electrones, aquella en la que toda la energía del fotón se gasta en el trabajo de extracción $(E_{c,\text{máx}} = 0)$:
+
+$$
+f_0 = \frac{W_0}{h} = \frac{2{,}12 \cdot 10^{-19}}{6{,}63 \cdot 10^{-34}} = 3{,}20 \cdot 10^{14}\ \text{Hz}
+$$
+
+**Respuesta.** La segunda luz tiene una frecuencia de **$6{,}80 \cdot 10^{14}$ Hz** (luz azul, $\lambda = 441$ nm) y por debajo de **$3{,}20 \cdot 10^{14}$ Hz** no se produce efecto fotoeléctrico en ese metal.
+
+</Solucion>
+
+**D2. a)** Dos partículas de masas *m* y *4m* tienen asociadas longitudes de onda de De Broglie *2λ* y *λ*, respectivamente. Deduzca razonadamente la relación entre sus energías cinéticas.
+
+<Solucion>
+
+La longitud de onda de De Broglie es $\lambda = h/p$, y el momento lineal se relaciona con la energía cinética (no relativista) por $E_c = p^2/(2m)$. Combinando las dos:
+
+$$
+p = \frac{h}{\lambda}
+\quad\Rightarrow\quad
+E_c = \frac{h^2}{2\,m\,\lambda^2}
+$$
+
+Aplicándolo a las dos partículas:
+
+$$
+E_{c,1} = \frac{h^2}{2\,m\,(2\lambda)^2} = \frac{h^2}{8\,m\,\lambda^2},
+\qquad
+E_{c,2} = \frac{h^2}{2\,(4m)\,\lambda^2} = \frac{h^2}{8\,m\,\lambda^2}
+$$
+
+$$
+\frac{E_{c,1}}{E_{c,2}} = 1
+$$
+
+Las dos partículas tienen **la misma energía cinética**. La primera tiene la mitad de momento lineal (el doble de longitud de onda), y como su masa es cuatro veces menor, $p^2/(2m)$ da el mismo resultado: $(1/2)^2 \cdot 4 = 1$.
+
+</Solucion>
+
+**b)** Un electrón se mueve a una velocidad de 1,5·10<sup>7</sup> m s<sup>-1</sup>. Determine razonadamente: **i)** la longitud de onda de De Broglie asociada al electrón y su energía cinética; **ii)** la velocidad y energía cinética que tendría un protón con la misma longitud de onda que el electrón.
+
+<Datos>m<sub>e</sub> = 9,1·10<sup>-31</sup> kg; m<sub>p</sub> = 1,67·10<sup>-27</sup> kg; h = 6,63·10<sup>-34</sup> J s</Datos>
+
+<Solucion>
+
+**i) Electrón.** La velocidad es un 5 % de la de la luz, así que podemos usar las expresiones clásicas:
+
+$$
+p_e = m_e\,v_e = 9{,}1 \cdot 10^{-31} \cdot 1{,}5 \cdot 10^{7} = 1{,}365 \cdot 10^{-23}\ \text{kg m/s}
+$$
+
+$$
+\lambda = \frac{h}{p_e} = \frac{6{,}63 \cdot 10^{-34}}{1{,}365 \cdot 10^{-23}} = 4{,}86 \cdot 10^{-11}\ \text{m}
+$$
+
+$$
+E_{c,e} = \frac{1}{2}m_e\,v_e^2 = \frac{1}{2} \cdot 9{,}1 \cdot 10^{-31} \cdot (1{,}5 \cdot 10^{7})^2 = 1{,}02 \cdot 10^{-16}\ \text{J}
+$$
+
+**ii) Protón con la misma longitud de onda.** Si la longitud de onda es la misma, también lo es el momento lineal, $p = h/\lambda$:
+
+$$
+m_p\,v_p = m_e\,v_e
+\quad\Rightarrow\quad
+v_p = \frac{p_e}{m_p} = \frac{1{,}365 \cdot 10^{-23}}{1{,}67 \cdot 10^{-27}} = 8{,}17 \cdot 10^{3}\ \text{m/s}
+$$
+
+$$
+E_{c,p} = \frac{p^2}{2\,m_p} = \frac{(1{,}365 \cdot 10^{-23})^2}{2 \cdot 1{,}67 \cdot 10^{-27}} = 5{,}58 \cdot 10^{-20}\ \text{J}
+$$
+
+**Respuesta.** El electrón tiene una longitud de onda de **$4{,}86 \cdot 10^{-11}$ m** y una energía cinética de **$1{,}02 \cdot 10^{-16}$ J**. Un protón con la misma longitud de onda iría a **$8{,}17 \cdot 10^3$ m/s** y tendría una energía cinética de **$5{,}58 \cdot 10^{-20}$ J**: con el mismo momento, la energía cinética es inversamente proporcional a la masa, así que la del protón es unas 1835 veces menor.
+
+</Solucion>

@@ -1,0 +1,163 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2024
+convocatoria: reserva-3
+formato: fisica
+---
+
+import EnergiaEnlaceNucleon from "../../../../../components/figuras/fisica/EnergiaEnlaceNucleon.astro"
+
+**D1. a)** **i)** Represente gráficamente la energía de enlace por nucleón en función del número másico y relaciónela con la estabilidad nuclear. **ii)** Justifique, basándose en la gráfica, los procesos de fusión y de fisión nuclear.
+
+<Solucion>
+
+**i) Gráfica y estabilidad.** La energía de enlace de un núcleo, $E_e = \Delta m\,c^2$, es la energía que se libera al formarlo a partir de sus protones y neutrones (o la que hay que aportar para separarlos). Dividida entre el número de nucleones, $E_e/A$, mide lo ligado que está, en promedio, cada nucleón: **cuanto mayor es, más estable es el núcleo**.
+
+<EnergiaEnlaceNucleon />
+
+- En los núcleos **ligeros** crece rápidamente con $A$ (con picos en núcleos especialmente estables, como el helio-4).
+- Alcanza un **máximo de unos 8,8 MeV por nucleón en torno a $A \approx 56$** (hierro y níquel): son los núcleos más estables.
+- En los núcleos **pesados** disminuye lentamente, hasta unos 7,6 MeV por nucleón en el uranio, porque crece la repulsión eléctrica entre los protones.
+
+**ii) Fusión y fisión.** Una reacción nuclear libera energía cuando los productos tienen más energía de enlace total que los reactivos, es decir, cuando los nucleones pasan a estar más ligados: hacia el máximo de la curva.
+
+- **Fusión**: dos núcleos ligeros (zona izquierda de la curva) se unen para formar uno más pesado, con mayor energía de enlace por nucleón. Por ejemplo, la fusión de deuterio y tritio en helio-4 libera unos 17,6 MeV. Es la fuente de energía de las estrellas.
+- **Fisión**: un núcleo pesado (zona derecha) se divide en dos núcleos medianos, más cerca del máximo y con mayor energía de enlace por nucleón. La fisión de un núcleo de uranio-235 libera unos 200 MeV.
+
+En los dos casos los productos son más estables que los reactivos, y la diferencia de energía de enlace se libera. Por eso no se obtiene energía fusionando núcleos pesados ni fisionando núcleos ligeros: se alejarían del máximo.
+
+</Solucion>
+
+**b)** **i)** En la cadena de desintegración del núcleo ${}^{222}_{86}\text{Rn}$ se emiten partículas alfa y beta, obteniéndose un nuevo núcleo ${}^{206}_{82}\text{Pb}$. Escriba la reacción nuclear correspondiente y determine justificadamente el número de partículas alfa y beta emitidas. **ii)** Calcule razonadamente la energía necesaria para descomponer en protones y neutrones 10 g de ${}^{222}_{86}\text{Rn}$.
+
+<Datos>m(<sup>222</sup><sub>86</sub>Rn) = 222,017578 u; m<sub>p</sub> = 1,007276 u; m<sub>n</sub> = 1,008665 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Partículas emitidas.** Llamamos $x$ al número de partículas alfa $\left({}^{4}_{2}\alpha\right)$ e $y$ al de partículas beta $\left({}^{0}_{-1}\beta\right)$:
+
+$$
+{}^{222}_{86}\text{Rn} \longrightarrow {}^{206}_{82}\text{Pb} + x\ {}^{4}_{2}\alpha + y\ {}^{0}_{-1}\beta
+$$
+
+Se conservan el número másico y la carga:
+
+$$
+A:\ 222 = 206 + 4x + 0 \quad\Rightarrow\quad x = 4
+$$
+
+$$
+Z:\ 86 = 82 + 2x - y = 82 + 8 - y \quad\Rightarrow\quad y = 4
+$$
+
+Se emiten **4 partículas alfa y 4 partículas beta** (las beta no cambian el número másico, así que el número de alfas se obtiene solo de $A$):
+
+$$
+{}^{222}_{86}\text{Rn} \longrightarrow {}^{206}_{82}\text{Pb} + 4\ {}^{4}_{2}\alpha + 4\ {}^{0}_{-1}\beta
+$$
+
+(En cada desintegración β⁻ se emite también un antineutrino, sin carga y de masa despreciable.)
+
+**ii) Energía para descomponer 10 g de radón.** Es la energía de enlace de todos los núcleos de la muestra. El radón-222 tiene $Z = 86$ protones y $A - Z = 136$ neutrones. Defecto de masa de un núcleo:
+
+$$
+\Delta m = 86\,m_p + 136\,m_n - m(\text{Rn}) = 86 \cdot 1{,}007276 + 136 \cdot 1{,}008665 - 222{,}017578 = 1{,}786598\ \text{u}
+$$
+
+$$
+E_e = \Delta m\,c^2 = 1{,}786598 \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 2{,}67 \cdot 10^{-10}\ \text{J}
+$$
+
+Número de núcleos en 10 g, a partir de la masa de cada uno:
+
+$$
+N = \frac{10 \cdot 10^{-3}\ \text{kg}}{222{,}017578 \cdot 1{,}66 \cdot 10^{-27}\ \text{kg}} = 2{,}71 \cdot 10^{22}\ \text{núcleos}
+$$
+
+$$
+E = N\,E_e = 2{,}71 \cdot 10^{22} \cdot 2{,}67 \cdot 10^{-10} = 7{,}24 \cdot 10^{12}\ \text{J}
+$$
+
+**Respuesta.** En la cadena se emiten **4 partículas α y 4 partículas β**, y para separar en protones y neutrones todos los núcleos de 10 g de radón-222 hacen falta **$7{,}24 \cdot 10^{12}$ J**, del orden de la energía que libera la explosión de 1700 toneladas de TNT.
+
+</Solucion>
+
+**D2. a)** **i)** Enuncie la ley de desintegración radiactiva, definiendo las variables involucradas. A partir de dicha ley, deduzca el periodo de semidesintegración de una muestra radiactiva. **ii)** ¿Qué porcentaje de la actividad de una muestra dada queda por desintegrar después de un intervalo de tiempo igual a 5 veces su periodo de semidesintegración?
+
+<Solucion>
+
+**i) Ley de desintegración radiactiva.** El número de núcleos que se desintegran por unidad de tiempo es proporcional al número de núcleos presentes, $dN/dt = -\lambda N$. Integrando:
+
+$$
+N(t) = N_0\,e^{-\lambda t}
+$$
+
+- $N(t)$: número de núcleos radiactivos que quedan sin desintegrar en el instante $t$ (adimensional).
+- $N_0$: número inicial de núcleos, en $t = 0$.
+- $\lambda$: constante de desintegración radiactiva, característica de cada isótopo; es la probabilidad de desintegración por unidad de tiempo, en s⁻¹.
+- $t$: tiempo transcurrido (s).
+
+La actividad, el número de desintegraciones por segundo, sigue la misma ley: $A = \lambda N = A_0\,e^{-\lambda t}$, en becquerelios (Bq).
+
+**Periodo de semidesintegración.** Es el tiempo que tarda en desintegrarse la mitad de los núcleos de la muestra: $N(T_{1/2}) = N_0/2$.
+
+$$
+\frac{N_0}{2} = N_0\,e^{-\lambda T_{1/2}}
+\quad\Rightarrow\quad
+e^{\lambda T_{1/2}} = 2
+\quad\Rightarrow\quad
+T_{1/2} = \frac{\ln 2}{\lambda}
+$$
+
+**ii) Actividad tras cinco periodos.** Cada periodo de semidesintegración la actividad se reduce a la mitad, así que tras $t = 5\,T_{1/2}$:
+
+$$
+\frac{A}{A_0} = e^{-\lambda \cdot 5T_{1/2}} = e^{-5\ln 2} = \left(\frac{1}{2}\right)^5 = \frac{1}{32} = 0{,}03125
+$$
+
+Queda el **3,125 %** de la actividad inicial (y de los núcleos radiactivos iniciales).
+
+</Solucion>
+
+**b)** El periodo de semidesintegración del cobalto-60 es de 5,27 años. **i)** Determine la constante de desintegración radiactiva. **ii)** ¿Cuántos gramos de cobalto se habrán desintegrado, transcurridos 27 años, en una muestra que tiene actualmente 6 g de dicho isótopo? **iii)** Determine la actividad de la muestra transcurrido ese tiempo.
+
+<Datos>m(<sup>60</sup>Co) = 59,933822 u; 1 u = 1,66·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Constante de desintegración.**
+
+$$
+\lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{5{,}27\ \text{años}} = 0{,}132\ \text{años}^{-1}
+$$
+
+En unidades del S.I., con $5{,}27$ años $= 5{,}27 \cdot 365 \cdot 86400 = 1{,}66 \cdot 10^{8}$ s:
+
+$$
+\lambda = \frac{0{,}693}{1{,}66 \cdot 10^{8}} = 4{,}17 \cdot 10^{-9}\ \text{s}^{-1}
+$$
+
+**ii) Masa desintegrada en 27 años.** La masa de cobalto-60 que queda es proporcional al número de núcleos, así que sigue la misma ley:
+
+$$
+m = m_0\,e^{-\lambda t} = 6 \cdot e^{-0{,}1315 \cdot 27} = 6 \cdot e^{-3{,}551} = 6 \cdot 0{,}0287 = 0{,}172\ \text{g}
+$$
+
+$$
+m_{\text{desintegrada}} = 6 - 0{,}172 = 5{,}83\ \text{g}
+$$
+
+**iii) Actividad tras 27 años.** Número de núcleos que quedan, a partir de la masa de cada uno:
+
+$$
+N = \frac{0{,}172 \cdot 10^{-3}\ \text{kg}}{59{,}933822 \cdot 1{,}66 \cdot 10^{-27}\ \text{kg}} = 1{,}73 \cdot 10^{21}\ \text{núcleos}
+$$
+
+$$
+A = \lambda N = 4{,}17 \cdot 10^{-9} \cdot 1{,}73 \cdot 10^{21} = 7{,}22 \cdot 10^{12}\ \text{Bq}
+$$
+
+**Respuesta.** La constante de desintegración es **$4{,}17 \cdot 10^{-9}$ s⁻¹** (0,132 años⁻¹); en 27 años, algo más de cinco periodos, se desintegran **5,83 g** de los 6 g, y la actividad de lo que queda es de **$7{,}22 \cdot 10^{12}$ Bq**.
+
+</Solucion>

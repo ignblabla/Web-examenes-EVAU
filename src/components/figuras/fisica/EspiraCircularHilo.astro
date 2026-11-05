@@ -3,11 +3,23 @@
 // circular a su derecha, donde el campo del hilo es entrante (⊗). i) Si la corriente aumenta,
 // el flujo entrante aumenta: campo inducido saliente y corriente antihoraria. ii) Si la espira
 // se aleja, el flujo entrante disminuye: campo inducido entrante y corriente horaria.
+// Con casos se eligen los dos paneles (por defecto, los de 2025); «acerca» es el de la reserva 1
+// de 2024: al acercarse la espira, el flujo entrante aumenta y la corriente es antihoraria.
+type Caso = "aumenta" | "aleja" | "acerca"
+interface Props {
+  casos?: [Caso, Caso]
+}
+const { casos = ["aumenta", "aleja"] } = Astro.props
 const id = `espira-circular-${Math.round(Math.random() * 1e9)}`
-const paneles = [
-  { x0: 0, titulo: "i) Aumenta la corriente I", horaria: false, nota: "B inducido saliente · I antihoraria" },
-  { x0: 250, titulo: "ii) La espira se aleja", horaria: true, nota: "B inducido entrante · I horaria" },
-]
+const datos = {
+  aumenta: { titulo: "Aumenta la corriente I", horaria: false, v: 0, nota: "B inducido saliente · I antihoraria" },
+  aleja: { titulo: "La espira se aleja", horaria: true, v: 1, nota: "B inducido entrante · I horaria" },
+  acerca: { titulo: "La espira se acerca", horaria: false, v: -1, nota: "B inducido saliente · I antihoraria" },
+}
+const paneles = casos.map((caso, i) => ({ x0: i * 250, ...datos[caso], titulo: `${i === 0 ? "i" : "ii"}) ${datos[caso].titulo}` }))
+const descripcion = `Dos esquemas de un hilo vertical con la corriente hacia arriba y una espira circular a su derecha, donde el campo del hilo entra en el papel. ${paneles
+  .map((p) => `${p.titulo.slice(4)}: el campo inducido en la espira es ${p.horaria ? "entrante" : "saliente"} y la corriente inducida circula en sentido ${p.horaria ? "horario" : "antihorario"}.`)
+  .join(" ")}`
 const cruces = [0, 1, 2, 3].flatMap((i) => [0, 1, 2, 3].map((j) => ({ dx: 46 + i * 40, y: 46 + j * 38 })))
 // Arco de la corriente inducida: tres cuartos de circunferencia con la flecha en el sentido pedido.
 const arco = (cx: number, cy: number, r: number, horaria: boolean) =>
@@ -17,7 +29,7 @@ const arco = (cx: number, cy: number, r: number, horaria: boolean) =>
 ---
 
 <figure class="solution-figure solution-figure--wide">
-  <svg viewBox="0 0 500 210" role="img" aria-label="Dos esquemas de un hilo vertical con la corriente hacia arriba y una espira circular a su derecha, donde el campo del hilo entra en el papel. Si aumenta la corriente, el campo inducido en la espira es saliente y la corriente inducida circula en sentido antihorario. Si la espira se aleja del hilo, el campo inducido es entrante y la corriente inducida circula en sentido horario.">
+  <svg viewBox="0 0 500 210" role="img" aria-label={descripcion}>
     <defs>
       <marker id={`${id}-n`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M0 0L10 5L0 10z" fill="#111" />
@@ -49,9 +61,9 @@ const arco = (cx: number, cy: number, r: number, horaria: boolean) =>
           ) : (
             <circle cx={p.x0 + 130} cy="104" r="2.2" fill="#b04a3a" />
           )}
-          {p.horaria && (
+          {p.v !== 0 && (
             <g>
-              <path d={`M${p.x0 + 180} 104h28`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
+              <path d={p.v > 0 ? `M${p.x0 + 180} 104h28` : `M${p.x0 + 208} 104h-28`} stroke="#195c51" stroke-width="1.8" marker-end={`url(#${id}-v)`} />
               <text x={p.x0 + 194} y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" font-weight="700" fill="#195c51">v</text>
             </g>
           )}

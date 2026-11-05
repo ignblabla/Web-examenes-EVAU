@@ -1,0 +1,84 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2024
+convocatoria: reserva-3
+formato: fisica
+---
+
+**C2. a)** **i)** Escriba la ecuación general de una onda estacionaria y explique el significado físico de cada una de las magnitudes involucradas, junto con sus unidades en el Sistema Internacional. **ii)** ¿Qué son los vientres y nodos de una onda estacionaria?
+
+<Solucion>
+
+**i) Ecuación de una onda estacionaria.** Una onda estacionaria es el resultado de la interferencia de dos ondas armónicas iguales (misma amplitud, frecuencia y longitud de onda) que se propagan en la misma dirección y en sentidos opuestos, como ocurre en una cuerda con los extremos fijos. Sumando $y_1 = A\sin(\omega t - kx)$ e $y_2 = A\sin(\omega t + kx)$:
+
+$$
+y(x, t) = 2A\cos(kx)\sin(\omega t)
+$$
+
+(Según dónde se tome el origen, también se escribe $y = 2A\sin(kx)\cos(\omega t)$; en una cuerda con un extremo fijo en $x = 0$ se usa esta segunda forma, que da un nodo en el origen.)
+
+- $y$: elongación del punto de la cuerda situado en $x$, en el instante $t$. Se mide en metros (m).
+- $A$: amplitud de cada una de las ondas que interfieren (m). La amplitud máxima de la onda estacionaria es $2A$.
+- $k = 2\pi/\lambda$: número de onda, en rad/m; $\lambda$ es la longitud de onda (m).
+- $\omega = 2\pi f = 2\pi/T$: frecuencia angular, en rad/s; $f$ es la frecuencia (Hz) y $T$ el periodo (s).
+- $x$: posición del punto (m), y $t$: tiempo (s).
+
+Cada punto oscila con un movimiento armónico simple de frecuencia $\omega$, pero con una **amplitud que depende de su posición**, $A_r(x) = |2A\cos(kx)|$. A diferencia de una onda viajera, la perturbación no avanza: no hay transporte neto de energía a lo largo de la cuerda.
+
+**ii) Nodos y vientres.**
+
+- Los **nodos** son los puntos que están siempre en reposo, porque su amplitud es nula: $\cos(kx) = 0$. Con la ecuación de arriba, $x = \lambda/4,\ 3\lambda/4,\ 5\lambda/4\dots$
+- Los **vientres** son los puntos que oscilan con la amplitud máxima, $2A$: $|\cos(kx)| = 1$, es decir, $x = 0,\ \lambda/2,\ \lambda\dots$
+
+Dos nodos consecutivos (o dos vientres) están separados media longitud de onda, $\lambda/2$, y entre un nodo y el vientre siguiente hay $\lambda/4$.
+
+</Solucion>
+
+**b)** Una onda armónica se propaga con una velocidad de 20 m s<sup>-1</sup> en la dirección negativa del eje OX. La frecuencia es de 100 Hz y la amplitud de oscilación es de 2·10<sup>-3</sup> m. En el instante inicial, la elongación de la onda en el origen es de 1·10<sup>-3</sup> m. Determine: **i)** el periodo; **ii)** la longitud de onda; **iii)** la expresión matemática de la onda.
+
+<Solucion>
+
+**i) Periodo.**
+
+$$
+T = \frac{1}{f} = \frac{1}{100} = 0{,}01\ \text{s}
+$$
+
+**ii) Longitud de onda.**
+
+$$
+\lambda = \frac{v}{f} = \frac{20}{100} = 0{,}2\ \text{m}
+$$
+
+**iii) Ecuación de la onda.** Calculamos la frecuencia angular y el número de onda:
+
+$$
+\omega = 2\pi f = 200\pi\ \text{rad/s}, \qquad k = \frac{2\pi}{\lambda} = \frac{2\pi}{0{,}2} = 10\pi\ \text{rad/m}
+$$
+
+La onda se propaga en el sentido negativo del eje OX, así que $\omega t$ y $kx$ llevan el mismo signo:
+
+$$
+y(x, t) = A\sin(\omega t + kx + \varphi_0) = 2 \cdot 10^{-3}\sin(200\pi t + 10\pi x + \varphi_0)
+$$
+
+La fase inicial se obtiene de la elongación en el origen en $t = 0$:
+
+$$
+2 \cdot 10^{-3}\sin\varphi_0 = 1 \cdot 10^{-3}
+\quad\Rightarrow\quad
+\sin\varphi_0 = \frac{1}{2}
+\quad\Rightarrow\quad
+\varphi_0 = \frac{\pi}{6}\ \text{rad} \quad\left(\text{o } \frac{5\pi}{6}\ \text{rad}\right)
+$$
+
+Las dos fases dan la misma elongación en $t = 0$, pero en $\varphi_0 = \pi/6$ el punto del origen está subiendo y en $5\pi/6$ está bajando; el enunciado no da ese dato, así que tomamos $\varphi_0 = \pi/6$:
+
+$$
+y(x, t) = 2 \cdot 10^{-3}\sin\left(200\pi t + 10\pi x + \frac{\pi}{6}\right)\ \ \text{(S.I.)}
+$$
+
+**Respuesta.** El periodo es **0,01 s**, la longitud de onda **0,2 m** y la ecuación de la onda es **$y(x, t) = 2 \cdot 10^{-3}\sin(200\pi t + 10\pi x + \pi/6)$ (S.I.)** (o con fase inicial $5\pi/6$ si en $t = 0$ el origen está bajando).
+
+</Solucion>

@@ -1,0 +1,61 @@
+---
+// Reflexión total: un foco en el medio 1 (más refringente, abajo) emite tres rayos hacia la
+// superficie de separación con el medio 2 (arriba). (1) Con un ángulo menor que el límite se
+// refracta alejándose de la normal; (2) con el ángulo límite el refractado sale rasante, a 90°;
+// (3) con un ángulo mayor no hay refracción y se refleja totalmente. Índices de ejemplo: 1,5 y 1.
+const n1 = 1.5
+const n2 = 1
+const yS = 100
+const foco = { x: 330, y: 198 }
+const g = (a: number) => (a * Math.PI) / 180
+const limite = Math.asin(n2 / n1)
+const corte = (a: number) => ({ x: foco.x - (foco.y - yS) * Math.tan(a), y: yS })
+const r1 = corte(g(20))
+const ref1 = Math.asin((n1 / n2) * Math.sin(g(20)))
+const r2 = corte(limite)
+const r3 = corte(g(60))
+// Rayo 3 reflejado: baja hacia la izquierda con el mismo ángulo hasta el borde del dibujo.
+const fin3 = { x: 10, y: yS + (r3.x - 10) / Math.tan(g(60)) }
+const id = `reflexion-${Math.round(Math.random() * 1e9)}`
+const colores = ["#2d6fa3", "#195c51", "#b04a3a"]
+const marca = (i: number) => `url(#${id}-${i})`
+const p = (q: { x: number; y: number }) => `${q.x.toFixed(1)} ${q.y.toFixed(1)}`
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 380 214" role="img" aria-label="Foco luminoso en un medio más refringente, debajo de la superficie de separación con otro menos refringente. El rayo 1, con un ángulo de incidencia menor que el ángulo límite, se refracta alejándose de la normal. El rayo 2, con el ángulo límite, se refracta rasante a la superficie, a 90 grados. El rayo 3, con un ángulo mayor que el límite, no se refracta: se refleja totalmente hacia el primer medio.">
+    <defs>
+      {
+        colores.map((c, i) => (
+          <marker id={`${id}-${i}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill={c} />
+          </marker>
+        ))
+      }
+    </defs>
+    <rect x="0" y="0" width="380" height={yS} fill="#f4f8fb" />
+    <rect x="0" y={yS} width="380" height={214 - yS} fill="#dfe9f0" />
+    <path d={`M0 ${yS}H380`} stroke="#111" stroke-width="1.2" />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
+      <text x="372" y="16" text-anchor="end">Medio 2 (n₂, menor)</text>
+      <text x="8" y="208">Medio 1 (n₁ &gt; n₂)</text>
+    </g>
+    <g stroke="#888" stroke-width="1" stroke-dasharray="4 3">
+      {[r1, r2, r3].map((q) => <path d={`M${q.x.toFixed(1)} ${yS - 44}V${yS + 44}`} />)}
+    </g>
+    <g stroke-width="1.7" fill="none">
+      <path d={`M${p(foco)}L${p(r1)}`} stroke={colores[0]} />
+      <path d={`M${p(r1)}l${(-70 * Math.sin(ref1)).toFixed(1)} ${(-70 * Math.cos(ref1)).toFixed(1)}`} stroke={colores[0]} marker-end={marca(0)} />
+      <path d={`M${p(foco)}L${p(r2)}`} stroke={colores[1]} />
+      <path d={`M${p(r2)}H${(r2.x - 80).toFixed(1)}`} stroke={colores[1]} marker-end={marca(1)} />
+      <path d={`M${p(foco)}L${p(r3)}`} stroke={colores[2]} />
+      <path d={`M${p(r3)}L${p(fin3)}`} stroke={colores[2]} marker-end={marca(2)} />
+    </g>
+    <circle cx={foco.x} cy={foco.y} r="3.5" fill="#111" />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">
+      <text x={r1.x - 70 * Math.sin(ref1) - 6} y={yS - 70 * Math.cos(ref1) + 4} text-anchor="end" fill={colores[0]}>1</text>
+      <text x={r2.x - 84} y={yS - 6} fill={colores[1]}>2 (ángulo límite)</text>
+      <text x={fin3.x + 4} y={fin3.y - 8} fill={colores[2]}>3 (reflexión total)</text>
+    </g>
+  </svg>
+</figure>

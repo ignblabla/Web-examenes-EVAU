@@ -1,0 +1,205 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2024
+convocatoria: julio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Razone la veracidad o falsedad de las siguientes afirmaciones: **i)** En una espira circular de radio *R*, situada con su plano perpendicular a un campo magnético de módulo *B*(*t*) = *a t* + *b*, siendo *a* y *b* constantes y *t* el tiempo, se induce una fuerza electromotriz constante. **ii)** Cuando se sitúa una espira en reposo en el seno de un campo magnético variable con el tiempo, siempre se induce una fuerza electromotriz.
+
+<Solucion>
+
+Según la ley de Faraday-Lenz, la f.e.m. inducida en una espira es igual a menos la rapidez con que varía el flujo magnético que la atraviesa:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt}, \qquad \Phi = \vec{B}\cdot\vec{S} = B\,S\cos\theta
+$$
+
+donde $\theta$ es el ángulo entre el campo y el vector superficie, perpendicular al plano de la espira.
+
+**i) Verdadera.** El plano de la espira es perpendicular al campo, así que $\vec{S}$ es paralelo a $\vec{B}$ $(\theta = 0^\circ)$ y el flujo es:
+
+$$
+\Phi(t) = B(t)\,\pi R^2 = (a\,t + b)\,\pi R^2
+\quad\Rightarrow\quad
+\varepsilon = -\frac{d\Phi}{dt} = -a\,\pi R^2
+$$
+
+La f.e.m. no depende del tiempo: es **constante**, porque el campo varía linealmente con el tiempo y el flujo cambia siempre al mismo ritmo.
+
+**ii) Falsa.** Para que se induzca una f.e.m. tiene que variar el **flujo**, no basta con que varíe el campo. Si la espira está colocada con su plano paralelo al campo $(\theta = 90^\circ)$, el flujo es $\Phi = B(t)\,S\cos 90^\circ = 0$ en todo instante, por mucho que cambie $B$: el flujo no varía y no se induce ninguna f.e.m.
+
+</Solucion>
+
+**b)** Una espira circular de 20 cm de radio está situada en el plano XY en una región en la que hay un campo magnético variable en el tiempo *B*(*t*) = 3 *t*<sup>2</sup> − 2*t* (S.I.) en sentido negativo del eje OZ. **i)** Obtenga la expresión del flujo magnético en función del tiempo. **ii)** Calcule la fuerza electromotriz inducida para *t* = 2 s. **iii)** Razone el sentido de la corriente inducida en la espira.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** La espira está en el plano XY, así que su vector superficie tiene la dirección del eje OZ. Lo tomamos en el mismo sentido que el campo, $-\vec{k}$, de modo que $\theta = 0^\circ$:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}2^2 = 0{,}126\ \text{m}^2
+$$
+
+$$
+\Phi(t) = B(t)\,S\cos 0^\circ = 0{,}126\,(3\,t^2 - 2\,t)\ \text{Wb} = (0{,}377\,t^2 - 0{,}251\,t)\ \text{Wb}
+$$
+
+(Si se toma el vector superficie según $+\vec{k}$, el flujo cambia de signo; lo que importa para el sentido de la corriente es el razonamiento del apartado iii.)
+
+**ii) F.e.m. inducida en $t = 2$ s.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -0{,}126\,(6\,t - 2)\ \text{V}
+$$
+
+$$
+\varepsilon(2) = -0{,}126 \cdot (6 \cdot 2 - 2) = -1{,}26\ \text{V}
+$$
+
+En $t = 2$ s la f.e.m. inducida tiene un valor de **1,26 V**; el signo negativo indica que se opone al aumento del flujo, como se explica a continuación.
+
+**iii) Sentido de la corriente.** En $t = 2$ s el campo vale $B(2) = 3 \cdot 4 - 2 \cdot 2 = 8$ T, en el sentido de $-\vec{k}$, y está **aumentando**, porque $dB/dt = 6t - 2 = 10$ T/s $> 0$. Así que el flujo que atraviesa la espira en el sentido de $-\vec{k}$ aumenta.
+
+Según la ley de Lenz, la corriente inducida se opone a esa variación: crea en el interior de la espira un campo magnético en sentido contrario, **$+\vec{k}$**. Por la regla de la mano derecha, para que el campo en el centro de la espira apunte hacia $+\vec{k}$, la corriente tiene que circular en **sentido antihorario visto desde el semieje OZ positivo** (desde arriba, mirando hacia el plano XY), es decir, de $+\vec{i}$ hacia $+\vec{j}$.
+
+(Para $t > 1/3$ s el campo aumenta, así que el sentido es el mismo durante todo ese tiempo; antes de $t = 1/3$ s sería el contrario.)
+
+</Solucion>
+
+**B2. a)** Un electrón que se mueve en línea recta penetra en una región del espacio en la que existe un campo eléctrico y un campo magnético perpendiculares entre sí. Explique la relación que debe existir entre los campos y la velocidad para que la partícula continúe en trayectoria rectilínea.
+
+<Solucion>
+
+Sobre el electrón (carga $q = -e$) actúan la fuerza eléctrica y la magnética (fuerza de Lorentz):
+
+$$
+\vec{F} = q\,\vec{E} + q\,(\vec{v}\times\vec{B})
+$$
+
+Para que siga en línea recta con la misma velocidad, la fuerza total tiene que ser nula: las dos fuerzas deben tener la misma dirección, sentidos opuestos e igual módulo.
+
+$$
+q\,\vec{E} + q\,(\vec{v}\times\vec{B}) = \vec{0}
+\quad\Rightarrow\quad
+\vec{E} = -\vec{v}\times\vec{B}
+$$
+
+- **Dirección.** La velocidad tiene que ser perpendicular a los dos campos: así la fuerza magnética, perpendicular a $\vec{v}$ y a $\vec{B}$, tiene la dirección de $\vec{E}$ y puede compensar a la eléctrica.
+- **Sentido.** El de la velocidad tiene que ser tal que $\vec{v}\times\vec{B}$ apunte en sentido contrario a $\vec{E}$. Por ejemplo, con $\vec{v}$ según $+\vec{i}$ y $\vec{B}$ según $+\vec{k}$, $\vec{v}\times\vec{B}$ apunta según $-\vec{j}$, y el campo eléctrico tiene que apuntar según $+\vec{j}$.
+- **Módulo.** Con $\vec{v} \perp \vec{B}$, $|q|\,E = |q|\,v\,B$, así que:
+
+$$
+v = \frac{E}{B}
+$$
+
+<Vectores
+  xMin={-2.6}
+  xMax={2.4}
+  yMin={-1.5}
+  yMax={1.5}
+  escala={56}
+  unidad=""
+  puntos={[
+    { x: 0, y: 0, texto: "e⁻", tipo: "carga", signo: "−", dx: -22, dy: -10 },
+    { x: -2, y: 1, texto: "B (saliente)", tipo: "sale", dx: 14, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [90, 0], texto: "v", dx: 4, dy: -8 },
+    { desde: [0, 0], v: [0, 58], texto: "F", sub: "B", color: "#2d6fa3", dx: 6, dy: 4 },
+    { desde: [0, 0], v: [0, -58], texto: "F", sub: "E", color: "#b04a3a", dx: 6, dy: 4 },
+    { desde: [-2, -1.2], v: [0, 56], texto: "E", color: "#111", dx: 6, dy: 8 },
+  ]}
+  descripcion="Electrón que avanza hacia la derecha en una región con un campo magnético saliente del papel y un campo eléctrico vertical hacia arriba. La fuerza eléctrica sobre el electrón apunta hacia abajo, contraria al campo eléctrico porque la carga es negativa, y la fuerza magnética apunta hacia arriba: se compensan y el electrón sigue en línea recta."
+/>
+
+Si el electrón es más rápido, domina la fuerza magnética, y si es más lento, la eléctrica: en los dos casos se desvía. Solo pasan sin desviarse las partículas con $v = E/B$, sea cual sea su carga o su masa (si la carga fuera positiva, las dos fuerzas cambiarían de sentido y se seguirían compensando). Por eso este dispositivo se llama **selector de velocidades**.
+
+</Solucion>
+
+**b)** Por dos conductores rectilíneos muy largos, paralelos y separados por una distancia de 2 m circulan corrientes eléctricas de 1 y 3 A. Determine, apoyándose en un esquema, a qué distancia del primer hilo se anula el campo magnético en los siguientes casos: **i)** las dos corrientes van en el mismo sentido; **ii)** las corrientes van en sentidos opuestos.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+Un hilo rectilíneo muy largo crea a una distancia $r$ un campo magnético de módulo
+
+$$
+B = \frac{\mu_0\,I}{2\pi r}
+$$
+
+cuyas líneas son circunferencias centradas en el hilo, con el sentido que da la regla de la mano derecha. Para que el campo total se anule, los campos de los dos hilos tienen que tener la misma dirección, sentidos opuestos e igual módulo. Eso solo puede pasar en puntos del plano que contiene a los dos hilos (fuera de él los campos no tienen la misma dirección). Llamamos $I_1 = 1$ A a la corriente del primer hilo, $I_2 = 3$ A a la del segundo y $x$ a la distancia del punto al primer hilo. Dibujamos los hilos perpendiculares al papel.
+
+**i) Corrientes en el mismo sentido.** Fuera de los hilos, a un mismo lado de ambos, los dos campos tienen el mismo sentido y se suman. **Entre** los hilos tienen sentidos opuestos, así que el punto está entre ellos, a $x$ del primero y a $2 - x$ del segundo:
+
+<Vectores
+  xMin={-0.8}
+  xMax={2.8}
+  yMin={-1.1}
+  yMax={1.1}
+  escala={80}
+  marcasX={[1, 2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "I₁ = 1 A", tipo: "sale", dx: -16, dy: 24 },
+    { x: 2, y: 0, texto: "I₂ = 3 A", tipo: "sale", dx: -16, dy: 24 },
+    { x: 0.5, y: 0, texto: "P", tipo: "punto", dx: 4, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0.5, 0], v: [0, 52], texto: "B", sub: "1", dx: 6, dy: 4 },
+    { desde: [0.5, 0], v: [0, -52], texto: "B", sub: "2", color: "#b04a3a", dx: 6, dy: 4 },
+  ]}
+  descripcion="Dos hilos perpendiculares al papel con las corrientes saliendo, el primero con 1 amperio y el segundo con 3 amperios, separados 2 metros. En el punto P, entre ellos y a 0,5 metros del primero, el campo del primer hilo apunta hacia arriba y el del segundo hacia abajo, con el mismo módulo."
+/>
+
+$$
+\frac{\mu_0\,I_1}{2\pi x} = \frac{\mu_0\,I_2}{2\pi(2 - x)}
+\quad\Rightarrow\quad
+\frac{1}{x} = \frac{3}{2 - x}
+\quad\Rightarrow\quad
+2 - x = 3x
+\quad\Rightarrow\quad
+x = 0{,}5\ \text{m}
+$$
+
+**ii) Corrientes en sentidos opuestos.** Ahora, entre los hilos los dos campos tienen el mismo sentido y se suman. Fuera de ellos tienen sentidos opuestos, y el punto tiene que estar más cerca del hilo de menor corriente, para que su campo compense el del otro: está **al otro lado del primer hilo**, a $x$ de él y a $x + 2$ del segundo:
+
+<Vectores
+  xMin={-1.8}
+  xMax={2.8}
+  yMin={-1.1}
+  yMax={1.1}
+  escala={72}
+  marcasX={[1, 2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "I₁ = 1 A", tipo: "sale", dx: -16, dy: 24 },
+    { x: 2, y: 0, texto: "I₂ = 3 A", tipo: "entra", dx: -16, dy: 24 },
+    { x: -1, y: 0, texto: "P", tipo: "punto", dx: -16, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [-1, 0], v: [0, -52], texto: "B", sub: "1", dx: 6, dy: 4 },
+    { desde: [-1, 0], v: [0, 52], texto: "B", sub: "2", color: "#b04a3a", dx: 6, dy: 4 },
+  ]}
+  descripcion="Dos hilos perpendiculares al papel separados 2 metros, el primero con 1 amperio saliendo y el segundo con 3 amperios entrando. En el punto P, a 1 metro del primer hilo por el lado contrario al segundo, el campo del primer hilo apunta hacia abajo y el del segundo hacia arriba, con el mismo módulo."
+/>
+
+$$
+\frac{\mu_0\,I_1}{2\pi x} = \frac{\mu_0\,I_2}{2\pi(x + 2)}
+\quad\Rightarrow\quad
+\frac{1}{x} = \frac{3}{x + 2}
+\quad\Rightarrow\quad
+x + 2 = 3x
+\quad\Rightarrow\quad
+x = 1\ \text{m}
+$$
+
+En ese punto cada hilo crea un campo de módulo $B = \dfrac{4\pi \cdot 10^{-7} \cdot 1}{2\pi \cdot 1} = 2 \cdot 10^{-7}$ T, y los dos se anulan.
+
+**Respuesta.** **i)** Con las corrientes en el mismo sentido, el campo se anula entre los hilos, a **0,5 m del primero**. **ii)** Con las corrientes en sentidos opuestos, se anula fuera de los hilos, a **1 m del primero**, por el lado contrario al segundo. En los dos casos el punto queda más cerca del hilo con menos corriente, y solo depende del cociente de las corrientes, no de $\mu_0$.
+
+</Solucion>

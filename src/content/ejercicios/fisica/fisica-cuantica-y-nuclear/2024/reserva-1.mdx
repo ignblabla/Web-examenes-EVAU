@@ -1,0 +1,112 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2024
+convocatoria: reserva-1
+formato: fisica
+---
+
+**D1. a)** Un haz luminoso produce la emisión de fotoelectrones en un metal. Explique cómo se modifica el número de fotoelectrones y su energía cinética si: **i)** aumenta la intensidad del haz luminoso; **ii)** aumenta la frecuencia de la luz incidente.
+
+<Solucion>
+
+Según la explicación de Einstein, la luz está formada por fotones de energía $E = h\,f$, y cada fotón absorbido arranca, como mucho, un electrón. La energía del fotón se reparte entre el trabajo de extracción del metal y la energía cinética del electrón:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+\quad\Rightarrow\quad
+E_{c,\text{máx}} = h\,f - W_0
+$$
+
+**i) Aumenta la intensidad.** Con la misma frecuencia, una luz más intensa lleva **más fotones** por unidad de tiempo, pero cada uno con la misma energía $h\,f$. Por tanto:
+
+- El **número de fotoelectrones aumenta** (proporcionalmente a la intensidad).
+- Su **energía cinética máxima no cambia**, porque solo depende de $h\,f - W_0$.
+
+**ii) Aumenta la frecuencia.** Cada fotón tiene más energía:
+
+- La **energía cinética máxima aumenta**: $E_{c,\text{máx}} = h\,f - W_0$ crece linealmente con la frecuencia.
+- El **número de fotoelectrones no cambia** si llega el mismo número de fotones por segundo, porque cada fotón sigue arrancando un electrón. (Si lo que se mantiene es la intensidad, es decir, la energía por segundo, al ser cada fotón más energético llegan menos fotones y el número de electrones disminuye.)
+
+</Solucion>
+
+**b)** Para observar el efecto fotoeléctrico sobre un metal, que posee una función de trabajo de 3,36·10<sup>-19</sup> J, se utiliza una lámpara de Cd que emite en cuatro líneas espectrales de distinta longitud de onda: roja a 6,438·10<sup>-7</sup> m; verde a 5,382·10<sup>-7</sup> m; azul a 4,800·10<sup>-7</sup> m y violeta a 3,729·10<sup>-7</sup> m. Determine razonadamente: **i)** ¿Qué líneas espectrales provocarán efecto fotoeléctrico en dicho material? **ii)** ¿Qué energía cinética máxima y potencial de frenado tendrán los fotoelectrones si se utiliza la línea espectral azul?
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; c = 3·10<sup>8</sup> m s<sup>-1</sup>; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Líneas que producen efecto fotoeléctrico.** Hay efecto fotoeléctrico si la energía de cada fotón, $E = h\,c/\lambda$, es mayor que el trabajo de extracción, $W_0 = 3{,}36 \cdot 10^{-19}$ J. Calculamos la energía de los fotones de cada línea, con $h\,c = 6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8 = 1{,}989 \cdot 10^{-25}$ J m:
+
+- **Roja:** $E = \dfrac{1{,}989 \cdot 10^{-25}}{6{,}438 \cdot 10^{-7}} = 3{,}09 \cdot 10^{-19}$ J, menor que $W_0$. **No** produce efecto fotoeléctrico.
+- **Verde:** $E = \dfrac{1{,}989 \cdot 10^{-25}}{5{,}382 \cdot 10^{-7}} = 3{,}70 \cdot 10^{-19}$ J, mayor que $W_0$. **Sí**.
+- **Azul:** $E = \dfrac{1{,}989 \cdot 10^{-25}}{4{,}800 \cdot 10^{-7}} = 4{,}14 \cdot 10^{-19}$ J, mayor que $W_0$. **Sí**.
+- **Violeta:** $E = \dfrac{1{,}989 \cdot 10^{-25}}{3{,}729 \cdot 10^{-7}} = 5{,}33 \cdot 10^{-19}$ J, mayor que $W_0$. **Sí**.
+
+Dicho de otra forma, la longitud de onda umbral del metal es $\lambda_0 = h\,c/W_0 = 1{,}989 \cdot 10^{-25}/3{,}36 \cdot 10^{-19} = 5{,}92 \cdot 10^{-7}$ m, y solo producen efecto fotoeléctrico las líneas de longitud de onda menor: **la verde, la azul y la violeta**. La roja no, por intensa que sea.
+
+**ii) Energía cinética máxima y potencial de frenado con la línea azul.**
+
+$$
+E_{c,\text{máx}} = \frac{h\,c}{\lambda} - W_0 = 4{,}144 \cdot 10^{-19} - 3{,}360 \cdot 10^{-19} = 7{,}84 \cdot 10^{-20}\ \text{J}
+$$
+
+El potencial de frenado es el que detiene a los fotoelectrones más rápidos, $e\,V_f = E_{c,\text{máx}}$:
+
+$$
+V_f = \frac{E_{c,\text{máx}}}{e} = \frac{7{,}84 \cdot 10^{-20}}{1{,}6 \cdot 10^{-19}} = 0{,}49\ \text{V}
+$$
+
+**Respuesta.** Producen efecto fotoeléctrico las líneas **verde, azul y violeta**. Con la azul, los fotoelectrones salen con una energía cinética máxima de **$7{,}84 \cdot 10^{-20}$ J** y el potencial de frenado es de **0,49 V**.
+
+</Solucion>
+
+**D2. a)** Justifique razonadamente la veracidad o falsedad de las siguientes afirmaciones: **i)** La emisión de radiación γ por un núcleo modifica su número atómico. **ii)** Es posible desviar las emisiones α mediante la acción de un campo eléctrico externo.
+
+<Solucion>
+
+**i) Falsa.** La radiación γ está formada por fotones, ondas electromagnéticas de alta energía, sin carga ni masa. Un núcleo la emite cuando pasa de un estado excitado a otro de menor energía (normalmente después de una desintegración α o β), sin cambiar su composición:
+
+$$
+{}^{A}_{Z}\text{X}^{*} \longrightarrow {}^{A}_{Z}\text{X} + \gamma
+$$
+
+Ni el número atómico $Z$ ni el número másico $A$ cambian: el núcleo sigue siendo del mismo elemento y del mismo isótopo, solo pierde energía.
+
+**ii) Verdadera.** Las partículas α son núcleos de helio, ${}^{4}_{2}\text{He}$, con carga positiva $+2e$. Un campo eléctrico ejerce sobre ellas una fuerza $\vec{F} = q\,\vec{E}$, en el sentido del campo (hacia la placa negativa), que las desvía. Lo que no se desvía con campos eléctricos ni magnéticos es la radiación γ, porque no tiene carga.
+
+</Solucion>
+
+**b)** En una muestra radiactiva se desintegran las cuatro quintas partes de sus núcleos en tres días. Determine razonadamente: **i)** su periodo de semidesintegración; **ii)** el tiempo necesario para que la actividad inicial de la muestra se reduzca al 15%.
+
+<Solucion>
+
+El número de núcleos que quedan sin desintegrar sigue la ley de desintegración radiactiva, $N = N_0\,e^{-\lambda t}$, y la actividad es proporcional a ese número, $A = \lambda N = A_0\,e^{-\lambda t}$.
+
+**i) Periodo de semidesintegración.** Si se desintegran las cuatro quintas partes, queda una quinta parte: en $t = 3$ días, $N = N_0/5$.
+
+$$
+\frac{N_0}{5} = N_0\,e^{-3\lambda}
+\quad\Rightarrow\quad
+e^{3\lambda} = 5
+\quad\Rightarrow\quad
+\lambda = \frac{\ln 5}{3} = 0{,}536\ \text{días}^{-1}
+$$
+
+El periodo de semidesintegración es el tiempo en que se desintegra la mitad de los núcleos:
+
+$$
+T_{1/2} = \frac{\ln 2}{\lambda} = \frac{0{,}693}{0{,}536} = 1{,}29\ \text{días}
+$$
+
+**ii) Tiempo para que la actividad baje al 15 %.**
+
+$$
+0{,}15\,A_0 = A_0\,e^{-\lambda t}
+\quad\Rightarrow\quad
+t = \frac{\ln(1/0{,}15)}{\lambda} = \frac{1{,}897}{0{,}536} = 3{,}54\ \text{días}
+$$
+
+**Respuesta.** El periodo de semidesintegración es de **1,29 días** (unas 31 horas) y la actividad se reduce al 15 % en **3,54 días**. Es coherente: en 3 días la actividad baja al 20 %, y hace falta algo más de tiempo para llegar al 15 %.
+
+</Solucion>

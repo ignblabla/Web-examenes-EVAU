@@ -1,0 +1,162 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2024
+convocatoria: julio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Nuestra galaxia vecina, Andrómeda, tiene una masa de 1,5 veces la masa de la Vía Láctea. A escala galáctica, ambas se pueden considerar como dos masas puntuales. **i)** Justifique razonadamente si existe algún punto entre las galaxias donde se anule el campo gravitatorio originado por ambas. En caso afirmativo, determine la relación entre las distancias de ese punto a cada galaxia. **ii)** ¿Se anula el potencial gravitatorio en algún punto entre ambas galaxias? Justifique su respuesta.
+
+<Solucion>
+
+Cada galaxia, de masa $M$, crea a una distancia $r$ un campo gravitatorio de módulo $g = G\,M/r^2$, dirigido hacia ella, y un potencial $V = -G\,M/r$ (con el origen de potenciales en el infinito). Llamamos $M_V$ a la masa de la Vía Láctea, $M_A = 1{,}5\,M_V$ a la de Andrómeda, y $d_V$ y $d_A$ a las distancias del punto a cada una.
+
+**i) Sí existe.** En cualquier punto del segmento que une las galaxias, el campo de la Vía Láctea apunta hacia ella y el de Andrómeda hacia Andrómeda: tienen la misma dirección y sentidos opuestos. Al movernos de una galaxia a la otra, el campo de cada una pasa de ser enorme (cerca de ella) a ser pequeño, así que en algún punto intermedio los dos módulos son iguales y el campo total se anula:
+
+$$
+\frac{G\,M_V}{d_V^2} = \frac{G\,M_A}{d_A^2} = \frac{1{,}5\,G\,M_V}{d_A^2}
+\quad\Rightarrow\quad
+\frac{d_A^2}{d_V^2} = 1{,}5
+\quad\Rightarrow\quad
+\frac{d_A}{d_V} = \sqrt{1{,}5} = 1{,}22
+$$
+
+La distancia del punto a Andrómeda es **1,22 veces** su distancia a la Vía Láctea: el punto está más cerca de la galaxia de menor masa, para que su campo compense el de la más masiva. Fuera del segmento los dos campos apuntan en el mismo sentido, y fuera de la recta no tienen la misma dirección, así que ese es el único punto.
+
+**ii) No.** El potencial de cada galaxia es negativo en cualquier punto a distancia finita, y el total es la suma de dos números negativos:
+
+$$
+V = -\frac{G\,M_V}{d_V} - \frac{G\,M_A}{d_A} < 0
+$$
+
+Nunca puede ser cero entre las galaxias (solo tiende a cero en el infinito). En el punto en el que se anula el campo, el potencial no es nulo: el campo es un vector y los de las dos galaxias se pueden compensar; el potencial es un escalar y los de las dos galaxias se suman siempre con el mismo signo.
+
+</Solucion>
+
+**b)** Se sitúa una masa puntual de 3 kg en el punto A(0,-2) m y otra de 2 kg en el punto B(3,0) m. Calcule: **i)** el campo gravitatorio en el origen de coordenadas, ayudándose de un esquema; **ii)** el potencial gravitatorio en el origen de coordenadas.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en el origen.** Cada masa crea en O un campo dirigido hacia ella. La masa de A está a 2 m, debajo del origen, y su campo apunta hacia abajo $(-\vec{j})$; la de B está a 3 m, a la derecha, y su campo apunta hacia la derecha $(+\vec{i})$:
+
+<Vectores
+  xMin={-1.4}
+  xMax={4.2}
+  yMin={-2.8}
+  yMax={1.2}
+  escala={52}
+  marcasX={[1, 2, 3]}
+  marcasY={[-2, -1]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: -2, texto: "A: 3 kg", tipo: "masa", dx: 12, dy: 4 },
+    { x: 3, y: 0, texto: "B: 2 kg", tipo: "masa", dx: -8, dy: -14 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -16, dy: -8 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [0, -68], texto: "g", sub: "A", dx: -26, dy: 0 },
+    { desde: [0, 0], v: [22, 0], texto: "g", sub: "B", dx: 2, dy: -10 },
+    { desde: [0, 0], v: [22, -68], texto: "g", color: "#b04a3a", discontinuo: true, dx: 8, dy: 6 },
+  ]}
+  descripcion="Masa de 3 kg en A(0,-2) y masa de 2 kg en B(3,0). En el origen, el campo de A apunta hacia abajo, hacia A, y el de B hacia la derecha, hacia B; el campo total, su suma, apunta hacia abajo y un poco hacia la derecha."
+/>
+
+$$
+g_A = \frac{G\,m_A}{r_A^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 3}{2^2} = 5{,}00 \cdot 10^{-11}\ \text{N/kg}
+\qquad
+g_B = \frac{G\,m_B}{r_B^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 2}{3^2} = 1{,}48 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+Sumando vectorialmente:
+
+$$
+\vec{g} = \vec{g}_A + \vec{g}_B = (1{,}48 \cdot 10^{-11}\,\vec{i} - 5{,}00 \cdot 10^{-11}\,\vec{j})\ \text{N/kg}
+$$
+
+$$
+|\vec{g}| = \sqrt{(1{,}48 \cdot 10^{-11})^2 + (5{,}00 \cdot 10^{-11})^2} = 5{,}22 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+El campo forma un ángulo $\arctan(5{,}00/1{,}48) = 73{,}5^\circ$ por debajo del semieje OX positivo: domina el de la masa de A, que es mayor y está más cerca.
+
+**ii) Potencial en el origen.** El potencial es un escalar, así que se suman los de las dos masas:
+
+$$
+V = -\frac{G\,m_A}{r_A} - \frac{G\,m_B}{r_B} = -6{,}67 \cdot 10^{-11}\left(\frac{3}{2} + \frac{2}{3}\right) = -1{,}45 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**Respuesta.** En el origen, el campo gravitatorio es **$\vec{g} = (1{,}48 \cdot 10^{-11}\,\vec{i} - 5{,}00 \cdot 10^{-11}\,\vec{j})$ N/kg**, de módulo $5{,}22 \cdot 10^{-11}$ N/kg, y el potencial vale **$-1{,}45 \cdot 10^{-10}$ J/kg**. Los valores son minúsculos porque las masas son de unos pocos kilogramos: la gravedad solo es apreciable con masas astronómicas.
+
+</Solucion>
+
+**A2. a)** Razone si son verdaderos los siguientes enunciados: **i)** Si sobre una partícula sólo actúan fuerzas conservativas, su energía mecánica aumenta. **ii)** Si sólo actúan fuerzas de rozamiento en sentido contrario al desplazamiento, la energía mecánica de una partícula aumenta.
+
+<Solucion>
+
+Por el teorema de las fuerzas vivas, el trabajo total sobre la partícula es igual a la variación de su energía cinética, $W_c + W_{nc} = \Delta E_c$. El trabajo de las fuerzas conservativas es igual a menos la variación de la energía potencial, $W_c = -\Delta E_p$, de modo que:
+
+$$
+W_{nc} = \Delta E_c + \Delta E_p = \Delta E_m
+$$
+
+**i) Falso.** Si solo actúan fuerzas conservativas, $W_{nc} = 0$ y por tanto $\Delta E_m = 0$: la energía mecánica **se conserva**, no aumenta. La energía cinética y la potencial pueden cambiar, pero lo que gana una lo pierde la otra; por ejemplo, un cuerpo en caída libre gana energía cinética a costa de perder energía potencial.
+
+**ii) Falso.** La fuerza de rozamiento es no conservativa y, si es de sentido contrario al desplazamiento, forma $180^\circ$ con él y su trabajo es negativo:
+
+$$
+W_{F_r} = F_r\,d\cos 180^\circ = -F_r\,d < 0 \quad\Rightarrow\quad \Delta E_m = W_{F_r} < 0
+$$
+
+La energía mecánica **disminuye**: el rozamiento la disipa, transformándola en energía térmica.
+
+</Solucion>
+
+**b)** Una masa de 5 kg se lanza hacia abajo por un plano inclinado sin rozamiento 15º respecto de la horizontal con velocidad inicial de 3 m s<sup>-1</sup>. Tras recorrer 2 m a lo largo del plano inclinado llega a una superficie horizontal con rozamiento. Cuando ha recorrido 2 m sobre la superficie horizontal, su velocidad es de 1 m s<sup>-1</sup>. **i)** Represente un diagrama de las fuerzas sobre la masa en cada superficie. **ii)** Utilizando consideraciones energéticas, calcule el trabajo realizado por la fuerza de rozamiento en el recorrido descrito. **iii)** Calcule el coeficiente de rozamiento en el tramo horizontal.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Diagrama de fuerzas.** En el plano inclinado, que no tiene rozamiento, solo actúan el peso $\vec{P}$, vertical y hacia abajo, y la normal $\vec{N}_1$, perpendicular al plano. En la superficie horizontal actúan el peso, la normal $\vec{N}_2$, vertical y hacia arriba, y el rozamiento $\vec{F}_r$, horizontal y opuesto al movimiento:
+
+<PlanoInclinado angulo={15} mueve="baja" horizontal sinRozamientoPlano descripcion="Masa que baja por un plano inclinado 15 grados sin rozamiento y sigue por un tramo horizontal con rozamiento. En el plano actúan solo el peso, vertical hacia abajo, y la normal, perpendicular al plano; en el tramo horizontal actúan el peso, la normal hacia arriba y el rozamiento hacia la izquierda, opuesto al movimiento." />
+
+$$
+P = mg = 5 \cdot 9{,}8 = 49\ \text{N}, \qquad N_1 = mg\cos 15^\circ = 47{,}3\ \text{N}, \qquad N_2 = mg = 49\ \text{N}
+$$
+
+**ii) Trabajo del rozamiento.** El único trabajo no conservativo es el del rozamiento (las normales son perpendiculares al desplazamiento y no trabajan), así que es igual a la variación de energía mecánica entre el punto de lanzamiento y el punto final, $W_{F_r} = \Delta E_m$.
+
+Tomamos el origen de energía potencial en la superficie horizontal. Al recorrer 2 m por el plano, la masa baja una altura:
+
+$$
+h = 2\sin 15^\circ = 2 \cdot 0{,}259 = 0{,}518\ \text{m}
+$$
+
+$$
+E_{m,i} = \frac{1}{2}m\,v_0^2 + mgh = \frac{1}{2} \cdot 5 \cdot 3^2 + 5 \cdot 9{,}8 \cdot 0{,}518 = 22{,}5 + 25{,}4 = 47{,}9\ \text{J}
+$$
+
+$$
+E_{m,f} = \frac{1}{2}m\,v_f^2 = \frac{1}{2} \cdot 5 \cdot 1^2 = 2{,}5\ \text{J}
+$$
+
+$$
+W_{F_r} = E_{m,f} - E_{m,i} = 2{,}5 - 47{,}9 = -45{,}4\ \text{J}
+$$
+
+**iii) Coeficiente de rozamiento.** En el tramo horizontal la normal es igual al peso, así que $F_r = \mu\,N_2 = \mu\,m\,g$, y su trabajo en los $d = 2$ m es $W_{F_r} = -\mu\,m\,g\,d$:
+
+$$
+\mu = \frac{-W_{F_r}}{m\,g\,d} = \frac{45{,}4}{5 \cdot 9{,}8 \cdot 2} = 0{,}46
+$$
+
+**Respuesta.** El rozamiento realiza un trabajo de **−45,4 J** (negativo, porque se opone al movimiento y disipa energía mecánica), y el coeficiente de rozamiento del tramo horizontal es **μ = 0,46**.
+
+</Solucion>

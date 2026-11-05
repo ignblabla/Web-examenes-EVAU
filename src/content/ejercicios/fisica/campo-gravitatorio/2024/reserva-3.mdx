@@ -1,0 +1,174 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2024
+convocatoria: reserva-3
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Una partícula puntual de masa *m* está situada en el punto A(d,0) y otra de masa *2m* está situada en el punto B(-d,0). Deduzca razonadamente la expresión del campo gravitatorio en el origen de coordenadas y represéntelo.
+
+<Solucion>
+
+Una masa puntual $M$ crea a una distancia $r$ un campo gravitatorio de módulo $g = G\,M/r^2$, dirigido hacia ella. Las dos masas están a la misma distancia $d$ del origen:
+
+- La masa $m$, en A, crea en O un campo hacia A, en el sentido positivo del eje OX: $\vec{g}_A = \dfrac{G\,m}{d^2}\,\vec{i}$.
+- La masa $2m$, en B, crea en O un campo hacia B, en el sentido negativo: $\vec{g}_B = -\dfrac{2\,G\,m}{d^2}\,\vec{i}$.
+
+<Vectores
+  xMin={-2}
+  xMax={2}
+  yMin={-0.6}
+  yMax={0.7}
+  escala={120}
+  unidad=""
+  puntos={[
+    { x: 1, y: 0, texto: "A(d, 0): m", tipo: "masa", dx: -28, dy: 22 },
+    { x: -1, y: 0, texto: "B(−d, 0): 2m", tipo: "masa", dx: -36, dy: 22 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -4, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [40, 0], texto: "g", sub: "A", dx: 2, dy: -10 },
+    { desde: [0, 0], v: [-80, 0], texto: "g", sub: "B", dx: -6, dy: -10 },
+    { desde: [0, 0.3], v: [-40, 0], texto: "g", color: "#b04a3a", dx: -14, dy: -8 },
+  ]}
+  descripcion="Masa m en A(d,0) y masa 2m en B(-d,0). En el origen, el campo de A apunta hacia la derecha, hacia A, y el de B, el doble de largo, hacia la izquierda, hacia B. El campo total, dibujado aparte, apunta hacia la izquierda y tiene el módulo del campo de A."
+/>
+
+Sumando los dos campos:
+
+$$
+\vec{g}_O = \vec{g}_A + \vec{g}_B = \frac{G\,m}{d^2}\,\vec{i} - \frac{2\,G\,m}{d^2}\,\vec{i} = -\frac{G\,m}{d^2}\,\vec{i}
+$$
+
+El campo en el origen tiene módulo $G\,m/d^2$ y apunta en el **sentido negativo del eje OX, hacia la masa mayor**: el campo de la masa $2m$ es el doble que el de la masa $m$ y no se compensan.
+
+</Solucion>
+
+**b)** Un triángulo equilátero de lado 6 m se sitúa con su base sobre el eje OX. En los dos vértices de dicha base se sitúan dos partículas puntuales de masa 3 kg. Calcule razonadamente: **i)** el campo gravitatorio creado por las dos masas en el tercer vértice, ayudándose de un esquema; **ii)** el potencial gravitatorio en ese tercer vértice, asumiendo que en el infinito el potencial es nulo; **iii)** el trabajo realizado por el campo gravitatorio para traer una masa de 1 kg desde el infinito hasta ese punto. Justifique el signo del trabajo.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+Colocamos los vértices de la base en $A(0, 0)$ y $B(6, 0)$ m. El tercer vértice está sobre la mediatriz de la base, a una altura $h = 6\sin 60^\circ = 3\sqrt{3} = 5{,}20$ m: $C(3;\ 5{,}20)$ m. Las dos masas están a 6 m de C.
+
+**i) Campo en C.** Cada masa crea en C un campo dirigido hacia ella, del mismo módulo:
+
+$$
+g_A = g_B = \frac{G\,m}{r^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 3}{6^2} = 5{,}56 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+Los lados del triángulo forman $60^\circ$ con la horizontal. Las componentes horizontales de los dos campos son opuestas y se anulan; las verticales, hacia abajo, se suman:
+
+<Vectores
+  xMin={-1}
+  xMax={7}
+  yMin={-1}
+  yMax={6.4}
+  escala={34}
+  marcasX={[3, 6]}
+  marcasY={[5.2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A: 3 kg", tipo: "masa", dx: -10, dy: 22 },
+    { x: 6, y: 0, texto: "B: 3 kg", tipo: "masa", dx: -16, dy: 22 },
+    { x: 3, y: 5.196, texto: "C", tipo: "punto", dx: 8, dy: -8 },
+  ]}
+  vectores={[
+    { desde: [3, 5.196], v: [-26, -45], texto: "g", sub: "A", dx: -24, dy: 2 },
+    { desde: [3, 5.196], v: [26, -45], texto: "g", sub: "B", dx: 6, dy: 2 },
+    { desde: [3, 5.196], v: [0, -90], texto: "g", color: "#b04a3a", discontinuo: true, dx: 8, dy: 6 },
+  ]}
+  segmentos={[[0, 0, 3, 5.196], [6, 0, 3, 5.196]]}
+  descripcion="Triángulo equilátero de 6 metros de lado con masas de 3 kg en los vértices de la base, A(0,0) y B(6,0). En el vértice superior C, el campo de A apunta hacia A y el de B hacia B, a lo largo de los lados; sus componentes horizontales se anulan y el campo total apunta verticalmente hacia abajo."
+/>
+
+$$
+g_y = -2\,g_A\sin 60^\circ = -2 \cdot 5{,}56 \cdot 10^{-12} \cdot 0{,}866 = -9{,}63 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+$$
+\vec{g}_C = -9{,}63 \cdot 10^{-12}\,\vec{j}\ \text{N/kg}
+$$
+
+**ii) Potencial en C.** El potencial es un escalar y se suman los de las dos masas:
+
+$$
+V_C = -\frac{G\,m_A}{r_A} - \frac{G\,m_B}{r_B} = -2 \cdot \frac{6{,}67 \cdot 10^{-11} \cdot 3}{6} = -6{,}67 \cdot 10^{-11}\ \text{J/kg}
+$$
+
+**iii) Trabajo del campo desde el infinito.** El trabajo del campo es igual a menos la variación de energía potencial, con $V_\infty = 0$:
+
+$$
+W_{\infty\to C} = -m\,(V_C - V_\infty) = -1 \cdot (-6{,}67 \cdot 10^{-11} - 0) = 6{,}67 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** En el tercer vértice el campo es **$\vec{g}_C = -9{,}63 \cdot 10^{-12}\,\vec{j}$ N/kg**, el potencial vale **$-6{,}67 \cdot 10^{-11}$ J/kg** y el campo realiza un trabajo de **$6{,}67 \cdot 10^{-11}$ J**. Es **positivo** porque la fuerza gravitatoria es atractiva: la masa se acerca espontáneamente a las otras dos y su energía potencial disminuye (pasa de 0 a un valor negativo).
+
+</Solucion>
+
+**A2. a)** El perihelio (P) y el afelio (A) son los puntos de la órbita elíptica de la Tierra que se encuentran más cerca y más lejos del Sol, respectivamente, siendo r<sub>P</sub> y r<sub>A</sub> las distancias de la Tierra al Sol en P y en A. Encuentre razonadamente la relación que existe entre las velocidades orbitales de la Tierra en P y A, y justifique en cuál de los dos puntos se desplaza la Tierra más rápidamente.
+
+<Solucion>
+
+La fuerza gravitatoria que el Sol ejerce sobre la Tierra es **central**: siempre está dirigida hacia el Sol, así que es paralela al vector de posición $\vec{r}$ de la Tierra respecto del Sol y su momento respecto del Sol es nulo, $\vec{M} = \vec{r}\times\vec{F} = \vec{0}$. Por tanto, el **momento angular** de la Tierra respecto del Sol se conserva:
+
+$$
+\vec{L} = \vec{r}\times m\,\vec{v} = \text{constante}
+$$
+
+En el perihelio y en el afelio la velocidad es perpendicular al vector de posición (son los extremos del eje mayor de la elipse), así que el módulo del momento angular es simplemente $L = m\,r\,v$ en los dos puntos:
+
+$$
+m\,r_P\,v_P = m\,r_A\,v_A
+\quad\Rightarrow\quad
+\frac{v_P}{v_A} = \frac{r_A}{r_P}
+$$
+
+Las velocidades son inversamente proporcionales a las distancias al Sol. Como $r_A > r_P$, la velocidad en el perihelio es mayor: **la Tierra se desplaza más rápidamente en el perihelio**, cuando está más cerca del Sol. Es lo que dice la segunda ley de Kepler: el radio vector barre áreas iguales en tiempos iguales, así que cerca del Sol, donde el radio es menor, la Tierra tiene que recorrer más arco en el mismo tiempo.
+
+</Solucion>
+
+**b)** Un objeto se lanza verticalmente hacia arriba desde la superficie terrestre con una velocidad inicial de 2·10<sup>3</sup> m s<sup>-1</sup>. **i)** Calcule la altura máxima que alcanza el objeto. **ii)** Una vez alcanzada dicha altura, ¿cuál es su velocidad de escape?
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Altura máxima.** Solo actúa la fuerza gravitatoria (despreciamos el rozamiento del aire), que es conservativa: la energía mecánica se conserva. En la altura máxima el objeto está en reposo, a una distancia $r = R_T + h$ del centro de la Tierra. Como la altura puede no ser pequeña frente al radio terrestre, usamos la expresión general de la energía potencial:
+
+$$
+\frac{1}{2}m\,v_0^2 - \frac{G\,M_T\,m}{R_T} = -\frac{G\,M_T\,m}{r}
+\quad\Rightarrow\quad
+\frac{G\,M_T}{r} = \frac{G\,M_T}{R_T} - \frac{1}{2}v_0^2
+$$
+
+$$
+G\,M_T = 6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} = 3{,}99 \cdot 10^{14}\ \text{N m}^2/\text{kg}, \qquad
+\frac{G\,M_T}{R_T} = \frac{3{,}99 \cdot 10^{14}}{6{,}37 \cdot 10^{6}} = 6{,}262 \cdot 10^{7}\ \text{J/kg}
+$$
+
+$$
+\frac{G\,M_T}{r} = 6{,}262 \cdot 10^{7} - \frac{1}{2}(2 \cdot 10^{3})^2 = 6{,}262 \cdot 10^{7} - 0{,}200 \cdot 10^{7} = 6{,}062 \cdot 10^{7}\ \text{J/kg}
+$$
+
+$$
+r = \frac{3{,}99 \cdot 10^{14}}{6{,}062 \cdot 10^{7}} = 6{,}580 \cdot 10^{6}\ \text{m}
+\quad\Rightarrow\quad
+h = r - R_T = 6{,}580 \cdot 10^{6} - 6{,}370 \cdot 10^{6} = 2{,}10 \cdot 10^{5}\ \text{m}
+$$
+
+**ii) Velocidad de escape desde esa altura.** Es la velocidad que habría que darle allí para que llegara al infinito con velocidad nula:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M_T\,m}{r} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M_T}{r}} = \sqrt{2 \cdot 6{,}062 \cdot 10^{7}} = 1{,}10 \cdot 10^{4}\ \text{m/s}
+$$
+
+**Respuesta.** El objeto sube hasta **$2{,}10 \cdot 10^5$ m** (210 km) sobre la superficie, y desde esa altura su velocidad de escape es **$1{,}10 \cdot 10^4$ m/s**, algo menor que desde la superficie (11,2 km/s) porque está más lejos del centro de la Tierra. Con la aproximación $h = v_0^2/(2g)$ saldrían 204 km: a esta altura la gravedad ya es un 6 % menor y el objeto sube algo más.
+
+</Solucion>

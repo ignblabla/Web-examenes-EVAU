@@ -1,0 +1,103 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: junio
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+
+**C2. a)** Un rayo de luz monocromática duplica su longitud de onda al pasar del medio 1 al medio 2. **i)** Determine razonadamente la relación entre los índices de refracción de los medios. **ii)** Deduzca si el rayo se acerca o aleja de la normal a la superficie y explique si puede darse la reflexión total.
+
+<Solucion>
+
+**i) Relación entre los índices.** Al pasar de un medio a otro, la frecuencia de la luz no cambia: la fija la fuente. Lo que cambia es la velocidad, $v = c/n$, y con ella la longitud de onda:
+
+$$
+\lambda = \frac{v}{f} = \frac{c}{n\,f}
+\quad\Rightarrow\quad
+\frac{\lambda_2}{\lambda_1} = \frac{n_1}{n_2}
+$$
+
+Como $\lambda_2 = 2\lambda_1$:
+
+$$
+\frac{n_1}{n_2} = 2 \quad\Rightarrow\quad n_1 = 2\,n_2
+$$
+
+El índice del medio 1 es el doble que el del medio 2: la luz va el doble de rápido en el medio 2.
+
+**ii) ¿Se acerca o se aleja de la normal?** Por la ley de Snell:
+
+$$
+n_1\sin\theta_1 = n_2\sin\theta_2 \quad\Rightarrow\quad \sin\theta_2 = \frac{n_1}{n_2}\sin\theta_1 = 2\sin\theta_1 > \sin\theta_1
+$$
+
+El ángulo de refracción es mayor que el de incidencia: el rayo **se aleja de la normal**, porque pasa a un medio menos refringente.
+
+**Reflexión total.** Sí puede darse, precisamente porque la luz pasa a un medio de menor índice. Al aumentar el ángulo de incidencia, el de refracción llega a $90^\circ$ para el ángulo límite:
+
+$$
+\sin\theta_L = \frac{n_2}{n_1} = \frac{1}{2} \quad\Rightarrow\quad \theta_L = 30^\circ
+$$
+
+Si el rayo incide con un ángulo mayor que $30^\circ$, $\sin\theta_2$ tendría que ser mayor que 1: no hay rayo refractado y toda la luz se refleja (reflexión total).
+
+</Solucion>
+
+**b)** Sobre una lámina de caras planas y paralelas, rodeada de aire, incide un rayo de luz monocromática formando un ángulo de 80º con la normal a las superficies de las láminas. La longitud de onda del rayo en la lámina vale 3λ<sub>o</sub>/4, siendo λ<sub>o</sub> la longitud de onda en el aire. **i)** Halle el índice de refracción en la lámina. **ii)** Calcule el ángulo de refracción en la lámina y represente en un esquema la trayectoria del rayo. **iii)** Obtenga el espesor de la lámina sabiendo que el rayo tarda 5,28·10<sup>-10</sup> s en atravesarla. Justifique sus respuestas.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1</Datos>
+
+<Solucion>
+
+**i) Índice de refracción.** Como en el apartado a), la frecuencia no cambia al entrar en la lámina y la longitud de onda es inversamente proporcional al índice:
+
+$$
+\frac{\lambda}{\lambda_0} = \frac{n_{\text{aire}}}{n} \quad\Rightarrow\quad n = n_{\text{aire}}\,\frac{\lambda_0}{\lambda} = 1 \cdot \frac{\lambda_0}{3\lambda_0/4} = \frac{4}{3} = 1{,}33
+$$
+
+**ii) Ángulo de refracción y trayectoria.** Ley de Snell en la primera cara:
+
+$$
+n_{\text{aire}}\sin 80^\circ = n\sin r
+\quad\Rightarrow\quad
+\sin r = \frac{\sin 80^\circ}{4/3} = \frac{0{,}985 \cdot 3}{4} = 0{,}739
+\quad\Rightarrow\quad
+r = 47{,}6^\circ
+$$
+
+Al entrar en la lámina, más refringente que el aire, el rayo se acerca a la normal. Como las caras son paralelas, el rayo llega a la segunda cara con el mismo ángulo $r = 47{,}6^\circ$, y al volver al aire aplicamos Snell otra vez: $n\sin r = \sin\theta'$, así que $\theta' = 80^\circ$. El rayo **sale paralelo al incidente**, solo desplazado lateralmente:
+
+<RefraccionCapas
+  incidencia={80}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb", alto: 34 },
+    { nombre: "Lámina", n: 4 / 3, color: "#dfe9f0", alto: 70, texto: "Lámina (n = 4/3)" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb", alto: 34 },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre una lámina de caras paralelas formando 80 grados con la normal. Dentro de la lámina se acerca a la normal y forma 47,6 grados con ella; al salir por la segunda cara vuelve al aire formando otra vez 80 grados, paralelo al rayo incidente pero desplazado."
+/>
+
+**iii) Espesor de la lámina.** La velocidad de la luz en la lámina es:
+
+$$
+v = \frac{c}{n} = \frac{3 \cdot 10^8}{4/3} = 2{,}25 \cdot 10^{8}\ \text{m/s}
+$$
+
+En $t = 5{,}28 \cdot 10^{-10}$ s el rayo recorre dentro de la lámina, en línea recta y en la dirección inclinada $47{,}6^\circ$ respecto de la normal, una distancia:
+
+$$
+L = v\,t = 2{,}25 \cdot 10^{8} \cdot 5{,}28 \cdot 10^{-10} = 0{,}119\ \text{m}
+$$
+
+Ese recorrido no es el espesor: es la hipotenusa de un triángulo rectángulo cuyo cateto, en la dirección de la normal, es el espesor $e$:
+
+$$
+e = L\cos r = 0{,}119 \cdot \cos 47{,}6^\circ = 0{,}119 \cdot 0{,}674 = 0{,}080\ \text{m}
+$$
+
+**Respuesta.** La lámina tiene un índice de refracción de **4/3 ≈ 1,33**; el rayo se refracta formando **47,6°** con la normal y sale paralelo al incidente; el espesor de la lámina es **8,0 cm**.
+
+</Solucion>

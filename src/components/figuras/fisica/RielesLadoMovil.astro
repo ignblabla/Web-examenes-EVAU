@@ -1,0 +1,66 @@
+---
+// Física, reserva 2 de 2024, B1 a: espira formada por un marco cerrado por la izquierda y un
+// lado móvil que se desplaza hacia la derecha con velocidad v en un campo B saliente (⊙). Es la
+// figura del enunciado. Con solucion, la de la respuesta: el área de la espira (a la izquierda
+// del lado móvil) crece, el flujo saliente aumenta y la corriente inducida circula en sentido
+// horario, con un campo inducido entrante (⊗) en su interior.
+interface Props {
+  solucion?: boolean
+}
+
+const { solucion = false } = Astro.props
+const campo = [40, 68, 122, 150, 178].flatMap((x) => [42, 82].map((y) => ({ x, y })))
+const id = `rieles-${Math.round(Math.random() * 1e9)}`
+const gris = solucion ? "#bbb" : "#111"
+---
+
+<figure class={solucion ? "solution-figure" : "official-figure"}>
+  <svg
+    viewBox="0 0 200 124"
+    role="img"
+    aria-label={
+      solucion
+        ? "La misma espira con la corriente inducida: en la espira, a la izquierda del lado móvil, la corriente circula en sentido horario (baja por el lado móvil) y el campo inducido en su interior es entrante, opuesto a B."
+        : "Espira formada por un marco cerrado por la izquierda y un lado móvil que se desplaza hacia la derecha con velocidad v, dentro de un campo magnético uniforme B saliente del papel."
+    }
+  >
+    <defs>
+      <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
+      </marker>
+      <marker id={`${id}-n`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#111" />
+      </marker>
+    </defs>
+    <g fill="none" stroke="#111" stroke-width="1.3">
+      <path d="M196 22H22V102H196" />
+      <path d="M92 14V110M98 14V110" stroke-width="1.6" />
+    </g>
+    <path d="M104 62H128" stroke="#111" stroke-width="1.1" fill="none" marker-end={`url(#${id}-n)`} />
+    <g fill="none" stroke={gris} stroke-width="1.2">
+      {campo.map((p) => <circle cx={p.x} cy={p.y} r="5" />)}
+    </g>
+    <g fill={gris}>
+      {campo.map((p) => <circle cx={p.x} cy={p.y} r="1.4" />)}
+    </g>
+    <g font-family="'Times New Roman', Times, serif" font-style="italic" fill="#111" font-size="14">
+      <text x="110" y="76">v</text>
+      {!solucion && <text x="50" y="68">B</text>}
+    </g>
+    {
+      solucion && (
+        <g>
+          <g fill="none" stroke="#b04a3a" stroke-width="1.4" marker-end={`url(#${id})`}>
+            <path d="M38 28H76" />
+            <path d="M86 34V90" />
+            <path d="M76 96H38" />
+            <path d="M28 90V34" />
+          </g>
+          <circle cx="57" cy="62" r="7" fill="#fff" stroke="#b04a3a" stroke-width="1.3" />
+          <path d="M52 57l10 10m0-10l-10 10" stroke="#b04a3a" stroke-width="1.3" />
+          <text x="57" y="118" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" fill="#b04a3a">I horaria · B inducido entrante</text>
+        </g>
+      )
+    }
+  </svg>
+</figure>

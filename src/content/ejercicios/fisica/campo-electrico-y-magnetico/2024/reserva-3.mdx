@@ -1,0 +1,139 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2024
+convocatoria: reserva-3
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** En una región del espacio en la que existe un campo magnético uniforme entran perpendicularmente al mismo, y con igual velocidad, dos partículas de masas *m*<sub>1</sub> y *m*<sub>2</sub> y de cargas *q* y *2q*, respectivamente. **i)** Si el radio descrito por la segunda partícula es el doble que el de la primera, obtenga razonadamente la relación entre *m*<sub>1</sub> y *m*<sub>2</sub>. **ii)** Razone si la fuerza magnética realiza trabajo sobre las partículas y cómo cambia su energía cinética.
+
+<Solucion>
+
+**i) Relación entre las masas.** Sobre cada partícula actúa la fuerza de Lorentz, $\vec{F} = q\,\vec{v}\times\vec{B}$. Como la velocidad es perpendicular al campo, su módulo es $F = |q|\,v\,B$ y es perpendicular a la velocidad: actúa como fuerza centrípeta y la partícula describe una circunferencia:
+
+$$
+|q|\,v\,B = \frac{m\,v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+Aplicándolo a las dos partículas, con la misma velocidad y el mismo campo:
+
+$$
+R_1 = \frac{m_1\,v}{q\,B}, \qquad R_2 = \frac{m_2\,v}{2q\,B}
+$$
+
+$$
+R_2 = 2\,R_1
+\quad\Rightarrow\quad
+\frac{m_2\,v}{2q\,B} = 2\,\frac{m_1\,v}{q\,B}
+\quad\Rightarrow\quad
+m_2 = 4\,m_1
+$$
+
+La segunda partícula tiene **cuatro veces más masa** que la primera.
+
+**ii) Trabajo y energía cinética.** La fuerza magnética es en todo momento perpendicular a la velocidad, y por tanto al desplazamiento: **no realiza trabajo**, $dW = \vec{F}\cdot d\vec{r} = \vec{F}\cdot\vec{v}\,dt = 0$. Por el teorema de las fuerzas vivas, $\Delta E_c = W = 0$: la **energía cinética de las partículas no cambia**. La fuerza magnética cambia la dirección de la velocidad, pero no su módulo.
+
+</Solucion>
+
+**b)** **i)** Un protón que parte del reposo es acelerado en el sentido positivo del eje OX al aplicar una diferencia de potencial de 1000 V. Determine la velocidad que alcanza el protón tras ser acelerado. **ii)** A continuación, penetra en un campo magnético describiendo una trayectoria circular de radio 4·10<sup>-3</sup> m en el plano XZ, ¿cuál debe ser el módulo del campo magnético? ¿Y su dirección?
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Velocidad tras la aceleración.** El trabajo del campo eléctrico, $W = e\,\Delta V$, se convierte en energía cinética del protón, que parte del reposo:
+
+$$
+e\,\Delta V = \frac{1}{2}m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,e\,\Delta V}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-19} \cdot 1000}{1{,}7 \cdot 10^{-27}}} = 4{,}34 \cdot 10^{5}\ \text{m/s}
+$$
+
+La velocidad es $\vec{v} = 4{,}34 \cdot 10^5\,\vec{i}$ m/s.
+
+**ii) Módulo y dirección del campo magnético.** La fuerza magnética es perpendicular a $\vec{v}$ y a $\vec{B}$. Para que el protón describa la circunferencia en el plano XZ, la fuerza (dirigida hacia el centro) tiene que estar contenida en ese plano, igual que la velocidad. Entonces el campo tiene que ser perpendicular al plano XZ: el campo tiene la **dirección del eje OY**.
+
+Su módulo se obtiene igualando la fuerza magnética a la fuerza centrípeta:
+
+$$
+e\,v\,B = \frac{m_p\,v^2}{R}
+\quad\Rightarrow\quad
+B = \frac{m_p\,v}{e\,R} = \frac{1{,}7 \cdot 10^{-27} \cdot 4{,}34 \cdot 10^{5}}{1{,}6 \cdot 10^{-19} \cdot 4 \cdot 10^{-3}} = 1{,}15\ \text{T}
+$$
+
+**El sentido.** Si $\vec{B} = B\,\vec{j}$, al entrar el protón la fuerza es $\vec{F} = e\,v\,B\,(\vec{i}\times\vec{j}) = e\,v\,B\,\vec{k}$, y el protón empieza a curvarse hacia $+z$. Si $\vec{B} = -B\,\vec{j}$, la fuerza apunta hacia $-\vec{k}$ y se curva hacia $-z$. Las dos opciones dan una circunferencia de radio $4 \cdot 10^{-3}$ m en el plano XZ; el enunciado no indica hacia qué lado gira, así que el sentido del campo puede ser cualquiera de los dos.
+
+**Respuesta.** El protón alcanza **$4{,}34 \cdot 10^5$ m/s**, y el campo magnético debe valer **1,15 T** y tener la **dirección del eje OY** $(\vec{B} = \pm 1{,}15\,\vec{j}$ T$)$.
+
+</Solucion>
+
+**B2. a)** **i)** Deduzca la relación entre los módulos de los campos eléctricos que crea una carga *Q* a una distancia *r* y *2r* de la misma. **ii)** Si se coloca una carga *q* a una distancia *r* de *Q* y posteriormente se desplaza hasta *2r*, halle la relación entre las energías potenciales en dichas situaciones, asumiendo que el potencial es nulo en el infinito.
+
+<Solucion>
+
+**i) Campos a distancia $r$ y $2r$.** El módulo del campo eléctrico de una carga puntual es $E = K\,|Q|/r^2$, inversamente proporcional al cuadrado de la distancia:
+
+$$
+\frac{E(r)}{E(2r)} = \frac{K\,|Q|/r^2}{K\,|Q|/(2r)^2} = \frac{4r^2}{r^2} = 4
+$$
+
+A distancia $r$ el campo es **cuatro veces** mayor que a distancia $2r$.
+
+**ii) Energías potenciales.** Con el origen en el infinito, la energía potencial de la carga $q$ a una distancia $r$ de $Q$ es $E_p = K\,Q\,q/r$, inversamente proporcional a la distancia:
+
+$$
+\frac{E_p(r)}{E_p(2r)} = \frac{K\,Q\,q/r}{K\,Q\,q/(2r)} = 2
+$$
+
+La energía potencial a distancia $r$ es **el doble** que a distancia $2r$ (con el mismo signo: positiva si las cargas tienen el mismo signo y negativa si son de signo contrario). El campo disminuye con el cuadrado de la distancia y la energía potencial, solo con la distancia.
+
+</Solucion>
+
+**b)** El campo eléctrico sobre la superficie de la Tierra es aproximadamente de 100 N C<sup>-1</sup> y dirigido verticalmente hacia abajo. **i)** Determine el signo y el valor de la carga de una partícula de 5 g de masa para que permanezca suspendida en equilibrio. Realice una representación gráfica de las fuerzas que actúan sobre la partícula. **ii)** Si se duplica el valor de la carga, ¿qué velocidad tendría tras ascender 10 cm partiendo del reposo?
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Carga para que quede suspendida.** Sobre la partícula actúan el peso, $\vec{P} = m\,\vec{g}$, vertical y hacia abajo, y la fuerza eléctrica, $\vec{F}_e = q\,\vec{E}$. Para que esté en equilibrio, la fuerza eléctrica tiene que ser vertical, **hacia arriba**, e igual al peso. Como el campo apunta hacia abajo, la fuerza solo puede apuntar hacia arriba si la carga es **negativa**:
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.6}
+  yMin={-1.3}
+  yMax={1.3}
+  escala={70}
+  unidad=""
+  puntos={[{ x: 0, y: 0, texto: "q < 0", tipo: "carga", signo: "−", dx: 14, dy: -10 }]}
+  vectores={[
+    { desde: [0, 0], v: [0, 66], texto: "F", sub: "e", color: "#2d6fa3", dx: 6, dy: 4 },
+    { desde: [0, 0], v: [0, -66], texto: "P", color: "#111", dx: 6, dy: 4 },
+    { desde: [-1.2, 1.2], v: [0, -56], texto: "E", color: "#b04a3a", dx: -16, dy: 0 },
+  ]}
+  descripcion="Partícula con carga negativa en un campo eléctrico vertical hacia abajo. El peso apunta hacia abajo y la fuerza eléctrica, de sentido contrario al campo por ser la carga negativa, apunta hacia arriba con el mismo módulo."
+/>
+
+$$
+|q|\,E = m\,g
+\quad\Rightarrow\quad
+|q| = \frac{m\,g}{E} = \frac{5 \cdot 10^{-3} \cdot 9{,}8}{100} = 4{,}9 \cdot 10^{-4}\ \text{C}
+\quad\Rightarrow\quad
+q = -4{,}9 \cdot 10^{-4}\ \text{C}
+$$
+
+**ii) Velocidad tras subir 10 cm con el doble de carga.** Con $q' = 2q$, la fuerza eléctrica se duplica, $F_e' = 2\,m\,g$, y la fuerza neta hacia arriba es $F_e' - m\,g = m\,g$. Por el teorema de las fuerzas vivas, el trabajo total al subir $h = 0{,}10$ m es igual a la energía cinética ganada desde el reposo:
+
+$$
+W_{\text{total}} = (2\,m\,g - m\,g)\,h = \frac{1}{2}m\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{2\,g\,h} = \sqrt{2 \cdot 9{,}8 \cdot 0{,}10} = 1{,}4\ \text{m/s}
+$$
+
+**Respuesta.** La partícula debe tener una carga de **$-4{,}9 \cdot 10^{-4}$ C**. Con el doble de carga sube con una aceleración igual a $g$, hacia arriba, y tras ascender 10 cm lleva una velocidad de **1,4 m/s**; no depende de la masa, porque tanto la fuerza neta como la inercia son proporcionales a ella.
+
+</Solucion>

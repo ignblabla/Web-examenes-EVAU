@@ -1,0 +1,206 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2024
+convocatoria: reserva-4
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** **i)** Enuncie la ley de Lorentz indicando las magnitudes que intervienen y sus unidades en el S.I. **ii)** A partir de dicha ley, y con la ayuda de un esquema, indique la dirección y el sentido de la fuerza magnética que actúa sobre una partícula cargada que se mueve perpendicularmente a un campo magnético. Discuta el resultado en función del signo de la carga.
+
+<Solucion>
+
+**i) Ley de Lorentz.** Una partícula de carga $q$ que se mueve con velocidad $\vec{v}$ en una región con un campo eléctrico $\vec{E}$ y un campo magnético $\vec{B}$ sufre la fuerza:
+
+$$
+\vec{F} = q\,\vec{E} + q\,(\vec{v}\times\vec{B})
+$$
+
+El término magnético, $\vec{F}_m = q\,(\vec{v}\times\vec{B})$, es la fuerza magnética de Lorentz.
+
+- $\vec{F}$: fuerza sobre la partícula, en newtons (N).
+- $q$: carga de la partícula, en culombios (C), con su signo.
+- $\vec{v}$: velocidad de la partícula, en m/s.
+- $\vec{B}$: campo magnético, en teslas (T).
+- $\vec{E}$: campo eléctrico, en N/C (o V/m).
+
+**ii) Fuerza sobre una carga que se mueve perpendicularmente al campo.** Por las propiedades del producto vectorial, la fuerza magnética es **perpendicular a la velocidad y al campo**, y su módulo es $F = |q|\,v\,B\sin 90^\circ = |q|\,v\,B$. Su sentido lo da la regla de la mano derecha para $\vec{v}\times\vec{B}$, multiplicado por el signo de la carga. Por ejemplo, con $\vec{v}$ hacia la derecha $(+\vec{i})$ y $\vec{B}$ entrando en el papel $(-\vec{k})$: $\vec{v}\times\vec{B} = v\,B\,(\vec{i}\times(-\vec{k})) = v\,B\,\vec{j}$, hacia arriba.
+
+<Vectores
+  xMin={-2}
+  xMax={2.4}
+  yMin={-1.4}
+  yMax={1.4}
+  escala={64}
+  unidad=""
+  puntos={[
+    { x: 0, y: 0, texto: "q", tipo: "punto", dx: -14, dy: 16 },
+    { x: -1.5, y: 1, texto: "B (entrante)", tipo: "entra", dx: 14, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [80, 0], texto: "v", dx: 4, dy: -8 },
+    { desde: [0, 0], v: [0, 62], texto: "F (q > 0)", color: "#2d6fa3", dx: 6, dy: 6 },
+    { desde: [0, 0], v: [0, -62], texto: "F (q < 0)", color: "#b04a3a", discontinuo: true, dx: 6, dy: 6 },
+  ]}
+  descripcion="Partícula que se mueve hacia la derecha en un campo magnético entrante en el papel. Si su carga es positiva, la fuerza magnética apunta hacia arriba, perpendicular a la velocidad y al campo; si es negativa, apunta hacia abajo."
+/>
+
+- Si la carga es **positiva**, la fuerza tiene el sentido de $\vec{v}\times\vec{B}$: hacia arriba en el esquema.
+- Si la carga es **negativa**, tiene el sentido contrario: hacia abajo.
+
+Como la fuerza es siempre perpendicular a la velocidad, no realiza trabajo ni cambia el módulo de la velocidad: solo la curva. La partícula describe una circunferencia, en sentido antihorario si es positiva y horario si es negativa (con el campo entrante).
+
+</Solucion>
+
+**b)** Dos conductores rectilíneos, muy largos y paralelos, por los que circulan corrientes eléctricas iguales de 2 A se atraen con una fuerza por unidad de longitud de 3·10<sup>-7</sup> N m<sup>-1</sup>. **i)** Razone, con la ayuda de un esquema, el sentido de la corriente que circula por cada conductor. **ii)** Calcule la distancia que los separa.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Sentido de las corrientes.** Cada conductor crea un campo magnético en la posición del otro, y ese campo ejerce una fuerza $\vec{F} = I\,\vec{L}\times\vec{B}$ sobre la corriente del otro conductor. Dibujamos los conductores perpendiculares al papel con las dos corrientes saliendo. El conductor 1 crea en el conductor 2 (a su derecha) un campo hacia arriba, y la fuerza sobre el conductor 2, $I_2\,\vec{L}\times\vec{B}_1$ con $\vec{L}$ saliente, apunta hacia la izquierda, hacia el conductor 1. Por la tercera ley de Newton, sobre el conductor 1 actúa una fuerza igual y opuesta, hacia el conductor 2:
+
+<Vectores
+  xMin={-1}
+  xMax={3}
+  yMin={-1.2}
+  yMax={1.2}
+  escala={72}
+  unidad=""
+  puntos={[
+    { x: 0, y: 0, texto: "I₁ = 2 A", tipo: "sale", dx: -22, dy: 26 },
+    { x: 2, y: 0, texto: "I₂ = 2 A", tipo: "sale", dx: -22, dy: 26 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [48, 0], texto: "F", sub: "21", color: "#b04a3a", dx: -20, dy: 20 },
+    { desde: [2, 0], v: [-48, 0], texto: "F", sub: "12", color: "#b04a3a", dx: -4, dy: -10 },
+    { desde: [2, 0], v: [0, 50], texto: "B", sub: "1", dx: 6, dy: 4 },
+    { desde: [0, 0], v: [0, -50], texto: "B", sub: "2", dx: 6, dy: 4 },
+  ]}
+  descripcion="Dos conductores paralelos perpendiculares al papel con la corriente saliendo en los dos. El campo del primero en la posición del segundo apunta hacia arriba y el del segundo en la posición del primero, hacia abajo. Las fuerzas entre ellos apuntan una hacia la otra: los conductores se atraen."
+/>
+
+Por tanto, **las corrientes circulan en el mismo sentido** (las dos salientes, o las dos entrantes): dos corrientes paralelas del mismo sentido se atraen, y de sentidos opuestos se repelen.
+
+**ii) Distancia entre los conductores.** El campo del conductor 1 a una distancia $d$ es $B_1 = \mu_0 I_1/(2\pi d)$, y la fuerza por unidad de longitud sobre el conductor 2, perpendicular a ese campo, es:
+
+$$
+\frac{F}{L} = I_2\,B_1 = \frac{\mu_0\,I_1\,I_2}{2\pi\,d}
+\quad\Rightarrow\quad
+d = \frac{\mu_0\,I_1\,I_2}{2\pi\,(F/L)} = \frac{4\pi \cdot 10^{-7} \cdot 2 \cdot 2}{2\pi \cdot 3 \cdot 10^{-7}} = 2{,}67\ \text{m}
+$$
+
+**Respuesta.** Las corrientes van **en el mismo sentido** y los conductores están separados **2,67 m**.
+
+</Solucion>
+
+**B2. a)** En una región del espacio hay dos cargas puntuales negativas, iguales y separadas una distancia *d*. **i)** Realice un esquema y razone en qué puntos próximos a las cargas se anula el campo eléctrico; **ii)** ¿Se anula el potencial electrostático en algún punto del espacio próximo a las cargas?
+
+<Solucion>
+
+Cada carga negativa $q$ crea a una distancia $r$ un campo de módulo $E = K\,|q|/r^2$ **dirigido hacia ella**, y un potencial $V = K\,q/r$, negativo.
+
+**i) Dónde se anula el campo.** Para que el campo total sea nulo, los dos campos tienen que tener la misma dirección, sentidos opuestos e igual módulo:
+
+- Fuera de la recta que une las cargas, los dos campos apuntan hacia puntos distintos y no tienen la misma dirección: no se anulan.
+- En la recta, fuera del segmento entre las cargas, los dos campos apuntan en el mismo sentido (hacia las cargas) y se suman.
+- Entre las cargas, los campos tienen sentidos opuestos y sus módulos son iguales donde las distancias son iguales, $K\,|q|/r_1^2 = K\,|q|/r_2^2 \Rightarrow r_1 = r_2 = d/2$.
+
+<Vectores
+  xMin={-1.5}
+  xMax={1.5}
+  yMin={-0.6}
+  yMax={0.7}
+  escala={120}
+  unidad=""
+  puntos={[
+    { x: -1, y: 0, texto: "q < 0", tipo: "carga", signo: "−", dx: -18, dy: 26 },
+    { x: 1, y: 0, texto: "q < 0", tipo: "carga", signo: "−", dx: -18, dy: 26 },
+    { x: 0, y: 0, texto: "M", tipo: "punto", dx: -4, dy: 20 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [-60, 0], texto: "E", sub: "1", dx: -8, dy: -10 },
+    { desde: [0, 0], v: [60, 0], texto: "E", sub: "2", color: "#b04a3a", dx: -4, dy: -10 },
+  ]}
+  segmentos={[[-1, 0, 1, 0]]}
+  descripcion="Dos cargas negativas iguales separadas una distancia d. En el punto medio M, el campo de la carga de la izquierda apunta hacia ella, a la izquierda, y el de la derecha hacia la derecha, con el mismo módulo: se anulan."
+/>
+
+El campo eléctrico solo se anula en el **punto medio** del segmento que une las cargas.
+
+**ii) ¿Se anula el potencial?** **No.** Las dos cargas son negativas, así que el potencial de cada una es negativo en cualquier punto a distancia finita:
+
+$$
+V = K\,\frac{q}{r_1} + K\,\frac{q}{r_2} < 0 \qquad (q < 0)
+$$
+
+La suma de dos números negativos no puede ser cero: el potencial solo tiende a cero en el infinito. En el punto medio, donde el campo es nulo, el potencial vale $V = 2\,K\,q/(d/2) = 4\,K\,q/d$, distinto de cero.
+
+</Solucion>
+
+**b)** Dos cargas puntuales de 2 μC y -2 μC se encuentran situadas en los puntos A(0,3) m y B(0,-3) m, respectivamente. **i)** Represente gráficamente y calcule la intensidad del campo eléctrico en el punto P(4,0) m. **ii)** Calcule el potencial en el origen de coordenadas y en el punto P. **iii)** Determine el trabajo que realizan las fuerzas electrostáticas cuando un electrón se desplaza desde el origen de coordenadas hasta el punto P.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en P.** Las dos cargas están a la misma distancia de P:
+
+$$
+r = \sqrt{4^2 + 3^2} = 5\ \text{m}, \qquad E_A = E_B = K\,\frac{|q|}{r^2} = 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-6}}{25} = 720\ \text{N/C}
+$$
+
+El campo de la carga positiva (A) se aleja de ella, según el vector unitario $\vec{u}_{AP} = (4, -3)/5$; el de la negativa (B) apunta hacia ella, según $\vec{u}_{PB} = (-4, -3)/5$:
+
+<Vectores
+  xMin={-1.2}
+  xMax={6}
+  yMin={-4.2}
+  yMax={4.2}
+  escala={30}
+  marcasX={[4]}
+  marcasY={[-3, 3]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 3, texto: "A: +2 μC", tipo: "carga", dx: 12, dy: -8 },
+    { x: 0, y: -3, texto: "B: −2 μC", tipo: "carga", signo: "−", dx: 12, dy: 14 },
+    { x: 4, y: 0, texto: "P", tipo: "punto", dx: 8, dy: -10 },
+  ]}
+  vectores={[
+    { desde: [4, 0], v: [48, -36], texto: "E", sub: "A", dx: 4, dy: 4 },
+    { desde: [4, 0], v: [-48, -36], texto: "E", sub: "B", dx: -26, dy: 4 },
+    { desde: [4, 0], v: [0, -72], texto: "E", color: "#b04a3a", discontinuo: true, dx: 6, dy: 8 },
+  ]}
+  segmentos={[[0, 3, 4, 0], [0, -3, 4, 0]]}
+  descripcion="Carga positiva en A(0,3) y negativa en B(0,-3). En P(4,0), el campo de A apunta alejándose de A, abajo a la derecha, y el de B apunta hacia B, abajo a la izquierda. Las componentes horizontales se anulan y el campo total apunta verticalmente hacia abajo, paralelo a la recta que va de A a B."
+/>
+
+$$
+\vec{E}_A = 720\,(0{,}8\,\vec{i} - 0{,}6\,\vec{j}) = (576\,\vec{i} - 432\,\vec{j})\ \text{N/C}, \qquad
+\vec{E}_B = 720\,(-0{,}8\,\vec{i} - 0{,}6\,\vec{j}) = (-576\,\vec{i} - 432\,\vec{j})\ \text{N/C}
+$$
+
+$$
+\vec{E}_P = \vec{E}_A + \vec{E}_B = -864\,\vec{j}\ \text{N/C}
+$$
+
+**ii) Potenciales en O y en P.** Cada punto está a la misma distancia de las dos cargas, que son iguales y de signo contrario:
+
+$$
+V_O = K\,\frac{2 \cdot 10^{-6}}{3} + K\,\frac{-2 \cdot 10^{-6}}{3} = 0\ \text{V}, \qquad
+V_P = K\,\frac{2 \cdot 10^{-6}}{5} + K\,\frac{-2 \cdot 10^{-6}}{5} = 0\ \text{V}
+$$
+
+De hecho, todo el eje OX (la mediatriz del segmento AB) es una equipotencial de potencial nulo.
+
+**iii) Trabajo sobre el electrón de O a P.**
+
+$$
+W_{O\to P} = -q_e\,(V_P - V_O) = -(-1{,}6 \cdot 10^{-19}) \cdot (0 - 0) = 0\ \text{J}
+$$
+
+**Respuesta.** En P el campo es **$\vec{E}_P = -864\,\vec{j}$ N/C**, los potenciales en O y en P son **nulos** y las fuerzas electrostáticas **no realizan trabajo** sobre el electrón: se mueve por una superficie equipotencial, y el campo, vertical, es perpendicular en todo momento a su desplazamiento por el eje OX.
+
+</Solucion>

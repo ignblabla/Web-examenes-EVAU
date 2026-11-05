@@ -1,0 +1,75 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: julio
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** **i)** Construya la imagen formada en un espejo cóncavo para un objeto situado a una distancia del espejo mayor que su radio de curvatura, explicando el trazado de rayos correspondiente. **ii)** Indique y justifique las características de la imagen.
+
+<Solucion>
+
+**i) Trazado de rayos.** El objeto está delante del espejo, más lejos que el centro de curvatura $C$ (el foco $F$ está en el punto medio entre $C$ y el espejo). Desde el extremo superior del objeto podemos trazar tres rayos principales, aunque bastan dos (en el esquema se dibujan el 1 y el 3):
+
+- **(1)** Un rayo paralelo al eje, que se refleja pasando por el foco $F$.
+- **(2)** Un rayo que pasa por el centro de curvatura $C$, que incide perpendicularmente al espejo y se refleja sobre sí mismo.
+- **(3)** Un rayo que pasa por el foco $F$, que se refleja paralelo al eje.
+
+<TrazadoRayos tipo="concavo" f={-2} s={-6} y={1} xMin={-7.4} xMax={1} descripcion="Espejo cóncavo con el objeto más allá del centro de curvatura C. El rayo paralelo al eje se refleja por el foco F, el que pasa por C se refleja sobre sí mismo y el que pasa por F se refleja paralelo al eje. Los rayos reflejados se cortan delante del espejo, entre C y F, donde se forma una imagen real, invertida y más pequeña que el objeto." />
+
+Los rayos reflejados se cortan **delante del espejo, entre el centro de curvatura y el foco**. Ahí se forma la imagen del extremo del objeto.
+
+**ii) Características de la imagen.**
+
+- **Real**: se forma por el corte de los propios rayos reflejados (no de sus prolongaciones), delante del espejo, y se puede recoger en una pantalla.
+- **Invertida**: el rayo paralelo, que sale por encima del eje, cruza el eje al pasar por $F$, y la imagen queda por debajo de él.
+- **Más pequeña que el objeto**: la imagen está más cerca del espejo que el objeto (entre $C$ y $F$, mientras que el objeto está más allá de $C$), y el aumento lateral, $A = -s'/s$, tiene valor absoluto menor que 1.
+
+</Solucion>
+
+**b)** Un objeto de 4 cm se sitúa a 36 cm de una lente delgada convergente de distancia focal 12 cm. **i)** Calcule la posición y el tamaño de la imagen, indicando el criterio de signos aplicado. **ii)** Realice el trazado de rayos e indique las características de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz viaja de izquierda a derecha y el origen está en el centro óptico de la lente. Las distancias son positivas a la derecha de la lente y negativas a la izquierda; las alturas, positivas por encima del eje. Así, el objeto está en $s = -36$ cm, su altura es $y = 4$ cm y, como la lente es convergente, la distancia focal imagen es $f' = +12$ cm.
+
+**i) Posición y tamaño de la imagen.** Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{12} + \frac{1}{-36} = \frac{3 - 1}{36} = \frac{1}{18}
+\quad\Rightarrow\quad
+s' = 18\ \text{cm}
+$$
+
+Aumento lateral y tamaño de la imagen:
+
+$$
+A = \frac{y'}{y} = \frac{s'}{s} = \frac{18}{-36} = -0{,}5
+\quad\Rightarrow\quad
+y' = A\,y = -0{,}5 \cdot 4 = -2\ \text{cm}
+$$
+
+La imagen se forma **18 cm a la derecha de la lente** y mide **2 cm**; el signo negativo de $y'$ indica que está invertida.
+
+**ii) Trazado de rayos y características.** Desde el extremo del objeto trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo que pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={12} s={-36} y={4} xMin={-40} xMax={26} descripcion="Lente convergente de 12 centímetros de distancia focal con un objeto de 4 centímetros a 36 centímetros, más allá del doble de la distancia focal. El rayo paralelo al eje se refracta por el foco imagen F', el que pasa por el centro óptico no se desvía y el que pasa por el foco objeto F sale paralelo. Los tres se cortan a 18 centímetros detrás de la lente, donde se forma una imagen real, invertida y de 2 centímetros." />
+
+El objeto está a más del doble de la distancia focal $(36 > 2 \cdot 12 = 24$ cm$)$, así que la imagen es:
+
+- **Real**: los rayos refractados se cortan detrás de la lente $(s' > 0)$.
+- **Invertida**: $A < 0$.
+- **Más pequeña que el objeto**: $|A| = 0{,}5$, la mitad de su tamaño.
+
+Es la situación de una cámara fotográfica o del ojo, que forman una imagen real, invertida y reducida de objetos lejanos.
+
+</Solucion>

@@ -1,0 +1,127 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2024
+convocatoria: julio
+formato: fisica
+---
+
+**D1. a)** Razone si las siguientes afirmaciones son correctas: **i)** La energía de los fotoelectrones emitidos por un metal irradiado es la misma que la de los fotones absorbidos por dicho metal. **ii)** Si se irradia un metal con luz blanca, produciéndose el efecto fotoeléctrico en todo el rango de frecuencias de dicha luz, la mayor energía cinética corresponderá a los fotoelectrones emitidos por las componentes espectrales de la región del rojo.
+
+<Solucion>
+
+Según la explicación de Einstein del efecto fotoeléctrico, la luz está formada por fotones de energía $E = h\,f$. Cada fotón cede toda su energía a un electrón del metal: una parte se emplea en arrancarlo (el trabajo de extracción $W_0$, característico del metal) y el resto se convierte en energía cinética del electrón:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+\quad\Rightarrow\quad
+E_{c,\text{máx}} = h\,f - W_0
+$$
+
+**i) Incorrecta.** La energía cinética de los fotoelectrones es **menor** que la de los fotones absorbidos: la diferencia es, como mínimo, el trabajo de extracción $W_0$ que se gasta en arrancar el electrón del metal $(E_{c,\text{máx}} = h\,f - W_0 < h\,f)$. Además, los electrones que no están en la superficie pierden algo más de energía antes de salir, por eso $h\,f - W_0$ es la energía cinética **máxima**.
+
+**ii) Incorrecta.** Para un mismo metal $(W_0$ fijo$)$, la energía cinética máxima crece con la frecuencia de la luz. En el espectro visible, el rojo es la componente de **menor** frecuencia (mayor longitud de onda) y el violeta la de mayor frecuencia. Los fotoelectrones más energéticos son los emitidos por la luz **violeta**, y los del rojo son los de menor energía cinética.
+
+</Solucion>
+
+**b)** Al iluminar un metal con luz de frecuencia 2,5·10<sup>15</sup> Hz se emiten electrones cuyo potencial de frenado es de 7,20 V. A continuación, se ilumina con otra luz de longitud de onda 1,8·10<sup>-7</sup> m y el potencial disminuye a 3,75 V. Determine razonadamente: **i)** el valor de la constante de Planck; **ii)** el trabajo de extracción del metal.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+El potencial de frenado $V_f$ es el que hay que aplicar para detener los fotoelectrones más rápidos: su energía cinética máxima es $E_{c,\text{máx}} = e\,V_f$. La ecuación de Einstein queda:
+
+$$
+h\,f = W_0 + e\,V_f
+$$
+
+La frecuencia de la segunda luz es:
+
+$$
+f_2 = \frac{c}{\lambda_2} = \frac{3 \cdot 10^8}{1{,}8 \cdot 10^{-7}} = 1{,}67 \cdot 10^{15}\ \text{Hz}
+$$
+
+Escribimos la ecuación para las dos luces; el trabajo de extracción es el mismo, porque es el mismo metal:
+
+$$
+h\,f_1 = W_0 + e\,V_1, \qquad h\,f_2 = W_0 + e\,V_2
+$$
+
+**i) Constante de Planck.** Restando las dos ecuaciones desaparece $W_0$:
+
+$$
+h\,(f_1 - f_2) = e\,(V_1 - V_2)
+\quad\Rightarrow\quad
+h = \frac{e\,(V_1 - V_2)}{f_1 - f_2} = \frac{1{,}6 \cdot 10^{-19} \cdot (7{,}20 - 3{,}75)}{2{,}5 \cdot 10^{15} - 1{,}67 \cdot 10^{15}} = \frac{5{,}52 \cdot 10^{-19}}{8{,}33 \cdot 10^{14}} = 6{,}62 \cdot 10^{-34}\ \text{J s}
+$$
+
+**ii) Trabajo de extracción.** Lo despejamos de la primera ecuación:
+
+$$
+W_0 = h\,f_1 - e\,V_1 = 6{,}62 \cdot 10^{-34} \cdot 2{,}5 \cdot 10^{15} - 1{,}6 \cdot 10^{-19} \cdot 7{,}20 = 1{,}656 \cdot 10^{-18} - 1{,}152 \cdot 10^{-18} = 5{,}04 \cdot 10^{-19}\ \text{J}
+$$
+
+Con la segunda ecuación se obtiene lo mismo: $W_0 = 6{,}62 \cdot 10^{-34} \cdot 1{,}67 \cdot 10^{15} - 1{,}6 \cdot 10^{-19} \cdot 3{,}75 = 5{,}04 \cdot 10^{-19}$ J.
+
+**Respuesta.** La constante de Planck que se obtiene es **$h = 6{,}62 \cdot 10^{-34}$ J s**, prácticamente el valor aceptado $(6{,}63 \cdot 10^{-34}$ J s$)$, y el trabajo de extracción del metal es **$W_0 = 5{,}04 \cdot 10^{-19}$ J** $(3{,}15$ eV$)$. Es el método con el que Millikan midió la constante de Planck: la pendiente de la recta $V_f$ frente a $f$ es $h/e$.
+
+</Solucion>
+
+**D2. a)** Explique razonadamente el concepto de defecto de masa, su expresión matemática y su relación con la estabilidad de un núcleo atómico.
+
+<Solucion>
+
+**Defecto de masa.** La masa de un núcleo es siempre **menor** que la suma de las masas de los protones y neutrones que lo forman por separado. Esa diferencia es el defecto de masa. Para un núcleo $^{A}_{Z}\text{X}$, con $Z$ protones y $A - Z$ neutrones:
+
+$$
+\Delta m = Z\,m_p + (A - Z)\,m_n - m_{\text{núcleo}}
+$$
+
+**Energía de enlace.** Según la equivalencia masa-energía de Einstein, esa masa que "falta" corresponde a la energía que se libera al formarse el núcleo a partir de sus nucleones, la **energía de enlace**:
+
+$$
+E_e = \Delta m\,c^2
+$$
+
+Es también la energía que habría que aportar para separar el núcleo en sus nucleones.
+
+**Relación con la estabilidad.** Cuanto mayor es la energía de enlace, más energía cuesta romper el núcleo. Pero para comparar núcleos con distinto número de nucleones se usa la **energía de enlace por nucleón**, $E_e/A$: cuanto mayor es, más ligado está cada nucleón y **más estable** es el núcleo. Esta magnitud crece rápidamente en los núcleos ligeros, alcanza un máximo de unos 8,8 MeV por nucleón en torno al hierro-56 (el núcleo más estable) y disminuye lentamente en los núcleos pesados. Por eso los núcleos ligeros liberan energía al fusionarse y los pesados al fisionarse: en los dos casos se forman núcleos con más energía de enlace por nucleón.
+
+</Solucion>
+
+**b)** **i)** Calcule la energía de enlace por nucleón para los nucleidos ${}^{3}_{1}\text{H}$ y ${}^{3}_{2}\text{He}$. **ii)** Indique razonadamente cuál de ellos es más estable.
+
+<Datos>m(<sup>3</sup><sub>1</sub>H) = 3,016049 u; m(<sup>3</sup><sub>2</sub>He) = 3,016029 u; m<sub>n</sub> = 1,008665 u; m<sub>p</sub> = 1,007276 u; c = 3·10<sup>8</sup> m s<sup>-1</sup>; 1 u = 1,66·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Energía de enlace por nucleón.** Los dos nucleidos tienen $A = 3$ nucleones: el tritio $^{3}_{1}\text{H}$ tiene 1 protón y 2 neutrones, y el helio-3, $^{3}_{2}\text{He}$, 2 protones y 1 neutrón.
+
+**Tritio, ${}^{3}_{1}\text{H}$:**
+
+$$
+\Delta m = m_p + 2\,m_n - m(^{3}_{1}\text{H}) = 1{,}007276 + 2 \cdot 1{,}008665 - 3{,}016049 = 8{,}557 \cdot 10^{-3}\ \text{u}
+$$
+
+$$
+E_e = \Delta m\,c^2 = 8{,}557 \cdot 10^{-3} \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 1{,}28 \cdot 10^{-12}\ \text{J}
+\qquad
+\frac{E_e}{A} = \frac{1{,}28 \cdot 10^{-12}}{3} = 4{,}26 \cdot 10^{-13}\ \text{J/nucleón}
+$$
+
+**Helio-3, ${}^{3}_{2}\text{He}$:**
+
+$$
+\Delta m = 2\,m_p + m_n - m(^{3}_{2}\text{He}) = 2 \cdot 1{,}007276 + 1{,}008665 - 3{,}016029 = 7{,}188 \cdot 10^{-3}\ \text{u}
+$$
+
+$$
+E_e = \Delta m\,c^2 = 7{,}188 \cdot 10^{-3} \cdot 1{,}66 \cdot 10^{-27} \cdot (3 \cdot 10^8)^2 = 1{,}07 \cdot 10^{-12}\ \text{J}
+\qquad
+\frac{E_e}{A} = \frac{1{,}07 \cdot 10^{-12}}{3} = 3{,}58 \cdot 10^{-13}\ \text{J/nucleón}
+$$
+
+**ii) Cuál es más estable.** Según el criterio del apartado a), es más estable el núcleo con mayor energía de enlace por nucleón: el **tritio, ${}^{3}_{1}\text{H}$** $(4{,}26 \cdot 10^{-13}$ J/nucleón frente a $3{,}58 \cdot 10^{-13}$ J/nucleón$)$. Tiene un neutrón más y un protón menos que el helio-3: sus nucleones están más ligados porque solo hay un protón y no existe la repulsión eléctrica entre protones, que en el helio-3 resta energía de enlace.
+
+</Solucion>

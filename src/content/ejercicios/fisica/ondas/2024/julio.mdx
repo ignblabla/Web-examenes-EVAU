@@ -1,0 +1,79 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2024
+convocatoria: julio
+formato: fisica
+---
+
+**C2. a)** Explique las diferencias entre ondas longitudinales y ondas transversales, proporcionando un ejemplo representativo de cada tipo.
+
+<Solucion>
+
+Una onda propaga una perturbación (y con ella energía y momento lineal) sin que haya transporte neto de materia. Las ondas se clasifican en longitudinales y transversales según cómo es la dirección de la perturbación respecto a la dirección en que se propaga la onda:
+
+- **Ondas longitudinales.** La perturbación (la oscilación de las partículas del medio) se produce en la **misma dirección** en que se propaga la onda. El medio se comprime y se dilata alternativamente. **Ejemplo**: el sonido en el aire, en el que las moléculas oscilan hacia delante y hacia atrás en la dirección de propagación, formando compresiones y enrarecimientos; o la onda que recorre un muelle al comprimir un extremo.
+- **Ondas transversales.** La perturbación es **perpendicular** a la dirección de propagación. **Ejemplo**: la onda en una cuerda tensa, en la que cada punto sube y baja mientras la onda avanza a lo largo de ella; o las ondas electromagnéticas, como la luz, en las que los campos eléctrico y magnético oscilan perpendicularmente a la dirección de propagación.
+
+Otras diferencias:
+
+- Las ondas transversales se pueden **polarizar** (restringir la oscilación a una sola dirección perpendicular a la propagación); las longitudinales no, porque su oscilación solo tiene una dirección posible.
+- Las ondas mecánicas longitudinales se propagan en sólidos, líquidos y gases; las transversales mecánicas necesitan un medio que resista la deformación de cizalla, como un sólido o una cuerda tensa, y no se propagan por el interior de los fluidos.
+
+</Solucion>
+
+**b)** Considere un oleaje que se propaga en el sentido positivo del eje OX. Una boya, situada en *x* = 10 m, describe una oscilación armónica vertical con una amplitud de 0,4 m y un periodo de 2 segundos. La velocidad de propagación de las olas en la superficie del mar es de 0,5 m s<sup>-1</sup>. Determine razonadamente: **i)** la longitud de onda de las olas; **ii)** la ecuación de onda, asumiendo que, en el instante inicial *t* = 0 s, la altura de la boya es máxima; **iii)** la velocidad máxima de oscilación de la boya.
+
+<Solucion>
+
+La boya sigue el movimiento del agua en $x = 10$ m: su oscilación vertical es la de ese punto de la onda, así que la onda tiene la amplitud y el periodo de la boya, $A = 0{,}4$ m y $T = 2$ s.
+
+**i) Longitud de onda.** En un periodo la onda avanza una longitud de onda:
+
+$$
+\lambda = v\,T = 0{,}5 \cdot 2 = 1\ \text{m}
+$$
+
+**ii) Ecuación de onda.** Calculamos la frecuencia angular y el número de onda:
+
+$$
+\omega = \frac{2\pi}{T} = \frac{2\pi}{2} = \pi\ \text{rad/s}, \qquad k = \frac{2\pi}{\lambda} = 2\pi\ \text{rad/m}
+$$
+
+Como la onda se propaga en el sentido positivo del eje OX, la fase lleva el signo $-$ entre $\omega t$ y $kx$. Como en $t = 0$ la boya está en su altura máxima, conviene escribir la ecuación con un coseno:
+
+$$
+y(x, t) = A\cos(\omega t - kx + \varphi_0) = 0{,}4\cos(\pi t - 2\pi x + \varphi_0)
+$$
+
+Imponemos que en $t = 0$ y $x = 10$ m la elongación sea máxima, $y = A$:
+
+$$
+0{,}4\cos(-20\pi + \varphi_0) = 0{,}4
+\quad\Rightarrow\quad
+\cos(\varphi_0 - 20\pi) = 1
+\quad\Rightarrow\quad
+\varphi_0 = 20\pi + 2\pi n
+$$
+
+Como sumar un múltiplo de $2\pi$ a la fase no cambia nada, podemos tomar $\varphi_0 = 0$ (la boya está a 10 m del origen, un número entero de longitudes de onda, y oscila en fase con el punto $x = 0$):
+
+$$
+y(x, t) = 0{,}4\cos(\pi t - 2\pi x)\ \ \text{(S.I.)}
+$$
+
+o, con un seno, $y(x, t) = 0{,}4\sin\left(\pi t - 2\pi x + \dfrac{\pi}{2}\right)$ (S.I.), que es la misma ecuación.
+
+**iii) Velocidad máxima de oscilación de la boya.** Derivamos la elongación respecto del tiempo:
+
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = -0{,}4\pi\sin(\pi t - 2\pi x)\ \text{m/s}
+$$
+
+$$
+v_{y,\text{máx}} = A\,\omega = 0{,}4\pi = 1{,}26\ \text{m/s}
+$$
+
+**Respuesta.** Las olas tienen una longitud de onda de **1 m**, su ecuación es **$y(x, t) = 0{,}4\cos(\pi t - 2\pi x)$ (S.I.)** y la boya oscila con una velocidad máxima de **1,26 m/s**. La boya sube y baja más deprisa (1,26 m/s) de lo que avanza la ola (0,5 m/s): son dos velocidades distintas, la de oscilación del medio y la de propagación de la onda.
+
+</Solucion>

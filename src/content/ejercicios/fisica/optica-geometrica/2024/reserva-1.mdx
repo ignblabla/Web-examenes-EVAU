@@ -1,0 +1,132 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: reserva-1
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Razone, basándose en el trazado de rayos, dónde hay que colocar un objeto con respecto a una lente delgada convergente para que: **i)** la imagen formada sea real, invertida y del mismo tamaño que el objeto; **ii)** la imagen obtenida sea virtual, derecha y de mayor tamaño que el objeto.
+
+<Solucion>
+
+Usamos el criterio DIN (la luz va de izquierda a derecha y el origen está en la lente). En cada caso trazamos desde el extremo del objeto tres rayos principales: **(1)** uno paralelo al eje, que se refracta pasando por el foco imagen $F'$; **(2)** uno por el centro óptico, que no se desvía; y **(3)** uno que pasa por el foco objeto $F$ (o cuya prolongación pasa por él), que sale paralelo al eje.
+
+**i) Imagen real, invertida y del mismo tamaño.** El objeto se coloca **a una distancia de la lente igual al doble de la distancia focal**, $s = -2f'$ (en el punto $2F$):
+
+<TrazadoRayos tipo="convergente" f={2} s={-4} y={1} xMin={-4.8} xMax={4.8} descripcion="Lente convergente con el objeto en el doble de la distancia focal, 2F. El rayo paralelo se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan al otro lado de la lente, también a dos distancias focales: la imagen es real, invertida y del mismo tamaño que el objeto." />
+
+Los rayos refractados se cortan detrás de la lente, también a $2f'$: la imagen es real. Se comprueba con la ecuación de las lentes:
+
+$$
+\frac{1}{s'} = \frac{1}{f'} + \frac{1}{s} = \frac{1}{f'} - \frac{1}{2f'} = \frac{1}{2f'}
+\quad\Rightarrow\quad s' = 2f',
+\qquad A = \frac{s'}{s} = \frac{2f'}{-2f'} = -1
+$$
+
+El aumento es $-1$: la imagen es invertida y del mismo tamaño.
+
+**ii) Imagen virtual, derecha y mayor.** El objeto se coloca **entre el foco objeto $F$ y la lente**, a una distancia menor que la focal. Es como funciona una lupa:
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4.6} xMax={3.4} descripcion="Lente convergente con el objeto entre el foco objeto F y la lente. Los rayos refractados divergen y no se cortan; sus prolongaciones hacia atrás se cortan al otro lado del foco objeto, donde se forma una imagen virtual, derecha y mayor que el objeto." />
+
+Los rayos refractados divergen y no se cortan; se cortan sus prolongaciones, por el mismo lado del objeto y más lejos de la lente. La imagen es virtual (no se puede recoger en una pantalla), derecha y de mayor tamaño.
+
+</Solucion>
+
+**b)** Un objeto de 10 cm de altura se sitúa a 3 m de una lente divergente. Si la imagen se forma delante de la lente, y a una distancia de 1,5 m de la misma, calcule: **i)** la distancia focal, justificando su signo; **ii)** el tamaño de la imagen, indicando si es derecha o invertida con respecto al objeto. Indique el criterio de signos utilizado.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente; las distancias a la izquierda de la lente son negativas y a la derecha, positivas; las alturas, positivas por encima del eje. "Delante de la lente" es el lado por el que llega la luz, el mismo del objeto. Así: $s = -3$ m, $s' = -1{,}5$ m e $y = 0{,}10$ m.
+
+**i) Distancia focal.** Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{f'} = \frac{1}{s'} - \frac{1}{s} = \frac{1}{-1{,}5} - \frac{1}{-3} = -\frac{2}{3} + \frac{1}{3} = -\frac{1}{3}
+\quad\Rightarrow\quad
+f' = -3\ \text{m}
+$$
+
+La distancia focal imagen es **negativa**, como corresponde a una lente divergente: los rayos que llegan paralelos al eje salen divergiendo, como si vinieran del foco imagen, que está delante de la lente. (Su potencia es $P = 1/f' = -0{,}33$ dioptrías.)
+
+**ii) Tamaño de la imagen.**
+
+$$
+A = \frac{s'}{s} = \frac{-1{,}5}{-3} = 0{,}5
+\quad\Rightarrow\quad
+y' = A\,y = 0{,}5 \cdot 10 = 5\ \text{cm}
+$$
+
+<TrazadoRayos tipo="divergente" f={-3} s={-3} y={0.1} xMin={-4.2} xMax={1.8} descripcion="Lente divergente con el objeto a 3 metros, justo en el foco imagen. El rayo paralelo al eje se refracta como si viniera del foco F', el que pasa por el centro óptico no se desvía. Sus prolongaciones se cortan delante de la lente, a 1,5 metros: la imagen es virtual, derecha y de la mitad de tamaño." />
+
+**Respuesta.** La lente tiene una distancia focal de **−3 m** y la imagen mide **5 cm**; como $A > 0$, es **derecha**. También es virtual (se forma delante de la lente, por el corte de las prolongaciones de los rayos) y menor que el objeto, como toda imagen de un objeto real en una lente divergente.
+
+</Solucion>
+
+**C2. a)** Un rayo de luz viaja por un medio y al llegar a la superficie de separación con otro medio se refracta, alejándose de la normal. Justifique razonadamente: **i)** en qué medio se propaga el rayo a menor velocidad; **ii)** en qué medio el rayo tiene mayor longitud de onda.
+
+<Solucion>
+
+Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Si el rayo se aleja de la normal, $\theta_2 > \theta_1$, así que $\sin\theta_2 > \sin\theta_1$ y, para que se cumpla la ley, $n_1 > n_2$: el primer medio es más refringente.
+
+**i) Velocidad.** El índice de refracción es $n = c/v$, así que $v = c/n$: la luz es más lenta en el medio de mayor índice. El rayo se propaga a **menor velocidad en el primer medio**, del que procede.
+
+**ii) Longitud de onda.** Al pasar de un medio a otro, la frecuencia no cambia (la fija la fuente), y $\lambda = v/f$. La longitud de onda es proporcional a la velocidad: es **mayor en el segundo medio**, donde la luz va más rápida.
+
+$$
+\frac{\lambda_2}{\lambda_1} = \frac{v_2}{v_1} = \frac{n_1}{n_2} > 1
+$$
+
+</Solucion>
+
+**b)** Una lámina de vidrio de caras plano-paralelas tiene 10 cm de espesor. Si desde el aire incide sobre el vidrio un rayo de luz con un ángulo de 50º respecto de la normal, calcule razonadamente: **i)** la velocidad de propagación y el ángulo de refracción del rayo en el vidrio; **ii)** el tiempo que tarda el rayo en atravesar la lámina.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1; n<sub>vidrio</sub> = 1,6</Datos>
+
+<Solucion>
+
+**i) Velocidad y ángulo de refracción.** La velocidad de la luz en el vidrio es:
+
+$$
+v = \frac{c}{n_{\text{vidrio}}} = \frac{3 \cdot 10^8}{1{,}6} = 1{,}875 \cdot 10^{8}\ \text{m/s}
+$$
+
+Ley de Snell en la primera cara:
+
+$$
+n_{\text{aire}}\sin 50^\circ = n_{\text{vidrio}}\sin r
+\quad\Rightarrow\quad
+\sin r = \frac{\sin 50^\circ}{1{,}6} = \frac{0{,}766}{1{,}6} = 0{,}479
+\quad\Rightarrow\quad
+r = 28{,}6^\circ
+$$
+
+Al entrar en el vidrio, más refringente, el rayo se acerca a la normal. Las caras son paralelas, así que en la segunda cara incide con $28{,}6^\circ$ y sale al aire otra vez con $50^\circ$, paralelo al rayo incidente:
+
+<RefraccionCapas
+  incidencia={50}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb", alto: 50 },
+    { nombre: "Vidrio", n: 1.6, color: "#dfe9f0", alto: 70 },
+    { nombre: "Aire", n: 1, color: "#f4f8fb", alto: 50 },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre una lámina de vidrio de caras paralelas formando 50 grados con la normal. Dentro del vidrio se acerca a la normal y forma 28,6 grados con ella; al salir por la segunda cara vuelve al aire con 50 grados, paralelo al rayo incidente."
+/>
+
+**ii) Tiempo en atravesar la lámina.** Dentro del vidrio el rayo no va perpendicular a las caras, sino inclinado $28{,}6^\circ$ respecto de la normal. La distancia que recorre es la hipotenusa del triángulo cuyo cateto es el espesor $e = 0{,}10$ m:
+
+$$
+L = \frac{e}{\cos r} = \frac{0{,}10}{\cos 28{,}6^\circ} = \frac{0{,}10}{0{,}878} = 0{,}114\ \text{m}
+$$
+
+$$
+t = \frac{L}{v} = \frac{0{,}114}{1{,}875 \cdot 10^{8}} = 6{,}07 \cdot 10^{-10}\ \text{s}
+$$
+
+**Respuesta.** En el vidrio la luz se propaga a **$1{,}875 \cdot 10^8$ m/s**, el ángulo de refracción es de **28,6°** y el rayo tarda **$6{,}07 \cdot 10^{-10}$ s** en atravesar la lámina.
+
+</Solucion>

@@ -1,0 +1,168 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2024
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Considere la fuerza gravitatoria que una partícula ejerce sobre otra. Razone si son verdaderos los siguientes enunciados: **i)** Es una fuerza central. **ii)** Su módulo es directamente proporcional al cuadrado de la distancia entre las partículas.
+
+<Solucion>
+
+Según la ley de la gravitación universal de Newton, la fuerza que una partícula de masa $m_1$ ejerce sobre otra de masa $m_2$ situada a una distancia $r$ es:
+
+$$
+\vec{F}_{12} = -G\,\frac{m_1\,m_2}{r^2}\,\vec{u}_r
+$$
+
+donde $\vec{u}_r$ es el vector unitario dirigido de la primera partícula a la segunda. El signo negativo indica que la fuerza es atractiva.
+
+**i) Verdadero.** Una fuerza es central cuando su dirección pasa siempre por un punto fijo (el centro de fuerzas) y su módulo solo depende de la distancia a ese punto. La fuerza gravitatoria tiene siempre la dirección de la recta que une las dos partículas, está dirigida hacia la partícula que la ejerce y su módulo solo depende de $r$: es una fuerza central. Por eso conserva el momento angular de la partícula que la sufre (los planetas se mueven en órbitas planas y cumplen la segunda ley de Kepler).
+
+**ii) Falso.** El módulo de la fuerza es **inversamente** proporcional al cuadrado de la distancia: $F = G\,m_1 m_2/r^2$. Si la distancia se duplica, la fuerza se reduce a la cuarta parte; no se cuadruplica.
+
+</Solucion>
+
+**b)** Dos partículas iguales de masa 2 kg están situadas en los puntos A(-5,0) m y B(5,0) m. Calcule razonadamente: **i)** el campo gravitatorio creado en el punto C(0,4) m y represéntelo gráficamente; **ii)** el trabajo realizado por el campo gravitatorio cuando se traslada una tercera masa de 1 kg desde el punto C hasta el punto O(0,0) m. Justifique el signo del trabajo.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** Las dos masas están a la misma distancia de C:
+
+$$
+r = \overline{AC} = \overline{BC} = \sqrt{5^2 + 4^2} = \sqrt{41} = 6{,}40\ \text{m}
+$$
+
+Cada masa crea en C un campo dirigido hacia ella, del mismo módulo:
+
+$$
+g_A = g_B = \frac{G\,m}{r^2} = \frac{6{,}67 \cdot 10^{-11} \cdot 2}{41} = 3{,}25 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+Los vectores unitarios de C hacia A y hacia B son $(-5, -4)/\sqrt{41}$ y $(5, -4)/\sqrt{41}$. Las componentes horizontales se anulan por simetría y las verticales se suman:
+
+<Vectores
+  xMin={-6.4}
+  xMax={6.4}
+  yMin={-1.2}
+  yMax={5.6}
+  escala={30}
+  marcasX={[-5, 5]}
+  marcasY={[4]}
+  unidad="m"
+  puntos={[
+    { x: -5, y: 0, texto: "A: 2 kg", tipo: "masa", dx: -16, dy: 22 },
+    { x: 5, y: 0, texto: "B: 2 kg", tipo: "masa", dx: -16, dy: 22 },
+    { x: 0, y: 4, texto: "C", tipo: "punto", dx: 8, dy: -8 },
+  ]}
+  vectores={[
+    { desde: [0, 4], v: [-47, -38], texto: "g", sub: "A", dx: -24, dy: 4 },
+    { desde: [0, 4], v: [47, -38], texto: "g", sub: "B", dx: 6, dy: 4 },
+    { desde: [0, 4], v: [0, -76], texto: "g", color: "#b04a3a", discontinuo: true, dx: 8, dy: 4 },
+  ]}
+  segmentos={[[-5, 0, 0, 4], [5, 0, 0, 4]]}
+  descripcion="Masas iguales de 2 kg en A(-5,0) y B(5,0). En C(0,4), el campo de A apunta hacia A, abajo a la izquierda, y el de B hacia B, abajo a la derecha. Sus componentes horizontales se anulan y el campo total apunta verticalmente hacia abajo, hacia el origen."
+/>
+
+$$
+g_y = -2\,g_A\,\frac{4}{\sqrt{41}} = -2 \cdot 3{,}25 \cdot 10^{-12} \cdot 0{,}625 = -4{,}07 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+$$
+\vec{g}_C = -4{,}07 \cdot 10^{-12}\,\vec{j}\ \text{N/kg}
+$$
+
+El campo en C apunta verticalmente hacia abajo, hacia el punto medio entre las dos masas.
+
+**ii) Trabajo del campo de C a O.** El campo gravitatorio es conservativo: el trabajo solo depende de los potenciales inicial y final, $W_{C\to O} = -m\,(V_O - V_C)$.
+
+$$
+V_C = -\frac{G\,m_A}{r_{AC}} - \frac{G\,m_B}{r_{BC}} = -\frac{2 \cdot 6{,}67 \cdot 10^{-11} \cdot 2}{\sqrt{41}} = -4{,}17 \cdot 10^{-11}\ \text{J/kg}
+$$
+
+$$
+V_O = -\frac{2 \cdot 6{,}67 \cdot 10^{-11} \cdot 2}{5} = -5{,}34 \cdot 10^{-11}\ \text{J/kg}
+$$
+
+$$
+W_{C\to O} = -1 \cdot \left(-5{,}34 \cdot 10^{-11} - (-4{,}17 \cdot 10^{-11})\right) = 1{,}17 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** El campo en C es **$\vec{g}_C = -4{,}07 \cdot 10^{-12}\,\vec{j}$ N/kg** y el trabajo del campo al llevar la masa de 1 kg de C a O es **$1{,}17 \cdot 10^{-11}$ J**. Es **positivo** porque la masa se acerca a las dos masas que la atraen: pasa a un punto de menor potencial (más negativo), el desplazamiento es espontáneo y su energía potencial disminuye. Como en C el campo apunta justo hacia O, el campo empuja la masa en el sentido del desplazamiento.
+
+</Solucion>
+
+**A2. a)** Dos planetas A y B describen órbitas circulares alrededor de una estrella. Razone cuál de los dos planetas tiene mayor energía cinética en las siguientes situaciones: **i)** ambas masas son iguales y el radio de la órbita del planeta A es mayor que el de B; **ii)** los radios de sus órbitas son iguales pero la masa del planeta B es mayor que la de A.
+
+<Solucion>
+
+En una órbita circular de radio $r$ alrededor de una estrella de masa $M$, la fuerza gravitatoria es la fuerza centrípeta:
+
+$$
+\frac{G\,M\,m}{r^2} = \frac{m\,v^2}{r}
+\quad\Rightarrow\quad
+v^2 = \frac{G\,M}{r}
+\quad\Rightarrow\quad
+E_c = \frac{1}{2}m\,v^2 = \frac{G\,M\,m}{2\,r}
+$$
+
+La velocidad orbital no depende de la masa del planeta, pero la energía cinética sí: es proporcional a $m$ e inversamente proporcional a $r$.
+
+**i) Masas iguales, $r_A > r_B$.** Con la misma masa, la energía cinética es mayor cuanto menor es el radio:
+
+$$
+\frac{E_{c,A}}{E_{c,B}} = \frac{r_B}{r_A} < 1
+$$
+
+**B tiene más energía cinética**: al estar más cerca de la estrella, se mueve más deprisa.
+
+**ii) Mismo radio, $m_B > m_A$.** Los dos planetas tienen la misma velocidad orbital, pero la energía cinética es proporcional a la masa:
+
+$$
+\frac{E_{c,B}}{E_{c,A}} = \frac{m_B}{m_A} > 1
+$$
+
+**B tiene más energía cinética**, porque tiene más masa y la misma velocidad.
+
+</Solucion>
+
+**b)** La masa del planeta Saturno es 95 veces la de la Tierra y su diámetro 8 veces mayor que el terrestre. Determine: **i)** el valor de la gravedad en la superficie de Saturno; **ii)** la velocidad de escape de un cuerpo desde la superficie de Saturno.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; g<sub>Tierra</sub> = 9,8 m s<sup>-2</sup>; M<sub>Saturno</sub> = 5,69·10<sup>26</sup> kg</Datos>
+
+<Solucion>
+
+**i) Gravedad en la superficie de Saturno.** La gravedad en la superficie de un planeta es $g = G\,M/R^2$. Como el diámetro es 8 veces el terrestre, el radio también: $R_S = 8\,R_T$. Comparando con la Tierra:
+
+$$
+\frac{g_S}{g_T} = \frac{M_S}{M_T}\cdot\left(\frac{R_T}{R_S}\right)^2 = \frac{95}{8^2} = 1{,}48
+\quad\Rightarrow\quad
+g_S = 1{,}48 \cdot 9{,}8 = 14{,}5\ \text{m/s}^2
+$$
+
+**ii) Velocidad de escape.** Es la velocidad mínima para que el cuerpo llegue al infinito con velocidad nula. Por conservación de la energía mecánica:
+
+$$
+\frac{1}{2}m\,v_e^2 - \frac{G\,M_S\,m}{R_S} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M_S}{R_S}} = \sqrt{2\,g_S\,R_S}
+$$
+
+Necesitamos el radio de Saturno, que obtenemos de la gravedad en su superficie y de su masa:
+
+$$
+R_S = \sqrt{\frac{G\,M_S}{g_S}} = \sqrt{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}69 \cdot 10^{26}}{14{,}5}} = 5{,}11 \cdot 10^{7}\ \text{m}
+$$
+
+$$
+v_e = \sqrt{2 \cdot 14{,}5 \cdot 5{,}11 \cdot 10^{7}} = 3{,}85 \cdot 10^{4}\ \text{m/s}
+$$
+
+**Respuesta.** La gravedad en la superficie de Saturno es **14,5 m/s²**, una vez y media la terrestre, y la velocidad de escape es **$3{,}85 \cdot 10^4$ m/s** (unos 38,5 km/s, más del triple de la terrestre, que es de 11,2 km/s).
+
+</Solucion>

@@ -43,6 +43,8 @@ interface Props {
   segmentos?: [number, number, number, number][]
   // Hilos contenidos en el plano: línea gruesa con una flecha en el sentido de la corriente.
   hilos?: { desde: [number, number]; hasta: [number, number]; texto?: string }[]
+  // Nombres de los ejes (por defecto x e y), por ejemplo ["x", "z"] para el plano XZ.
+  ejes?: [string, string]
   // Esquema apaisado: ocupa el ancho de las figuras anchas.
   ancha?: boolean
   descripcion: string
@@ -62,6 +64,7 @@ const {
   segmentos = [],
   hilos = [],
   ancha = false,
+  ejes = ["x", "y"],
   descripcion,
 } = Astro.props
 
@@ -102,8 +105,8 @@ const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
     <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#555">
       {marcasX.map((m) => <text x={px(m)} y={ejeX + 14} text-anchor="middle">{String(m).replace(".", ",").replace("-", "−")}</text>)}
       {marcasY.map((m) => <text x={ejeY - 6} y={py(m) + 3} text-anchor="end">{String(m).replace(".", ",").replace("-", "−")}</text>)}
-      <text x={px(xMax) + 18} y={ejeX - 6} text-anchor="end" font-style="italic">x{unidad && ` (${unidad})`}</text>
-      <text x={ejeY + 6} y={py(yMax) - 12} font-style="italic">y{unidad && ` (${unidad})`}</text>
+      <text x={px(xMax) + 18} y={ejeX - 6} text-anchor="end" font-style="italic">{ejes[0]}{unidad && ` (${unidad})`}</text>
+      <text x={ejeY + 6} y={py(yMax) - 12} font-style="italic">{ejes[1]}{unidad && ` (${unidad})`}</text>
     </g>
 
     <g stroke="#888" stroke-width="1" stroke-dasharray="3 3" fill="none">

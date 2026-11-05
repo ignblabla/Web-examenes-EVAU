@@ -1,0 +1,165 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2024
+convocatoria: junio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Responda razonadamente a las siguientes cuestiones: **i)** ¿Puede ser nulo el flujo magnético a través de una espira colocada en una región en la que existe un campo magnético? **ii)** El hecho de que la f.e.m. inducida en una espira sea nula en un instante determinado, ¿implica que no hay flujo magnético en la espira en ese instante?
+
+<Solucion>
+
+El flujo magnético a través de una espira plana de superficie $S$ en un campo uniforme $\vec{B}$ es
+
+$$
+\Phi = \vec{B}\cdot\vec{S} = B\,S\cos\theta
+$$
+
+donde $\theta$ es el ángulo entre $\vec{B}$ y el vector superficie $\vec{S}$, perpendicular al plano de la espira. Según la ley de Faraday-Lenz, la f.e.m. inducida depende de cómo **cambia** el flujo: $\varepsilon = -\dfrac{d\Phi}{dt}$.
+
+**i) Sí.** Si la espira se coloca con su plano paralelo a las líneas de campo, $\vec{S}$ es perpendicular a $\vec{B}$, $\theta = 90^\circ$ y $\Phi = B\,S\cos 90^\circ = 0$: ninguna línea de campo atraviesa la espira, aunque el campo exista en toda la región.
+
+**ii) No.** Que la f.e.m. sea nula en un instante solo significa que en ese instante el flujo no está cambiando, $d\Phi/dt = 0$, no que el flujo sea cero. Por ejemplo, una espira en reposo en un campo magnético constante perpendicular a su plano tiene un flujo $\Phi = B\,S \neq 0$ que no varía, y no se induce ninguna f.e.m. Lo mismo ocurre en el apartado b) en $t = 0$: la f.e.m. es nula pero el flujo vale $0{,}0785$ Wb.
+
+</Solucion>
+
+**b)** Una bobina formada por 100 espiras circulares de radio 5 cm está situada en el interior de un campo magnético uniforme dirigido en la dirección del eje de la bobina y de módulo *B*(*t*) = 0,1 − 0,1 *t*<sup>2</sup> (S.I.). Determine: **i)** el flujo magnético en la bobina para *t* = 2 s; **ii)** la fuerza electromotriz inducida en la bobina para *t* = 2 s; **iii)** el instante de tiempo en el que la fuerza electromotriz inducida es nula.
+
+<Solucion>
+
+El campo tiene la dirección del eje de la bobina, que es perpendicular al plano de las espiras: el ángulo entre $\vec{B}$ y $\vec{S}$ es $0^\circ$. La superficie de cada espira es:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}05^2 = 7{,}85 \cdot 10^{-3}\ \text{m}^2
+$$
+
+El flujo total a través de las $N = 100$ espiras es:
+
+$$
+\Phi(t) = N\,B(t)\,S = 100 \cdot 7{,}85 \cdot 10^{-3}\,(0{,}1 - 0{,}1\,t^2) = 7{,}85 \cdot 10^{-2}\,(1 - t^2)\ \text{Wb}
+$$
+
+**i) Flujo en $t = 2$ s.** En ese instante $B(2) = 0{,}1 - 0{,}1 \cdot 4 = -0{,}3$ T:
+
+$$
+\Phi(2) = 100 \cdot (-0{,}3) \cdot 7{,}85 \cdot 10^{-3} = -0{,}236\ \text{Wb}
+$$
+
+El signo negativo indica que el campo se ha invertido: en $t = 2$ s apunta en sentido contrario al que tenía en $t = 0$ (el campo se anula en $t = 1$ s y después cambia de sentido). A través de cada espira el flujo es $-2{,}36 \cdot 10^{-3}$ Wb.
+
+**ii) F.e.m. inducida en $t = 2$ s.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -N\,S\,\frac{dB}{dt} = -100 \cdot 7{,}85 \cdot 10^{-3} \cdot (-0{,}2\,t) = 0{,}157\,t\ \text{V}
+$$
+
+$$
+\varepsilon(2) = 0{,}157 \cdot 2 = 0{,}314\ \text{V}
+$$
+
+**iii) Instante en que la f.e.m. es nula.** $\varepsilon(t) = 0{,}157\,t = 0$ solo en **$t = 0$ s**. En ese instante el campo tiene un máximo $(dB/dt = -0{,}2\,t = 0)$: el flujo no cambia, aunque vale $\Phi(0) = 7{,}85 \cdot 10^{-2}$ Wb, como se razonó en el apartado a) ii).
+
+**Respuesta.** En $t = 2$ s el flujo es **−0,236 Wb** y la f.e.m. inducida vale **0,314 V**; la f.e.m. solo es nula en **$t = 0$ s**.
+
+</Solucion>
+
+**B2. a)** **i)** Explique qué es una superficie equipotencial. ¿Qué forma tienen las superficies equipotenciales del campo eléctrico creado por una carga puntual? **ii)** Razone el trabajo realizado por la fuerza eléctrica sobre una carga que se desplaza por una superficie equipotencial.
+
+<Solucion>
+
+**i) Superficie equipotencial.** Es el conjunto de puntos del espacio en los que el potencial eléctrico tiene el mismo valor. Las líneas de campo son siempre perpendiculares a las superficies equipotenciales y apuntan hacia potenciales decrecientes.
+
+Una carga puntual $q$ crea un potencial que solo depende de la distancia a la carga:
+
+$$
+V = K\,\frac{q}{r}
+$$
+
+Todos los puntos a la misma distancia $r$ tienen el mismo potencial, así que las superficies equipotenciales son **esferas concéntricas centradas en la carga**. Son perpendiculares a las líneas de campo, que son radiales.
+
+**ii) Trabajo sobre una superficie equipotencial.** El trabajo de la fuerza eléctrica para llevar una carga $q'$ de un punto A a otro B es igual a menos la variación de su energía potencial:
+
+$$
+W_{A\to B} = -\Delta E_p = -q'\,(V_B - V_A)
+$$
+
+Si A y B están en la misma superficie equipotencial, $V_A = V_B$ y el trabajo es **nulo**, sea cual sea el camino. Se ve también localmente: la fuerza eléctrica $q'\vec{E}$ es perpendicular a la superficie, y por tanto al desplazamiento sobre ella, así que no realiza trabajo.
+
+</Solucion>
+
+**b)** Dos cargas puntuales iguales de valor −1,2·10<sup>-6</sup> C están situadas en los puntos A(0,8) m y B(6,0) m. Una tercera carga de valor −1,5·10<sup>-6</sup> C se sitúa en el punto P(3,4) m. Calcule: **i)** la fuerza eléctrica total ejercida sobre la carga situada en P, apoyándose de un esquema; **ii)** el trabajo realizado por el campo eléctrico para trasladar la tercera carga desde el infinito hasta el punto P.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Fuerza total sobre la carga en P.** Las distancias de P a cada carga son:
+
+$$
+\overline{AP} = \sqrt{(3-0)^2 + (4-8)^2} = 5\ \text{m}, \qquad \overline{BP} = \sqrt{(3-6)^2 + (4-0)^2} = 5\ \text{m}
+$$
+
+P es el **punto medio** del segmento AB. Las tres cargas son negativas, así que las dos fuerzas sobre la carga de P son **repulsivas**: $\vec{F}_A$ la aleja de A y $\vec{F}_B$ la aleja de B.
+
+<Vectores
+  xMin={-1}
+  xMax={7.4}
+  yMin={-1.8}
+  yMax={9}
+  escala={24}
+  marcasX={[3, 6]}
+  marcasY={[4, 8]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 8, texto: "A: −1,2 μC", tipo: "carga", signo: "−", dx: 12, dy: 4 },
+    { x: 6, y: 0, texto: "B: −1,2 μC", tipo: "carga", signo: "−", dx: -40, dy: 34 },
+    { x: 3, y: 4, texto: "P: −1,5 μC", tipo: "carga", signo: "−", dx: 14, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [3, 4], v: [36, -48], texto: "F", sub: "A", dx: 6, dy: 4 },
+    { desde: [3, 4], v: [-36, 48], texto: "F", sub: "B", color: "#b04a3a", dx: 8, dy: -4 },
+  ]}
+  segmentos={[[0, 8, 6, 0]]}
+  descripcion="Cargas negativas iguales en A(0,8) y B(6,0) y una tercera carga negativa en P(3,4), el punto medio del segmento AB. La fuerza de A sobre P apunta alejándose de A, hacia B, y la de B apunta alejándose de B, hacia A: tienen el mismo módulo y sentidos opuestos, así que se anulan."
+/>
+
+Las dos fuerzas tienen el mismo módulo, porque las cargas y las distancias son iguales:
+
+$$
+F_A = F_B = K\,\frac{|q|\,|q'|}{r^2} = 9 \cdot 10^9 \cdot \frac{1{,}2 \cdot 10^{-6} \cdot 1{,}5 \cdot 10^{-6}}{5^2} = 6{,}48 \cdot 10^{-4}\ \text{N}
+$$
+
+En forma vectorial, con los vectores unitarios que van de cada carga hacia P, $\vec{u}_{AP} = (3, -4)/5$ y $\vec{u}_{BP} = (-3, 4)/5$:
+
+$$
+\vec{F}_A = 6{,}48 \cdot 10^{-4}\,(0{,}6\,\vec{i} - 0{,}8\,\vec{j}) = (3{,}89 \cdot 10^{-4}\,\vec{i} - 5{,}18 \cdot 10^{-4}\,\vec{j})\ \text{N}
+$$
+
+$$
+\vec{F}_B = 6{,}48 \cdot 10^{-4}\,(-0{,}6\,\vec{i} + 0{,}8\,\vec{j}) = (-3{,}89 \cdot 10^{-4}\,\vec{i} + 5{,}18 \cdot 10^{-4}\,\vec{j})\ \text{N}
+$$
+
+$$
+\vec{F} = \vec{F}_A + \vec{F}_B = \vec{0}\ \text{N}
+$$
+
+La fuerza total sobre la carga situada en P es **nula**: está en el punto medio entre dos cargas iguales y las dos repulsiones se compensan.
+
+**ii) Trabajo del campo desde el infinito hasta P.** El potencial en P es la suma de los potenciales de las dos cargas (aunque el campo es nulo en P, el potencial no lo es):
+
+$$
+V_P = K\,\frac{q_A}{r_A} + K\,\frac{q_B}{r_B} = 9 \cdot 10^9 \cdot \frac{-1{,}2 \cdot 10^{-6}}{5} \cdot 2 = -4{,}32 \cdot 10^{3}\ \text{V}
+$$
+
+El trabajo del campo es igual a menos la variación de energía potencial de la carga $q' = -1{,}5 \cdot 10^{-6}$ C, con $V_\infty = 0$:
+
+$$
+W_{\infty\to P} = -q'\,(V_P - V_\infty) = -(-1{,}5 \cdot 10^{-6}) \cdot (-4{,}32 \cdot 10^{3} - 0) = -6{,}48 \cdot 10^{-3}\ \text{J}
+$$
+
+**Respuesta.** La fuerza total sobre la carga en P es **nula**, y el campo realiza un trabajo de **$-6{,}48 \cdot 10^{-3}$ J**. Es negativo porque las cargas se repelen: el campo se opone a acercar la tercera carga, y un agente externo tiene que aportar esa energía, que queda almacenada como energía potencial $(E_p = q'V_P = 6{,}48 \cdot 10^{-3}$ J$)$.
+
+</Solucion>

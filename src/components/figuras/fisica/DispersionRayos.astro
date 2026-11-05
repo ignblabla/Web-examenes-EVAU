@@ -1,0 +1,87 @@
+---
+// Dispersión de la luz blanca al refractarse: un rayo incide desde el aire con un ángulo dado y
+// cada color se refracta con su índice (ley de Snell). Como la diferencia real entre los ángulos
+// suele ser de un grado o menos, la separación se exagera con el factor indicado (las etiquetas
+// dan los ángulos reales).
+interface Rayo {
+  n: number
+  color: string
+  texto: string
+}
+
+interface Props {
+  incidencia: number
+  rayos: Rayo[]
+  exagerar?: number
+  descripcion: string
+}
+
+const { incidencia, rayos, exagerar = 6, descripcion } = Astro.props
+const g = (a: number) => (a * Math.PI) / 180
+const fmt = (r: number) => ((r * 180) / Math.PI).toFixed(1).replace(".", ",")
+const reales = rayos.map((r) => Math.asin(Math.sin(g(incidencia)) / r.n))
+const media = reales.reduce((a, b) => a + b, 0) / reales.length
+const dibujados = reales.map((a) => media + (a - media) * exagerar)
+const o = { x: 190, y: 92 }
+const L = 120
+const id = `dispersion-${Math.round(Math.random() * 1e9)}`
+---
+
+<figure class="solution-figure">
+  <svg viewBox="0 0 380 220" role="img" aria-label={descripcion}>
+    <defs>
+      {
+        rayos.map((r, i) => (
+          <marker id={`${id}-${i}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill={r.color} />
+          </marker>
+        ))
+      }
+      <marker id={`${id}-b`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#777" />
+      </marker>
+    </defs>
+    <rect x="0" y="0" width="380" height={o.y} fill="#f4f8fb" />
+    <rect x="0" y={o.y} width="380" height={220 - o.y} fill="#dfe9f0" />
+    <path d={`M0 ${o.y}H380`} stroke="#111" stroke-width="1.2" />
+    <path d={`M${o.x} 6V214`} stroke="#888" stroke-dasharray="4 3" />
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
+      <text x="372" y="16" text-anchor="end">Aire</text>
+      <text x="372" y="212" text-anchor="end">Vidrio</text>
+    </g>
+    <path
+      d={`M${(o.x - 80 * Math.sin(g(incidencia))).toFixed(1)} ${(o.y - 80 * Math.cos(g(incidencia))).toFixed(1)}L${o.x} ${o.y}`}
+      stroke="#777"
+      stroke-width="2.4"
+      fill="none"
+      marker-end={`url(#${id}-b)`}
+    />
+    <text x={o.x - 80 * Math.sin(g(incidencia)) - 4} y={o.y - 80 * Math.cos(g(incidencia)) - 6} font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#555">Luz blanca ({incidencia}°)</text>
+    <g stroke-width="1.8" fill="none">
+      {
+        rayos.map((r, i) => (
+          <path
+            d={`M${o.x} ${o.y}l${(L * Math.sin(dibujados[i])).toFixed(1)} ${(L * Math.cos(dibujados[i])).toFixed(1)}`}
+            stroke={r.color}
+            marker-end={`url(#${id}-${i})`}
+          />
+        ))
+      }
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">
+      {
+        rayos.map((r, i) => (
+          <text
+            x={o.x + L * Math.sin(dibujados[i]) + (i === 0 ? -8 : 8)}
+            y={o.y + L * Math.cos(dibujados[i]) + 4}
+            text-anchor={i === 0 ? "end" : "start"}
+            fill={r.color}
+          >
+            {r.texto}: {fmt(reales[i])}°
+          </text>
+        ))
+      }
+    </g>
+    <text x="372" y="30" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#777">Separación entre los rayos exagerada</text>
+  </svg>
+</figure>

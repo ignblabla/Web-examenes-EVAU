@@ -1,0 +1,155 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2024
+convocatoria: reserva-4
+formato: fisica
+---
+
+import DispersionRayos from "../../../../../components/figuras/fisica/DispersionRayos.astro"
+import ReflexionTotal from "../../../../../components/figuras/fisica/ReflexionTotal.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Se desea obtener una imagen virtual, derecha y de menor tamaño utilizando una lente delgada. Justifique el tipo de lente que se debe usar y, si es necesario, indicar dónde se debe colocar el objeto. Realice razonadamente el trazado de rayos correspondiente.
+
+<Solucion>
+
+**Tipo de lente.** Hay que usar una **lente divergente**. Una lente convergente solo da imágenes virtuales cuando el objeto está entre el foco y la lente, y entonces son mayores que el objeto; nunca da una imagen virtual y menor. En cambio, una lente divergente da de cualquier objeto real una imagen **virtual, derecha y menor**, así que **el objeto puede colocarse a cualquier distancia** de la lente.
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), en una lente divergente el foco imagen $F'$ está delante de la lente. Desde el extremo del objeto trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta alejándose del eje como si viniera del foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo dirigido hacia el foco objeto $F$ (detrás de la lente), que sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4.2} xMax={3} descripcion="Lente divergente con un objeto delante. El rayo paralelo al eje se refracta como si viniera del foco imagen F', situado delante de la lente; el que pasa por el centro óptico no se desvía. Los rayos refractados divergen y sus prolongaciones se cortan delante de la lente, entre el foco y la lente: la imagen es virtual, derecha y menor que el objeto." />
+
+Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan delante de la lente, **entre el foco imagen y la lente**. La imagen es virtual (se forma con prolongaciones), derecha y menor que el objeto. Así funcionan las gafas para la miopía o las mirillas de las puertas.
+
+</Solucion>
+
+**b)** Usando una lente delgada convergente de 4 dioptrías de potencia obtenemos una imagen que es real e invertida. El tamaño de la imagen obtenida es el doble que el del objeto. **i)** Determine a qué distancia de la lente debe colocarse el objeto. **ii)** Determine la posición de la imagen. **iii)** Construya gráficamente la imagen formada. Indique el criterio de signos utilizado.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente: las distancias son negativas a la izquierda y positivas a la derecha; las alturas, positivas por encima del eje.
+
+La distancia focal imagen es la inversa de la potencia:
+
+$$
+f' = \frac{1}{P} = \frac{1}{4} = 0{,}25\ \text{m}
+$$
+
+La imagen es invertida y el doble de grande, así que el aumento lateral es $A = -2$:
+
+$$
+A = \frac{s'}{s} = -2 \quad\Rightarrow\quad s' = -2s
+$$
+
+**i) Posición del objeto.** Sustituimos en la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{-2s} - \frac{1}{s} = 4
+\quad\Rightarrow\quad
+-\frac{3}{2s} = 4
+\quad\Rightarrow\quad
+s = -0{,}375\ \text{m}
+$$
+
+El objeto debe colocarse **37,5 cm delante de la lente**, entre $f'$ y $2f'$ (entre 25 y 50 cm).
+
+**ii) Posición de la imagen.**
+
+$$
+s' = -2s = -2 \cdot (-0{,}375) = 0{,}75\ \text{m}
+$$
+
+La imagen se forma **75 cm detrás de la lente**: es real, porque se forma al otro lado, donde convergen los rayos.
+
+**iii) Construcción gráfica.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta por el foco imagen $F'$; uno por el centro óptico, que no se desvía; y uno por el foco objeto $F$, que sale paralelo al eje. Se cortan detrás de la lente:
+
+<TrazadoRayos tipo="convergente" f={0.25} s={-0.375} y={1} xMin={-0.5} xMax={0.9} descripcion="Lente convergente de 25 centímetros de distancia focal con el objeto a 37,5 centímetros, entre una y dos distancias focales. El rayo paralelo al eje se refracta por F', el que pasa por el centro óptico no se desvía y el que pasa por F sale paralelo. Se cortan a 75 centímetros detrás de la lente, donde se forma una imagen real, invertida y el doble de grande." />
+
+**Respuesta.** El objeto debe estar a **37,5 cm** de la lente y la imagen se forma a **75 cm** detrás de ella: real, invertida y el doble de grande. Es la situación de un proyector, que forma una imagen ampliada del objeto sobre una pantalla.
+
+</Solucion>
+
+**C2. a)** Explique, con ayuda de un esquema, en qué consiste el fenómeno de reflexión total, indicando las condiciones que deben darse para que dicho fenómeno se produzca.
+
+<Solucion>
+
+Cuando la luz llega a la superficie de separación entre dos medios, en general una parte se refleja y otra se refracta. Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Si la luz pasa a un medio **menos refringente** $(n_2 < n_1)$, el rayo refractado se aleja de la normal, $\theta_2 > \theta_1$.
+
+Al aumentar el ángulo de incidencia, el ángulo de refracción crece hasta llegar a $90^\circ$: el rayo refractado sale rasante a la superficie. El ángulo de incidencia en el que ocurre esto es el **ángulo límite**:
+
+$$
+n_1\sin\theta_L = n_2\sin 90^\circ
+\quad\Rightarrow\quad
+\sin\theta_L = \frac{n_2}{n_1}
+$$
+
+Si el ángulo de incidencia es mayor que el límite, la ley de Snell exigiría $\sin\theta_2 > 1$, que es imposible: **no hay rayo refractado** y toda la luz se refleja hacia el primer medio. Es la **reflexión total**.
+
+<ReflexionTotal />
+
+**Condiciones para que se produzca:**
+
+1. La luz tiene que pasar de un medio **más refringente a otro menos refringente** $(n_1 > n_2)$, por ejemplo del agua o el vidrio al aire. En sentido contrario no puede darse.
+2. El ángulo de incidencia tiene que ser **mayor que el ángulo límite**, $\theta_1 > \theta_L$.
+
+En ella se basan la fibra óptica, en la que la luz avanza por el interior de la fibra reflejándose totalmente en sus paredes, y los prismas de reflexión total de los prismáticos.
+
+</Solucion>
+
+**b)** Un haz de luz blanca incide, desde el aire, sobre la superficie de un vidrio con un ángulo de 30º con respecto a la normal. Sabiendo que las longitudes de onda en el aire de las componentes azul y roja son, respectivamente, 4,86·10<sup>-7</sup> m y 6,56·10<sup>-7</sup> m: **i)** realice un esquema y calcule el ángulo que forman entre sí los rayos refractados; **ii)** determine la frecuencia y la longitud de onda en el vidrio de la componente roja.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>azul</sub> = 1,7; n<sub>roja</sub> = 1,6</Datos>
+
+<Solucion>
+
+**i) Ángulo entre los rayos refractados.** El índice de refracción del vidrio depende de la longitud de onda (dispersión): cada componente de la luz blanca se refracta con un ángulo distinto. Aplicamos la ley de Snell a cada una:
+
+$$
+\sin r_{\text{azul}} = \frac{n_{\text{aire}}\sin 30^\circ}{n_{\text{azul}}} = \frac{0{,}5}{1{,}7} = 0{,}294
+\quad\Rightarrow\quad
+r_{\text{azul}} = 17{,}1^\circ
+$$
+
+$$
+\sin r_{\text{roja}} = \frac{0{,}5}{1{,}6} = 0{,}3125
+\quad\Rightarrow\quad
+r_{\text{roja}} = 18{,}2^\circ
+$$
+
+<DispersionRayos
+  incidencia={30}
+  rayos={[
+    { n: 1.7, color: "#2d6fa3", texto: "Azul" },
+    { n: 1.6, color: "#b04a3a", texto: "Roja" },
+  ]}
+  descripcion="Rayo de luz blanca que incide desde el aire sobre un vidrio con 30 grados respecto a la normal. En el vidrio se separa en dos rayos: el azul, que se refracta con 17,1 grados, más cerca de la normal, y el rojo, con 18,2 grados. La separación entre ellos está exagerada en el dibujo."
+/>
+
+El azul, con mayor índice, se desvía más y queda más cerca de la normal. El ángulo entre los dos rayos refractados es:
+
+$$
+\Delta r = r_{\text{roja}} - r_{\text{azul}} = 18{,}2^\circ - 17{,}1^\circ = 1{,}1^\circ
+$$
+
+**ii) Frecuencia y longitud de onda de la luz roja en el vidrio.** La frecuencia no cambia al pasar de un medio a otro, así que la calculamos en el aire:
+
+$$
+f = \frac{c}{\lambda_{\text{aire}}} = \frac{3 \cdot 10^8}{6{,}56 \cdot 10^{-7}} = 4{,}57 \cdot 10^{14}\ \text{Hz}
+$$
+
+En el vidrio la velocidad es $v = c/n$, y la longitud de onda se reduce en el mismo factor:
+
+$$
+\lambda_{\text{vidrio}} = \frac{v}{f} = \frac{\lambda_{\text{aire}}}{n_{\text{roja}}} = \frac{6{,}56 \cdot 10^{-7}}{1{,}6} = 4{,}10 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** Los rayos refractados azul y rojo forman entre sí un ángulo de **1,1°**. La componente roja tiene en el vidrio una frecuencia de **$4{,}57 \cdot 10^{14}$ Hz**, la misma que en el aire, y una longitud de onda de **$4{,}10 \cdot 10^{-7}$ m**. Que la luz roja tenga en el vidrio una longitud de onda menor que la del azul en el aire no cambia su color: el color lo determina la frecuencia.
+
+</Solucion>

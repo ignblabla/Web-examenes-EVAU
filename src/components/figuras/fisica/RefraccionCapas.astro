@@ -6,6 +6,11 @@ interface Capa {
   nombre: string
   n: number
   color: string
+  // Alto de la capa en píxeles (70 por defecto). Con ángulos rasantes conviene una capa baja
+  // para que el rayo no se salga del dibujo.
+  alto?: number
+  // Rótulo de la capa, si no basta con «nombre (n = …)» (por ejemplo, n = 4/3).
+  texto?: string
 }
 
 interface Props {
@@ -15,23 +20,26 @@ interface Props {
 }
 
 const { capas, incidencia, descripcion } = Astro.props
-const ancho = 380
-const alto = 70
+const altos = capas.map((c) => c.alto ?? 70)
+const techos = altos.map((_, i) => altos.slice(0, i).reduce((a, b) => a + b, 0))
+const altoTotal = altos.reduce((a, b) => a + b, 0)
 const invariante = capas[0].n * Math.sin((incidencia * Math.PI) / 180)
 const angulos = capas.map((c) => Math.asin(invariante / c.n))
 // El rayo cruza cada capa de arriba abajo; en x avanza alto · tan θ.
 let x = 70
 const puntos = [{ x, y: 0 }]
 angulos.forEach((a, i) => {
-  x += alto * Math.tan(a)
-  puntos.push({ x, y: (i + 1) * alto })
+  x += altos[i] * Math.tan(a)
+  puntos.push({ x, y: techos[i] + altos[i] })
 })
+// El dibujo se ensancha si el rayo avanza mucho en horizontal.
+const ancho = Math.max(380, x + 60)
 const fmt = (v: number) => (v * 180 / Math.PI).toFixed(1).replace(".", ",")
 const id = `refraccion-${Math.round(Math.random() * 1e9)}`
 ---
 
 <figure class="solution-figure">
-  <svg viewBox={`0 0 ${ancho} ${alto * capas.length + 4}`} role="img" aria-label={descripcion}>
+  <svg viewBox={`0 0 ${ancho.toFixed(0)} ${altoTotal + 4}`} role="img" aria-label={descripcion}>
     <defs>
       <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M0 0L10 5L0 10z" fill="#b04a3a" />
@@ -40,15 +48,15 @@ const id = `refraccion-${Math.round(Math.random() * 1e9)}`
     {
       capas.map((c, i) => (
         <g>
-          <rect x="0" y={i * alto} width={ancho} height={alto} fill={c.color} />
-          <text x={ancho - 8} y={i * alto + 18} text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
-            {c.nombre} (n = {String(c.n).replace(".", ",")})
+          <rect x="0" y={techos[i]} width={ancho} height={altos[i]} fill={c.color} />
+          <text x={ancho - 8} y={techos[i] + 18} text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#333">
+            {c.texto ?? `${c.nombre} (n = ${String(c.n).replace(".", ",")})`}
           </text>
         </g>
       ))
     }
     <g stroke="#111" stroke-width="1">
-      {capas.slice(1).map((_, i) => <path d={`M0 ${(i + 1) * alto}H${ancho}`} />)}
+      {techos.slice(1).map((t) => <path d={`M0 ${t}H${ancho}`} />)}
     </g>
     <g stroke="#888" stroke-width="1" stroke-dasharray="4 3">
       {puntos.slice(1, -1).map((p) => <path d={`M${p.x} ${p.y - 40}V${p.y + 40}`} />)}
@@ -63,7 +71,7 @@ const id = `refraccion-${Math.round(Math.random() * 1e9)}`
     <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#b04a3a">
       {
         angulos.map((a, i) => (
-          <text x={puntos[i + 1].x + (i === 0 ? -8 : 8)} y={i === 0 ? alto - 14 : i * alto + 30} text-anchor={i === 0 ? "end" : "start"}>
+          <text x={puntos[i + 1].x + (i === 0 ? -8 : 8)} y={i === 0 ? altos[0] - 14 : techos[i] + Math.min(30, altos[i] - 4)} text-anchor={i === 0 ? "end" : "start"}>
             {fmt(a)}°
           </text>
         ))
