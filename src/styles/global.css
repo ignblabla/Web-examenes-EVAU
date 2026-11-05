@@ -1984,6 +1984,14 @@ footer {
   margin: 0 0 14px;
 }
 
+/* Texto justificado, con guiones para que no queden huecos grandes en columnas estrechas. */
+.legal-sheet p,
+.legal-sheet li {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
 .legal-sheet ul {
   margin: 0 0 14px;
   padding-left: 22px;
