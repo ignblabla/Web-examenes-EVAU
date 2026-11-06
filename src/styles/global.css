@@ -1737,8 +1737,10 @@ footer {
   color: var(--ink);
 }
 
+/* Los tonos oscuros dan al menos 4,5:1 de contraste con el texto (--ink), como pide WCAG AA;
+   los tonos intermedios, más claros, tienen aún más contraste. */
 .topics--math-two {
-  --tone-dark: #4f9887;
+  --tone-dark: #5aa391;
   --tone-light: #dcefe8;
 }
 
@@ -1748,12 +1750,12 @@ footer {
 }
 
 .topics--physics {
-  --tone-dark: #8f7cc4;
+  --tone-dark: #a090d0;
   --tone-light: #ece6f8;
 }
 
 .topics--french {
-  --tone-dark: #db6f5e;
+  --tone-dark: #e0786a;
   --tone-light: #f8dcd5;
 }
 
@@ -2466,9 +2468,17 @@ footer {
 }
 
 /* Exámenes y temas aún sin publicar: se muestran, pero sin enlace. */
-.exam-link.is-pending,
-.topic-years .is-pending {
+.exam-link.is-pending {
   opacity: 0.45;
+  cursor: default;
+}
+
+/* En las tarjetas de temas, atenuar con opacidad dejaría el texto sin contraste suficiente
+   sobre los tonos oscuros: los años pendientes se distinguen con el borde discontinuo y sin
+   negrita. */
+.topic-years .is-pending {
+  border-style: dashed;
+  font-weight: 400;
   cursor: default;
 }
 

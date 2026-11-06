@@ -275,7 +275,7 @@ const jsonLd = {
               <div class="topic-years">
                 {cursosAsignatura.map((c) =>
                   temasPublicados.has(`${t.slug}/${c.anio}`) ? (
-                    <a href={rutaTema(slug, t, c.anio)}>{c.anio}</a>
+                    <a href={rutaTema(slug, t, c.anio)} aria-label={`${t.titulo}, ${c.anio}`}>{c.anio}</a>
                   ) : (
                     <span class="is-pending" title="Próximamente">
                       {c.anio}
