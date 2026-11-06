@@ -4,7 +4,9 @@
 // (s < 0). Para una lente, f es la distancia focal imagen f'; para un espejo, f = R/2 (positiva
 // en un espejo convexo). La imagen se calcula con las ecuaciones y los rayos se trazan hacia
 // ella, así que el dibujo siempre es coherente con el cálculo. El eje vertical se amplía si el
-// objeto es muy pequeño frente a las distancias (no está a escala).
+// objeto es muy pequeño frente a las distancias (no está a escala). Con el objeto en el foco
+// objeto de una lente convergente (reserva 1 de 2022, C1 a) la imagen está en el infinito: los
+// rayos salen paralelos entre sí y no se dibuja imagen.
 interface Props {
   tipo: "convergente" | "divergente" | "concavo" | "convexo"
   f: number
@@ -22,10 +24,11 @@ const { tipo, f, s, y, xMin, xMax, descripcion, objeto = "y", imagen = "y′" } 
 const lente = tipo === "convergente" || tipo === "divergente"
 
 // Ecuaciones: lente 1/s' − 1/s = 1/f', A = s'/s; espejo 1/s' + 1/s = 1/f, A = −s'/s.
+const infinita = lente && Math.abs(1 / f + 1 / s) < 1e-9
 const sp = lente ? 1 / (1 / f + 1 / s) : 1 / (1 / f - 1 / s)
-const yp = (lente ? sp / s : -sp / s) * y
+const yp = infinita ? 0 : (lente ? sp / s : -sp / s) * y
 // La imagen es virtual si está detrás de la lente por el lado del objeto, o detrás del espejo.
-const virtual = lente ? sp < 0 : sp > 0
+const virtual = !infinita && (lente ? sp < 0 : sp > 0)
 const salida = lente ? 1 : -1
 
 const anchoSvg = 460
@@ -43,8 +46,9 @@ const rayos = objetivos.flatMap((q) => {
   const h = q === null ? y : y + ((0 - s) * (0 - y)) / (q - s)
   if (!Number.isFinite(h) || Math.abs(h * ky) > 105) return []
   // Dirección de salida: hacia la imagen si es real y alejándose de ella si es virtual.
-  let dx = sp
-  let dy = yp - h
+  // Con la imagen en el infinito, todos salen paralelos al rayo que pasa por el centro óptico.
+  let dx = infinita ? 1 : sp
+  let dy = infinita ? y / s : yp - h
   if (Math.sign(dx) !== salida) {
     dx = -dx
     dy = -dy
@@ -151,13 +155,13 @@ const rayitas = Array.from({ length: 12 }, (_, i) => {
     </g>
 
     <path d={`M${px(s)} ${eje}V${py(y)}`} stroke="#195c51" stroke-width="2.4" marker-end={`url(#${id}-o)`} />
-    <path
+    {!infinita && <path
       d={`M${px(sp)} ${eje}V${py(yp)}`}
       stroke="#195c51"
       stroke-width="2.4"
       stroke-dasharray={virtual ? "5 3" : undefined}
       marker-end={`url(#${id}-o)`}
-    />
+    />}
 
     <g font-family="Arial, Helvetica, sans-serif" font-size="11">
       {
@@ -169,7 +173,7 @@ const rayitas = Array.from({ length: 12 }, (_, i) => {
         ))
       }
       <text x={px(s) - 5} y={py(y / 2) + 4} text-anchor="end" font-style="italic" fill="#195c51" font-weight="700">{objeto}</text>
-      <text x={px(sp) + 7} y={py(yp) + (yp > 0 ? 2 : 8)} font-style="italic" fill="#195c51" font-weight="700">{imagen}</text>
+      {!infinita && <text x={px(sp) + 7} y={py(yp) + (yp > 0 ? 2 : 8)} font-style="italic" fill="#195c51" font-weight="700">{imagen}</text>}
     </g>
   </svg>
 </figure>

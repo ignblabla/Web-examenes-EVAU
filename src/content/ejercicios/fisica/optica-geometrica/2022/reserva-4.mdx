@@ -1,0 +1,67 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2022
+convocatoria: reserva-4
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Realice y explique el trazado de rayos para un objeto situado a la izquierda del foco imagen de una lente divergente. Determine, justificadamente, las características de la imagen.
+
+<Solucion>
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), en una lente divergente el foco imagen $F'$ está **a la izquierda** de la lente, en el lado por el que llega la luz, y el foco objeto $F$ a la derecha. El objeto está a la izquierda de $F'$, más lejos de la lente que el foco. Desde su extremo trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta alejándose del eje como si viniera del foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo dirigido hacia el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4.2} xMax={3} descripcion="Lente divergente con el objeto a la izquierda del foco imagen F'. El rayo paralelo al eje se refracta como si viniera de F', el que pasa por el centro óptico no se desvía y el que se dirige al foco objeto F sale paralelo. Los rayos refractados divergen y sus prolongaciones se cortan entre F' y la lente: la imagen es virtual, derecha y menor que el objeto." />
+
+**Características de la imagen.** Los rayos refractados divergen y no se cortan; se cortan sus **prolongaciones** hacia atrás, a la izquierda de la lente, **entre el foco imagen y la lente**. La imagen es:
+
+- **Virtual**: la forman las prolongaciones de los rayos, no los rayos, y no se puede recoger en una pantalla.
+- **Derecha**: queda por encima del eje, como el objeto.
+- **Menor que el objeto**.
+
+Se comprueba con las ecuaciones: con $f' < 0$ y $s < 0$, la ecuación de las lentes, $1/s' = 1/f' + 1/s$, da siempre $s' < 0$ y $|s'| < |f'|$, y el aumento $A = s'/s$ está entre 0 y 1. En el dibujo, con $f' = -2$ y $s = -3$, sale $s' = -1{,}2$ y $A = 0{,}4$. Una lente divergente da estas mismas características para cualquier posición de un objeto real.
+
+</Solucion>
+
+**b)** Un objeto de 2 cm de altura se coloca a 4 cm de una lente delgada, formando una imagen derecha y con un tamaño cinco veces mayor que el del objeto. **i)** Explique si la lente es convergente o divergente. **ii)** Calcule la posición de la imagen y la distancia focal de la lente, indicando el criterio de signos aplicado. **iii)** Dibuje razonadamente el trazado de rayos y justifique si la imagen es real o virtual.
+
+<Solucion>
+
+**i) Tipo de lente.** Una lente divergente da siempre, de un objeto real, una imagen **menor** que el objeto. Como la imagen es cinco veces mayor, la lente tiene que ser **convergente**. Además, una lente convergente solo da una imagen derecha y mayor cuando el objeto está entre el foco y la lente (como una lupa).
+
+**ii) Posición de la imagen y distancia focal.** Usamos el criterio DIN: la luz va de izquierda a derecha, el origen está en el centro óptico, las distancias son negativas a la izquierda y positivas a la derecha, y las alturas, positivas por encima del eje. El objeto está en $s = -4$ cm y mide $y = 2$ cm. La imagen es derecha y cinco veces mayor, así que el aumento lateral es $A = +5$:
+
+$$
+A = \frac{s'}{s} = 5
+\quad\Rightarrow\quad
+s' = 5\,s = 5 \cdot (-4) = -20\ \text{cm},
+\qquad
+y' = A\,y = 5 \cdot 2 = 10\ \text{cm}
+$$
+
+Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{f'} = \frac{1}{s'} - \frac{1}{s} = \frac{1}{-20} - \frac{1}{-4} = \frac{-1 + 5}{20} = \frac{4}{20}
+\quad\Rightarrow\quad
+f' = 5\ \text{cm}
+$$
+
+La distancia focal es positiva, lo que confirma que la lente es convergente, y el objeto, a 4 cm, está entre el foco (a 5 cm) y la lente.
+
+**iii) Trazado de rayos.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$; uno por el centro óptico, que no se desvía; y uno cuya prolongación hacia atrás pasa por el foco objeto $F$, que sale paralelo al eje:
+
+<TrazadoRayos tipo="convergente" f={5} s={-4} y={2} xMin={-23} xMax={12} descripcion="Lente convergente de 5 centímetros de distancia focal con un objeto de 2 centímetros a 4 centímetros a la izquierda, entre el foco objeto y la lente. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a 20 centímetros a la izquierda de la lente, donde se forma una imagen virtual, derecha y cinco veces mayor, de 10 centímetros." />
+
+Los rayos refractados divergen y no se cortan; se cortan sus **prolongaciones** hacia atrás. La imagen es **virtual**: está en el mismo lado que el objeto $(s' < 0)$ y no se puede recoger en una pantalla.
+
+**Respuesta.** La lente es **convergente**, de distancia focal **$f' = 5$ cm**; la imagen está **20 cm a la izquierda** de la lente, mide 10 cm y es **virtual** y derecha. Es el funcionamiento de una lupa.
+
+</Solucion>

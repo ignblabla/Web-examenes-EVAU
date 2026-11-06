@@ -103,11 +103,11 @@ export const asignaturas: Asignatura[] = [
     simbolo: "atom",
     color: "physics",
     indexable: true,
-    desde: 2023,
-    // En 2026 solo se ha encontrado la reserva 1; de 2023, 2024 y 2025 están las cuatro.
+    desde: 2022,
+    // En 2026 solo se ha encontrado la reserva 1; de 2022, 2023, 2024 y 2025 están las cuatro.
     reservas: { 2026: 1 },
     intro:
-      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Desde 2026 un bloque es obligatorio y en los otros tres se elige entre dos opciones de a) y de b); en 2025 el a) era obligatorio en todos los bloques y solo se elegía el b), en 2024 cada bloque tenía dos ejercicios completos y se elegía uno, y en 2023 se elegían libremente cuatro de los ocho ejercicios. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
+      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Desde 2026 un bloque es obligatorio y en los otros tres se elige entre dos opciones de a) y de b); en 2025 el a) era obligatorio en todos los bloques y solo se elegía el b), en 2024 cada bloque tenía dos ejercicios completos y se elegía uno, y en 2022 y 2023 se elegían libremente cuatro de los ocho ejercicios. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
     resuelto: "todos los apartados paso a paso, con esquemas y unidades",
     temas: temas([
       {

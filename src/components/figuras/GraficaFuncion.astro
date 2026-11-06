@@ -57,6 +57,8 @@ interface Props {
   asintotas?: Asintota[]
   puntos?: PuntoDestacado[]
   recinto?: Recinto | Recinto[]
+  // Nombres de los ejes (por defecto x e y), por ejemplo ["t", "y"] para una gráfica temporal.
+  ejes?: [string, string]
   descripcion: string
 }
 
@@ -71,6 +73,7 @@ const {
   asintotas = [],
   puntos = [],
   recinto,
+  ejes = ["x", "y"],
   descripcion,
 } = Astro.props
 
@@ -161,8 +164,8 @@ const id = `recorte-${Math.round(Math.random() * 1e9)}`
     <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111">
       {marcasX.map((m) => <text x={px(m)} y={ejeX + 14} text-anchor="middle">{m}</text>)}
       {marcasY.map((m) => <text x={ejeY - 6} y={py(m) + 3} text-anchor="end">{m}</text>)}
-      <text x={px(xMax) + 6} y={ejeX - 6} text-anchor="end" font-style="italic">x</text>
-      <text x={ejeY + 7} y={py(yMax) + 2} font-style="italic">y</text>
+      <text x={px(xMax) + 6} y={ejeX - 6} text-anchor="end" font-style="italic">{ejes[0]}</text>
+      <text x={ejeY + 7} y={py(yMax) + 2} font-style="italic">{ejes[1]}</text>
     </g>
 
     <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#b04a3a">

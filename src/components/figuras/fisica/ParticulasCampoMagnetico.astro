@@ -2,6 +2,15 @@
 // Física, reserva 1 de 2026, B a2: un protón y un electrón entran con la misma velocidad en
 // un campo magnético uniforme perpendicular (entrante, ⊗). Las fuerzas tienen el mismo módulo
 // y sentidos opuestos; el protón, mucho más pesado, describe la circunferencia de mayor radio.
+// Con neutron (julio de 2022, B1 a), además un neutrón que entra igual y sigue en línea recta.
+interface Props {
+  neutron?: boolean
+  descripcion?: string
+}
+const {
+  neutron = false,
+  descripcion = "Campo magnético uniforme entrante en el papel. Un protón y un electrón entran por el mismo punto con la misma velocidad hacia la derecha. Sobre el protón la fuerza apunta hacia arriba y sobre el electrón hacia abajo, con el mismo módulo. El protón describe un arco de radio grande hacia arriba y el electrón media circunferencia pequeña hacia abajo, tras la que sale del campo. El dibujo no está a escala.",
+} = Astro.props
 const id = `particulas-${Math.round(Math.random() * 1e9)}`
 const entrada = { x: 90, y: 120 }
 // Radios orientativos (en la realidad el del protón es unas 1836 veces mayor).
@@ -13,7 +22,7 @@ const cruces = Array.from({ length: 7 }, (_, i) => i).flatMap((i) =>
 ---
 
 <figure class="solution-figure solution-figure--wide">
-  <svg viewBox="0 0 420 240" role="img" aria-label="Campo magnético uniforme entrante en el papel. Un protón y un electrón entran por el mismo punto con la misma velocidad hacia la derecha. Sobre el protón la fuerza apunta hacia arriba y sobre el electrón hacia abajo, con el mismo módulo. El protón describe un arco de radio grande hacia arriba y el electrón media circunferencia pequeña hacia abajo, tras la que sale del campo. El dibujo no está a escala.">
+  <svg viewBox="0 0 420 240" role="img" aria-label={descripcion}>
     <defs>
       <marker id={`${id}-v`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M0 0L10 5L0 10z" fill="#195c51" />
@@ -37,12 +46,14 @@ const cruces = Array.from({ length: 7 }, (_, i) => i).flatMap((i) =>
     <path d={`M${entrada.x} ${entrada.y}A${rp} ${rp} 0 0 0 ${entrada.x + rp * Math.sin(1.1)} ${entrada.y - rp * (1 - Math.cos(1.1))}`} fill="none" stroke="#b04a3a" stroke-width="2" />
     <path d={`M${entrada.x} ${entrada.y}A${re} ${re} 0 0 1 ${entrada.x} ${entrada.y + 2 * re}H${entrada.x - 40}`} fill="none" stroke="#2d6fa3" stroke-width="2" />
 
+    {neutron && <path d={`M${entrada.x} ${entrada.y}H404`} fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4" />}
     <path d={`M${entrada.x} ${entrada.y}V${entrada.y - 40}`} stroke="#b04a3a" stroke-width="1.6" marker-end={`url(#${id}-r)`} />
     <path d={`M${entrada.x} ${entrada.y}V${entrada.y + 40}`} stroke="#2d6fa3" stroke-width="1.6" marker-end={`url(#${id}-a)`} />
     <g font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">
       <text x={entrada.x - 6} y={entrada.y - 32} text-anchor="end" fill="#b04a3a">F (protón)</text>
       <text x={entrada.x - 6} y={entrada.y + 44} text-anchor="end" fill="#2d6fa3">F (electrón)</text>
       <text x="270" y="46" fill="#b04a3a">protón: R grande</text>
+      {neutron && <text x="400" y={entrada.y - 8} text-anchor="end" fill="#555">neutrón: F = 0, recto</text>}
       <text x={entrada.x + re + 10} y={entrada.y + re + 4} fill="#2d6fa3">electrón: R pequeño</text>
     </g>
   </svg>

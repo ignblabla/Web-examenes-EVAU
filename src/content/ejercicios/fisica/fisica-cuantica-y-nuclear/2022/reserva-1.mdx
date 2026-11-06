@@ -1,0 +1,158 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2022
+convocatoria: reserva-1
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**D1. a)** En un experimento sobre el efecto fotoeléctrico se investigan diferentes superficies metálicas. Se dibuja, para cada metal, una gráfica de la máxima energía cinética de los fotoelectrones frente a la frecuencia de la luz incidente. Determine, razonando la respuesta, qué afirmación es correcta: **i)** Todas las gráficas tienen el mismo punto de corte con el eje de frecuencia. **ii)** Todas las gráficas tienen la misma pendiente.
+
+<Solucion>
+
+Según la ecuación de Einstein del efecto fotoeléctrico, cada fotón, de energía $h\,f$, cede toda su energía a un electrón; una parte se emplea en arrancarlo del metal (el **trabajo de extracción** $W_0 = h\,f_0$) y el resto es la energía cinética máxima del electrón:
+
+$$
+E_{c,\text{máx}} = h\,f - W_0 = h\,(f - f_0)
+$$
+
+Para cada metal, la gráfica de $E_{c,\text{máx}}$ frente a $f$ es una **recta** (para $f \ge f_0$) de pendiente $h$ que corta el eje de frecuencias en la frecuencia umbral $f_0$:
+
+<GraficaFuncion
+  xMin={0}
+  xMax={10}
+  yMin={-0.6}
+  yMax={4.4}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["f", "Eₖ máx"]}
+  tramos={[
+    { f: (x) => 0.6 * (x - 2.5), desde: 2.5, hasta: 9.6, etiqueta: { texto: "Metal 1", x: 8.2, y: 3.9, ancla: "end" } },
+    { f: (x) => 0.6 * (x - 5), desde: 5, hasta: 9.6, color: "#2d6fa3", etiqueta: { texto: "Metal 2", x: 9.6, y: 2.0, ancla: "start" } },
+  ]}
+  puntos={[
+    { x: 2.5, y: 0, texto: "f₀₁", dx: -6, dy: 16 },
+    { x: 5, y: 0, texto: "f₀₂", dx: -6, dy: 16 },
+  ]}
+  descripcion="Energía cinética máxima de los fotoelectrones frente a la frecuencia para dos metales: dos rectas paralelas, con la misma pendiente h, que cortan el eje de frecuencias en frecuencias umbral distintas, f01 y f02."
+/>
+
+**i) Falsa.** El punto de corte con el eje de frecuencias es la **frecuencia umbral**, $f_0 = W_0/h$, que depende del trabajo de extracción de cada metal. Como cada metal tiene un trabajo de extracción distinto, las rectas cortan el eje en puntos distintos.
+
+**ii) Verdadera.** La pendiente de todas las rectas es la **constante de Planck**, $h$, una constante universal que no depende del metal. Las gráficas son **rectas paralelas**. De hecho, este tipo de experimentos (como los de Millikan) sirvió para medir $h$.
+
+La afirmación correcta es la **ii)**.
+
+</Solucion>
+
+**b)** Un metal se ilumina con radiación de una determinada longitud de onda. Sabiendo que el trabajo de extracción es de 4,8·10<sup>-19</sup> J y la velocidad máxima de los electrones emitidos es de 8,4·10<sup>5</sup> m s<sup>–1</sup>, calcule: **i)** la longitud de onda de la radiación incidente; **ii)** la frecuencia umbral.
+
+<Datos>h = 6,63·10<sup>–34</sup> J s; c = 3·10<sup>8</sup> m s<sup>–1</sup>; m<sub>e</sub> = 9,11·10<sup>–31</sup> kg</Datos>
+
+<Solucion>
+
+**i) Longitud de onda de la radiación.** La energía cinética máxima de los electrones emitidos es:
+
+$$
+E_{c,\text{máx}} = \frac{1}{2}\,m_e\,v_{\text{máx}}^2 = \frac{1}{2} \cdot 9{,}11 \cdot 10^{-31} \cdot \left(8{,}4 \cdot 10^5\right)^2 = 3{,}21 \cdot 10^{-19}\ \text{J}
+$$
+
+Por la ecuación de Einstein del efecto fotoeléctrico, la energía de cada fotón es la suma del trabajo de extracción y la energía cinética máxima:
+
+$$
+E = W_0 + E_{c,\text{máx}} = 4{,}8 \cdot 10^{-19} + 3{,}21 \cdot 10^{-19} = 8{,}01 \cdot 10^{-19}\ \text{J}
+$$
+
+Como $E = h\,f = h\,c/\lambda$:
+
+$$
+\lambda = \frac{h\,c}{E} = \frac{6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8}{8{,}01 \cdot 10^{-19}} = 2{,}48 \cdot 10^{-7}\ \text{m}
+$$
+
+**ii) Frecuencia umbral.** Es la frecuencia mínima para que se emitan electrones, aquella cuyos fotones tienen justo la energía del trabajo de extracción:
+
+$$
+f_0 = \frac{W_0}{h} = \frac{4{,}8 \cdot 10^{-19}}{6{,}63 \cdot 10^{-34}} = 7{,}24 \cdot 10^{14}\ \text{Hz}
+$$
+
+**Respuesta.** La radiación incidente tiene una longitud de onda de **$2{,}48 \cdot 10^{-7}$ m** (ultravioleta) y la frecuencia umbral del metal es **$7{,}24 \cdot 10^{14}$ Hz**. Se comprueba que la frecuencia de la radiación, $c/\lambda = 1{,}21 \cdot 10^{15}$ Hz, es mayor que la umbral, como debe ser para que haya emisión.
+
+</Solucion>
+
+**D2. a)** Justifique la veracidad o falsedad de las siguientes afirmaciones: **i)** La actividad de una muestra radiactiva es independiente del tiempo. **ii)** Una muestra radiactiva se desintegra totalmente una vez transcurrido un tiempo igual al doble del período de semidesintegración.
+
+<Solucion>
+
+El número de núcleos sin desintegrar de una muestra radiactiva disminuye exponencialmente con el tiempo (**ley de desintegración radiactiva**):
+
+$$
+N = N_0\,e^{-\lambda t}
+$$
+
+donde $\lambda$ es la constante de desintegración. El **período de semidesintegración** es el tiempo en que se desintegra la mitad de los núcleos presentes: $T_{1/2} = \ln 2/\lambda$.
+
+**i) Falsa.** La actividad es el número de desintegraciones por unidad de tiempo, y es proporcional al número de núcleos que quedan sin desintegrar:
+
+$$
+A = \lambda\,N = \lambda\,N_0\,e^{-\lambda t} = A_0\,e^{-\lambda t}
+$$
+
+Como el número de núcleos disminuye, la actividad **disminuye exponencialmente con el tiempo**: cada período de semidesintegración se reduce a la mitad.
+
+**ii) Falsa.** En cada período de semidesintegración se desintegra la mitad de los núcleos **que quedan**, no la mitad de los iniciales. Tras un período queda la mitad, $N_0/2$, y tras otro, la mitad de esa mitad:
+
+$$
+N(2\,T_{1/2}) = N_0\left(\frac{1}{2}\right)^2 = \frac{N_0}{4}
+$$
+
+Al cabo de dos períodos queda todavía **la cuarta parte** de los núcleos. La disminución es exponencial y, en teoría, la muestra nunca se desintegra del todo; en la práctica, lo hace cuando han pasado muchos períodos y quedan muy pocos núcleos.
+
+</Solucion>
+
+**b)** Una muestra de 5·10<sup>-3</sup> kg de $^{210}_{84}\text{Po}$ se reduce a 1,25·10<sup>-3</sup> kg en 276 días. Calcule: **i)** el período de semidesintegración de este isótopo; **ii)** la actividad inicial de la muestra; **iii)** el número de núcleos que quedan por desintegrar al cabo de 46 días.
+
+<Datos>m($^{210}_{84}\text{Po}$) = 209,982874 u; 1 u = 1,66·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Período de semidesintegración.** La masa de polonio que queda es proporcional al número de núcleos sin desintegrar. En 276 días la masa se reduce a:
+
+$$
+\frac{m}{m_0} = \frac{1{,}25 \cdot 10^{-3}}{5 \cdot 10^{-3}} = \frac{1}{4} = \left(\frac{1}{2}\right)^2
+$$
+
+Se ha reducido a la mitad dos veces, así que han pasado **dos períodos de semidesintegración**:
+
+$$
+2\,T_{1/2} = 276\ \text{días}
+\quad\Rightarrow\quad
+T_{1/2} = 138\ \text{días} = 138 \cdot 86400 = 1{,}19 \cdot 10^{7}\ \text{s}
+$$
+
+**ii) Actividad inicial.** La constante de desintegración es:
+
+$$
+\lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{1{,}19 \cdot 10^{7}} = 5{,}81 \cdot 10^{-8}\ \text{s}^{-1}
+$$
+
+El número inicial de núcleos es la masa de la muestra entre la masa de un núcleo:
+
+$$
+N_0 = \frac{5 \cdot 10^{-3}}{209{,}982874 \cdot 1{,}66 \cdot 10^{-27}} = \frac{5 \cdot 10^{-3}}{3{,}49 \cdot 10^{-25}} = 1{,}43 \cdot 10^{22}\ \text{núcleos}
+$$
+
+$$
+A_0 = \lambda\,N_0 = 5{,}81 \cdot 10^{-8} \cdot 1{,}43 \cdot 10^{22} = 8{,}34 \cdot 10^{14}\ \text{Bq}
+$$
+
+**iii) Núcleos sin desintegrar a los 46 días.** 46 días es la tercera parte del período de semidesintegración:
+
+$$
+N = N_0\left(\frac{1}{2}\right)^{t/T_{1/2}} = 1{,}43 \cdot 10^{22} \cdot \left(\frac{1}{2}\right)^{46/138} = 1{,}43 \cdot 10^{22} \cdot 0{,}794 = 1{,}14 \cdot 10^{22}\ \text{núcleos}
+$$
+
+**Respuesta.** El período de semidesintegración del polonio-210 es **138 días**, la actividad inicial de la muestra es **$8{,}34 \cdot 10^{14}$ Bq** y a los 46 días quedan **$1{,}14 \cdot 10^{22}$ núcleos** sin desintegrar, el 79 % de los iniciales.
+
+</Solucion>

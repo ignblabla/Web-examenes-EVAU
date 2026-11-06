@@ -1,0 +1,195 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+import EspiraEntrandoCampo from "../../../../../components/figuras/fisica/EspiraEntrandoCampo.astro"
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**B1. a)** Dos cargas positivas de valor *q* y 4*q* se encuentran separadas una distancia *d*. **i)** Explique, con ayuda de un esquema, si puede ser nulo el campo eléctrico en algún punto del segmento que las une. **ii)** En caso afirmativo, determine dicho punto en función de la distancia *d*.
+
+<Solucion>
+
+**i) ¿Puede anularse?** El campo que crea una carga positiva apunta **alejándose** de ella. En un punto P del segmento que une las cargas, el campo de $q$ apunta hacia $4q$ y el de $4q$ apunta hacia $q$: tienen la misma dirección y **sentidos opuestos**. Por tanto, **sí** puede anularse, en el punto en que sus módulos sean iguales. Ese punto estará más cerca de la carga menor, para compensar que $4q$ crea un campo cuatro veces más intenso a igual distancia.
+
+<Vectores
+  xMin={-0.5}
+  xMax={3.5}
+  yMin={-0.6}
+  yMax={0.8}
+  escala={80}
+  puntos={[
+    { x: 0, y: 0, texto: "q", tipo: "carga", signo: "+", dx: -6, dy: -16 },
+    { x: 3, y: 0, texto: "4q", tipo: "carga", signo: "+", dx: -8, dy: -16 },
+    { x: 1, y: 0, texto: "P", tipo: "punto", dx: -4, dy: 22 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [50, 0], texto: "E", sub: "q", color: "#2d6fa3", dx: 4, dy: -6 },
+    { desde: [1, 0], v: [-50, 0], texto: "E", sub: "4q", color: "#b04a3a", dx: 2, dy: -10 },
+  ]}
+  descripcion="Cargas q y 4q, positivas, separadas una distancia d. En el punto P, a d/3 de la carga q, el campo de q apunta hacia la derecha, alejándose de q, y el de 4q hacia la izquierda, alejándose de 4q, con el mismo módulo: el campo total es nulo."
+/>
+
+**ii) Posición del punto.** Llamamos $x$ a la distancia de P a la carga $q$; la distancia a $4q$ es $d - x$. Igualamos los módulos de los campos:
+
+$$
+K\,\frac{q}{x^2} = K\,\frac{4q}{(d - x)^2}
+\quad\Rightarrow\quad
+(d - x)^2 = 4\,x^2
+\quad\Rightarrow\quad
+d - x = 2x
+\quad\Rightarrow\quad
+x = \frac{d}{3}
+$$
+
+(Tomamos la raíz positiva porque P está entre las cargas, con $x$ y $d - x$ positivas.) El campo se anula en el punto del segmento situado a **$d/3$ de la carga $q$** (y a $2d/3$ de la carga $4q$). Fuera del segmento los dos campos tienen el mismo sentido y no pueden anularse.
+
+</Solucion>
+
+**b)** Dos partículas con cargas *q*<sub>1</sub> = –2·10<sup>-6</sup> C y *q*<sub>2</sub> = 8·10<sup>-6</sup> C están situadas en los puntos A(3,0) m y B(-3,0) m, respectivamente. Calcule: **i)** el punto, cerca de las dos cargas, donde se anula el campo eléctrico y **ii)** el potencial eléctrico en el punto P(0,0) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Punto donde se anula el campo.** Los dos campos tienen que tener la misma dirección, así que el punto está sobre el eje X. Analizamos las tres zonas, recordando que el campo de $q_2$ (positiva) se aleja de B y el de $q_1$ (negativa) apunta hacia A:
+
+- **Entre las cargas** $(-3 < x < 3)$: el campo de $q_2$ apunta hacia la derecha (alejándose de B) y el de $q_1$ también (hacia A). Se suman: no se anula.
+- **A la izquierda de B** $(x < -3)$: los sentidos son opuestos, pero el punto está más cerca de la carga mayor, $q_2$, cuyo campo siempre es mayor. No se anula.
+- **A la derecha de A** $(x > 3)$: los sentidos son opuestos (el de $q_1$ hacia la izquierda y el de $q_2$ hacia la derecha) y el punto está más cerca de la carga menor, así que los módulos pueden igualarse.
+
+<Vectores
+  xMin={-4.5}
+  xMax={10.5}
+  yMin={-1.2}
+  yMax={1.6}
+  escala={34}
+  marcasX={[-3, 3, 9]}
+  unidad="m"
+  puntos={[
+    { x: -3, y: 0, texto: "q₂ = 8 μC", tipo: "carga", signo: "+", dx: 4, dy: -16 },
+    { x: 3, y: 0, texto: "q₁ = −2 μC", tipo: "carga", signo: "−", dx: 4, dy: -16 },
+    { x: 9, y: 0, texto: "P₀(9, 0)", tipo: "punto", dx: -20, dy: 22 },
+  ]}
+  vectores={[
+    { desde: [9, 0], v: [-40, 0], texto: "E", sub: "1", color: "#2d6fa3", dx: -16, dy: -8 },
+    { desde: [9, 0], v: [40, 0], texto: "E", sub: "2", color: "#b04a3a", dx: -6, dy: -8 },
+  ]}
+  descripcion="Carga positiva de 8 microculombios en x = −3 metros y carga negativa de −2 microculombios en x = 3 metros. En el punto x = 9 metros, el campo de la carga negativa apunta hacia ella, hacia la izquierda, y el de la positiva se aleja de ella, hacia la derecha, con el mismo módulo: el campo total es nulo."
+/>
+
+En un punto $x > 3$, a una distancia $x - 3$ de A y $x + 3$ de B:
+
+$$
+K\,\frac{|q_1|}{(x - 3)^2} = K\,\frac{q_2}{(x + 3)^2}
+\quad\Rightarrow\quad
+\frac{2}{(x - 3)^2} = \frac{8}{(x + 3)^2}
+\quad\Rightarrow\quad
+x + 3 = 2\,(x - 3)
+\quad\Rightarrow\quad
+x = 9\ \text{m}
+$$
+
+El campo eléctrico se anula en el punto **(9, 0) m**.
+
+**ii) Potencial en el origen.** El potencial es escalar: se suman los que crea cada carga, con su signo. El origen está a 3 m de cada carga:
+
+$$
+V_P = K\,\frac{q_1}{3} + K\,\frac{q_2}{3} = \frac{9 \cdot 10^9}{3}\left(-2 \cdot 10^{-6} + 8 \cdot 10^{-6}\right) = 1{,}8 \cdot 10^{4}\ \text{V}
+$$
+
+**Respuesta.** El campo se anula en el punto **(9, 0) m**, fuera del segmento y al lado de la carga menor, y el potencial en el origen es **$1{,}8 \cdot 10^4$ V**. En el origen el campo no es nulo (las dos contribuciones apuntan hacia la derecha), aunque el potencial tenga un valor concreto: campo y potencial nulos no tienen por qué coincidir.
+
+</Solucion>
+
+**B2. a)** Razone la veracidad o falsedad de la siguiente afirmación: En una espira conductora plana dispuesta con su plano perpendicular a un campo magnético de módulo *B* = *a t*<sup>2</sup>, siendo *a* una constante y *t* el tiempo, se genera una corriente inducida constante.
+
+<Solucion>
+
+**Falsa.** El campo es perpendicular al plano de la espira, así que es paralelo a su vector superficie y el flujo que la atraviesa es:
+
+$$
+\Phi = B\,S = a\,S\,t^2
+$$
+
+Por la **ley de Faraday**, la fuerza electromotriz inducida es:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt} = -2\,a\,S\,t
+$$
+
+La fuerza electromotriz es **proporcional al tiempo**: aumenta a medida que pasa el tiempo, porque el campo crece cada vez más deprisa. La intensidad, $I = \varepsilon/R$, también crece con el tiempo, así que la corriente inducida **no es constante** (aunque su sentido no cambia, porque el flujo siempre aumenta). Solo sería constante si el campo variara linealmente con el tiempo, $B = a\,t$, porque entonces $d\Phi/dt = a\,S$ sería constante.
+
+</Solucion>
+
+**b)** Una espira cuadrada de 0,15 m de lado, con sus lados paralelos a los ejes OX y OY, se mueve con velocidad constante de 0,05 m s<sup>-1</sup> en sentido positivo del eje OX en una región donde hay un campo magnético uniforme y constante dirigido en sentido positivo del eje OZ. El módulo del campo es 10 T para *x* ≥ 0 y nulo para *x* < 0. La espira procede de la región donde no hay campo y empieza a entrar en la región donde hay campo en el instante *t* = 0 s. **i)** Calcule, ayudándose de un esquema, la expresión para el flujo del campo magnético y represéntelo entre *t* = 0 y *t* = 5 s. **ii)** Determine el valor de la f.e.m. inducida en la espira y represente su módulo entre *t* = 0 y *t* = 5 s.
+
+<Solucion>
+
+**i) Flujo magnético.** El campo $\vec{B} = 10\,\vec{k}$ T es perpendicular al plano de la espira (el plano XY), así que el flujo es $\Phi = B\,S_{\text{dentro}}$, siendo $S_{\text{dentro}}$ la parte de la espira que ya ha entrado en la región con campo:
+
+<EspiraEntrandoCampo />
+
+**Mientras entra** $(0 \le t \le 3$ s$)$. En un tiempo $t$, la espira ha avanzado $x = v\,t$ dentro del campo. La parte que está dentro es un rectángulo de lados $L = 0{,}15$ m y $v\,t$:
+
+$$
+\Phi(t) = B\,L\,v\,t = 10 \cdot 0{,}15 \cdot 0{,}05\,t = 0{,}075\,t\ \text{Wb}
+$$
+
+La espira tarda en entrar entera $t = L/v = 0{,}15/0{,}05 = 3$ s, cuando el flujo alcanza $0{,}075 \cdot 3 = 0{,}225$ Wb.
+
+**Ya dentro** $(t \ge 3$ s$)$. Toda la espira está en el campo uniforme y el flujo es constante:
+
+$$
+\Phi = B\,L^2 = 10 \cdot 0{,}15^2 = 0{,}225\ \text{Wb}
+$$
+
+<GraficaFuncion
+  xMin={0}
+  xMax={5.6}
+  yMin={-0.03}
+  yMax={0.29}
+  marcasX={[1, 2, 3, 4, 5]}
+  marcasY={[]}
+  ejes={["t (s)", "Φ (Wb)"]}
+  tramos={[
+    { f: (t) => 0.075 * t, desde: 0, hasta: 3 },
+    { f: () => 0.225, desde: 3, hasta: 5 },
+  ]}
+  puntos={[{ x: 3, y: 0.225, texto: "0,225 Wb", dx: -24, dy: -10 }]}
+  descripcion="Flujo magnético a través de la espira en función del tiempo: crece linealmente desde 0 en t = 0 hasta 0,225 webers en t = 3 segundos, y después se mantiene constante en 0,225 webers hasta t = 5 segundos."
+/>
+
+**ii) Fuerza electromotriz.** Por la **ley de Faraday**, $\varepsilon = -d\Phi/dt$:
+
+- Entre $t = 0$ y $t = 3$ s: $\varepsilon = -0{,}075$ V, es decir, $|\varepsilon| = 0{,}075$ V, constante. (Es el resultado de $|\varepsilon| = B\,L\,v$ para el lado que avanza dentro del campo.)
+- Entre $t = 3$ y $t = 5$ s: el flujo no cambia y $\varepsilon = 0$.
+
+<GraficaFuncion
+  xMin={0}
+  xMax={5.6}
+  yMin={-0.01}
+  yMax={0.1}
+  marcasX={[1, 2, 3, 4, 5]}
+  marcasY={[]}
+  ejes={["t (s)", "|ε| (V)"]}
+  tramos={[
+    { f: () => 0.075, desde: 0, hasta: 3 },
+    { f: () => 0, desde: 3, hasta: 5, color: "#b04a3a" },
+  ]}
+  puntos={[
+    { x: 0, y: 0.075, texto: "0,075 V", dx: 6, dy: -8 },
+    { x: 3, y: 0.075, abierto: true },
+  ]}
+  descripcion="Módulo de la fuerza electromotriz inducida en función del tiempo: vale 0,075 voltios, constante, entre t = 0 y t = 3 segundos, y es nulo entre t = 3 y t = 5 segundos."
+/>
+
+**Sentido de la corriente.** Mientras la espira entra, el flujo del campo, que apunta hacia $+\vec{k}$ (saliente si miramos desde el semieje Z positivo), aumenta. Por la **ley de Lenz**, la corriente inducida crea un campo entrante que se opone a ese aumento, y circula en **sentido horario** visto desde el semieje Z positivo, como en el esquema.
+
+**Respuesta.** El flujo es $\Phi = 0{,}075\,t$ Wb mientras la espira entra (de 0 a 3 s) y $0{,}225$ Wb, constante, después. La fuerza electromotriz vale **0,075 V** en módulo entre 0 y 3 s y es **nula** entre 3 y 5 s: solo hay corriente inducida mientras cambia la parte de la espira que está dentro del campo.
+
+</Solucion>

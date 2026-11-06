@@ -1,0 +1,145 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2022
+convocatoria: reserva-2
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** Dos satélites artificiales describen órbitas circulares alrededor de un planeta de masa *M* de forma que el radio de la órbita del primer satélite es cuatro veces mayor que el radio de la órbita del segundo. Responda razonadamente: **i)** ¿Qué relación existe entre las velocidades orbitales de ambos satélites? **ii)** ¿Qué relación existe entre sus períodos orbitales?
+
+<Solucion>
+
+En una órbita circular de radio $r$, la atracción gravitatoria del planeta es la fuerza centrípeta del movimiento:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M}{r}}
+$$
+
+**i) Velocidades orbitales.** La velocidad orbital es inversamente proporcional a la raíz del radio. Con $r_1 = 4\,r_2$:
+
+$$
+\frac{v_1}{v_2} = \sqrt{\frac{r_2}{r_1}} = \sqrt{\frac{1}{4}} = \frac{1}{2}
+$$
+
+El primer satélite, el de la órbita más alta, se mueve a **la mitad de velocidad** que el segundo: $v_2 = 2\,v_1$.
+
+**ii) Períodos orbitales.** El período es el tiempo que tarda en recorrer la órbita:
+
+$$
+T = \frac{2\pi\,r}{v} = 2\pi\sqrt{\frac{r^3}{G\,M}}
+\quad\Rightarrow\quad
+\frac{T_1}{T_2} = \sqrt{\frac{r_1^3}{r_2^3}} = \sqrt{4^3} = 8
+$$
+
+El primer satélite tarda **8 veces más** en dar una vuelta: recorre una órbita cuatro veces más larga a la mitad de velocidad. Es la **tercera ley de Kepler**: $T^2$ es proporcional a $r^3$. Ninguna de las dos relaciones depende de las masas de los satélites.
+
+</Solucion>
+
+**b)** Un satélite de 600 kg se encuentra en órbita a una altura de 630 km sobre la superficie terrestre. Calcule razonadamente: **i)** la velocidad a la que orbita y **ii)** la energía mecánica del satélite en su órbita.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Velocidad orbital.** El radio de la órbita se mide desde el centro de la Tierra:
+
+$$
+r = R_T + h = 6370 + 630 = 7000\ \text{km} = 7 \cdot 10^6\ \text{m}
+$$
+
+Como en el apartado a), la fuerza gravitatoria es la fuerza centrípeta:
+
+$$
+v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}{7 \cdot 10^6}} = 7{,}55 \cdot 10^{3}\ \text{m/s}
+$$
+
+**ii) Energía mecánica.** Es la suma de la cinética y la potencial (con el origen de energía potencial en el infinito). Como $v^2 = G\,M_T/r$:
+
+$$
+E_m = \frac{1}{2}\,m\,v^2 - G\,\frac{M_T\,m}{r} = \frac{G\,M_T\,m}{2r} - \frac{G\,M_T\,m}{r} = -\frac{G\,M_T\,m}{2r}
+$$
+
+$$
+E_m = -\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 600}{2 \cdot 7 \cdot 10^6} = -1{,}71 \cdot 10^{10}\ \text{J}
+$$
+
+**Respuesta.** El satélite orbita a **$7{,}55 \cdot 10^3$ m/s** y su energía mecánica es **$-1{,}71 \cdot 10^{10}$ J**. Es negativa porque el satélite está ligado a la Tierra: para que escapara habría que aportarle al menos $1{,}71 \cdot 10^{10}$ J.
+
+</Solucion>
+
+**A2. a)** Dos bloques de masas *m* y 3*m* se sueltan en la parte superior de un plano inclinado sin rozamiento. Justifique razonadamente la relación entre: **i)** las energías cinéticas y **ii)** las velocidades de ambos bloques cuando llegan a la parte inferior del plano inclinado.
+
+<Solucion>
+
+Sobre cada bloque actúan el peso y la normal. La normal es perpendicular al desplazamiento y no trabaja, y el peso es una fuerza conservativa. Como no hay rozamiento, **la energía mecánica se conserva**. Los bloques parten del reposo desde una altura $h$ sobre la base del plano, así que toda su energía potencial se transforma en cinética:
+
+$$
+m\,g\,h = E_c
+$$
+
+**i) Energías cinéticas.** La energía cinética al llegar abajo es proporcional a la masa:
+
+$$
+\frac{E_{c,3m}}{E_{c,m}} = \frac{3m\,g\,h}{m\,g\,h} = 3
+$$
+
+El bloque de masa $3m$ llega con **el triple de energía cinética**, porque partía con el triple de energía potencial.
+
+**ii) Velocidades.** Despejando la velocidad, la masa se simplifica:
+
+$$
+\frac{1}{2}\,m\,v^2 = m\,g\,h
+\quad\Rightarrow\quad
+v = \sqrt{2\,g\,h}
+$$
+
+Las velocidades son **iguales**: no dependen de la masa, solo de la altura. El bloque más pesado tiene el triple de energía cinética porque tiene el triple de masa, no porque vaya más rápido.
+
+</Solucion>
+
+**b)** Un cuerpo de masa 5 kg se encuentra inicialmente en reposo en la parte superior de una rampa sin rozamiento que forma un ángulo de 45º con la horizontal. El cuerpo desciende por la rampa recorriendo una distancia de 10 m, y cuando llega al final de la misma recorre 20 m sobre una superficie horizontal rugosa hasta que se detiene. Determine, utilizando consideraciones energéticas: **i)** la velocidad con la que llega el cuerpo al final de la rampa; **ii)** el coeficiente de rozamiento entre el cuerpo y la superficie horizontal.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+<PlanoInclinado angulo={45} mueve="baja" horizontal sinRozamientoPlano descripcion="Cuerpo que baja por una rampa sin rozamiento inclinada 45 grados, sobre el que actúan el peso y la normal, y que después recorre un tramo horizontal rugoso, donde el rozamiento, opuesto al movimiento, lo frena hasta detenerlo." />
+
+**i) Velocidad al final de la rampa.** En la rampa no hay rozamiento: actúan el peso, conservativo, y la normal, que no trabaja. La energía mecánica se conserva. El cuerpo baja una altura:
+
+$$
+h = d\sin 45^\circ = 10 \cdot 0{,}707 = 7{,}07\ \text{m}
+$$
+
+Tomando el origen de energía potencial en la base de la rampa, la energía potencial inicial se convierte en cinética:
+
+$$
+m\,g\,h = \frac{1}{2}\,m\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{2\,g\,h} = \sqrt{2 \cdot 9{,}8 \cdot 7{,}07} = 11{,}8\ \text{m/s}
+$$
+
+**ii) Coeficiente de rozamiento.** En el tramo horizontal la energía potencial no cambia, y la normal compensa el peso, $N = m\,g$, así que el rozamiento vale $F_r = \mu\,m\,g$. El trabajo del rozamiento, una fuerza no conservativa, es igual a la variación de la energía mecánica; el cuerpo acaba parado, así que pierde toda su energía cinética:
+
+$$
+W_{F_r} = \Delta E_c
+\quad\Rightarrow\quad
+-\mu\,m\,g\,d' = 0 - \frac{1}{2}\,m\,v^2
+\quad\Rightarrow\quad
+\mu = \frac{v^2}{2\,g\,d'}
+$$
+
+Como $v^2 = 2\,g\,h$, resulta $\mu = h/d'$:
+
+$$
+\mu = \frac{h}{d'} = \frac{7{,}07}{20} = 0{,}354
+$$
+
+**Respuesta.** El cuerpo llega al final de la rampa a **11,8 m/s** y el coeficiente de rozamiento del tramo horizontal es **0,354**. Ninguno de los dos resultados depende de la masa: toda la energía potencial inicial, $m\,g\,h = 346$ J, acaba disipada en forma de calor por el rozamiento.
+
+</Solucion>

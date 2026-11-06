@@ -1,0 +1,127 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2022
+convocatoria: junio
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**C1. a)** ¿Qué significa que una onda armónica es doblemente periódica? Explíquelo apoyándose en las gráficas correspondientes.
+
+<Solucion>
+
+Una onda armónica que se propaga en el sentido positivo del eje X se describe con la función:
+
+$$
+y(x, t) = A\sin(\omega t - kx)
+$$
+
+La perturbación $y$ depende de **dos variables**, la posición $x$ y el tiempo $t$, y es periódica respecto de **las dos**: por eso se dice que es doblemente periódica.
+
+**Periodicidad en el tiempo.** Si nos fijamos en un punto del medio (un valor fijo de $x$), ese punto oscila con un movimiento armónico simple: su estado de vibración se repite cada **periodo** $T = 2\pi/\omega$, el tiempo que tarda en dar una oscilación completa:
+
+$$
+y(x, t + T) = y(x, t)
+$$
+
+<GraficaFuncion
+  xMin={0}
+  xMax={4.6}
+  yMin={-1.4}
+  yMax={1.4}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["t", "y"]}
+  tramos={[{ f: (t) => Math.sin(Math.PI * t), desde: 0, hasta: 4.5 }]}
+  puntos={[
+    { x: 2, y: 0, texto: "T", dx: 4, dy: 16 },
+    { x: 4, y: 0, texto: "2T", dx: 4, dy: 16 },
+    { x: 0.5, y: 1, texto: "A", dx: -4, dy: -8 },
+  ]}
+  descripcion="Gráfica de la elongación de un punto fijo del medio en función del tiempo: una sinusoide de amplitud A que se repite cada periodo T."
+/>
+
+**Periodicidad en el espacio.** Si «fotografiamos» la onda en un instante (un valor fijo de $t$), la forma del medio es una sinusoide que se repite cada **longitud de onda** $\lambda = 2\pi/k$: dos puntos separados una distancia $\lambda$ están siempre en el mismo estado de vibración (en fase):
+
+$$
+y(x + \lambda, t) = y(x, t)
+$$
+
+<GraficaFuncion
+  xMin={0}
+  xMax={4.6}
+  yMin={-1.4}
+  yMax={1.4}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["x", "y"]}
+  tramos={[{ f: (x) => -Math.sin(Math.PI * x), desde: 0, hasta: 4.5, color: "#2d6fa3" }]}
+  puntos={[
+    { x: 2, y: 0, texto: "λ", dx: 4, dy: 16 },
+    { x: 4, y: 0, texto: "2λ", dx: 4, dy: 16 },
+    { x: 1.5, y: 1, texto: "A", dx: -4, dy: -8 },
+  ]}
+  descripcion="Gráfica de la elongación de todos los puntos del medio en un instante fijo, en función de la posición: una sinusoide de amplitud A que se repite cada longitud de onda lambda."
+/>
+
+Las dos periodicidades están relacionadas a través de la velocidad de propagación: en un periodo, la onda avanza una longitud de onda,
+
+$$
+v = \frac{\lambda}{T} = \lambda\,f = \frac{\omega}{k}
+$$
+
+</Solucion>
+
+**b)** Una onda armónica transversal se propaga en sentido negativo del eje OX con una velocidad de propagación de 3 m s<sup>-1</sup>. Si su longitud de onda es de 1,5 m y su amplitud es de 2 m: **i)** escriba la ecuación de la onda teniendo en cuenta que en el punto *x* = 0 m y en el instante *t* = 0 s la perturbación es nula y la velocidad de oscilación es positiva. **ii)** Determine la velocidad máxima de oscilación de un punto cualquiera del medio.
+
+<Solucion>
+
+**i) Ecuación de la onda.** Una onda armónica que se propaga en el **sentido negativo** del eje X tiene la forma:
+
+$$
+y(x, t) = A\sin(\omega t + kx + \varphi_0)
+$$
+
+Calculamos sus parámetros a partir de los datos:
+
+$$
+k = \frac{2\pi}{\lambda} = \frac{2\pi}{1{,}5} = \frac{4\pi}{3}\ \text{rad/m}
+\qquad
+f = \frac{v}{\lambda} = \frac{3}{1{,}5} = 2\ \text{Hz}
+\qquad
+\omega = 2\pi f = 4\pi\ \text{rad/s}
+$$
+
+**Fase inicial.** En $x = 0$ y $t = 0$ la perturbación es nula:
+
+$$
+y(0, 0) = A\sin\varphi_0 = 0
+\quad\Rightarrow\quad
+\varphi_0 = 0 \ \text{ o } \ \varphi_0 = \pi
+$$
+
+La velocidad de oscilación es la derivada de la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = A\,\omega\cos(\omega t + kx + \varphi_0)
+\quad\Rightarrow\quad
+v_y(0, 0) = A\,\omega\cos\varphi_0
+$$
+
+Para que sea positiva, $\cos\varphi_0 > 0$, así que $\varphi_0 = 0$ (con $\varphi_0 = \pi$ sería negativa). La ecuación de la onda es:
+
+$$
+y(x, t) = 2\sin\left(4\pi\,t + \frac{4\pi}{3}\,x\right)\ \text{(SI)}
+$$
+
+**ii) Velocidad máxima de oscilación.** La velocidad de oscilación es máxima cuando el coseno vale $\pm 1$, al pasar el punto por la posición de equilibrio:
+
+$$
+v_{y,\text{máx}} = A\,\omega = 2 \cdot 4\pi = 8\pi = 25{,}1\ \text{m/s}
+$$
+
+**Respuesta.** La ecuación de la onda es $y(x, t) = 2\sin(4\pi t + \frac{4\pi}{3}x)$ m, y la velocidad máxima de oscilación de los puntos del medio es **$8\pi \approx 25{,}1$ m/s**. No hay que confundirla con la velocidad de propagación de la onda, 3 m/s: aquella es la de cada punto al vibrar, transversalmente, y esta la de avance de la perturbación a lo largo del eje X.
+
+</Solucion>

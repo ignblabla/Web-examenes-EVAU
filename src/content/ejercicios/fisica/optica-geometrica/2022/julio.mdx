@@ -1,0 +1,155 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2022
+convocatoria: julio
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Un rayo de luz monocromática se propaga por el aire e incide formando un ángulo de incidencia θ sobre una lámina de vidrio de caras planas y paralelas. El rayo atraviesa la lámina, se propaga por el vidrio y sale nuevamente al aire. **i)** Dibuje un esquema de la trayectoria que sigue el rayo en el proceso descrito. **ii)** Analice su velocidad, longitud de onda y frecuencia a lo largo del camino citado.
+
+<Solucion>
+
+**i) Trayectoria del rayo.** En cada cara de la lámina se cumple la **ley de Snell**, $n_1\sin\theta_1 = n_2\sin\theta_2$:
+
+- **Primera cara (aire → vidrio).** El vidrio es más refringente que el aire $(n > 1)$, así que el rayo se refracta **acercándose a la normal**: $\sin\theta' = \sin\theta/n$, con $\theta' < \theta$.
+- **Segunda cara (vidrio → aire).** Como las caras son paralelas, las normales también lo son y el rayo llega a la segunda cara con el mismo ángulo $\theta'$. Al salir al aire se aleja de la normal: $n\sin\theta' = \sin\theta''$, y como $n\sin\theta' = \sin\theta$, resulta $\theta'' = \theta$.
+
+<RefraccionCapas
+  incidencia={45}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Vidrio", n: 1.5, color: "#dfe9f0", texto: "Vidrio (n > 1)" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre una lámina de vidrio de caras paralelas con un ángulo theta. Dentro del vidrio se acerca a la normal y, al salir al aire por la otra cara, vuelve a formar el ángulo theta con la normal: sale paralelo al rayo incidente, pero desplazado lateralmente."
+/>
+
+El rayo **sale paralelo al incidente**, con el mismo ángulo $\theta$, pero **desplazado lateralmente**: el desplazamiento es mayor cuanto más gruesa es la lámina y mayor el ángulo de incidencia.
+
+**ii) Velocidad, longitud de onda y frecuencia.**
+
+- **Frecuencia: no cambia** en todo el camino. La impone la fuente y, en cada cara, cada frente de onda que llega genera uno en el otro medio al mismo ritmo.
+- **Velocidad: disminuye en el vidrio y recupera su valor al salir.** El índice de refracción es $n = c/v$: en el aire la luz va a $c$ y en el vidrio a $v = c/n < c$.
+- **Longitud de onda: disminuye en el vidrio y recupera su valor al salir.** Como $\lambda = v/f$ y la frecuencia no cambia, la longitud de onda es proporcional a la velocidad: en el vidrio vale $\lambda = \lambda_0/n$, siendo $\lambda_0$ la del aire.
+
+</Solucion>
+
+**b)** Un rayo de luz monocromática se propaga desde el aire al agua, e incide formando un ángulo de 30º con la normal a la superficie. El rayo refractado forma un ángulo de 128º con el reflejado. **i)** Determine el ángulo de refracción ayudándose de un esquema. **ii)** Determine la velocidad de propagación de la luz en el agua. **iii)** Si el rayo luminoso se dirigiera desde el agua hacia el aire ¿a partir de qué ángulo de incidencia se produciría la reflexión total? Justifique sus respuestas.
+
+<Datos>n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Ángulo de refracción.** Por la **ley de la reflexión**, el rayo reflejado forma con la normal el mismo ángulo que el incidente, $30^\circ$, al otro lado de la normal y en el aire. El refractado está en el agua, al otro lado de la superficie, formando un ángulo $\theta_r$ con la normal:
+
+<RefraccionCapas
+  incidencia={30}
+  reflejado
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Agua", n: 1.335, color: "#dfe9f0", texto: "Agua (n = 1,33)" },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre el agua formando 30 grados con la normal. El rayo reflejado forma también 30 grados con la normal, en el aire, y el refractado se acerca a la normal en el agua formando 22 grados con ella. Entre el reflejado y el refractado hay 128 grados."
+/>
+
+El reflejado y el refractado salen los dos hacia el mismo lado de la normal, uno por encima de la superficie y otro por debajo. El ángulo del reflejado con la normal hacia arriba, el ángulo entre los dos rayos y el del refractado con la normal hacia abajo suman un ángulo llano:
+
+$$
+30^\circ + 128^\circ + \theta_r = 180^\circ
+\quad\Rightarrow\quad
+\theta_r = 22^\circ
+$$
+
+El refractado se acerca a la normal $(22^\circ < 30^\circ)$, como corresponde al pasar a un medio más refringente.
+
+**ii) Velocidad de la luz en el agua.** Con la ley de Snell obtenemos el índice de refracción del agua:
+
+$$
+n_{\text{aire}}\sin 30^\circ = n_{\text{agua}}\sin 22^\circ
+\quad\Rightarrow\quad
+n_{\text{agua}} = \frac{\sin 30^\circ}{\sin 22^\circ} = \frac{0{,}5}{0{,}375} = 1{,}33
+$$
+
+$$
+v = \frac{c}{n_{\text{agua}}} = \frac{3 \cdot 10^8}{1{,}33} = 2{,}25 \cdot 10^{8}\ \text{m/s}
+$$
+
+**iii) Ángulo límite.** Cuando la luz pasa del agua al aire (a un medio menos refringente), el refractado se aleja de la normal. Al aumentar el ángulo de incidencia se llega al **ángulo límite** $L$, para el que el refractado sale rasante, a $90^\circ$; para ángulos mayores no hay refracción y toda la luz se refleja (**reflexión total**):
+
+$$
+n_{\text{agua}}\sin L = n_{\text{aire}}\sin 90^\circ
+\quad\Rightarrow\quad
+\sin L = \frac{1}{1{,}33} = 0{,}749
+\quad\Rightarrow\quad
+L = 48{,}5^\circ
+$$
+
+**Respuesta.** El ángulo de refracción es **22º**, la luz se propaga en el agua a **$2{,}25 \cdot 10^8$ m/s** y, del agua al aire, hay reflexión total para ángulos de incidencia **mayores de 48,5º**. La reflexión total solo puede darse al pasar a un medio menos refringente: del aire al agua es imposible.
+
+</Solucion>
+
+**C2. a)** Realice y explique el trazado de rayos para un objeto situado entre el foco objeto y el doble de la distancia focal de una lente convergente. Determine, justificadamente, las características de la imagen.
+
+<Solucion>
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), en una lente convergente el foco objeto $F$ está a la izquierda y el foco imagen $F'$ a la derecha, a la misma distancia $f'$. El objeto está entre $2F$ y $F$ (a una distancia de la lente entre $f'$ y $2f'$). Desde su extremo trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo que pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-3} y={1} xMin={-5} xMax={8} descripcion="Lente convergente con el objeto entre el doble de la distancia focal y el foco objeto. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que pasa por el foco objeto sale paralelo. Los tres rayos refractados se cortan a la derecha de la lente, más allá del doble de la distancia focal: la imagen es real, invertida y mayor que el objeto." />
+
+**Características de la imagen.** Los rayos refractados **se cortan** a la derecha de la lente, **más allá de $2F'$**. La imagen es:
+
+- **Real**: la forman los propios rayos, en el lado opuesto al objeto, y se puede recoger en una pantalla.
+- **Invertida**: queda por debajo del eje.
+- **Mayor que el objeto**.
+
+Se puede comprobar con las ecuaciones: si $|s|$ está entre $f'$ y $2f'$, la ecuación de las lentes, $1/s' = 1/f' + 1/s$, da $s' > 2f'$, y el aumento $A = s'/s$ es negativo y de valor absoluto mayor que 1. En el dibujo, con $f' = 2$ y $s = -3$, sale $s' = 6$ y $A = -2$. Es la situación de un proyector de diapositivas.
+
+</Solucion>
+
+**b)** Una lente delgada convergente de distancia focal 20 cm, forma una imagen situada a una distancia de 40 cm a su izquierda y 30 cm de altura. Calcule la posición y el tamaño del objeto, indicando el criterio de signos aplicado. Realice razonadamente el trazado de rayos y justifique la naturaleza de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente: las distancias son negativas a la izquierda y positivas a la derecha; las alturas, positivas por encima del eje. Así, $f' = +20$ cm, la imagen está en $s' = -40$ cm y mide $y' = 30$ cm (suponemos que está por encima del eje).
+
+**Posición del objeto.** Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s} = \frac{1}{s'} - \frac{1}{f'} = \frac{1}{-40} - \frac{1}{20} = -\frac{3}{40}
+\quad\Rightarrow\quad
+s = -13{,}3\ \text{cm}
+$$
+
+El objeto está **13,3 cm a la izquierda de la lente**, entre el foco objeto y la lente.
+
+**Tamaño del objeto.** A partir del aumento lateral:
+
+$$
+A = \frac{s'}{s} = \frac{-40}{-13{,}3} = 3
+\quad\Rightarrow\quad
+y = \frac{y'}{A} = \frac{30}{3} = 10\ \text{cm}
+$$
+
+**Trazado de rayos.** Desde el extremo del objeto trazamos un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$; uno por el centro óptico, que no se desvía; y uno cuya prolongación pasa por el foco objeto $F$, que sale paralelo al eje:
+
+<TrazadoRayos tipo="convergente" f={20} s={-13.333} y={10} xMin={-46} xMax={30} descripcion="Lente convergente de 20 centímetros de distancia focal con un objeto de 10 centímetros a 13,3 centímetros a la izquierda, entre el foco objeto y la lente. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a 40 centímetros a la izquierda de la lente, donde se forma una imagen virtual, derecha y tres veces mayor, de 30 centímetros." />
+
+**Naturaleza de la imagen.** Los rayos refractados divergen y no se cortan; se cortan sus **prolongaciones** hacia atrás, a la izquierda de la lente. La imagen es:
+
+- **Virtual**: se forma con las prolongaciones de los rayos, en el mismo lado que el objeto $(s' < 0)$, y no se puede recoger en una pantalla.
+- **Derecha**: $A > 0$.
+- **Mayor que el objeto**: tres veces su tamaño $(A = 3)$.
+
+**Respuesta.** El objeto está a **13,3 cm a la izquierda** de la lente y mide **10 cm**. Es la única forma de que una lente convergente dé una imagen en el mismo lado que el objeto: colocarlo entre el foco y la lente, como en una lupa.
+
+</Solucion>

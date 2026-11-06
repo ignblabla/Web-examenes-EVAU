@@ -1,0 +1,90 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2022
+convocatoria: reserva-2
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+
+**C2. a)** Un rayo de luz monocromática aumenta de velocidad al pasar de un medio a otro distinto. **i)** Justifique cómo afecta ese cambio de medio a la longitud de onda y a la frecuencia del rayo. **ii)** Justifique si el cambio del medio citado puede dar lugar a una reflexión total.
+
+<Solucion>
+
+**i) Longitud de onda y frecuencia.**
+
+- **Frecuencia: no cambia.** La impone la fuente que emite la luz; en la superficie de separación, cada frente de onda que llega genera uno en el segundo medio al mismo ritmo.
+- **Longitud de onda: aumenta.** Como $\lambda = v/f$ y la frecuencia es la misma, la longitud de onda es proporcional a la velocidad: si la velocidad aumenta, la longitud de onda aumenta en la misma proporción, $\lambda_2/\lambda_1 = v_2/v_1 > 1$.
+
+**ii) ¿Puede haber reflexión total?** **Sí.** Si la velocidad aumenta, el segundo medio es **menos refringente**, porque $n = c/v$: $n_2 < n_1$. Por la ley de Snell, el rayo refractado se aleja de la normal:
+
+$$
+\sin\theta_2 = \frac{n_1}{n_2}\sin\theta_1 > \sin\theta_1
+$$
+
+Al aumentar el ángulo de incidencia se llega al **ángulo límite**, $\sin L = n_2/n_1 = v_1/v_2$, para el que el refractado sale rasante, a $90^\circ$. Si el ángulo de incidencia es **mayor que el ángulo límite**, no hay rayo refractado y la luz se refleja totalmente. Es lo que ocurre, por ejemplo, al pasar la luz del agua al aire o en las fibras ópticas.
+
+</Solucion>
+
+**b)** Un haz de luz monocromática con longitud de onda de 6·10<sup>-7</sup> m incide desde el aire con un ángulo de incidencia de 30º sobre una pared de vidrio plano-paralela de un acuario lleno de agua. Determine razonadamente y con ayuda de un esquema: **i)** el ángulo de refracción en el vidrio y en el agua; **ii)** la longitud de onda y la velocidad de dicho rayo en el vidrio y en el agua.
+
+<Datos>n<sub>aire</sub> = 1; n<sub>vidrio</sub> = 1,50; n<sub>agua</sub> = 1,33; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Ángulos de refracción.** El rayo atraviesa dos superficies paralelas: aire-vidrio y vidrio-agua. En cada una se cumple la **ley de Snell**, $n_1\sin\theta_1 = n_2\sin\theta_2$.
+
+**Aire → vidrio:**
+
+$$
+1 \cdot \sin 30^\circ = 1{,}50\sin\theta_v
+\quad\Rightarrow\quad
+\sin\theta_v = \frac{0{,}5}{1{,}50} = 0{,}333
+\quad\Rightarrow\quad
+\theta_v = 19{,}5^\circ
+$$
+
+**Vidrio → agua.** Como las caras de la pared son paralelas, el rayo llega a la segunda cara con el mismo ángulo $\theta_v$:
+
+$$
+1{,}50\sin 19{,}5^\circ = 1{,}33\sin\theta_a
+\quad\Rightarrow\quad
+\sin\theta_a = \frac{0{,}5}{1{,}33} = 0{,}376
+\quad\Rightarrow\quad
+\theta_a = 22{,}1^\circ
+$$
+
+<RefraccionCapas
+  incidencia={30}
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Vidrio", n: 1.5, color: "#dfe9f0", texto: "Vidrio (n = 1,50)" },
+    { nombre: "Agua", n: 1.33, color: "#e6f0f6", texto: "Agua (n = 1,33)" },
+  ]}
+  descripcion="Rayo que incide desde el aire sobre la pared de vidrio de un acuario con 30 grados. En el vidrio se acerca a la normal, con 19,5 grados, y al pasar al agua se aleja algo de ella, con 22,1 grados, que sigue siendo menor que el ángulo en el aire."
+/>
+
+Como $n_{\text{vidrio}}\sin\theta_v = n_{\text{aire}}\sin 30^\circ$, el ángulo en el agua es el mismo que si la luz pasara directamente del aire al agua: la pared de vidrio solo desplaza el rayo lateralmente.
+
+**ii) Longitud de onda y velocidad.** La frecuencia no cambia al pasar de un medio a otro, así que la velocidad y la longitud de onda se dividen por el índice de refracción: $v = c/n$ y $\lambda = \lambda_0/n$.
+
+**En el vidrio:**
+
+$$
+v_v = \frac{3 \cdot 10^8}{1{,}50} = 2 \cdot 10^{8}\ \text{m/s}
+\qquad
+\lambda_v = \frac{6 \cdot 10^{-7}}{1{,}50} = 4 \cdot 10^{-7}\ \text{m}
+$$
+
+**En el agua:**
+
+$$
+v_a = \frac{3 \cdot 10^8}{1{,}33} = 2{,}26 \cdot 10^{8}\ \text{m/s}
+\qquad
+\lambda_a = \frac{6 \cdot 10^{-7}}{1{,}33} = 4{,}51 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** El rayo forma **19,5º** con la normal en el vidrio y **22,1º** en el agua. En el vidrio la luz va a $2 \cdot 10^8$ m/s con $\lambda = 4 \cdot 10^{-7}$ m, y en el agua a $2{,}26 \cdot 10^8$ m/s con $\lambda = 4{,}51 \cdot 10^{-7}$ m; la frecuencia, $f = c/\lambda_0 = 5 \cdot 10^{14}$ Hz, es la misma en los tres medios.
+
+</Solucion>

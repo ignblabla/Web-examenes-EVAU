@@ -1,0 +1,94 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2022
+convocatoria: reserva-4
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**C2. a)** Explique qué características deben tener dos ondas armónicas para que su superposición origine una onda estacionaria y cómo depende la amplitud de esta última con la posición.
+
+<Solucion>
+
+**Características de las dos ondas.** Una onda estacionaria se forma por la superposición de dos ondas armónicas:
+
+- de la **misma amplitud**, la **misma frecuencia** y la **misma longitud de onda** (y, por tanto, que se propagan en el mismo medio con la misma velocidad),
+- que se propagan en la **misma dirección** y en **sentidos opuestos**.
+
+Es lo que ocurre, por ejemplo, en una cuerda con los extremos fijos: la onda que viaja por la cuerda se refleja en un extremo y se superpone con la que llega.
+
+**Amplitud en función de la posición.** Sumando las dos ondas, $y_1 = A\sin(\omega t - kx)$ e $y_2 = A\sin(\omega t + kx)$, y usando $\sin a + \sin b = 2\sin\frac{a+b}{2}\cos\frac{a-b}{2}$:
+
+$$
+y = y_1 + y_2 = 2A\cos(kx)\sin(\omega t)
+$$
+
+Cada punto del medio oscila con un movimiento armónico simple de la misma frecuencia que las ondas componentes, pero con una **amplitud que depende de su posición**:
+
+$$
+A(x) = \left|2A\cos(kx)\right|
+$$
+
+- En los **vientres**, $|\cos(kx)| = 1$, la amplitud es máxima, $2A$.
+- En los **nodos**, $\cos(kx) = 0$, la amplitud es nula: esos puntos no vibran.
+
+Nodos y vientres se alternan; dos nodos (o dos vientres) consecutivos están separados $\lambda/2$, y un nodo y el vientre siguiente, $\lambda/4$. A diferencia de una onda viajera, la onda estacionaria no transporta energía de un punto a otro.
+
+</Solucion>
+
+**b)** Una onda estacionaria viene dada por la expresión: *y*(*x*,*t*) = 0,02·sen(0,25π *x*)·cos(10π *t*) (S.I.) **i)** Determine las posiciones de los vientres de la onda estacionaria. **ii)** Determine la amplitud, frecuencia, longitud de onda y velocidad de propagación de las ondas armónicas cuya superposición da lugar a la onda estacionaria.
+
+<Solucion>
+
+**i) Posiciones de los vientres.** La amplitud de oscilación de cada punto es $A(x) = |0{,}02\sin(0{,}25\pi x)|$. Los vientres son los puntos de amplitud máxima, donde $|\sin(0{,}25\pi x)| = 1$:
+
+$$
+0{,}25\pi\,x = \frac{\pi}{2} + n\pi
+\quad\Rightarrow\quad
+x = 2 + 4n\ \text{m}, \qquad n = 0, 1, 2, \ldots
+$$
+
+Los vientres están en $x = 2$ m, 6 m, 10 m…, separados 4 m entre sí. (Los nodos, donde $\sin(0{,}25\pi x) = 0$, están en $x = 0$, 4 m, 8 m…)
+
+<GraficaFuncion
+  xMin={0}
+  xMax={10.6}
+  yMin={-0.027}
+  yMax={0.027}
+  marcasX={[2, 4, 6, 8, 10]}
+  marcasY={[]}
+  tramos={[
+    { f: (x) => 0.02 * Math.sin(0.25 * Math.PI * x), desde: 0, hasta: 10.5 },
+    { f: (x) => -0.02 * Math.sin(0.25 * Math.PI * x), desde: 0, hasta: 10.5, color: "#b04a3a" },
+  ]}
+  puntos={[
+    { x: 2, y: 0.02, texto: "V", dy: -8 },
+    { x: 6, y: -0.02, texto: "V", dy: 16 },
+    { x: 10, y: 0.02, texto: "V", dy: -8 },
+  ]}
+  descripcion="Envolvente de la onda estacionaria entre x = 0 y x = 10 metros: los puntos oscilan entre las curvas 0,02 sen(0,25 pi x) y su opuesta. Los vientres, con amplitud 0,02 metros, están en x = 2, 6 y 10 metros, y los nodos en x = 0, 4 y 8 metros."
+/>
+
+**ii) Ondas componentes.** La onda estacionaria es la superposición de dos ondas armónicas que viajan en sentidos opuestos, $y = 2A\sin(kx)\cos(\omega t)$. Comparando:
+
+$$
+2A = 0{,}02\ \text{m}, \qquad k = 0{,}25\pi\ \text{rad/m}, \qquad \omega = 10\pi\ \text{rad/s}
+$$
+
+$$
+A = 0{,}01\ \text{m}
+\qquad
+f = \frac{\omega}{2\pi} = \frac{10\pi}{2\pi} = 5\ \text{Hz}
+\qquad
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{0{,}25\pi} = 8\ \text{m}
+$$
+
+$$
+v = \lambda\,f = 8 \cdot 5 = 40\ \text{m/s}
+$$
+
+**Respuesta.** Los vientres están en $x = 2 + 4n$ m (2, 6, 10 m…). Las ondas componentes tienen una amplitud de **0,01 m** (la mitad de la amplitud máxima de la estacionaria), una frecuencia de **5 Hz**, una longitud de onda de **8 m** y se propagan a **40 m/s**, una en cada sentido del eje X. La distancia entre vientres, 4 m, es efectivamente $\lambda/2$.
+
+</Solucion>

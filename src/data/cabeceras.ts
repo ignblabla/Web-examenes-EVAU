@@ -135,6 +135,9 @@ const fisica2023: Cabecera = {
   ],
 }
 
+// Física, curso 2021-2022: mismas instrucciones que en 2022-2023.
+const fisica2022: Cabecera = { ...fisica2023, curso: "CURSO 2021-2022" }
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -466,6 +469,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2022/junio": fisica2022,
+  "fisica/2022/julio": fisica2022,
+  "fisica/2022/reserva-1": fisica2022,
+  "fisica/2022/reserva-2": fisica2022,
+  "fisica/2022/reserva-3": fisica2022,
+  "fisica/2022/reserva-4": fisica2022,
   "fisica/2023/junio": fisica2023,
   "fisica/2023/julio": fisica2023,
   "fisica/2023/reserva-1": fisica2023,

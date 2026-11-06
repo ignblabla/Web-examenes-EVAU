@@ -1,0 +1,174 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: junio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+import ImanEspira from "../../../../../components/figuras/fisica/ImanEspira.astro"
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+
+**B1. a)** Dos cargas puntuales de igual valor y signo contrario se encuentran separadas una distancia *d*. Explique, con ayuda de un esquema, si el campo eléctrico puede anularse en algún punto próximo a las dos cargas.
+
+<Solucion>
+
+Cada carga crea un campo de módulo $E = K\,|q|/r^2$; el de la carga positiva apunta **alejándose** de ella y el de la negativa, **hacia** ella. Para que el campo total se anule en un punto, los dos campos tienen que tener la misma dirección, sentidos opuestos y el mismo módulo. Analizamos las posibles zonas:
+
+<Vectores
+  xMin={-2}
+  xMax={3.9}
+  yMin={-0.6}
+  yMax={0.8}
+  escala={64}
+  puntos={[
+    { x: 0, y: 0, texto: "+q", tipo: "carga", signo: "+", dx: -8, dy: -16 },
+    { x: 2, y: 0, texto: "−q", tipo: "carga", signo: "−", dx: -8, dy: -16 },
+    { x: 1, y: 0, texto: "P₂", tipo: "punto", dx: -6, dy: 22 },
+    { x: -1, y: 0, texto: "P₁", tipo: "punto", dx: -6, dy: 22 },
+    { x: 3, y: 0, texto: "P₃", tipo: "punto", dx: -6, dy: 22 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [56, 0], texto: "E₊ + E₋", color: "#195c51", dx: -30, dy: -10 },
+    { desde: [-1, 0], v: [-44, 0], texto: "E", sub: "+", color: "#b04a3a", dx: -14, dy: -10 },
+    { desde: [-1, 0], v: [12, 0], texto: "E", sub: "−", color: "#2d6fa3", dx: 0, dy: -10 },
+    { desde: [3, 0], v: [-44, 0], texto: "E", sub: "−", color: "#2d6fa3", dx: 4, dy: -10 },
+    { desde: [3, 0], v: [12, 0], texto: "E", sub: "+", color: "#b04a3a", dx: 0, dy: -10 },
+  ]}
+  descripcion="Carga positiva a la izquierda y negativa a la derecha. En P2, entre las cargas, los campos de las dos apuntan hacia la derecha, hacia la carga negativa, y se suman: el campo total apunta hacia la derecha. En P1, a la izquierda de la carga positiva, el campo de la positiva, más cercana, apunta hacia la izquierda y es mayor que el de la negativa, que apunta hacia la derecha. En P3, a la derecha de la negativa, el campo de la negativa, más cercana, apunta hacia la izquierda y es mayor que el de la positiva."
+/>
+
+- **Entre las cargas (P₂).** El campo de $+q$ apunta alejándose de ella, hacia $-q$, y el de $-q$ apunta hacia $-q$: los dos tienen el **mismo sentido** y se suman. El campo no puede anularse; en el punto medio vale $E = 2\,K\,q/(d/2)^2 = 8\,K\,q/d^2$.
+- **Fuera del segmento, sobre la recta que las une (P₁ y P₃).** Los campos tienen sentidos opuestos, pero el punto está siempre **más cerca de una carga que de la otra**. Como las dos cargas tienen el mismo valor, el campo de la más cercana es siempre mayor: los módulos nunca son iguales y el campo no se anula.
+- **Fuera de la recta.** Los dos campos tienen direcciones distintas (la de las rectas que unen el punto con cada carga), así que no pueden anularse.
+
+Por tanto, **el campo eléctrico no se anula en ningún punto** a distancia finita de las cargas; solo tiende a cero muy lejos de ellas. (Con dos cargas iguales del mismo signo sí se anularía, en el punto medio.)
+
+</Solucion>
+
+**b)** Dos partículas idénticas con carga positiva, situadas en los puntos A(0,0) m y B(2,0) m, generan un potencial eléctrico en el punto C(1,1) m de 1000 V. Determine: **i)** el valor de la carga de las partículas y **ii)** el vector campo eléctrico en el punto C(1,1) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Valor de la carga.** El punto C(1,1) está a la misma distancia de las dos cargas:
+
+$$
+r_{AC} = r_{BC} = \sqrt{1^2 + 1^2} = \sqrt{2}\ \text{m}
+$$
+
+El potencial es escalar: el potencial en C es la suma de los que crea cada carga:
+
+$$
+V_C = K\,\frac{q}{\sqrt{2}} + K\,\frac{q}{\sqrt{2}} = \frac{2\,K\,q}{\sqrt{2}} = \sqrt{2}\,K\,q
+$$
+
+$$
+q = \frac{V_C}{\sqrt{2}\,K} = \frac{1000}{\sqrt{2} \cdot 9 \cdot 10^9} = 7{,}86 \cdot 10^{-8}\ \text{C}
+$$
+
+**ii) Campo eléctrico en C.** Cada carga crea en C un campo de módulo:
+
+$$
+E_A = E_B = K\,\frac{q}{r^2} = 9 \cdot 10^9 \cdot \frac{7{,}86 \cdot 10^{-8}}{2} = 354\ \text{N/C}
+$$
+
+Como las cargas son positivas, cada campo apunta alejándose de su carga: el de A en la dirección de $\vec{AC} = (1, 1)$ y el de B en la de $\vec{BC} = (-1, 1)$:
+
+<Vectores
+  xMin={-0.5}
+  xMax={2.5}
+  yMin={-0.5}
+  yMax={2}
+  escala={80}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A(0, 0)", tipo: "carga", signo: "+", dx: -10, dy: 24 },
+    { x: 2, y: 0, texto: "B(2, 0)", tipo: "carga", signo: "+", dx: -20, dy: 24 },
+    { x: 1, y: 1, texto: "C(1, 1)", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [1, 1], v: [36, 36], texto: "E", sub: "A", color: "#b04a3a" },
+    { desde: [1, 1], v: [-36, 36], texto: "E", sub: "B", color: "#b04a3a", dx: -22 },
+    { desde: [1, 1], v: [0, 51], texto: "E", color: "#195c51", dx: 6, dy: 4 },
+  ]}
+  segmentos={[[0, 0, 1, 1], [2, 0, 1, 1]]}
+  descripcion="Dos cargas positivas iguales en A, de coordenadas 0, 0, y en B, de coordenadas 2, 0. En C, de coordenadas 1, 1, el campo de A apunta alejándose de A, hacia arriba a la derecha, y el de B alejándose de B, hacia arriba a la izquierda. Las componentes horizontales se anulan y el campo total apunta verticalmente hacia arriba."
+/>
+
+$$
+\vec{E}_A = \frac{354}{\sqrt{2}}\left(\vec{i} + \vec{j}\right)\ \text{N/C},
+\qquad
+\vec{E}_B = \frac{354}{\sqrt{2}}\left(-\vec{i} + \vec{j}\right)\ \text{N/C}
+$$
+
+Las componentes horizontales se anulan por simetría y las verticales se suman:
+
+$$
+\vec{E}_C = \vec{E}_A + \vec{E}_B = \frac{2 \cdot 354}{\sqrt{2}}\,\vec{j} = 500\,\vec{j}\ \text{N/C}
+$$
+
+**Respuesta.** Cada partícula tiene una carga de **$7{,}86 \cdot 10^{-8}$ C** y el campo en C es **$\vec{E}_C = 500\,\vec{j}$ N/C**, vertical y hacia arriba, alejándose del segmento que une las cargas.
+
+</Solucion>
+
+**B2. a)** A una espira plana, que está en reposo, se le acerca perpendicularmente al plano de la misma un imán por su polo norte. Realice un esquema en el que se represente la dirección y sentido de campo magnético inducido en la espira. Justifique el sentido de la corriente inducida en la misma.
+
+<Solucion>
+
+Las líneas del campo magnético de un imán **salen de su polo norte**. Al acercar el imán por ese polo, el campo que atraviesa la espira, dirigido desde el imán hacia la espira, es cada vez más intenso: el **flujo magnético aumenta**.
+
+Por la **ley de Faraday**, la variación del flujo induce una fuerza electromotriz y una corriente en la espira. Por la **ley de Lenz**, la corriente inducida tiene el sentido que hace que su propio campo magnético **se oponga a la variación** del flujo: como el flujo aumenta, el campo inducido en el interior de la espira es **opuesto** al del imán, es decir, apunta **hacia el imán**.
+
+<ImanEspira caso="acerca" />
+
+**Sentido de la corriente.** Para que el campo inducido apunte hacia el imán, por la regla de la mano derecha la corriente circula en **sentido antihorario visto desde el imán**. La cara de la espira que mira al imán se comporta como un polo norte, que repele al polo norte que se acerca: la espira se opone al acercamiento, como exige la conservación de la energía (para acercar el imán hay que hacer un trabajo, que es el que aparece como energía eléctrica en la espira).
+
+</Solucion>
+
+**b)** Una espira conductora cuadrada de 0,05 m de lado se encuentra en una región donde hay un campo magnético perpendicular a la espira de módulo *B* = (4*t* − *t*<sup>2</sup>) T (*t* es el tiempo en segundos). **i)** Halle la expresión para el flujo del campo magnético a través de la espira. **ii)** Calcule el módulo de la f.e.m. inducida en la espira para *t* = 3 s. **iii)** Determine el instante de tiempo para el cual no se induce corriente en la espira.
+
+<Solucion>
+
+**i) Flujo magnético.** El campo es perpendicular a la espira, así que es paralelo a su vector superficie $(\theta = 0)$. La superficie de la espira es $S = 0{,}05^2 = 2{,}5 \cdot 10^{-3}$ m², y el flujo:
+
+$$
+\Phi = B\,S\cos 0^\circ = (4t - t^2) \cdot 2{,}5 \cdot 10^{-3} = \left(0{,}01\,t - 2{,}5 \cdot 10^{-3}\,t^2\right)\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz en t = 3 s.** Por la **ley de Faraday**, la fuerza electromotriz inducida es:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt} = -\left(0{,}01 - 5 \cdot 10^{-3}\,t\right)\ \text{V}
+$$
+
+$$
+\varepsilon(3) = -\left(0{,}01 - 5 \cdot 10^{-3} \cdot 3\right) = 5 \cdot 10^{-3}\ \text{V}
+\quad\Rightarrow\quad
+|\varepsilon(3)| = 5 \cdot 10^{-3}\ \text{V}
+$$
+
+**iii) Instante sin corriente.** No se induce corriente cuando la fuerza electromotriz es nula, es decir, cuando el flujo deja de cambiar:
+
+$$
+0{,}01 - 5 \cdot 10^{-3}\,t = 0
+\quad\Rightarrow\quad
+t = 2\ \text{s}
+$$
+
+En $t = 2$ s el campo alcanza su valor máximo, $B = 4 \cdot 2 - 2^2 = 4$ T: hasta ese instante el campo crece y, a partir de él, decrece. Por eso la corriente inducida **cambia de sentido** en $t = 2$ s. Por ejemplo, si vemos la espira desde el lado hacia el que apunta el campo, en $t = 3$ s el flujo disminuye y la corriente inducida circula en sentido antihorario, para crear un campo en el mismo sentido que el exterior que compense la disminución:
+
+<EspiraCampoVariable
+  forma="cuadrada"
+  horaria={false}
+  cotas={["lado: 0,05 m", ""]}
+  notas={["B ⊙ (disminuye)", "I antihoraria", "B inducido ⊙"]}
+  pie="Espira vista desde el lado hacia el que apunta el campo, en t = 3 s"
+  descripcion="Espira cuadrada de 0,05 metros de lado dentro de un campo magnético perpendicular, saliente del papel, que en t = 3 segundos disminuye. La corriente inducida circula en sentido antihorario y crea en el interior un campo saliente, que se opone a la disminución del flujo."
+/>
+
+**Respuesta.** El flujo es $\Phi = (0{,}01\,t - 2{,}5 \cdot 10^{-3}\,t^2)$ Wb; en $t = 3$ s la fuerza electromotriz inducida vale **$5 \cdot 10^{-3}$ V** en módulo, y no se induce corriente en **$t = 2$ s**, cuando el campo es máximo y el flujo deja momentáneamente de variar.
+
+</Solucion>

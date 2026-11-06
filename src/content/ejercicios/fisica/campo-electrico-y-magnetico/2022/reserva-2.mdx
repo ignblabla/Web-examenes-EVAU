@@ -1,0 +1,160 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: reserva-2
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Razone la veracidad o falsedad de la siguiente afirmación: El trabajo que realiza el campo eléctrico sobre una partícula cargada que se mueve sobre una superficie equipotencial siempre es positivo.
+
+<Solucion>
+
+**Falsa.** El campo eléctrico es conservativo: el trabajo que realiza sobre una carga $q$ que se desplaza de A a B solo depende de los puntos inicial y final, y es igual a menos la variación de su energía potencial, $E_p = q\,V$:
+
+$$
+W_{A \to B} = -\Delta E_p = -q\,(V_B - V_A) = q\,(V_A - V_B)
+$$
+
+En una **superficie equipotencial** todos los puntos tienen el mismo potencial, $V_A = V_B$, así que:
+
+$$
+W_{A \to B} = 0
+$$
+
+El trabajo es **nulo**, no positivo. Además, las líneas de campo son perpendiculares a las superficies equipotenciales: si la carga se mueve sobre la superficie, la fuerza eléctrica $q\,\vec{E}$ es en cada instante perpendicular al desplazamiento y no realiza trabajo.
+
+</Solucion>
+
+**b)** Una partícula de masa 2·10<sup>-10</sup> kg y carga 2·10<sup>-6</sup> C se encuentra inicialmente en reposo en el punto (0,1) m. Posteriormente, se aplica un campo eléctrico uniforme de 1000 N C<sup>-1</sup> en el sentido positivo del eje OX. Considerando que no actúa ninguna fuerza gravitatoria sobre la partícula: **i)** Realice un esquema justificado de la trayectoria descrita por la partícula y **ii)** determine el trabajo realizado por el campo eléctrico sobre la partícula después de recorrer una distancia de 1 m. ¿Cuál será entonces el módulo de la velocidad de la partícula?
+
+<Solucion>
+
+**i) Trayectoria.** Sobre la partícula actúa solo la fuerza eléctrica:
+
+$$
+\vec{F} = q\,\vec{E} = 2 \cdot 10^{-6} \cdot 1000\,\vec{i} = 2 \cdot 10^{-3}\,\vec{i}\ \text{N}
+$$
+
+La carga es positiva, así que la fuerza tiene el mismo sentido que el campo, $+\vec{i}$. Es constante, y la partícula parte del reposo: se mueve con un **movimiento rectilíneo uniformemente acelerado** en el sentido positivo del eje X, a lo largo de la recta $y = 1$ m.
+
+<Vectores
+  xMin={-0.4}
+  xMax={2.4}
+  yMin={-0.3}
+  yMax={1.8}
+  escala={90}
+  marcasX={[1, 2]}
+  marcasY={[1]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 1, texto: "q > 0", tipo: "carga", signo: "+", dx: -10, dy: -14 },
+    { x: 1, y: 1, texto: "tras 1 m", tipo: "punto", dx: -16, dy: 20 },
+  ]}
+  vectores={[
+    { desde: [0, 1], v: [50, 0], texto: "F", color: "#b04a3a", dx: -6, dy: -8 },
+    { desde: [1.6, 1.5], v: [50, 0], texto: "E", color: "#2d6fa3", dx: -6, dy: -8 },
+  ]}
+  segmentos={[[0, 1, 2.2, 1]]}
+  descripcion="Carga positiva en reposo en el punto 0, 1. El campo eléctrico apunta en el sentido positivo del eje X y la fuerza sobre la carga también: la partícula se mueve en línea recta, a lo largo de la recta y = 1, acelerando hacia la derecha."
+/>
+
+**ii) Trabajo y velocidad tras 1 m.** La fuerza es constante y tiene la dirección y el sentido del desplazamiento:
+
+$$
+W = F\,d = q\,E\,d = 2 \cdot 10^{-3} \cdot 1 = 2 \cdot 10^{-3}\ \text{J}
+$$
+
+Es la única fuerza que actúa, así que, por el **teorema de las fuerzas vivas**, su trabajo es igual a la variación de la energía cinética. La partícula partía del reposo:
+
+$$
+W = \frac{1}{2}\,m\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,W}{m}} = \sqrt{\frac{2 \cdot 2 \cdot 10^{-3}}{2 \cdot 10^{-10}}} = 4{,}47 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** La partícula se mueve en línea recta, acelerando en el sentido positivo del eje X; tras recorrer 1 m, el campo ha realizado un trabajo de **$2 \cdot 10^{-3}$ J** y su velocidad es de **$4{,}47 \cdot 10^3$ m/s**. Su energía potencial ha disminuido en esos mismos $2 \cdot 10^{-3}$ J: la carga positiva se mueve espontáneamente hacia potenciales menores.
+
+</Solucion>
+
+**B2. a)** Una partícula cargada penetra con velocidad constante dentro de un campo magnético uniforme perpendicular a la dirección de movimiento. **i)** Determine razonadamente el radio de curvatura de la trayectoria de la partícula. **ii)** ¿Cómo varía dicho radio si el valor de la carga y la velocidad de la partícula se duplican?
+
+<Solucion>
+
+**i) Radio de curvatura.** Sobre la partícula, de carga $q$ y masa $m$, actúa la **fuerza de Lorentz**, $\vec{F} = q\,\vec{v} \times \vec{B}$. Como $\vec{v}$ es perpendicular a $\vec{B}$, su módulo es $F = |q|\,v\,B$, y su dirección es perpendicular a la velocidad. Por eso no cambia el módulo de la velocidad, solo su dirección: actúa como fuerza centrípeta y la partícula describe una circunferencia:
+
+$$
+|q|\,v\,B = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+**ii) Se duplican la carga y la velocidad.** El radio es proporcional a la velocidad e inversamente proporcional a la carga:
+
+$$
+R' = \frac{m\,(2v)}{2\,|q|\,B} = \frac{m\,v}{|q|\,B} = R
+$$
+
+El radio **no cambia**: duplicar la velocidad lo duplicaría, pero duplicar la carga duplica la fuerza magnética y lo reduce a la mitad, y los dos efectos se compensan. (El período, $T = 2\pi m/(|q|B)$, sí cambia: se reduce a la mitad, porque recorre la misma circunferencia al doble de velocidad.)
+
+</Solucion>
+
+**b)** Un protón, que se mueve con velocidad constante, entra en una región del espacio donde hay un campo eléctrico $\vec{E} = 1000\,\vec{k}$ N C<sup>-1</sup> y un campo magnético $\vec{B} = 2 \cdot 10^{-3}\,\vec{i}$ T. **i)** Justifique, con ayuda de un diagrama, la dirección y sentido de la velocidad que debe tener el protón para que atraviese dicha región sin ser desviado. **ii)** Determine el correspondiente vector velocidad.
+
+<Solucion>
+
+**i) Dirección y sentido de la velocidad.** Sobre el protón actúan la fuerza eléctrica y la magnética (fuerza de Lorentz):
+
+$$
+\vec{F} = q\,\vec{E} + q\,\vec{v} \times \vec{B}
+$$
+
+Para que no se desvíe, la fuerza total tiene que ser nula: la fuerza magnética debe ser igual y opuesta a la eléctrica. La fuerza eléctrica, como la carga es positiva, apunta en el sentido de $\vec{E}$, $+\vec{k}$; la magnética debe apuntar hacia $-\vec{k}$:
+
+$$
+q\,\vec{v} \times \vec{B} = -q\,\vec{E}
+\quad\Rightarrow\quad
+\vec{v} \times \vec{B} = -1000\,\vec{k}
+$$
+
+- $\vec{v}$ tiene que ser **perpendicular a $\vec{B}$** (si tuviera componente a lo largo de X, esta no contribuiría a la fuerza magnética) y perpendicular a $\vec{E}$, porque $\vec{v} \times \vec{B}$ es perpendicular a $\vec{v}$. Por tanto, $\vec{v}$ tiene la **dirección del eje Y**.
+- Sentido: como $\vec{j} \times \vec{i} = -\vec{k}$, la velocidad debe apuntar hacia **$+\vec{j}$**.
+
+<Vectores
+  xMin={-1.6}
+  xMax={3.2}
+  yMin={-1.5}
+  yMax={1.6}
+  escala={60}
+  ejes={["y", "z"]}
+  puntos={[
+    { x: 0, y: 0, texto: "p⁺", tipo: "carga", signo: "+", dx: -26, dy: 16 },
+    { x: 0.5, y: -1.1, texto: "B (eje X, sale del papel)", tipo: "sale", dx: 12, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [60, 0], texto: "v", color: "#195c51", dy: 16 },
+    { desde: [0, 0], v: [0, 56], texto: "F", sub: "E", color: "#2d6fa3", dx: 6, dy: 4 },
+    { desde: [0, 0], v: [0, -56], texto: "F", sub: "B", color: "#b04a3a", dx: 6, dy: 4 },
+  ]}
+  descripcion="Plano YZ visto desde el semieje X positivo, con el campo magnético saliendo del papel. El protón se mueve con velocidad en el sentido positivo del eje Y. La fuerza eléctrica apunta hacia arriba, en el sentido positivo del eje Z, y la fuerza magnética hacia abajo, con el mismo módulo: la fuerza total es nula."
+/>
+
+**ii) Vector velocidad.** Con $\vec{v} = v\,\vec{j}$:
+
+$$
+\vec{v} \times \vec{B} = v\,\vec{j} \times 2 \cdot 10^{-3}\,\vec{i} = -2 \cdot 10^{-3}\,v\,\vec{k}
+$$
+
+Igualando a $-1000\,\vec{k}$, el módulo cumple $E = v\,B$:
+
+$$
+v = \frac{E}{B} = \frac{1000}{2 \cdot 10^{-3}} = 5 \cdot 10^{5}\ \text{m/s}
+\quad\Rightarrow\quad
+\vec{v} = 5 \cdot 10^{5}\,\vec{j}\ \text{m/s}
+$$
+
+**Respuesta.** El protón debe moverse en el sentido positivo del eje Y con $\vec{v} = 5 \cdot 10^5\,\vec{j}$ m/s: así la fuerza magnética, hacia $-\vec{k}$, compensa la eléctrica, hacia $+\vec{k}$. Es un **selector de velocidades**: solo las partículas con $v = E/B$ pasan sin desviarse, sea cual sea su carga o su masa.
+
+</Solucion>

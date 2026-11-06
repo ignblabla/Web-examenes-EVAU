@@ -1,0 +1,137 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2022
+convocatoria: junio
+formato: fisica
+---
+
+**D1. a)** En el efecto fotoeléctrico, la luz incidente sobre una superficie metálica provoca la emisión de electrones de la superficie. Discuta la veracidad de las siguientes afirmaciones: **i)** Se desprenden electrones sólo si la longitud de onda de la radiación incidente es superior a un valor mínimo; **ii)** La energía cinética máxima de los electrones es independiente del tipo de metal; **iii)** La energía cinética máxima de los electrones es independiente de la intensidad de la luz incidente.
+
+<Solucion>
+
+Según la explicación de Einstein, la luz está formada por **fotones**, cada uno con una energía $E = h\,f = h\,c/\lambda$. Cada fotón cede toda su energía a un único electrón del metal; si es mayor que el **trabajo de extracción** $W_0$ (la energía mínima para arrancar un electrón, que depende del metal), el electrón sale con una energía cinética máxima:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+\quad\Rightarrow\quad
+E_{c,\text{máx}} = h\,f - W_0
+$$
+
+**i) Falsa.** Se emiten electrones solo si la energía del fotón supera el trabajo de extracción, $h\,f \ge W_0$, es decir, si la frecuencia es **mayor** que la frecuencia umbral, $f_0 = W_0/h$. Como la longitud de onda es inversamente proporcional a la frecuencia, $\lambda = c/f$, eso equivale a que la longitud de onda sea **menor** que un valor máximo, la longitud de onda umbral:
+
+$$
+\lambda \le \lambda_0 = \frac{h\,c}{W_0}
+$$
+
+La afirmación es falsa porque invierte la condición: la longitud de onda tiene que ser **inferior** a un valor máximo, no superior a un valor mínimo.
+
+**ii) Falsa.** La energía cinética máxima es $E_{c,\text{máx}} = h\,f - W_0$, y el trabajo de extracción es distinto en cada metal, según lo ligados que estén sus electrones. Con la misma luz, los electrones salen con más energía de un metal con menor trabajo de extracción.
+
+**iii) Verdadera.** La energía cinética máxima solo depende de la frecuencia de la luz y del metal. La intensidad determina el **número de fotones** que llegan por segundo: al aumentarla se arrancan más electrones (la corriente fotoeléctrica es mayor), pero cada uno recibe la energía de un solo fotón, que es la misma. Precisamente esto no se podía explicar con la teoría ondulatoria clásica de la luz, según la cual una luz más intensa debería dar a los electrones más energía.
+
+</Solucion>
+
+**b)** Los electrones emitidos por una superficie metálica tienen una energía cinética máxima de 4·10<sup>-19</sup> J para una radiación incidente de 3,5·10<sup>-7</sup> m de longitud de onda. Calcule: **i)** el trabajo de extracción de un electrón individual y de un mol de electrones, en Julios; **ii)** la diferencia de potencial mínima requerida para frenar los electrones emitidos.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; N<sub>A</sub> = 6,02·10<sup>23</sup> mol<sup>-1</sup>; c = 3·10<sup>8</sup> m s<sup>-1</sup>; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Trabajo de extracción.** La energía de cada fotón de la radiación incidente es:
+
+$$
+E = h\,f = \frac{h\,c}{\lambda} = \frac{6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8}{3{,}5 \cdot 10^{-7}} = 5{,}68 \cdot 10^{-19}\ \text{J}
+$$
+
+Por la ecuación de Einstein del efecto fotoeléctrico, $E = W_0 + E_{c,\text{máx}}$, la parte de la energía del fotón que no se convierte en energía cinética es el trabajo de extracción:
+
+$$
+W_0 = E - E_{c,\text{máx}} = 5{,}68 \cdot 10^{-19} - 4 \cdot 10^{-19} = 1{,}68 \cdot 10^{-19}\ \text{J}
+$$
+
+Para un mol de electrones, multiplicamos por el número de Avogadro:
+
+$$
+W_{0,\text{mol}} = N_A\,W_0 = 6{,}02 \cdot 10^{23} \cdot 1{,}68 \cdot 10^{-19} = 1{,}01 \cdot 10^{5}\ \text{J}
+$$
+
+**ii) Potencial de frenado.** Para frenar los electrones se aplica una diferencia de potencial que se opone a su movimiento. Los más rápidos se detienen justo cuando el trabajo del campo eléctrico iguala su energía cinética máxima:
+
+$$
+e\,V_f = E_{c,\text{máx}}
+\quad\Rightarrow\quad
+V_f = \frac{E_{c,\text{máx}}}{e} = \frac{4 \cdot 10^{-19}}{1{,}6 \cdot 10^{-19}} = 2{,}5\ \text{V}
+$$
+
+**Respuesta.** El trabajo de extracción es **$1{,}68 \cdot 10^{-19}$ J** por electrón y **$1{,}01 \cdot 10^5$ J** por mol de electrones, y hace falta una diferencia de potencial de **2,5 V** para frenar todos los electrones emitidos. (La longitud de onda umbral del metal sería $\lambda_0 = h\,c/W_0 = 1{,}18 \cdot 10^{-6}$ m: la radiación de $3{,}5 \cdot 10^{-7}$ m, ultravioleta, es bastante más energética de lo necesario.)
+
+</Solucion>
+
+**D2. a)** **i)** Defina defecto de masa y energía de enlace de un núcleo. **ii)** Indique razonadamente cómo están relacionadas entre sí ambas magnitudes.
+
+<Solucion>
+
+**i) Definiciones.**
+
+- **Defecto de masa** $(\Delta m)$: la diferencia entre la suma de las masas de los nucleones (protones y neutrones) que forman un núcleo, por separado, y la masa del núcleo. La masa del núcleo es siempre **menor** que la de sus componentes por separado. Para un núcleo $^{A}_{Z}\text{X}$, con $Z$ protones y $A - Z$ neutrones:
+
+$$
+\Delta m = Z\,m_p + (A - Z)\,m_n - m_{\text{núcleo}}
+$$
+
+- **Energía de enlace** $(E_b)$: la energía que se libera al formarse un núcleo a partir de sus nucleones separados o, lo que es lo mismo, la energía que hay que aportar al núcleo para separarlo en sus nucleones.
+
+**ii) Relación.** Según la **equivalencia entre masa y energía** de Einstein, $E = m\,c^2$, la masa que «falta» en el núcleo es la que se ha transformado en la energía liberada al formarse:
+
+$$
+E_b = \Delta m\,c^2
+$$
+
+Son proporcionales: cuanto mayor es el defecto de masa, mayor es la energía de enlace. Para comparar la estabilidad de núcleos distintos se usa la **energía de enlace por nucleón**, $E_b/A$: cuanto mayor es, más ligados están los nucleones y más estable es el núcleo.
+
+</Solucion>
+
+**b)** El $^{235}_{92}\text{U}$ se puede desintegrar, por absorción de un neutrón, mediante diversos procesos de fisión. Uno de estos procesos consiste en la producción de $^{95}_{38}\text{Sr}$, dos neutrones y un tercer núcleo $^{A}_{Z}\text{Q}$. **i)** Escriba la reacción nuclear correspondiente y determine el número de protones y número total de nucleones del tercer núcleo. **ii)** Calcule la energía producida por la fisión de un núcleo de uranio en la reacción anterior.
+
+<Datos>m($^{235}_{92}\text{U}$) = 235,043930 u; m($^{95}_{38}\text{Sr}$) = 94,919359 u; m($^{A}_{Z}\text{Q}$) = 138,918793 u; m<sub>n</sub> = 1,008665 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** El uranio absorbe un neutrón y se rompe en estroncio, el núcleo Q y dos neutrones:
+
+$$
+^{235}_{92}\text{U} + ^{1}_{0}\text{n} \rightarrow ^{95}_{38}\text{Sr} + ^{A}_{Z}\text{Q} + 2\,^{1}_{0}\text{n}
+$$
+
+En la reacción se conservan el número de nucleones y la carga:
+
+$$
+235 + 1 = 95 + A + 2 \quad\Rightarrow\quad A = 139
+\qquad\qquad
+92 + 0 = 38 + Z + 0 \quad\Rightarrow\quad Z = 54
+$$
+
+El tercer núcleo tiene **54 protones** y **139 nucleones** (85 neutrones): es un isótopo del xenón, $^{139}_{54}\text{Xe}$.
+
+**ii) Energía producida.** La masa de los productos es menor que la de los reactivos; ese **defecto de masa** se transforma en energía según la relación de Einstein, $E = \Delta m\,c^2$. Uno de los dos neutrones producidos compensa el neutrón absorbido:
+
+$$
+\Delta m = \left[m(\text{U}) + m_n\right] - \left[m(\text{Sr}) + m(\text{Q}) + 2\,m_n\right] = m(\text{U}) - m(\text{Sr}) - m(\text{Q}) - m_n
+$$
+
+$$
+\Delta m = 235{,}043930 - 94{,}919359 - 138{,}918793 - 1{,}008665 = 0{,}197113\ \text{u}
+$$
+
+$$
+\Delta m = 0{,}197113 \cdot 1{,}66 \cdot 10^{-27} = 3{,}27 \cdot 10^{-28}\ \text{kg}
+$$
+
+$$
+E = \Delta m\,c^2 = 3{,}27 \cdot 10^{-28} \cdot \left(3 \cdot 10^8\right)^2 = 2{,}94 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** La reacción es $^{235}_{92}\text{U} + ^{1}_{0}\text{n} \rightarrow ^{95}_{38}\text{Sr} + ^{139}_{54}\text{Q} + 2\,^{1}_{0}\text{n}$, el tercer núcleo tiene 54 protones y 139 nucleones, y la fisión de cada núcleo de uranio produce **$2{,}94 \cdot 10^{-11}$ J**, que aparecen sobre todo como energía cinética de los fragmentos. Los dos neutrones liberados pueden provocar nuevas fisiones: es la base de la reacción en cadena.
+
+</Solucion>

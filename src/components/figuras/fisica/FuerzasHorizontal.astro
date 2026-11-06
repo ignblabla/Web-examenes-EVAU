@@ -1,16 +1,19 @@
 ---
-// Cuerpo que desliza hacia la derecha por un suelo horizontal con rozamiento y sin más fuerzas
-// aplicadas (Física, reserva 4 de 2023, A2 b): el peso, la normal y el rozamiento, que se opone
-// al movimiento. Las flechas no están a escala.
+// Cuerpo que desliza hacia la derecha por un suelo horizontal con rozamiento (Física, reserva 4
+// de 2023, A2 b): el peso, la normal y el rozamiento, que se opone al movimiento. Con aplicada,
+// además una fuerza horizontal hacia la derecha que tira del cuerpo (junio de 2022, A1 b). Las
+// flechas no están a escala.
 interface Props {
   nota?: string
+  // Nombre de la fuerza horizontal aplicada hacia la derecha, si la hay.
+  aplicada?: string
   descripcion: string
 }
 
-const { nota = "v (frena)", descripcion } = Astro.props
+const { nota = "v (frena)", aplicada, descripcion } = Astro.props
 const c = { x: 170, y: 116 }
 const id = `horizontal-${Math.round(Math.random() * 1e9)}`
-const colores = ["#111", "#195c51", "#b04a3a"]
+const colores = ["#111", "#195c51", "#b04a3a", "#2d6fa3"]
 const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
 ---
 
@@ -31,12 +34,14 @@ const marca = (color: string) => `url(#${id}-${colores.indexOf(color)})`
       <path d={`M${c.x} ${c.y}V${c.y + 70}`} stroke="#111" marker-end={marca("#111")} />
       <path d={`M${c.x} ${c.y}V${c.y - 70}`} stroke="#195c51" marker-end={marca("#195c51")} />
       <path d={`M${c.x - 30} ${c.y + 14}h-60`} stroke="#b04a3a" marker-end={marca("#b04a3a")} />
+      {aplicada && <path d={`M${c.x + 30} ${c.y + 4}h70`} stroke="#2d6fa3" marker-end={marca("#2d6fa3")} />}
       <path d={`M${c.x + 40} ${c.y - 32}h40`} stroke="#555" stroke-width="1" marker-end={marca("#111")} />
     </g>
     <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
       <text x={c.x + 8} y={c.y + 70} fill="#111">P</text>
       <text x={c.x + 8} y={c.y - 62} fill="#195c51">N</text>
       <text x={c.x - 96} y={c.y + 8} fill="#b04a3a">F<tspan dy="3" font-size="9">r</tspan></text>
+      {aplicada && <text x={c.x + 104} y={c.y + 8} fill="#2d6fa3">{aplicada}</text>}
       <text x={c.x + 86} y={c.y - 28} fill="#555" font-weight="400" font-style="italic" font-size="11">{nota}</text>
     </g>
   </svg>

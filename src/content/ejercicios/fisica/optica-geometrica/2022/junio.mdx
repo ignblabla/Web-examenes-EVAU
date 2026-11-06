@@ -1,0 +1,75 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2022
+convocatoria: junio
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C2. a)** Realice y explique el trazado de rayos para un objeto situado entre el foco objeto y una lente convergente. Justifique las características de la imagen.
+
+<Solucion>
+
+**Trazado de rayos.** Con el criterio DIN (la luz va de izquierda a derecha y la lente está en el origen), en una lente convergente el foco objeto $F$ está a la izquierda y el foco imagen $F'$ a la derecha. El objeto está entre $F$ y la lente, a una distancia menor que la focal. Desde su extremo trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta pasando por el foco imagen $F'$.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo cuya prolongación hacia atrás pasa por el foco objeto $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4} xMax={4} descripcion="Lente convergente con el objeto entre el foco objeto y la lente. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que parece venir del foco objeto sale paralelo. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a la izquierda de la lente, más lejos que el objeto: la imagen es virtual, derecha y mayor que el objeto." />
+
+**Características de la imagen.** Los rayos refractados **divergen** y no llegan a cortarse; se cortan sus **prolongaciones** hacia atrás, a la izquierda de la lente y más lejos de ella que el objeto. La imagen es:
+
+- **Virtual**: la forman las prolongaciones de los rayos, en el mismo lado que el objeto, y no se puede recoger en una pantalla.
+- **Derecha**: queda por encima del eje, como el objeto.
+- **Mayor que el objeto**.
+
+Se comprueba con las ecuaciones: si $|s| < f'$, la ecuación de las lentes, $1/s' = 1/f' + 1/s$, da $s' < 0$, y el aumento $A = s'/s$ es positivo y mayor que 1. En el dibujo, con $f' = 2$ y $s = -1$, sale $s' = -2$ y $A = 2$. Es el funcionamiento de una **lupa**.
+
+</Solucion>
+
+**b)** Un objeto de 30 cm de altura se coloca a 2 m de distancia de una lente delgada divergente. La distancia focal de la lente es de 50 cm. Indicando el criterio de signos aplicado, calcule la posición y el tamaño de la imagen formada. Realice razonadamente el trazado de rayos y justifique la naturaleza de la imagen.
+
+<Solucion>
+
+**Criterio de signos (DIN).** La luz va de izquierda a derecha y el origen está en el centro óptico de la lente: las distancias son negativas a la izquierda y positivas a la derecha; las alturas, positivas por encima del eje. El objeto está a la izquierda de la lente, en $s = -200$ cm, y mide $y = 30$ cm. En una lente divergente el foco imagen está a la izquierda, así que la distancia focal imagen es negativa: $f' = -50$ cm.
+
+**Posición de la imagen.** Ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{f'} + \frac{1}{s} = \frac{1}{-50} + \frac{1}{-200} = -\frac{5}{200}
+\quad\Rightarrow\quad
+s' = -40\ \text{cm}
+$$
+
+La imagen está **40 cm a la izquierda de la lente**, entre el foco imagen y la lente.
+
+**Tamaño de la imagen.** A partir del aumento lateral:
+
+$$
+A = \frac{s'}{s} = \frac{-40}{-200} = 0{,}2
+\quad\Rightarrow\quad
+y' = A\,y = 0{,}2 \cdot 30 = 6\ \text{cm}
+$$
+
+**Trazado de rayos.** Desde el extremo del objeto trazamos:
+
+- **(1)** Un rayo paralelo al eje, que se refracta alejándose del eje como si viniera del foco imagen $F'$, situado a la izquierda.
+- **(2)** Un rayo por el centro óptico, que no se desvía.
+- **(3)** Un rayo dirigido hacia el foco objeto $F$, a la derecha de la lente, que sale paralelo al eje.
+
+<TrazadoRayos tipo="divergente" f={-50} s={-200} y={30} xMin={-215} xMax={80} descripcion="Lente divergente de 50 centímetros de distancia focal con un objeto de 30 centímetros a 2 metros a la izquierda. El rayo paralelo al eje se refracta como si viniera del foco imagen, el que pasa por el centro óptico no se desvía y el que se dirige al foco objeto sale paralelo. Los rayos refractados divergen y sus prolongaciones se cortan a 40 centímetros a la izquierda de la lente: la imagen es virtual, derecha y de 6 centímetros." />
+
+**Naturaleza de la imagen.** Los rayos refractados divergen y se cortan sus **prolongaciones** hacia atrás, a la izquierda de la lente. La imagen es:
+
+- **Virtual**: se forma con las prolongaciones de los rayos, en el mismo lado que el objeto $(s' < 0)$.
+- **Derecha**: $A > 0$.
+- **Menor que el objeto**: la quinta parte de su tamaño $(A = 0{,}2)$.
+
+**Respuesta.** La imagen está a **40 cm a la izquierda** de la lente y mide **6 cm**; es virtual, derecha y menor que el objeto, como la que da siempre una lente divergente con un objeto real.
+
+</Solucion>

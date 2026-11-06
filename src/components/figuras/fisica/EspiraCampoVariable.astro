@@ -5,7 +5,7 @@
 // 15 cm × 10 cm en el plano XY con B = 2t³ k, que aumenta: corriente horaria y campo inducido
 // entrante.
 interface Props {
-  forma?: "rectangular" | "circular"
+  forma?: "rectangular" | "cuadrada" | "circular"
   horaria?: boolean
   // Rótulos de los lados (ancho, alto) en la espira rectangular; null para no ponerlos.
   cotas?: [string, string] | null
@@ -27,16 +27,18 @@ const {
   descripcion = "Espira rectangular de 15 por 10 centímetros en el plano XY, vista desde arriba, dentro de un campo magnético saliente del papel que aumenta con el tiempo. La corriente inducida circula en sentido horario, de modo que el campo que crea en el interior de la espira es entrante y se opone al aumento del flujo.",
 } = Astro.props
 
-const x0 = 60
+// La cuadrada (junio de 2022, B2 b) es más estrecha y deja más sitio a las notas.
+const cuadrada = forma === "cuadrada"
+const x0 = cuadrada ? 95 : 60
 const y0 = 30
-const an = 210
+const an = cuadrada ? 140 : 210
 const al = 140
 const cx = x0 + an / 2
 const cy = y0 + al / 2
 const radio = 68
 const circular = forma === "circular"
 const campo = [0, 1, 2, 3]
-  .flatMap((i) => [0, 1, 2].map((j) => ({ x: x0 + 30 + i * 50, y: y0 + 26 + j * 44 })))
+  .flatMap((i) => [0, 1, 2].map((j) => ({ x: cuadrada ? x0 + 22 + i * 32 : x0 + 30 + i * 50, y: y0 + 26 + j * 44 })))
   .filter((p) => !circular || Math.hypot(p.x - cx, p.y - cy) < radio - 12 || Math.hypot(p.x - cx, p.y - cy) > radio + 12)
 const id = `espira-variable-${Math.round(Math.random() * 1e9)}`
 // Flechas de la corriente en sentido horario (arriba hacia la derecha, derecha hacia abajo…);

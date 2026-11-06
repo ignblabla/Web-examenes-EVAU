@@ -1,0 +1,136 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: reserva-3
+formato: fisica
+---
+
+import ProtonAceleradoCampoB from "../../../../../components/figuras/fisica/ProtonAceleradoCampoB.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+import EspiraCircularHilo from "../../../../../components/figuras/fisica/EspiraCircularHilo.astro"
+import EspiraLadoMovil from "../../../../../components/figuras/fisica/EspiraLadoMovil.astro"
+
+**B1. a)** Una partícula cargada se lanza con cierta velocidad en una región donde hay un campo magnético uniforme. En primer lugar, se lanza paralelamente al campo magnético y en segundo lugar perpendicularmente al mismo. Explique en cada caso si: **i)** cambia su energía cinética y **ii)** la partícula está acelerada.
+
+<Solucion>
+
+Sobre una partícula de carga $q$ que se mueve con velocidad $\vec{v}$ en un campo magnético $\vec{B}$ actúa la **fuerza de Lorentz**, $\vec{F} = q\,\vec{v} \times \vec{B}$, de módulo $F = |q|\,v\,B\sin\theta$, siendo $\theta$ el ángulo entre $\vec{v}$ y $\vec{B}$. Esta fuerza es siempre **perpendicular a la velocidad**, así que nunca realiza trabajo.
+
+**Lanzada paralelamente al campo** $(\theta = 0)$. El producto vectorial es nulo y **no actúa ninguna fuerza**:
+
+- **i)** La energía cinética **no cambia**: no hay fuerza que realice trabajo.
+- **ii)** La partícula **no está acelerada**: sigue en línea recta con velocidad constante (movimiento rectilíneo uniforme).
+
+**Lanzada perpendicularmente al campo** $(\theta = 90^\circ)$. La fuerza tiene módulo máximo, $F = |q|\,v\,B$, y es perpendicular a la velocidad:
+
+- **i)** La energía cinética **no cambia**: la fuerza es perpendicular al desplazamiento en cada instante y no realiza trabajo, así que el módulo de la velocidad es constante.
+- **ii)** La partícula **sí está acelerada**: la fuerza cambia continuamente la dirección de la velocidad. Tiene una aceleración centrípeta, $a = v^2/R$, y describe un movimiento circular uniforme de radio $R = m\,v/(|q|\,B)$.
+
+</Solucion>
+
+**b)** Un protón que parte del reposo es acelerado, en sentido positivo del eje OX, mediante una diferencia de potencial de 850 V antes de entrar en un campo magnético uniforme, perpendicular a la velocidad, donde describe una trayectoria circular en sentido antihorario en el plano XY de 0,02 m de radio. Apoyándose en esquemas, calcule: **i)** el módulo del campo magnético y **ii)** el campo eléctrico (vector) que debería aplicarse para que la trayectoria del protón sea rectilínea.
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**Velocidad del protón.** Al atravesar la diferencia de potencial, el trabajo del campo eléctrico, $e\,\Delta V$, se convierte en energía cinética, porque parte del reposo:
+
+$$
+e\,\Delta V = \frac{1}{2}\,m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,e\,\Delta V}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-19} \cdot 850}{1{,}7 \cdot 10^{-27}}} = 4 \cdot 10^{5}\ \text{m/s}
+$$
+
+**i) Módulo del campo magnético.** Dentro del campo, la fuerza magnética es la fuerza centrípeta de la trayectoria circular:
+
+$$
+e\,v\,B = m_p\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+B = \frac{m_p\,v}{e\,r} = \frac{1{,}7 \cdot 10^{-27} \cdot 4 \cdot 10^5}{1{,}6 \cdot 10^{-19} \cdot 0{,}02} = 0{,}213\ \text{T}
+$$
+
+**Dirección del campo.** El protón entra moviéndose hacia $+\vec{i}$ y gira en sentido antihorario en el plano XY: al empezar a girar se desvía hacia $+\vec{j}$, así que la fuerza magnética apunta hacia $+\vec{j}$, hacia el centro de la circunferencia. Como $\vec{i} \times (-\vec{k}) = \vec{j}$, el campo es **entrante**, $\vec{B} = -0{,}213\,\vec{k}$ T:
+
+<ProtonAceleradoCampoB descripcion="Un protón parte del reposo junto a la placa positiva, se acelera hacia la derecha hasta la placa negativa y entra en una región con un campo magnético entrante en el papel. La fuerza magnética, perpendicular a la velocidad y dirigida hacia el centro, le hace describir un arco de circunferencia de 0,02 metros de radio en sentido antihorario." />
+
+**ii) Campo eléctrico para una trayectoria rectilínea.** Para que el protón no se desvíe, la fuerza eléctrica debe compensar la magnética: igual módulo y sentido opuesto. Al entrar en el campo, la fuerza magnética apunta hacia $+\vec{j}$, así que la eléctrica debe apuntar hacia $-\vec{j}$; como la carga es positiva, el campo eléctrico tiene ese mismo sentido:
+
+$$
+e\,E = e\,v\,B
+\quad\Rightarrow\quad
+E = v\,B = 4 \cdot 10^5 \cdot 0{,}2125 = 8{,}5 \cdot 10^{4}\ \text{N/C}
+$$
+
+<Vectores
+  xMin={-1.4}
+  xMax={2}
+  yMin={-1.4}
+  yMax={1.4}
+  escala={60}
+  puntos={[
+    { x: 0, y: 0, texto: "p⁺", tipo: "carga", signo: "+", dx: -26, dy: 16 },
+    { x: 1.4, y: 1, texto: "B (entra)", tipo: "entra", dx: -24, dy: -14 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [60, 0], texto: "v", color: "#195c51", dy: 16 },
+    { desde: [0, 0], v: [0, 52], texto: "F", sub: "B", color: "#b04a3a", dx: 6, dy: 4 },
+    { desde: [0, 0], v: [0, -52], texto: "F", sub: "E", color: "#2d6fa3", dx: 6, dy: 4 },
+  ]}
+  descripcion="Protón con velocidad en el sentido positivo del eje X dentro de un campo magnético entrante. La fuerza magnética apunta hacia arriba, en el sentido positivo del eje Y, y la fuerza eléctrica, hacia abajo, con el mismo módulo: la fuerza total es nula y el protón sigue en línea recta."
+/>
+
+$$
+\vec{E} = -8{,}5 \cdot 10^{4}\,\vec{j}\ \text{N/C}
+$$
+
+**Respuesta.** El campo magnético vale **0,213 T** (entrante, $-\vec{k}$) y para que el protón siga en línea recta habría que aplicar un campo eléctrico **$\vec{E} = -8{,}5 \cdot 10^4\,\vec{j}$ N/C**, perpendicular a la velocidad y al campo magnético.
+
+</Solucion>
+
+**B2. a)** Una espira conductora circular y un conductor rectilíneo, muy largo, se encuentran en el mismo plano. El hilo está recorrido por una corriente eléctrica de intensidad constante. Razone, con ayuda de un esquema, qué sentido tendrá la corriente inducida sobre la espira si: **i)** la espira se mueve perpendicularmente al hilo, acercándose; **ii)** la espira se mueve paralela al hilo, en el sentido de su corriente.
+
+<Solucion>
+
+El hilo crea un campo magnético cuyas líneas son circunferencias concéntricas con él, de módulo $B = \mu_0 I/(2\pi d)$: **disminuye al alejarse del hilo**. En el plano de la espira, el campo es perpendicular a ese plano. Dibujamos el hilo vertical, con la corriente hacia arriba y la espira a su derecha: por la regla de la mano derecha, allí el campo es **entrante** $(\otimes)$.
+
+Por la **ley de Faraday**, solo se induce corriente si cambia el flujo magnético a través de la espira, y por la **ley de Lenz**, la corriente inducida se opone a ese cambio.
+
+**i) La espira se acerca al hilo.** Al acercarse, entra en una zona de campo más intenso: el **flujo entrante aumenta**. La corriente inducida crea en el interior de la espira un campo **saliente** $(\odot)$ que se opone al aumento, y circula en **sentido antihorario**.
+
+**ii) La espira se mueve paralela al hilo.** Se mantiene siempre a la misma distancia del hilo, donde el campo tiene el mismo valor: el **flujo no cambia** y **no se induce corriente**.
+
+<EspiraCircularHilo casos={["acerca", "paralela"]} />
+
+(Si la espira estuviera al otro lado del hilo, el campo sería saliente y en el caso i) la corriente circularía en sentido horario; en el ii) seguiría sin haber corriente.)
+
+</Solucion>
+
+**b)** El lado móvil de la espira rectangular de la figura, de longitud *a* = 0,15 m, se mueve con una velocidad constante de 0,2 m s<sup>-1</sup> dentro de un campo magnético uniforme de módulo igual a 2 T. La resistencia eléctrica de la espira es igual a 50 Ω, independientemente de su tamaño. Calcule: **i)** la f.e.m. inducida; **ii)** la intensidad de corriente y razone, con la ayuda de un esquema, el sentido de la corriente inducida.
+
+<EspiraLadoMovil />
+
+<Solucion>
+
+**i) Fuerza electromotriz inducida.** Según la figura, el campo es saliente del papel $(\odot)$ y perpendicular al plano de la espira, y el lado móvil, de longitud $a$, avanza hacia la derecha. Tomamos como espira la que forma el lado móvil con la parte derecha del marco, donde está dibujado el campo. Si su anchura es $x$, el flujo es $\Phi = B\,a\,x$; al avanzar el lado móvil, $x$ disminuye a razón de $v$, y por la **ley de Faraday**:
+
+$$
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right| = B\,a\,\left|\frac{dx}{dt}\right| = B\,a\,v = 2 \cdot 0{,}15 \cdot 0{,}2 = 0{,}06\ \text{V}
+$$
+
+**ii) Intensidad y sentido de la corriente.** Por la ley de Ohm:
+
+$$
+I = \frac{|\varepsilon|}{R} = \frac{0{,}06}{50} = 1{,}2 \cdot 10^{-3}\ \text{A}
+$$
+
+Al avanzar el lado móvil hacia la derecha, el área de la espira disminuye y el flujo saliente también. Por la **ley de Lenz**, la corriente inducida se opone a esa disminución: crea dentro de la espira un **campo inducido saliente**, en el mismo sentido que $\vec{B}$, y para eso circula en **sentido antihorario**, que es bajar por el lado móvil:
+
+<EspiraLadoMovil solucion />
+
+Se llega a lo mismo con la fuerza de Lorentz sobre las cargas del lado móvil: con $\vec{v}$ hacia la derecha y $\vec{B}$ saliente, $\vec{F} = q\,\vec{v} \times \vec{B}$ apunta hacia abajo para una carga positiva, así que la corriente baja por el lado móvil. (Si se toma en cambio el circuito que queda a la izquierda del lado móvil, cuya área aumenta, la corriente sigue bajando por el lado móvil, pero en ese circuito circula en sentido horario y su campo inducido es entrante.)
+
+**Respuesta.** La fuerza electromotriz inducida es **0,06 V** y la intensidad, **$1{,}2 \cdot 10^{-3}$ A** (1,2 mA), que baja por el lado móvil. No dependen del tamaño de la espira, solo de la longitud del lado móvil, de su velocidad y del campo.
+
+</Solucion>

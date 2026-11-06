@@ -1,0 +1,204 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: reserva-4
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** **i)** Realice un esquema justificado de las líneas de campo y las superficies equipotenciales creadas por una carga puntual negativa y **ii)** explique cómo varían el campo y el potencial eléctrico en función de la distancia a dicha carga.
+
+<Solucion>
+
+**i) Líneas de campo y superficies equipotenciales.** El campo que crea una carga puntual $q$ en un punto a una distancia $r$ es:
+
+$$
+\vec{E} = K\,\frac{q}{r^2}\,\vec{u}_r
+$$
+
+siendo $\vec{u}_r$ el vector unitario que va de la carga al punto. Si la carga es **negativa**, el campo apunta en sentido contrario a $\vec{u}_r$, **hacia la carga**. Las líneas de campo son **rectas radiales** que llegan a la carga desde todas las direcciones: una carga negativa es un sumidero de líneas de campo.
+
+Las **superficies equipotenciales** son los puntos con el mismo potencial, $V = K\,q/r$, es decir, a la misma distancia de la carga: son **esferas concéntricas** centradas en la carga (circunferencias en el dibujo). Son perpendiculares a las líneas de campo en cada punto.
+
+<Vectores
+  xMin={-2.4}
+  xMax={2.4}
+  yMin={-2.4}
+  yMax={2.4}
+  escala={50}
+  ejes={["", ""]}
+  puntos={[{ x: 0, y: 0, texto: "−q", tipo: "carga", signo: "−", dx: 10, dy: -12 }]}
+  vectores={[
+    { desde: [2.2, 0], v: [-64, 0], texto: "" },
+    { desde: [-2.2, 0], v: [64, 0], texto: "" },
+    { desde: [0, 2.2], v: [0, -64], texto: "" },
+    { desde: [0, -2.2], v: [0, 64], texto: "" },
+    { desde: [1.556, 1.556], v: [-45, -45], texto: "" },
+    { desde: [-1.556, 1.556], v: [45, -45], texto: "" },
+    { desde: [1.556, -1.556], v: [-45, 45], texto: "" },
+    { desde: [-1.556, -1.556], v: [45, 45], texto: "" },
+  ]}
+  circulos={[
+    { centro: [0, 0], r: 0.8 },
+    { centro: [0, 0], r: 1.4 },
+    { centro: [0, 0], r: 2 },
+  ]}
+  descripcion="Carga puntual negativa en el centro. Las líneas de campo son rectas radiales con flechas que apuntan hacia la carga, desde todas las direcciones. Las superficies equipotenciales, dibujadas como circunferencias discontinuas, son esferas concéntricas con la carga, perpendiculares a las líneas de campo."
+/>
+
+**ii) Variación con la distancia.**
+
+- **Campo**: su módulo, $E = K\,|q|/r^2$, es inversamente proporcional al **cuadrado** de la distancia: si la distancia se duplica, el campo se reduce a la cuarta parte. En el dibujo, las líneas de campo están más juntas cerca de la carga, donde el campo es más intenso.
+- **Potencial**: $V = K\,q/r = -K\,|q|/r$ es **negativo** e inversamente proporcional a la distancia. Al alejarse de la carga **aumenta** (se hace menos negativo) y tiende a cero en el infinito. Por eso las líneas de campo apuntan hacia la carga, en el sentido en que el potencial disminuye. Las superficies equipotenciales, dibujadas con la misma diferencia de potencial entre cada dos consecutivas, están más juntas cerca de la carga.
+
+</Solucion>
+
+**b)** Dos partículas idénticas con carga *q* = – 2·10<sup>-6</sup> C están fijas en los puntos A(1,0) m y B(1,2) m. Determine en el punto C(2,1) m: **i)** el vector campo eléctrico y **ii)** el potencial eléctrico.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo eléctrico en C.** El punto C(2,1) está a la misma distancia de las dos cargas:
+
+$$
+r_{AC} = r_{BC} = \sqrt{1^2 + 1^2} = \sqrt{2}\ \text{m}
+$$
+
+Cada carga crea en C un campo de módulo:
+
+$$
+E_A = E_B = K\,\frac{|q|}{r^2} = 9 \cdot 10^9 \cdot \frac{2 \cdot 10^{-6}}{2} = 9000\ \text{N/C}
+$$
+
+Como las cargas son negativas, cada campo apunta **hacia su carga**: el de A, de C hacia A, en la dirección $(-1, -1)$, y el de B, de C hacia B, en la dirección $(-1, 1)$:
+
+<Vectores
+  xMin={-0.3}
+  xMax={2.8}
+  yMin={-0.5}
+  yMax={2.5}
+  escala={70}
+  unidad="m"
+  puntos={[
+    { x: 1, y: 0, texto: "A(1, 0)", tipo: "carga", signo: "−", dx: 12, dy: 16 },
+    { x: 1, y: 2, texto: "B(1, 2)", tipo: "carga", signo: "−", dx: 12, dy: -6 },
+    { x: 2, y: 1, texto: "C(2, 1)", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [2, 1], v: [-34, -34], texto: "E", sub: "A", color: "#2d6fa3", dx: -18, dy: 10 },
+    { desde: [2, 1], v: [-34, 34], texto: "E", sub: "B", color: "#2d6fa3", dx: -18 },
+    { desde: [2, 1], v: [-48, 0], texto: "E", color: "#195c51", dx: -14, dy: -6 },
+  ]}
+  segmentos={[[1, 0, 2, 1], [1, 2, 2, 1]]}
+  descripcion="Dos cargas negativas iguales en A, de coordenadas 1, 0, y en B, de coordenadas 1, 2. En C, de coordenadas 2, 1, el campo de A apunta hacia A, abajo a la izquierda, y el de B hacia B, arriba a la izquierda. Las componentes verticales se anulan y el campo total apunta horizontalmente hacia la izquierda."
+/>
+
+$$
+\vec{E}_A = \frac{9000}{\sqrt{2}}\left(-\vec{i} - \vec{j}\right)\ \text{N/C},
+\qquad
+\vec{E}_B = \frac{9000}{\sqrt{2}}\left(-\vec{i} + \vec{j}\right)\ \text{N/C}
+$$
+
+Las componentes verticales se anulan por simetría y las horizontales se suman:
+
+$$
+\vec{E}_C = \vec{E}_A + \vec{E}_B = -\frac{2 \cdot 9000}{\sqrt{2}}\,\vec{i} = -1{,}27 \cdot 10^{4}\,\vec{i}\ \text{N/C}
+$$
+
+**ii) Potencial en C.** El potencial es escalar; se suman los de las dos cargas, ambos negativos:
+
+$$
+V_C = K\,\frac{q}{r_{AC}} + K\,\frac{q}{r_{BC}} = 2 \cdot \frac{9 \cdot 10^9 \cdot (-2 \cdot 10^{-6})}{\sqrt{2}} = -2{,}55 \cdot 10^{4}\ \text{V}
+$$
+
+**Respuesta.** En C el campo es **$\vec{E} = -1{,}27 \cdot 10^4\,\vec{i}$ N/C**, dirigido hacia el segmento AB que une las cargas, y el potencial es **$-2{,}55 \cdot 10^4$ V**.
+
+</Solucion>
+
+**B2. a)** Dos partículas cargadas son lanzadas con la misma velocidad en una dirección perpendicular a un campo magnético uniforme. **i)** Deduzca razonadamente la expresión del radio de la trayectoria. **ii)** Sabiendo que la masa de la primera es diez veces mayor y su carga es el doble que la de la segunda, calcule la razón entre las frecuencias de sus movimientos.
+
+<Solucion>
+
+**i) Radio de la trayectoria.** Sobre una partícula de carga $q$ y masa $m$ que se mueve con velocidad $\vec{v}$ perpendicular al campo $\vec{B}$ actúa la **fuerza de Lorentz**, $\vec{F} = q\,\vec{v} \times \vec{B}$, de módulo $|q|\,v\,B$ y perpendicular a la velocidad. No cambia el módulo de la velocidad, solo su dirección: es una fuerza centrípeta y la partícula describe un movimiento circular uniforme:
+
+$$
+|q|\,v\,B = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+**ii) Razón entre las frecuencias.** El período es el tiempo en recorrer la circunferencia, y la frecuencia su inversa:
+
+$$
+T = \frac{2\pi\,R}{v} = \frac{2\pi\,m}{|q|\,B}
+\quad\Rightarrow\quad
+f = \frac{1}{T} = \frac{|q|\,B}{2\pi\,m}
+$$
+
+La frecuencia no depende de la velocidad, solo de la relación carga/masa. Con $m_1 = 10\,m_2$ y $q_1 = 2\,q_2$:
+
+$$
+\frac{f_1}{f_2} = \frac{q_1/m_1}{q_2/m_2} = \frac{q_1}{q_2} \cdot \frac{m_2}{m_1} = 2 \cdot \frac{1}{10} = \frac{1}{5}
+$$
+
+La primera partícula gira con **la quinta parte de la frecuencia** de la segunda: $f_2 = 5\,f_1$. (Su radio, con la misma velocidad, es $R_1/R_2 = (m_1/m_2)(q_2/q_1) = 5$ veces mayor.)
+
+</Solucion>
+
+**b)** Un conductor rectilíneo muy largo está situado en el eje OZ y está recorrido por una corriente *I* = 2,5 A en sentido positivo del mismo. Responda a las siguientes cuestiones apoyándose en esquemas para completar los razonamientos. **i)** Determine la fuerza (vector) que actúa sobre una carga *q* = 3·10<sup>-6</sup> C, que se encuentra en el eje OX en el punto *x* = 0,05 m y tiene una velocidad de módulo 5·10<sup>6</sup> m s<sup>-1</sup> en sentido positivo del eje OX. **ii)** Un segundo conductor idéntico al anterior se dispone paralelamente al primero y corta el eje OX en *x* = 0,15 m. Calcule la intensidad que debe recorrer este segundo conductor (indicando su sentido) para que la carga no sufra fuerza.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Fuerza sobre la carga.** Un hilo rectilíneo e indefinido crea un campo magnético de módulo:
+
+$$
+B_1 = \frac{\mu_0\,I}{2\pi\,d} = \frac{4\pi \cdot 10^{-7} \cdot 2{,}5}{2\pi \cdot 0{,}05} = 1 \cdot 10^{-5}\ \text{T}
+$$
+
+Sus líneas de campo son circunferencias alrededor del hilo, con el sentido que da la regla de la mano derecha: con la corriente hacia $+\vec{k}$ (saliendo del papel si miramos el plano XY desde arriba), las líneas giran en sentido antihorario, y en el punto $(0{,}05;\ 0)$, sobre el semieje X positivo, el campo apunta hacia $+\vec{j}$: $\vec{B}_1 = 10^{-5}\,\vec{j}$ T.
+
+La fuerza sobre la carga es la **fuerza de Lorentz**:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B}_1 = 3 \cdot 10^{-6} \cdot \left(5 \cdot 10^6\,\vec{i} \times 10^{-5}\,\vec{j}\right) = 1{,}5 \cdot 10^{-4}\,\vec{k}\ \text{N}
+$$
+
+<Vectores
+  xMin={-0.04}
+  xMax={0.2}
+  yMin={-0.06}
+  yMax={0.07}
+  escala={1700}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "I₁ = 2,5 A", tipo: "sale", dx: -12, dy: 26 },
+    { x: 0.15, y: 0, texto: "I₂ = 5 A (x = 0,15 m)", tipo: "sale", dx: -30, dy: -14 },
+    { x: 0.05, y: 0, texto: "q (x = 0,05 m)", tipo: "carga", signo: "+", dx: 8, dy: 26 },
+  ]}
+  vectores={[
+    { desde: [0.05, 0], v: [52, 0], texto: "v", color: "#195c51", dy: 16 },
+    { desde: [0.05, 0], v: [0, 48], texto: "B", sub: "1", color: "#2d6fa3", dx: 6, dy: 4 },
+    { desde: [0.05, 0], v: [0, -48], texto: "B", sub: "2", color: "#b04a3a", dx: 6, dy: 4 },
+  ]}
+  circulos={[
+    { centro: [0, 0], r: 0.05 },
+  ]}
+  descripcion="Plano XY visto desde arriba. Dos hilos perpendiculares al papel, con corrientes que salen de él, en el origen y en x = 0,15 metros. En el punto x = 0,05 metros, donde está la carga con velocidad hacia la derecha, el campo del primer hilo apunta hacia arriba y el del segundo, hacia abajo, con el mismo módulo, así que el campo total es nulo."
+/>
+
+**ii) Intensidad en el segundo conductor.** Para que la carga no sufra fuerza, el campo magnético total en su posición tiene que ser nulo: el segundo hilo debe crear allí un campo $\vec{B}_2 = -10^{-5}\,\vec{j}$ T. La carga está a $0{,}15 - 0{,}05 = 0{,}10$ m del segundo hilo, **a su izquierda**. A la izquierda de un hilo con la corriente hacia $+\vec{k}$, las líneas de campo (antihorarias) apuntan hacia $-\vec{j}$: la corriente debe tener el **mismo sentido** que la del primer hilo, $+\vec{k}$. Su valor:
+
+$$
+\frac{\mu_0\,I_2}{2\pi \cdot 0{,}10} = 10^{-5}
+\quad\Rightarrow\quad
+I_2 = \frac{10^{-5} \cdot 2\pi \cdot 0{,}10}{4\pi \cdot 10^{-7}} = 5\ \text{A}
+$$
+
+**Respuesta.** La fuerza sobre la carga es **$\vec{F} = 1{,}5 \cdot 10^{-4}\,\vec{k}$ N**, y para anularla el segundo conductor debe llevar una corriente de **5 A en el sentido positivo del eje OZ**, como el primero: la carga está el doble de lejos del segundo hilo, así que necesita el doble de corriente para crear el mismo campo.
+
+</Solucion>

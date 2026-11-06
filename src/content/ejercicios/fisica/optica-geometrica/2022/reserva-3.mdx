@@ -1,0 +1,88 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2022
+convocatoria: reserva-3
+formato: fisica
+---
+
+import DispersionRayos from "../../../../../components/figuras/fisica/DispersionRayos.astro"
+
+**C1. a)** Un rayo de luz monocromática pasa de un medio con índice de refracción *n*<sub>1</sub> a otro medio con índice *n*<sub>2</sub>. Sabiendo que *n*<sub>1</sub> > *n*<sub>2</sub>, **i)** compare razonadamente la velocidad de propagación del rayo, su longitud de onda y su frecuencia en cada medio. **ii)** Justifique si existe, o no, la posibilidad de que exista reflexión total para un rayo que incide sobre la superficie de separación de ambos medios.
+
+<Solucion>
+
+**i) Velocidad, longitud de onda y frecuencia.**
+
+- **Velocidad: mayor en el medio 2.** El índice de refracción es $n = c/v$, así que $v = c/n$: como $n_2 < n_1$, la luz va más deprisa en el medio 2, $v_2 > v_1$, en la proporción $v_2/v_1 = n_1/n_2$.
+- **Frecuencia: la misma en los dos medios.** La impone la fuente; al cambiar de medio, cada frente de onda que llega a la superficie genera uno en el otro medio al mismo ritmo.
+- **Longitud de onda: mayor en el medio 2.** Como $\lambda = v/f$ y la frecuencia no cambia, la longitud de onda es proporcional a la velocidad: $\lambda_2/\lambda_1 = n_1/n_2 > 1$.
+
+**ii) Reflexión total.** **Sí** es posible, porque la luz pasa a un medio menos refringente. Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$, y como $n_1 > n_2$, el rayo refractado se aleja de la normal: $\theta_2 > \theta_1$. Al aumentar el ángulo de incidencia se llega al **ángulo límite** $L$, para el que el refractado sale rasante:
+
+$$
+n_1\sin L = n_2\sin 90^\circ
+\quad\Rightarrow\quad
+\sin L = \frac{n_2}{n_1}
+$$
+
+Si el rayo incide con un ángulo **mayor que $L$**, no hay refracción y toda la luz se refleja en la superficie de separación. Si la luz fuera del medio 2 al 1 (a un medio más refringente), no podría haber reflexión total.
+
+</Solucion>
+
+**b)** Un rayo compuesto por luz roja y azul incide desde el aire sobre una lámina plana de vidrio con un ángulo de incidencia de 37º. **i)** Realice un esquema indicando las trayectorias de ambos rayos. **ii)** Determine el ángulo que forman entre sí los rayos rojo y azul en el interior del vidrio. **iii)** Calcule la frecuencia y la longitud de onda de cada componente del rayo dentro del vidrio.
+
+<Datos>n<sub>aire</sub> = 1; n<sub>vidrio,rojo</sub> = 1,612; n<sub>vidrio,azul</sub> = 1,671; λ<sub>aire,rojo</sub> = 6,563·10<sup>-7</sup> m; λ<sub>aire,azul</sub> = 4,861·10<sup>-7</sup> m; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Trayectorias.** El índice de refracción del vidrio depende de la frecuencia de la luz (**dispersión**): es mayor para el azul que para el rojo. Al entrar en el vidrio, los dos rayos se acercan a la normal, pero el azul se desvía más, y el rayo se separa en sus dos colores. Por la ley de Snell, $\sin 37^\circ = n\sin\theta$:
+
+$$
+\sin\theta_{\text{rojo}} = \frac{\sin 37^\circ}{1{,}612} = \frac{0{,}602}{1{,}612} = 0{,}373
+\quad\Rightarrow\quad
+\theta_{\text{rojo}} = 21{,}92^\circ
+$$
+
+$$
+\sin\theta_{\text{azul}} = \frac{\sin 37^\circ}{1{,}671} = \frac{0{,}602}{1{,}671} = 0{,}360
+\quad\Rightarrow\quad
+\theta_{\text{azul}} = 21{,}11^\circ
+$$
+
+<DispersionRayos
+  incidencia={37}
+  rayos={[
+    { n: 1.612, color: "#c0392b", texto: "rojo" },
+    { n: 1.671, color: "#2d6fa3", texto: "azul" },
+  ]}
+  descripcion="Rayo de luz roja y azul que incide desde el aire sobre un vidrio con 37 grados. Al refractarse se separa: el rojo forma 21,9 grados con la normal y el azul, que se desvía más, 21,1 grados. La separación entre los dos rayos está exagerada en el dibujo."
+/>
+
+**ii) Ángulo entre los rayos rojo y azul.** Los dos rayos refractados están en el mismo plano y al mismo lado de la normal, así que el ángulo que forman es la diferencia de sus ángulos de refracción:
+
+$$
+\Delta\theta = \theta_{\text{rojo}} - \theta_{\text{azul}} = 21{,}92^\circ - 21{,}11^\circ = 0{,}81^\circ
+$$
+
+**iii) Frecuencia y longitud de onda en el vidrio.** La frecuencia no cambia al pasar del aire al vidrio, y vale $f = c/\lambda_{\text{aire}}$. La longitud de onda en el vidrio se divide por el índice de refracción, $\lambda = \lambda_{\text{aire}}/n$, porque la velocidad lo hace:
+
+**Rojo:**
+
+$$
+f_{\text{rojo}} = \frac{3 \cdot 10^8}{6{,}563 \cdot 10^{-7}} = 4{,}57 \cdot 10^{14}\ \text{Hz}
+\qquad
+\lambda_{\text{rojo}} = \frac{6{,}563 \cdot 10^{-7}}{1{,}612} = 4{,}07 \cdot 10^{-7}\ \text{m}
+$$
+
+**Azul:**
+
+$$
+f_{\text{azul}} = \frac{3 \cdot 10^8}{4{,}861 \cdot 10^{-7}} = 6{,}17 \cdot 10^{14}\ \text{Hz}
+\qquad
+\lambda_{\text{azul}} = \frac{4{,}861 \cdot 10^{-7}}{1{,}671} = 2{,}91 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** En el vidrio el rojo forma 21,92º con la normal y el azul 21,11º, así que los dos rayos se separan **0,81º**. Las frecuencias son las mismas que en el aire, **$4{,}57 \cdot 10^{14}$ Hz** (rojo) y **$6{,}17 \cdot 10^{14}$ Hz** (azul), y las longitudes de onda en el vidrio, **$4{,}07 \cdot 10^{-7}$ m** y **$2{,}91 \cdot 10^{-7}$ m**. Al salir por la otra cara de la lámina, los dos rayos vuelven a ser paralelos al incidente, pero ligeramente separados.
+
+</Solucion>

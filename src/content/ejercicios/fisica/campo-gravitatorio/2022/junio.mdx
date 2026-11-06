@@ -1,0 +1,180 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2022
+convocatoria: junio
+formato: fisica
+---
+
+import FuerzasHorizontal from "../../../../../components/figuras/fisica/FuerzasHorizontal.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** **i)** Defina los conceptos de energía cinética, energía potencial y energía mecánica e indique la relación que existe entre ellas cuando sólo actúan fuerzas conservativas. **ii)** Explique razonadamente cómo se modifica dicha relación si intervienen además fuerzas no conservativas.
+
+<Solucion>
+
+**i) Definiciones.**
+
+- **Energía cinética**: la energía que tiene un cuerpo por estar en movimiento. Para un cuerpo de masa $m$ con velocidad $v$, $E_c = \frac{1}{2}m\,v^2$. Por el **teorema de las fuerzas vivas**, el trabajo de todas las fuerzas que actúan sobre el cuerpo es igual a la variación de su energía cinética: $W_{\text{total}} = \Delta E_c$.
+- **Energía potencial**: la energía asociada a la posición de un cuerpo en el campo de una **fuerza conservativa** (como el peso, la fuerza gravitatoria o la elástica), cuyo trabajo no depende del camino, solo de los puntos inicial y final. Se define de modo que el trabajo de la fuerza conservativa sea igual a menos su variación: $W_{\text{cons}} = -\Delta E_p$. Por ejemplo, cerca de la superficie terrestre, $E_p = m\,g\,h$.
+- **Energía mecánica**: la suma de las dos, $E_m = E_c + E_p$.
+
+**Relación con solo fuerzas conservativas.** El trabajo total es el de las fuerzas conservativas, así que:
+
+$$
+W_{\text{total}} = W_{\text{cons}}
+\quad\Rightarrow\quad
+\Delta E_c = -\Delta E_p
+\quad\Rightarrow\quad
+\Delta(E_c + E_p) = 0
+$$
+
+La **energía mecánica se conserva**: la cinética y la potencial pueden transformarse una en otra, pero su suma no cambia. Por ejemplo, un cuerpo en caída libre gana energía cinética exactamente al ritmo al que pierde energía potencial.
+
+**ii) Con fuerzas no conservativas.** Si actúan además fuerzas no conservativas (rozamiento, una fuerza aplicada…), su trabajo se suma al de las conservativas:
+
+$$
+W_{\text{total}} = W_{\text{cons}} + W_{\text{nc}}
+\quad\Rightarrow\quad
+\Delta E_c = -\Delta E_p + W_{\text{nc}}
+\quad\Rightarrow\quad
+W_{\text{nc}} = \Delta E_m
+$$
+
+La energía mecánica **ya no se conserva**: varía en una cantidad igual al trabajo de las fuerzas no conservativas. Si ese trabajo es negativo, como el del rozamiento, la energía mecánica **disminuye**: se transforma en calor (la energía total sí se conserva). Si es positivo, como el de un motor que empuja el cuerpo, la energía mecánica **aumenta**.
+
+</Solucion>
+
+**b)** Sobre un cuerpo de 3 kg, que está inicialmente en reposo sobre un plano horizontal, actúa una fuerza de 12 N paralela al plano. El coeficiente de rozamiento entre el cuerpo y el plano es 0,2. Determine, mediante consideraciones energéticas: **i)** el trabajo realizado por la fuerza de rozamiento tras recorrer el cuerpo una distancia de 10 m, y **ii)** la velocidad del cuerpo después de recorrer los 10 m.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+Sobre el cuerpo actúan el peso, la normal, la fuerza aplicada $F$ y el rozamiento, opuesto al movimiento:
+
+<FuerzasHorizontal
+  aplicada="F = 12 N"
+  nota="v (acelera)"
+  descripcion="Cuerpo sobre un plano horizontal. Actúan el peso, vertical hacia abajo; la normal, vertical hacia arriba; la fuerza aplicada de 12 newtons, horizontal hacia la derecha, en el sentido del movimiento; y el rozamiento, horizontal hacia la izquierda, opuesto al movimiento."
+/>
+
+**i) Trabajo del rozamiento.** El plano es horizontal y no hay más fuerzas verticales, así que la normal compensa el peso, $N = m\,g$, y el rozamiento vale:
+
+$$
+F_r = \mu\,m\,g = 0{,}2 \cdot 3 \cdot 9{,}8 = 5{,}88\ \text{N}
+$$
+
+Como es opuesto al desplazamiento (forma $180^\circ$ con él), su trabajo es negativo:
+
+$$
+W_{F_r} = F_r\,d\cos 180^\circ = -5{,}88 \cdot 10 = -58{,}8\ \text{J}
+$$
+
+**ii) Velocidad tras 10 m.** El peso y la normal no trabajan, porque son perpendiculares al desplazamiento, y la energía potencial no cambia, porque el plano es horizontal. El trabajo de la fuerza aplicada es:
+
+$$
+W_F = F\,d = 12 \cdot 10 = 120\ \text{J}
+$$
+
+Las dos fuerzas que trabajan son no conservativas, y su trabajo total es igual a la variación de la energía mecánica, que aquí es solo cinética (el cuerpo parte del reposo):
+
+$$
+W_F + W_{F_r} = \Delta E_c = \frac{1}{2}\,m\,v^2
+\quad\Rightarrow\quad
+120 - 58{,}8 = \frac{1}{2} \cdot 3 \cdot v^2
+$$
+
+$$
+v = \sqrt{\frac{2 \cdot 61{,}2}{3}} = 6{,}39\ \text{m/s}
+$$
+
+**Respuesta.** El rozamiento realiza un trabajo de **−58,8 J** y el cuerpo alcanza una velocidad de **6,39 m/s**. De los 120 J que aporta la fuerza, casi la mitad se disipan en calor por el rozamiento y el resto, 61,2 J, se convierte en energía cinética.
+
+</Solucion>
+
+**A2. a)** En una determinada región del espacio existen dos puntos A y B en los que el potencial gravitatorio es el mismo. **i)** ¿Podemos concluir que los campos gravitatorios en A y en B son iguales? **ii)** ¿Cuál sería el trabajo realizado por el campo gravitatorio al desplazar una masa *m* desde A hasta B?
+
+<Solucion>
+
+**i) ¿Son iguales los campos?** **No.** El campo gravitatorio no depende del valor del potencial en un punto, sino de **cómo cambia el potencial** alrededor de ese punto: apunta en el sentido en que el potencial disminuye más deprisa, y su módulo es mayor cuanto más rápido cambia. Dos puntos con el mismo potencial pueden tener campos distintos.
+
+Un contraejemplo: alrededor de una masa puntual $M$, el potencial $V = -G\,M/r$ es el mismo en todos los puntos de una esfera de radio $r$ centrada en la masa. En dos puntos A y B de esa esfera el campo tiene el mismo **módulo**, $g = G\,M/r^2$, pero distinta **dirección**: en cada uno apunta hacia la masa. Como el campo es un vector, los campos en A y B no son iguales. Y con varias masas, dos puntos de igual potencial pueden tener campos de módulos distintos.
+
+**ii) Trabajo de A a B.** La fuerza gravitatoria es conservativa: su trabajo solo depende de los puntos inicial y final, y es igual a menos la variación de la energía potencial, $E_p = m\,V$:
+
+$$
+W_{A \to B} = -\Delta E_p = -m\,(V_B - V_A) = 0
+$$
+
+El trabajo es **nulo**, sea cual sea el camino. Si la masa se mueve por un camino que no sea una superficie equipotencial, el campo hará trabajo positivo en unos tramos y negativo en otros, pero el total entre A y B es cero.
+
+</Solucion>
+
+**b)** Dos masas de 2 y 4 kg se sitúan en los puntos A(2,0) m y B(0,3) m, respectivamente. **i)** Determine el campo y el potencial gravitatorio en el origen de coordenadas. **ii)** Calcule el trabajo realizado por la fuerza gravitatoria para trasladar una tercera masa de 1 kg desde el origen de coordenadas hasta el punto C(2,3) m.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en el origen.** El campo que crea cada masa tiene módulo $g = G\,m/r^2$ y apunta hacia la masa que lo crea. El origen O está a 2 m de A y a 3 m de B:
+
+$$
+g_A = 6{,}67 \cdot 10^{-11} \cdot \frac{2}{2^2} = 3{,}34 \cdot 10^{-11}\ \text{N/kg}
+\qquad
+g_B = 6{,}67 \cdot 10^{-11} \cdot \frac{4}{3^2} = 2{,}96 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+El campo de A apunta hacia A, en el sentido de $+\vec{i}$, y el de B hacia B, en el sentido de $+\vec{j}$:
+
+<Vectores
+  xMin={-0.5}
+  xMax={3.6}
+  yMin={-0.5}
+  yMax={3.6}
+  escala={60}
+  unidad="m"
+  puntos={[
+    { x: 2, y: 0, texto: "A(2, 0) · 2 kg", tipo: "masa", dx: 10, dy: 22 },
+    { x: 0, y: 3, texto: "B(0, 3) · 4 kg", tipo: "masa" },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -14, dy: 16 },
+    { x: 2, y: 3, texto: "C(2, 3)", tipo: "punto" },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [56, 0], texto: "g", sub: "A", color: "#2d6fa3", dy: -8 },
+    { desde: [0, 0], v: [0, 50], texto: "g", sub: "B", color: "#2d6fa3", dx: -22, dy: 6 },
+    { desde: [0, 0], v: [56, 50], texto: "g", color: "#195c51" },
+  ]}
+  segmentos={[[2, 3, 2, 0], [2, 3, 0, 3]]}
+  descripcion="Masa de 2 kilos en A, de coordenadas 2, 0, y de 4 kilos en B, de coordenadas 0, 3. En el origen, el campo de A apunta hacia la derecha, hacia A, y el de B hacia arriba, hacia B, algo más corto; el campo total apunta en diagonal hacia arriba y a la derecha. El punto C, de coordenadas 2, 3, está a 3 metros de A y a 2 metros de B."
+/>
+
+$$
+\vec{g}_O = \left(3{,}34 \cdot 10^{-11}\,\vec{i} + 2{,}96 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+$$
+|\vec{g}_O| = \sqrt{\left(3{,}34 \cdot 10^{-11}\right)^2 + \left(2{,}96 \cdot 10^{-11}\right)^2} = 4{,}46 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**Potencial en el origen.** El potencial es escalar: se suman los potenciales de las dos masas, ambos negativos:
+
+$$
+V_O = -G\left(\frac{m_A}{r_{AO}} + \frac{m_B}{r_{BO}}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{2}{2} + \frac{4}{3}\right) = -1{,}56 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**ii) Trabajo de O a C.** El punto C(2,3) está a 3 m de A (en vertical) y a 2 m de B (en horizontal). Su potencial es:
+
+$$
+V_C = -6{,}67 \cdot 10^{-11}\left(\frac{2}{3} + \frac{4}{2}\right) = -1{,}78 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+La fuerza gravitatoria es conservativa, así que su trabajo es $W = -\Delta E_p = -m'\,(V_C - V_O)$, con $m' = 1$ kg:
+
+$$
+W = -1 \cdot \left(-1{,}78 \cdot 10^{-10} + 1{,}56 \cdot 10^{-10}\right) = 2{,}22 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** En el origen, $\vec{g} = (3{,}34 \cdot 10^{-11}\,\vec{i} + 2{,}96 \cdot 10^{-11}\,\vec{j})$ N/kg, de módulo $4{,}46 \cdot 10^{-11}$ N/kg, y $V = -1{,}56 \cdot 10^{-10}$ J/kg. El trabajo de la fuerza gravitatoria de O a C es **$2{,}22 \cdot 10^{-11}$ J**: es positivo porque C está más cerca de la masa mayor (la de 4 kg) y tiene un potencial más bajo, así que el desplazamiento se produce a favor del campo.
+
+</Solucion>

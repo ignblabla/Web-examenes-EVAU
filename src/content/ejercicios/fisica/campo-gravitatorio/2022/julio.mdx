@@ -1,0 +1,228 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2022
+convocatoria: julio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Deduzca la expresión de la energía mecánica de un satélite de masa *m* que orbita a una altura *h* de la superficie de un planeta de masa *M* y radio *R*. Exprese el resultado en función de *m*, *M*, *R* y *h*.
+
+<Solucion>
+
+El satélite describe una órbita circular de radio $r = R + h$, medido desde el centro del planeta. La única fuerza que actúa sobre él es la atracción gravitatoria del planeta, que apunta hacia el centro y es la **fuerza centrípeta** del movimiento circular:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v^2 = \frac{G\,M}{r}
+$$
+
+**Energía cinética.** Con esa velocidad orbital:
+
+$$
+E_c = \frac{1}{2}\,m\,v^2 = \frac{G\,M\,m}{2\,r}
+$$
+
+**Energía potencial.** Tomando el origen de energía potencial en el infinito:
+
+$$
+E_p = -G\,\frac{M\,m}{r}
+$$
+
+**Energía mecánica.** Es la suma de las dos:
+
+$$
+E_m = E_c + E_p = \frac{G\,M\,m}{2\,r} - \frac{G\,M\,m}{r} = -\frac{G\,M\,m}{2\,r}
+\quad\Rightarrow\quad
+E_m = -\frac{G\,M\,m}{2\,(R + h)}
+$$
+
+La energía mecánica es **negativa**, como corresponde a un cuerpo ligado al planeta, y vale la mitad de la energía potencial (y es la opuesta de la cinética). Cuanto más alta es la órbita, menos negativa es: para subir un satélite a una órbita más alta hay que aportarle energía.
+
+</Solucion>
+
+**b)** Un bloque de 2 kg asciende con una velocidad inicial de 8 m s<sup>-1</sup> por un plano inclinado que forma un ángulo de 30º con la horizontal hasta detenerse momentáneamente. A continuación, el bloque desciende hasta llegar al punto de partida. El coeficiente de rozamiento entre el bloque y el plano es 0,2. Determine mediante consideraciones energéticas: **i)** la altura máxima a la que llega el bloque y **ii)** la velocidad con la que regresa el bloque al punto de partida.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+Sobre el bloque actúan el peso, la normal y el rozamiento. La normal no trabaja, porque es perpendicular al desplazamiento; el peso es conservativo y su trabajo se recoge en la energía potencial; el rozamiento es una fuerza no conservativa, opuesta siempre al movimiento, y su trabajo es igual a la variación de la energía mecánica:
+
+$$
+W_{F_r} = \Delta E_m
+$$
+
+En el plano inclinado, la normal compensa la componente del peso perpendicular al plano, así que el rozamiento vale:
+
+$$
+F_r = \mu\,N = \mu\,m\,g\cos 30^\circ = 0{,}2 \cdot 2 \cdot 9{,}8 \cdot \cos 30^\circ = 3{,}39\ \text{N}
+$$
+
+Si el bloque sube una altura $h$, recorre sobre el plano una distancia $d = h/\sin 30^\circ = 2h$.
+
+**i) Altura máxima.** Durante la subida, el rozamiento apunta hacia abajo del plano:
+
+<PlanoInclinado angulo={30} mueve="sube" descripcion="Bloque que sube por un plano inclinado 30 grados. Actúan el peso, vertical hacia abajo; la normal, perpendicular al plano; y el rozamiento, paralelo al plano y hacia abajo, opuesto al movimiento." />
+
+Tomamos el origen de energía potencial en el punto de partida. Al principio solo hay energía cinética y, en el punto más alto, el bloque está parado y solo tiene energía potencial. El trabajo del rozamiento en la subida es $W_{F_r} = -F_r\,d$:
+
+$$
+\left(m\,g\,h\right) - \frac{1}{2}\,m\,v_0^2 = -\mu\,m\,g\cos 30^\circ \cdot \frac{h}{\sin 30^\circ}
+$$
+
+Dividimos por $m$ y despejamos $h$:
+
+$$
+h = \frac{v_0^2}{2\,g\left(1 + \mu\,\dfrac{\cos 30^\circ}{\sin 30^\circ}\right)} = \frac{8^2}{2 \cdot 9{,}8 \cdot (1 + 0{,}2 \cdot 1{,}732)} = \frac{64}{26{,}39} = 2{,}43\ \text{m}
+$$
+
+El bloque recorre sobre el plano $d = 2h = 4{,}85$ m. Comprobamos el balance de energía:
+
+- Energía cinética inicial: $E_{c0} = \frac{1}{2} \cdot 2 \cdot 8^2 = 64$ J.
+- Energía potencial arriba: $E_p = m\,g\,h = 2 \cdot 9{,}8 \cdot 2{,}43 = 47{,}5$ J.
+- Energía disipada por el rozamiento en la subida: $F_r\,d = 3{,}39 \cdot 4{,}85 = 16{,}5$ J.
+
+**ii) Velocidad al volver.** El bloque vuelve a bajar porque la componente del peso a lo largo del plano, $m\,g\sin 30^\circ = 9{,}8$ N, es mayor que el rozamiento máximo, $3{,}39$ N (equivale a $\tan 30^\circ = 0{,}577 > \mu$). En la bajada el rozamiento apunta hacia arriba del plano, pero su módulo y la distancia recorrida son los mismos, así que disipa otros $16{,}5$ J:
+
+<PlanoInclinado angulo={30} mueve="baja" descripcion="Bloque que baja por un plano inclinado 30 grados. Actúan el peso, vertical hacia abajo; la normal, perpendicular al plano; y el rozamiento, paralelo al plano y hacia arriba, opuesto al movimiento." />
+
+$$
+\frac{1}{2}\,m\,v^2 - m\,g\,h = -F_r\,d
+\quad\Rightarrow\quad
+\frac{1}{2} \cdot 2 \cdot v^2 = 47{,}5 - 16{,}5 = 31{,}1\ \text{J}
+$$
+
+$$
+v = \sqrt{31{,}1} = 5{,}57\ \text{m/s}
+$$
+
+**Respuesta.** El bloque sube hasta una altura de **2,43 m** (4,85 m sobre el plano) y vuelve al punto de partida con una velocidad de **5,57 m/s**, menor que los 8 m/s iniciales: de los 64 J de energía cinética inicial, el rozamiento ha disipado en forma de calor 33 J entre la subida y la bajada, y solo quedan 31 J.
+
+</Solucion>
+
+**A2. a)** Dos cuerpos de masas *m* y 2*m* están separados una distancia *d*. Razone, con la ayuda de un esquema, si se anula el campo o el potencial gravitatorio en algún punto del segmento que los une.
+
+<Solucion>
+
+**Campo gravitatorio.** Cada masa crea un campo de módulo $g = G\,m/r^2$ dirigido **hacia ella**. En un punto P del segmento, a una distancia $x$ de la masa $m$ (y $d - x$ de la masa $2m$), el campo de $m$ apunta hacia $m$ y el de $2m$ apunta hacia $2m$: tienen la misma dirección y **sentidos opuestos**, así que pueden anularse si sus módulos son iguales:
+
+$$
+G\,\frac{m}{x^2} = G\,\frac{2m}{(d - x)^2}
+\quad\Rightarrow\quad
+(d - x)^2 = 2\,x^2
+\quad\Rightarrow\quad
+d - x = \sqrt{2}\,x
+$$
+
+$$
+x = \frac{d}{1 + \sqrt{2}} = 0{,}414\,d
+$$
+
+<Vectores
+  xMin={-0.5}
+  xMax={3.5}
+  yMin={-0.6}
+  yMax={0.8}
+  escala={80}
+  puntos={[
+    { x: 0, y: 0, texto: "m", tipo: "masa", dx: -6, dy: -14 },
+    { x: 3, y: 0, texto: "2m", tipo: "masa", dx: -6, dy: -14 },
+    { x: 1.243, y: 0, texto: "P", tipo: "punto", dx: -4, dy: 22 },
+  ]}
+  vectores={[
+    { desde: [1.243, 0], v: [-50, 0], texto: "g", sub: "m", color: "#2d6fa3", dx: -14, dy: -6 },
+    { desde: [1.243, 0], v: [50, 0], texto: "g", sub: "2m", color: "#b04a3a", dx: 4, dy: -6 },
+  ]}
+  descripcion="Masas m y 2m separadas una distancia d. En el punto P, a 0,414 d de la masa m, el campo de m apunta hacia m y el de 2m apunta hacia 2m, con el mismo módulo: el campo total es nulo."
+/>
+
+El campo se anula en un punto del segmento a **$0{,}414\,d$ de la masa $m$**, más cerca de la masa pequeña: para compensar que $2m$ crea un campo el doble de intenso a igual distancia, el punto tiene que estar más lejos de ella.
+
+**Potencial gravitatorio.** El potencial es una magnitud escalar y el de cada masa es siempre **negativo** (con el origen en el infinito):
+
+$$
+V = -G\,\frac{m}{x} - G\,\frac{2m}{d - x} < 0
+$$
+
+La suma de dos cantidades negativas nunca es cero: **el potencial no se anula en ningún punto** del segmento (ni de ningún otro sitio a distancia finita). Que el campo sea nulo en P no significa que lo sea el potencial: el campo nulo indica que el potencial no cambia al moverse un poco a lo largo del segmento. En P el potencial alcanza su valor máximo sobre el segmento (el menos negativo), pero sigue siendo negativo.
+
+</Solucion>
+
+**b)** Dos masas iguales de 2 kg están situadas en los puntos A(1,0) m y B(-1,0) m. **i)** Calcule la fuerza gravitatoria sobre una tercera masa *M* de 1 kg situada en el punto C(0,1) m. **ii)** Determine el trabajo realizado por la fuerza gravitatoria cuando la masa *M* se desplaza hasta el origen de coordenadas.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Fuerza sobre M en C.** El punto C(0,1) está a la misma distancia de A y de B:
+
+$$
+r_{AC} = r_{BC} = \sqrt{1^2 + 1^2} = \sqrt{2}\ \text{m}
+$$
+
+Cada masa atrae a $M$ con una fuerza de módulo:
+
+$$
+F_A = F_B = G\,\frac{m\,M}{r^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{2 \cdot 1}{2} = 6{,}67 \cdot 10^{-11}\ \text{N}
+$$
+
+dirigida desde C hacia la masa que la crea. Los vectores unitarios de C hacia A y de C hacia B son $\frac{1}{\sqrt{2}}(\vec{i} - \vec{j})$ y $\frac{1}{\sqrt{2}}(-\vec{i} - \vec{j})$:
+
+<Vectores
+  xMin={-2.3}
+  xMax={2.3}
+  yMin={-0.5}
+  yMax={1.6}
+  escala={90}
+  unidad="m"
+  puntos={[
+    { x: 1, y: 0, texto: "A(1, 0) · 2 kg", tipo: "masa", dx: 10, dy: 24 },
+    { x: -1, y: 0, texto: "B(−1, 0) · 2 kg", tipo: "masa", dx: -10, dy: 24 },
+    { x: 0, y: 1, texto: "C(0, 1) · M = 1 kg", tipo: "masa" },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -16, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 1], v: [40, -40], texto: "F", sub: "A", color: "#2d6fa3", dx: 4, dy: 10 },
+    { desde: [0, 1], v: [-40, -40], texto: "F", sub: "B", color: "#2d6fa3", dx: -22, dy: 10 },
+    { desde: [0, 1], v: [0, -57], texto: "F", color: "#195c51", dx: 6, dy: 4 },
+  ]}
+  segmentos={[[0, 1, 1, 0], [0, 1, -1, 0]]}
+  descripcion="Masas de 2 kilos en A, de coordenadas 1, 0, y en B, de coordenadas menos 1, 0. Sobre la masa M en C, de coordenadas 0, 1, la fuerza de A apunta hacia A, abajo a la derecha, y la de B hacia B, abajo a la izquierda. Las componentes horizontales se anulan y la fuerza total apunta verticalmente hacia abajo, hacia el origen."
+/>
+
+$$
+\vec{F}_A = \frac{6{,}67 \cdot 10^{-11}}{\sqrt{2}}\left(\vec{i} - \vec{j}\right)\ \text{N},
+\qquad
+\vec{F}_B = \frac{6{,}67 \cdot 10^{-11}}{\sqrt{2}}\left(-\vec{i} - \vec{j}\right)\ \text{N}
+$$
+
+Las componentes horizontales se anulan por simetría y las verticales se suman:
+
+$$
+\vec{F} = \vec{F}_A + \vec{F}_B = -\frac{2 \cdot 6{,}67 \cdot 10^{-11}}{\sqrt{2}}\,\vec{j} = -9{,}43 \cdot 10^{-11}\,\vec{j}\ \text{N}
+$$
+
+**ii) Trabajo de C al origen.** La fuerza gravitatoria es conservativa: su trabajo no depende del camino y es igual a menos la variación de la energía potencial, $W = -\Delta E_p = E_{p,C} - E_{p,O}$. La energía potencial de $M$ es la suma de la que tiene con cada masa:
+
+$$
+E_{p,C} = -G\,\frac{m\,M}{r_{AC}} - G\,\frac{m\,M}{r_{BC}} = -6{,}67 \cdot 10^{-11}\left(\frac{2}{\sqrt{2}} + \frac{2}{\sqrt{2}}\right) = -1{,}89 \cdot 10^{-10}\ \text{J}
+$$
+
+En el origen, $M$ está a 1 m de cada masa:
+
+$$
+E_{p,O} = -6{,}67 \cdot 10^{-11}\left(\frac{2}{1} + \frac{2}{1}\right) = -2{,}67 \cdot 10^{-10}\ \text{J}
+$$
+
+$$
+W = E_{p,C} - E_{p,O} = -1{,}89 \cdot 10^{-10} - \left(-2{,}67 \cdot 10^{-10}\right) = 7{,}81 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** La fuerza sobre $M$ en C es $\vec{F} = -9{,}43 \cdot 10^{-11}\,\vec{j}$ N, dirigida hacia el origen, y el trabajo de la fuerza gravitatoria al llevar $M$ hasta el origen es **$7{,}81 \cdot 10^{-11}$ J**. Es positivo: la masa se acerca a las dos masas que la atraen, se mueve en el sentido de la fuerza y su energía potencial disminuye, así que el desplazamiento sería espontáneo.
+
+</Solucion>

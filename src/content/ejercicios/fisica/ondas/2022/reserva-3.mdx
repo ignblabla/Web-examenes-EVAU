@@ -1,0 +1,90 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2022
+convocatoria: reserva-3
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**C2. a)** Justifique la veracidad o falsedad de las siguientes afirmaciones acerca de las ondas estacionarias: **i)** La amplitud de la oscilación para cada punto del medio no depende de su posición. **ii)** La distancia entre dos nodos consecutivos es igual a la longitud de onda.
+
+<Solucion>
+
+Una onda estacionaria resulta de la superposición de dos ondas armónicas de la misma amplitud, frecuencia y longitud de onda que se propagan en la misma dirección y sentidos opuestos. Su ecuación tiene la forma:
+
+$$
+y(x, t) = 2A\cos(kx)\sin(\omega t)
+$$
+
+Cada punto oscila con un movimiento armónico simple de frecuencia angular $\omega$ y amplitud $A(x) = |2A\cos(kx)|$.
+
+**i) Falsa.** La amplitud **depende de la posición**: varía entre $2A$ en los **vientres**, donde $|\cos(kx)| = 1$, y cero en los **nodos**, donde $\cos(kx) = 0$, que no vibran. En una onda viajera, en cambio, todos los puntos oscilan con la misma amplitud.
+
+**ii) Falsa.** Los nodos están donde $\cos(kx) = 0$, es decir, donde $kx = \pi/2 + n\pi$. Dos nodos consecutivos cumplen $k\,\Delta x = \pi$:
+
+$$
+\Delta x = \frac{\pi}{k} = \frac{\pi}{2\pi/\lambda} = \frac{\lambda}{2}
+$$
+
+La distancia entre dos nodos consecutivos es **media longitud de onda**, no una longitud de onda. Lo mismo ocurre entre dos vientres consecutivos; entre un nodo y el vientre siguiente hay $\lambda/4$.
+
+</Solucion>
+
+**b)** Una onda viene dada por la expresión: *y*(*x*,*t*) = 0,5·cos(0,8 *x*)·sen(20 *t*) (S.I.) Indique qué tipo de onda es y calcule su amplitud, frecuencia y longitud de onda, así como la velocidad de oscilación máxima de un punto situado en *x* = 0,2 m.
+
+<Solucion>
+
+**Tipo de onda.** La expresión es el producto de una función de la posición, $\cos(0{,}8x)$, y una función del tiempo, $\sin(20t)$: no tiene la forma $f(\omega t \pm kx)$ de una onda que se propaga. Es una **onda estacionaria**: cada punto oscila armónicamente con una amplitud que depende de su posición, y la forma de la onda no avanza. Comparando con $y = 2A\cos(kx)\sin(\omega t)$:
+
+$$
+2A = 0{,}5\ \text{m}, \qquad k = 0{,}8\ \text{rad/m}, \qquad \omega = 20\ \text{rad/s}
+$$
+
+**Amplitud.** La amplitud de oscilación de cada punto es $A(x) = |0{,}5\cos(0{,}8x)|$; su valor máximo, en los vientres, es **0,5 m**. Las dos ondas viajeras que, al superponerse, originan la onda estacionaria tienen la mitad de amplitud, $A = 0{,}25$ m.
+
+**Frecuencia y longitud de onda.**
+
+$$
+f = \frac{\omega}{2\pi} = \frac{20}{2\pi} = 3{,}18\ \text{Hz}
+\qquad
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{0{,}8} = 7{,}85\ \text{m}
+$$
+
+<GraficaFuncion
+  xMin={0}
+  xMax={8.4}
+  yMin={-0.65}
+  yMax={0.65}
+  marcasX={[2, 4, 6, 8]}
+  marcasY={[]}
+  tramos={[
+    { f: (x) => 0.5 * Math.cos(0.8 * x), desde: 0, hasta: 8.3 },
+    { f: (x) => -0.5 * Math.cos(0.8 * x), desde: 0, hasta: 8.3, color: "#b04a3a" },
+  ]}
+  puntos={[
+    { x: 1.963, y: 0, texto: "N", dy: -10 },
+    { x: 5.890, y: 0, texto: "N", dy: -10 },
+    { x: 0.2, y: 0.494, texto: "x = 0,2 m", dx: 8, dy: -6 },
+  ]}
+  descripcion="Envolvente de la onda estacionaria entre x = 0 y x = 8 metros: los puntos oscilan entre las curvas 0,5 cos(0,8 x) y su opuesta. Hay nodos en x = 1,96 y 5,89 metros y vientres, con amplitud 0,5 metros, en x = 0 y 3,93 metros. El punto x = 0,2 metros, muy cerca del vientre, oscila con una amplitud de 0,494 metros."
+/>
+
+**Velocidad máxima de oscilación en x = 0,2 m.** Ese punto oscila con amplitud:
+
+$$
+A(0{,}2) = 0{,}5\cos(0{,}8 \cdot 0{,}2) = 0{,}5\cos(0{,}16) = 0{,}494\ \text{m}
+$$
+
+(el ángulo, en radianes). Su velocidad de oscilación es la derivada de la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = 0{,}5\cos(0{,}8x) \cdot 20\cos(20t)
+\quad\Rightarrow\quad
+v_{y,\text{máx}}(0{,}2) = A(0{,}2)\,\omega = 0{,}494 \cdot 20 = 9{,}87\ \text{m/s}
+$$
+
+**Respuesta.** Es una **onda estacionaria** de amplitud máxima 0,5 m (en los vientres), frecuencia **3,18 Hz** y longitud de onda **7,85 m**. El punto $x = 0{,}2$ m, muy cerca del vientre de $x = 0$, oscila con una velocidad máxima de **9,87 m/s**.
+
+</Solucion>

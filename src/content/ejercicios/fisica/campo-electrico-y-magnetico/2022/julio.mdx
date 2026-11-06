@@ -1,0 +1,163 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2022
+convocatoria: julio
+formato: fisica
+---
+
+import ParticulasCampoMagnetico from "../../../../../components/figuras/fisica/ParticulasCampoMagnetico.astro"
+import ProtonAceleradoCampoB from "../../../../../components/figuras/fisica/ProtonAceleradoCampoB.astro"
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import FlujoEspira from "../../../../../components/figuras/fisica/FlujoEspira.astro"
+
+**B1. a)** Un protón, un electrón y un neutrón entran con igual velocidad en un campo magnético uniforme perpendicular a la velocidad. Explique con la ayuda de un esquema la trayectoria seguida por cada partícula.
+
+<Solucion>
+
+Sobre una partícula con carga $q$ que se mueve con velocidad $\vec{v}$ en un campo magnético $\vec{B}$ actúa la **fuerza de Lorentz**:
+
+$$
+\vec{F} = q\,\vec{v} \times \vec{B}
+$$
+
+Si $\vec{v}$ es perpendicular a $\vec{B}$, la fuerza tiene módulo $F = |q|\,v\,B$ y es perpendicular a la velocidad: no cambia el módulo de la velocidad, solo su dirección. Actúa como fuerza centrípeta y la partícula describe una **circunferencia** de radio:
+
+$$
+|q|\,v\,B = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+R = \frac{m\,v}{|q|\,B}
+$$
+
+- **Neutrón**: no tiene carga, $q = 0$, así que no actúa ninguna fuerza magnética sobre él y **sigue en línea recta** con velocidad constante.
+- **Protón y electrón**: tienen cargas del mismo valor y signo contrario, así que con la misma velocidad las fuerzas tienen el **mismo módulo** y **sentidos opuestos**: giran en **sentidos contrarios**.
+- **Radios**: con la misma velocidad y la misma carga en valor absoluto, el radio es proporcional a la masa. El protón tiene unas 1836 veces más masa que el electrón, así que su circunferencia es **mucho mayor**.
+
+<ParticulasCampoMagnetico
+  neutron
+  descripcion="Campo magnético uniforme entrante en el papel. Un protón, un electrón y un neutrón entran por el mismo punto con la misma velocidad hacia la derecha. Sobre el protón la fuerza apunta hacia arriba y describe un arco de radio grande hacia arriba; sobre el electrón la fuerza apunta hacia abajo, con el mismo módulo, y describe media circunferencia pequeña hacia abajo; el neutrón no sufre ninguna fuerza y sigue en línea recta. El dibujo no está a escala."
+/>
+
+En el esquema el campo es entrante en el papel $(\otimes)$ y las partículas entran hacia la derecha: sobre el protón $\vec{v} \times \vec{B}$ apunta hacia arriba y gira en sentido antihorario; sobre el electrón, de carga negativa, la fuerza apunta hacia abajo y gira en sentido horario. (Los radios no están a escala: el del protón sería unas 1836 veces el del electrón.)
+
+</Solucion>
+
+**b)** Un protón que parte del reposo es acelerado mediante una diferencia de potencial de 1,5·10<sup>4</sup> V. Posteriormente, penetra perpendicularmente en un campo magnético uniforme de 12 T. Determine razonadamente: **i)** el radio de curvatura de la trayectoria que describe el protón y **ii)** el periodo de revolución.
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**Velocidad del protón.** Al atravesar la diferencia de potencial, el campo eléctrico (conservativo) realiza sobre el protón un trabajo $W = q\,\Delta V$, que se convierte en energía cinética, porque parte del reposo:
+
+$$
+q\,\Delta V = \frac{1}{2}\,m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,q\,\Delta V}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-19} \cdot 1{,}5 \cdot 10^4}{1{,}7 \cdot 10^{-27}}} = 1{,}68 \cdot 10^{6}\ \text{m/s}
+$$
+
+<ProtonAceleradoCampoB descripcion="Un protón parte del reposo junto a la placa positiva, se acelera hasta la placa negativa y entra hacia la derecha en una región con un campo magnético entrante. Allí la fuerza magnética, perpendicular a la velocidad y dirigida hacia el centro, le hace describir un arco de circunferencia de radio r en sentido antihorario." />
+
+**i) Radio de curvatura.** Dentro del campo, la fuerza magnética es perpendicular a la velocidad y actúa como fuerza centrípeta:
+
+$$
+q\,v\,B = m_p\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+r = \frac{m_p\,v}{q\,B} = \frac{1{,}7 \cdot 10^{-27} \cdot 1{,}68 \cdot 10^{6}}{1{,}6 \cdot 10^{-19} \cdot 12} = 1{,}49 \cdot 10^{-3}\ \text{m}
+$$
+
+**ii) Periodo de revolución.** Es el tiempo que tarda en recorrer la circunferencia con velocidad de módulo constante:
+
+$$
+T = \frac{2\pi\,r}{v} = \frac{2\pi\,m_p}{q\,B} = \frac{2\pi \cdot 1{,}7 \cdot 10^{-27}}{1{,}6 \cdot 10^{-19} \cdot 12} = 5{,}56 \cdot 10^{-9}\ \text{s}
+$$
+
+**Respuesta.** El protón entra en el campo a $1{,}68 \cdot 10^6$ m/s y describe una circunferencia de **$1{,}49 \cdot 10^{-3}$ m** de radio (1,5 mm: el campo de 12 T es muy intenso) con un periodo de **$5{,}56 \cdot 10^{-9}$ s**. El periodo no depende de la velocidad ni del radio, solo de la relación $m/q$ y del campo: un protón más rápido describiría una circunferencia mayor en el mismo tiempo.
+
+</Solucion>
+
+**B2. a)** Una espira conductora circular gira alrededor de uno de sus diámetros con velocidad angular constante en una región donde hay un campo magnético uniforme perpendicular al eje de rotación. Razone qué le ocurre al valor de la máxima f.e.m. inducida en la espira si: **i)** se duplica el radio de la espira; **ii)** se duplica el periodo de rotación.
+
+<Solucion>
+
+Si la espira gira con velocidad angular $\omega$, el ángulo entre su vector superficie $\vec{S}$ y el campo es $\theta = \omega t$ (tomando $\theta = 0$ en $t = 0$), y el flujo que la atraviesa es:
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos(\omega t), \qquad S = \pi\,r^2
+$$
+
+El flujo cambia con el tiempo y, por la **ley de Faraday**, se induce una fuerza electromotriz alterna:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt} = B\,S\,\omega\,\sin(\omega t)
+\quad\Rightarrow\quad
+\varepsilon_{\text{máx}} = B\,S\,\omega = B\,\pi\,r^2\,\frac{2\pi}{T}
+$$
+
+**i) Se duplica el radio.** La superficie es proporcional al cuadrado del radio: $S' = \pi\,(2r)^2 = 4\,S$. La f.e.m. máxima se **multiplica por 4**:
+
+$$
+\varepsilon'_{\text{máx}} = B\,(4S)\,\omega = 4\,\varepsilon_{\text{máx}}
+$$
+
+**ii) Se duplica el periodo.** La velocidad angular es $\omega = 2\pi/T$: si el periodo se duplica, la espira gira el doble de despacio, $\omega' = \omega/2$, y el flujo cambia a la mitad de ritmo. La f.e.m. máxima se **reduce a la mitad**:
+
+$$
+\varepsilon'_{\text{máx}} = B\,S\,\frac{\omega}{2} = \frac{\varepsilon_{\text{máx}}}{2}
+$$
+
+(Además, la f.e.m. alterna tiene también el doble de periodo: su frecuencia se reduce a la mitad.)
+
+</Solucion>
+
+**b)** Una bobina circular de 75 espiras de 0,03 m de radio está dentro de un campo magnético cuyo módulo aumenta a ritmo constante de 4 a 10 T en 4 s, y cuya dirección forma un ángulo de 60º con el eje de la bobina. **i)** Calcule la f.e.m. inducida en la bobina y razone, con la ayuda de un esquema, el sentido de la corriente inducida. **ii)** Si la bobina pudiera girarse, razone cómo debería orientarse para que no se produjera corriente, y para que esa corriente fuera la mayor posible.
+
+<Solucion>
+
+**i) Fuerza electromotriz inducida.** El eje de la bobina es perpendicular a sus espiras, así que tiene la dirección del vector superficie $\vec{S}$: el ángulo entre $\vec{B}$ y $\vec{S}$ es $60^\circ$. La superficie de cada espira es:
+
+$$
+S = \pi\,r^2 = \pi \cdot 0{,}03^2 = 2{,}83 \cdot 10^{-3}\ \text{m}^2
+$$
+
+y el flujo a través de las $N$ espiras de la bobina:
+
+$$
+\Phi = N\,B\,S\cos 60^\circ
+$$
+
+Solo cambia el módulo del campo, a un ritmo constante:
+
+$$
+\frac{dB}{dt} = \frac{\Delta B}{\Delta t} = \frac{10 - 4}{4} = 1{,}5\ \text{T/s}
+$$
+
+Por la **ley de Faraday**, la fuerza electromotriz inducida, constante durante esos 4 s, es:
+
+$$
+|\varepsilon| = \left|\frac{d\Phi}{dt}\right| = N\,S\cos 60^\circ\,\frac{dB}{dt} = 75 \cdot 2{,}83 \cdot 10^{-3} \cdot 0{,}5 \cdot 1{,}5 = 0{,}159\ \text{V}
+$$
+
+**Sentido de la corriente.** Solo atraviesa la bobina la componente del campo a lo largo de su eje, $B\cos 60^\circ$, que va aumentando. Por la **ley de Lenz**, la corriente inducida crea en el interior de la bobina un campo **opuesto** a esa componente, que se opone al aumento del flujo. Mirando la bobina a lo largo de su eje, desde el lado hacia el que apunta la componente axial de $\vec{B}$ (que se ve saliente, $\odot$), el campo inducido es entrante $(\otimes)$ y la corriente circula en **sentido horario**:
+
+<EspiraCampoVariable
+  forma="circular"
+  notas={["B axial ⊙ (aumenta)", "I horaria", "B inducido ⊗"]}
+  pie="Bobina vista a lo largo de su eje; solo cuenta la componente axial de B"
+  descripcion="Bobina circular vista a lo largo de su eje, desde el lado hacia el que apunta la componente del campo magnético paralela al eje, que se ve saliente del papel y aumenta. La corriente inducida circula en sentido horario y crea en el interior un campo entrante, que se opone al aumento del flujo."
+/>
+
+**ii) Orientación de la bobina.** El flujo es proporcional a $\cos\theta$, siendo $\theta$ el ángulo entre el campo y el eje de la bobina, y la f.e.m. (y la corriente) también:
+
+<FlujoEspira />
+
+- **Sin corriente**: hace falta que el flujo sea nulo aunque el campo aumente, es decir, $\cos\theta = 0$. El **eje de la bobina** debe ser **perpendicular al campo** $(\theta = 90^\circ)$: las espiras quedan paralelas a las líneas de campo y ninguna las atraviesa.
+- **Corriente máxima**: $\cos\theta = 1$. El **eje de la bobina** debe ser **paralelo al campo** $(\theta = 0^\circ)$, con las espiras perpendiculares a las líneas de campo. La f.e.m. sería entonces el doble que con $60^\circ$:
+
+$$
+|\varepsilon_{\text{máx}}| = N\,S\,\frac{dB}{dt} = 75 \cdot 2{,}83 \cdot 10^{-3} \cdot 1{,}5 = 0{,}318\ \text{V}
+$$
+
+**Respuesta.** La f.e.m. inducida es **0,159 V**, y la corriente circula de forma que su campo se opone al aumento de la componente axial del campo. No habría corriente con el eje de la bobina perpendicular al campo, y sería máxima (0,318 V) con el eje paralelo al campo.
+
+</Solucion>

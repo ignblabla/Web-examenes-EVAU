@@ -1,0 +1,161 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2022
+convocatoria: reserva-4
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Dos partículas de masas *m* y 4*m* están separadas una distancia *d*. Determine razonadamente en qué punto se ha de colocar una tercera partícula de masa *m* para que se encuentre en equilibrio.
+
+<Solucion>
+
+La tercera partícula está en equilibrio si la fuerza total sobre ella es nula, es decir, si las atracciones de las otras dos se compensan: deben tener la misma dirección, sentidos opuestos y el mismo módulo.
+
+- **Fuera del segmento** que une las masas, las dos fuerzas apuntan hacia el mismo lado (las dos masas están al mismo lado de la partícula) y se suman: no hay equilibrio.
+- **Fuera de la recta**, las fuerzas tienen direcciones distintas y tampoco se anulan.
+- **Sobre el segmento**, la masa $m$ atrae a la partícula hacia un lado y la masa $4m$ hacia el otro: sí puede haber equilibrio.
+
+<Vectores
+  xMin={-0.5}
+  xMax={3.5}
+  yMin={-0.6}
+  yMax={0.8}
+  escala={80}
+  puntos={[
+    { x: 0, y: 0, texto: "m", tipo: "masa", dx: -6, dy: -14 },
+    { x: 3, y: 0, texto: "4m", tipo: "masa", dx: -8, dy: -14 },
+    { x: 1, y: 0, texto: "m (en P)", tipo: "masa", dx: -22, dy: 22 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [-46, 0], texto: "F", sub: "m", color: "#2d6fa3", dx: 2, dy: -10 },
+    { desde: [1, 0], v: [46, 0], texto: "F", sub: "4m", color: "#b04a3a", dx: -6, dy: -8 },
+  ]}
+  descripcion="Masas m y 4m separadas una distancia d. La tercera masa, en el punto P a d/3 de la masa m, es atraída hacia la izquierda por m y hacia la derecha por 4m con fuerzas del mismo módulo: está en equilibrio."
+/>
+
+Llamamos $x$ a la distancia de la partícula a la masa $m$ (y $d - x$ a la masa $4m$). Igualamos los módulos de las fuerzas gravitatorias:
+
+$$
+G\,\frac{m \cdot m}{x^2} = G\,\frac{4m \cdot m}{(d - x)^2}
+\quad\Rightarrow\quad
+(d - x)^2 = 4\,x^2
+\quad\Rightarrow\quad
+d - x = 2x
+\quad\Rightarrow\quad
+x = \frac{d}{3}
+$$
+
+La partícula debe colocarse en el segmento que une las masas, a **$d/3$ de la masa $m$** (y a $2d/3$ de la masa $4m$): más cerca de la masa menor, para compensar que $4m$ atrae cuatro veces más a igual distancia. El resultado no depende de la masa de la tercera partícula; es el punto donde se anula el campo gravitatorio de las dos masas. (Es un equilibrio inestable: si la partícula se desplaza un poco hacia una de las masas, esa la atrae más y se aleja del equilibrio.)
+
+</Solucion>
+
+**b)** Dos masas de 1 y 3 kg se encuentran situadas en los puntos A(1,0) m y B(6,0) m, respectivamente. Calcule: **i)** el potencial gravitatorio en el origen de coordenadas; **ii)** el campo gravitatorio en el origen de coordenadas y **iii)** la fuerza gravitatoria que actuará sobre una partícula de 0,5 kg situada en el origen de coordenadas.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Potencial en el origen.** El potencial es escalar: se suman los que crea cada masa, ambos negativos. El origen está a 1 m de A y a 6 m de B:
+
+$$
+V_O = -G\left(\frac{m_A}{r_A} + \frac{m_B}{r_B}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{1}{1} + \frac{3}{6}\right) = -1{,}00 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+**ii) Campo en el origen.** Cada masa crea un campo de módulo $g = G\,m/r^2$ dirigido hacia ella. Las dos están a la derecha del origen, sobre el eje X, así que los dos campos apuntan hacia $+\vec{i}$ y se suman:
+
+$$
+g_A = 6{,}67 \cdot 10^{-11} \cdot \frac{1}{1^2} = 6{,}67 \cdot 10^{-11}\ \text{N/kg}
+\qquad
+g_B = 6{,}67 \cdot 10^{-11} \cdot \frac{3}{6^2} = 5{,}56 \cdot 10^{-12}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-0.8}
+  xMax={6.8}
+  yMin={-0.9}
+  yMax={0.9}
+  escala={60}
+  marcasX={[1, 6]}
+  unidad="m"
+  puntos={[
+    { x: 1, y: 0, texto: "A · 1 kg", tipo: "masa", dx: 6, dy: -12 },
+    { x: 6, y: 0, texto: "B · 3 kg", tipo: "masa", dx: -20, dy: -14 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: -16, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 0.3], v: [40, 0], texto: "g", sub: "A", color: "#2d6fa3", dx: 4, dy: 4 },
+    { desde: [0, -0.35], v: [10, 0], texto: "g", sub: "B", color: "#b04a3a", dx: 4, dy: 4 },
+  ]}
+  descripcion="Masa de 1 kilo en A, a 1 metro del origen, y de 3 kilos en B, a 6 metros. En el origen, los campos de las dos masas apuntan hacia la derecha, hacia ellas; el de A es doce veces mayor que el de B."
+/>
+
+$$
+\vec{g}_O = (g_A + g_B)\,\vec{i} = \left(6{,}67 \cdot 10^{-11} + 0{,}556 \cdot 10^{-11}\right)\vec{i} = 7{,}23 \cdot 10^{-11}\,\vec{i}\ \text{N/kg}
+$$
+
+**iii) Fuerza sobre una partícula de 0,5 kg.** La fuerza es el producto de la masa por el campo en ese punto:
+
+$$
+\vec{F} = m\,\vec{g}_O = 0{,}5 \cdot 7{,}23 \cdot 10^{-11}\,\vec{i} = 3{,}61 \cdot 10^{-11}\,\vec{i}\ \text{N}
+$$
+
+**Respuesta.** En el origen, $V = -1{,}00 \cdot 10^{-10}$ J/kg y $\vec{g} = 7{,}23 \cdot 10^{-11}\,\vec{i}$ N/kg, y la fuerza sobre la partícula de 0,5 kg es **$\vec{F} = 3{,}61 \cdot 10^{-11}\,\vec{i}$ N**, hacia las dos masas. Aunque B tiene el triple de masa, su campo en el origen es doce veces menor que el de A, porque está seis veces más lejos.
+
+</Solucion>
+
+**A2. a)** Deduzca la expresión de la velocidad orbital de un satélite y razone si es verdadera o falsa la siguiente afirmación: Cuanto mayor sea la masa de un satélite, orbitando a una determinada altura, más tardará en dar una vuelta completa en su órbita.
+
+<Solucion>
+
+**Velocidad orbital.** Un satélite de masa $m$ en una órbita circular de radio $r = R + h$ alrededor de un planeta de masa $M$ solo está sometido a la atracción gravitatoria del planeta, que es la fuerza centrípeta de su movimiento:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M}{r}} = \sqrt{\frac{G\,M}{R + h}}
+$$
+
+**La afirmación es falsa.** La masa del satélite se simplifica: la velocidad orbital solo depende de la masa del planeta y del radio de la órbita. El período tampoco depende de ella:
+
+$$
+T = \frac{2\pi\,r}{v} = 2\pi\sqrt{\frac{r^3}{G\,M}}
+$$
+
+Dos satélites a la misma altura tardan lo mismo en dar una vuelta, sea cual sea su masa. Un satélite más pesado sufre una fuerza gravitatoria mayor, pero también tiene más inercia, y los dos efectos se compensan (como en la caída libre, en la que todos los cuerpos caen con la misma aceleración).
+
+</Solucion>
+
+**b)** Se desea colocar un satélite en órbita alrededor de la Tierra de forma que su período orbital sea de 6 horas. Calcule razonadamente: **i)** ¿A qué altura sobre la superficie debe estar? **ii)** ¿Cuál será su velocidad orbital?
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Altura de la órbita.** De la expresión del período deducida en el apartado a) despejamos el radio de la órbita (es la **tercera ley de Kepler**), con $T = 6$ h $= 21\,600$ s:
+
+$$
+T^2 = \frac{4\pi^2\,r^3}{G\,M_T}
+\quad\Rightarrow\quad
+r = \sqrt[3]{\frac{G\,M_T\,T^2}{4\pi^2}} = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 21\,600^2}{4\pi^2}} = 1{,}68 \cdot 10^{7}\ \text{m}
+$$
+
+La altura sobre la superficie es:
+
+$$
+h = r - R_T = 1{,}677 \cdot 10^7 - 6{,}37 \cdot 10^6 = 1{,}04 \cdot 10^{7}\ \text{m}
+$$
+
+**ii) Velocidad orbital.**
+
+$$
+v = \sqrt{\frac{G\,M_T}{r}} = \sqrt{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}{1{,}677 \cdot 10^{7}}} = 4{,}88 \cdot 10^{3}\ \text{m/s}
+$$
+
+(Se obtiene lo mismo con $v = 2\pi r/T$.)
+
+**Respuesta.** El satélite debe orbitar a **$1{,}04 \cdot 10^7$ m** (unos 10 400 km) sobre la superficie, con una velocidad de **$4{,}88 \cdot 10^3$ m/s**. Es una órbita intermedia: más alta que las órbitas bajas (de unos 90 minutos) y más baja que la geoestacionaria (de 24 horas).
+
+</Solucion>

@@ -1,0 +1,153 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2022
+convocatoria: reserva-3
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** **i)** Enuncie el teorema de las fuerzas vivas o teorema de la energía cinética. **ii)** Explique qué son las fuerzas conservativas y qué relación tienen con la energía potencial.
+
+<Solucion>
+
+**i) Teorema de las fuerzas vivas.** El trabajo realizado por la fuerza resultante de todas las fuerzas que actúan sobre un cuerpo (o la suma de los trabajos de todas ellas) es igual a la variación de su energía cinética:
+
+$$
+W_{\text{total}} = \Delta E_c = \frac{1}{2}\,m\,v_f^2 - \frac{1}{2}\,m\,v_i^2
+$$
+
+Si el trabajo total es positivo, el cuerpo gana velocidad; si es negativo, la pierde. Es válido para cualquier tipo de fuerza, conservativa o no.
+
+**ii) Fuerzas conservativas y energía potencial.** Una fuerza es **conservativa** cuando el trabajo que realiza sobre un cuerpo al desplazarlo entre dos puntos **no depende del camino** seguido, solo de las posiciones inicial y final. De forma equivalente, su trabajo a lo largo de cualquier camino cerrado es nulo. Son conservativas, por ejemplo, el peso, la fuerza gravitatoria, la eléctrica y la elástica; el rozamiento no lo es.
+
+Precisamente porque su trabajo solo depende de las posiciones, a cada fuerza conservativa se le puede asociar una función de la posición, la **energía potencial**, definida de modo que el trabajo de la fuerza es igual a menos su variación:
+
+$$
+W_{\text{cons}} = -\Delta E_p = E_{p,i} - E_{p,f}
+$$
+
+Cuando la fuerza conservativa realiza un trabajo positivo, la energía potencial disminuye, y al revés. Combinando con el teorema de las fuerzas vivas, si solo actúan fuerzas conservativas, $\Delta E_c = -\Delta E_p$ y la energía mecánica, $E_c + E_p$, se conserva.
+
+</Solucion>
+
+**b)** Un cuerpo de 0,5 kg, inicialmente en reposo, asciende por un plano inclinado 30° con respecto a la horizontal por el efecto de una fuerza de 4 N paralela a dicho plano. El coeficiente de rozamiento del cuerpo con la superficie es de 0,2. **i)** Calcule el trabajo realizado por cada una de las fuerzas que intervienen cuando el cuerpo ha recorrido una distancia de 2 m. **ii)** Determine, mediante consideraciones energéticas, la velocidad del cuerpo después de recorrer dicha distancia.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+Sobre el cuerpo actúan cuatro fuerzas: la fuerza aplicada $F$, paralela al plano y hacia arriba; el peso; la normal; y el rozamiento, paralelo al plano y hacia abajo, opuesto al movimiento:
+
+<PlanoInclinado angulo={30} mueve="sube" aplicada="F" componentes descripcion="Cuerpo que sube por un plano inclinado 30 grados empujado por una fuerza F paralela al plano y hacia arriba. Actúan además el peso, con sus componentes paralela y perpendicular al plano; la normal, perpendicular al plano; y el rozamiento, paralelo al plano y hacia abajo." />
+
+**i) Trabajo de cada fuerza** en un desplazamiento $d = 2$ m a lo largo del plano, hacia arriba:
+
+- **Fuerza aplicada**: tiene el sentido del desplazamiento.
+
+$$
+W_F = F\,d = 4 \cdot 2 = 8\ \text{J}
+$$
+
+- **Peso**: solo trabaja su componente paralela al plano, $m\,g\sin 30^\circ$, que se opone al desplazamiento (el cuerpo sube una altura $h = d\sin 30^\circ = 1$ m):
+
+$$
+W_P = -m\,g\sin 30^\circ\,d = -0{,}5 \cdot 9{,}8 \cdot 0{,}5 \cdot 2 = -4{,}9\ \text{J}
+$$
+
+- **Normal**: es perpendicular al desplazamiento, $W_N = 0$.
+
+- **Rozamiento**: la normal compensa la componente del peso perpendicular al plano, $N = m\,g\cos 30^\circ$, así que $F_r = \mu\,m\,g\cos 30^\circ = 0{,}2 \cdot 0{,}5 \cdot 9{,}8 \cdot 0{,}866 = 0{,}849$ N, y se opone al desplazamiento:
+
+$$
+W_{F_r} = -F_r\,d = -0{,}849 \cdot 2 = -1{,}70\ \text{J}
+$$
+
+**ii) Velocidad tras 2 m.** El trabajo de las fuerzas no conservativas (la aplicada y el rozamiento) es igual a la variación de la energía mecánica. Tomando el origen de energía potencial en el punto de partida, donde el cuerpo está en reposo:
+
+$$
+W_F + W_{F_r} = \Delta E_c + \Delta E_p = \frac{1}{2}\,m\,v^2 + m\,g\,h
+$$
+
+$$
+8 - 1{,}70 = \frac{1}{2} \cdot 0{,}5 \cdot v^2 + 0{,}5 \cdot 9{,}8 \cdot 1
+\quad\Rightarrow\quad
+\frac{1}{2} \cdot 0{,}5 \cdot v^2 = 6{,}30 - 4{,}9 = 1{,}40\ \text{J}
+$$
+
+$$
+v = \sqrt{\frac{2 \cdot 1{,}40}{0{,}5}} = 2{,}37\ \text{m/s}
+$$
+
+**Respuesta.** La fuerza aplicada realiza un trabajo de **8 J**, el peso **−4,9 J**, la normal **0 J** y el rozamiento **−1,70 J**; tras recorrer 2 m, el cuerpo lleva una velocidad de **2,37 m/s**. Se comprueba con el teorema de las fuerzas vivas: el trabajo total, $8 - 4{,}9 - 1{,}70 = 1{,}40$ J, es la energía cinética que ha ganado.
+
+</Solucion>
+
+**A2. a)** Un planeta gira en torno a una estrella de masa igual a la mitad de la masa del Sol, describiendo una órbita de radio igual a la mitad del radio orbital del planeta Tierra alrededor del Sol. Discuta razonadamente cuál de los dos planetas tarda más tiempo en dar una vuelta completa en su correspondiente órbita.
+
+<Solucion>
+
+En una órbita circular de radio $r$ alrededor de una estrella de masa $M$, la atracción gravitatoria es la fuerza centrípeta:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M}{r}}
+$$
+
+El período es el tiempo que tarda en recorrer la órbita:
+
+$$
+T = \frac{2\pi\,r}{v} = 2\pi\sqrt{\frac{r^3}{G\,M}}
+$$
+
+Comparamos el planeta, con $M = M_S/2$ y $r = r_T/2$, con la Tierra:
+
+$$
+\frac{T_{\text{planeta}}}{T_{\text{Tierra}}} = \sqrt{\frac{r^3}{r_T^3} \cdot \frac{M_S}{M}} = \sqrt{\left(\frac{1}{2}\right)^3 \cdot 2} = \sqrt{\frac{1}{4}} = \frac{1}{2}
+$$
+
+El planeta tarda la mitad que la Tierra en dar una vuelta (medio año): **la Tierra tarda más**, el doble. Que la estrella tenga menos masa haría el período más largo, pero el efecto de que la órbita sea más pequeña es mayor, porque el período depende de $r^{3/2}$ y solo de $M^{-1/2}$.
+
+</Solucion>
+
+**b)** Un satélite tarda 4 horas en dar una vuelta completa alrededor de un planeta con una velocidad orbital de 5000 m s<sup>-1</sup>. Calcule razonadamente: **i)** el radio de la órbita y la masa del planeta; **ii)** la velocidad de escape desde la órbita.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Radio de la órbita y masa del planeta.** En una órbita circular, la velocidad es constante y el satélite recorre la circunferencia en un período, $T = 4$ h $= 14\,400$ s:
+
+$$
+v = \frac{2\pi\,r}{T}
+\quad\Rightarrow\quad
+r = \frac{v\,T}{2\pi} = \frac{5000 \cdot 14\,400}{2\pi} = 1{,}15 \cdot 10^{7}\ \text{m}
+$$
+
+La atracción gravitatoria del planeta es la fuerza centrípeta:
+
+$$
+G\,\frac{M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+M = \frac{v^2\,r}{G} = \frac{5000^2 \cdot 1{,}15 \cdot 10^{7}}{6{,}67 \cdot 10^{-11}} = 4{,}30 \cdot 10^{24}\ \text{kg}
+$$
+
+**ii) Velocidad de escape desde la órbita.** Es la velocidad mínima que hay que tener en la órbita para llegar al infinito con velocidad nula; allí la energía mecánica es cero, y como se conserva:
+
+$$
+\frac{1}{2}\,m\,v_e^2 - G\,\frac{M\,m}{r} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M}{r}}
+$$
+
+Como $G\,M/r = v^2$, la velocidad de escape desde la órbita es $\sqrt{2}$ veces la orbital:
+
+$$
+v_e = \sqrt{2}\,v = \sqrt{2} \cdot 5000 = 7{,}07 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** El radio de la órbita es **$1{,}15 \cdot 10^7$ m**, la masa del planeta **$4{,}30 \cdot 10^{24}$ kg** y la velocidad de escape desde la órbita **$7{,}07 \cdot 10^3$ m/s**: al satélite le bastaría aumentar su velocidad en unos 2070 m/s para escapar.
+
+</Solucion>
