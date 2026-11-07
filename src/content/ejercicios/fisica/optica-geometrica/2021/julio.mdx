@@ -1,0 +1,95 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: julio
+formato: fisica
+---
+
+import DispersionRayos from "../../../../../components/figuras/fisica/DispersionRayos.astro"
+import ReflexionTotal from "../../../../../components/figuras/fisica/ReflexionTotal.astro"
+
+**C2. a)** Razone y justifique la veracidad o falsedad de las siguientes frases: **i)** Cuando la luz pasa de un medio a otro experimenta un aumento de su velocidad si el segundo medio tiene un índice de refracción mayor que el primero. **ii)** La reflexión total de la luz en la superficie de separación de dos medios puede producirse cuando el índice de refracción del segundo medio es mayor que el del primero.
+
+<Solucion>
+
+**i) Falsa.** El índice de refracción de un medio es el cociente entre la velocidad de la luz en el vacío y en ese medio, $n = c/v$, así que la velocidad es inversamente proporcional al índice:
+
+$$
+\frac{v_2}{v_1} = \frac{n_1}{n_2}
+\quad\Rightarrow\quad
+n_2 > n_1 \;\Rightarrow\; v_2 < v_1
+$$
+
+Si el segundo medio tiene mayor índice (es más refringente), la luz **disminuye** su velocidad al pasar a él.
+
+**ii) Falsa.** Por la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Si $n_2 > n_1$:
+
+$$
+\sin\theta_2 = \frac{n_1}{n_2}\sin\theta_1 < \sin\theta_1
+$$
+
+El rayo refractado se **acerca a la normal**, y para cualquier ángulo de incidencia existe un ángulo de refracción menor que 90°: siempre hay rayo refractado y la reflexión total es imposible.
+
+La reflexión total solo puede producirse cuando la luz pasa a un medio de **menor** índice, $n_2 < n_1$. Entonces el rayo refractado se aleja de la normal, y para ángulos de incidencia mayores que el **ángulo límite**, $\sin\theta_L = n_2/n_1$, la ley de Snell daría $\sin\theta_2 > 1$: no hay refracción y toda la luz se refleja.
+
+<ReflexionTotal />
+
+</Solucion>
+
+**b)** Un rayo de luz con componentes azul y roja de longitudes de onda en el aire de 4,5·10<sup>-7</sup> m y 6,9·10<sup>-7</sup> m, respectivamente, incide desde el aire sobre una placa de un determinado material con un ángulo de 40º respecto a la normal a la superficie de la placa. **i)** Mediante un esquema, y de manera razonada, indique la trayectoria de los rayos azul y rojo, tanto en el aire como en el material. **ii)** Deduzca cuál de las dos componentes (azul o roja) se propaga más rápidamente en el interior de la lámina. **iii)** Determine las frecuencias de los rayos en el aire.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1; n<sub>material(azul)</sub> = 1,47; n<sub>material(roja)</sub> = 1,44</Datos>
+
+<Solucion>
+
+**i) Trayectorias.** En el aire, las dos componentes viajan juntas en el mismo rayo, con un ángulo de 40° respecto a la normal. Al entrar en el material, cada una se refracta según la ley de Snell con su propio índice: el material es **dispersivo**. Para la componente azul:
+
+$$
+1 \cdot \sin 40^\circ = 1{,}47\sin\theta_{\text{azul}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{azul}} = \frac{0{,}643}{1{,}47} = 0{,}437
+\quad\Rightarrow\quad
+\theta_{\text{azul}} = 25{,}9^\circ
+$$
+
+Para la roja:
+
+$$
+1 \cdot \sin 40^\circ = 1{,}44\sin\theta_{\text{roja}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{roja}} = \frac{0{,}643}{1{,}44} = 0{,}446
+\quad\Rightarrow\quad
+\theta_{\text{roja}} = 26{,}5^\circ
+$$
+
+Las dos se acercan a la normal, porque el material es más refringente que el aire, pero la **azul**, con mayor índice, se desvía **más**: dentro del material el rayo se separa en dos, el azul más cerca de la normal.
+
+<DispersionRayos
+  incidencia={40}
+  rayos={[
+    { n: 1.44, color: "#c0392b", texto: "rojo" },
+    { n: 1.47, color: "#2d6fa3", texto: "azul" },
+  ]}
+  descripcion="Rayo con luz roja y azul que incide desde el aire sobre el material formando 40 grados con la normal. Al refractarse se separa: el rojo forma 26,5 grados con la normal y el azul, que se desvía más, 25,9 grados. La separación entre los dos rayos está exagerada en el dibujo."
+/>
+
+**ii) ¿Cuál es más rápida en la lámina?** La velocidad en el material es $v = c/n$: es mayor la de la componente con **menor índice**, la **roja**.
+
+$$
+v_{\text{roja}} = \frac{3 \cdot 10^8}{1{,}44} = 2{,}08 \cdot 10^{8}\ \text{m/s}
+\qquad
+v_{\text{azul}} = \frac{3 \cdot 10^8}{1{,}47} = 2{,}04 \cdot 10^{8}\ \text{m/s}
+$$
+
+**iii) Frecuencias en el aire.** En el aire $(n = 1)$ la luz viaja a $c$, y la frecuencia es $f = c/\lambda$:
+
+$$
+f_{\text{azul}} = \frac{3 \cdot 10^8}{4{,}5 \cdot 10^{-7}} = 6{,}67 \cdot 10^{14}\ \text{Hz}
+\qquad
+f_{\text{roja}} = \frac{3 \cdot 10^8}{6{,}9 \cdot 10^{-7}} = 4{,}35 \cdot 10^{14}\ \text{Hz}
+$$
+
+**Respuesta.** En el material el rayo azul forma **25,9°** con la normal y el rojo **26,5°**; el **rojo** se propaga más rápido ($2{,}08 \cdot 10^8$ m/s frente a $2{,}04 \cdot 10^8$ m/s). Las frecuencias son **$6{,}67 \cdot 10^{14}$ Hz** (azul) y **$4{,}35 \cdot 10^{14}$ Hz** (roja), y no cambian al entrar en el material: lo que cambia es la longitud de onda, que se divide por el índice.
+
+</Solucion>

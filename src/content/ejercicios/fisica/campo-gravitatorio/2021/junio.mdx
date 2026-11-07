@@ -1,0 +1,181 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: junio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Un cuerpo es lanzado verticalmente hacia arriba desde una altura *h* con una energía cinética igual a la potencial en dicho punto, tomando como origen de energía potencial el suelo. Explique razonadamente, utilizando consideraciones energéticas: **i)** La relación entre la altura inicial y la altura máxima que alcanza el cuerpo. **ii)** La relación entre la velocidad inicial y la velocidad con la que llega al suelo.
+
+<Solucion>
+
+Durante el movimiento solo actúa el peso (se desprecia el rozamiento con el aire), que es una fuerza conservativa: la **energía mecánica se conserva**. Tomando el suelo como origen de la energía potencial, en el punto de lanzamiento:
+
+$$
+E_{c,0} = E_{p,0} = m\,g\,h
+\quad\Rightarrow\quad
+E_m = E_{c,0} + E_{p,0} = 2\,m\,g\,h
+$$
+
+**i) Altura máxima.** En el punto más alto la velocidad es nula y toda la energía mecánica es potencial:
+
+$$
+m\,g\,h_{\text{máx}} = 2\,m\,g\,h
+\quad\Rightarrow\quad
+h_{\text{máx}} = 2h
+$$
+
+La altura máxima es **el doble de la altura inicial**: el cuerpo sube una altura $h$ por encima del punto de lanzamiento, la que le permite su energía cinética inicial.
+
+**ii) Velocidad al llegar al suelo.** En el suelo la energía potencial es nula y toda la energía mecánica es cinética. Comparando con la energía cinética inicial:
+
+$$
+\frac{1}{2}\,m\,v_0^2 = m\,g\,h
+\qquad
+\frac{1}{2}\,m\,v_{\text{suelo}}^2 = 2\,m\,g\,h
+\quad\Rightarrow\quad
+\frac{v_{\text{suelo}}^2}{v_0^2} = 2
+\quad\Rightarrow\quad
+v_{\text{suelo}} = \sqrt{2}\,v_0
+$$
+
+El cuerpo llega al suelo con una velocidad **$\sqrt{2}$ veces la inicial** (unas 1,41 veces): su energía cinética final es el doble de la inicial, porque se ha transformado en cinética también la energía potencial que tenía a la altura $h$.
+
+</Solucion>
+
+**b)** Un cuerpo de masa 2 kg desliza por una superficie horizontal de coeficiente de rozamiento 0,2 con una velocidad inicial de 6 m s<sup>-1</sup>. Cuando ha recorrido 5 m sobre el plano horizontal, comienza a subir por un plano inclinado sin rozamiento que forma un ángulo de 30º con la horizontal. Utilizando consideraciones energéticas, determine: **i)** La velocidad con la que comienza a subir el cuerpo por el plano inclinado. **ii)** La distancia que recorre por el plano inclinado hasta alcanzar la altura máxima.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+En el tramo horizontal actúan el peso, la normal y el rozamiento, opuesto al movimiento; en el plano inclinado, sin rozamiento, solo el peso y la normal:
+
+<PlanoInclinado angulo={30} mueve="sube" componentes horizontal horizontalHaciaPlano sinRozamientoPlano descripcion="A la derecha, un tramo horizontal por el que el cuerpo avanza hacia la izquierda, hacia el plano: actúan el peso hacia abajo, la normal hacia arriba y el rozamiento hacia la derecha, opuesto al movimiento. A la izquierda, el plano inclinado 30 grados sin rozamiento, por el que el cuerpo sube: actúan el peso, con sus componentes paralela y perpendicular al plano, y la normal." />
+
+**i) Velocidad al empezar a subir.** En el tramo horizontal la energía potencial no cambia; el peso y la normal no trabajan, porque son perpendiculares al desplazamiento, y la única fuerza que trabaja es el rozamiento. Como $N = m\,g$:
+
+$$
+F_r = \mu\,m\,g = 0{,}2 \cdot 2 \cdot 9{,}8 = 3{,}92\ \text{N}
+\qquad
+W_{F_r} = -F_r\,d = -3{,}92 \cdot 5 = -19{,}6\ \text{J}
+$$
+
+El trabajo del rozamiento (no conservativo) es igual a la variación de la energía mecánica, que aquí es solo cinética:
+
+$$
+W_{F_r} = \frac{1}{2}\,m\,v_1^2 - \frac{1}{2}\,m\,v_0^2
+\quad\Rightarrow\quad
+\frac{1}{2} \cdot 2 \cdot v_1^2 = \frac{1}{2} \cdot 2 \cdot 6^2 - 19{,}6 = 36 - 19{,}6 = 16{,}4\ \text{J}
+$$
+
+$$
+v_1 = \sqrt{16{,}4} = 4{,}05\ \text{m/s}
+$$
+
+**ii) Distancia por el plano inclinado.** En el plano no hay rozamiento y la normal no trabaja: solo trabaja el peso, que es conservativo, así que la energía mecánica se conserva. En la altura máxima el cuerpo se para, y la energía cinética del pie del plano se ha convertido en potencial:
+
+$$
+\frac{1}{2}\,m\,v_1^2 = m\,g\,h
+\quad\Rightarrow\quad
+h = \frac{16{,}4}{2 \cdot 9{,}8} = 0{,}837\ \text{m}
+$$
+
+La distancia recorrida a lo largo del plano es la hipotenusa del triángulo de altura $h$:
+
+$$
+d = \frac{h}{\sin 30^\circ} = \frac{0{,}837}{0{,}5} = 1{,}67\ \text{m}
+$$
+
+**Respuesta.** El cuerpo empieza a subir con **4,05 m/s** y recorre **1,67 m** por el plano (sube 0,837 m de altura). El rozamiento del tramo horizontal ha disipado 19,6 J de los 36 J iniciales, algo más de la mitad.
+
+</Solucion>
+
+**A2. a)** Razone la veracidad o falsedad de la siguiente afirmación: «Si en un punto del espacio cerca de dos masas el campo gravitatorio es nulo, también lo será el potencial gravitatorio».
+
+<Solucion>
+
+**Falsa.** El campo y el potencial gravitatorios se suman de forma distinta:
+
+- El **campo** es un **vector**: en un punto se suman los campos de cada masa, $\vec{g} = \vec{g}_1 + \vec{g}_2$, y puede anularse si son de igual módulo y sentidos opuestos.
+- El **potencial** es un **escalar**, y el de cada masa es siempre **negativo** (tomando el origen en el infinito): $V = -G\,m_1/r_1 - G\,m_2/r_2$. Una suma de términos negativos nunca es cero.
+
+**Contraejemplo.** Dos masas iguales $m$ separadas una distancia $2d$. En el punto medio, cada una crea un campo de módulo $G\,m/d^2$ dirigido hacia ella: son opuestos y el campo total es **nulo**. Pero el potencial es:
+
+$$
+V = -\frac{G\,m}{d} - \frac{G\,m}{d} = -\frac{2\,G\,m}{d} \neq 0
+$$
+
+Que el campo sea nulo en un punto significa que el potencial no varía en sus alrededores (el campo mide cómo cambia el potencial, $\vec{g} = -\nabla V$), no que el potencial valga cero. Entre dos masas, el potencial gravitatorio no se anula en ningún punto a distancia finita.
+
+</Solucion>
+
+**b)** Dos masas *m*<sub>1</sub> = 10 kg y *m*<sub>2</sub> = 10 kg se encuentran situadas en los puntos A(0,0) m y B(0,2) m, respectivamente. **i)** Dibuje el campo gravitatorio debido a las dos masas en el punto C(1,1) m y determine su valor. **ii)** Calcule el trabajo que realiza la fuerza gravitatoria cuando una tercera masa *m*<sub>3</sub> = 1 kg se desplaza desde el punto D(1,0) m hasta el punto C(1,1) m.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** El punto C(1,1) está a la misma distancia de las dos masas:
+
+$$
+r_{AC} = r_{BC} = \sqrt{1^2 + 1^2} = \sqrt{2}\ \text{m}
+$$
+
+Cada masa crea en C un campo dirigido hacia ella, de módulo:
+
+$$
+g_1 = g_2 = G\,\frac{m}{r^2} = 6{,}67 \cdot 10^{-11} \cdot \frac{10}{2} = 3{,}34 \cdot 10^{-10}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-0.6}
+  xMax={2}
+  yMin={-0.6}
+  yMax={2.6}
+  escala={78}
+  marcasX={[1]}
+  marcasY={[1, 2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A · m₁", tipo: "masa", dx: 10, dy: 20 },
+    { x: 0, y: 2, texto: "B · m₂", tipo: "masa", dx: 10, dy: -8 },
+    { x: 1, y: 1, texto: "C(1, 1)", tipo: "punto", dx: 10, dy: -8 },
+    { x: 1, y: 0, texto: "D(1, 0)", tipo: "punto", dx: 8, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [1, 1], v: [-38, -38], texto: "g", sub: "1", color: "#2d6fa3", dx: 4, dy: 18 },
+    { desde: [1, 1], v: [-38, 38], texto: "g", sub: "2", color: "#2d6fa3", dx: 4, dy: -6 },
+    { desde: [1, 1], v: [-54, 0], texto: "g", color: "#195c51", dx: 2, dy: -8 },
+  ]}
+  segmentos={[[0, 0, 1, 1], [0, 2, 1, 1]]}
+  descripcion="Masas iguales en A, el origen, y en B, de coordenadas 0, 2. En el punto C, de coordenadas 1, 1, el campo de A apunta en diagonal hacia abajo y a la izquierda, hacia A, y el de B en diagonal hacia arriba y a la izquierda, hacia B, con el mismo módulo. Sus componentes verticales se anulan y el campo total apunta horizontalmente hacia la izquierda. El punto D, de coordenadas 1, 0, está debajo de C."
+/>
+
+Los vectores unitarios de C hacia A y de C hacia B son $(-\vec{i} - \vec{j})/\sqrt{2}$ y $(-\vec{i} + \vec{j})/\sqrt{2}$. Al sumar los dos campos, las componentes verticales se anulan por simetría y las horizontales se suman:
+
+$$
+\vec{g}_C = 3{,}34 \cdot 10^{-10} \cdot \frac{-\vec{i} - \vec{j}}{\sqrt{2}} + 3{,}34 \cdot 10^{-10} \cdot \frac{-\vec{i} + \vec{j}}{\sqrt{2}} = -4{,}72 \cdot 10^{-10}\,\vec{i}\ \text{N/kg}
+$$
+
+**ii) Trabajo de D a C.** La fuerza gravitatoria es conservativa: su trabajo no depende del camino y es igual a menos la variación de la energía potencial, $W = -m_3\,(V_C - V_D)$. El punto D(1,0) está a 1 m de A y a $\sqrt{1^2 + 2^2} = \sqrt{5}$ m de B:
+
+$$
+V_D = -G\left(\frac{m_1}{r_{AD}} + \frac{m_2}{r_{BD}}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{10}{1} + \frac{10}{\sqrt{5}}\right) = -9{,}65 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+V_C = -6{,}67 \cdot 10^{-11}\left(\frac{10}{\sqrt{2}} + \frac{10}{\sqrt{2}}\right) = -9{,}43 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+W_{D \to C} = -m_3\,(V_C - V_D) = -1 \cdot \left(-9{,}43 \cdot 10^{-10} + 9{,}65 \cdot 10^{-10}\right) = -2{,}20 \cdot 10^{-11}\ \text{J}
+$$
+
+**Respuesta.** En C el campo es $\vec{g} = -4{,}72 \cdot 10^{-10}\,\vec{i}$ N/kg, dirigido hacia el eje Y, entre las dos masas. El trabajo de la fuerza gravitatoria de D a C es **$-2{,}20 \cdot 10^{-11}$ J**: es negativo porque la masa se aleja de A (pasa de 1 m a 1,41 m) y va a un punto de mayor potencial; el desplazamiento lo tiene que hacer una fuerza externa en contra del campo.
+
+</Solucion>

@@ -7,11 +7,13 @@
 // de 2024: al acercarse la espira, el flujo entrante aumenta y la corriente es antihoraria.
 // «paralela» (reserva 3 de 2022): la espira se mueve paralela al hilo, en el sentido de la
 // corriente; el campo que la atraviesa no cambia y no hay corriente inducida.
+// Con cuadrada, la espira es un cuadrado (reserva 4 de 2021, B2 a).
 type Caso = "aumenta" | "aleja" | "acerca" | "paralela"
 interface Props {
   casos?: [Caso, Caso]
+  cuadrada?: boolean
 }
-const { casos = ["aumenta", "aleja"] } = Astro.props
+const { casos = ["aumenta", "aleja"], cuadrada = false } = Astro.props
 const id = `espira-circular-${Math.round(Math.random() * 1e9)}`
 const datos = {
   aumenta: { titulo: "Aumenta la corriente I", horaria: false, v: 0, nota: "B inducido saliente · I antihoraria" },
@@ -20,7 +22,7 @@ const datos = {
   paralela: { titulo: "Se mueve paralela al hilo", horaria: false, v: 2, nota: "Flujo constante · no hay corriente inducida" },
 }
 const paneles = casos.map((caso, i) => ({ x0: i * 250, ...datos[caso], titulo: `${i === 0 ? "i" : "ii"}) ${datos[caso].titulo}` }))
-const descripcion = `Dos esquemas de un hilo vertical con la corriente hacia arriba y una espira circular a su derecha, donde el campo del hilo entra en el papel. ${paneles
+const descripcion = `Dos esquemas de un hilo vertical con la corriente hacia arriba y una espira ${cuadrada ? "cuadrada" : "circular"} a su derecha, donde el campo del hilo entra en el papel. ${paneles
   .map((p) =>
     p.v === 2
       ? `${p.titulo.slice(4)}, hacia arriba: el flujo no cambia y no hay corriente inducida.`
@@ -60,7 +62,11 @@ const arco = (cx: number, cy: number, r: number, horaria: boolean) =>
               <path d={`M${p.x0 + c.dx - 3} ${c.y - 3}l6 6m0 -6l-6 6`} />
             ))}
           </g>
-          <circle cx={p.x0 + 130} cy="104" r="44" fill="rgba(201, 188, 232, 0.25)" stroke="#172c27" stroke-width="2" />
+          {cuadrada ? (
+            <rect x={p.x0 + 88} y="62" width="84" height="84" fill="rgba(201, 188, 232, 0.25)" stroke="#172c27" stroke-width="2" />
+          ) : (
+            <circle cx={p.x0 + 130} cy="104" r="44" fill="rgba(201, 188, 232, 0.25)" stroke="#172c27" stroke-width="2" />
+          )}
           {p.v !== 2 && <path d={arco(p.x0 + 130, 104, 32, p.horaria)} fill="none" stroke="#b04a3a" stroke-width="1.6" marker-end={`url(#${id}-r)`} />}
           {p.v !== 2 && <circle cx={p.x0 + 130} cy="104" r="8" fill="#fff" stroke="#b04a3a" stroke-width="1.4" />}
           {p.v === 2 ? null : p.horaria ? (

@@ -1,0 +1,138 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2021
+convocatoria: reserva-1
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**D1. a)** A partir de la ecuación del efecto fotoeléctrico, razone si es cierta o falsa la siguiente afirmación: «La energía cinética máxima de los electrones emitidos varía linealmente con la frecuencia de la luz incidente».
+
+<Solucion>
+
+**Cierta** (siempre que la frecuencia supere la umbral). Según la explicación de Einstein, la luz está formada por fotones de energía $E = h\,f$. Cada fotón cede toda su energía a un electrón del metal: una parte, el **trabajo de extracción** $W_0$, se emplea en arrancarlo, y el resto queda como energía cinética. Los electrones que salen con más energía, los menos ligados, cumplen:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+\quad\Rightarrow\quad
+E_{c,\text{máx}} = h\,f - W_0 = h\,(f - f_0)
+$$
+
+donde $f_0 = W_0/h$ es la **frecuencia umbral**. Es la ecuación de una **recta** en función de $f$: su pendiente es la constante de Planck $h$ (la misma para todos los metales) y corta el eje de frecuencias en $f_0$, que depende del metal.
+
+<GraficaFuncion
+  xMin={0}
+  xMax={4.4}
+  yMin={-0.4}
+  yMax={2.6}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["f", "Ec,máx"]}
+  tramos={[{ f: (x) => 0.8 * (x - 1.2), desde: 1.2, hasta: 4.2 }]}
+  puntos={[{ x: 1.2, y: 0, texto: "f₀", dx: -4, dy: 16 }]}
+  descripcion="Gráfica de la energía cinética máxima de los fotoelectrones en función de la frecuencia de la luz: es nula hasta la frecuencia umbral f0 y, a partir de ella, crece en línea recta con pendiente igual a la constante de Planck."
+/>
+
+Hay que matizar que la relación es lineal, pero **no proporcional**: la energía cinética no se duplica al duplicar la frecuencia, porque hay que restar el trabajo de extracción. Y por debajo de $f_0$ no se emiten electrones, por intensa que sea la luz.
+
+</Solucion>
+
+**b)** Para medir el trabajo de extracción de un metal, A, se hace incidir un haz de luz monocromática sobre dos muestras, una de dicho metal, y otra de un metal, B, cuyo trabajo de extracción es de 4,14 eV. Los potenciales de frenado de los electrones producidos son 9,93 V y 8,28 V, respectivamente. Calcule razonadamente: **i)** La frecuencia de la luz utilizada. **ii)** El trabajo de extracción del metal A.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; h = 6,63·10<sup>-34</sup> J s</Datos>
+
+<Solucion>
+
+El **potencial de frenado** $V_f$ es la diferencia de potencial necesaria para detener a los electrones más rápidos: el trabajo del campo eléctrico iguala su energía cinética máxima, $E_{c,\text{máx}} = e\,V_f$. Un electrón acelerado (o frenado) por 1 V gana (o pierde) 1 eV, así que, en electronvoltios, $E_{c,\text{máx}}$ tiene el mismo valor numérico que $V_f$ en voltios.
+
+**i) Frecuencia de la luz.** Con el metal B, cuyo trabajo de extracción se conoce, la ecuación de Einstein da la energía de los fotones:
+
+$$
+h\,f = W_B + e\,V_{f,B} = 4{,}14\ \text{eV} + 8{,}28\ \text{eV} = 12{,}42\ \text{eV}
+$$
+
+Pasando a julios $(1\ \text{eV} = 1{,}6 \cdot 10^{-19}$ J$)$:
+
+$$
+f = \frac{12{,}42 \cdot 1{,}6 \cdot 10^{-19}}{6{,}63 \cdot 10^{-34}} = 3{,}00 \cdot 10^{15}\ \text{Hz}
+$$
+
+Es luz ultravioleta.
+
+**ii) Trabajo de extracción de A.** La misma luz (los mismos fotones) incide sobre A:
+
+$$
+W_A = h\,f - e\,V_{f,A} = 12{,}42\ \text{eV} - 9{,}93\ \text{eV} = 2{,}49\ \text{eV}
+$$
+
+$$
+W_A = 2{,}49 \cdot 1{,}6 \cdot 10^{-19} = 3{,}98 \cdot 10^{-19}\ \text{J}
+$$
+
+**Respuesta.** La luz tiene una frecuencia de **$3{,}00 \cdot 10^{15}$ Hz** y el trabajo de extracción del metal A es **2,49 eV ($3{,}98 \cdot 10^{-19}$ J)**. Es coherente: en A los electrones salen con más energía (hace falta un potencial de frenado mayor) porque están menos ligados.
+
+</Solucion>
+
+**D2. a)** Discuta razonadamente los tipos de emisiones radiactivas que pueden producirse en el núcleo de los átomos y las características que posee cada una de ellas.
+
+<Solucion>
+
+La **radiactividad** es la emisión espontánea de partículas o radiación por núcleos inestables, que se transforman así en otros más estables. Hay tres tipos de emisiones; en todas se conservan el número másico $A$ y la carga $Z$:
+
+**Emisión alfa (α).** El núcleo expulsa una **partícula alfa**, un núcleo de helio, $^4_2\text{He}$ (2 protones y 2 neutrones). El número másico disminuye en 4 y el atómico en 2:
+
+$$
+^A_Z\text{X} \;\to\; ^{A-4}_{Z-2}\text{Y} + {}^4_2\text{He}
+$$
+
+Es propia de núcleos pesados. Las partículas alfa tienen carga $+2e$ y una masa grande: son muy **ionizantes** pero muy **poco penetrantes** (las detiene una hoja de papel o unos centímetros de aire). Se desvían en campos eléctricos y magnéticos.
+
+**Emisión beta (β).** En la $\beta^-$, un neutrón del núcleo se transforma en un protón, y se emiten un **electrón** y un antineutrino. El número másico no cambia y el atómico aumenta en 1:
+
+$$
+^A_Z\text{X} \;\to\; ^{A}_{Z+1}\text{Y} + {}^{\phantom{-}0}_{-1}e + \bar{\nu}_e
+$$
+
+(En la $\beta^+$, un protón se transforma en neutrón y se emite un positrón: $Z$ disminuye en 1.) Las partículas beta son ligeras y rápidas: **menos ionizantes** que las alfa y **más penetrantes** (las detiene una lámina de aluminio de unos milímetros). Al tener carga, se desvían en campos eléctricos y magnéticos, más que las alfa, por su menor masa, y en sentido contrario.
+
+**Emisión gamma (γ).** Tras una emisión alfa o beta, el núcleo suele quedar en un estado excitado, y pasa a su estado fundamental emitiendo **radiación electromagnética** de muy alta energía (fotones gamma). No cambian ni $A$ ni $Z$:
+
+$$
+^A_Z\text{X}^* \;\to\; ^A_Z\text{X} + \gamma
+$$
+
+Los rayos gamma no tienen carga ni masa: **no se desvían** en campos eléctricos ni magnéticos, son los **menos ionizantes** y los **más penetrantes** (hacen falta varios centímetros de plomo o metros de hormigón para atenuarlos).
+
+</Solucion>
+
+**b)** El periodo de semidesintegración del <sup>226</sup>Ra es de 1602 años. Si se posee una muestra de 240 mg, determine: **i)** La masa de dicho isótopo que queda sin desintegrar al cabo de 350 años. **ii)** El tiempo que se requiere para que su actividad se reduzca a la sexta parte.
+
+<Solucion>
+
+**Constante de desintegración.** El número de núcleos sin desintegrar (y con él, la masa y la actividad) disminuye exponencialmente, $N = N_0\,e^{-\lambda t}$. La constante de desintegración se obtiene del periodo de semidesintegración, el tiempo en que se reduce a la mitad:
+
+$$
+\lambda = \frac{\ln 2}{T_{1/2}} = \frac{0{,}693}{1602} = 4{,}33 \cdot 10^{-4}\ \text{años}^{-1}
+$$
+
+**i) Masa al cabo de 350 años.** La masa del isótopo es proporcional al número de núcleos:
+
+$$
+m = m_0\,e^{-\lambda t} = 240 \cdot e^{-4{,}33 \cdot 10^{-4} \cdot 350} = 240 \cdot 0{,}859 = 206\ \text{mg}
+$$
+
+**ii) Tiempo para que la actividad se reduzca a la sexta parte.** La actividad, $A = \lambda N$, también disminuye exponencialmente: $A = A_0\,e^{-\lambda t}$. Con $A = A_0/6$:
+
+$$
+\frac{A_0}{6} = A_0\,e^{-\lambda t}
+\quad\Rightarrow\quad
+\lambda t = \ln 6
+\quad\Rightarrow\quad
+t = \frac{\ln 6}{\lambda} = \frac{1{,}792}{4{,}33 \cdot 10^{-4}} = 4{,}14 \cdot 10^{3}\ \text{años}
+$$
+
+**Respuesta.** A los 350 años quedan **206 mg** de radio-226 sin desintegrar, y su actividad se reduce a la sexta parte al cabo de unos **4140 años**. Es coherente: 350 años es menos de un periodo (queda más de la mitad), y para reducirla a la sexta parte hacen falta entre dos periodos (1/4) y tres (1/8).
+
+</Solucion>

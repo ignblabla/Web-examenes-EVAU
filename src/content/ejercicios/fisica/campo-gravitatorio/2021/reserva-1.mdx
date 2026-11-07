@@ -1,0 +1,155 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Razone la veracidad o falsedad de la siguiente afirmación: «Dos masas de valor *m* y 4*m* separadas una distancia *d*, generarán un campo gravitatorio nulo en un punto entre ambas situado a una distancia *d*/3 de la masa más pequeña».
+
+<Solucion>
+
+**Verdadera.** Cada masa crea un campo dirigido hacia ella. En un punto P del segmento que las une, a una distancia $x$ de la masa $m$ (y $d - x$ de la masa $4m$), el campo de $m$ apunta hacia $m$ y el de $4m$ hacia $4m$: tienen la misma dirección y **sentidos opuestos**, así que el campo total se anula donde sus módulos son iguales:
+
+$$
+\frac{G\,m}{x^2} = \frac{G\,(4m)}{(d - x)^2}
+\quad\Rightarrow\quad
+(d - x)^2 = 4x^2
+\quad\Rightarrow\quad
+d - x = 2x
+\quad\Rightarrow\quad
+x = \frac{d}{3}
+$$
+
+(Se toma la raíz positiva, porque $x$ y $d - x$ son distancias positivas.) El campo es nulo a $d/3$ de la masa pequeña, y a $2d/3$ de la grande: como la masa $4m$ crea un campo cuatro veces más intenso a igual distancia, el punto tiene que estar el doble de lejos de ella. Fuera del segmento los dos campos tienen el mismo sentido y no pueden anularse.
+
+</Solucion>
+
+**b)** Dos masas *m*<sub>1</sub> = 10 kg y *m*<sub>2</sub> = 30 kg se encuentran situadas en los puntos A(0,0) m y B(4,3) m, respectivamente. **i)** Dibuje el campo gravitatorio debido a las dos masas en el punto C(0,3) m y determine su valor. **ii)** Calcule el trabajo que realiza la fuerza gravitatoria cuando una tercera masa *m*<sub>3</sub> = 2 kg se desplaza desde el punto C(0,3) m hasta el punto D(4,0) m.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** El punto C(0,3) está 3 m por encima de A y 4 m a la izquierda de B. Cada masa crea en C un campo dirigido hacia ella, de módulo $g = G\,m/r^2$:
+
+$$
+g_1 = 6{,}67 \cdot 10^{-11} \cdot \frac{10}{3^2} = 7{,}41 \cdot 10^{-11}\ \text{N/kg}\ \ (\text{hacia A},\ -\vec{j})
+$$
+
+$$
+g_2 = 6{,}67 \cdot 10^{-11} \cdot \frac{30}{4^2} = 1{,}25 \cdot 10^{-10}\ \text{N/kg}\ \ (\text{hacia B},\ +\vec{i})
+$$
+
+<Vectores
+  xMin={-1.5}
+  xMax={4.8}
+  yMin={-0.6}
+  yMax={3.8}
+  escala={52}
+  marcasX={[4]}
+  marcasY={[3]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A · 10 kg", tipo: "masa", dx: 10, dy: 20 },
+    { x: 4, y: 3, texto: "B · 30 kg", tipo: "masa", dx: -20, dy: -14 },
+    { x: 0, y: 3, texto: "C(0, 3)", tipo: "punto", dx: -44, dy: -10 },
+    { x: 4, y: 0, texto: "D(4, 0)", tipo: "punto", dx: 6, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [0, 3], v: [70, 0], texto: "g", sub: "2", color: "#2d6fa3", dy: -8 },
+    { desde: [0, 3], v: [0, -42], texto: "g", sub: "1", color: "#2d6fa3", dx: -24, dy: 4 },
+    { desde: [0, 3], v: [70, -42], texto: "g", color: "#195c51", dx: 2, dy: 14 },
+  ]}
+  segmentos={[[0, 3, 4, 3], [0, 0, 4, 0], [4, 0, 4, 3]]}
+  descripcion="Masa de 10 kilos en el origen, A, y de 30 kilos en B, de coordenadas 4, 3. En C, de coordenadas 0, 3, el campo de A apunta hacia abajo, hacia A, y el de B hacia la derecha, hacia B, más largo. El campo total apunta en diagonal hacia abajo y a la derecha. El punto D, de coordenadas 4, 0, está a 4 metros de A y a 3 metros de B."
+/>
+
+$$
+\vec{g}_C = \left(1{,}25 \cdot 10^{-10}\,\vec{i} - 7{,}41 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg}
+\qquad
+|\vec{g}_C| = \sqrt{\left(1{,}25 \cdot 10^{-10}\right)^2 + \left(7{,}41 \cdot 10^{-11}\right)^2} = 1{,}45 \cdot 10^{-10}\ \text{N/kg}
+$$
+
+**ii) Trabajo de C a D.** La fuerza gravitatoria es conservativa: su trabajo no depende del camino y vale $W = -m_3\,(V_D - V_C)$. C está a 3 m de A y 4 m de B; D, a 4 m de A y 3 m de B:
+
+$$
+V_C = -G\left(\frac{m_1}{3} + \frac{m_2}{4}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{10}{3} + \frac{30}{4}\right) = -7{,}23 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+V_D = -6{,}67 \cdot 10^{-11}\left(\frac{10}{4} + \frac{30}{3}\right) = -8{,}34 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+W_{C \to D} = -2 \cdot \left(-8{,}34 \cdot 10^{-10} + 7{,}23 \cdot 10^{-10}\right) = 2{,}22 \cdot 10^{-10}\ \text{J}
+$$
+
+**Respuesta.** En C, $\vec{g} = (1{,}25 \cdot 10^{-10}\,\vec{i} - 7{,}41 \cdot 10^{-11}\,\vec{j})$ N/kg, de módulo $1{,}45 \cdot 10^{-10}$ N/kg. El trabajo de la fuerza gravitatoria de C a D es **$2{,}22 \cdot 10^{-10}$ J**: positivo, porque en D la masa queda más cerca de la masa mayor (a 3 m de los 30 kg) y su potencial es más bajo; el desplazamiento se produce a favor del campo.
+
+</Solucion>
+
+**A2. a)** Dos satélites idénticos, A y B, están en órbita alrededor de la Tierra, siendo sus órbitas de distinto radio: *R*<sub>A</sub> = 3*R*<sub>B</sub>. Determine la relación entre sus velocidades orbitales y justifique cuál de los dos se mueve a mayor velocidad.
+
+<Solucion>
+
+En una órbita circular, la fuerza gravitatoria que ejerce la Tierra sobre el satélite es la fuerza centrípeta:
+
+$$
+\frac{G\,M_T\,m}{R^2} = m\,\frac{v^2}{R}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M_T}{R}}
+$$
+
+La velocidad orbital no depende de la masa del satélite y es inversamente proporcional a la raíz del radio. Dividiendo:
+
+$$
+\frac{v_A}{v_B} = \sqrt{\frac{R_B}{R_A}} = \sqrt{\frac{R_B}{3R_B}} = \frac{1}{\sqrt{3}} \approx 0{,}58
+\quad\Rightarrow\quad
+v_B = \sqrt{3}\,v_A
+$$
+
+**Se mueve más deprisa el satélite B**, el de la órbita más baja, a una velocidad $\sqrt{3} \approx 1{,}73$ veces la de A. Cuanto más cerca de la Tierra, más intensa es la atracción gravitatoria, y mayor tiene que ser la velocidad para que esa atracción se emplee solo en curvar la trayectoria.
+
+</Solucion>
+
+**b)** Se pretende poner en órbita un satélite artificial que diariamente dará 10 vueltas a la Tierra. **i)** ¿A qué altura sobre la superficie terrestre se situará? **ii)** ¿Cuál será la velocidad del satélite?
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Altura.** Si da 10 vueltas al día, su periodo es:
+
+$$
+T = \frac{24 \cdot 3600}{10} = 8640\ \text{s}
+$$
+
+En la órbita circular, la fuerza gravitatoria es la centrípeta. Con $v = 2\pi r/T$ se obtiene la tercera ley de Kepler:
+
+$$
+\frac{G\,M_T\,m}{r^2} = m\,\frac{4\pi^2}{T^2}\,r
+\quad\Rightarrow\quad
+r = \sqrt[3]{\frac{G\,M_T\,T^2}{4\pi^2}} = \sqrt[3]{\frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 8640^2}{4\pi^2}} = 9{,}10 \cdot 10^{6}\ \text{m}
+$$
+
+Ese es el radio de la órbita, medido desde el centro de la Tierra. La altura sobre la superficie es:
+
+$$
+h = r - R_T = 9{,}10 \cdot 10^6 - 6{,}37 \cdot 10^6 = 2{,}73 \cdot 10^{6}\ \text{m}
+$$
+
+**ii) Velocidad.**
+
+$$
+v = \frac{2\pi r}{T} = \frac{2\pi \cdot 9{,}10 \cdot 10^6}{8640} = 6{,}62 \cdot 10^{3}\ \text{m/s}
+$$
+
+Se obtiene lo mismo con $v = \sqrt{G\,M_T/r}$.
+
+**Respuesta.** El satélite debe situarse a **$2{,}73 \cdot 10^6$ m** (unos 2730 km) sobre la superficie y se moverá a **$6{,}62 \cdot 10^3$ m/s**. Es una órbita baja, con una velocidad algo menor que la de los satélites que rozan la atmósfera (unos 7,9 km/s).
+
+</Solucion>

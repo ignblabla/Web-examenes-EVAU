@@ -1,0 +1,147 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: reserva-3
+formato: fisica
+---
+
+import LineasCampoMasa from "../../../../../components/figuras/fisica/LineasCampoMasa.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Represente gráficamente las líneas del campo gravitatorio y las superficies equipotenciales creadas por una masa puntual *M*. Responda razonadamente: **i)** ¿Se pueden cortar dos líneas de campo? **ii)** ¿Cómo varía el potencial gravitatorio al alejarnos de la masa *M*?
+
+<Solucion>
+
+El campo gravitatorio de una masa puntual es $\vec{g} = -\dfrac{G\,M}{r^2}\,\vec{u}_r$: en cada punto apunta **hacia la masa**. Las **líneas de campo**, tangentes al campo en cada punto, son por tanto **rectas radiales** dirigidas hacia $M$. Las **superficies equipotenciales**, formadas por los puntos con el mismo potencial, $V = -G\,M/r$, son **esferas centradas en la masa** (circunferencias en el dibujo), perpendiculares a las líneas de campo en cada punto:
+
+<LineasCampoMasa />
+
+**i) ¿Se pueden cortar dos líneas de campo? No.** En cada punto del espacio el campo tiene un **único valor**, con una dirección y un sentido. Si dos líneas se cortaran, en el punto de corte habría dos tangentes distintas, es decir, dos direcciones del campo a la vez, lo que es imposible. (Las líneas solo convergen en la propia masa, donde el campo no está definido.)
+
+**ii) Variación del potencial al alejarse de la masa.** El potencial gravitatorio es:
+
+$$
+V(r) = -\frac{G\,M}{r}
+$$
+
+Es siempre negativo (tomando el origen en el infinito) y su valor absoluto disminuye con la distancia: al alejarnos de la masa, el potencial **aumenta**, se hace menos negativo, y tiende a cero en el infinito. Por eso el campo, que apunta hacia los potenciales decrecientes, se dirige hacia la masa. Con saltos iguales de potencial, las superficies equipotenciales están más juntas cerca de la masa, donde el campo es más intenso.
+
+</Solucion>
+
+**b)** Dos masas puntuales *m*<sub>1</sub> = 2 kg y *m*<sub>2</sub> = 4 kg están situadas en los puntos A(-3,0) m y B(0,1) m, respectivamente. Calcule razonadamente: **i)** El campo gravitatorio en el punto C(0,-1) m. **ii)** La fuerza que ejercerá el campo sobre una masa *m*<sub>3</sub> = 0,5 kg situada en ese punto.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en C.** Cada masa crea en C un campo dirigido hacia ella, de módulo $g = G\,m/r^2$.
+
+**Campo de m₁.** El vector de C a A es $(-3, 1)$ m, de módulo $r_{AC} = \sqrt{10}$ m:
+
+$$
+g_1 = 6{,}67 \cdot 10^{-11} \cdot \frac{2}{10} = 1{,}33 \cdot 10^{-11}\ \text{N/kg}
+\qquad
+\vec{g}_1 = g_1\,\frac{-3\,\vec{i} + \vec{j}}{\sqrt{10}} = \left(-1{,}27 \cdot 10^{-11}\,\vec{i} + 4{,}22 \cdot 10^{-12}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+**Campo de m₂.** B está 2 m por encima de C, así que su campo apunta hacia $+\vec{j}$:
+
+$$
+\vec{g}_2 = 6{,}67 \cdot 10^{-11} \cdot \frac{4}{2^2}\,\vec{j} = 6{,}67 \cdot 10^{-11}\,\vec{j}\ \text{N/kg}
+$$
+
+<Vectores
+  xMin={-3.7}
+  xMax={1.2}
+  yMin={-1.8}
+  yMax={1.7}
+  escala={60}
+  marcasX={[-3]}
+  marcasY={[-1, 1]}
+  unidad="m"
+  puntos={[
+    { x: -3, y: 0, texto: "A · 2 kg", tipo: "masa", dx: -10, dy: -14 },
+    { x: 0, y: 1, texto: "B · 4 kg", tipo: "masa", dx: 10, dy: -8 },
+    { x: 0, y: -1, texto: "C(0, −1)", tipo: "punto", dx: 10, dy: 18 },
+  ]}
+  vectores={[
+    { desde: [0, -1], v: [-36, 12], texto: "g", sub: "1", color: "#2d6fa3", dx: -16, dy: 18 },
+    { desde: [0, -1], v: [0, 64], texto: "g", sub: "2", color: "#2d6fa3", dx: 8, dy: 4 },
+    { desde: [0, -1], v: [-36, 76], texto: "g", color: "#195c51", dx: -16, dy: 0 },
+  ]}
+  segmentos={[[-3, 0, 0, -1]]}
+  descripcion="Masa de 2 kilos en A, de coordenadas menos 3, 0, y de 4 kilos en B, de coordenadas 0, 1. En el punto C, de coordenadas 0, menos 1, el campo de B apunta hacia arriba, hacia B, y es el mayor; el de A apunta hacia A, hacia la izquierda y algo hacia arriba. El campo total apunta hacia arriba e inclinado ligeramente hacia la izquierda."
+/>
+
+$$
+\vec{g}_C = \vec{g}_1 + \vec{g}_2 = \left(-1{,}27 \cdot 10^{-11}\,\vec{i} + 7{,}09 \cdot 10^{-11}\,\vec{j}\right)\ \text{N/kg}
+$$
+
+$$
+|\vec{g}_C| = \sqrt{\left(1{,}27 \cdot 10^{-11}\right)^2 + \left(7{,}09 \cdot 10^{-11}\right)^2} = 7{,}20 \cdot 10^{-11}\ \text{N/kg}
+$$
+
+**ii) Fuerza sobre m₃.** La fuerza que el campo ejerce sobre una masa es $\vec{F} = m_3\,\vec{g}$:
+
+$$
+\vec{F} = 0{,}5 \cdot \left(-1{,}27 \cdot 10^{-11}\,\vec{i} + 7{,}09 \cdot 10^{-11}\,\vec{j}\right) = \left(-6{,}33 \cdot 10^{-12}\,\vec{i} + 3{,}55 \cdot 10^{-11}\,\vec{j}\right)\ \text{N}
+$$
+
+**Respuesta.** $\vec{g}_C = (-1{,}27 \cdot 10^{-11}\,\vec{i} + 7{,}09 \cdot 10^{-11}\,\vec{j})$ N/kg, de módulo $7{,}20 \cdot 10^{-11}$ N/kg, y la fuerza sobre la masa de 0,5 kg es $\vec{F} = (-6{,}33 \cdot 10^{-12}\,\vec{i} + 3{,}55 \cdot 10^{-11}\,\vec{j})$ N, de módulo $3{,}60 \cdot 10^{-11}$ N, con la misma dirección y sentido que el campo.
+
+</Solucion>
+
+**A2. a)** El planeta A tiene dos veces más masa que el planeta B y radio cuatro veces menor. Determine la relación entre las velocidades de escape desde las superficies de ambos planetas.
+
+<Solucion>
+
+La velocidad de escape es la velocidad mínima con la que hay que lanzar un cuerpo desde la superficie para que llegue al infinito (con velocidad nula). La fuerza gravitatoria es conservativa, así que la energía mecánica se conserva, y en el infinito es nula:
+
+$$
+\frac{1}{2}\,m\,v_e^2 - \frac{G\,M\,m}{R} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M}{R}}
+$$
+
+Con $M_A = 2M_B$ y $R_A = R_B/4$:
+
+$$
+\frac{v_{e,A}}{v_{e,B}} = \sqrt{\frac{M_A}{M_B} \cdot \frac{R_B}{R_A}} = \sqrt{2 \cdot 4} = \sqrt{8} = 2\sqrt{2} \approx 2{,}83
+$$
+
+La velocidad de escape desde A es **$2\sqrt{2} \approx 2{,}83$ veces** la de B: A tiene más masa y, además, su superficie está más cerca de su centro, así que el cuerpo está más ligado a él.
+
+</Solucion>
+
+**b)** La masa de la Luna es 0,012 veces la masa de la Tierra, y el radio lunar es 0,27 veces el radio de la Tierra. Calcule: **i)** La aceleración de la gravedad en la superficie de la Luna. **ii)** La velocidad de escape de un objeto desde la superficie de la Luna.
+
+<Datos>g = 9,8 m s<sup>-2</sup>; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+**i) Gravedad en la superficie lunar.** La gravedad en la superficie de un planeta de masa $M$ y radio $R$ es $g = G\,M/R^2$. Dividiendo la de la Luna entre la de la Tierra (no se necesita $G$ ni la masa de la Tierra):
+
+$$
+\frac{g_L}{g} = \frac{M_L}{M_T} \cdot \left(\frac{R_T}{R_L}\right)^2 = \frac{0{,}012}{0{,}27^2} = 0{,}165
+$$
+
+$$
+g_L = 0{,}165 \cdot 9{,}8 = 1{,}61\ \text{m/s}^2
+$$
+
+**ii) Velocidad de escape.** Como $G\,M_L = g_L\,R_L^2$, la velocidad de escape se puede escribir en función de la gravedad en la superficie:
+
+$$
+v_e = \sqrt{\frac{2\,G\,M_L}{R_L}} = \sqrt{2\,g_L\,R_L}
+$$
+
+El radio de la Luna es $R_L = 0{,}27 \cdot 6{,}37 \cdot 10^6 = 1{,}72 \cdot 10^6$ m:
+
+$$
+v_e = \sqrt{2 \cdot 1{,}61 \cdot 1{,}72 \cdot 10^6} = 2{,}36 \cdot 10^{3}\ \text{m/s}
+$$
+
+**Respuesta.** La gravedad en la superficie de la Luna es **1,61 m/s²**, la sexta parte de la terrestre, y la velocidad de escape, **$2{,}36 \cdot 10^3$ m/s**, unas cinco veces menor que la de la Tierra (11,2 km/s). Por eso la Luna no ha podido retener una atmósfera.
+
+</Solucion>

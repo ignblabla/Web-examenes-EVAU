@@ -1,0 +1,146 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: junio
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Un rayo de luz monocromática pasa de un medio de índice de refracción *n*<sub>1</sub> a otro medio con índice de refracción *n*<sub>2</sub>, siendo *n*<sub>1</sub> &lt; *n*<sub>2</sub>. Razone y justifique la veracidad o falsedad de las siguientes frases: **i)** La velocidad de dicho rayo aumenta al pasar del primer medio al segundo. **ii)** La longitud de onda del rayo es mayor en el segundo medio.
+
+<Solucion>
+
+El índice de refracción de un medio es el cociente entre la velocidad de la luz en el vacío y en ese medio, $n = c/v$.
+
+**i) Falsa.** La velocidad en cada medio es $v = c/n$, inversamente proporcional al índice:
+
+$$
+\frac{v_2}{v_1} = \frac{c/n_2}{c/n_1} = \frac{n_1}{n_2} < 1
+\quad\Rightarrow\quad
+v_2 < v_1
+$$
+
+Al pasar a un medio de mayor índice (más refringente), la velocidad de la luz **disminuye**.
+
+**ii) Falsa.** Al pasar de un medio a otro, la **frecuencia no cambia**: la fija el foco emisor, y cada punto de la superficie de separación vibra con la frecuencia de la onda que le llega. Como $v = \lambda\,f$:
+
+$$
+\frac{\lambda_2}{\lambda_1} = \frac{v_2/f}{v_1/f} = \frac{v_2}{v_1} = \frac{n_1}{n_2} < 1
+\quad\Rightarrow\quad
+\lambda_2 < \lambda_1
+$$
+
+La longitud de onda es **menor** en el segundo medio, en la misma proporción en que disminuye la velocidad.
+
+</Solucion>
+
+**b)** Sea un recipiente que contiene agua que llega hasta una altura de 0,25 m, y sobre la que se ha colocado una capa de aceite. Procedente del aire, incide sobre la capa de aceite un rayo de luz que forma 50º con la normal a la superficie de separación aire-aceite. **i)** Haga un esquema de la trayectoria que sigue el rayo en los diferentes medios (aire, aceite y agua), en el que se incluyan los valores de los ángulos que forman con la normal los rayos refractados en el aceite y en el agua. **ii)** Calcule la velocidad de la luz en el agua.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup>; n<sub>aire</sub> = 1; n<sub>aceite</sub> = 1,47; n<sub>agua</sub> = 1,33</Datos>
+
+<Solucion>
+
+**i) Ángulos y esquema.** En cada superficie de separación el rayo se refracta según la ley de Snell, $n_1\sin\theta_1 = n_2\sin\theta_2$. Del aire al aceite:
+
+$$
+n_{\text{aire}}\sin 50^\circ = n_{\text{aceite}}\sin\theta_{\text{aceite}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{aceite}} = \frac{1 \cdot 0{,}766}{1{,}47} = 0{,}521
+\quad\Rightarrow\quad \theta_{\text{aceite}} = 31{,}4^\circ
+$$
+
+Del aceite al agua. Las dos superficies son paralelas (horizontales), así que el ángulo con el que el rayo llega al agua es el de refracción en el aceite:
+
+$$
+n_{\text{aceite}}\sin\theta_{\text{aceite}} = n_{\text{agua}}\sin\theta_{\text{agua}}
+\quad\Rightarrow\quad
+\sin\theta_{\text{agua}} = \frac{1{,}47 \cdot 0{,}521}{1{,}33} = 0{,}576
+\quad\Rightarrow\quad \theta_{\text{agua}} = 35{,}2^\circ
+$$
+
+Al pasar del aire al aceite (más refringente) el rayo se acerca a la normal; al pasar del aceite al agua (menos refringente que el aceite) se aleja algo de ella, aunque sigue más cerca de la normal que en el aire:
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Aceite", n: 1.47, color: "#f6e7b8" },
+    { nombre: "Agua", n: 1.33, color: "#d8e5ed" },
+  ]}
+  incidencia={50}
+  descripcion="Rayo que baja desde el aire formando 50 grados con la normal, se refracta en el aceite acercándose a la normal, con 31,4 grados, y al pasar al agua se aleja algo de ella, con 35,2 grados."
+/>
+
+Como $n\sin\theta$ se conserva en todas las superficies paralelas, el ángulo en el agua es el mismo que si la luz pasara directamente del aire al agua: la capa de aceite solo desplaza el rayo. La altura del agua (0,25 m) no interviene en los ángulos; solo indicaría dónde llega el rayo al fondo del recipiente.
+
+**ii) Velocidad de la luz en el agua.** Por la definición del índice de refracción, $n = c/v$:
+
+$$
+v_{\text{agua}} = \frac{c}{n_{\text{agua}}} = \frac{3 \cdot 10^8}{1{,}33} = 2{,}26 \cdot 10^{8}\ \text{m/s}
+$$
+
+**Respuesta.** El rayo forma **31,4°** con la normal en el aceite y **35,2°** en el agua, donde la luz viaja a **$2{,}26 \cdot 10^8$ m/s**.
+
+</Solucion>
+
+**C2. a)** Con una lente queremos obtener una imagen virtual mayor que el objeto. Razone, realizando además el trazado de rayos correspondiente, qué tipo de lente debemos usar y dónde debe estar situado el objeto.
+
+<Solucion>
+
+**Tipo de lente.** Una lente **divergente** siempre da, de un objeto real, una imagen virtual, derecha y **menor** que el objeto, así que no sirve. Hay que usar una lente **convergente**.
+
+**Posición del objeto.** Con una lente convergente, si el objeto está más lejos que el foco objeto, la imagen es real (los rayos refractados se cortan detrás de la lente). Para que sea virtual, el objeto debe estar **entre el foco objeto y la lente**, a una distancia menor que la distancia focal. Es la situación de una **lupa**:
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4} xMax={4} descripcion="Lente convergente con el objeto entre el foco objeto y la lente. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que parece venir del foco objeto sale paralelo. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a la izquierda de la lente, más lejos que el objeto: la imagen es virtual, derecha y mayor que el objeto." />
+
+Del objeto salen tres rayos: el **paralelo al eje**, que se refracta pasando por el foco imagen $F'$; el que pasa por el **centro óptico**, que no se desvía; y el que **parece venir del foco objeto** $F$, que sale paralelo al eje. Los rayos refractados **divergen** y no se cortan; se cortan sus **prolongaciones** hacia atrás, en el mismo lado que el objeto y más lejos de la lente. La imagen es:
+
+- **Virtual**: la forman las prolongaciones de los rayos y no se puede recoger en una pantalla.
+- **Derecha**: tiene la misma orientación que el objeto.
+- **Mayor que el objeto**.
+
+Con las ecuaciones de las lentes (criterio DIN), $1/s' - 1/s = 1/f'$: si $-f' < s < 0$, resulta $s' < 0$ (imagen virtual) con $|s'| > |s|$, y el aumento $A = s'/s$ es positivo y mayor que 1. En el dibujo, con $f' = 2$ y $s = -1$, sale $s' = -2$ y $A = 2$.
+
+</Solucion>
+
+**b)** Un objeto de 30 cm de alto se encuentra a 60 cm delante de una lente divergente de 40 cm de distancia focal. **i)** Calcule la posición de la imagen. **ii)** Calcule el tamaño de la imagen. **iii)** Explique, con ayuda de un diagrama de rayos, la naturaleza de la imagen formada. Justifique sus respuestas.
+
+<Solucion>
+
+Se usa el criterio de signos DIN: la luz va de izquierda a derecha y las distancias se miden desde la lente. El objeto está a la izquierda, $s = -60$ cm, y en una lente divergente la distancia focal imagen es negativa, $f' = -40$ cm.
+
+**i) Posición de la imagen.** Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{s'} = \frac{1}{-40} + \frac{1}{-60} = -\frac{5}{120} = -\frac{1}{24}
+\quad\Rightarrow\quad
+s' = -24\ \text{cm}
+$$
+
+La imagen se forma **24 cm a la izquierda de la lente**, en el mismo lado que el objeto.
+
+**ii) Tamaño de la imagen.** El aumento lateral de una lente es $A = y'/y = s'/s$:
+
+$$
+A = \frac{s'}{s} = \frac{-24}{-60} = 0{,}4
+\quad\Rightarrow\quad
+y' = A\,y = 0{,}4 \cdot 30 = 12\ \text{cm}
+$$
+
+**iii) Naturaleza de la imagen.**
+
+<TrazadoRayos tipo="divergente" f={-40} s={-60} y={30} xMin={-75} xMax={50} descripcion="Lente divergente de 40 centímetros de distancia focal con un objeto de 30 centímetros a 60 centímetros a la izquierda. El rayo paralelo al eje se refracta alejándose como si viniera del foco imagen, a la izquierda de la lente; el que pasa por el centro óptico no se desvía. Los rayos refractados divergen y sus prolongaciones se cortan a 24 centímetros a la izquierda de la lente, donde se forma una imagen virtual, derecha y menor, de 12 centímetros." />
+
+El rayo paralelo al eje se refracta alejándose de él, de modo que su prolongación pasa por el foco imagen $F'$ (que en una lente divergente está a la izquierda); el que pasa por el centro óptico no se desvía. Los rayos refractados **divergen**, y la imagen se forma donde se cortan sus prolongaciones. Es:
+
+- **Virtual**: $s' < 0$, se forma con las prolongaciones de los rayos y no se puede recoger en una pantalla.
+- **Derecha**: $A > 0$.
+- **Menor que el objeto**: $A = 0{,}4$.
+
+**Respuesta.** La imagen está a **24 cm a la izquierda de la lente** y mide **12 cm**: es virtual, derecha y menor que el objeto, como todas las imágenes de objetos reales en una lente divergente.
+
+</Solucion>

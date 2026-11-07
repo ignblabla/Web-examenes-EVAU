@@ -1,0 +1,171 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: reserva-2
+formato: fisica
+---
+
+import FlujoEspira from "../../../../../components/figuras/fisica/FlujoEspira.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Por dos conductores rectilíneos muy largos y paralelos circulan corrientes de la misma intensidad y sentido. Explique razonadamente con la ayuda de esquemas: **i)** La dirección y el sentido del campo magnético creado por cada corriente en la región que les rodea. **ii)** La dirección y el sentido de la fuerza que actúa sobre cada conductor.
+
+<Solucion>
+
+Se dibujan los conductores perpendiculares al papel, con las dos corrientes **saliendo** de él (⊙).
+
+**i) Campo de cada corriente.** Una corriente rectilínea crea un campo magnético cuyas líneas son **circunferencias concéntricas** con el conductor, en planos perpendiculares a él. Su sentido lo da la **regla de la mano derecha**: con el pulgar en el sentido de la corriente, los dedos indican el del campo. Con la corriente saliente, las líneas giran en sentido **antihorario**. El módulo, $B = \mu_0\,I/(2\pi r)$, disminuye al alejarse del conductor.
+
+<Vectores
+  xMin={-2.4}
+  xMax={2.4}
+  yMin={-1.5}
+  yMax={1.5}
+  escala={62}
+  puntos={[
+    { x: -1, y: 0, texto: "I₁", tipo: "sale", dx: -22, dy: -10 },
+    { x: 1, y: 0, texto: "I₂", tipo: "sale", dx: 10, dy: -10 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [0, 46], texto: "B", sub: "1", color: "#2d6fa3", dx: 6 },
+    { desde: [-1, 0], v: [0, -46], texto: "B", sub: "2", color: "#2d6fa3", dx: 6, dy: 10 },
+    { desde: [-1, 0], v: [40, 0], texto: "F", sub: "21", color: "#b04a3a", dx: -10, dy: 16 },
+    { desde: [1, 0], v: [-40, 0], texto: "F", sub: "12", color: "#b04a3a", dx: -10, dy: 16 },
+  ]}
+  circulos={[{ centro: [-1, 0], r: 1 }, { centro: [1, 0], r: 1 }, { centro: [-1, 0], r: 0.55 }, { centro: [1, 0], r: 0.55 }]}
+  descripcion="Dos conductores perpendiculares al papel con las corrientes saliendo de él. Las líneas del campo de cada uno son circunferencias centradas en él, recorridas en sentido antihorario. El campo del conductor 1 en la posición del conductor 2 apunta hacia arriba y el del 2 en el 1, hacia abajo. La fuerza sobre cada conductor apunta hacia el otro: se atraen."
+/>
+
+**ii) Fuerza sobre cada conductor.** Cada conductor está en el campo del otro, que en su posición es perpendicular a él. Sobre un tramo de longitud $L$ actúa la fuerza $\vec{F} = I\,\vec{L} \times \vec{B}$. Con los conductores en el eje X (el 1 a la izquierda) y las corrientes hacia $+\vec{k}$:
+
+- En el conductor 2, el campo del 1 apunta hacia $+\vec{j}$: $\vec{F}_{12} = I\,L\,\vec{k} \times B\,\vec{j} = -I\,L\,B\,\vec{i}$, hacia el conductor 1.
+- En el conductor 1, el campo del 2 apunta hacia $-\vec{j}$: $\vec{F}_{21} = I\,L\,\vec{k} \times (-B\,\vec{j}) = +I\,L\,B\,\vec{i}$, hacia el conductor 2.
+
+Las dos fuerzas tienen la dirección de la recta que une los conductores, son de sentidos opuestos y del mismo módulo (como exige la tercera ley de Newton): los conductores **se atraen**. Por unidad de longitud, $F/L = \mu_0\,I^2/(2\pi d)$. Si las corrientes tuvieran sentidos opuestos, se repelerían.
+
+</Solucion>
+
+**b)** Considere dos conductores rectilíneos, muy largos, paralelos y separados 0,06 m, por los que circulan corrientes de 9 A y 15 A en el mismo sentido. **i)** Dibuje en un esquema el vector campo magnético resultante en el punto medio de la línea que une ambos conductores y razone su dirección y sentido. **ii)** En la región entre los conductores, ¿a qué distancia del conductor por el que circulan 9 A se anula el campo magnético? Justifique su respuesta.
+
+<Datos>μ<sub>0</sub> = 4π·10<sup>-7</sup> T m A<sup>-1</sup></Datos>
+
+<Solucion>
+
+Se dibujan los conductores perpendiculares al papel, con las corrientes saliendo de él: el de 9 A en $x = 0$ y el de 15 A en $x = 6$ cm.
+
+**i) Campo en el punto medio.** El punto medio M está a $r = 0{,}03$ m de cada conductor. Cada corriente crea allí un campo perpendicular a la recta que une los conductores; por la regla de la mano derecha (líneas antihorarias), el de 9 A apunta hacia $+\vec{j}$ y el de 15 A hacia $-\vec{j}$. Sus módulos son:
+
+$$
+B_1 = \frac{\mu_0\,I_1}{2\pi r} = \frac{4\pi \cdot 10^{-7} \cdot 9}{2\pi \cdot 0{,}03} = 6 \cdot 10^{-5}\ \text{T}
+\qquad
+B_2 = \frac{4\pi \cdot 10^{-7} \cdot 15}{2\pi \cdot 0{,}03} = 1 \cdot 10^{-4}\ \text{T}
+$$
+
+<Vectores
+  xMin={-1}
+  xMax={7}
+  yMin={-2}
+  yMax={2}
+  escala={40}
+  marcasX={[3, 6]}
+  unidad="cm"
+  puntos={[
+    { x: 0, y: 0, texto: "9 A", tipo: "sale", dx: -14, dy: -14 },
+    { x: 6, y: 0, texto: "15 A", tipo: "sale", dx: -10, dy: -14 },
+    { x: 3, y: 0, texto: "M", tipo: "punto", dx: 6, dy: 16 },
+    { x: 2.25, y: 0, texto: "B = 0", tipo: "punto", dx: -40, dy: -10 },
+  ]}
+  vectores={[
+    { desde: [3, 0], v: [0, 36], texto: "B", sub: "1", color: "#2d6fa3", dx: 6 },
+    { desde: [3, 0], v: [0, -60], texto: "B", sub: "2", color: "#2d6fa3", dx: 6, dy: 4 },
+    { desde: [3.6, 0], v: [0, -24], texto: "B", color: "#195c51", dx: 6, dy: 4 },
+  ]}
+  descripcion="Conductor de 9 amperios en x = 0 y de 15 amperios en x = 6 centímetros, con las corrientes saliendo del papel. En el punto medio, el campo del conductor de 9 amperios apunta hacia arriba y el de 15 amperios, mayor, hacia abajo; el campo total apunta hacia abajo. El campo se anula entre los conductores, en x = 2,25 centímetros, más cerca del conductor de 9 amperios."
+/>
+
+Los dos campos tienen la misma dirección y sentidos opuestos, así que el resultante tiene el sentido del mayor, el del conductor de 15 A:
+
+$$
+\vec{B}_M = 6 \cdot 10^{-5}\,\vec{j} - 1 \cdot 10^{-4}\,\vec{j} = -4 \cdot 10^{-5}\,\vec{j}\ \text{T}
+$$
+
+Es **perpendicular** al plano que forman los conductores, de módulo $4 \cdot 10^{-5}$ T, con el sentido del campo creado por la corriente de 15 A.
+
+**ii) Punto en que se anula.** Entre los conductores los dos campos tienen siempre sentidos opuestos; el campo se anula donde sus módulos son iguales. A una distancia $x$ del conductor de 9 A (y $0{,}06 - x$ del de 15 A):
+
+$$
+\frac{\mu_0\,I_1}{2\pi x} = \frac{\mu_0\,I_2}{2\pi\,(0{,}06 - x)}
+\quad\Rightarrow\quad
+9\,(0{,}06 - x) = 15\,x
+\quad\Rightarrow\quad
+x = \frac{0{,}54}{24} = 0{,}0225\ \text{m}
+$$
+
+**Respuesta.** En el punto medio el campo resultante vale $4 \cdot 10^{-5}$ T, perpendicular al plano de los conductores y en el sentido del campo de la corriente de 15 A. El campo se anula a **2,25 cm del conductor de 9 A**: más cerca de la corriente menor, para compensar que la otra es más intensa.
+
+</Solucion>
+
+**B2. a)** Una espira circular gira en torno a uno de sus diámetros en un campo magnético uniforme y constante. Explique, con ayuda de un esquema y de las expresiones que precise, si se induce fuerza electromotriz en la espira cuando: **i)** El campo magnético es paralelo al eje de rotación. **ii)** El campo magnético es perpendicular al eje de rotación.
+
+<Solucion>
+
+Por la **ley de Faraday-Lenz**, se induce una fuerza electromotriz solo si varía el flujo magnético a través de la espira, $\varepsilon = -\,d\Phi/dt$. Con un campo uniforme, el flujo es:
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\theta
+$$
+
+donde $\theta$ es el ángulo entre el campo y el vector superficie $\vec{S}$, perpendicular a la espira. Al girar la espira alrededor de un diámetro, $\vec{S}$ gira en un plano perpendicular al eje de giro.
+
+<FlujoEspira />
+
+**i) Campo paralelo al eje de rotación: no se induce fem.** El eje de giro es un diámetro de la espira, así que está contenido en su plano, y $\vec{S}$ es siempre perpendicular al eje. Si el campo es paralelo al eje, es también **perpendicular a $\vec{S}$** en todo momento $(\theta = 90^\circ)$: las líneas de campo no atraviesan la espira (es el caso de la derecha del esquema). El flujo es nulo y constante, y no se induce fuerza electromotriz:
+
+$$
+\Phi = B\,S\cos 90^\circ = 0
+\quad\Rightarrow\quad
+\varepsilon = 0
+$$
+
+**ii) Campo perpendicular al eje de rotación: sí se induce fem.** Al girar la espira con velocidad angular $\omega$, el ángulo entre $\vec{B}$ y $\vec{S}$ cambia, $\theta = \omega t$ (tomando $\theta = 0$ en $t = 0$), y la espira pasa por todas las orientaciones del esquema. El flujo varía con el tiempo:
+
+$$
+\Phi(t) = B\,S\cos(\omega t)
+\quad\Rightarrow\quad
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t)
+$$
+
+Se induce una fuerza electromotriz **alterna**, de amplitud $B\,S\,\omega$: es el principio del **alternador**. Es máxima cuando la espira es paralela al campo (el flujo es nulo pero cambia más deprisa) y nula cuando es perpendicular a él (el flujo es máximo).
+
+</Solucion>
+
+**b)** Una bobina de 50 espiras circulares de 0,05 m de radio se orienta en un campo magnético de manera que el flujo que la atraviesa sea máximo en todo instante. El módulo del campo magnético varía con el tiempo según la expresión B(t) = 0,5·t + 0,8·t<sup>2</sup> (S.I.). **i)** Deduzca la expresión del flujo magnético que atraviesa la bobina en función del tiempo. **ii)** Determine razonadamente la fuerza electromotriz inducida en la bobina en el instante t = 10 s.
+
+<Solucion>
+
+**i) Flujo magnético.** El flujo es máximo cuando el campo es perpendicular al plano de las espiras $(\vec{B} \parallel \vec{S},\ \cos\theta = 1)$. La superficie de cada espira es:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}05^2 = 7{,}85 \cdot 10^{-3}\ \text{m}^2
+$$
+
+El flujo a través de la bobina es el de una espira multiplicado por el número de espiras, $N = 50$:
+
+$$
+\Phi(t) = N\,B(t)\,S = 50 \cdot 7{,}85 \cdot 10^{-3}\,\left(0{,}5\,t + 0{,}8\,t^2\right) = 0{,}196\,t + 0{,}314\,t^2\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz en t = 10 s.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -N\,S\,\frac{dB}{dt} = -0{,}393\,(0{,}5 + 1{,}6\,t)\ \text{V}
+$$
+
+$$
+\varepsilon(10) = -0{,}393 \cdot (0{,}5 + 16) = -6{,}48\ \text{V}
+$$
+
+**Respuesta.** $\Phi(t) = 0{,}196\,t + 0{,}314\,t^2$ Wb, y en $t = 10$ s la fuerza electromotriz inducida vale **6,48 V** en valor absoluto. El signo negativo indica que la corriente inducida circula en el sentido que crea un campo opuesto al aplicado, oponiéndose al aumento del flujo (ley de Lenz). La fem no es constante: crece con el tiempo, porque el campo aumenta cada vez más deprisa.
+
+</Solucion>

@@ -1,0 +1,173 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: reserva-3
+formato: fisica
+---
+
+import ElectronCampoElectrico from "../../../../../components/figuras/fisica/ElectronCampoElectrico.astro"
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import FlujoEspira from "../../../../../components/figuras/fisica/FlujoEspira.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una espira circular gira con velocidad angular constante alrededor de uno de sus diámetros en una región del espacio en la que existe un campo magnético uniforme y constante perpendicular al eje de giro. **i)** Deduzca de forma razonada la expresión del flujo magnético que atraviesa la espira en función del tiempo. **ii)** Deduzca de forma razonada la expresión de la fuerza electromotriz inducida en la espira en función del tiempo.
+
+<Solucion>
+
+**i) Flujo magnético.** El flujo de un campo uniforme $\vec{B}$ a través de una espira plana de superficie $S$ es:
+
+$$
+\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\theta
+$$
+
+donde $\theta$ es el ángulo entre el campo y el vector superficie $\vec{S}$, perpendicular al plano de la espira. Al girar la espira alrededor de un diámetro perpendicular al campo con velocidad angular constante $\omega$, ese ángulo crece uniformemente, $\theta = \omega t + \theta_0$, y la espira pasa por todas las orientaciones del esquema:
+
+<FlujoEspira />
+
+Tomando $t = 0$ cuando la espira es perpendicular al campo $(\theta_0 = 0)$, y con $S = \pi r^2$ para una espira circular de radio $r$:
+
+$$
+\Phi(t) = B\,S\cos(\omega t) = B\,\pi r^2\cos(\omega t)
+$$
+
+El flujo varía de forma sinusoidal entre $+B\,S$ y $-B\,S$, con el periodo de giro $T = 2\pi/\omega$.
+
+**ii) Fuerza electromotriz.** Por la **ley de Faraday-Lenz**, la fuerza electromotriz inducida es igual a menos la derivada del flujo respecto del tiempo:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t)
+$$
+
+Es una fuerza electromotriz **alterna**, de amplitud $\varepsilon_{\text{máx}} = B\,S\,\omega$ y de la misma frecuencia que el giro: es el fundamento del **alternador**. Está desfasada un cuarto de periodo respecto del flujo: es máxima cuando el flujo es nulo (la espira es paralela al campo y el flujo cambia más deprisa) y nula cuando el flujo es máximo.
+
+</Solucion>
+
+**b)** Una espira cuadrada de 5 cm de lado se sitúa en un plano perpendicular a un campo magnético uniforme de módulo 20 T. Si se reduce de manera uniforme el valor del módulo del campo a 10 T en un intervalo de tiempo de 3 s, calcule de forma razonada: **i)** La expresión del flujo magnético que atraviesa la espira en función del tiempo. **ii)** La fuerza electromotriz inducida en ese periodo de tiempo.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** El campo disminuye de manera uniforme, es decir, a ritmo constante:
+
+$$
+\frac{dB}{dt} = \frac{10 - 20}{3} = -3{,}33\ \text{T/s}
+\quad\Rightarrow\quad
+B(t) = 20 - 3{,}33\,t\ \text{T}\qquad (0 \le t \le 3\ \text{s})
+$$
+
+La espira es perpendicular al campo, así que el campo es paralelo a su vector superficie $(\theta = 0)$. Su superficie es $S = 0{,}05^2 = 2{,}5 \cdot 10^{-3}$ m², y el flujo:
+
+$$
+\Phi(t) = B(t)\,S = \left(20 - 3{,}33\,t\right) \cdot 2{,}5 \cdot 10^{-3} = \left(0{,}05 - 8{,}33 \cdot 10^{-3}\,t\right)\ \text{Wb}
+$$
+
+Pasa de 0,05 Wb en $t = 0$ a 0,025 Wb en $t = 3$ s.
+
+**ii) Fuerza electromotriz.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon = -\frac{d\Phi}{dt} = 8{,}33 \cdot 10^{-3}\ \text{V}
+$$
+
+Es **constante** durante los 3 s, porque el flujo disminuye a ritmo constante. Se obtiene lo mismo con la variación total: $\varepsilon = -\Delta\Phi/\Delta t = -(0{,}025 - 0{,}05)/3$.
+
+Por la ley de Lenz, la corriente inducida se opone a la disminución del flujo: crea en el interior de la espira un campo en el **mismo sentido** que el exterior. Vista desde el lado hacia el que apunta el campo, circula en sentido antihorario:
+
+<EspiraCampoVariable
+  forma="cuadrada"
+  horaria={false}
+  cotas={["lado: 5 cm", ""]}
+  notas={["B ⊙ (disminuye)", "I antihoraria", "B inducido ⊙"]}
+  pie="Espira vista desde el lado hacia el que apunta el campo"
+  descripcion="Espira cuadrada de 5 centímetros de lado dentro de un campo magnético perpendicular, saliente del papel, que disminuye de 20 a 10 teslas. La corriente inducida circula en sentido antihorario y crea en el interior un campo saliente, que se opone a la disminución del flujo."
+/>
+
+**Respuesta.** $\Phi(t) = (0{,}05 - 8{,}33 \cdot 10^{-3}\,t)$ Wb, y durante los 3 s se induce una fuerza electromotriz constante de **$8{,}33 \cdot 10^{-3}$ V**.
+
+</Solucion>
+
+**B2. a)** Se lanza un electrón perpendicularmente a las líneas de un campo electrostático uniforme. **i)** Razone cómo es la trayectoria seguida por el electrón dentro de ese campo y dibújela. **ii)** Razone cómo varían su energía cinética y su energía potencial durante su movimiento.
+
+<Solucion>
+
+**i) Trayectoria.** Sobre el electrón actúa la fuerza eléctrica $\vec{F} = -e\,\vec{E}$ (el peso es despreciable): una fuerza **constante**, en la dirección del campo y de **sentido contrario**, porque la carga es negativa. El movimiento es como el de un tiro horizontal:
+
+- En la dirección de la velocidad inicial, perpendicular al campo, no hay fuerza: **movimiento uniforme**, $x = v_0\,t$.
+- En la dirección del campo, el electrón parte con velocidad nula y tiene una aceleración constante, $a = e\,E/m_e$: **movimiento uniformemente acelerado**, $y = \frac{1}{2}\,a\,t^2$, en sentido contrario al campo.
+
+Eliminando el tiempo, $y = \dfrac{e\,E}{2\,m_e\,v_0^2}\,x^2$: la trayectoria es una **parábola** que se curva en sentido contrario al campo, hacia la placa positiva:
+
+<ElectronCampoElectrico />
+
+**ii) Energías.** La fuerza eléctrica es conservativa y es la única que actúa, así que la **energía mecánica se conserva**. La fuerza tiene una componente en el sentido del desplazamiento (el electrón se desvía hacia donde le empuja), así que realiza un **trabajo positivo**:
+
+$$
+W = \Delta E_c > 0
+\qquad
+W = -\Delta E_p \;\Rightarrow\; \Delta E_p < 0
+$$
+
+La **energía cinética aumenta** (el electrón se mueve cada vez más deprisa) y la **energía potencial disminuye** en la misma cantidad. El electrón se mueve hacia potenciales mayores (hacia la placa positiva), y como su carga es negativa, su energía potencial, $E_p = -e\,V$, disminuye.
+
+</Solucion>
+
+**b)** Dos partículas con cargas *q*<sub>1</sub> = 4·10<sup>−6</sup> C y *q*<sub>2</sub> = 2·10<sup>−6</sup> C se encuentran situadas en los puntos (0,0) y (2,0) m, respectivamente, del plano XY. **i)** Calcule el campo eléctrico en el punto (2,2) m. **ii)** Calcule la fuerza a la que estaría sometida una tercera partícula con carga *q*<sub>3</sub> = 3·10<sup>−8</sup> C situada en el punto (2,2) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Campo en P(2,2).** Las dos cargas son positivas: cada una crea en P un campo que se **aleja** de ella, de módulo $E = K\,q/r^2$.
+
+**Campo de q₁.** El vector de $q_1$ a P es $(2, 2)$ m, de módulo $r_1 = 2\sqrt{2}$ m $(r_1^2 = 8$ m²$)$:
+
+$$
+E_1 = \frac{9 \cdot 10^9 \cdot 4 \cdot 10^{-6}}{8} = 4500\ \text{N/C}
+\qquad
+\vec{E}_1 = 4500\,\frac{\vec{i} + \vec{j}}{\sqrt{2}} = \left(3182\,\vec{i} + 3182\,\vec{j}\right)\ \text{N/C}
+$$
+
+**Campo de q₂.** P está 2 m por encima de $q_2$:
+
+$$
+\vec{E}_2 = \frac{9 \cdot 10^9 \cdot 2 \cdot 10^{-6}}{2^2}\,\vec{j} = 4500\,\vec{j}\ \text{N/C}
+$$
+
+<Vectores
+  xMin={-0.6}
+  xMax={3.6}
+  yMin={-0.6}
+  yMax={3.4}
+  escala={60}
+  marcasX={[2]}
+  marcasY={[2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "q₁", tipo: "carga", signo: "+", dx: -18, dy: 18 },
+    { x: 2, y: 0, texto: "q₂", tipo: "carga", signo: "+", dx: 10, dy: 18 },
+    { x: 2, y: 2, texto: "P(2, 2)", tipo: "punto", dx: 10, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [2, 2], v: [36, 36], texto: "E", sub: "1", color: "#2d6fa3", dx: 4, dy: 12 },
+    { desde: [2, 2], v: [0, 50], texto: "E", sub: "2", color: "#2d6fa3", dx: -22, dy: 4 },
+    { desde: [2, 2], v: [36, 86], texto: "E", color: "#195c51", dx: 6 },
+  ]}
+  segmentos={[[0, 0, 2, 2], [2, 0, 2, 2]]}
+  descripcion="Cargas positivas q1 en el origen y q2 en el punto 2, 0. En el punto P, de coordenadas 2, 2, el campo de q1 apunta en diagonal hacia arriba y a la derecha, alejándose de q1, y el de q2 hacia arriba, alejándose de q2, con el mismo módulo. El campo total apunta hacia arriba e inclinado hacia la derecha."
+/>
+
+$$
+\vec{E}_P = \vec{E}_1 + \vec{E}_2 = \left(3182\,\vec{i} + 7682\,\vec{j}\right)\ \text{N/C}
+\qquad
+|\vec{E}_P| = \sqrt{3182^2 + 7682^2} = 8315\ \text{N/C}
+$$
+
+**ii) Fuerza sobre q₃.** La fuerza es $\vec{F} = q_3\,\vec{E}$; como $q_3$ es positiva, tiene el sentido del campo:
+
+$$
+\vec{F} = 3 \cdot 10^{-8} \cdot \left(3182\,\vec{i} + 7682\,\vec{j}\right) = \left(9{,}55 \cdot 10^{-5}\,\vec{i} + 2{,}30 \cdot 10^{-4}\,\vec{j}\right)\ \text{N}
+$$
+
+**Respuesta.** $\vec{E}_P = (3182\,\vec{i} + 7682\,\vec{j})$ N/C, de módulo **8315 N/C**, y la fuerza sobre $q_3$ es $\vec{F} = (9{,}55 \cdot 10^{-5}\,\vec{i} + 2{,}30 \cdot 10^{-4}\,\vec{j})$ N, de módulo **$2{,}49 \cdot 10^{-4}$ N**, formando 67,5° con el eje X.
+
+</Solucion>

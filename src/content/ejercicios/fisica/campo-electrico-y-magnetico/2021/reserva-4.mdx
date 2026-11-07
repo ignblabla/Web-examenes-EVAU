@@ -1,0 +1,136 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: reserva-4
+formato: fisica
+---
+
+import EspiraCampoVariable from "../../../../../components/figuras/fisica/EspiraCampoVariable.astro"
+import EspiraCircularHilo from "../../../../../components/figuras/fisica/EspiraCircularHilo.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Razone si son ciertas las siguientes afirmaciones: **i)** En una región del espacio donde hay un campo electrostático uniforme el potencial electrostático es constante. **ii)** Si se deja una partícula con carga negativa en reposo en un campo electrostático se moverá hacia la dirección donde el potencial disminuye.
+
+<Solucion>
+
+**i) Falsa.** El campo eléctrico está relacionado con la variación del potencial: apunta en el sentido en que el potencial disminuye, y su módulo indica lo rápido que disminuye. En un campo uniforme $\vec{E} = E\,\vec{i}$, la diferencia de potencial entre dos puntos separados una distancia $d$ en la dirección del campo es:
+
+$$
+V_A - V_B = E\,d
+$$
+
+El potencial **disminuye linealmente** en el sentido del campo; solo es constante en los planos perpendiculares al campo (las superficies equipotenciales). Si el potencial fuera constante en toda la región, el campo sería nulo.
+
+**ii) Falsa.** Sobre la carga negativa actúa la fuerza $\vec{F} = q\,\vec{E}$ con $q < 0$: apunta en **sentido contrario al campo**. Partiendo del reposo, la carga se mueve en el sentido de la fuerza, es decir, hacia donde el potencial **aumenta**. Se comprueba con la energía: la carga se mueve espontáneamente hacia donde disminuye su energía potencial, $E_p = q\,V$; como $q < 0$, eso ocurre cuando $V$ aumenta. Son las cargas **positivas** las que se mueven hacia potenciales menores.
+
+</Solucion>
+
+**b)** Una partícula con carga *q*<sub>1</sub> = 4·10<sup>−6</sup> C se encuentra fija en el punto P<sub>1</sub>(-2,0) m del plano XY. **i)** Calcule el trabajo que hay que hacer para traer otra partícula con carga *q*<sub>2</sub> = 4·10<sup>−6</sup> C desde el infinito hasta el punto P<sub>2</sub>(2,0) m, e interprete su signo. **ii)** Calcule el campo eléctrico en el punto P<sub>3</sub>(0,3) considerando las partículas cargadas anteriores en sus respectivos puntos.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Trabajo para traer q₂ desde el infinito.** El trabajo que hay que hacer (el de una fuerza externa que traiga la carga sin aumentar su energía cinética) es igual a la variación de su energía potencial, que en el infinito es nula. La distancia entre P₁ y P₂ es 4 m:
+
+$$
+W_{\text{ext}} = \Delta E_p = \frac{K\,q_1\,q_2}{r} - 0 = \frac{9 \cdot 10^9 \cdot 4 \cdot 10^{-6} \cdot 4 \cdot 10^{-6}}{4} = 0{,}036\ \text{J}
+$$
+
+**Interpretación del signo.** El trabajo es **positivo**: hay que **aportar** energía, porque las dos cargas son del mismo signo y se repelen. La fuerza externa debe vencer la repulsión, y la energía aportada queda almacenada como energía potencial del sistema. El campo eléctrico, en cambio, realiza un trabajo negativo, $W_{\text{campo}} = -\Delta E_p = -0{,}036$ J.
+
+**ii) Campo en P₃(0,3).** Las dos cargas son iguales y positivas, y P₃ está a la misma distancia de las dos:
+
+$$
+r = \sqrt{2^2 + 3^2} = \sqrt{13}\ \text{m}
+\qquad
+E_1 = E_2 = \frac{9 \cdot 10^9 \cdot 4 \cdot 10^{-6}}{13} = 2769\ \text{N/C}
+$$
+
+Cada campo se aleja de su carga. El de $q_1$ tiene la dirección de P₁ a P₃, $(2, 3)/\sqrt{13}$, y el de $q_2$, la de P₂ a P₃, $(-2, 3)/\sqrt{13}$. Las componentes horizontales se anulan por simetría y las verticales se suman:
+
+<Vectores
+  xMin={-2.8}
+  xMax={2.8}
+  yMin={-0.6}
+  yMax={4.2}
+  escala={52}
+  marcasX={[-2, 2]}
+  marcasY={[3]}
+  unidad="m"
+  puntos={[
+    { x: -2, y: 0, texto: "q₁", tipo: "carga", signo: "+", dx: -8, dy: 22 },
+    { x: 2, y: 0, texto: "q₂", tipo: "carga", signo: "+", dx: -8, dy: 22 },
+    { x: 0, y: 3, texto: "P₃", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [0, 3], v: [26, 39], texto: "E", sub: "1", color: "#2d6fa3", dx: 4, dy: 8 },
+    { desde: [0, 3], v: [-26, 39], texto: "E", sub: "2", color: "#2d6fa3", dx: -24, dy: 8 },
+    { desde: [0, 3], v: [0, 64], texto: "E", color: "#195c51", dx: 8, dy: 4 },
+  ]}
+  segmentos={[[-2, 0, 0, 3], [2, 0, 0, 3]]}
+  descripcion="Cargas positivas iguales en los puntos menos 2, 0 y 2, 0. En el punto P3, de coordenadas 0, 3, el campo de cada carga se aleja de ella, en diagonal hacia arriba; las componentes horizontales se anulan y el campo total apunta verticalmente hacia arriba."
+/>
+
+$$
+\vec{E}_{P_3} = 2 \cdot 2769 \cdot \frac{3}{\sqrt{13}}\,\vec{j} = 4608\,\vec{j}\ \text{N/C}
+$$
+
+**Respuesta.** Hay que realizar un trabajo de **0,036 J** (positivo, contra la repulsión), y el campo en P₃ es **$\vec{E} = 4608\,\vec{j}$ N/C**, en el sentido positivo del eje Y.
+
+</Solucion>
+
+**B2. a)** Una espira cuadrada situada en el plano XY se acerca a un hilo recto muy largo situado sobre el eje OY por el que circula una corriente de intensidad constante en el sentido positivo de dicho eje. **i)** Razone, con ayuda de un esquema, si varía el flujo magnético que atraviesa la espira. **ii)** Razone y represente en un esquema el sentido de la corriente inducida en la espira.
+
+<Solucion>
+
+**i) ¿Varía el flujo?** El hilo crea un campo magnético cuyas líneas son circunferencias centradas en él. En el plano XY, a la derecha del hilo $(x > 0)$, el campo es perpendicular al plano y **entrante** (regla de la mano derecha con la corriente hacia $+\vec{j}$), y su módulo es:
+
+$$
+B = \frac{\mu_0\,I}{2\pi x}
+$$
+
+Disminuye al alejarse del hilo. Si la espira se acerca al hilo, todos sus puntos pasan a zonas de campo más intenso: el **flujo entrante aumenta**. Por tanto, **sí varía** el flujo.
+
+**ii) Sentido de la corriente inducida.** Por la **ley de Faraday-Lenz**, mientras el flujo varía se induce una corriente que se opone a esa variación. Como aumenta el flujo entrante, la corriente inducida crea en el interior de la espira un campo **saliente**: circula en sentido **antihorario** (visto desde el semieje Z positivo). El esquema muestra también, para comparar, el caso contrario: si la espira se alejara, el flujo disminuiría y la corriente sería horaria.
+
+<EspiraCircularHilo casos={["acerca", "aleja"]} cuadrada />
+
+(Si la espira estuviera a la izquierda del hilo, donde el campo es saliente, al acercarse aumentaría el flujo saliente y la corriente sería horaria.) Mientras la espira se mueve, la corriente inducida también se opone al movimiento: el hilo frena a la espira que se acerca.
+
+</Solucion>
+
+**b)** Una espira cuadrada de 5 cm de lado se encuentra en un plano perpendicular a un campo magnético variable con el tiempo de expresión B(t) = 6·t<sup>2</sup> + 1 (S.I.). **i)** Calcule, ayudándose de un esquema, la expresión del flujo magnético a través de la espira en función del tiempo. **ii)** Calcule el valor de la fuerza electromotriz inducida en la espira en el instante t = 10 s.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** El campo es perpendicular al plano de la espira, así que es paralelo a su vector superficie $(\theta = 0)$. La superficie es $S = 0{,}05^2 = 2{,}5 \cdot 10^{-3}$ m², y el flujo:
+
+$$
+\Phi(t) = B(t)\,S\cos 0^\circ = \left(6\,t^2 + 1\right) \cdot 2{,}5 \cdot 10^{-3} = \left(1{,}5 \cdot 10^{-2}\,t^2 + 2{,}5 \cdot 10^{-3}\right)\ \text{Wb}
+$$
+
+El campo aumenta con el tiempo, y por la ley de Lenz la corriente inducida crea en el interior de la espira un campo opuesto al exterior. Vista desde el lado hacia el que apunta el campo, circula en sentido horario:
+
+<EspiraCampoVariable
+  forma="cuadrada"
+  cotas={["lado: 5 cm", ""]}
+  notas={["B ⊙ (aumenta)", "I horaria", "B inducido ⊗"]}
+  pie="Espira vista desde el lado hacia el que apunta el campo"
+  descripcion="Espira cuadrada de 5 centímetros de lado dentro de un campo magnético perpendicular, saliente del papel, que aumenta con el tiempo. La corriente inducida circula en sentido horario y crea en el interior un campo entrante, que se opone al aumento del flujo."
+/>
+
+**ii) Fuerza electromotriz en t = 10 s.** Por la ley de Faraday-Lenz:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = -2 \cdot 1{,}5 \cdot 10^{-2}\,t = -3 \cdot 10^{-2}\,t\ \text{V}
+$$
+
+$$
+\varepsilon(10) = -3 \cdot 10^{-2} \cdot 10 = -0{,}3\ \text{V}
+$$
+
+**Respuesta.** $\Phi(t) = (1{,}5 \cdot 10^{-2}\,t^2 + 2{,}5 \cdot 10^{-3})$ Wb, y en $t = 10$ s la fuerza electromotriz inducida vale **0,3 V** en valor absoluto. El término constante del campo (1 T) no contribuye: solo induce fem la parte del flujo que varía.
+
+</Solucion>

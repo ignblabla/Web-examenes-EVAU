@@ -1,0 +1,138 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2021
+convocatoria: julio
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**D1. a)** Discuta razonadamente la veracidad de las siguientes afirmaciones: **i)** La masa de un núcleo es siempre menor que la suma de las masas de los protones y neutrones que lo forman. **ii)** En una emisión alfa el número másico decrece en dos unidades y el número atómico en una.
+
+<Solucion>
+
+**i) Verdadera.** Al formarse un núcleo a partir de sus protones y neutrones separados, las fuerzas nucleares los ligan y se **libera** energía, la **energía de enlace** $E_e$. Por la equivalencia entre masa y energía de Einstein, $E = m\,c^2$, esa energía liberada corresponde a una pérdida de masa, el **defecto de masa**:
+
+$$
+\Delta m = Z\,m_p + (A - Z)\,m_n - m_{\text{núcleo}} = \frac{E_e}{c^2} > 0
+$$
+
+Como la energía de enlace es positiva en todos los núcleos (siempre hay que aportar energía para separar sus nucleones), la masa del núcleo es menor que la suma de las masas de sus nucleones. La única excepción es trivial: el núcleo de hidrógeno-1, que es un solo protón y no tiene nucleones que ligar.
+
+**ii) Falsa.** Una partícula alfa es un núcleo de helio, $^4_2\text{He}$, con 2 protones y 2 neutrones. En la emisión se conservan el número másico y la carga:
+
+$$
+^A_Z\text{X} \;\to\; ^{A-4}_{Z-2}\text{Y} + {}^4_2\text{He}
+$$
+
+El número másico **disminuye en cuatro** unidades y el número atómico **en dos**. Por ejemplo, $^{238}_{92}\text{U} \to {}^{234}_{90}\text{Th} + {}^4_2\text{He}$.
+
+</Solucion>
+
+**b)** En la bomba de Hidrógeno (o bomba de fusión) intervienen dos núcleos, uno de deuterio (<sup>2</sup><sub>1</sub>H) y otro de tritio (<sup>3</sup><sub>1</sub>H) que dan lugar a uno de helio (<sup>4</sup><sub>2</sub>He). **i)** Escriba la reacción nuclear correspondiente. **ii)** Obtenga la energía liberada en el proceso por cada átomo de helio obtenido.
+
+<Datos>m(<sup>4</sup><sub>2</sub>He) = 4,002603 u; m(<sup>2</sup><sub>1</sub>H) = 2,014102 u; m(<sup>3</sup><sub>1</sub>H) = 3,016049 u; m<sub>n</sub> = 1,008665 u; 1 u = 1,66·10<sup>-27</sup> kg; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Reacción nuclear.** En la reacción se conservan el número másico y el número atómico. A la izquierda suman $A = 2 + 3 = 5$ y $Z = 1 + 1 = 2$; el helio tiene $A = 4$ y $Z = 2$, así que falta una partícula con $A = 1$ y $Z = 0$: un **neutrón**.
+
+$$
+^2_1\text{H} + {}^3_1\text{H} \;\to\; ^4_2\text{He} + {}^1_0\text{n}
+$$
+
+**ii) Energía liberada.** La masa de los productos es menor que la de los reactivos. La diferencia, el defecto de masa, se transforma en energía según $E = \Delta m\,c^2$:
+
+$$
+\Delta m = m\left(^2_1\text{H}\right) + m\left(^3_1\text{H}\right) - m\left(^4_2\text{He}\right) - m_n
+$$
+
+$$
+\Delta m = 2{,}014102 + 3{,}016049 - 4{,}002603 - 1{,}008665 = 0{,}018883\ \text{u}
+$$
+
+Pasando a kilogramos:
+
+$$
+\Delta m = 0{,}018883 \cdot 1{,}66 \cdot 10^{-27} = 3{,}135 \cdot 10^{-29}\ \text{kg}
+$$
+
+$$
+E = \Delta m\,c^2 = 3{,}135 \cdot 10^{-29} \cdot \left(3 \cdot 10^8\right)^2 = 2{,}82 \cdot 10^{-12}\ \text{J}
+$$
+
+**Respuesta.** Por cada núcleo de helio formado se liberan **$2{,}82 \cdot 10^{-12}$ J** (unos 17,6 MeV). Parece poco, pero por unidad de masa es varias veces más que en la fisión del uranio: con un mol de helio (4 g) se liberarían $2{,}82 \cdot 10^{-12} \cdot 6{,}02 \cdot 10^{23} \approx 1{,}7 \cdot 10^{12}$ J.
+
+</Solucion>
+
+**D2. a)** Enuncie la hipótesis de De Broglie y escriba su ecuación. Indique las magnitudes físicas involucradas y sus unidades en el Sistema Internacional.
+
+<Solucion>
+
+**Hipótesis de De Broglie (1924).** Igual que la luz, que se comporta como onda, presenta también propiedades de partícula (los fotones), De Broglie propuso que la dualidad onda-corpúsculo es general: **toda partícula material en movimiento lleva asociada una onda**, cuya longitud de onda es inversamente proporcional a su momento lineal:
+
+$$
+\lambda = \frac{h}{p} = \frac{h}{m\,v}
+$$
+
+Las magnitudes que intervienen son:
+
+- $\lambda$: **longitud de onda** asociada a la partícula, en **metros (m)**.
+- $h$: **constante de Planck**, $6{,}63 \cdot 10^{-34}$ **J·s**.
+- $p = m\,v$: **momento lineal** (cantidad de movimiento) de la partícula, en **kg·m/s**. Se calcula con la masa $m$, en **kg**, y la velocidad $v$, en **m/s**.
+
+Por el pequeño valor de $h$, la longitud de onda de los objetos macroscópicos es tan pequeña que su comportamiento ondulatorio es imperceptible; en cambio, la de partículas como los electrones es comparable a las distancias entre átomos, y se manifiesta en fenómenos como la difracción de electrones por cristales, que confirmó experimentalmente la hipótesis (Davisson y Germer, 1927).
+
+</Solucion>
+
+**b)** Una partícula alfa (α) emitida en el decaimiento radiactivo del <sup>238</sup>U posee una energía cinética de 6,72·10<sup>-13</sup> J. **i)** ¿Cuánto vale su longitud de onda de De Broglie asociada? **ii)** ¿Qué diferencia de potencial debería existir en una región del espacio para detener por completo la partícula alfa? Indique mediante un esquema la dirección y sentido del campo necesario para ello. Razone todas sus respuestas.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; m<sub>α</sub> = 6,64·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+**i) Longitud de onda de De Broglie.** El momento lineal se obtiene de la energía cinética, $E_c = p^2/(2m)$:
+
+$$
+p = \sqrt{2\,m_\alpha\,E_c} = \sqrt{2 \cdot 6{,}64 \cdot 10^{-27} \cdot 6{,}72 \cdot 10^{-13}} = 9{,}45 \cdot 10^{-20}\ \text{kg·m/s}
+$$
+
+$$
+\lambda = \frac{h}{p} = \frac{6{,}63 \cdot 10^{-34}}{9{,}45 \cdot 10^{-20}} = 7{,}02 \cdot 10^{-15}\ \text{m}
+$$
+
+Su velocidad, $v = p/m_\alpha = 1{,}42 \cdot 10^7$ m/s, es menos del 5 % de la de la luz, así que el cálculo clásico es adecuado. La longitud de onda es del orden del tamaño de un núcleo atómico.
+
+**ii) Diferencia de potencial para detenerla.** La partícula alfa tiene carga $q = +2e = 3{,}2 \cdot 10^{-19}$ C. Para detenerla, el campo eléctrico debe realizar sobre ella un trabajo negativo igual a su energía cinética. Como la fuerza eléctrica es conservativa, $W = -q\,\Delta V$:
+
+$$
+W = \Delta E_c = 0 - E_c
+\quad\Rightarrow\quad
+-q\,\Delta V = -E_c
+\quad\Rightarrow\quad
+\Delta V = \frac{E_c}{q} = \frac{6{,}72 \cdot 10^{-13}}{2 \cdot 1{,}6 \cdot 10^{-19}} = 2{,}1 \cdot 10^{6}\ \text{V}
+$$
+
+La partícula debe moverse hacia potenciales **mayores**: el punto en que se detiene está a un potencial $2{,}1 \cdot 10^6$ V más alto que el punto de partida.
+
+**Dirección y sentido del campo.** La fuerza sobre la partícula debe oponerse a su movimiento. Como la carga es positiva, $\vec{F} = q\,\vec{E}$ tiene el sentido del campo: el campo debe tener **la misma dirección que la velocidad y sentido contrario**. Es coherente con que el campo eléctrico apunte hacia los potenciales decrecientes:
+
+<Vectores
+  xMin={-2.2}
+  xMax={2.4}
+  yMin={-0.9}
+  yMax={0.9}
+  escala={62}
+  puntos={[{ x: 0, y: 0, texto: "α (+2e)", tipo: "carga", signo: "+", dx: -18, dy: -16 }]}
+  vectores={[
+    { desde: [0, 0], v: [70, 0], texto: "v", color: "#195c51", dy: -8 },
+    { desde: [0, 0], v: [-60, 0], texto: "F", color: "#b04a3a", dx: -14, dy: -8 },
+    { desde: [1.4, -0.6], v: [-90, 0], texto: "E", color: "#2d6fa3", dx: -6, dy: 16 },
+  ]}
+  descripcion="La partícula alfa, con carga positiva, se mueve hacia la derecha. El campo eléctrico apunta hacia la izquierda, en sentido contrario a la velocidad, y la fuerza eléctrica sobre la partícula también, de modo que la frena. El potencial aumenta hacia la derecha, en el sentido del movimiento."
+/>
+
+**Respuesta.** La longitud de onda asociada es **$7{,}02 \cdot 10^{-15}$ m**. Para detener la partícula hace falta una diferencia de potencial de **$2{,}1 \cdot 10^6$ V** (la partícula va del potencial menor al mayor), con un campo eléctrico de la misma dirección que la velocidad y sentido opuesto.
+
+</Solucion>

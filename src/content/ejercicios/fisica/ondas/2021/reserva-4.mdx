@@ -1,0 +1,107 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2021
+convocatoria: reserva-4
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**C1. a)** **i)** ¿Qué información ofrece la ecuación de una onda armónica si fijamos una posición concreta? Realice una representación gráfica. **ii)** ¿Y si fijamos una posición y un tiempo concretos simultáneamente?
+
+<Solucion>
+
+La ecuación de una onda armónica que se propaga en el sentido positivo del eje X es:
+
+$$
+y(x, t) = A\sin(\omega t - kx + \varphi_0)
+$$
+
+Da la elongación $y$ de cada punto del medio (de posición $x$) en cada instante $t$.
+
+**i) Posición fija.** Si fijamos $x = x_1$, la ecuación depende solo del tiempo:
+
+$$
+y(x_1, t) = A\sin(\omega t + \varphi_1)
+\qquad \text{con}\ \ \varphi_1 = \varphi_0 - k\,x_1
+$$
+
+Es la ecuación del **movimiento armónico simple** que describe ese punto del medio: oscila con la amplitud $A$ y el periodo $T = 2\pi/\omega$ de la onda, y con una fase inicial $\varphi_1$ que depende de su posición. La gráfica de $y$ frente a $t$ es una sinusoide que se repite cada periodo:
+
+<GraficaFuncion
+  xMin={0}
+  xMax={4.6}
+  yMin={-1.4}
+  yMax={1.4}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["t", "y"]}
+  tramos={[{ f: (t) => Math.sin(Math.PI * t), desde: 0, hasta: 4.5 }]}
+  puntos={[
+    { x: 2, y: 0, texto: "T", dx: 4, dy: 16 },
+    { x: 4, y: 0, texto: "2T", dx: 4, dy: 16 },
+    { x: 0.5, y: 1, texto: "A", dx: -4, dy: -8 },
+  ]}
+  descripcion="Elongación de un punto fijo del medio en función del tiempo: una sinusoide de amplitud A que se repite cada periodo T. El punto oscila con un movimiento armónico simple."
+/>
+
+**ii) Posición y tiempo fijos.** Si fijamos a la vez $x = x_1$ y $t = t_1$, la ecuación da un **número**: la **elongación** de ese punto concreto del medio en ese instante concreto, $y(x_1, t_1)$, es decir, a qué distancia de su posición de equilibrio se encuentra. (Si se fija solo el tiempo, se obtiene la forma de todo el medio en ese instante, como una «fotografía» de la onda.)
+
+</Solucion>
+
+**b)** La siguiente ecuación corresponde a una onda armónica que se desplaza por un medio elástico:
+
+$$
+y(x,t) = 0{,}1\sin\left[5\pi t - \frac{5}{2}\pi x + \frac{\pi}{2}\right]\ \ (\text{S.I.})
+$$
+
+Determine: **i)** Su periodo, su longitud de onda y su velocidad de propagación. **ii)** La velocidad de oscilación del punto x = 2 m en el instante t = 1 s.
+
+<Solucion>
+
+Comparando con la ecuación general, $y = A\sin(\omega t - kx + \varphi_0)$:
+
+$$
+A = 0{,}1\ \text{m}
+\qquad
+\omega = 5\pi\ \text{rad/s}
+\qquad
+k = \frac{5\pi}{2}\ \text{rad/m}
+\qquad
+\varphi_0 = \frac{\pi}{2}\ \text{rad}
+$$
+
+**i) Periodo, longitud de onda y velocidad.**
+
+$$
+T = \frac{2\pi}{\omega} = \frac{2\pi}{5\pi} = 0{,}4\ \text{s}
+\qquad
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{5\pi/2} = 0{,}8\ \text{m}
+$$
+
+$$
+v = \frac{\lambda}{T} = \frac{\omega}{k} = \frac{0{,}8}{0{,}4} = 2\ \text{m/s}
+$$
+
+El signo menos entre los términos en $t$ y en $x$ indica que la onda se propaga en el **sentido positivo del eje X**.
+
+**ii) Velocidad de oscilación en x = 2 m, t = 1 s.** Es la derivada de la elongación respecto del tiempo:
+
+$$
+v_y = \frac{\partial y}{\partial t} = 0{,}1 \cdot 5\pi\cos\left(5\pi t - \frac{5}{2}\pi x + \frac{\pi}{2}\right) = 0{,}5\pi\cos\left(5\pi t - \frac{5}{2}\pi x + \frac{\pi}{2}\right)\ \text{m/s}
+$$
+
+En $x = 2$ m y $t = 1$ s, la fase vale:
+
+$$
+5\pi \cdot 1 - \frac{5}{2}\pi \cdot 2 + \frac{\pi}{2} = 5\pi - 5\pi + \frac{\pi}{2} = \frac{\pi}{2}
+$$
+
+$$
+v_y = 0{,}5\pi\cos\frac{\pi}{2} = 0\ \text{m/s}
+$$
+
+**Respuesta.** $T = 0{,}4$ s, $\lambda = 0{,}8$ m y $v = 2$ m/s. En ese instante el punto $x = 2$ m está **en reposo**: su elongación es $y = 0{,}1\sin(\pi/2) = 0{,}1$ m, la máxima, y en los extremos de la oscilación la velocidad es nula (en cambio, su velocidad máxima, al pasar por el equilibrio, es $0{,}5\pi = 1{,}57$ m/s).
+
+</Solucion>

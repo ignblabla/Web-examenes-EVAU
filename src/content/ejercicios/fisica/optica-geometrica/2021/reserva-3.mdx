@@ -1,0 +1,138 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: reserva-3
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Razone, realizando además el trazado de rayos correspondiente, las características de la imagen producida por una lente convergente con el objeto situado a más distancia de la lente que el doble de su distancia focal.
+
+<Solucion>
+
+Para construir la imagen se trazan, desde el extremo del objeto, tres rayos:
+
+- El **paralelo al eje**, que se refracta pasando por el foco imagen $F'$.
+- El que pasa por el **centro óptico**, que no se desvía.
+- El que pasa por el **foco objeto** $F$, que sale paralelo al eje.
+
+<TrazadoRayos tipo="convergente" f={2} s={-5} y={1} xMin={-5.6} xMax={5} descripcion="Lente convergente con el objeto a la izquierda, más allá del doble de la distancia focal. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que pasa por el foco objeto sale paralelo. Los rayos refractados se cortan a la derecha de la lente, entre el foco imagen y el doble de la distancia focal: la imagen es real, invertida y menor que el objeto." />
+
+Los rayos refractados **se cortan** detrás de la lente, **entre $F'$ y $2F'$**. La imagen es:
+
+- **Real**: la forman los propios rayos y se puede recoger en una pantalla.
+- **Invertida**.
+- **Menor que el objeto**.
+
+Se comprueba con las ecuaciones (criterio DIN): si $|s| > 2f'$, la ecuación $1/s' = 1/f' + 1/s$ da $f' < s' < 2f'$, y el aumento $A = s'/s$ es negativo y de valor absoluto menor que 1. En el dibujo, con $f' = 2$ y $s = -5$, sale $s' = 3{,}33$ y $A = -0{,}67$. Es la situación de una **cámara fotográfica** o del ojo.
+
+</Solucion>
+
+**b)** La imagen producida por una lente convergente está derecha, tiene un tamaño triple que el objeto, y está situada a 1 m delante de la lente. **i)** Calcule la posición del objeto. **ii)** Calcule la distancia focal de la lente. **iii)** Explique, con ayuda de un diagrama de rayos, el carácter real o virtual de la imagen. Justifique sus respuestas.
+
+<Solucion>
+
+Se usa el criterio de signos DIN: la luz va de izquierda a derecha y las distancias se miden desde la lente. La imagen está **delante** de la lente, en el lado del objeto: $s' = -1$ m. Al ser derecha y triple, el aumento es $A = +3$.
+
+**i) Posición del objeto.** El aumento lateral de una lente es $A = s'/s$:
+
+$$
+s = \frac{s'}{A} = \frac{-1}{3} = -0{,}333\ \text{m}
+$$
+
+El objeto está a **33,3 cm delante de la lente**.
+
+**ii) Distancia focal.** Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{f'} = \frac{1}{s'} - \frac{1}{s} = \frac{1}{-1} - \frac{1}{-1/3} = -1 + 3 = 2\ \text{m}^{-1}
+\quad\Rightarrow\quad
+f' = 0{,}5\ \text{m}
+$$
+
+Positiva, como corresponde a una lente convergente (2 dioptrías). El objeto está entre el foco objeto (a 0,5 m) y la lente.
+
+**iii) Carácter de la imagen.**
+
+<TrazadoRayos tipo="convergente" f={0.5} s={-0.3333} y={0.1} xMin={-1.15} xMax={0.8} descripcion="Lente convergente de 0,5 metros de distancia focal con el objeto 0,33 metros a la izquierda, entre el foco objeto y la lente. El rayo paralelo al eje se refracta pasando por el foco imagen y el que pasa por el centro óptico no se desvía. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan 1 metro a la izquierda de la lente, donde se forma una imagen virtual, derecha y tres veces mayor." />
+
+Con el objeto entre el foco y la lente, los rayos refractados **divergen** y no se cortan: se cortan sus **prolongaciones** hacia atrás, en el mismo lado que el objeto. La imagen es **virtual** $(s' < 0)$: no se puede recoger en una pantalla. Es, además, derecha y mayor: la lente actúa como una **lupa**.
+
+**Respuesta.** El objeto está a **0,333 m delante de la lente**, la distancia focal es **$f' = 0{,}5$ m** y la imagen es **virtual**.
+
+</Solucion>
+
+**C2. a)** Razone y justifique la veracidad o falsedad de las siguientes frases: **i)** Vista desde el aire, la profundidad real de un recipiente lleno de agua es menor que su profundidad aparente. **ii)** Cuando un haz de luz pasa de una región donde hay agua a otra región donde hay aceite, dicho haz viajará con mayor velocidad en la región del aceite.
+
+<Datos>n<sub>aceite</sub> &gt; n<sub>agua</sub> &gt; n<sub>aire</sub></Datos>
+
+<Solucion>
+
+**i) Falsa.** Es al revés: la profundidad aparente es **menor** que la real. Los rayos que salen de un punto del fondo pasan del agua al aire, un medio menos refringente, y se refractan **alejándose de la normal**. Al observador le llegan más inclinados, y su cerebro los prolonga en línea recta hacia atrás: las prolongaciones se cortan en un punto **más alto** que el real.
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Agua", n: 1.33, color: "#d8e5ed" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+  ]}
+  incidencia={25}
+  descripcion="Esquema de la refracción de un rayo que pasa del agua al aire: llega a la superficie formando 25 grados con la normal y, en el aire, se aleja de ella y forma 34,2 grados."
+/>
+
+Para rayos casi verticales, la profundidad aparente es $h' = h\,n_{\text{aire}}/n_{\text{agua}} \approx h/1{,}33$: el fondo parece estar a unas tres cuartas partes de su profundidad real. Por eso una piscina parece menos profunda de lo que es.
+
+**ii) Falsa.** La velocidad de la luz en un medio es $v = c/n$, inversamente proporcional al índice de refracción. Como $n_{\text{aceite}} > n_{\text{agua}}$:
+
+$$
+\frac{v_{\text{aceite}}}{v_{\text{agua}}} = \frac{n_{\text{agua}}}{n_{\text{aceite}}} < 1
+$$
+
+El haz viaja **más despacio** en el aceite, el medio más refringente.
+
+</Solucion>
+
+**b)** Un haz de luz naranja que viaja por el aire incide sobre una lámina (de caras plano-paralelas) de un determinado material transparente de 0,6 m de espesor. Los haces reflejado y refractado forman ángulos de 45º y 35º, respectivamente, con la normal a la superficie de la lámina. **i)** Realice un esquema con la trayectoria de los rayos y determine el valor de la velocidad de propagación de la luz dentro de la lámina. **ii)** Calcule la longitud de onda de la luz naranja en la lámina.
+
+<Datos>λ<sub>naranja(aire)</sub> = 6,15·10<sup>-7</sup> m; n<sub>aire</sub> = 1; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Esquema y velocidad en la lámina.** Por la **ley de la reflexión**, el ángulo de reflexión es igual al de incidencia: si el rayo reflejado forma 45° con la normal, la luz incide con **45°**. Por la ley de Snell, el índice de refracción del material es:
+
+$$
+n_{\text{aire}}\sin 45^\circ = n\sin 35^\circ
+\quad\Rightarrow\quad
+n = \frac{\sin 45^\circ}{\sin 35^\circ} = \frac{0{,}707}{0{,}574} = 1{,}23
+$$
+
+En la cara inferior, el rayo vuelve al aire con el mismo ángulo de 45° (las caras son paralelas): sale paralelo al incidente, solo desplazado.
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+    { nombre: "Lámina", n: 1.2328, color: "#f6e7b8", texto: "Lámina (n = 1,23)" },
+    { nombre: "Aire", n: 1, color: "#f4f8fb" },
+  ]}
+  incidencia={45}
+  reflejado
+  descripcion="Rayo de luz naranja que incide desde el aire sobre la lámina formando 45 grados con la normal. Una parte se refleja con el mismo ángulo de 45 grados; otra se refracta en la lámina acercándose a la normal, con 35 grados, y al salir de nuevo al aire por la cara inferior vuelve a formar 45 grados: sale paralela al rayo incidente."
+/>
+
+La velocidad de la luz en la lámina es:
+
+$$
+v = \frac{c}{n} = \frac{3 \cdot 10^8}{1{,}23} = 2{,}43 \cdot 10^{8}\ \text{m/s}
+$$
+
+**ii) Longitud de onda en la lámina.** La frecuencia no cambia al pasar de un medio a otro, así que la longitud de onda se reduce en la misma proporción que la velocidad:
+
+$$
+\lambda = \frac{v}{f} = \frac{\lambda_{\text{aire}}}{n} = \frac{6{,}15 \cdot 10^{-7}}{1{,}23} = 4{,}99 \cdot 10^{-7}\ \text{m}
+$$
+
+**Respuesta.** La luz viaja por la lámina a **$2{,}43 \cdot 10^8$ m/s** y su longitud de onda en ella es **$4{,}99 \cdot 10^{-7}$ m**. El espesor de la lámina (0,6 m) no interviene en estos cálculos: solo determinaría cuánto se desplaza el rayo al atravesarla.
+
+</Solucion>

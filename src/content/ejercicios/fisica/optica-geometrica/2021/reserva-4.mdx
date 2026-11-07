@@ -1,0 +1,63 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: reserva-4
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C2. a)** Considere la afirmación siguiente: «Una lente convergente siempre forma una imagen real a partir de un objeto». Razone, utilizando diagramas de rayos, si la afirmación es verdadera o falsa.
+
+<Solucion>
+
+**Falsa.** Depende de dónde esté el objeto respecto del foco objeto $F$.
+
+**Objeto más lejos que el foco.** Los rayos refractados **se cortan** detrás de la lente y la imagen es **real** e invertida (mayor o menor que el objeto según esté más cerca o más lejos de $2F$):
+
+<TrazadoRayos tipo="convergente" f={2} s={-3} y={1} xMin={-4} xMax={7} descripcion="Lente convergente con el objeto más allá del foco objeto. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que pasa por el foco objeto sale paralelo. Los rayos refractados se cortan a la derecha de la lente: la imagen es real e invertida." />
+
+**Objeto entre el foco y la lente.** Los rayos refractados **divergen** y no se cortan; se cortan sus prolongaciones hacia atrás, en el mismo lado que el objeto. La imagen es **virtual**, derecha y mayor: es el caso de la **lupa**.
+
+<TrazadoRayos tipo="convergente" f={2} s={-1} y={1} xMin={-4} xMax={4} descripcion="Lente convergente con el objeto entre el foco objeto y la lente. Los rayos refractados divergen; sus prolongaciones hacia atrás se cortan a la izquierda de la lente, más lejos que el objeto: la imagen es virtual, derecha y mayor que el objeto." />
+
+(Con el objeto justo en el foco, los rayos salen paralelos y no se forma imagen: se dice que está en el infinito.) Por tanto, una lente convergente **no siempre** forma imágenes reales. Con las ecuaciones (criterio DIN): $1/s' = 1/f' + 1/s$ da $s' > 0$ (real) solo si $|s| > f'$.
+
+</Solucion>
+
+**b)** Se coloca un objeto luminoso delante de una lente divergente de distancia focal 5 cm. Se quiere que la imagen formada tenga 1/3 del tamaño del objeto y su misma orientación. **i)** Calcule la posición del objeto. **ii)** Obtenga la posición de la imagen. **iii)** Realice el trazado de rayos y explique el carácter real o virtual de la imagen. Justifique sus respuestas.
+
+<Solucion>
+
+Se usa el criterio de signos DIN: la luz va de izquierda a derecha y las distancias se miden desde la lente. En una lente divergente la distancia focal imagen es negativa, $f' = -5$ cm. La imagen tiene la misma orientación (derecha) y 1/3 del tamaño: $A = +1/3$.
+
+**i) Posición del objeto.** El aumento lateral es $A = s'/s$, así que $s' = s/3$. Sustituyendo en la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{3}{s} - \frac{1}{s} = \frac{2}{s} = \frac{1}{-5}
+\quad\Rightarrow\quad
+s = -10\ \text{cm}
+$$
+
+El objeto debe estar a **10 cm delante de la lente**.
+
+**ii) Posición de la imagen.**
+
+$$
+s' = \frac{s}{3} = \frac{-10}{3} = -3{,}33\ \text{cm}
+$$
+
+La imagen se forma **3,33 cm delante de la lente**, en el mismo lado que el objeto.
+
+**iii) Trazado de rayos y carácter de la imagen.**
+
+<TrazadoRayos tipo="divergente" f={-5} s={-10} y={3} xMin={-12} xMax={6} descripcion="Lente divergente de 5 centímetros de distancia focal con un objeto 10 centímetros a la izquierda. El rayo paralelo al eje se refracta alejándose de él, como si viniera del foco imagen, a la izquierda de la lente; el que pasa por el centro óptico no se desvía. Los rayos refractados divergen y sus prolongaciones se cortan 3,33 centímetros a la izquierda de la lente: la imagen es virtual, derecha y la tercera parte del objeto." />
+
+El rayo paralelo al eje se refracta alejándose de él, de modo que su prolongación pasa por el foco imagen $F'$, a la izquierda de la lente; el que pasa por el centro óptico no se desvía. Los rayos refractados **divergen** y la imagen se forma donde se cortan sus **prolongaciones**: es **virtual** $(s' < 0)$, y no se puede recoger en una pantalla. Es, además, derecha y menor, como todas las imágenes de objetos reales en una lente divergente.
+
+**Respuesta.** El objeto está a **10 cm delante de la lente** y la imagen, **virtual**, a **3,33 cm delante de ella**.
+
+</Solucion>

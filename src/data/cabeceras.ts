@@ -138,6 +138,21 @@ const fisica2023: Cabecera = {
 // Física, curso 2021-2022: mismas instrucciones que en 2022-2023.
 const fisica2022: Cabecera = { ...fisica2023, curso: "CURSO 2021-2022" }
 
+// Física, curso 2020-2021: como 2022-2023, con otro título, la convocatoria en el curso, letra
+// con serifa y «material de dibujo» en lugar de «regla».
+const fisica2021Junio: Cabecera = {
+  ...fisica2023,
+  titulo: ["PRUEBA DE ACCESO Y ADMISIÓN A LA", "UNIVERSIDAD"],
+  curso: "CONVOCATORIA ORDINARIA, CURSO 2020-2021",
+  serifa: true,
+  instrucciones: fisica2023.instrucciones.map((i) => i.replace("Puede utilizar regla", "Puede utilizar material de dibujo")),
+}
+
+const fisica2021Julio: Cabecera = { ...fisica2021Junio, curso: "CONVOCATORIA EXTRAORDINARIA, CURSO 2020-2021" }
+
+// En las reservas de 2020-2021 el curso aparece sin la convocatoria.
+const fisica2021Reserva: Cabecera = { ...fisica2021Junio, curso: "CURSO 2020-2021" }
+
 // Curso 2024-2025: un ejercicio obligatorio y tres bloques con dos ejercicios optativos cada uno.
 const matematicasII2025: Cabecera = {
   ...matematicasII2026,
@@ -469,6 +484,12 @@ export const cabeceras: Record<string, Cabecera> = {
   "ingles/2026/reserva-2": ingles2026,
   "ingles/2026/reserva-3": ingles2026,
   "ingles/2026/reserva-4": ingles2026,
+  "fisica/2021/junio": fisica2021Junio,
+  "fisica/2021/julio": fisica2021Julio,
+  "fisica/2021/reserva-1": fisica2021Reserva,
+  "fisica/2021/reserva-2": fisica2021Reserva,
+  "fisica/2021/reserva-3": fisica2021Reserva,
+  "fisica/2021/reserva-4": fisica2021Reserva,
   "fisica/2022/junio": fisica2022,
   "fisica/2022/julio": fisica2022,
   "fisica/2022/reserva-1": fisica2022,

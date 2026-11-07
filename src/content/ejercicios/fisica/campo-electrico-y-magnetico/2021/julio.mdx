@@ -1,0 +1,175 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: julio
+formato: fisica
+---
+
+import ProtonAceleradoCampoB from "../../../../../components/figuras/fisica/ProtonAceleradoCampoB.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Dos partículas idénticas con carga *q* y masa *m* se encuentran separadas por una distancia *d*. A continuación, se mantiene fija una de las partículas y se deja que la otra se aleje hasta duplicar la distancia inicial con la primera. **i)** Determine el módulo de la velocidad que adquiere la partícula en el punto final. **ii)** Determine cómo cambiaría el módulo de la velocidad obtenida en el apartado anterior si se duplica el valor de las cargas.
+
+<Solucion>
+
+**i) Velocidad en el punto final.** Las dos cargas tienen el mismo signo, así que se repelen: al soltar una de ellas, la fuerza eléctrica la aleja de la otra. Esa fuerza es conservativa, de modo que la energía mecánica de la partícula que se mueve se conserva. Parte del reposo, con una energía potencial $E_p = K\,q^2/d$, y llega a la distancia $2d$:
+
+$$
+0 + \frac{K\,q^2}{d} = \frac{1}{2}\,m\,v^2 + \frac{K\,q^2}{2d}
+\quad\Rightarrow\quad
+\frac{1}{2}\,m\,v^2 = \frac{K\,q^2}{d} - \frac{K\,q^2}{2d} = \frac{K\,q^2}{2d}
+$$
+
+$$
+v = \sqrt{\frac{K\,q^2}{m\,d}} = q\,\sqrt{\frac{K}{m\,d}}
+$$
+
+La mitad de la energía potencial inicial se ha convertido en energía cinética.
+
+**ii) Si se duplican las cargas.** La velocidad es proporcional a $q$ (la energía cinética, a $q^2$). Con $q' = 2q$:
+
+$$
+v' = 2q\,\sqrt{\frac{K}{m\,d}} = 2v
+$$
+
+La energía potencial inicial se multiplica por 4, también la energía cinética final, y la velocidad se **duplica**.
+
+</Solucion>
+
+**b)** Dos partículas idénticas con carga *q* = + 5·10<sup>−6</sup> C están fijas en los puntos (0,-3) m y (0,3) m del plano XY. Si, manteniendo fijas las dos partículas, se suelta una tercera partícula con carga *Q* = - 2·10<sup>−8</sup> C y masa *m* = 8·10<sup>-6</sup> kg en el punto (4,0) m, calcule el módulo de la velocidad con la que llega al punto (0,0).
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+Las dos cargas positivas atraen a la carga negativa $Q$. En el punto (4,0) las dos fuerzas tienen el mismo módulo y son simétricas respecto del eje X: sus componentes verticales se anulan y la fuerza total apunta hacia el origen, a lo largo del eje X. Por simetría, ocurre lo mismo en todos los puntos del eje, así que $Q$ se mueve en línea recta hasta el origen:
+
+<Vectores
+  xMin={-1}
+  xMax={5}
+  yMin={-3.8}
+  yMax={3.8}
+  escala={34}
+  marcasX={[4]}
+  marcasY={[-3, 3]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 3, texto: "q", tipo: "carga", signo: "+", dx: -22, dy: -8 },
+    { x: 0, y: -3, texto: "q", tipo: "carga", signo: "+", dx: -22, dy: 18 },
+    { x: 4, y: 0, texto: "Q", tipo: "carga", signo: "−", dx: 10, dy: -12 },
+    { x: 0, y: 0, texto: "O", tipo: "punto", dx: 8, dy: 16 },
+  ]}
+  vectores={[
+    { desde: [4, 0], v: [-32, 24], texto: "F", sub: "1", color: "#2d6fa3", dx: -4, dy: -6 },
+    { desde: [4, 0], v: [-32, -24], texto: "F", sub: "2", color: "#2d6fa3", dx: -4, dy: 18 },
+    { desde: [4, 0], v: [-64, 0], texto: "F", color: "#195c51", dx: -14, dy: -6 },
+  ]}
+  segmentos={[[0, 3, 4, 0], [0, -3, 4, 0]]}
+  descripcion="Dos cargas positivas fijas en los puntos 0, 3 y 0, menos 3. La carga negativa Q, en el punto 4, 0, está a 5 metros de cada una. Cada carga positiva la atrae hacia sí; las componentes verticales de las dos fuerzas se anulan y la fuerza total apunta horizontalmente hacia el origen."
+/>
+
+La fuerza eléctrica es conservativa y es la única que actúa, así que la energía mecánica de $Q$ se conserva: la energía cinética que gana es igual a la energía potencial que pierde,
+
+$$
+\frac{1}{2}\,m\,v^2 = -\Delta E_p = -Q\,(V_O - V_P)
+$$
+
+donde $P = (4,0)$ m. El potencial en cada punto es la suma de los potenciales de las dos cargas fijas. El punto P está a $\sqrt{4^2 + 3^2} = 5$ m de cada una, y el origen, a 3 m:
+
+$$
+V_P = 2 \cdot \frac{K\,q}{5} = 2 \cdot \frac{9 \cdot 10^9 \cdot 5 \cdot 10^{-6}}{5} = 1{,}8 \cdot 10^{4}\ \text{V}
+\qquad
+V_O = 2 \cdot \frac{9 \cdot 10^9 \cdot 5 \cdot 10^{-6}}{3} = 3{,}0 \cdot 10^{4}\ \text{V}
+$$
+
+$$
+\Delta E_p = Q\,(V_O - V_P) = -2 \cdot 10^{-8} \cdot \left(3{,}0 \cdot 10^4 - 1{,}8 \cdot 10^4\right) = -2{,}4 \cdot 10^{-4}\ \text{J}
+$$
+
+La carga negativa va hacia potenciales mayores, así que su energía potencial disminuye. Esa energía se convierte en cinética:
+
+$$
+\frac{1}{2} \cdot 8 \cdot 10^{-6} \cdot v^2 = 2{,}4 \cdot 10^{-4}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2 \cdot 2{,}4 \cdot 10^{-4}}{8 \cdot 10^{-6}}} = \sqrt{60} = 7{,}75\ \text{m/s}
+$$
+
+**Respuesta.** La partícula llega al origen con una velocidad de **7,75 m/s**, dirigida hacia $-\vec{i}$. En el origen la fuerza total es nula (las dos atracciones son iguales y opuestas), así que su velocidad es máxima: la partícula sigue moviéndose y oscila a lo largo del eje X entre (4,0) y (−4,0) m.
+
+</Solucion>
+
+**B2. a)** Suponga dos conductores rectilíneos, muy largos, paralelos y separados por una distancia «*d*» por los que circulan corrientes eléctricas de igual intensidad y sentido. Razone cómo se modifica la fuerza por unidad de longitud entre los conductores si duplicamos ambas intensidades y a la vez reducimos «*d*» a la mitad.
+
+<Solucion>
+
+Cada conductor crea un campo magnético en la posición del otro, de módulo $B = \mu_0\,I/(2\pi d)$, cuyas líneas son circunferencias alrededor del hilo. Ese campo es perpendicular al segundo conductor y ejerce sobre un tramo de longitud $L$ una fuerza $\vec{F} = I\,\vec{L} \times \vec{B}$, de módulo $F = I\,L\,B$. Por unidad de longitud:
+
+$$
+\frac{F}{L} = \frac{\mu_0\,I_1\,I_2}{2\pi\,d}
+$$
+
+Con corrientes del mismo sentido la fuerza es **atractiva**: los conductores se atraen.
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.6}
+  yMin={-1}
+  yMax={1}
+  escala={70}
+  puntos={[
+    { x: -1, y: 0, texto: "I₁", tipo: "sale", dx: -10, dy: -14 },
+    { x: 1, y: 0, texto: "I₂", tipo: "sale", dx: -4, dy: -14 },
+  ]}
+  vectores={[
+    { desde: [-1, 0], v: [0, -46], texto: "B", sub: "2", color: "#2d6fa3", dx: 6, dy: 10 },
+    { desde: [1, 0], v: [0, 46], texto: "B", sub: "1", color: "#2d6fa3", dx: 6 },
+    { desde: [-1, 0], v: [50, 0], texto: "F", sub: "21", color: "#b04a3a", dx: -8, dy: 16 },
+    { desde: [1, 0], v: [-50, 0], texto: "F", sub: "12", color: "#b04a3a", dx: -16, dy: 16 },
+  ]}
+  descripcion="Dos conductores perpendiculares al papel, separados una distancia d, con corrientes salientes. El campo del conductor 1 en el conductor 2 apunta hacia arriba y el del 2 en el 1, hacia abajo. La fuerza sobre cada conductor apunta hacia el otro: se atraen."
+/>
+
+Si las dos intensidades se duplican, $I_1' = I_2' = 2I$, y la distancia se reduce a la mitad, $d' = d/2$:
+
+$$
+\frac{F'}{L} = \frac{\mu_0\,(2I)(2I)}{2\pi\,(d/2)} = 8 \cdot \frac{\mu_0\,I^2}{2\pi\,d} = 8\,\frac{F}{L}
+$$
+
+La fuerza por unidad de longitud se hace **8 veces mayor**: un factor 4 por duplicar las dos intensidades (es proporcional a su producto) y un factor 2 por reducir la distancia a la mitad (es inversamente proporcional a ella). Sigue siendo atractiva, porque las corrientes conservan el mismo sentido.
+
+</Solucion>
+
+**b)** Un protón que ha sido acelerado desde el reposo por una diferencia de potencial de 6000 V describe una órbita circular en un campo magnético uniforme de 0,8 T. Calcule razonadamente: **i)** El módulo de la fuerza magnética que actúa sobre el protón. **ii)** El radio de la trayectoria descrita.
+
+<Datos>m<sub>p</sub> = 1,7·10<sup>-27</sup> kg; e = 1,6·10<sup>-19</sup> C</Datos>
+
+<Solucion>
+
+<ProtonAceleradoCampoB descripcion="Un protón parte del reposo junto a la placa positiva, se acelera hasta la placa negativa y entra en una región con un campo magnético entrante en el papel. Allí la fuerza magnética, perpendicular a la velocidad y dirigida hacia el centro, le hace describir una circunferencia de radio r." />
+
+**Velocidad del protón.** Al acelerarse desde el reposo, el trabajo del campo eléctrico se convierte en energía cinética:
+
+$$
+e\,\Delta V = \frac{1}{2}\,m_p\,v^2
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2\,e\,\Delta V}{m_p}} = \sqrt{\frac{2 \cdot 1{,}6 \cdot 10^{-19} \cdot 6000}{1{,}7 \cdot 10^{-27}}} = 1{,}06 \cdot 10^{6}\ \text{m/s}
+$$
+
+**i) Fuerza magnética.** Para que el protón describa una órbita circular, su velocidad debe ser perpendicular al campo magnético. La fuerza de Lorentz, $\vec{F} = e\,\vec{v} \times \vec{B}$, tiene entonces módulo:
+
+$$
+F = e\,v\,B = 1{,}6 \cdot 10^{-19} \cdot 1{,}06 \cdot 10^6 \cdot 0{,}8 = 1{,}36 \cdot 10^{-13}\ \text{N}
+$$
+
+**ii) Radio de la trayectoria.** La fuerza magnética es perpendicular a la velocidad y actúa como fuerza centrípeta:
+
+$$
+e\,v\,B = m_p\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+r = \frac{m_p\,v}{e\,B} = \frac{1{,}7 \cdot 10^{-27} \cdot 1{,}06 \cdot 10^6}{1{,}6 \cdot 10^{-19} \cdot 0{,}8} = 1{,}41 \cdot 10^{-2}\ \text{m}
+$$
+
+**Respuesta.** La fuerza magnética vale **$1{,}36 \cdot 10^{-13}$ N** y el radio de la órbita es **1,41 cm**. La fuerza magnética no realiza trabajo, porque es perpendicular a la velocidad: el protón conserva en el campo la energía cinética que adquirió al acelerarse.
+
+</Solucion>

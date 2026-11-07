@@ -1,0 +1,46 @@
+---
+// Física, reserva 3 de 2021, A1 a: líneas del campo gravitatorio de una masa puntual M (radiales
+// y dirigidas hacia la masa) y superficies equipotenciales (esferas centradas en M, que en el
+// plano se ven como circunferencias), perpendiculares a las líneas en cada punto. Los radios de
+// las equipotenciales se eligen con saltos de potencial iguales: se juntan cerca de la masa.
+const cx = 150
+const cy = 150
+const id = `lineas-masa-${Math.round(Math.random() * 1e9)}`
+const lineas = Array.from({ length: 12 }, (_, i) => (i * Math.PI) / 6)
+// V = −GM/r con saltos iguales de potencial: r = 1/(a·k).
+const radios = [24, 32, 48, 96]
+---
+
+<figure class="solution-figure">
+  <svg
+    viewBox="0 0 300 282"
+    role="img"
+    aria-label="Masa puntual M en el centro. Las líneas del campo gravitatorio son rectas radiales que apuntan hacia la masa, y las superficies equipotenciales son circunferencias centradas en ella, perpendiculares a las líneas de campo; con saltos iguales de potencial, las circunferencias están más juntas cerca de la masa."
+  >
+    <defs>
+      <marker id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0L10 5L0 10z" fill="#2d6fa3" />
+      </marker>
+    </defs>
+    <g fill="none" stroke="#b04a3a" stroke-width="1.2" stroke-dasharray="5 4">
+      {radios.map((r) => <circle cx={cx} cy={cy} r={r} />)}
+    </g>
+    <g stroke="#2d6fa3" stroke-width="1.4">
+      {
+        lineas.map((a) => (
+          <path
+            d={`M${(cx + 104 * Math.cos(a)).toFixed(1)} ${(cy + 104 * Math.sin(a)).toFixed(1)}L${(cx + 18 * Math.cos(a)).toFixed(1)} ${(cy + 18 * Math.sin(a)).toFixed(1)}`}
+            marker-end={`url(#${id})`}
+          />
+        ))
+      }
+    </g>
+    <circle cx={cx} cy={cy} r="11" fill="#172c27" />
+    <text x={cx} y={cy + 4} text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#fff">M</text>
+    <g font-family="Arial, Helvetica, sans-serif" font-size="10">
+      <text x="6" y="14" fill="#2d6fa3">— líneas de campo (hacia M)</text>
+      <text x="6" y="28" fill="#b04a3a">- - superficies equipotenciales</text>
+      <text x="294" y="276" text-anchor="end" fill="#b04a3a">V aumenta al alejarse de M</text>
+    </g>
+  </svg>
+</figure>

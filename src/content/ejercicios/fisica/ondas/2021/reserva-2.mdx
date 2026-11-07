@@ -1,0 +1,71 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2021
+convocatoria: reserva-2
+formato: fisica
+---
+
+**C2. a)** Una onda armónica que viaja por un medio pasa a un segundo medio en el que su velocidad de propagación es inferior. Suponiendo que la onda pasa completamente al segundo medio, sin reflexión ni absorción: **i)** Razone cómo se modifican la frecuencia y la longitud de onda al cambiar de medio. **ii)** Razone si se verán afectadas la amplitud y la velocidad máxima de vibración.
+
+<Solucion>
+
+**i) Frecuencia y longitud de onda.** La **frecuencia no cambia**: la fija el foco que produce la onda, y los puntos del segundo medio junto a la superficie de separación vibran forzados por los del primero, con su misma frecuencia. La velocidad de propagación sí cambia, porque depende de las propiedades del medio. Como $v = \lambda\,f$:
+
+$$
+\lambda_2 = \frac{v_2}{f} < \frac{v_1}{f} = \lambda_1
+$$
+
+La **longitud de onda disminuye**, en la misma proporción que la velocidad: $\lambda_2/\lambda_1 = v_2/v_1$.
+
+**ii) Amplitud y velocidad máxima de vibración.** Si la onda pasa entera al segundo medio, sin reflexión ni absorción, no pierde energía: con esa suposición, los puntos del segundo medio vibran con la **misma amplitud** $A$ que los del primero. Cada punto describe un movimiento armónico simple, y su velocidad máxima de vibración es:
+
+$$
+v_{\text{máx}} = A\,\omega = 2\pi f A
+$$
+
+Como no cambian ni la amplitud ni la frecuencia, la **velocidad máxima de vibración tampoco cambia**. No hay que confundirla con la velocidad de propagación, que es la que sí disminuye: los puntos del medio oscilan igual de deprisa, pero la perturbación avanza más despacio.
+
+</Solucion>
+
+**b)** Por una cuerda tensa se propaga en el sentido positivo del eje x una onda armónica transversal de 0,05 m de amplitud, 2 Hz de frecuencia y con una velocidad de propagación 0,5 m s<sup>-1</sup>. **i)** Determine la ecuación de la onda, sabiendo que para t = 0 s el punto x = 0 m se encuentra en la posición más alta de su oscilación. **ii)** Calcule la expresión de la velocidad de oscilación de un punto del medio y su valor máximo.
+
+<Solucion>
+
+**i) Ecuación de la onda.** Una onda armónica que se propaga en el sentido positivo del eje X se describe con $y(x, t) = A\sin(\omega t - kx + \varphi_0)$. A partir de los datos:
+
+$$
+\omega = 2\pi f = 2\pi \cdot 2 = 4\pi\ \text{rad/s}
+\qquad
+\lambda = \frac{v}{f} = \frac{0{,}5}{2} = 0{,}25\ \text{m}
+\qquad
+k = \frac{2\pi}{\lambda} = \frac{2\pi}{0{,}25} = 8\pi\ \text{rad/m}
+$$
+
+En $t = 0$ el punto $x = 0$ está en la posición más alta, $y = A$:
+
+$$
+A\sin\varphi_0 = A
+\quad\Rightarrow\quad
+\varphi_0 = \frac{\pi}{2}\ \text{rad}
+$$
+
+$$
+y(x, t) = 0{,}05\sin\left(4\pi t - 8\pi x + \frac{\pi}{2}\right)\ \text{(S.I.)}
+$$
+
+**ii) Velocidad de oscilación.** Es la derivada de la elongación de un punto (con $x$ fijo) respecto del tiempo:
+
+$$
+v_y(x, t) = \frac{\partial y}{\partial t} = 0{,}05 \cdot 4\pi\cos\left(4\pi t - 8\pi x + \frac{\pi}{2}\right) = 0{,}2\pi\cos\left(4\pi t - 8\pi x + \frac{\pi}{2}\right)\ \text{m/s}
+$$
+
+Su valor máximo se alcanza cuando el coseno vale ±1, al pasar el punto por la posición de equilibrio:
+
+$$
+v_{y,\text{máx}} = A\,\omega = 0{,}2\pi = 0{,}628\ \text{m/s}
+$$
+
+**Respuesta.** $y = 0{,}05\sin(4\pi t - 8\pi x + \pi/2)$ (S.I.), $v_y = 0{,}2\pi\cos(4\pi t - 8\pi x + \pi/2)$ m/s, y la velocidad máxima de oscilación es **0,628 m/s**, mayor que la de propagación (0,5 m/s): son magnitudes independientes.
+
+</Solucion>

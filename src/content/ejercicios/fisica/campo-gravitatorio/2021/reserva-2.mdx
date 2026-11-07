@@ -1,0 +1,117 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: reserva-2
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** Un satélite orbita alrededor del planeta A, y otro satélite alrededor del planeta B. El planeta A tiene cuatro veces más masa que el planeta B. Determine la relación entre las velocidades orbitales de los dos satélites si éstos orbitan a la misma distancia del centro de cada planeta.
+
+<Solucion>
+
+En una órbita circular de radio $r$, la fuerza gravitatoria del planeta sobre el satélite es la fuerza centrípeta:
+
+$$
+\frac{G\,M\,m}{r^2} = m\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{G\,M}{r}}
+$$
+
+La velocidad orbital no depende de la masa del satélite, solo de la del planeta y del radio de la órbita. Con el mismo radio y $M_A = 4M_B$:
+
+$$
+\frac{v_A}{v_B} = \sqrt{\frac{M_A}{M_B}} = \sqrt{4} = 2
+$$
+
+El satélite del planeta A se mueve **el doble de rápido**: a la misma distancia, A lo atrae con una fuerza cuatro veces mayor, y para que esa fuerza solo curve la trayectoria, $v^2$ tiene que ser cuatro veces mayor.
+
+</Solucion>
+
+**b)** Un satélite artificial de 800 kg de masa se sitúa en una órbita de radio cuatro veces el radio de la Tierra. **i)** Determine su periodo orbital. **ii)** Calcule la energía necesaria para ponerlo en la órbita desde la superficie terrestre, despreciando la rotación de la Tierra.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup>; M<sub>T</sub> = 5,98·10<sup>24</sup> kg; R<sub>T</sub> = 6370 km</Datos>
+
+<Solucion>
+
+El radio de la órbita es $r = 4R_T = 4 \cdot 6{,}37 \cdot 10^6 = 2{,}548 \cdot 10^7$ m.
+
+**i) Periodo.** Igualando la fuerza gravitatoria a la centrípeta, con $v = 2\pi r/T$, se obtiene la tercera ley de Kepler:
+
+$$
+\frac{G\,M_T\,m}{r^2} = m\,\frac{4\pi^2}{T^2}\,r
+\quad\Rightarrow\quad
+T = 2\pi\sqrt{\frac{r^3}{G\,M_T}} = 2\pi\sqrt{\frac{\left(2{,}548 \cdot 10^7\right)^3}{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24}}} = 4{,}05 \cdot 10^{4}\ \text{s}
+$$
+
+Unas 11,2 horas.
+
+**ii) Energía para ponerlo en órbita.** La energía que hay que darle es la diferencia entre su energía mecánica en la órbita y la que tiene en reposo en la superficie (sin rotación, solo potencial):
+
+$$
+E_{\text{sup}} = -\frac{G\,M_T\,m}{R_T}
+\qquad
+E_{\text{órb}} = E_c + E_p = \frac{1}{2}\,m\,v^2 - \frac{G\,M_T\,m}{r} = -\frac{G\,M_T\,m}{2r}
+$$
+
+(En la órbita circular, $m\,v^2 = G\,M_T\,m/r$, y la energía cinética es la mitad del valor absoluto de la potencial.) Con $r = 4R_T$:
+
+$$
+\Delta E = E_{\text{órb}} - E_{\text{sup}} = \frac{G\,M_T\,m}{R_T}\left(1 - \frac{1}{8}\right) = \frac{7}{8} \cdot \frac{6{,}67 \cdot 10^{-11} \cdot 5{,}98 \cdot 10^{24} \cdot 800}{6{,}37 \cdot 10^6} = 4{,}38 \cdot 10^{10}\ \text{J}
+$$
+
+**Respuesta.** El periodo orbital es de **$4{,}05 \cdot 10^4$ s** (unas 11,2 h) y hay que comunicarle **$4{,}38 \cdot 10^{10}$ J**. La energía en la superficie es $-5{,}01 \cdot 10^{10}$ J y en la órbita $-6{,}26 \cdot 10^9$ J: casi toda la energía se emplea en alejarlo de la Tierra, y solo una pequeña parte queda como energía cinética orbital.
+
+</Solucion>
+
+**A2. a)** Razone la veracidad de las siguientes afirmaciones: **i)** Es necesario que la resultante de todas las fuerzas que actúan sobre un cuerpo sea nula para que la energía mecánica se conserve. **ii)** Cuando sobre un cuerpo actúan solo fuerzas conservativas se conserva la energía mecánica.
+
+<Solucion>
+
+Por el teorema de las fuerzas vivas, el trabajo de todas las fuerzas es igual a la variación de la energía cinética. Separando el trabajo de las fuerzas conservativas, que es $W_c = -\Delta E_p$, y el de las no conservativas, $W_{nc}$:
+
+$$
+W_c + W_{nc} = \Delta E_c
+\quad\Rightarrow\quad
+W_{nc} = \Delta E_c + \Delta E_p = \Delta E_m
+$$
+
+La energía mecánica se conserva cuando las fuerzas no conservativas **no realizan trabajo**.
+
+**i) Falsa.** Que la resultante sea nula no es necesario. En la **caída libre**, la única fuerza es el peso: la resultante no es nula (el cuerpo acelera), pero el peso es conservativo y la energía mecánica se conserva, porque la energía potencial que se pierde se convierte en cinética. Tampoco es suficiente: un cuerpo que baja a velocidad constante por un plano con rozamiento tiene resultante nula y, sin embargo, pierde energía mecánica.
+
+**ii) Verdadera.** Si solo actúan fuerzas conservativas, $W_{nc} = 0$ y, por tanto, $\Delta E_m = 0$. Es el **principio de conservación de la energía mecánica**: la energía cinética y la potencial pueden transformarse una en otra, pero su suma es constante.
+
+</Solucion>
+
+**b)** Un cuerpo de masa 1 kg desciende, partiendo del reposo, por un plano inclinado con rozamiento que forma 30º con la horizontal, desde una altura de 0,5 m. A continuación, desliza por una superficie horizontal con rozamiento hasta detenerse después de recorrer 3 m en la superficie horizontal. **i)** Realice un dibujo con las fuerzas que actúan sobre el cuerpo cuando desliza sobre el plano inclinado y sobre la superficie horizontal. **ii)** Utilizando consideraciones energéticas, determine el coeficiente de rozamiento entre el cuerpo y las superficies, considerando que es el mismo en el plano horizontal y en el plano inclinado.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Fuerzas.** En el plano inclinado actúan el peso (con sus componentes paralela y perpendicular al plano), la normal, perpendicular al plano, y el rozamiento, paralelo al plano y hacia arriba, opuesto al movimiento. En el tramo horizontal actúan el peso, la normal y el rozamiento, opuesto al movimiento:
+
+<PlanoInclinado angulo={30} mueve="baja" componentes horizontal descripcion="A la izquierda, el plano inclinado 30 grados por el que el cuerpo baja: actúan el peso, con sus componentes paralela y perpendicular al plano, la normal, perpendicular al plano, y el rozamiento, paralelo al plano y hacia arriba. A la derecha, el tramo horizontal por el que el cuerpo sigue frenando: actúan el peso hacia abajo, la normal hacia arriba y el rozamiento hacia la izquierda, opuesto al movimiento." />
+
+En el plano, la normal compensa la componente perpendicular del peso, $N_1 = m\,g\cos 30^\circ$; en el tramo horizontal, compensa el peso, $N_2 = m\,g$. Los rozamientos son $F_{r1} = \mu\,m\,g\cos 30^\circ$ y $F_{r2} = \mu\,m\,g$.
+
+**ii) Coeficiente de rozamiento.** El cuerpo parte del reposo y acaba en reposo, así que su energía cinética no cambia. Tomando el origen de energía potencial en el suelo, la energía mecánica pasa de $m\,g\,h$ a cero: toda ella se ha disipado por el rozamiento. El trabajo del rozamiento (la única fuerza no conservativa que trabaja; la normal es perpendicular al desplazamiento) es igual a la variación de la energía mecánica:
+
+$$
+W_{F_r} = \Delta E_m = 0 - m\,g\,h
+$$
+
+Por el plano el cuerpo recorre $d_1 = h/\sin 30^\circ = 0{,}5/0{,}5 = 1$ m, y por el tramo horizontal, $d_2 = 3$ m:
+
+$$
+-\mu\,m\,g\cos 30^\circ\,d_1 - \mu\,m\,g\,d_2 = -m\,g\,h
+\quad\Rightarrow\quad
+\mu = \frac{h}{d_1\cos 30^\circ + d_2} = \frac{0{,}5}{1 \cdot 0{,}866 + 3} = 0{,}129
+$$
+
+**Respuesta.** El coeficiente de rozamiento es **μ = 0,129**. No depende de la masa ni de $g$, que se simplifican. Con él, los rozamientos valen $F_{r1} = 1{,}10$ N en el plano y $F_{r2} = 1{,}27$ N en el tramo horizontal, y los 4,9 J de energía potencial inicial se disipan en calor: 1,10 J en el plano y 3,80 J en el suelo.
+
+</Solucion>

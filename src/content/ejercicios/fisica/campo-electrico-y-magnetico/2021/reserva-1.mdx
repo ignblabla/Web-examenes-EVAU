@@ -1,0 +1,175 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: reserva-1
+formato: fisica
+---
+
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Por un conductor rectilíneo muy largo circula una corriente eléctrica. Razone, con ayuda de un esquema, la dirección y sentido de la fuerza que actúa sobre una partícula con carga positiva cuando se mueve: **i)** Paralelamente al conductor en el mismo sentido que la corriente. **ii)** Perpendicularmente al conductor, acercándose a él.
+
+<Solucion>
+
+El conductor crea un campo magnético cuyas líneas son circunferencias centradas en él, con el sentido que da la **regla de la mano derecha** (el pulgar en el sentido de la corriente, los dedos indican el del campo). Sobre una carga $q$ que se mueve con velocidad $\vec{v}$, el campo ejerce la fuerza de Lorentz $\vec{F} = q\,\vec{v} \times \vec{B}$, perpendicular a $\vec{v}$ y a $\vec{B}$.
+
+Se coloca el conductor sobre el eje Y, con la corriente hacia $+\vec{j}$, y la carga en el plano XY, a su derecha $(x > 0)$. Allí el campo es perpendicular al plano y **entrante**: $\vec{B} = -B\,\vec{k}$.
+
+<Vectores
+  xMin={-0.8}
+  xMax={2.6}
+  yMin={-1.6}
+  yMax={1.6}
+  escala={66}
+  puntos={[
+    { x: 1.3, y: 0.8, texto: "q > 0 (i)", tipo: "carga", signo: "+", dx: 12, dy: -10 },
+    { x: 1.3, y: -0.8, texto: "q > 0 (ii)", tipo: "carga", signo: "+", dx: 12, dy: 22 },
+    { x: 2.2, y: 1.3, texto: "B", tipo: "entra", dx: 10, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [1.3, 0.8], v: [0, 48], texto: "v", color: "#195c51", dx: 8 },
+    { desde: [1.3, 0.8], v: [-48, 0], texto: "F", color: "#b04a3a", dx: -10, dy: -8 },
+    { desde: [1.3, -0.8], v: [-48, 0], texto: "v", color: "#195c51", dx: -6, dy: -8 },
+    { desde: [1.3, -0.8], v: [0, -44], texto: "F", color: "#b04a3a", dx: 8, dy: 4 },
+  ]}
+  hilos={[{ desde: [0, -1.5], hasta: [0, 1.5], texto: "I" }]}
+  descripcion="Conductor vertical sobre el eje Y con la corriente hacia arriba; a su derecha el campo magnético es entrante. Caso i: la carga positiva se mueve hacia arriba, paralela a la corriente, y la fuerza apunta hacia la izquierda, hacia el conductor. Caso ii: la carga se mueve hacia la izquierda, acercándose al conductor, y la fuerza apunta hacia abajo, en sentido contrario a la corriente."
+/>
+
+**i) Paralela al conductor, en el sentido de la corriente.** Con $\vec{v} = v\,\vec{j}$:
+
+$$
+\vec{F} = q\,v\,\vec{j} \times (-B\,\vec{k}) = -q\,v\,B\,\vec{i}
+$$
+
+La fuerza es perpendicular al conductor y está **dirigida hacia él**: la carga es atraída por el conductor. Es lo mismo que ocurre entre dos corrientes paralelas del mismo sentido, que se atraen.
+
+**ii) Perpendicular al conductor, acercándose a él.** Con $\vec{v} = -v\,\vec{i}$:
+
+$$
+\vec{F} = q\,(-v\,\vec{i}) \times (-B\,\vec{k}) = q\,v\,B\,(\vec{i} \times \vec{k}) = -q\,v\,B\,\vec{j}
+$$
+
+La fuerza es **paralela al conductor y de sentido contrario a la corriente**. En los dos casos el módulo es $F = q\,v\,B$, con $B = \mu_0\,I/(2\pi r)$: crece al acercarse la carga al conductor.
+
+</Solucion>
+
+**b)** Un hilo conductor recto de longitud 0,2 m y masa 8·10<sup>-3</sup> kg está situado a lo largo del eje OX en presencia de un campo magnético uniforme $\vec{B} = 0{,}5\,\vec{k}$ T y del campo gravitatorio terrestre, dirigido en el sentido negativo del eje OY, no existiendo otras fuerzas aplicadas sobre el hilo. Justifique, ayudándose de un esquema, el sentido de la corriente que debe circular por el hilo para que esté en equilibrio, y calcule razonadamente el valor de la intensidad.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**Sentido de la corriente.** Sobre el hilo actúan su peso, $\vec{P} = -m\,g\,\vec{j}$, y la fuerza magnética, $\vec{F} = I\,\vec{L} \times \vec{B}$, donde $\vec{L}$ tiene el sentido de la corriente. Para que esté en equilibrio, la fuerza magnética debe compensar el peso: debe apuntar hacia $+\vec{j}$.
+
+El hilo está sobre el eje OX, así que $\vec{L} = \pm L\,\vec{i}$. Como $\vec{i} \times \vec{k} = -\vec{j}$, una corriente hacia $+\vec{i}$ daría una fuerza hacia abajo. La corriente debe circular en el **sentido negativo del eje OX**:
+
+$$
+\vec{F} = I\,(-L\,\vec{i}) \times (B\,\vec{k}) = I\,L\,B\,\vec{j}
+$$
+
+<Vectores
+  xMin={-1.8}
+  xMax={1.8}
+  yMin={-1.2}
+  yMax={1.2}
+  escala={66}
+  puntos={[{ x: -1.5, y: 0.85, texto: "B (saliente)", tipo: "sale", dx: 12, dy: 4 }]}
+  vectores={[
+    { desde: [0, 0], v: [0, 56], texto: "F", sub: "m", color: "#b04a3a", dx: 8 },
+    { desde: [0, 0], v: [0, -56], texto: "P", color: "#2d6fa3", dx: 8, dy: 6 },
+  ]}
+  hilos={[{ desde: [1.5, 0], hasta: [-1.5, 0], texto: "I" }]}
+  descripcion="Hilo horizontal sobre el eje X con la corriente hacia la izquierda, en el sentido negativo del eje. El campo magnético sale del papel. La fuerza magnética sobre el hilo apunta hacia arriba y el peso hacia abajo, con el mismo módulo."
+/>
+
+**Intensidad.** En el equilibrio los módulos de las dos fuerzas son iguales (el hilo es perpendicular al campo):
+
+$$
+I\,L\,B = m\,g
+\quad\Rightarrow\quad
+I = \frac{m\,g}{L\,B} = \frac{8 \cdot 10^{-3} \cdot 9{,}8}{0{,}2 \cdot 0{,}5} = 0{,}784\ \text{A}
+$$
+
+**Respuesta.** La corriente debe circular en el **sentido negativo del eje OX**, con una intensidad de **0,784 A**. Con más intensidad el hilo subiría, y con menos caería.
+
+</Solucion>
+
+**B2. a)** Tenemos dos partículas cargadas idénticas separadas una distancia *d*. **i)** ¿Puede ser nulo el campo eléctrico en algún punto próximo a ellas? **ii)** ¿Y el potencial electrostático? Razone las respuestas.
+
+<Solucion>
+
+**i) Campo eléctrico: sí.** El campo es un vector, y en cada punto se suman los de las dos cargas. En el **punto medio** del segmento que las une, las dos cargas (iguales) están a la misma distancia $d/2$ y crean campos del mismo módulo, $K\,q/(d/2)^2$, en la misma dirección y **sentidos opuestos** (si son positivas, cada campo se aleja de su carga; si son negativas, apunta hacia ella). El campo total es **nulo**:
+
+$$
+\vec{E} = \vec{E}_1 + \vec{E}_2 = \vec{0}
+$$
+
+Es el único punto en que ocurre: fuera del segmento los dos campos tienen el mismo sentido, y en el resto del segmento uno es mayor que el otro.
+
+**ii) Potencial: no.** El potencial es un escalar, $V = K\,q/r_1 + K\,q/r_2$. Las dos cargas tienen el mismo signo, así que los dos términos también: su suma nunca es cero a distancia finita. En el punto medio, por ejemplo:
+
+$$
+V = \frac{K\,q}{d/2} + \frac{K\,q}{d/2} = \frac{4\,K\,q}{d} \neq 0
+$$
+
+El potencial solo tiende a cero lejos de las cargas, en el infinito. Que el campo sea nulo en un punto no implica que lo sea el potencial: el campo depende de cómo varía el potencial, no de su valor.
+
+</Solucion>
+
+**b)** Una partícula con carga *q*<sub>1</sub> = 3·10<sup>−6</sup> C está fija en el punto (2,0) m del plano XY. En el punto (5,0) m, se abandona una partícula con carga *q*<sub>2</sub> = 5·10<sup>−6</sup> C y masa *m* = 1,5·10<sup>−4</sup> kg. Calcule razonadamente: **i)** El módulo de la velocidad que adquiere *q*<sub>2</sub> en el infinito si *q*<sub>1</sub> está fija. **ii)** El valor de la carga *q*<sub>3</sub> que debería tener una tercera partícula situada en el punto (0,0) m, para que *q*<sub>2</sub> no se mueva al ser soltada en el punto (5,0) m.
+
+<Datos>K = 9·10<sup>9</sup> N m<sup>2</sup> C<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Velocidad en el infinito.** Las dos cargas son positivas y se repelen: $q_2$ se aleja de $q_1$ por el eje X hacia la derecha. La fuerza eléctrica es conservativa y es la única que actúa, así que la energía mecánica de $q_2$ se conserva. Parte del reposo a una distancia $r = 5 - 2 = 3$ m de $q_1$, y en el infinito la energía potencial es nula:
+
+$$
+0 + \frac{K\,q_1\,q_2}{r} = \frac{1}{2}\,m\,v^2 + 0
+$$
+
+$$
+E_{p,0} = \frac{9 \cdot 10^9 \cdot 3 \cdot 10^{-6} \cdot 5 \cdot 10^{-6}}{3} = 0{,}045\ \text{J}
+\quad\Rightarrow\quad
+v = \sqrt{\frac{2 \cdot 0{,}045}{1{,}5 \cdot 10^{-4}}} = \sqrt{600} = 24{,}5\ \text{m/s}
+$$
+
+**ii) Carga q₃ para que q₂ no se mueva.** $q_2$ quedará en reposo si la fuerza total sobre ella es nula. La fuerza de $q_1$ es repulsiva y apunta hacia $+\vec{i}$, alejándola de (2,0):
+
+$$
+F_{12} = \frac{K\,q_1\,q_2}{3^2}
+$$
+
+La carga $q_3$, en el origen (a 5 m de $q_2$), debe ejercer una fuerza del mismo módulo hacia $-\vec{i}$, es decir, **atraer** a $q_2$: tiene que ser **negativa**.
+
+<Vectores
+  xMin={-0.6}
+  xMax={6.6}
+  yMin={-0.8}
+  yMax={0.8}
+  escala={50}
+  marcasX={[2, 5]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "q₃ < 0", tipo: "carga", signo: "−", dx: -16, dy: -14 },
+    { x: 2, y: 0, texto: "q₁", tipo: "carga", signo: "+", dx: -6, dy: -14 },
+    { x: 5, y: 0, texto: "q₂", tipo: "carga", signo: "+", dx: -6, dy: -14 },
+  ]}
+  vectores={[
+    { desde: [5, 0], v: [48, 0], texto: "F", sub: "12", color: "#b04a3a", dx: -6, dy: -8 },
+    { desde: [5, 0], v: [-48, 0], texto: "F", sub: "32", color: "#2d6fa3", dx: -14, dy: -8 },
+  ]}
+  descripcion="Carga q3 negativa en el origen, q1 positiva en x = 2 metros y q2 positiva en x = 5 metros. Sobre q2, q1 ejerce una fuerza de repulsión hacia la derecha y q3 una de atracción hacia la izquierda, del mismo módulo."
+/>
+
+$$
+\frac{K\,|q_3|\,q_2}{5^2} = \frac{K\,q_1\,q_2}{3^2}
+\quad\Rightarrow\quad
+|q_3| = \frac{25}{9}\,q_1 = \frac{25}{9} \cdot 3 \cdot 10^{-6} = 8{,}33 \cdot 10^{-6}\ \text{C}
+$$
+
+**Respuesta.** $q_2$ llega al infinito con **24,5 m/s**. Para que no se mueva, en el origen debe haber una carga **$q_3 = -8{,}33 \cdot 10^{-6}$ C**: negativa, para atraer a $q_2$, y mayor que $q_1$ en valor absoluto, porque está más lejos de $q_2$.
+
+</Solucion>

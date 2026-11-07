@@ -1,0 +1,83 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: reserva-2
+formato: fisica
+---
+
+import RefraccionCapas from "../../../../../components/figuras/fisica/RefraccionCapas.astro"
+import ReflexionTotal from "../../../../../components/figuras/fisica/ReflexionTotal.astro"
+
+**C1. a)** **i)** Explique brevemente qué es una onda electromagnética. **ii)** Sitúe, en orden creciente de frecuencias, las siguientes regiones del espectro electromagnético: ultravioleta, infrarrojo, microondas y luz visible. **iii)** Justifique razonadamente si dos rayos de diferentes colores del espectro visible (por ejemplo, violeta y verde), pueden tener la misma frecuencia.
+
+<Solucion>
+
+**i) Onda electromagnética.** Es la propagación de un **campo eléctrico y un campo magnético variables**, que se generan mutuamente (un campo eléctrico variable crea uno magnético, y viceversa). La producen las cargas eléctricas aceleradas. Sus características son:
+
+- Es una onda **transversal**: $\vec{E}$ y $\vec{B}$ son perpendiculares entre sí y a la dirección de propagación, y oscilan en fase.
+- **No necesita medio material** para propagarse: viaja también por el vacío, donde su velocidad es $c = 3 \cdot 10^8$ m/s para todas las frecuencias. En un medio material su velocidad es menor, $v = c/n$.
+- Transporta energía, pero no materia.
+
+**ii) Orden creciente de frecuencias.**
+
+$$
+\text{microondas} \;<\; \text{infrarrojo} \;<\; \text{luz visible} \;<\; \text{ultravioleta}
+$$
+
+Como $c = \lambda\,f$, el orden de las longitudes de onda es el inverso: las microondas tienen la mayor longitud de onda y el ultravioleta, la menor.
+
+**iii) ¿Pueden tener la misma frecuencia dos colores distintos? No.** El color de la luz lo determina su **frecuencia**: cada color corresponde a un intervalo de frecuencias del espectro visible (el violeta, a las mayores, unos $7{,}5 \cdot 10^{14}$ Hz, y el verde a frecuencias menores, unos $5{,}7 \cdot 10^{14}$ Hz). Dos rayos de colores diferentes tienen, por tanto, frecuencias diferentes. Además, la frecuencia no cambia al pasar de un medio a otro (lo que cambia es la longitud de onda), así que un rayo conserva su color en todos los medios.
+
+</Solucion>
+
+**b)** Un rayo de luz monocromático de frecuencia 5·10<sup>14</sup> Hz, que se propaga por un medio de índice de refracción *n*<sub>1</sub> = 1,7, incide sobre otro medio de índice de refracción *n*<sub>2</sub> = 1,3 formando un ángulo de 25º con la normal a la superficie de separación entre ambos medios. **i)** Haga un esquema y calcule el ángulo de refracción. **ii)** Determine la longitud de onda del rayo en el segundo medio. **iii)** ¿Cuál es el ángulo de incidencia crítico a partir del cual este rayo se reflejaría completamente? Razone sus respuestas ayudándose de un esquema.
+
+<Datos>c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Ángulo de refracción.** Por la ley de Snell:
+
+$$
+n_1\sin\theta_1 = n_2\sin\theta_2
+\quad\Rightarrow\quad
+\sin\theta_2 = \frac{1{,}7 \cdot \sin 25^\circ}{1{,}3} = \frac{1{,}7 \cdot 0{,}423}{1{,}3} = 0{,}553
+\quad\Rightarrow\quad
+\theta_2 = 33{,}5^\circ
+$$
+
+El segundo medio es menos refringente, así que el rayo refractado se **aleja de la normal**:
+
+<RefraccionCapas
+  capas={[
+    { nombre: "Medio 1", n: 1.7, color: "#dfe9f0" },
+    { nombre: "Medio 2", n: 1.3, color: "#f4f8fb" },
+  ]}
+  incidencia={25}
+  descripcion="Rayo que viaja por el medio 1, de índice 1,7, y llega a la superficie de separación formando 25 grados con la normal. Al pasar al medio 2, de índice 1,3, se aleja de la normal y forma 33,5 grados con ella."
+/>
+
+**ii) Longitud de onda en el segundo medio.** La frecuencia no cambia al pasar de un medio a otro. La velocidad en el segundo medio es $v_2 = c/n_2$, y la longitud de onda:
+
+$$
+\lambda_2 = \frac{v_2}{f} = \frac{c}{n_2\,f} = \frac{3 \cdot 10^8}{1{,}3 \cdot 5 \cdot 10^{14}} = 4{,}62 \cdot 10^{-7}\ \text{m}
+$$
+
+(En el primer medio era $\lambda_1 = c/(n_1 f) = 3{,}53 \cdot 10^{-7}$ m: al pasar a un medio de menor índice, la luz va más deprisa y su longitud de onda aumenta.)
+
+**iii) Ángulo crítico.** Como la luz pasa a un medio de menor índice, el ángulo de refracción es mayor que el de incidencia. El **ángulo límite** $\theta_L$ es el ángulo de incidencia para el que el refractado sale rasante, a 90°; para ángulos mayores no hay refracción y la luz se refleja totalmente:
+
+$$
+n_1\sin\theta_L = n_2\sin 90^\circ
+\quad\Rightarrow\quad
+\sin\theta_L = \frac{n_2}{n_1} = \frac{1{,}3}{1{,}7} = 0{,}765
+\quad\Rightarrow\quad
+\theta_L = 49{,}9^\circ
+$$
+
+<ReflexionTotal />
+
+**Respuesta.** El rayo se refracta con **33,5°**, en el segundo medio su longitud de onda es **$4{,}62 \cdot 10^{-7}$ m** y se produce reflexión total para ángulos de incidencia mayores que **49,9°**.
+
+</Solucion>

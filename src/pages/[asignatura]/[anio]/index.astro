@@ -40,8 +40,11 @@ const ejercicios = (await getCollection("ejercicios")).filter(
 )
 const resuelto = (conv: string) => ejercicios.some((e) => e.data.convocatoria === conv)
 
-const convocatorias: Enlace[] = examenesDe(curso)
-  .filter((e) => publicado(slug, anio, e.slug))
+const publicadosCurso = examenesDe(curso).filter((e) => publicado(slug, anio, e.slug))
+// Si no hay reservas publicadas (Física de 2021), los textos no las mencionan.
+const conReservas = publicadosCurso.some((e) => e.tipo === "reserva")
+
+const convocatorias: Enlace[] = publicadosCurso
   .map((e) => ({
     etiqueta: tipoLargo(e.tipo),
     texto: `${asignatura.nombre}, ${nombreExamen(anio, e)}${resuelto(e.slug) ? " resuelto" : ""}`,
@@ -82,10 +85,15 @@ const titulo = `Exámenes ${corto} ${prueba(anio)} Andalucía ${anio}${conSoluci
 // La descripción más completa que quepa en 160 caracteres.
 const inicio = `Los ${convocatorias.length} exámenes de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${anio}`
 const soluciones = conSoluciones ? ", con las soluciones explicadas" : ""
-const descripciones = [
-  `${inicio}: ordinaria de junio, extraordinaria de julio y reservas${soluciones}.`,
-  `${inicio}: junio, julio y reservas${soluciones}.`,
-]
+const descripciones = conReservas
+  ? [
+      `${inicio}: ordinaria de junio, extraordinaria de julio y reservas${soluciones}.`,
+      `${inicio}: junio, julio y reservas${soluciones}.`,
+    ]
+  : [
+      `${inicio}: ordinaria de junio y extraordinaria de julio${soluciones}.`,
+      `${inicio}: junio y julio${soluciones}.`,
+    ]
 const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
 
@@ -147,8 +155,8 @@ const jsonLd = {
       </h1>
       <p class="hero-lead">
         Los exámenes de {asignatura.nombre} de la Selectividad de Andalucía de {anio}: la
-        convocatoria ordinaria de junio, la extraordinaria de julio y los exámenes de reserva, con
-        el enunciado oficial{conSoluciones && " y las soluciones explicadas"}.
+        convocatoria ordinaria de junio{conReservas ? ", la extraordinaria de julio y los exámenes de reserva" : " y la extraordinaria de julio"},
+        con el enunciado oficial{conSoluciones && " y las soluciones explicadas"}.
       </p>
     </div>
   </section>

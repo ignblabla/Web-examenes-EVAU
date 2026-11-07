@@ -1,0 +1,180 @@
+---
+asignatura: fisica
+tema: campo-electrico-y-magnetico
+anio: 2021
+convocatoria: junio
+formato: fisica
+---
+
+import EspiraCircularEntraSale from "../../../../../components/figuras/fisica/EspiraCircularEntraSale.astro"
+import FlujoEspira from "../../../../../components/figuras/fisica/FlujoEspira.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**B1. a)** Una espira circular situada en el plano XY, y que se desplaza por ese plano en ausencia de campo magnético, entra en una región en la que existe un campo magnético constante y uniforme dirigido en el sentido negativo del eje OZ. **i)** Justifique, ayudándose de esquemas, si en algún momento durante dicho desplazamiento cambiará el flujo magnético en la espira. **ii)** Justifique, ayudándose de un esquema, si en algún momento se inducirá corriente en la espira y cuál será su sentido.
+
+<Solucion>
+
+El flujo magnético a través de la espira es $\Phi = \vec{B} \cdot \vec{S} = B\,S_{\text{campo}}$, donde $S_{\text{campo}}$ es la parte de la superficie de la espira que está dentro de la región con campo (el campo, en la dirección del eje Z, es perpendicular al plano de la espira). Se dibuja el plano XY visto desde arriba, con el eje Z saliendo del papel: el campo, hacia $-\vec{k}$, es **entrante** (⊗).
+
+<EspiraCircularEntraSale />
+
+**i) ¿Cambia el flujo?** Hay que distinguir varias etapas:
+
+- **Fuera del campo**: $\Phi = 0$ y no cambia.
+- **Mientras entra**: la parte de la espira dentro del campo crece y el flujo **aumenta** desde 0 hasta $B\,\pi r^2$.
+- **Dentro del campo** (si la región es más ancha que la espira): toda la espira está en el campo uniforme y el flujo es constante, $\Phi = B\,\pi r^2$.
+- **Mientras sale** (si la región se acaba): la parte dentro del campo disminuye y el flujo **disminuye** hasta 0.
+
+Así que **sí** cambia el flujo: mientras la espira entra en la región del campo (y mientras sale de ella, si lo hace).
+
+**ii) ¿Se induce corriente?** Por la **ley de Faraday-Lenz**, se induce una fuerza electromotriz $\varepsilon = -\,d\Phi/dt$ solo mientras el flujo varía, y la corriente inducida tiene el sentido que **se opone a esa variación**:
+
+- **Mientras entra**, aumenta el flujo entrante. La corriente inducida crea en el interior de la espira un campo **saliente**, que compensa el aumento: por la regla de la mano derecha, la corriente circula en sentido **antihorario** (visto desde el semieje Z positivo, como en el esquema).
+- **Dentro del campo**, el flujo no cambia y **no se induce corriente**.
+- **Mientras sale**, disminuye el flujo entrante. La corriente inducida crea un campo **entrante** que compensa la disminución: circula en sentido **horario**.
+
+</Solucion>
+
+**b)** Una espira circular de 5 cm de radio gira alrededor de uno de sus diámetros con una velocidad angular igual a π rad·s<sup>-1</sup> en una región del espacio en la que existe un campo magnético uniforme de módulo igual a 10 T, perpendicular al eje de giro. Sabiendo que en el instante inicial el flujo es máximo: **i)** Calcule razonadamente, ayudándose de un esquema, la expresión del flujo magnético en función del tiempo. **ii)** Calcule razonadamente el valor de la fuerza electromotriz inducida en el instante t = 50 s.
+
+<Solucion>
+
+**i) Flujo en función del tiempo.** El flujo a través de la espira es $\Phi = \vec{B} \cdot \vec{S} = B\,S\cos\theta$, donde $\theta$ es el ángulo entre el campo y el vector superficie $\vec{S}$ (perpendicular a la espira). Al girar la espira alrededor de un diámetro perpendicular al campo, ese ángulo cambia con el tiempo, $\theta = \omega t + \theta_0$, y el flujo pasa por los casos del esquema:
+
+<FlujoEspira />
+
+Si en el instante inicial el flujo es máximo, la espira es perpendicular al campo $(\vec{S} \parallel \vec{B})$ y $\theta_0 = 0$. La superficie de la espira es:
+
+$$
+S = \pi r^2 = \pi \cdot 0{,}05^2 = 7{,}85 \cdot 10^{-3}\ \text{m}^2
+$$
+
+$$
+\Phi(t) = B\,S\cos(\omega t) = 10 \cdot 7{,}85 \cdot 10^{-3}\cos(\pi t) = 7{,}85 \cdot 10^{-2}\cos(\pi t)\ \text{Wb}
+$$
+
+**ii) Fuerza electromotriz en t = 50 s.** Por la ley de Faraday, la fuerza electromotriz inducida es menos la derivada del flujo respecto del tiempo:
+
+$$
+\varepsilon(t) = -\frac{d\Phi}{dt} = B\,S\,\omega\sin(\omega t) = 7{,}85 \cdot 10^{-2} \cdot \pi\sin(\pi t) = 0{,}247\sin(\pi t)\ \text{V}
+$$
+
+En $t = 50$ s:
+
+$$
+\varepsilon(50) = 0{,}247\sin(50\pi) = 0\ \text{V}
+$$
+
+**Respuesta.** $\Phi(t) = 7{,}85 \cdot 10^{-2}\cos(\pi t)$ Wb, y en $t = 50$ s la fuerza electromotriz es **nula**. El periodo de giro es $T = 2\pi/\omega = 2$ s, así que a los 50 s la espira ha dado 25 vueltas completas y está de nuevo perpendicular al campo, con flujo máximo: el flujo no está cambiando en ese instante (la fem es máxima, 0,247 V, cuando el flujo pasa por cero).
+
+</Solucion>
+
+**B2. a)** Un electrón se mueve en sentido positivo del eje OX en una región en la que existe un campo magnético uniforme dirigido en el sentido negativo del eje OZ. **i)** Indique, de forma justificada y con ayuda de un esquema, la dirección y sentido en que debe actuar un campo eléctrico uniforme para que la partícula no se desvíe. **ii)** ¿Qué relación deben cumplir para ello los módulos de ambos campos?
+
+<Solucion>
+
+**i) Dirección y sentido del campo eléctrico.** Sobre el electrón (carga $-e$) el campo magnético ejerce la fuerza de Lorentz $\vec{F}_m = -e\,\vec{v} \times \vec{B}$. Con $\vec{v} = v\,\vec{i}$ y $\vec{B} = -B\,\vec{k}$:
+
+$$
+\vec{v} \times \vec{B} = v\,\vec{i} \times (-B\,\vec{k}) = v\,B\,\vec{j}
+\quad\Rightarrow\quad
+\vec{F}_m = -e\,v\,B\,\vec{j}
+$$
+
+La fuerza magnética apunta hacia $-\vec{j}$. Para que el electrón no se desvíe, la fuerza eléctrica debe compensarla: $\vec{F}_e = +e\,v\,B\,\vec{j}$. Como $\vec{F}_e = -e\,\vec{E}$ y la carga es negativa, el campo eléctrico tiene el sentido **contrario** a la fuerza eléctrica:
+
+$$
+-e\,\vec{E} = e\,v\,B\,\vec{j}
+\quad\Rightarrow\quad
+\vec{E} = -v\,B\,\vec{j}
+$$
+
+El campo eléctrico debe tener la **dirección del eje OY y sentido negativo**, perpendicular a la velocidad y al campo magnético:
+
+<Vectores
+  xMin={-1.4}
+  xMax={2.4}
+  yMin={-1.6}
+  yMax={1.6}
+  escala={60}
+  puntos={[
+    { x: 0, y: 0, texto: "e⁻", tipo: "carga", signo: "−", dx: -24, dy: 20 },
+    { x: 1.2, y: 1.2, texto: "B (entrante)", tipo: "entra", dx: 12, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [0, 0], v: [64, 0], texto: "v", color: "#195c51" },
+    { desde: [0, 0], v: [0, -56], texto: "F", sub: "m", color: "#b04a3a", dx: 8 },
+    { desde: [0, 0], v: [0, 56], texto: "F", sub: "e", color: "#b04a3a", dx: 8 },
+    { desde: [-1, 0.9], v: [0, -50], texto: "E", color: "#2d6fa3", dx: 8 },
+  ]}
+  descripcion="Plano XY con el campo magnético entrante en el papel. El electrón se mueve hacia la derecha, en el sentido del eje X. La fuerza magnética sobre él apunta hacia abajo, en el sentido negativo del eje Y, y la fuerza eléctrica, del mismo módulo, hacia arriba. Para eso, el campo eléctrico debe apuntar hacia abajo, en el sentido negativo del eje Y, porque la carga del electrón es negativa."
+/>
+
+**ii) Relación entre los módulos.** Las dos fuerzas deben tener el mismo módulo:
+
+$$
+e\,E = e\,v\,B
+\quad\Rightarrow\quad
+E = v\,B
+\quad\Rightarrow\quad
+v = \frac{E}{B}
+$$
+
+El cociente entre los módulos de los campos debe ser igual a la velocidad del electrón. Es el principio del **selector de velocidades**: solo las partículas con $v = E/B$ atraviesan los campos sin desviarse, y la condición no depende de la carga ni de la masa.
+
+</Solucion>
+
+**b)** Un protón describe una trayectoria circular en sentido antihorario en el plano XY, con una velocidad de módulo igual a 3·10<sup>5</sup> m s<sup>-1</sup>, en una región en la que existe un campo magnético uniforme de 0,05 T. **i)** Justifique, con ayuda de un esquema que incluya la trayectoria descrita por el protón, la dirección y sentido del campo magnético. **ii)** Calcule, de forma razonada, el periodo del movimiento y el radio de la trayectoria del protón.
+
+<Datos>e = 1,6·10<sup>-19</sup> C; m<sub>p</sub> = 1,7·10<sup>-27</sup> kg</Datos>
+
+<Solucion>
+
+**i) Dirección y sentido del campo.** Para que el protón describa una circunferencia en el plano XY, la fuerza magnética $\vec{F} = e\,\vec{v} \times \vec{B}$ debe estar en ese plano y apuntar siempre hacia el centro. Como es perpendicular a $\vec{B}$, el campo debe ser **perpendicular al plano XY**, en la dirección del eje Z.
+
+Para el sentido, basta un punto de la trayectoria. En el punto más a la derecha de la circunferencia, girando en sentido antihorario, la velocidad apunta hacia $+\vec{j}$ y la fuerza (hacia el centro) hacia $-\vec{i}$. Si $\vec{B} = B\,\vec{k}$, sería $\vec{j} \times \vec{k} = \vec{i}$, hacia fuera; por tanto el campo debe ir en sentido contrario:
+
+$$
+\vec{v} \times \vec{B} = v\,\vec{j} \times (-B\,\vec{k}) = -v\,B\,\vec{i}
+\quad\Rightarrow\quad
+\vec{B} = -0{,}05\,\vec{k}\ \text{T}
+$$
+
+El campo está dirigido en el **sentido negativo del eje Z** (entrante en el papel):
+
+<Vectores
+  xMin={-1.6}
+  xMax={1.9}
+  yMin={-1.5}
+  yMax={1.5}
+  escala={64}
+  puntos={[
+    { x: 1, y: 0, texto: "p⁺", tipo: "carga", signo: "+", dx: 10, dy: 22 },
+    { x: 0, y: 0, texto: "", tipo: "punto" },
+    { x: -1.1, y: 1.15, texto: "B (entrante)", tipo: "entra", dx: 12, dy: 4 },
+  ]}
+  vectores={[
+    { desde: [1, 0], v: [0, 52], texto: "v", color: "#195c51", dx: 8 },
+    { desde: [1, 0], v: [-46, 0], texto: "F", color: "#b04a3a", dx: -4, dy: -8 },
+  ]}
+  circulos={[{ centro: [0, 0], r: 1 }]}
+  descripcion="Plano XY con el campo magnético entrante en el papel. El protón describe una circunferencia en sentido antihorario. En el punto más a la derecha, su velocidad apunta hacia arriba y la fuerza magnética hacia la izquierda, hacia el centro de la circunferencia."
+/>
+
+**ii) Radio y periodo.** La fuerza magnética es perpendicular a la velocidad y actúa como fuerza centrípeta:
+
+$$
+e\,v\,B = m_p\,\frac{v^2}{r}
+\quad\Rightarrow\quad
+r = \frac{m_p\,v}{e\,B} = \frac{1{,}7 \cdot 10^{-27} \cdot 3 \cdot 10^5}{1{,}6 \cdot 10^{-19} \cdot 0{,}05} = 6{,}38 \cdot 10^{-2}\ \text{m}
+$$
+
+El periodo es el tiempo que tarda en recorrer la circunferencia:
+
+$$
+T = \frac{2\pi r}{v} = \frac{2\pi\,m_p}{e\,B} = \frac{2\pi \cdot 1{,}7 \cdot 10^{-27}}{1{,}6 \cdot 10^{-19} \cdot 0{,}05} = 1{,}34 \cdot 10^{-6}\ \text{s}
+$$
+
+**Respuesta.** $\vec{B} = -0{,}05\,\vec{k}$ T; el protón describe una circunferencia de **6,38 cm** de radio con un periodo de **$1{,}34 \cdot 10^{-6}$ s**. El periodo no depende de la velocidad: un protón más rápido describiría una circunferencia mayor en el mismo tiempo.
+
+</Solucion>

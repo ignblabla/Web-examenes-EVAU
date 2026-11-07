@@ -1,0 +1,152 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: reserva-4
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+import Vectores from "../../../../../components/figuras/fisica/Vectores.astro"
+
+**A1. a)** Una partícula se mueve en un campo gravitatorio constante y uniforme. Discuta la veracidad de las afirmaciones: **i)** Si la partícula se mueve en la dirección y sentido del campo su energía potencial aumenta, y si lo hace perpendicularmente no varía. **ii)** En ambos casos la energía cinética no cambia.
+
+<Solucion>
+
+En un campo gravitatorio uniforme $\vec{g}$, el peso de la partícula, $\vec{P} = m\,\vec{g}$, es una fuerza constante y conservativa. Al desplazarse $\Delta\vec{r}$, realiza un trabajo $W = m\,\vec{g} \cdot \Delta\vec{r}$, y la energía potencial varía en $\Delta E_p = -W$.
+
+**i) Falsa en su primera parte.** Si la partícula se mueve en la dirección y el **sentido del campo** (hacia abajo, cerca de la superficie terrestre), el peso y el desplazamiento son paralelos y del mismo sentido:
+
+$$
+W = m\,g\,d > 0
+\quad\Rightarrow\quad
+\Delta E_p = -m\,g\,d < 0
+$$
+
+La energía potencial **disminuye**, no aumenta: es lo que ocurre al caer un cuerpo, que pierde altura. La segunda parte sí es **cierta**: si se mueve perpendicularmente al campo (horizontalmente), el peso es perpendicular al desplazamiento, $W = 0$, y la energía potencial **no varía** (se mueve sobre una superficie equipotencial).
+
+**ii) Falsa.** La variación de la energía cinética es igual al trabajo de **todas** las fuerzas que actúan. Si solo actúa el peso, al moverse en el sentido del campo la energía potencial que pierde se convierte en cinética: la energía cinética **aumenta** (el cuerpo acelera al caer). En el movimiento perpendicular, el peso no trabaja, y la energía cinética solo cambia si otras fuerzas (un rozamiento, una fuerza aplicada) realizan trabajo. Por tanto, no se puede afirmar que la energía cinética no cambie en ambos casos; en general, cambia en el primero.
+
+</Solucion>
+
+**b)** Un objeto de 3 kg de masa desciende, partiendo del reposo, desde una altura de 1,5 m por un plano inclinado de coeficiente de rozamiento 0,1 que forma un ángulo de 45º con la horizontal. Posteriormente continúa moviéndose por una superficie horizontal de coeficiente de rozamiento 0,2 hasta detenerse. **i)** Dibuje las fuerzas que actúan sobre el objeto cuando desciende por el plano inclinado y al moverse en la superficie horizontal, y calcule los módulos de las fuerzas de rozamiento. **ii)** Mediante consideraciones energéticas, calcule la distancia que recorre el objeto en la superficie horizontal hasta detenerse.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Fuerzas y rozamientos.** En el plano inclinado actúan el peso, la normal y el rozamiento, paralelo al plano y hacia arriba; en el tramo horizontal, el peso, la normal y el rozamiento, opuesto al movimiento:
+
+<PlanoInclinado angulo={45} mueve="baja" componentes horizontal descripcion="A la izquierda, el plano inclinado 45 grados por el que el objeto baja: actúan el peso, con sus componentes paralela y perpendicular al plano, la normal, perpendicular al plano, y el rozamiento, paralelo al plano y hacia arriba. A la derecha, el tramo horizontal por el que sigue frenando: actúan el peso hacia abajo, la normal hacia arriba y el rozamiento hacia la izquierda, opuesto al movimiento." />
+
+En el plano, la normal compensa la componente perpendicular del peso, $N_1 = m\,g\cos 45^\circ$; en el suelo, compensa el peso, $N_2 = m\,g$:
+
+$$
+F_{r1} = \mu_1\,m\,g\cos 45^\circ = 0{,}1 \cdot 3 \cdot 9{,}8 \cdot 0{,}707 = 2{,}08\ \text{N}
+$$
+
+$$
+F_{r2} = \mu_2\,m\,g = 0{,}2 \cdot 3 \cdot 9{,}8 = 5{,}88\ \text{N}
+$$
+
+**ii) Distancia en el tramo horizontal.** El objeto parte del reposo y acaba en reposo: su energía cinética no cambia, y toda la energía potencial inicial (tomando el origen en el suelo) se disipa por el rozamiento, la única fuerza no conservativa que trabaja:
+
+$$
+W_{F_r} = \Delta E_m = 0 - m\,g\,h
+$$
+
+Por el plano recorre $d_1 = h/\sin 45^\circ = 1{,}5/0{,}707 = 2{,}12$ m:
+
+$$
+F_{r1}\,d_1 + F_{r2}\,d_2 = m\,g\,h
+\quad\Rightarrow\quad
+2{,}08 \cdot 2{,}12 + 5{,}88\,d_2 = 3 \cdot 9{,}8 \cdot 1{,}5
+$$
+
+$$
+4{,}41 + 5{,}88\,d_2 = 44{,}1
+\quad\Rightarrow\quad
+d_2 = \frac{39{,}7}{5{,}88} = 6{,}75\ \text{m}
+$$
+
+**Respuesta.** Los rozamientos valen **2,08 N** en el plano y **5,88 N** en el suelo, y el objeto recorre **6,75 m** por la superficie horizontal antes de detenerse. De los 44,1 J de energía potencial inicial, 4,41 J se disipan en el plano y 39,7 J en el suelo.
+
+</Solucion>
+
+**A2. a)** Razone la veracidad o falsedad de la siguiente afirmación: «Al acercar dos masas aumenta la fuerza de atracción entre ellas, pero disminuye su energía potencial».
+
+<Solucion>
+
+**Verdadera.** Las dos magnitudes dependen de la distancia $r$ entre las masas de forma distinta:
+
+$$
+F = \frac{G\,m_1\,m_2}{r^2}
+\qquad
+E_p = -\frac{G\,m_1\,m_2}{r}
+$$
+
+- **Fuerza**: es inversamente proporcional al cuadrado de la distancia; al acercar las masas ($r$ menor), **aumenta** su módulo.
+- **Energía potencial**: es negativa (tomando el origen en el infinito), y su valor absoluto aumenta al disminuir $r$. Se hace **más negativa**, es decir, **disminuye**.
+
+Es coherente con que la fuerza gravitatoria sea atractiva y conservativa: si las masas se acercan libremente, la fuerza realiza un trabajo positivo, y $W = -\Delta E_p > 0$ implica que la energía potencial disminuye (se convierte en cinética). Para separarlas, en cambio, hay que aportar energía.
+
+</Solucion>
+
+**b)** Dos masas puntuales *m*<sub>1</sub> = 8 kg y *m*<sub>2</sub> = 12 kg están situadas en los puntos A(0,0) m y B(2,0) m, respectivamente. **i)** Determine el punto entre las dos masas donde se anula el campo gravitatorio. **ii)** Calcule el trabajo que realiza la fuerza gravitatoria cuando una tercera masa *m*<sub>3</sub> = 2 kg se desplaza desde el infinito hasta el punto C(2,2) m.
+
+<Datos>G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Punto de campo nulo.** En un punto P(x, 0) entre las masas, el campo de $m_1$ apunta hacia A ($-\vec{i}$) y el de $m_2$ hacia B ($+\vec{i}$): tienen sentidos opuestos, y el campo se anula donde sus módulos son iguales:
+
+$$
+\frac{G\,m_1}{x^2} = \frac{G\,m_2}{(2 - x)^2}
+\quad\Rightarrow\quad
+\frac{2 - x}{x} = \sqrt{\frac{m_2}{m_1}} = \sqrt{\frac{12}{8}} = 1{,}225
+$$
+
+$$
+2 - x = 1{,}225\,x
+\quad\Rightarrow\quad
+x = \frac{2}{2{,}225} = 0{,}899\ \text{m}
+$$
+
+<Vectores
+  xMin={-1.1}
+  xMax={3.1}
+  yMin={-0.6}
+  yMax={2.6}
+  escala={70}
+  marcasX={[2]}
+  marcasY={[2]}
+  unidad="m"
+  puntos={[
+    { x: 0, y: 0, texto: "A · 8 kg", tipo: "masa", dx: -62, dy: 22 },
+    { x: 2, y: 0, texto: "B · 12 kg", tipo: "masa", dx: 8, dy: 22 },
+    { x: 0.899, y: 0, texto: "P (g = 0)", tipo: "punto", dx: 10, dy: 24 },
+    { x: 2, y: 2, texto: "C(2, 2)", tipo: "punto", dx: 10, dy: -8 },
+  ]}
+  vectores={[
+    { desde: [0.899, 0], v: [-30, 0], texto: "g", sub: "1", color: "#2d6fa3", dx: -6, dy: -8 },
+    { desde: [0.899, 0], v: [30, 0], texto: "g", sub: "2", color: "#2d6fa3", dx: -6, dy: -8 },
+  ]}
+  segmentos={[[0, 0, 2, 2], [2, 0, 2, 2]]}
+  descripcion="Masa de 8 kilos en el origen, A, y de 12 kilos en B, de coordenadas 2, 0. En el punto P, a 0,9 metros de A, los campos de las dos masas tienen el mismo módulo y sentidos opuestos: el campo es nulo. El punto C, de coordenadas 2, 2, está a 2,83 metros de A y a 2 metros de B."
+/>
+
+El campo se anula en el punto **(0,899, 0) m**, más cerca de la masa menor.
+
+**ii) Trabajo desde el infinito hasta C.** La fuerza gravitatoria es conservativa: $W = -m_3\,(V_C - V_\infty)$, con $V_\infty = 0$. C(2,2) está a $2\sqrt{2}$ m de A y a 2 m de B:
+
+$$
+V_C = -G\left(\frac{m_1}{r_{AC}} + \frac{m_2}{r_{BC}}\right) = -6{,}67 \cdot 10^{-11}\left(\frac{8}{2\sqrt{2}} + \frac{12}{2}\right) = -5{,}89 \cdot 10^{-10}\ \text{J/kg}
+$$
+
+$$
+W_{\infty \to C} = -m_3\,(V_C - 0) = -2 \cdot \left(-5{,}89 \cdot 10^{-10}\right) = 1{,}18 \cdot 10^{-9}\ \text{J}
+$$
+
+**Respuesta.** El campo se anula en **(0,899, 0) m**, y el trabajo de la fuerza gravitatoria al traer la masa desde el infinito hasta C es **$1{,}18 \cdot 10^{-9}$ J**. Es positivo: la masa se acerca a las otras, que la atraen, y su energía potencial disminuye (de 0 a $-1{,}18 \cdot 10^{-9}$ J), como se razonó en el apartado a).
+
+</Solucion>

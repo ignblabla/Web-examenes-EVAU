@@ -1,0 +1,128 @@
+---
+asignatura: fisica
+tema: fisica-cuantica-y-nuclear
+anio: 2021
+convocatoria: reserva-3
+formato: fisica
+---
+
+import EnergiaEnlaceNucleon from "../../../../../components/figuras/fisica/EnergiaEnlaceNucleon.astro"
+
+**D1. a)** Discuta razonadamente la dependencia de la energía de enlace por nucleón con: **i)** El número másico del núcleo. **ii)** La estabilidad del núcleo.
+
+<Solucion>
+
+La **energía de enlace** de un núcleo es la energía que se libera al formarlo a partir de sus protones y neutrones separados, o la que hay que aportarle para separarlos. Se debe al **defecto de masa**: la masa del núcleo es menor que la suma de las de sus nucleones, $E_e = \Delta m\,c^2$. La **energía de enlace por nucleón** es $E_e/A$.
+
+<EnergiaEnlaceNucleon />
+
+**i) Dependencia con el número másico.** Como muestra la gráfica:
+
+- En los núcleos **ligeros**, la energía de enlace por nucleón **crece rápidamente** con $A$ (con irregularidades, como el pico del $^4$He, especialmente estable).
+- Alcanza un **máximo**, de unos 8,8 MeV por nucleón, en torno a $A \approx 56$-$60$ (hierro y níquel).
+- En los núcleos **pesados** disminuye **lentamente**, hasta unos 7,6 MeV en el uranio-238.
+
+Se explica por la competencia entre dos interacciones. La **fuerza nuclear fuerte**, atractiva y de corto alcance, solo actúa entre nucleones vecinos: al crecer el núcleo, cada nucleón tiene más vecinos hasta que se «satura». La **repulsión eléctrica** entre protones, de largo alcance, actúa entre todos ellos y crece con el número de protones: en los núcleos pesados acaba reduciendo la energía de enlace por nucleón.
+
+**ii) Relación con la estabilidad.** La energía de enlace por nucleón mide lo ligados que están los nucleones: cuanto **mayor** es, más energía hay que aportar por nucleón para deshacer el núcleo, y **más estable** es. Los núcleos más estables son los de la zona del máximo (el $^{56}$Fe). Por eso se libera energía al **fusionar** núcleos ligeros o al **fisionar** núcleos pesados: en los dos casos los productos están más cerca del máximo, más ligados que los núcleos iniciales.
+
+</Solucion>
+
+**b)** Sabiendo que la actividad de un determinado isótopo radiactivo decae a la sexta parte cuando transcurre un tiempo de 8 horas. Determine: **i)** Su constante de desintegración. **ii)** El tiempo que debe transcurrir para que la actividad se reduzca a la décima parte de la inicial.
+
+<Solucion>
+
+La actividad de una muestra, $A = \lambda N$, es proporcional al número de núcleos sin desintegrar, así que disminuye con la misma ley exponencial:
+
+$$
+A = A_0\,e^{-\lambda t}
+$$
+
+**i) Constante de desintegración.** Con $A = A_0/6$ para $t = 8$ h:
+
+$$
+\frac{1}{6} = e^{-\lambda \cdot 8}
+\quad\Rightarrow\quad
+\lambda = \frac{\ln 6}{8} = \frac{1{,}792}{8} = 0{,}224\ \text{h}^{-1}
+$$
+
+En unidades del Sistema Internacional:
+
+$$
+\lambda = \frac{0{,}224}{3600} = 6{,}22 \cdot 10^{-5}\ \text{s}^{-1}
+$$
+
+**ii) Tiempo para reducirse a la décima parte.** Con $A = A_0/10$:
+
+$$
+\frac{1}{10} = e^{-\lambda t}
+\quad\Rightarrow\quad
+t = \frac{\ln 10}{\lambda} = \frac{2{,}303}{0{,}224} = 10{,}3\ \text{h}
+$$
+
+**Respuesta.** La constante de desintegración es **$0{,}224$ h⁻¹ = $6{,}22 \cdot 10^{-5}$ s⁻¹** y la actividad se reduce a la décima parte en **10,3 h** (unas 10 h y 17 min). Es coherente: pasar de 1/6 a 1/10 exige algo más de tiempo que las 8 horas iniciales. El periodo de semidesintegración es $T_{1/2} = \ln 2/\lambda = 3{,}09$ h.
+
+</Solucion>
+
+**D2. a)** Al incidir un haz de luz de cierta frecuencia sobre un metal se produce efecto fotoeléctrico. **i)** ¿Qué condición cumple la frecuencia de la luz para que se produzca dicho efecto? **ii)** ¿Qué ocurrirá si se aumenta la intensidad de dicho haz? Razone las respuestas.
+
+<Solucion>
+
+Según la explicación de Einstein, la luz está formada por **fotones** de energía $E = h\,f$, y cada fotón interacciona con un solo electrón y le cede toda su energía. Con ella, el electrón debe vencer la ligadura con el metal (el **trabajo de extracción** $W_0$), y lo que sobra queda como energía cinética:
+
+$$
+h\,f = W_0 + E_{c,\text{máx}}
+$$
+
+**i) Condición sobre la frecuencia.** Para que se arranque un electrón, la energía del fotón debe ser al menos el trabajo de extracción:
+
+$$
+h\,f \ge W_0
+\quad\Rightarrow\quad
+f \ge f_0 = \frac{W_0}{h}
+$$
+
+La frecuencia de la luz debe ser **mayor o igual que la frecuencia umbral** $f_0$, característica de cada metal. Si es menor, no hay emisión, por intensa que sea la luz: un electrón no puede acumular la energía de varios fotones.
+
+**ii) Si aumenta la intensidad.** Con la misma frecuencia, más intensidad significa **más fotones** por unidad de tiempo, pero cada uno con la misma energía $h\,f$. Por tanto:
+
+- Se arrancan **más electrones** por unidad de tiempo: aumenta la intensidad de la corriente fotoeléctrica.
+- La **energía cinética máxima** de los electrones **no cambia**, porque depende solo de la frecuencia, $E_{c,\text{máx}} = h\,f - W_0$.
+
+</Solucion>
+
+**b)** La máxima longitud de onda con la que se produce el efecto fotoeléctrico en el calcio es de 4,62·10<sup>-7</sup> m. Calcule: **i)** La frecuencia umbral del calcio. **ii)** Su trabajo de extracción. **iii)** La energía cinética máxima de los electrones emitidos cuando se ilumina una lámina de calcio con luz ultravioleta de 2,5·10<sup>-7</sup> m.
+
+<Datos>h = 6,63·10<sup>-34</sup> J s; c = 3·10<sup>8</sup> m s<sup>-1</sup></Datos>
+
+<Solucion>
+
+**i) Frecuencia umbral.** La longitud de onda máxima (o umbral) corresponde a la frecuencia mínima, la umbral, porque $f = c/\lambda$:
+
+$$
+f_0 = \frac{c}{\lambda_0} = \frac{3 \cdot 10^8}{4{,}62 \cdot 10^{-7}} = 6{,}49 \cdot 10^{14}\ \text{Hz}
+$$
+
+**ii) Trabajo de extracción.** Es la energía de un fotón de la frecuencia umbral, que arranca el electrón sin darle energía cinética:
+
+$$
+W_0 = h\,f_0 = 6{,}63 \cdot 10^{-34} \cdot 6{,}49 \cdot 10^{14} = 4{,}31 \cdot 10^{-19}\ \text{J}
+$$
+
+Unos 2,69 eV.
+
+**iii) Energía cinética máxima con λ = 2,5·10⁻⁷ m.** La energía de cada fotón es:
+
+$$
+E = \frac{h\,c}{\lambda} = \frac{6{,}63 \cdot 10^{-34} \cdot 3 \cdot 10^8}{2{,}5 \cdot 10^{-7}} = 7{,}96 \cdot 10^{-19}\ \text{J}
+$$
+
+Es mayor que el trabajo de extracción (la longitud de onda es menor que la umbral), así que se emiten electrones. Por la ecuación de Einstein:
+
+$$
+E_{c,\text{máx}} = E - W_0 = 7{,}96 \cdot 10^{-19} - 4{,}31 \cdot 10^{-19} = 3{,}65 \cdot 10^{-19}\ \text{J}
+$$
+
+**Respuesta.** La frecuencia umbral del calcio es **$6{,}49 \cdot 10^{14}$ Hz**, su trabajo de extracción **$4{,}31 \cdot 10^{-19}$ J** y los electrones salen con una energía cinética máxima de **$3{,}65 \cdot 10^{-19}$ J** (unos 2,28 eV).
+
+</Solucion>

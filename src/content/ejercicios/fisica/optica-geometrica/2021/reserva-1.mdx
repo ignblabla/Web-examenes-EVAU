@@ -1,0 +1,69 @@
+---
+asignatura: fisica
+tema: optica-geometrica
+anio: 2021
+convocatoria: reserva-1
+formato: fisica
+---
+
+import TrazadoRayos from "../../../../../components/figuras/fisica/TrazadoRayos.astro"
+
+**C1. a)** Razone, realizando además el trazado de rayos correspondiente, las características de la imagen producida por una lente divergente.
+
+<Solucion>
+
+Una lente divergente separa los rayos que la atraviesan: un rayo que llega paralelo al eje sale como si viniera del **foco imagen** $F'$, que en estas lentes está en el mismo lado que el objeto. Para construir la imagen de un objeto real se usan dos rayos:
+
+- El rayo **paralelo al eje**, que se refracta alejándose de él; su prolongación hacia atrás pasa por $F'$.
+- El rayo que pasa por el **centro óptico**, que no se desvía.
+
+<TrazadoRayos tipo="divergente" f={-2} s={-3} y={1} xMin={-4} xMax={2.5} descripcion="Lente divergente con un objeto a la izquierda, más allá del foco. El rayo paralelo al eje se refracta alejándose de él, como si viniera del foco imagen, situado a la izquierda de la lente; el que pasa por el centro óptico no se desvía. Los rayos refractados divergen y sus prolongaciones se cortan a la izquierda de la lente, entre el foco y la lente: la imagen es virtual, derecha y menor que el objeto." />
+
+Los rayos refractados **divergen** y no llegan a cortarse; se cortan sus **prolongaciones**, en el mismo lado que el objeto. Sea cual sea la posición del objeto (real), la imagen es siempre:
+
+- **Virtual**: la forman las prolongaciones de los rayos, y no se puede recoger en una pantalla.
+- **Derecha**: tiene la misma orientación que el objeto.
+- **Menor que el objeto**.
+- Situada **entre el foco imagen y la lente**.
+
+Se comprueba con las ecuaciones (criterio DIN): con $f' < 0$ y $s < 0$, $1/s' = 1/f' + 1/s$ es siempre negativo y de valor absoluto mayor que $1/|f'|$ y que $1/|s|$, así que $s' < 0$ con $|s'| < |f'|$ y $|s'| < |s|$; el aumento $A = s'/s$ está entre 0 y 1. En el dibujo, con $f' = -2$ y $s = -3$, sale $s' = -1{,}2$ y $A = 0{,}4$.
+
+</Solucion>
+
+**b)** La imagen formada por una lente convergente se encuentra a 1,5 m detrás de la lente, con un aumento lateral de -0,5. **i)** Realice el trazado de rayos. Calcule razonadamente: **ii)** La posición del objeto; **iii)** La distancia focal de la lente.
+
+<Solucion>
+
+Se usa el criterio de signos DIN: la luz va de izquierda a derecha y las distancias se miden desde la lente. La imagen está **detrás** de la lente (a la derecha): $s' = +1{,}5$ m. Es una imagen real, y el aumento negativo indica que está invertida.
+
+**ii) Posición del objeto.** El aumento lateral de una lente delgada es $A = s'/s$:
+
+$$
+A = \frac{s'}{s}
+\quad\Rightarrow\quad
+s = \frac{s'}{A} = \frac{1{,}5}{-0{,}5} = -3\ \text{m}
+$$
+
+El objeto está **3 m delante de la lente** (a la izquierda).
+
+**iii) Distancia focal.** Por la ecuación de las lentes delgadas:
+
+$$
+\frac{1}{s'} - \frac{1}{s} = \frac{1}{f'}
+\quad\Rightarrow\quad
+\frac{1}{f'} = \frac{1}{1{,}5} - \frac{1}{-3} = \frac{2}{3} + \frac{1}{3} = 1\ \text{m}^{-1}
+\quad\Rightarrow\quad
+f' = 1\ \text{m}
+$$
+
+La distancia focal es positiva, como corresponde a una lente convergente; su potencia es de 1 dioptría.
+
+**i) Trazado de rayos.** El objeto está a 3 m, más allá del doble de la distancia focal ($2f' = 2$ m):
+
+<TrazadoRayos tipo="convergente" f={1} s={-3} y={0.6} xMin={-3.6} xMax={2.4} descripcion="Lente convergente de 1 metro de distancia focal con un objeto 3 metros a la izquierda, más allá del doble de la distancia focal. El rayo paralelo al eje se refracta pasando por el foco imagen, el que pasa por el centro óptico no se desvía y el que pasa por el foco objeto sale paralelo. Los rayos refractados se cortan 1,5 metros a la derecha de la lente, entre el foco y el doble de la distancia focal: la imagen es real, invertida y de la mitad de tamaño." />
+
+El rayo paralelo al eje se refracta pasando por el foco imagen $F'$; el que pasa por el centro óptico no se desvía; y el que pasa por el foco objeto $F$ sale paralelo al eje. Los tres se cortan detrás de la lente, entre $F'$ y $2F'$: la imagen es **real, invertida y menor** (la mitad del objeto).
+
+**Respuesta.** El objeto está **3 m delante de la lente** y la distancia focal es **$f' = 1$ m**.
+
+</Solucion>

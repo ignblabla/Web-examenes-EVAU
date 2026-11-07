@@ -1,0 +1,155 @@
+---
+asignatura: fisica
+tema: campo-gravitatorio
+anio: 2021
+convocatoria: julio
+formato: fisica
+---
+
+import PlanoInclinado from "../../../../../components/figuras/fisica/PlanoInclinado.astro"
+
+**A1. a)** Razone si la siguiente afirmación es verdadera o falsa: «Si un planeta tiene el doble de masa y la mitad del radio que otro planeta, su velocidad de escape será el doble».
+
+<Solucion>
+
+**Verdadera.** La velocidad de escape es la velocidad mínima con la que hay que lanzar un cuerpo desde la superficie de un planeta para que se aleje indefinidamente (llegue al infinito con velocidad nula). Como la fuerza gravitatoria es conservativa, la energía mecánica se conserva; en el infinito la energía potencial y la cinética son nulas:
+
+$$
+\frac{1}{2}\,m\,v_e^2 - \frac{G\,M\,m}{R} = 0
+\quad\Rightarrow\quad
+v_e = \sqrt{\frac{2\,G\,M}{R}}
+$$
+
+Para el segundo planeta, con $M' = 2M$ y $R' = R/2$:
+
+$$
+v_e' = \sqrt{\frac{2\,G\,(2M)}{R/2}} = \sqrt{4 \cdot \frac{2\,G\,M}{R}} = 2\,\sqrt{\frac{2\,G\,M}{R}} = 2\,v_e
+$$
+
+El cociente $M/R$ se multiplica por 4 y, como la velocidad de escape depende de su raíz cuadrada, se **duplica**. La velocidad de escape no depende de la masa del cuerpo lanzado.
+
+</Solucion>
+
+**b)** Conociendo la gravedad y la velocidad de escape en la superficie de Marte, calcule: **i)** El radio de Marte. **ii)** La masa de Marte.
+
+<Datos>g<sub>Marte</sub> = 3,7 m s<sup>-2</sup>; v<sub>escape</sub> = 5·10<sup>3</sup> m s<sup>-1</sup>; G = 6,67·10<sup>-11</sup> N m<sup>2</sup> kg<sup>-2</sup></Datos>
+
+<Solucion>
+
+Las dos magnitudes dependen de la masa $M$ y del radio $R$ de Marte. La gravedad en la superficie es el campo gravitatorio que crea el planeta a una distancia $R$ de su centro, y la velocidad de escape se obtiene como en el apartado a):
+
+$$
+g = \frac{G\,M}{R^2}
+\qquad
+v_e = \sqrt{\frac{2\,G\,M}{R}}
+$$
+
+**i) Radio.** Como $G\,M = g\,R^2$, la velocidad de escape se puede escribir en función de $g$ y $R$:
+
+$$
+v_e^2 = \frac{2\,G\,M}{R} = \frac{2\,g\,R^2}{R} = 2\,g\,R
+\quad\Rightarrow\quad
+R = \frac{v_e^2}{2\,g} = \frac{\left(5 \cdot 10^3\right)^2}{2 \cdot 3{,}7} = 3{,}38 \cdot 10^{6}\ \text{m}
+$$
+
+**ii) Masa.** De la expresión de la gravedad en la superficie:
+
+$$
+M = \frac{g\,R^2}{G} = \frac{3{,}7 \cdot \left(3{,}38 \cdot 10^6\right)^2}{6{,}67 \cdot 10^{-11}} = 6{,}33 \cdot 10^{23}\ \text{kg}
+$$
+
+**Respuesta.** El radio de Marte es **$3{,}38 \cdot 10^6$ m** (unos 3380 km) y su masa, **$6{,}33 \cdot 10^{23}$ kg**. Son valores razonables: Marte tiene algo más de la mitad del radio de la Tierra y una décima parte de su masa.
+
+</Solucion>
+
+**A2. a)** Discuta razonadamente la veracidad de las siguientes frases: **i)** El trabajo realizado por una fuerza conservativa para desplazar un cuerpo es nulo si la trayectoria es cerrada. **ii)** En el descenso de un objeto por un plano inclinado con rozamiento, la disminución de su energía potencial se corresponde con el aumento de su energía cinética.
+
+<Solucion>
+
+**i) Verdadera.** Una fuerza es **conservativa** cuando su trabajo entre dos puntos no depende de la trayectoria, solo de los puntos inicial y final. Eso permite asociarle una energía potencial, de modo que:
+
+$$
+W_{A \to B} = -\Delta E_p = E_p(A) - E_p(B)
+$$
+
+Si la trayectoria es cerrada, el punto final coincide con el inicial, $B = A$, y el trabajo es nulo:
+
+$$
+\oint \vec{F} \cdot d\vec{r} = E_p(A) - E_p(A) = 0
+$$
+
+Por ejemplo, si se sube un cuerpo y se vuelve a bajar al mismo punto, el peso realiza un trabajo negativo en la subida y otro positivo, igual en valor absoluto, en la bajada.
+
+**ii) Falsa.** Sobre el objeto actúan el peso (conservativo), la normal (que no trabaja, porque es perpendicular al desplazamiento) y el rozamiento (no conservativo). El trabajo total es igual a la variación de la energía cinética, y el del peso, a menos la variación de la energía potencial:
+
+$$
+W_P + W_{F_r} = \Delta E_c
+\quad\Rightarrow\quad
+-\Delta E_p = \Delta E_c - W_{F_r} = \Delta E_c + |W_{F_r}|
+$$
+
+La energía potencial que pierde el objeto se reparte: una parte se convierte en energía cinética y otra se **disipa en forma de calor** por el rozamiento. Por tanto, la disminución de la energía potencial es **mayor** que el aumento de la energía cinética. Solo serían iguales sin rozamiento, cuando se conserva la energía mecánica.
+
+</Solucion>
+
+**b)** Un objeto de 2 kg, inicialmente en reposo, asciende por un plano inclinado de 30º respecto a la horizontal debido a la acción de una fuerza de 30 N paralela a dicho plano. El coeficiente de rozamiento entre el bloque y el plano es 0,1. **i)** Dibuje todas las fuerzas que actúan sobre el objeto y calcule sus módulos. **ii)** Mediante consideraciones energéticas, determine la variación de energía cinética, potencial y mecánica cuando el objeto ha ascendido una altura de 1,5 m.
+
+<Datos>g = 9,8 m s<sup>-2</sup></Datos>
+
+<Solucion>
+
+**i) Fuerzas.** Sobre el objeto actúan el peso, la normal, la fuerza aplicada $F$ (paralela al plano y hacia arriba) y el rozamiento, paralelo al plano y hacia abajo, opuesto al movimiento:
+
+<PlanoInclinado angulo={30} mueve="sube" aplicada="F = 30 N" componentes descripcion="Objeto en un plano inclinado 30 grados que sube por él. Actúan el peso, vertical hacia abajo, con sus componentes paralela y perpendicular al plano; la normal, perpendicular al plano hacia fuera; la fuerza aplicada de 30 newtons, paralela al plano y hacia arriba; y el rozamiento, paralelo al plano y hacia abajo, opuesto al movimiento." />
+
+$$
+P = m\,g = 2 \cdot 9{,}8 = 19{,}6\ \text{N}
+$$
+
+En la dirección perpendicular al plano no hay movimiento, así que la normal compensa la componente perpendicular del peso:
+
+$$
+N = m\,g\cos 30^\circ = 19{,}6 \cdot 0{,}866 = 17{,}0\ \text{N}
+$$
+
+$$
+F_r = \mu\,N = 0{,}1 \cdot 17{,}0 = 1{,}70\ \text{N}
+\qquad
+F = 30\ \text{N}
+$$
+
+La componente del peso paralela al plano, dirigida hacia abajo, vale $P_x = m\,g\sin 30^\circ = 9{,}8$ N. Como $F > P_x + F_r$, el objeto sube acelerando.
+
+**ii) Variaciones de energía.** Para subir una altura $h = 1{,}5$ m, el objeto recorre a lo largo del plano:
+
+$$
+d = \frac{h}{\sin 30^\circ} = \frac{1{,}5}{0{,}5} = 3\ \text{m}
+$$
+
+**Energía potencial.** Solo depende de la altura:
+
+$$
+\Delta E_p = m\,g\,h = 2 \cdot 9{,}8 \cdot 1{,}5 = 29{,}4\ \text{J}
+$$
+
+**Energía mecánica.** Varía en lo que vale el trabajo de las fuerzas no conservativas: la fuerza aplicada (en el sentido del desplazamiento) y el rozamiento (en sentido contrario). La normal no trabaja:
+
+$$
+W_F = F\,d = 30 \cdot 3 = 90\ \text{J}
+\qquad
+W_{F_r} = -F_r\,d = -1{,}70 \cdot 3 = -5{,}09\ \text{J}
+$$
+
+$$
+\Delta E_m = W_F + W_{F_r} = 90 - 5{,}09 = 84{,}9\ \text{J}
+$$
+
+**Energía cinética.** Es la diferencia entre las dos anteriores:
+
+$$
+\Delta E_c = \Delta E_m - \Delta E_p = 84{,}9 - 29{,}4 = 55{,}5\ \text{J}
+$$
+
+**Respuesta.** Las fuerzas valen $P = 19{,}6$ N, $N = 17{,}0$ N, $F_r = 1{,}70$ N y $F = 30$ N. Al subir 1,5 m: **$\Delta E_p = 29{,}4$ J**, **$\Delta E_c = 55{,}5$ J** y **$\Delta E_m = 84{,}9$ J**. De los 90 J que aporta la fuerza, 5,09 J se disipan por el rozamiento y el resto aumenta la energía mecánica del objeto (como parte del reposo, llega con una velocidad de $\sqrt{2 \cdot 55{,}5/2} = 7{,}45$ m/s).
+
+</Solucion>

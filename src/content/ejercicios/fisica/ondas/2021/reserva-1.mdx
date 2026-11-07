@@ -1,0 +1,90 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2021
+convocatoria: reserva-1
+formato: fisica
+---
+
+**C2. a)** Una onda armónica de amplitud *A* y frecuencia *f* se propaga por una cuerda con una velocidad *v*. Determine los cambios que se producirían en la longitud de onda y la velocidad máxima de oscilación de un punto del medio si, manteniendo constantes el resto de parámetros: **i)** Se reduce a la mitad la frecuencia. **ii)** Se aumenta su amplitud al doble.
+
+<Solucion>
+
+La **velocidad de propagación** $v$ depende solo del medio (en una cuerda, de su tensión y su densidad lineal), así que no cambia en ninguno de los dos casos. Las magnitudes que intervienen son:
+
+- La **longitud de onda**: $\lambda = \dfrac{v}{f}$.
+- La **velocidad máxima de oscilación** de un punto. Cada punto de la cuerda describe un movimiento armónico simple, $y = A\sin(\omega t - kx)$; su velocidad es $v_y = A\,\omega\cos(\omega t - kx)$, y su valor máximo, $v_{\text{máx}} = A\,\omega = 2\pi f A$.
+
+No hay que confundir las dos velocidades: $v$ es la rapidez con que avanza la perturbación por la cuerda, y $v_y$ la de cada punto al oscilar.
+
+**i) Frecuencia a la mitad,** $f' = f/2$:
+
+$$
+\lambda' = \frac{v}{f/2} = 2\lambda
+\qquad
+v'_{\text{máx}} = 2\pi\,\frac{f}{2}\,A = \frac{v_{\text{máx}}}{2}
+$$
+
+La longitud de onda se **duplica** y la velocidad máxima de oscilación se **reduce a la mitad**: cada punto oscila más despacio, con la misma amplitud.
+
+**ii) Amplitud al doble,** $A' = 2A$:
+
+$$
+\lambda' = \frac{v}{f} = \lambda
+\qquad
+v'_{\text{máx}} = 2\pi f\,(2A) = 2\,v_{\text{máx}}
+$$
+
+La longitud de onda **no cambia**, porque no depende de la amplitud, y la velocidad máxima de oscilación se **duplica**: cada punto recorre el doble de distancia en el mismo periodo.
+
+</Solucion>
+
+**b)** Una onda, cuya amplitud es de 0,05 m y su número de onda 10π rad m<sup>-1</sup>, se propaga por una cuerda en el sentido positivo del eje x con una velocidad de 2 m s<sup>-1</sup>. **i)** Determine su ecuación teniendo en cuenta que en el instante inicial el punto x = 0 m se encuentra en la posición más alta de su oscilación. **ii)** Razone si los puntos x<sub>1</sub> = 0,6 m y x<sub>2</sub> = 0,9 m están en fase o en oposición de fase.
+
+<Solucion>
+
+**i) Ecuación de la onda.** Una onda armónica que se propaga en el sentido positivo del eje X se describe con:
+
+$$
+y(x, t) = A\sin(\omega t - kx + \varphi_0)
+$$
+
+Los datos dan $A = 0{,}05$ m y $k = 10\pi$ rad/m. La frecuencia angular se obtiene de la velocidad de propagación, $v = \omega/k$:
+
+$$
+\omega = k\,v = 10\pi \cdot 2 = 20\pi\ \text{rad/s}
+$$
+
+La fase inicial se obtiene de la condición inicial: en $t = 0$ el punto $x = 0$ está en la posición más alta, $y = A$:
+
+$$
+y(0, 0) = A\sin\varphi_0 = A
+\quad\Rightarrow\quad
+\sin\varphi_0 = 1
+\quad\Rightarrow\quad
+\varphi_0 = \frac{\pi}{2}\ \text{rad}
+$$
+
+$$
+y(x, t) = 0{,}05\sin\left(20\pi t - 10\pi x + \frac{\pi}{2}\right)\ \text{(S.I.)}
+$$
+
+que también puede escribirse $y = 0{,}05\cos(20\pi t - 10\pi x)$ (S.I.).
+
+**ii) Fase entre x₁ y x₂.** En un mismo instante, la diferencia de fase entre dos puntos es:
+
+$$
+\Delta\varphi = k\,(x_2 - x_1) = 10\pi \cdot (0{,}9 - 0{,}6) = 3\pi\ \text{rad}
+$$
+
+Es un múltiplo **impar** de $\pi$, así que los puntos están en **oposición de fase**: cuando uno está en lo más alto, el otro está en lo más bajo. Se ve también con la longitud de onda:
+
+$$
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{10\pi} = 0{,}2\ \text{m}
+\qquad
+\frac{x_2 - x_1}{\lambda} = \frac{0{,}3}{0{,}2} = 1{,}5
+$$
+
+Los puntos están separados un número impar de medias longitudes de onda (tres semilongitudes de onda). Estarían en fase si la distancia fuera un número entero de longitudes de onda.
+
+</Solucion>

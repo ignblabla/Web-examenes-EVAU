@@ -1,0 +1,129 @@
+---
+asignatura: fisica
+tema: ondas
+anio: 2021
+convocatoria: julio
+formato: fisica
+---
+
+import GraficaFuncion from "../../../../../components/figuras/GraficaFuncion.astro"
+
+**C1. a)** **i)** Justifique que en una onda estacionaria la amplitud varía en cada punto. **ii)** Realice una representación gráfica de una onda estacionaria en función del espacio, y explique qué se entiende por un nodo en este tipo de ondas.
+
+<Solucion>
+
+**i) La amplitud depende de la posición.** Una onda estacionaria resulta de la superposición de dos ondas armónicas de la misma amplitud $A$, frecuencia y longitud de onda que se propagan en la misma dirección y en sentidos opuestos (por ejemplo, una onda y su reflejada en el extremo fijo de una cuerda):
+
+$$
+y_1 = A\sin(\omega t - kx)
+\qquad
+y_2 = A\sin(\omega t + kx)
+$$
+
+Sumándolas con la identidad $\sin a + \sin b = 2\sin\frac{a + b}{2}\cos\frac{a - b}{2}$:
+
+$$
+y(x, t) = y_1 + y_2 = 2A\cos(kx)\sin(\omega t)
+$$
+
+Cada punto del medio oscila con un movimiento armónico simple de frecuencia angular $\omega$, pero con una **amplitud que depende de su posición**:
+
+$$
+A(x) = \left|2A\cos(kx)\right|
+$$
+
+En una onda viajera todos los puntos oscilan con la misma amplitud; en una estacionaria, unos puntos oscilan con amplitud máxima, $2A$, y otros no oscilan.
+
+**ii) Representación y nodos.** La gráfica muestra la forma del medio en varios instantes: todos los puntos oscilan en fase (o en oposición) entre las curvas $\pm 2A\cos(kx)$, que forman la envolvente.
+
+<GraficaFuncion
+  xMin={0}
+  xMax={4.4}
+  yMin={-1.4}
+  yMax={1.4}
+  marcasX={[]}
+  marcasY={[]}
+  ejes={["x", "y"]}
+  tramos={[
+    { f: (x) => Math.cos(Math.PI * x), desde: 0, hasta: 4.2 },
+    { f: (x) => 0.5 * Math.cos(Math.PI * x), desde: 0, hasta: 4.2, color: "#2d6fa3" },
+    { f: (x) => -0.5 * Math.cos(Math.PI * x), desde: 0, hasta: 4.2, color: "#2d6fa3" },
+    { f: (x) => -Math.cos(Math.PI * x), desde: 0, hasta: 4.2, color: "#b04a3a" },
+  ]}
+  puntos={[
+    { x: 0.5, y: 0, texto: "N", dx: 4, dy: -8 },
+    { x: 1.5, y: 0, texto: "N", dx: 4, dy: -8 },
+    { x: 2.5, y: 0, texto: "N", dx: 4, dy: -8 },
+    { x: 3.5, y: 0, texto: "N", dx: 4, dy: -8 },
+    { x: 1, y: 1, texto: "V", dx: -4, dy: -8 },
+    { x: 2, y: 1, texto: "V", dx: -4, dy: -8 },
+    { x: 3, y: 1, texto: "V", dx: -4, dy: -8 },
+  ]}
+  descripcion="Forma de una onda estacionaria en función de la posición en cuatro instantes distintos: cosenos de distinta amplitud que se cortan todos en los mismos puntos del eje, los nodos, separados media longitud de onda. Entre ellos, en los vientres, la oscilación tiene amplitud máxima."
+/>
+
+Un **nodo** es un punto del medio que **no oscila**: su amplitud es nula en todo momento, porque en él las dos ondas que se superponen llegan siempre en oposición de fase y se anulan (interferencia destructiva). Están donde $\cos(kx) = 0$:
+
+$$
+kx = \frac{\pi}{2} + n\pi
+\quad\Rightarrow\quad
+x = (2n + 1)\,\frac{\lambda}{4}
+\qquad (n = 0, 1, 2, \ldots)
+$$
+
+Dos nodos consecutivos están separados **media longitud de onda**, $\lambda/2$. A mitad de camino entre ellos están los **vientres** (V), los puntos que oscilan con la amplitud máxima, $2A$. Como los nodos no se mueven, la energía no se propaga más allá de ellos: la onda «no avanza», de ahí el nombre de estacionaria.
+
+</Solucion>
+
+**b)** Una onda estacionaria queda descrita mediante la ecuación:
+
+$$
+y(x,t) = 0{,}5\sin\left(\frac{\pi}{3}\,x\right)\cos(40\pi t)\ \ (\text{S.I.})
+$$
+
+Determine razonadamente: **i)** Amplitud, longitud de onda y velocidad de propagación de las ondas armónicas cuya superposición da lugar a esta onda estacionaria. **ii)** Posición de los vientres y amplitud de los mismos.
+
+<Solucion>
+
+La ecuación tiene la forma general de una onda estacionaria, $y = 2A\sin(kx)\cos(\omega t)$, que resulta de superponer dos ondas armónicas de amplitud $A$, número de onda $k$ y frecuencia angular $\omega$ que viajan en sentidos opuestos. Comparando:
+
+$$
+2A = 0{,}5\ \text{m}
+\qquad
+k = \frac{\pi}{3}\ \text{rad/m}
+\qquad
+\omega = 40\pi\ \text{rad/s}
+$$
+
+**i) Amplitud, longitud de onda y velocidad de las ondas armónicas.**
+
+$$
+A = \frac{0{,}5}{2} = 0{,}25\ \text{m}
+\qquad
+\lambda = \frac{2\pi}{k} = \frac{2\pi}{\pi/3} = 6\ \text{m}
+$$
+
+La frecuencia es $f = \omega/(2\pi) = 40\pi/(2\pi) = 20$ Hz, y la velocidad de propagación:
+
+$$
+v = \lambda\,f = \frac{\omega}{k} = \frac{40\pi}{\pi/3} = 120\ \text{m/s}
+$$
+
+**ii) Vientres.** Cada punto oscila con amplitud $A(x) = |0{,}5\sin(\pi x/3)|$. Los vientres son los puntos de amplitud máxima, donde $|\sin(\pi x/3)| = 1$:
+
+$$
+\frac{\pi}{3}\,x = \frac{\pi}{2} + n\pi
+\quad\Rightarrow\quad
+x = \frac{3}{2} + 3n\ \text{m}
+\qquad (n = 0, 1, 2, \ldots)
+$$
+
+Los vientres están en $x = 1{,}5$ m, $4{,}5$ m, $7{,}5$ m…, separados media longitud de onda (3 m), y su amplitud es la máxima:
+
+$$
+A_{\text{vientre}} = 2A = 0{,}5\ \text{m}
+$$
+
+**Respuesta.** Las ondas que se superponen tienen **A = 0,25 m**, **λ = 6 m** y **v = 120 m/s**. Los vientres están en **x = 1,5 + 3n m** ($n = 0, 1, 2…$) y oscilan con **0,5 m** de amplitud. Los nodos, donde $\sin(\pi x/3) = 0$, están en $x = 3n$ m: el origen es un nodo, como el extremo fijo de una cuerda.
+
+</Solucion>
