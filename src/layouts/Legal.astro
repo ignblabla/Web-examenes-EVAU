@@ -3,7 +3,6 @@ import { migas } from "../data/sitio"
 import Base from "./Base.astro"
 
 // Página legal: cabecera con migas y fecha de actualización, y el texto en una hoja blanca.
-// No se indexa (ver paginasLegales en src/data/legal.ts).
 interface Props {
   nombre: string
   ruta: string
@@ -22,7 +21,7 @@ const jsonLd = {
 }
 ---
 
-<Base title={`${nombre} · Selectividad resuelta`} description={description} jsonLd={jsonLd} noindex>
+<Base title={`${nombre} · Selectividad resuelta`} description={description} jsonLd={jsonLd}>
   <section class="hero exam-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Ruta">

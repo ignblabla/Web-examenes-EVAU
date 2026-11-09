@@ -6,7 +6,7 @@ export const titular = {
   email: "contacto@selectividadresuelta.es",
 }
 
-// Páginas legales enlazadas en el pie. No se indexan ni entran en el sitemap.
+// Páginas legales enlazadas en el pie.
 export const paginasLegales = [
   { nombre: "Aviso legal", ruta: "/aviso-legal/" },
   { nombre: "Política de privacidad", ruta: "/politica-de-privacidad/" },

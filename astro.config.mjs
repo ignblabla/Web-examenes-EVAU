@@ -6,13 +6,11 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeFormulasHtml from './src/plugins/rehype-formulas-html.mjs'
 import { asignaturas } from './src/data/asignaturas.ts'
-import { paginasLegales } from './src/data/legal.ts'
 import { fechaSitemap } from './src/data/fechas.ts'
 
-// Las asignaturas sin resolver y las páginas legales llevan noindex y no entran en el sitemap.
+// Las asignaturas sin resolver llevan noindex y no entran en el sitemap.
 const ocultas = [
   ...asignaturas.filter((a) => !a.indexable).map((a) => `/${a.slug}/`),
-  ...paginasLegales.map((p) => p.ruta),
 ]
 
 // https://astro.build/config
