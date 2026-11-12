@@ -9,6 +9,7 @@ import {
   nombreExamen,
   prueba,
   rutaAnio,
+  rutaCurso,
   rutaExamen,
   rutaTema,
   tipoLargo,
@@ -148,6 +149,10 @@ const jsonLd = {
         <span class="eyebrow-dot"></span>
         Selectividad ({prueba(anio)}) · Curso {curso.curso}
       </div>
+      <a href={rutaCurso(anio)} class="topic-general-link">
+        Ver todas las asignaturas de {anio}
+        <Icon name="arrow-up-right" />
+      </a>
       <h1>
         {asignatura.nombre}, {anio}.
         <br />

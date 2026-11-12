@@ -132,3 +132,12 @@ export function etiquetaEjercicios(etiquetas: string[]) {
   }
   return etiquetas.join(" y ")
 }
+
+// Páginas que reúnen todas las asignaturas: un curso (/examenes-2026/), la convocatoria
+// extraordinaria de todos los cursos y los años anteriores al último.
+export function rutaCurso(anio: number) {
+  return `/examenes-${anio}/`
+}
+
+export const rutaExtraordinaria = "/extraordinaria/"
+export const rutaAnteriores = "/examenes-anteriores/"

@@ -1,0 +1,62 @@
+---
+// Tabla de exámenes: una fila por asignatura y una columna por convocatoria (o por año).
+// Las celdas sin examen (las reservas 2 a 4 de Física de 2026) muestran "—", sin enlace.
+export interface Celda {
+  texto: string
+  // Nombre completo para lectores de pantalla y la ayuda emergente ("Física, junio de 2026").
+  nombre: string
+  href?: string
+}
+
+export interface Fila {
+  titulo: string
+  href?: string
+  celdas: Celda[]
+}
+
+interface Props {
+  // Texto de la tabla para lectores de pantalla.
+  descripcion: string
+  // Cabecera de la primera columna y de las demás.
+  primera: string
+  columnas: string[]
+  filas: Fila[]
+}
+
+const { descripcion, primera, columnas, filas } = Astro.props
+---
+
+<div class="tabla-convocatorias">
+  <table>
+    <caption class="sr-only">{descripcion}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{primera}</th>
+        {columnas.map((c) => <th scope="col">{c}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        filas.map((fila) => (
+          <tr>
+            <th scope="row">{fila.href ? <a href={fila.href}>{fila.titulo}</a> : fila.titulo}</th>
+            {fila.celdas.map((celda) => (
+              <td>
+                {celda.href ? (
+                  <a href={celda.href} aria-label={celda.nombre} title={celda.nombre}>
+                    {celda.texto}
+                  </a>
+                ) : (
+                  <span class="tabla-vacia" title={`${celda.nombre}: no existe`}>
+                    <span aria-hidden="true">—</span>
+                    <span class="sr-only">No existe</span>
+                  </span>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

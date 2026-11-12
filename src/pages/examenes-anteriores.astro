@@ -1,0 +1,154 @@
+---
+import { getCollection } from "astro:content"
+import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
+import { asignaturas } from "../data/asignaturas"
+import { cursos, prueba, rutaAnio, rutaCurso, rutaExtraordinaria, type Curso } from "../data/examenes"
+import { editor, migas, sitio } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+// Cursos anteriores al último con exámenes, agrupados por el nombre de la prueba:
+// PAU (2025) y PEvAU (2021-2024).
+const examenes = await getCollection("examenes")
+const conExamenes = cursos.filter((c) => examenes.some((e) => e.data.anio === c.anio))
+const ultimo = conExamenes[0]
+const anteriores = conExamenes.slice(1)
+const publicadas = asignaturas.filter((a) => a.indexable)
+const asignaturasDe = (c: Curso) =>
+  publicadas.filter((a) => examenes.some((e) => e.data.asignatura === a.slug && e.data.anio === c.anio))
+
+const rango = (lista: Curso[]) =>
+  lista.length === 1 ? `${lista[0].anio}` : `${lista.at(-1)!.anio} a ${lista[0].anio}`
+const grupos = (["PAU", "PEvAU"] as const)
+  .map((p) => ({ prueba: p, cursos: anteriores.filter((c) => prueba(c.anio) === p) }))
+  .filter((g) => g.cursos.length > 0)
+const pevau = grupos.find((g) => g.prueba === "PEvAU")?.cursos ?? []
+
+// El title más completo que quepa en 60 caracteres, siempre con "Andalucía".
+const opciones = [
+  "Exámenes de años anteriores de Selectividad Andalucía (PEvAU y PAU) resueltos",
+  "Exámenes años anteriores Selectividad Andalucía (PEvAU y PAU)",
+  "Exámenes anteriores Selectividad Andalucía (PEvAU y PAU)",
+  "Exámenes anteriores Selectividad Andalucía resueltos",
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const primero = anteriores.at(-1)!.anio
+const descripciones = [
+  `Exámenes de Selectividad de Andalucía de ${primero} a ${anteriores[0].anio} (PEvAU y PAU) resueltos, por año y asignatura, para seguir practicando con el modelo nuevo.`,
+  `Exámenes de Selectividad de Andalucía de ${primero} a ${anteriores[0].anio} (PEvAU y PAU) resueltos, por año y asignatura.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const otros: Enlace[] = [
+  {
+    etiqueta: "Último curso",
+    texto: `Todos los exámenes de Selectividad de ${ultimo.anio} (${prueba(ultimo.anio)})`,
+    href: rutaCurso(ultimo.anio),
+  },
+  { etiqueta: "Convocatoria extraordinaria", texto: "Todos los exámenes de julio, de todos los años", href: rutaExtraordinaria },
+]
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": "CollectionPage",
+      "@id": url,
+      name: titulo,
+      description: descripcion,
+      url,
+      inLanguage: "es",
+      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: anteriores.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `Exámenes de Selectividad de ${c.anio} (${prueba(c.anio)})`,
+          url: new URL(rutaCurso(c.anio), Astro.site).href,
+        })),
+      },
+    },
+    migas(Astro.site, [{ nombre: "Años anteriores", ruta: Astro.url.pathname }]),
+  ],
+}
+---
+
+<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Años anteriores</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Selectividad Andalucía · {primero}-{anteriores[0].anio}
+      </div>
+      <h1>
+        Exámenes de años anteriores.
+        <br />
+        <em>PEvAU y PAU, resueltos.</em>
+      </h1>
+      <p class="hero-lead">
+        Los exámenes de la Selectividad de Andalucía de {primero} a {anteriores[0].anio}, ordenados por
+        año y asignatura, con el enunciado oficial y las soluciones explicadas. Hasta 2024 la prueba
+        se llamaba PEvAU y desde 2025 es la PAU, pero los exámenes anteriores siguen siendo una buena
+        forma de practicar. Los de {ultimo.anio} los tienes en su{" "}
+        <a href={rutaCurso(ultimo.anio)}>propia página</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="exam-body">
+    <div class="container">
+      {
+        grupos.map((g) => (
+          <section class="curso-section" aria-labelledby={`examenes-${g.prueba.toLowerCase()}`}>
+            <h2 id={`examenes-${g.prueba.toLowerCase()}`}>
+              {g.prueba}: {g.cursos.length === 1 ? "" : "de "}{rango(g.cursos)}
+            </h2>
+            <ul class="curso-anios">
+              {g.cursos.map((c) => (
+                <li>
+                  <strong>
+                    <a href={rutaCurso(c.anio)} aria-label={`Exámenes de Selectividad de ${c.anio}`}>
+                      {c.anio}
+                    </a>
+                  </strong>
+                  <div class="year-meta">
+                    {asignaturasDe(c).map((a) => (
+                      <a href={rutaAnio(a.slug, c.anio)}>
+                        {a.nombre} {c.anio}
+                      </a>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+
+      {
+        pevau.length > 0 && (
+          <section class="curso-section" aria-labelledby="sirven">
+            <h2 id="sirven">¿Sirven los exámenes de PEvAU para practicar?</h2>
+            <p>
+              Sí. La mayoría de los contenidos se mantienen, así que los ejercicios de PEvAU
+              ({rango(pevau).replace(" a ", "-")}) siguen siendo muy buena práctica. Con la PAU, desde
+              2025, cambiaron algunas cosas: hay más preguntas planteadas a partir de situaciones
+              reales, cambió la forma de elegir preguntas y entraron temas nuevos, como la
+              probabilidad en Matemáticas II. Antes de practicar con un examen antiguo, mira cómo es
+              el examen actual en <a href="/#asignaturas">la página de cada asignatura</a>.
+            </p>
+          </section>
+        )
+      }
+
+      <EnlacesRelacionados id="mas-examenes" titulo="Más exámenes" enlaces={otros} />
+    </div>
+  </section>
+</Base>

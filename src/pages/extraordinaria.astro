@@ -1,0 +1,141 @@
+---
+import { getCollection } from "astro:content"
+import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
+import TablaConvocatorias, { type Fila } from "../components/TablaConvocatorias.astro"
+import { asignaturas } from "../data/asignaturas"
+import { cursos, nombreExamen, prueba, rutaAnteriores, rutaCurso, rutaExamen } from "../data/examenes"
+import { editor, migas, sitio } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+// Todos los exámenes de julio (convocatoria extraordinaria): una fila por asignatura y una
+// columna por año, del más reciente al más antiguo.
+const examenes = await getCollection("examenes")
+const publicado = (asig: string, anio: number) => examenes.some((e) => e.id === `${asig}/${anio}/julio`)
+const anios = cursos.filter((c) => examenes.some((e) => e.data.anio === c.anio))
+const publicadas = asignaturas.filter((a) => a.indexable && anios.some((c) => publicado(a.slug, c.anio)))
+const primero = anios.at(-1)!.anio
+const ultimo = anios[0].anio
+
+const filas: Fila[] = publicadas.map((a) => ({
+  titulo: a.nombre,
+  href: `/${a.slug}/`,
+  celdas: anios.map((c) => {
+    const julio = c.oficiales.find((e) => e.tipo === "extraordinaria")!
+    return {
+      texto: `Julio ${c.anio}`,
+      nombre: `${a.nombre}, ${nombreExamen(c.anio, julio)}`,
+      href: publicado(a.slug, c.anio) ? rutaExamen(a.slug, c.anio, julio) : undefined,
+    }
+  }),
+}))
+
+const nombres = publicadas.map((a) => a.nombre)
+const lista = `${nombres.slice(0, -1).join(", ")} y ${nombres.at(-1)}`
+
+// El title más completo que quepa en 60 caracteres, siempre con "Andalucía".
+const opciones = [
+  "Exámenes de la convocatoria extraordinaria (julio) de Selectividad Andalucía resueltos",
+  "Exámenes extraordinaria (julio) Selectividad Andalucía resueltos",
+  "Exámenes extraordinaria Selectividad Andalucía resueltos",
+  "Extraordinaria Selectividad Andalucía resueltos",
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const descripciones = [
+  `Exámenes de julio (convocatoria extraordinaria) de Selectividad de Andalucía de ${primero} a ${ultimo} resueltos: ${lista}.`,
+  `Exámenes de julio (convocatoria extraordinaria) de Selectividad de Andalucía de ${primero} a ${ultimo} resueltos, de todas las asignaturas.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const otros: Enlace[] = [
+  ...anios.slice(0, 2).map((c) => ({
+    etiqueta: `Curso ${c.curso}`,
+    texto: `Todos los exámenes de Selectividad de ${c.anio} (${prueba(c.anio)})`,
+    href: rutaCurso(c.anio),
+  })),
+  { etiqueta: "Archivo", texto: "Exámenes de años anteriores (PEvAU y PAU)", href: rutaAnteriores },
+]
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    {
+      "@type": "CollectionPage",
+      "@id": url,
+      name: titulo,
+      description: descripcion,
+      url,
+      inLanguage: "es",
+      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: publicadas.flatMap((a) =>
+          anios
+            .filter((c) => publicado(a.slug, c.anio))
+            .map((c) => ({ nombre: `${a.nombre}, julio de ${c.anio}`, ruta: `/${a.slug}/${c.anio}/julio/` })),
+        ).map((x, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: x.nombre,
+          url: new URL(x.ruta, Astro.site).href,
+        })),
+      },
+    },
+    migas(Astro.site, [{ nombre: "Convocatoria extraordinaria", ruta: Astro.url.pathname }]),
+  ],
+}
+---
+
+<Base title={titulo} description={descripcion} jsonLd={jsonLd}>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Convocatoria extraordinaria</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Selectividad Andalucía · Julio
+      </div>
+      <h1>
+        Convocatoria extraordinaria (julio).
+        <br />
+        <em>Todos los exámenes resueltos.</em>
+      </h1>
+      <p class="hero-lead">
+        Cada curso, además de la convocatoria ordinaria de junio, la Selectividad de Andalucía tiene
+        una convocatoria extraordinaria en julio. Aquí tienes todos los exámenes de julio de {lista},
+        de {primero} a {ultimo}, con el enunciado oficial y las soluciones explicadas.
+      </p>
+    </div>
+  </section>
+
+  <section class="exam-body">
+    <div class="container">
+      <section class="curso-section" aria-labelledby="tabla">
+        <h2 id="tabla">Exámenes de julio por asignatura y año</h2>
+        <TablaConvocatorias
+          descripcion="Exámenes de la convocatoria extraordinaria de Selectividad de Andalucía por asignatura y año"
+          primera="Asignatura"
+          columnas={anios.map((c) => `${c.anio} (${prueba(c.anio)})`)}
+          filas={filas}
+        />
+      </section>
+
+      <section class="curso-section" aria-labelledby="reservas">
+        <h2 id="reservas">¿Qué son los exámenes de reserva?</h2>
+        <p>
+          Para cada asignatura, la comisión que prepara la Selectividad redacta varios exámenes cada
+          curso, no solo el de junio y el de julio. Los que no se usan en esas convocatorias se llaman
+          exámenes de reserva: están preparados por si surge una incidencia (por ejemplo, alumnos con
+          exámenes que coinciden a la misma hora). Se publican después y tienen el mismo formato y
+          nivel que los oficiales, así que son una práctica excelente.
+        </p>
+      </section>
+
+      <EnlacesRelacionados id="otros-anios" titulo="Más exámenes" enlaces={otros} />
+    </div>
+  </section>
+</Base>

@@ -9,7 +9,10 @@ import {
   primerAnio,
   prueba,
   rutaAnio,
+  rutaAnteriores,
+  rutaCurso,
   rutaExamen,
+  rutaExtraordinaria,
   rutaTema,
   rutaTemaGeneral,
   ultimoAnio,
@@ -206,6 +209,13 @@ const jsonLd = {
           }
         </p>
       </div>
+
+      <p class="curso-links">
+        Todas las asignaturas:
+        {cursosAsignatura.map((c) => <a href={rutaCurso(c.anio)}>Selectividad {c.anio}</a>)}
+        <a href={rutaExtraordinaria}>Convocatoria extraordinaria</a>
+        <a href={rutaAnteriores}>Años anteriores</a>
+      </p>
 
       <div class="archive-columns">
         {

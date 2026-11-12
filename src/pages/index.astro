@@ -6,7 +6,7 @@ import EnlacesRelacionados, { type Enlace, type GrupoEnlaces } from "../componen
 import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
 import { asignaturas, cursoDe } from "../data/asignaturas"
-import { cursos, nombreExamen, rutaAnio, rutaExamen } from "../data/examenes"
+import { cursos, nombreExamen, rutaAnio, rutaAnteriores, rutaCurso, rutaExamen, rutaExtraordinaria } from "../data/examenes"
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
@@ -324,6 +324,10 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           Consulta las pruebas organizadas por asignatura, año y convocatoria. Un archivo que
           crecerá contigo.
         </p>
+        <p class="curso-links">
+          <a href={rutaExtraordinaria}>Convocatoria extraordinaria (julio)</a>
+          <a href={rutaAnteriores}>Exámenes de años anteriores</a>
+        </p>
         <a href="#asignaturas" class="button button--dark">
           Elegir asignatura
           <Icon name="arrow-up-right" />
@@ -334,7 +338,9 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           anios.map(({ anio, conExamenes }, index) => (
             <div class="year-row">
               <span class="year-status">{index === 0 ? "Última" : "Archivo"}</span>
-              <strong>{anio}</strong>
+              <strong>
+                <a href={rutaCurso(anio)} aria-label={`Exámenes de Selectividad de ${anio}, todas las asignaturas`}>{anio}</a>
+              </strong>
               <div class="year-meta">
                 {conExamenes.map((a) => (
                   <a href={rutaAnio(a.slug, anio)}>

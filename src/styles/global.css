@@ -3905,3 +3905,156 @@ footer {
     font-size: 14pt;
   }
 }
+
+/* ---------- Páginas de todas las asignaturas: curso, extraordinaria y años anteriores ---------- */
+
+.curso-section {
+  max-width: 960px;
+  margin: 64px auto 0;
+}
+
+.curso-section:first-child {
+  padding-top: 56px;
+}
+
+.curso-section h2 {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.curso-section h3 {
+  margin: 28px 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.curso-section p {
+  max-width: 720px;
+  margin: 0 0 14px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.curso-section p a {
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Si la tabla no cabe, se desplaza dentro de su caja, nunca la página. */
+.tabla-convocatorias {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.tabla-convocatorias table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabla-convocatorias th,
+.tabla-convocatorias td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tabla-convocatorias tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.tabla-convocatorias thead th {
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tabla-convocatorias th[scope="row"],
+.tabla-convocatorias thead th:first-child {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.tabla-convocatorias th[scope="row"] a,
+.tabla-convocatorias td a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  font-weight: 700;
+}
+
+.tabla-convocatorias td a:hover,
+.tabla-convocatorias th[scope="row"] a:hover {
+  color: var(--teal);
+}
+
+.tabla-vacia {
+  color: var(--ink-soft);
+}
+
+/* Lista de cursos en la página de años anteriores. */
+.curso-anios {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+  list-style: none;
+}
+
+.curso-anios li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 10px 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.curso-anios strong a {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.curso-anios .year-meta {
+  grid-template-columns: repeat(auto-fill, minmax(150px, max-content));
+}
+
+@media (max-width: 560px) {
+  .curso-anios li {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enlaces a las páginas de todas las asignaturas, en el índice de cada asignatura y en la portada. */
+.curso-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 0 0 32px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.curso-links a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.exam-copy > .curso-links {
+  max-width: none;
+  margin: -12px 0 30px;
+}
