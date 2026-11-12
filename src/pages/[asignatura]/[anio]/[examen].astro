@@ -22,7 +22,7 @@ import {
   rutaTema,
   tipoLargo,
 } from "../../../data/examenes"
-import { fechaLarga, fechas } from "../../../data/fechas"
+import { fechaLarga, fechasDe } from "../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
@@ -71,9 +71,8 @@ const bloquesResueltos =
 const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
 const publicado = (asig: string, a: number, conv: string) => publicados.has(`${asig}/${a}/${conv}`)
 
-const { publicado: fechaPublicacion, modificado } = fechas(
-  [entrada, ...ejercicios].map((e) => e.filePath ?? ""),
-)
+// Las mismas fechas que el <lastmod> del sitemap: salen de la ruta de la página.
+const { publicado: fechaPublicacion, modificado } = fechasDe(rutaExamen(slug, anio, examen))!
 
 // El title más completo que quepa en 60 caracteres.
 const corto = nombreSeo(asignatura)

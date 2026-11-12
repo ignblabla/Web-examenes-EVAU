@@ -1,41 +1,34 @@
 import { execFileSync } from "node:child_process"
 import fs from "node:fs"
 
-// Fechas de publicación y de última modificación de una página, sacadas del historial de git
-// de los archivos que la forman. Sin historial (archivo nuevo o copia sin .git), la de hoy.
-export function fechas(archivos: string[]) {
-  let lineas: string[] = []
-  try {
-    lineas = execFileSync("git", ["log", "--format=%cs", "--", ...archivos], { encoding: "utf8" })
-      .split("\n")
-      .filter(Boolean)
-  } catch {
-    // Sin git disponible se usa la fecha de hoy.
-  }
-  const hoy = new Date().toISOString().slice(0, 10)
-  return { publicado: lineas.at(-1) ?? hoy, modificado: lineas[0] ?? hoy }
-}
+// Fechas de publicación y de última modificación de cada página, sacadas del historial de git
+// de los archivos que la forman. La página (article:modified_time, "Revisado el…") y el
+// sitemap (<lastmod>) las piden con fechasDe(ruta), así que siempre coinciden.
 
-// Fecha de la última modificación de cada archivo de contenido, con un solo git log para
-// todo el sitemap en lugar de uno por página.
-let modificaciones: Map<string, string> | undefined
-function ultimaModificacion(archivo: string) {
-  if (!modificaciones) {
-    modificaciones = new Map()
+// Primer y último commit de cada archivo de contenido, con un solo git log para todo el build
+// en lugar de uno por página.
+let historial: Map<string, { primera: string; ultima: string }> | undefined
+function historialDe(archivo: string) {
+  if (!historial) {
+    historial = new Map()
     try {
       const salida = execFileSync("git", ["log", "--format=%cs", "--name-only", "--", "src/content"], {
         encoding: "utf8",
       })
+      // El log va del commit más reciente al más antiguo.
       let fecha = ""
       for (const linea of salida.split("\n")) {
         if (/^\d{4}-\d{2}-\d{2}$/.test(linea)) fecha = linea
-        else if (linea && !modificaciones.has(linea)) modificaciones.set(linea, fecha)
+        else if (linea) {
+          const previo = historial.get(linea)
+          historial.set(linea, { primera: fecha, ultima: previo?.ultima ?? fecha })
+        }
       }
     } catch {
-      // Sin git disponible no hay fechas en el sitemap.
+      // Sin git disponible no hay historial y se usa la fecha de hoy.
     }
   }
-  return modificaciones.get(archivo)
+  return historial.get(archivo)
 }
 
 const mdx = (carpeta: string) =>
@@ -46,24 +39,43 @@ const mdx = (carpeta: string) =>
         .map((f) => `${carpeta}/${f.replace(/\\/g, "/")}`)
     : []
 
-// <lastmod> del sitemap: la misma fecha que article:modified_time, sacada de los mismos
-// archivos que usan las páginas de examen y de tema. El resto de páginas no la llevan.
-export function fechaSitemap(ruta: string) {
-  const [asignatura, segunda, tercera, cuarta] = ruta.split("/").filter(Boolean)
-  let archivos: string[]
-  if (segunda === "temas" && cuarta) {
-    archivos = mdx(`src/content/ejercicios/${asignatura}/${tercera}/${cuarta}`)
-  } else if (/^\d{4}$/.test(segunda ?? "") && tercera && !cuarta) {
-    archivos = [
-      `src/content/examenes/${asignatura}/${segunda}/${tercera}.mdx`,
-      ...mdx(`src/content/ejercicios/${asignatura}`).filter((f) => f.endsWith(`/${segunda}/${tercera}.mdx`)),
-    ]
-  } else {
-    return undefined
+// Archivos de contenido que forman la página de una ruta, o undefined si la página no sale
+// de la colección (portada, asignatura, año, páginas legales…).
+// - Examen (/fisica/2026/junio/): el examen y sus partes resueltas en cada tema, incluidos
+//   los tramos de un tema partido (junio-2.mdx).
+// - Tema (/fisica/temas/ondas/2026/): todos los archivos del tema en ese año.
+function archivosDe(ruta: string) {
+  const [asignatura, segunda, tercera, cuarta, quinta] = ruta.split("/").filter(Boolean)
+  if (segunda === "temas" && cuarta && !quinta) {
+    return mdx(`src/content/ejercicios/${asignatura}/${tercera}/${cuarta}`)
   }
-  const conHistorial = archivos.map(ultimaModificacion).filter(Boolean) as string[]
-  // Como fechas(): sin historial (contenido aún sin commit), la de hoy.
-  return conHistorial.sort().at(-1) ?? new Date().toISOString().slice(0, 10)
+  if (/^\d{4}$/.test(segunda ?? "") && tercera && !cuarta) {
+    const parte = new RegExp(`/${segunda}/${tercera}(-\\d+)?\\.mdx$`)
+    return [
+      `src/content/examenes/${asignatura}/${segunda}/${tercera}.mdx`,
+      ...mdx(`src/content/ejercicios/${asignatura}`).filter((f) => parte.test(f)),
+    ]
+  }
+  return undefined
+}
+
+// Fechas de una página a partir de su ruta. Sin historial (contenido aún sin commit o copia
+// sin .git), la de hoy.
+export function fechasDe(ruta: string) {
+  const archivos = archivosDe(ruta)
+  if (!archivos) return undefined
+  const conHistorial = archivos.map(historialDe).filter((h) => h !== undefined)
+  const hoy = new Date().toISOString().slice(0, 10)
+  return {
+    publicado: conHistorial.map((h) => h.primera).sort()[0] ?? hoy,
+    modificado: conHistorial.map((h) => h.ultima).sort().at(-1) ?? hoy,
+  }
+}
+
+// <lastmod> del sitemap: la misma fecha que article:modified_time. Solo la llevan los
+// exámenes y las páginas de tema.
+export function fechaSitemap(ruta: string) {
+  return fechasDe(ruta)?.modificado
 }
 
 export function fechaLarga(fecha: string) {

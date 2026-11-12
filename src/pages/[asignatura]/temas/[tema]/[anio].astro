@@ -9,8 +9,8 @@ import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
 import { buscarAsignatura, nombreSeo } from "../../../../data/asignaturas"
-import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, tipoLargo } from "../../../../data/examenes"
-import { fechas } from "../../../../data/fechas"
+import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, rutaTema, tipoLargo } from "../../../../data/examenes"
+import { fechasDe } from "../../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
 
@@ -68,7 +68,8 @@ const secciones = await Promise.all(
 )
 
 const termino = tema.termino ?? tema.titulo
-const { publicado, modificado } = fechas(archivos.map((e) => e.filePath ?? ""))
+// Las mismas fechas que el <lastmod> del sitemap: salen de la ruta de la página.
+const { publicado, modificado } = fechasDe(rutaTema(slug, tema, anio))!
 
 // El title más completo que quepa en 60 caracteres.
 const corto = nombreSeo(asignatura)

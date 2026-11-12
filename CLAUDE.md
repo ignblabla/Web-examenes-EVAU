@@ -48,13 +48,13 @@ Las páginas se generan de forma estática con Astro, MDX y KaTeX. Los datos est
 
 - Los nodos compartidos (`editor`, `persona`, `migas`) y los datos del sitio están en `src/data/sitio.ts`.
 - Las páginas legales usan `src/layouts/Legal.astro`. `/sobre-el-autor/` y `/contacto/` definen su SEO en su propio archivo.
-- `datePublished` y `dateModified` salen del historial de git de los MDX (`fechas()` en `src/data/fechas.ts`).
+- `datePublished` y `dateModified` salen del historial de git de los MDX con `fechasDe(ruta)` en `src/data/fechas.ts`. El `<lastmod>` del sitemap usa la misma función, así que no se pueden desincronizar.
 - Las imágenes para compartir son `public/og/<asignatura>.png` y se generan con `scripts/generar-imagenes.mjs`.
 
 ## Sitemap y rastreo
 
 - Lo genera `@astrojs/sitemap` en `astro.config.mjs` y publica `/sitemap-index.xml`.
 - El filtro excluye las asignaturas con `indexable: false`, que además llevan `noindex`. Ahora mismo todas son indexables.
-- `serialize` añade `<lastmod>` solo a los exámenes y a las páginas de tema, con `fechaSitemap()` de `src/data/fechas.ts`, a partir del git log de `src/content`.
+- `serialize` añade `<lastmod>` solo a los exámenes y a las páginas de tema, con `fechaSitemap()` de `src/data/fechas.ts`, que devuelve la misma fecha de modificación que `fechasDe()`.
 - `public/robots.txt` permite los buscadores, bloquea los bots de entrenamiento de IA y apunta al sitemap.
 - `trailingSlash: 'always'`: todas las URL internas terminan en `/`.
