@@ -400,7 +400,7 @@ export const orientaciones: Orientaciones[] = [
     publicado: "2026-11-12",
     revisado: "2026-11-12",
     resumen: [
-      "El examen tiene 4 ejercicios, uno por bloque: campo gravitatorio, campo electromagnético, vibraciones y ondas (con la óptica geométrica) y física relativista, cuántica, nuclear y de partículas.",
+      "El examen dura 1 hora y 30 minutos (artículo 13.4 del Real Decreto 534/2024) y tiene 4 ejercicios, uno por bloque: campo gravitatorio, campo electromagnético, vibraciones y ondas (con la óptica geométrica) y física relativista, cuántica, nuclear y de partículas.",
       "Un ejercicio es obligatorio y puede ser de cualquier bloque. En los otros tres eliges un apartado a) y un apartado b) entre los dos que se proponen.",
       "Cada ejercicio vale 2,5 puntos: el a), una cuestión teórica, hasta 1 punto, y el b), un problema, hasta 1,5.",
       "El ejercicio obligatorio puede tratar de aplicaciones tecnológicas o industriales, basarse en un texto o un gráfico o tener un contexto narrativo.",
@@ -423,10 +423,11 @@ export const orientaciones: Orientaciones[] = [
           puntos: "7,5 (2,5 cada uno)",
         },
       ],
-      // TODO: el documento no indica la duración del examen (las instrucciones de 2026 decían
-      // 1 hora y 30 minutos). No se da como dato de 2027 hasta que lo diga una fuente oficial.
+      // La duración no está en las orientaciones: la fija el artículo 13.4 del Real Decreto
+      // 534/2024 (BOE-A-2024-11858): «Cada uno de los ejercicios mencionados tendrá una
+      // duración de noventa minutos».
       total:
-        "10 puntos: 4 ejercicios de 2,5 puntos. El documento de orientaciones no indica la duración (en 2026 fue de 1 hora y 30 minutos).",
+        "10 puntos: 4 ejercicios de 2,5 puntos, en 1 hora y 30 minutos. La duración no la indica el documento de orientaciones: la fija el artículo 13.4 del Real Decreto 534/2024 («Cada uno de los ejercicios mencionados tendrá una duración de noventa minutos»).",
       notas: [
         "El apartado a) es una cuestión teórica: validez de modelos y teorías, relaciones de causa y efecto, analogías y diferencias, interpretación de fenómenos cotidianos o análisis de si una afirmación es verdadera o falsa.",
         "El apartado b) es un problema que se resuelve solo con los datos del enunciado: explicar la situación y las leyes, resolverlo y comentar los resultados, o justificar qué cambiaría si se modifica algún dato o hipótesis.",
@@ -508,7 +509,7 @@ export const orientaciones: Orientaciones[] = [
         { aspecto: "Ejercicio obligatorio", antes: "1, con a) y b) obligatorios", ahora: "1, con a) y b) obligatorios" },
         { aspecto: "Ejercicios optativos", antes: "3, eligiendo un a) y un b)", ahora: "3, eligiendo un a) y un b)" },
         { aspecto: "Puntos por ejercicio", antes: "2,5 (a: 1; b: 1,5)", ahora: "2,5 (a: 1; b: 1,5)" },
-        { aspecto: "Duración", antes: "1 hora y 30 minutos", ahora: "El documento no la indica" },
+        { aspecto: "Duración", antes: "1 hora y 30 minutos", ahora: "1 hora y 30 minutos (Real Decreto 534/2024, art. 13.4)" },
         {
           aspecto: "Material",
           antes: "Regla, compás y calculadora",
@@ -516,7 +517,7 @@ export const orientaciones: Orientaciones[] = [
         },
       ],
       igual:
-        "La estructura es la misma que en 2026. El documento no indica la duración y menciona el bolígrafo de un solo color (azul o negro), que no aparecía en las instrucciones del examen de 2026.",
+        "La estructura es la misma que en 2026. La duración no aparece en el documento de orientaciones, pero la fija el artículo 13.4 del Real Decreto 534/2024 en noventa minutos. El documento menciona además el bolígrafo de un solo color (azul o negro), que no aparecía en las instrucciones del examen de 2026.",
     },
     criterios: {
       puntua: [
@@ -573,7 +574,7 @@ export const orientaciones: Orientaciones[] = [
     resumen: [
       "El examen dura 1 hora y 30 minutos y tiene tres bloques: Comprehension (Reading) (4 puntos), Use of English (3 puntos) y Writing (3 puntos).",
       "Comprehension (Reading): un texto de 350 a 500 palabras con 8 preguntas de 0,5 puntos (2 de opción múltiple, 4 de verdadero o falso y 2 de vocabulario). No tiene opciones.",
-      "Use of English: eliges una de dos opciones de 6 preguntas, de 0,5 puntos cada una, que evalúan el uso y la comprensión del vocabulario y de las estructuras de la lengua. Solo se responden las preguntas de la opción elegida.",
+      "Use of English: eliges una de dos opciones de 6 preguntas, de 0,5 puntos cada una, que evalúan el uso y la comprensión del vocabulario y de las estructuras de la lengua. Solo se responden las preguntas de la opción elegida. Según las instrucciones del examen que recoge el propio documento (apartado 3.1), el enunciado de este bloque dice «REWRITE THE FOLLOWING SENTENCES WITHOUT CHANGING THE ORIGINAL MEANING».",
       "Writing: una redacción de 140 a 180 palabras sobre uno de los dos temas propuestos.",
       "En el verdadero o falso hay que justificar copiando las palabras exactas del texto, en una oración como máximo y sin puntos suspensivos. Sin justificación, la pregunta vale 0.",
       "No se permite el diccionario ni ningún otro material de apoyo.",
@@ -630,6 +631,7 @@ export const orientaciones: Orientaciones[] = [
         entra: [
           "Dos opciones de seis preguntas cada una, que evalúan el uso y la comprensión del vocabulario (aspectos léxicos) y de las estructuras de la lengua (estructuras lingüístico-discursivas).",
           "Solo se responden las preguntas de la opción elegida: B1 a B6 o B7 a B12, sin mezclarlas.",
+          "Según las instrucciones del examen que recoge el propio documento (apartado 3.1), el enunciado del bloque B dice «REWRITE THE FOLLOWING SENTENCES WITHOUT CHANGING THE ORIGINAL MEANING»: hay que reescribir frases sin cambiar su significado, con una estructura claramente distinta, empezando como se indica o usando la palabra entre paréntesis, sin modificar las palabras dadas.",
           "Cada pregunta vale 0,5: correcta, 0,5; con un error, 0,25; con dos o más, 0.",
           "El vocabulario de los enunciados no tiene por qué coincidir con el tema del texto.",
         ],
