@@ -1,7 +1,9 @@
 ---
 import "katex/dist/katex.min.css"
 import { getCollection, render } from "astro:content"
+import BotonPdf from "../../../../components/BotonPdf.astro"
 import Icon from "../../../../components/Icon.astro"
+import PieImpresion from "../../../../components/PieImpresion.astro"
 import BloqueTema from "../../../../components/oficial/BloqueTema.astro"
 import Datos from "../../../../components/oficial/Datos.astro"
 import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
@@ -10,7 +12,7 @@ import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
 import { buscarAsignatura, nombreSeo, nombresSeo } from "../../../../data/asignaturas"
 import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, rutaTema, tipoLargo } from "../../../../data/examenes"
-import { fechasDe } from "../../../../data/fechas"
+import { fechaLarga, fechasDe } from "../../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
 
@@ -146,6 +148,7 @@ const jsonLd = {
   modified={modificado}
   noindex={!asignatura.indexable}
 >
+  <PieImpresion slot="head" url={url} />
   <section class="hero exam-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Ruta">
@@ -167,9 +170,13 @@ const jsonLd = {
         <em>{asignatura.nombre}, exámenes de {anio}.</em>
       </h1>
       {tema.intro && <p class="hero-lead">{tema.intro}</p>}
-      <p class="exam-updated">
-        Resuelto por <a href={autor.ruta}>{autor.nombre}</a>
-      </p>
+      <div class="exam-meta">
+        <p class="exam-updated">
+          Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · Revisado el{" "}
+          <time datetime={modificado}>{fechaLarga(modificado)}</time>
+        </p>
+        <BotonPdf asignatura={slug} anio={anio} convocatoria="todas" tema={temaSlug} />
+      </div>
     </div>
   </section>
 
@@ -229,5 +236,11 @@ const jsonLd = {
     }
     abrirAncla()
     window.addEventListener("hashchange", abrirAncla)
+
+    // Al imprimir salen todos los exámenes desplegados.
+    window.addEventListener("beforeprint", () => {
+      for (const examen of document.querySelectorAll<HTMLDetailsElement>(".topic-exam"))
+        examen.open = true
+    })
   </script>
 </Base>

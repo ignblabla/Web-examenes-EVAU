@@ -1,0 +1,27 @@
+---
+import { svgQr } from "../lib/qr"
+
+// Pie de cada hoja impresa o guardada en PDF: el código QR de la página y su URL, en el
+// margen inferior con las cajas de margen de @page (@bottom-left y @bottom-center), así que
+// nunca tapan el contenido. El QR se genera en el build y va como imagen data: en el CSS,
+// sin peticiones ni JavaScript. Se incluye en el <head> con slot="head". El resto de los
+// estilos de impresión está en global.css.
+interface Props {
+  url: string
+}
+
+const { url } = Astro.props
+const dominio = new URL(url).host
+// SVG en una URL data: legible: comillas simples y solo se escapan los caracteres que lo exigen.
+const svg = svgQr(url)
+  .replace(/ role="img" aria-label="[^"]*"/, "")
+  .replaceAll('"', "'")
+  .replaceAll("#fff", "white")
+  .replaceAll("#000", "black")
+  .replaceAll("<", "%3C")
+  .replaceAll(">", "%3E")
+const texto = `${dominio} · ${url}`.replaceAll("\\", "\\\\").replaceAll('"', '\\"')
+const css = `@page{@bottom-left{content:url("data:image/svg+xml,${svg}");width:17mm;height:17mm;margin-bottom:4mm;vertical-align:bottom}@bottom-center{content:"${texto}";margin-bottom:4mm;color:#333;font:8pt/1.3 "DM Sans",Arial,sans-serif;text-align:left;vertical-align:middle}}`
+---
+
+<style is:inline set:html={css}></style>

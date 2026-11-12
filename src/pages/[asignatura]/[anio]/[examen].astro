@@ -1,8 +1,10 @@
 ---
 import "katex/dist/katex.min.css"
 import { getCollection, render, type CollectionEntry } from "astro:content"
+import BotonPdf from "../../../components/BotonPdf.astro"
 import EnlacesRelacionados, { type Enlace } from "../../../components/EnlacesRelacionados.astro"
 import Icon from "../../../components/Icon.astro"
+import PieImpresion from "../../../components/PieImpresion.astro"
 import Bloque from "../../../components/oficial/Bloque.astro"
 import Cabecera from "../../../components/oficial/Cabecera.astro"
 import Datos from "../../../components/oficial/Datos.astro"
@@ -206,6 +208,7 @@ const jsonLd = {
   modified={modificado}
   noindex={!asignatura.indexable}
 >
+  <PieImpresion slot="head" url={url} />
   <section class="hero exam-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Ruta">
@@ -233,10 +236,13 @@ const jsonLd = {
             : `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}. Las soluciones aún no están publicadas.`
         }
       </p>
-      <p class="exam-updated">
-        {resuelto && <>Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · </>}
-        Revisado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
-      </p>
+      <div class="exam-meta">
+        <p class="exam-updated">
+          {resuelto && <>Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · </>}
+          Revisado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
+        </p>
+        <BotonPdf asignatura={slug} anio={anio} convocatoria={convocatoria} />
+      </div>
     </div>
   </section>
 

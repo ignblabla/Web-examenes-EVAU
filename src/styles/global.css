@@ -2177,17 +2177,68 @@ footer {
   margin: 48px auto 0;
 }
 
-.exam-updated {
+/* Firma, fecha de revisión y botón de PDF, bajo la entradilla. */
+.exam-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
   margin: -16px 0 0;
+}
+
+.exam-updated {
+  margin: 0;
   color: var(--ink-soft);
   font-size: 12px;
   font-weight: 600;
 }
 
 /* Sin entradilla (temas sin intro), la firma va directamente bajo el título. */
-.exam-hero h1 + .exam-updated {
+.exam-hero h1 + .exam-meta {
   margin-top: 28px;
 }
+
+.pdf-action {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+.pdf-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid rgba(23, 44, 39, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 600 12px/1.2 var(--sans);
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.pdf-button:hover {
+  border-color: var(--teal);
+  background: var(--paper);
+}
+
+.pdf-button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.pdf-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.pdf-hint {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
 
 .exam-updated a {
   color: inherit;
@@ -3422,4 +3473,185 @@ footer {
   padding: 4px 9px;
   border: 1px solid #111;
   margin: 0 -1px -1px 0;
+}
+
+/* ---------- Impresión y PDF ---------- */
+/* El botón "Descargar en PDF" abre el diálogo de impresión. Se imprime el examen (o los
+   ejercicios del tema) en blanco y negro legible, con el título arriba. El pie de cada hoja
+   (QR y URL) va en las cajas de margen de @page que añade PieImpresion.astro en cada página;
+   aquí se reserva su sitio con el margen inferior. */
+
+@page {
+  size: A4;
+  margin: 14mm 14mm 24mm;
+}
+
+@media print {
+  html,
+  body {
+    background: white !important;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .site-shell {
+    overflow: visible;
+  }
+  /* Fuera: navegación, pie de la web, botones, anuncios y enlaces a otras páginas. */
+  .site-header,
+  body > .site-shell > footer,
+  .breadcrumb,
+  .eyebrow,
+  .hero-lead,
+  .pdf-action,
+  .related,
+  .exam-back,
+  .solution-toggle,
+  .topic-exam-toggle,
+  .topic-exam-head .text-link,
+  ins.adsbygoogle,
+  .google-auto-placed,
+  button {
+    display: none !important;
+  }
+
+  .hero,
+  .exam-body,
+  .exam-sheet,
+  .topic-exam-head {
+    background: white !important;
+  }
+
+  .exam-hero .container,
+  .container {
+    width: auto;
+    padding: 0;
+  }
+
+  .exam-hero .container {
+    padding-bottom: 6mm;
+    border-bottom: 1pt solid #000;
+  }
+
+  /* Título del examen arriba de la primera hoja. */
+  .exam-hero h1 {
+    margin: 0 0 3mm;
+    color: #000;
+    font-size: 24pt;
+    line-height: 1.1;
+  }
+
+  .exam-hero h1 br {
+    display: none;
+  }
+
+  .exam-hero h1 em {
+    display: block;
+    font-size: 15pt;
+  }
+
+  .exam-meta,
+  .exam-hero h1 + .exam-meta {
+    margin: 0;
+  }
+
+  .exam-updated,
+  .exam-updated a {
+    color: #333;
+    font-size: 9pt;
+    text-decoration: none;
+  }
+
+  .exam-body {
+    padding: 0;
+  }
+
+  .exam-sheet {
+    max-width: none;
+    margin: 6mm 0 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .official-statement {
+    color: #000;
+    line-height: 1.45;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Soluciones: sin fondo de color, con la raya lateral para distinguirlas del enunciado. */
+  .official-statement .solution {
+    background: white !important;
+    border-left: 2pt solid #555;
+    font-size: 10.5pt;
+  }
+
+  .official-statement .solution-summary {
+    padding: 8px 18px 2px;
+  }
+
+  .official-statement .solution .solution-label {
+    color: #000;
+  }
+
+  /* Ejercicios por temas: cada examen con su título, todos desplegados. */
+  .topic-exam,
+  .topic-exam + .topic-exam,
+  .topic-exam[open] + .topic-exam,
+  .topic-exam + .topic-exam[open],
+  .topic-exam:first-child {
+    max-width: none;
+    margin: 8mm 0 0;
+  }
+
+  .topic-exam-head {
+    padding: 0 0 2mm;
+    margin-bottom: 3mm;
+    border: 0;
+    border-bottom: 1pt solid #000;
+    break-after: avoid;
+  }
+
+  .topic-exam .exam-sheet {
+    margin-top: 0;
+  }
+
+  /* No partir fórmulas, figuras ni tablas entre dos hojas. */
+  .katex-display,
+  .katex,
+  mjx-container,
+  figure,
+  svg,
+  table,
+  .official-figure,
+  .solution-figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .official-statement .solution .katex-display,
+  .katex-display {
+    overflow: visible;
+  }
+
+  h1,
+  h2,
+  h3,
+  .solution-label {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Cierre al final del examen o del tema impreso (las páginas con el botón de PDF). */
+  main:has(.pdf-action)::after {
+    content: "Más exámenes resueltos y ejercicios por temas en selectividadresuelta.es";
+    display: block;
+    margin-top: 10mm;
+    padding-top: 3mm;
+    border-top: 1pt solid #000;
+    font: 600 10pt/1.4 var(--sans);
+    text-align: center;
+    break-inside: avoid;
+  }
 }

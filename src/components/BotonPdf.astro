@@ -1,0 +1,53 @@
+---
+import Icon from "./Icon.astro"
+
+// Botón para guardar la página en PDF con el diálogo de impresión del navegador. Los estilos
+// de impresión están en global.css (@media print). Cada clic se mide en Google Analytics con
+// el evento descargar_pdf.
+interface Props {
+  asignatura: string
+  anio: number
+  // Slug de la convocatoria (junio, julio, reserva-1…) o "todas" en las páginas de tema.
+  convocatoria: string
+  tema?: string
+}
+
+const { asignatura, anio, convocatoria, tema } = Astro.props
+---
+
+<span class="pdf-action">
+  <button
+    type="button"
+    class="pdf-button"
+    data-pdf
+    data-asignatura={asignatura}
+    data-anio={anio}
+    data-convocatoria={convocatoria}
+    data-tema={tema}
+  >
+    <Icon name="download" />
+    Descargar en PDF
+  </button>
+  <span class="pdf-hint">Guárdalo en PDF para estudiar sin conexión</span>
+</span>
+
+<script>
+  declare global {
+    interface Window {
+      gtag?: (...args: unknown[]) => void
+    }
+  }
+
+  for (const boton of document.querySelectorAll<HTMLButtonElement>("[data-pdf]"))
+    boton.addEventListener("click", () => {
+      const { asignatura, anio, convocatoria, tema } = boton.dataset
+      // gtag solo existe en producción (ver Base.astro).
+      window.gtag?.("event", "descargar_pdf", {
+        asignatura,
+        anio,
+        convocatoria,
+        ...(tema && { tema }),
+      })
+      window.print()
+    })
+</script>
