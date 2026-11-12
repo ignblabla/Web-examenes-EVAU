@@ -23,11 +23,13 @@ const enlaces = asignaturas.filter((a) => a.indexable)
       <a href={rutaExtraordinaria}>Convocatoria extraordinaria</a>
       <a href={rutaAnteriores}>Años anteriores</a>
     </nav>
-    <p>© {new Date().getFullYear()} · Exámenes resueltos de Selectividad de Andalucía</p>
-    <nav class="footer-legal" aria-label="Información legal">
-      <a href={autor.ruta}>Sobre el autor</a>
-      <a href={contacto.ruta}>{contacto.nombre}</a>
-      {paginasLegales.map((p) => <a href={p.ruta}>{p.nombre}</a>)}
-    </nav>
+    <div class="footer-bottom">
+      <nav class="footer-legal" aria-label="Información legal">
+        <a href={autor.ruta}>Sobre el autor</a>
+        <a href={contacto.ruta}>{contacto.nombre}</a>
+        {paginasLegales.map((p) => <a href={p.ruta}>{p.nombre}</a>)}
+      </nav>
+      <p>© {new Date().getFullYear()} · Exámenes resueltos de Selectividad de Andalucía</p>
+    </div>
   </div>
 </footer>

@@ -1169,39 +1169,46 @@ footer {
   color: white;
 }
 
+/* Logo a la izquierda, ocupando las dos filas de navegación (asignaturas y años);
+   debajo, una fila con los enlaces legales y el copyright. */
 .footer-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  /* Fila del logo, la navegación y el copyright, centrada en su propia altura; debajo, la legal. */
-  grid-template-rows: minmax(110px, auto) auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  column-gap: 32px;
+  gap: 14px 56px;
+  padding-top: 30px;
+}
+
+.footer-inner > .logo {
+  grid-row: 1 / 3;
 }
 
 .footer-inner .logo-mark {
   background: white;
 }
 
-.footer-inner > p {
+.footer-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 16px;
+  padding: 18px 0 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom > p {
   margin: 0;
   color: rgba(255, 255, 255, 0.5);
   font-size: 10px;
 }
 
-.footer-inner > p:last-of-type {
-  justify-self: end;
-  max-width: 190px;
-  text-align: right;
-}
-
-/* Enlaces legales: una fila propia bajo el logo, la navegación y el copyright. */
 .footer-legal {
-  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
-  padding: 18px 0 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.6);
   font-size: 11px;
 }
@@ -1213,10 +1220,19 @@ footer {
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 8px 28px;
   font-size: 12px;
   font-weight: 600;
+}
+
+/* Las asignaturas, algo más destacadas que los años. */
+.footer-nav:first-of-type {
+  font-size: 13px;
+}
+
+.footer-nav + .footer-nav {
+  column-gap: 22px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer-nav a:hover {
@@ -1437,23 +1453,22 @@ footer {
 
   .footer-inner {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
     gap: 20px;
     padding-block: 32px;
   }
 
-  .footer-nav {
+  .footer-inner > .logo {
+    grid-row: auto;
+  }
+
+  .footer-nav:first-of-type {
     flex-direction: column;
-    justify-content: flex-start;
   }
 
-  .footer-inner > p:last-of-type {
-    justify-self: start;
-    max-width: none;
-    text-align: left;
-  }
-
-  .footer-legal {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0;
     padding-bottom: 0;
   }
 }
