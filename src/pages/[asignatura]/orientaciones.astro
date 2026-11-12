@@ -1,7 +1,7 @@
 ---
 import Icon from "../../components/Icon.astro"
 import { buscarAsignatura, nombreSeo } from "../../data/asignaturas"
-import { cursos, examenesDe, nombreTema, rutaTema, rutaTemaGeneral } from "../../data/examenes"
+import { cursos, examenesDe, nombreCompleto, nombreTema, rutaExamen, rutaTema, rutaTemaGeneral } from "../../data/examenes"
 import { ejercicios } from "../../data/ejercicios"
 import { fechaLarga } from "../../data/fechas"
 import { orientaciones, rutaOrientaciones, type Orientaciones } from "../../data/orientaciones"
@@ -33,16 +33,28 @@ const tema = (temaSlug: string) => {
 const bloques = o.bloques.map((b) => ({
   ...b,
   temas: b.temas.map(tema),
+  nota: b.nota && {
+    texto: b.nota.texto,
+    tema: b.nota.tema ? tema(b.nota.tema) : undefined,
+  },
   ejemplos: b.ejemplos.map((e) => {
-    const clave = `${slug}/${e.tema}/${e.anio}/${e.convocatoria}`
-    const etiquetas = ejercicios[clave]
     const curso = cursos.find((c) => c.anio === e.anio)
     const examen = curso && examenesDe(curso).find((x) => x.slug === e.convocatoria)
-    if (!etiquetas || !examen) throw new Error(`Orientaciones: ejercicio desconocido ${clave}`)
+    if (!examen) throw new Error(`Orientaciones: examen desconocido ${slug}/${e.anio}/${e.convocatoria}`)
+    // Sin tema, el examen completo. Es el caso del Writing (Inglés) y la expression écrite
+    // (Francés): cuando tengan sus páginas propias (fase 7), estos enlaces deben ir ahí.
+    if (!e.tema) {
+      return { href: rutaExamen(slug, e.anio, examen), tema: "", texto: `${examen.titulo} de ${e.anio}, examen completo` }
+    }
+    const clave = `${slug}/${e.tema}/${e.anio}/${e.convocatoria}`
+    const etiquetas = ejercicios[clave]
+    if (!etiquetas) throw new Error(`Orientaciones: ejercicio desconocido ${clave}`)
+    // "ejercicio 1 (opción A)", "bloque C, apartado a2": solo la primera letra en minúscula.
+    const rotulo = etiquetas.join(" y ")
     return {
       href: `${rutaTema(slug, tema(e.tema), e.anio)}#${e.convocatoria}`,
       tema: nombreTema(tema(e.tema)),
-      texto: `${examen.titulo} ${e.anio}, ${etiquetas.join(" y ").toLowerCase()}`,
+      texto: `${examen.titulo} de ${e.anio}, ${rotulo.charAt(0).toLowerCase()}${rotulo.slice(1)}`,
     }
   }),
 }))
@@ -55,9 +67,9 @@ const opciones = [
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 const descripciones = [
-  `Directrices y orientaciones oficiales de ${corto} para la PAU de Andalucía ${o.curso}: estructura del examen, qué entra, criterios de corrección y calculadora.`,
-  `Directrices y orientaciones de ${corto} para la PAU de Andalucía ${o.curso}: estructura del examen, qué entra y criterios de corrección.`,
-  `Directrices y orientaciones de ${corto} para la PAU de Andalucía ${o.curso}, explicadas.`,
+  `Directrices y orientaciones oficiales de ${corto} para la PAU de Andalucía ${o.curso}: cómo es el examen, qué entra, cómo se corrige y materiales.`,
+  `Directrices y orientaciones de ${corto} para la PAU de Andalucía ${o.curso}: cómo es el examen, qué entra y cómo se corrige.`,
+  `Orientaciones de ${corto} para la PAU de Andalucía ${o.curso}: cómo es el examen y qué entra.`,
 ]
 const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const h1 = `Orientaciones de ${asignatura.nombre} para la PAU ${o.anio}: las directrices oficiales explicadas`
@@ -151,7 +163,7 @@ const jsonLd = {
       <h2 id="resumen">Resumen en 1 minuto</h2>
       <ul>{o.resumen.map((r) => <li>{r}</li>)}</ul>
 
-      <h2 id="estructura">Estructura del examen</h2>
+      <h2 id="como-es-el-examen">Cómo es el examen</h2>
       <div class="legal-table">
         <table>
           <thead>
@@ -191,23 +203,37 @@ const jsonLd = {
           <section class="orientaciones-bloque">
             <h3>{b.titulo}</h3>
             <ul>{b.entra.map((e) => <li>{e}</li>)}</ul>
-            <div class="orientaciones-enlaces">
-              <p>
-                <strong>Todos los ejercicios del tema:</strong>{" "}
-                {b.temas.map((t, i) => (
+            {b.nota && (
+              <p class="orientaciones-nota">
+                {b.nota.texto}
+                {b.nota.tema && (
                   <>
-                    {i > 0 && (i === b.temas.length - 1 ? " y " : ", ")}
-                    <a href={rutaTemaGeneral(slug, t)}>{t.titulo}</a>
+                    {" "}
+                    <a href={rutaTemaGeneral(slug, b.nota.tema)}>Todos los ejercicios de {nombreCompleto(b.nota.tema)}</a>.
                   </>
-                ))}
+                )}
               </p>
+            )}
+            <div class="orientaciones-enlaces">
+              {b.temas.length > 0 && (
+                <p>
+                  <strong>Todos los ejercicios del tema:</strong>{" "}
+                  {b.temas.map((t, i) => (
+                    <>
+                      {i > 0 && (i === b.temas.length - 1 ? " y " : ", ")}
+                      <a href={rutaTemaGeneral(slug, t)}>{nombreCompleto(t)}</a>
+                    </>
+                  ))}
+                </p>
+              )}
               <p>
-                <strong>Ejercicios resueltos para empezar:</strong>
+                <strong>{b.tituloEjemplos ?? "Ejercicios resueltos para empezar:"}</strong>
               </p>
               <ul>
                 {b.ejemplos.map((e) => (
                   <li>
-                    <a href={e.href}>{e.texto}</a> ({e.tema})
+                    <a href={e.href}>{e.texto}</a>
+                    {e.tema && ` (${e.tema})`}
                   </li>
                 ))}
               </ul>
@@ -255,7 +281,7 @@ const jsonLd = {
       {
         o.materiales && (
           <>
-            <h2 id="materiales">Calculadora y materiales permitidos</h2>
+            <h2 id="materiales">{o.tituloMateriales ?? "Calculadora y materiales permitidos"}</h2>
             <ul>{o.materiales.map((m) => <li>{m}</li>)}</ul>
           </>
         )

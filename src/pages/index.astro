@@ -146,6 +146,12 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
+        <p class="aviso-novedad">
+          <strong>Novedad PAU 2027:</strong> el examen de
+          <a href={rutaOrientaciones("matematicas-ii")}>Matemáticas II</a> cambia (7 ejercicios,
+          respondes 5, 2 puntos cada uno). En <a href="#orientaciones">el resto de asignaturas</a>
+          se mantiene el formato de 2026.
+        </p>
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
           Selectividad (PAU) · Andalucía
@@ -242,7 +248,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
       }
       {
         orientaciones.length > 0 && (
-          <p class="subjects-orientaciones">
+          <p class="subjects-orientaciones" id="orientaciones">
             {`Directrices y orientaciones oficiales del curso ${orientaciones[0].curso}, explicadas: `}
             {orientaciones.map((o, i) => (
               <>
