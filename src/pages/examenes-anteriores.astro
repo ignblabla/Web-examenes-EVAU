@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content"
 import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
 import { asignaturas } from "../data/asignaturas"
-import { cursos, prueba, rutaAnio, rutaCurso, rutaExtraordinaria, type Curso } from "../data/examenes"
+import { cursos, prueba, rutaAnio, rutaCurso, rutaExtraordinaria, rutaNombres, type Curso } from "../data/examenes"
 import { editor, migas, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
@@ -95,8 +95,8 @@ const jsonLd = {
       <p class="hero-lead">
         Los exámenes de la Selectividad de Andalucía de {primero} a {anteriores[0].anio}, ordenados por
         año y asignatura, con el enunciado oficial y las soluciones explicadas. Hasta 2024 la prueba
-        se llamaba PEvAU y desde 2025 es la PAU, pero los exámenes anteriores siguen siendo una buena
-        forma de practicar. Los de {ultimo.anio} los tienes en su{" "}
+        se llamaba PEvAU y desde 2025 es la PAU (<a href={rutaNombres}>por qué cambió el nombre</a>),
+        pero los exámenes anteriores siguen siendo una buena forma de practicar. Los de {ultimo.anio} los tienes en su{" "}
         <a href={rutaCurso(ultimo.anio)}>propia página</a>.
       </p>
     </div>

@@ -141,3 +141,6 @@ export function rutaCurso(anio: number) {
 
 export const rutaExtraordinaria = "/extraordinaria/"
 export const rutaAnteriores = "/examenes-anteriores/"
+
+// Página que explica los nombres de la prueba (PAU, PEvAU, EBAU, Selectividad).
+export const rutaNombres = "/pau-pevau-ebau-selectividad/"

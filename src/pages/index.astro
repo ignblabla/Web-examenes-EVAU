@@ -7,7 +7,7 @@ import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
 import { asignaturas, cursoDe } from "../data/asignaturas"
 import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
-import { cursos, nombreExamen, rutaAnio, rutaAnteriores, rutaCurso, rutaExamen, rutaExtraordinaria } from "../data/examenes"
+import { cursos, nombreExamen, rutaAnio, rutaAnteriores, rutaCurso, rutaExamen, rutaExtraordinaria, rutaNombres } from "../data/examenes"
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
@@ -397,12 +397,9 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
         <article>
           <h3>¿PAU, PEvAU o Selectividad?</h3>
           <p>
-            Es la misma prueba con distintos nombres. Hasta 2024 se llamaba PEvAU (Prueba de
-            Evaluación de Bachillerato para el Acceso a la Universidad) y desde 2025 es la PAU,
-            Prueba de Acceso a la Universidad, como en casi todas las comunidades. De 2017 a 2024 el
-            nombre general en España era EBAU (Evaluación de Bachillerato para el Acceso a la
-            Universidad) y cada comunidad lo adaptaba: PEvAU en Andalucía, EvAU en Madrid… Casi todo
-            el mundo la sigue llamando Selectividad.
+            Es la misma prueba con distintos nombres. En Andalucía se llamó PEvAU hasta 2024 y desde
+            2025 es la PAU, Prueba de Acceso a la Universidad. Casi todo el mundo la sigue llamando
+            Selectividad. <a href={rutaNombres}>Más detalles</a>.
           </p>
         </article>
         <article>

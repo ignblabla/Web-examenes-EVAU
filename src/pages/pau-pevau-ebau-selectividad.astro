@@ -1,0 +1,225 @@
+---
+import Icon from "../components/Icon.astro"
+import { asignaturas } from "../data/asignaturas"
+import { rutaAnteriores, rutaNombres } from "../data/examenes"
+import { fechaLarga } from "../data/fechas"
+import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
+import { editor, migas, persona, referenciaAutor, referenciaEditor } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+// Qué son PAU, PEvAU, EBAU y Selectividad. Los datos de la norma salen del Real Decreto
+// 534/2024 (BOE-A-2024-11858), texto consolidado consultado el 12 de noviembre de 2026:
+// - Título y fecha: «Real Decreto 534/2024, de 11 de junio», «BOE» núm. 142, de 12/06/2024.
+// - Nombre: art. 1 b) y capítulo III, «prueba de acceso a la universidad».
+// - Disposición final cuarta a): «A las pruebas de acceso a la universidad que se realicen
+//   a partir del curso académico 2024-2025.»
+// - Disposición transitoria única 1: en el curso 2023-2024 sigue el Real Decreto 310/2016.
+// La PAU anterior a 2017: Real Decreto 1892/2008 (BOE-A-2008-18947), art. 8.1, «La prueba de
+// acceso a las enseñanzas universitarias oficiales de Grado se estructura en dos fases
+// denominadas respectivamente fase general y fase específica». Lo derogó el Real Decreto
+// 412/2014, cuya disposición transitoria única («Cursos académicos 2014-2015 a 2016-2017») dice:
+// «Para la realización de la prueba de acceso a la universidad se tendrán en cuenta las
+// disposiciones de los capítulos II, III y IV del Real Decreto 1892/2008».
+// Lo demás (EBAU de 2017 a 2024, PEvAU, EvAU) es lo que ya decía la FAQ de la portada.
+// TODO: sección "¿Cómo se llama en otras comunidades?" omitida hasta tener una fuente para
+// cada nombre.
+const boe = "https://www.boe.es/buscar/act.php?id=BOE-A-2024-11858"
+const boe2008 = "https://www.boe.es/buscar/act.php?id=BOE-A-2008-18947"
+const publicado = "2026-11-12"
+const revisado = "2026-11-12"
+
+// El title más completo que quepa en 60 caracteres, siempre con "Andalucía".
+const opciones = [
+  "PAU, PEvAU, EBAU o Selectividad: ¿es lo mismo en Andalucía?",
+  "PAU, PEvAU, EBAU y Selectividad en Andalucía: ¿es lo mismo?",
+  "PAU, PEvAU o Selectividad en Andalucía: ¿es lo mismo?",
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const descripciones = [
+  "PAU, PEvAU, EBAU y Selectividad son la misma prueba. En Andalucía fue la PEvAU hasta 2024 y desde 2025 es la PAU. Por qué cambió el nombre y qué cambió.",
+  "PAU, PEvAU, EBAU y Selectividad son la misma prueba. En Andalucía fue la PEvAU hasta 2024 y desde 2025 es la PAU.",
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const h1 = "PAU, PEvAU, EBAU o Selectividad: ¿es lo mismo?"
+
+const respuesta =
+  "Sí: PAU, PEvAU, EBAU y Selectividad son nombres de la misma prueba de acceso a la universidad. En Andalucía se llamó PEvAU (Prueba de Evaluación de Bachillerato para el Acceso a la Universidad) hasta 2024 y desde 2025 es la PAU (Prueba de Acceso a la Universidad). Casi todo el mundo la sigue llamando Selectividad."
+
+const faqs = [
+  {
+    pregunta: "¿La Selectividad y la PAU son lo mismo?",
+    respuesta:
+      "Sí. PAU (Prueba de Acceso a la Universidad) es el nombre de la prueba desde 2025 y Selectividad es como la sigue llamando casi todo el mundo. Es el mismo examen.",
+  },
+  {
+    pregunta: "¿Qué significa PEvAU?",
+    respuesta:
+      "Prueba de Evaluación de Bachillerato para el Acceso a la Universidad. Es el nombre que tuvo la prueba en Andalucía hasta 2024, su adaptación del nombre general en España, EBAU.",
+  },
+  {
+    pregunta: "¿Qué significa EBAU?",
+    respuesta:
+      "Evaluación de Bachillerato para el Acceso a la Universidad. Fue el nombre general de la prueba en España de 2017 a 2024, y cada comunidad lo adaptaba: PEvAU en Andalucía, EvAU en Madrid…",
+  },
+  {
+    pregunta: "¿Cuándo dejó de llamarse PEvAU en Andalucía?",
+    respuesta:
+      "En 2025. La de 2024 fue la última PEvAU. Desde el curso 2024-2025 la prueba se rige por el Real Decreto 534/2024, que la llama «prueba de acceso a la universidad», y por eso desde los exámenes de 2025 es la PAU.",
+  },
+]
+
+// Las orientaciones del curso 2026-2027: solo cambia el examen de Matemáticas II.
+const nombre = (slug: string) => asignaturas.find((a) => a.slug === slug)?.nombre ?? slug
+const notas: Record<string, string> = {
+  "matematicas-ii": "cambia: 7 ejercicios, respondes 5, 2 puntos cada uno.",
+}
+const cursoOrientaciones = orientaciones[0]?.curso
+
+const url = new URL(Astro.url.pathname, Astro.site).href
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": "Article",
+      "@id": `${url}#articulo`,
+      headline: h1,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL("/og/inicio.png", Astro.site).href,
+      inLanguage: "es",
+      datePublished: publicado,
+      dateModified: revisado,
+      author: referenciaAutor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      citation: boe,
+      about: [
+        { "@type": "Thing", name: "Prueba de Acceso a la Universidad (PAU) de Andalucía" },
+        { "@type": "Thing", name: "Selectividad" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${url}#preguntas`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+      })),
+    },
+    migas(Astro.site, [{ nombre: "PAU, PEvAU, EBAU o Selectividad", ruta: rutaNombres }]),
+  ],
+}
+---
+
+<Base title={titulo} description={descripcion} jsonLd={jsonLd} type="article" modified={revisado}>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">PAU, PEvAU, EBAU o Selectividad</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Selectividad Andalucía · El nombre de la prueba
+      </div>
+      <h1>
+        PAU, PEvAU, EBAU o Selectividad:
+        <br />
+        <em>¿es lo mismo?</em>
+      </h1>
+      <p class="hero-lead" id="respuesta">{respuesta}</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <article class="legal-sheet orientaciones">
+      <h2 id="por-que-cambio">¿Por qué cambió el nombre?</h2>
+      <p>
+        De 2017 a 2024 el nombre general en España era EBAU (Evaluación de Bachillerato para el
+        Acceso a la Universidad) y cada comunidad lo adaptaba: PEvAU en Andalucía, EvAU en Madrid…
+        Hasta el curso 2023-2024 la prueba se regía por el Real Decreto 310/2016.
+      </p>
+      <p>
+        Desde el curso 2024-2025 la regula el{" "}
+        <a href={boe} rel="noopener" target="_blank">Real Decreto 534/2024, de 11 de junio</a>{" "}
+        (BOE del 12 de junio de 2024), que la llama «prueba de acceso a la universidad»: de ahí PAU.
+        Se aplica «a las pruebas de acceso a la universidad que se realicen a partir del curso
+        académico 2024-2025», así que en Andalucía la primera PAU fue la de 2025.
+      </p>
+      <p>
+        Antes de 2017 la prueba ya se llamaba PAU: el{" "}
+        <a href={boe2008} rel="noopener" target="_blank">Real Decreto 1892/2008</a> regulaba la
+        «prueba de acceso a las enseñanzas universitarias oficiales de Grado», que se siguió usando
+        para entrar en la universidad hasta el curso 2016-2017 (Real Decreto 412/2014). En 2025, por
+        tanto, la prueba recupera ese nombre. Eso sí: si encuentras exámenes titulados «PAU» de antes
+        de 2017, son de un modelo distinto al actual, con una fase general y una fase específica.
+      </p>
+      <p>
+        El nombre oficial cambió, pero casi todo el mundo la sigue llamando Selectividad. En esta web
+        usamos Selectividad para todos los años, PEvAU para los exámenes de 2021 a 2024 y PAU desde
+        2025.
+      </p>
+
+      <h2 id="que-cambio">¿Qué cambió en el examen?</h2>
+      <p>
+        Con la PAU, desde 2025, cambiaron algunas cosas: hay más preguntas planteadas a partir de
+        situaciones reales, cambió la forma de elegir preguntas y entraron temas nuevos, como la
+        probabilidad en Matemáticas II.
+      </p>
+      {
+        orientaciones.length > 0 && (
+          <>
+            <p>
+              Para la PAU 2027 (curso {cursoOrientaciones}), el examen de Matemáticas II cambia: 7
+              ejercicios, respondes 5, 2 puntos cada uno. En el resto de asignaturas se mantiene el
+              formato de 2026. Lo explicamos en las orientaciones de cada asignatura:
+            </p>
+            <ul>
+              {orientaciones.map((o) => (
+                <li>
+                  <a href={rutaOrientaciones(o.asignatura)}>Orientaciones de {nombre(o.asignatura)}</a>:{" "}
+                  {notas[o.asignatura] ?? "mismo formato que en 2026."}
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
+      <h2 id="examenes-antiguos">¿Sirven los exámenes antiguos de PEvAU?</h2>
+      <p>
+        Sí. La mayoría de los contenidos se mantienen, así que los exámenes de PEvAU de 2021 a 2024
+        siguen siendo muy buena práctica. Antes de usarlos, mira cómo es el examen actual en las
+        orientaciones de tu asignatura, sobre todo la forma de elegir preguntas. Los tienes todos,
+        resueltos, en <a href={rutaAnteriores}>exámenes de años anteriores</a>.
+      </p>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.pregunta}</h3>
+            <p>{f.respuesta}</p>
+          </>
+        ))
+      }
+
+      <p class="orientaciones-revision">
+        Página revisada el <time datetime={revisado}>{fechaLarga(revisado)}</time>.
+      </p>
+    </article>
+
+    <div class="container orientaciones-volver">
+      <a href="/#asignaturas" class="button button--dark">
+        Ver los exámenes resueltos
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+</Base>
