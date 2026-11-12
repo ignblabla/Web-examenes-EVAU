@@ -76,17 +76,19 @@ const publicado = (asig: string, a: number, conv: string) => publicados.has(`${a
 const { publicado: fechaPublicacion, modificado } = fechasDe(rutaExamen(slug, anio, examen))!
 
 // El title más completo que quepa en 60 caracteres, con la prueba de ese curso (PEvAU o PAU).
-// "Julio (extraordinaria)" no cabe junto a "Andalucía": se prefiere conservar Andalucía, y
-// para conservarla se prueba antes la abreviatura de la asignatura (Mates CCSS).
+// "Julio (extraordinaria)" no cabe junto a "Andalucía": se prefiere conservar Andalucía. Si
+// tampoco cabe así, primero se quita "Examen" y después se abrevia la asignatura (Mates CCSS).
 const corto = nombreSeo(asignatura)
 const convocatoriaLarga = convocatoriaSeo(examen)
 const convocatoriaCorta = examen.titulo.toLowerCase()
 const fin = resuelto ? " resuelto" : ""
 const opciones = [
-  ...nombresSeo(asignatura).flatMap((n) => [
-    `Examen ${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaLarga}${fin}`,
-    `Examen ${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaCorta}${fin}`,
-  ]),
+  ...nombresSeo(asignatura).flatMap((n) =>
+    ["Examen ", ""].flatMap((examenDe) => [
+      `${examenDe}${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaLarga}${fin}`,
+      `${examenDe}${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaCorta}${fin}`,
+    ]),
+  ),
   `Examen ${corto} ${prueba(anio)} ${anio} ${convocatoriaCorta}${fin}`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!

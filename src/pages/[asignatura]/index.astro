@@ -134,11 +134,10 @@ const jsonLd = {
           <span class="eyebrow-dot"></span>
           {asignatura.nombre} · Selectividad Andalucía
         </div>
-        <h1>
-          {`Exámenes de ${asignatura.nombre} de Selectividad de Andalucía resueltos (${pruebas})`}
-          <br />
-          <em>{desde === ultimoAnio ? `Curso ${desde - 1}-${desde}` : `De ${desde} a ${ultimoAnio}`}.</em>
-        </h1>
+        <h1>Exámenes resueltos de {asignatura.nombre}</h1>
+        <p class="subject-subtitle">
+          {`Selectividad de Andalucía (${pruebas}), ${desde === ultimoAnio ? `curso ${desde - 1}-${desde}` : `de ${desde} a ${ultimoAnio}`}`}
+        </p>
         <p class="hero-lead">
           {
             asignatura.intro ??

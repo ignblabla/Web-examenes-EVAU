@@ -314,15 +314,29 @@
   line-height: 1.65;
 }
 
-/* El H1 de cada asignatura es una frase larga: más pequeño que el de la portada. */
+/* El H1 de cada asignatura ("Exámenes resueltos de Matemáticas CCSS") y, debajo, la prueba y
+   los años, con el estilo de la cursiva de los demás H1 pero fuera del encabezado. */
 .hero.subject-hero h1 {
-  font-size: clamp(40px, 4.2vw, 60px);
-  line-height: 1.02;
+  font-size: clamp(52px, 5.4vw, 80px);
+}
+
+.subject-subtitle {
+  margin: 14px 0 0;
+  color: var(--teal);
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 @media (max-width: 560px) {
   .hero.subject-hero h1 {
-    font-size: 36px;
+    font-size: 42px;
+  }
+
+  .subject-subtitle {
+    font-size: 21px;
   }
 }
 
