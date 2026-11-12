@@ -18,6 +18,7 @@ import {
   ultimoAnio,
   type Examen,
 } from "../../data/examenes"
+import { orientacionesDe, rutaOrientaciones } from "../../data/orientaciones"
 import { editor, migas, sitio } from "../../data/sitio"
 import Base from "../../layouts/Base.astro"
 
@@ -34,6 +35,8 @@ interface Props {
 
 const { asignatura } = Astro.props
 const { slug, temas } = asignatura
+// Orientaciones oficiales del próximo curso, si ya tienen página.
+const orientaciones = orientacionesDe(slug)
 
 // Cursos de la asignatura: desde su primer año con exámenes hasta el último.
 const desde = asignatura.desde ?? primerAnio
@@ -147,7 +150,23 @@ const jsonLd = {
             asignatura.intro ??
               "Todas las convocatorias de cada curso, la ordinaria, la extraordinaria y los cuatro exámenes de reserva, y los ejercicios agrupados por temas, con su resolución completa."
           }
+          {
+            orientaciones && (
+              <>
+                {" "}Todo lo que entra y cómo se corrige, en las{" "}
+                <a href={rutaOrientaciones(slug)}>orientaciones del curso {orientaciones.curso}</a>.
+              </>
+            )
+          }
         </p>
+        {
+          orientaciones && (
+            <a href={rutaOrientaciones(slug)} class="orientaciones-aviso">
+              {`Orientaciones ${orientaciones.curso}: cómo será el examen de ${asignatura.nombre}`}
+              <Icon name="arrow-up-right" />
+            </a>
+          )
+        }
         <dl class="subject-stats">
           <div>
             <dt>Cursos</dt>

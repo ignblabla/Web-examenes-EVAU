@@ -2,3 +2,5 @@ node_modules/
 dist/
 .astro/
 .playwright-mcp/
+# Documentos oficiales de consulta (PDF): no se publican ni se suben.
+fuentes/

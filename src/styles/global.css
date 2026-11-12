@@ -2139,6 +2139,100 @@ footer {
   }
 }
 
+/* ---------- Orientaciones ---------- */
+
+/* Enlace destacado a las orientaciones, en la cabecera de la asignatura y en la portada. */
+.orientaciones-aviso {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: -10px 0 30px;
+  padding: 12px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.orientaciones-aviso:hover {
+  background: var(--lime-dark);
+}
+
+.orientaciones-aviso svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.subjects-orientaciones {
+  margin: 28px 0 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.subjects-orientaciones a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.orientaciones .legal-table table {
+  min-width: 520px;
+}
+
+.orientaciones tfoot th,
+.orientaciones tfoot td {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.orientaciones-notas {
+  margin-top: 18px !important;
+  font-size: 15px;
+}
+
+.orientaciones-bloque {
+  margin-top: 26px;
+  padding-top: 4px;
+}
+
+.orientaciones-enlaces {
+  margin: 4px 0 0;
+  padding: 16px 20px 6px;
+  background: var(--cream);
+  font-size: 15px;
+}
+
+.orientaciones-enlaces p {
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.orientaciones-enlaces li {
+  text-align: left;
+}
+
+.orientaciones-igual {
+  margin-top: 14px !important;
+}
+
+.orientaciones-revision {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.orientaciones-volver {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
 /* ---------- Página de examen ---------- */
 
 .exam-hero .container {

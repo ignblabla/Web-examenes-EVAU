@@ -6,6 +6,7 @@ import EnlacesRelacionados, { type Enlace, type GrupoEnlaces } from "../componen
 import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
 import { asignaturas, cursoDe } from "../data/asignaturas"
+import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
 import { cursos, nombreExamen, rutaAnio, rutaAnteriores, rutaCurso, rutaExamen, rutaExtraordinaria } from "../data/examenes"
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
@@ -239,6 +240,22 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           </div>
         ))
       }
+      {
+        orientaciones.length > 0 && (
+          <p class="subjects-orientaciones">
+            {`Directrices y orientaciones oficiales del curso ${orientaciones[0].curso}, explicadas: `}
+            {orientaciones.map((o, i) => (
+              <>
+                {i > 0 && (i === orientaciones.length - 1 ? " y " : ", ")}
+                <a href={rutaOrientaciones(o.asignatura)}>
+                  {`Orientaciones de ${asignaturas.find((a) => a.slug === o.asignatura)?.nombre}`}
+                </a>
+              </>
+            ))}
+            .
+          </p>
+        )
+      }
     </div>
   </section>
 
@@ -420,10 +437,13 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
         <article>
           <h3>¿Cómo es el examen de Matemáticas II?</h3>
           <p>
-            Dura hora y media y tiene seis ejercicios de 2,5 puntos: dos obligatorios y dos bloques
-            con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete, uno
-            obligatorio y tres bloques de dos, en 2024, ocho en cuatro bloques de dos, y de 2021 a 2023 se elegían cuatro de ocho. Entran análisis (límites, derivadas e integrales),
-            álgebra, geometría y probabilidad.
+            Dura hora y media. Desde el curso 2026-2027 tiene siete ejercicios de 2 puntos, de los que
+            se responden cinco: los tres obligatorios y uno de cada uno de los dos bloques con
+            optatividad. Lo explicamos en las
+            <a href={rutaOrientaciones("matematicas-ii")}>orientaciones de Matemáticas II</a>. En 2026
+            eran seis ejercicios de 2,5 puntos; en 2025, siete, uno obligatorio y tres bloques de dos;
+            en 2024, ocho en cuatro bloques de dos, y de 2021 a 2023 se elegían cuatro de ocho. Entran
+            análisis (límites, derivadas e integrales), álgebra, geometría y probabilidad.
             <a href="/matematicas-ii/">Ver los exámenes de Matemáticas II resueltos</a>.
           </p>
         </article>

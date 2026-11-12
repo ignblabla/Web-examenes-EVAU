@@ -26,6 +26,9 @@ const TIPOS_SCHEMA = new Set([
   "ListItem",
   "BreadcrumbList",
   "Thing",
+  "FAQPage",
+  "Question",
+  "Answer",
 ])
 
 const listar = (dir) =>

@@ -73,7 +73,7 @@ export const asignaturas: Asignatura[] = [
     indexable: true,
     desde: 2021,
     intro:
-      `El examen de Matemáticas II de la PAU de Andalucía (${otrosNombres}) dura 1 hora y 30 minutos y todos sus ejercicios valen 2,5 puntos. Desde 2026 tiene seis: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque, y de 2021 a 2023, ocho en dos bloques de cuatro, y se elegían cuatro cualesquiera. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.`,
+      `El examen de Matemáticas II de la PAU de Andalucía (${otrosNombres}) dura 1 hora y 30 minutos. Desde el curso 2026-2027 tiene siete ejercicios de 2 puntos, de los que se responden cinco: los tres obligatorios y uno de cada uno de los dos bloques con optatividad. En 2026 eran seis ejercicios de 2,5 puntos: dos obligatorios y dos bloques con optatividad, en los que se elegía uno de los dos ejercicios. En 2025 eran siete de 2,5 puntos: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque, y de 2021 a 2023, ocho en dos bloques de cuatro, y se elegían cuatro cualesquiera. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.`,
     soluciones: "justificadas y figuras",
     temas: temas([
       {

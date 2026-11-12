@@ -1,0 +1,295 @@
+---
+import Icon from "../../components/Icon.astro"
+import { buscarAsignatura, nombreSeo } from "../../data/asignaturas"
+import { cursos, examenesDe, nombreTema, rutaTema, rutaTemaGeneral } from "../../data/examenes"
+import { ejercicios } from "../../data/ejercicios"
+import { fechaLarga } from "../../data/fechas"
+import { orientaciones, rutaOrientaciones, type Orientaciones } from "../../data/orientaciones"
+import { editor, migas, persona, referenciaAutor, referenciaEditor } from "../../data/sitio"
+import Base from "../../layouts/Base.astro"
+
+// Las directrices y orientaciones oficiales de una asignatura, explicadas. Solo se generan
+// las asignaturas que tienen datos en src/data/orientaciones.ts.
+export function getStaticPaths() {
+  return orientaciones.map((o) => ({ params: { asignatura: o.asignatura }, props: { o } }))
+}
+
+interface Props {
+  o: Orientaciones
+}
+
+const { o } = Astro.props
+const slug = o.asignatura
+const asignatura = buscarAsignatura(slug)
+const corto = nombreSeo(asignatura)
+
+const tema = (temaSlug: string) => {
+  const t = asignatura.temas.find((t) => t.slug === temaSlug)
+  if (!t) throw new Error(`Orientaciones: tema desconocido ${slug}/${temaSlug}`)
+  return t
+}
+
+// Cada ejemplo, con su enlace al tema en ese año (#convocatoria abre ese examen) y su rótulo.
+const bloques = o.bloques.map((b) => ({
+  ...b,
+  temas: b.temas.map(tema),
+  ejemplos: b.ejemplos.map((e) => {
+    const clave = `${slug}/${e.tema}/${e.anio}/${e.convocatoria}`
+    const etiquetas = ejercicios[clave]
+    const curso = cursos.find((c) => c.anio === e.anio)
+    const examen = curso && examenesDe(curso).find((x) => x.slug === e.convocatoria)
+    if (!etiquetas || !examen) throw new Error(`Orientaciones: ejercicio desconocido ${clave}`)
+    return {
+      href: `${rutaTema(slug, tema(e.tema), e.anio)}#${e.convocatoria}`,
+      tema: nombreTema(tema(e.tema)),
+      texto: `${examen.titulo} ${e.anio}, ${etiquetas.join(" y ").toLowerCase()}`,
+    }
+  }),
+}))
+
+// El title más completo que quepa en 60 caracteres, siempre con "Andalucía".
+const opciones = [
+  `Orientaciones ${corto} PAU Andalucía ${o.anio} explicadas`,
+  `Orientaciones ${corto} PAU Andalucía ${o.anio}`,
+  `Directrices ${corto} PAU Andalucía ${o.anio}`,
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const descripciones = [
+  `Directrices y orientaciones oficiales de ${corto} para la PAU de Andalucía ${o.curso}: estructura del examen, qué entra, criterios de corrección y calculadora.`,
+  `Directrices y orientaciones de ${corto} para la PAU de Andalucía ${o.curso}: estructura del examen, qué entra y criterios de corrección.`,
+  `Directrices y orientaciones de ${corto} para la PAU de Andalucía ${o.curso}, explicadas.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const h1 = `Orientaciones de ${asignatura.nombre} para la PAU ${o.anio}: las directrices oficiales explicadas`
+
+// Quién elabora el documento solo si el documento lo dice; si no, el documento oficial.
+const fuente = o.autoria
+  ? `el documento elaborado por ${o.autoria}`
+  : "el documento oficial de directrices y orientaciones de la PAU de Andalucía"
+const introduccion = `Las directrices y orientaciones explican qué entra en el examen de ${asignatura.nombre} de la PAU (Selectividad) de Andalucía, cómo es la prueba y cómo se corrige. Aquí tienes las del curso ${o.curso}, según ${fuente}, publicado en la web de la Junta de Andalucía, resumidas y explicadas, con enlaces a ejercicios resueltos de cada parte.`
+
+const url = new URL(Astro.url.pathname, Astro.site).href
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": "Article",
+      "@id": `${url}#orientaciones`,
+      headline: h1,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL(`/og/${slug}.png`, Astro.site).href,
+      inLanguage: "es",
+      datePublished: o.publicado,
+      dateModified: o.revisado,
+      author: referenciaAutor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      isBasedOn: o.url,
+      about: [
+        { "@type": "Thing", name: asignatura.nombre },
+        { "@type": "Thing", name: "Prueba de Acceso a la Universidad (PAU) de Andalucía" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${url}#preguntas`,
+      mainEntity: o.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+      })),
+    },
+    migas(Astro.site, [
+      { nombre: asignatura.nombre, ruta: `/${slug}/` },
+      { nombre: "Orientaciones", ruta: rutaOrientaciones(slug) },
+    ]),
+  ],
+}
+---
+
+<Base
+  title={titulo}
+  description={descripcion}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+  type="article"
+  modified={o.revisado}
+  noindex={!asignatura.indexable}
+>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${slug}/`}>{asignatura.nombre}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Orientaciones</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Directrices oficiales · Curso {o.curso}
+      </div>
+      <h1>
+        {`Orientaciones de ${asignatura.nombre} para la PAU ${o.anio}: `}
+        <br />
+        <em>las directrices oficiales explicadas</em>
+      </h1>
+      <p class="hero-lead">{introduccion}</p>
+      <p class="exam-updated">
+        Documento oficial consultado el <time datetime={o.consultado}>{fechaLarga(o.consultado)}</time>
+      </p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <article class="legal-sheet orientaciones">
+      <h2 id="resumen">Resumen en 1 minuto</h2>
+      <ul>{o.resumen.map((r) => <li>{r}</li>)}</ul>
+
+      <h2 id="estructura">Estructura del examen</h2>
+      <div class="legal-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Parte</th>
+              <th scope="col">Ejercicios</th>
+              <th scope="col">Cómo se elige</th>
+              <th scope="col">Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              o.estructura.filas.map((f) => (
+                <tr>
+                  <th scope="row">{f.parte}</th>
+                  <td>{f.ejercicios}</td>
+                  <td>{f.eleccion}</td>
+                  <td>{f.puntos}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td colspan="3">{o.estructura.total}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <ul class="orientaciones-notas">{o.estructura.notas.map((n) => <li>{n}</li>)}</ul>
+
+      <h2 id="bloques">Qué entra en cada bloque</h2>
+      <p>{o.bloquesIntro}</p>
+      {
+        bloques.map((b) => (
+          <section class="orientaciones-bloque">
+            <h3>{b.titulo}</h3>
+            <ul>{b.entra.map((e) => <li>{e}</li>)}</ul>
+            <div class="orientaciones-enlaces">
+              <p>
+                <strong>Todos los ejercicios del tema:</strong>{" "}
+                {b.temas.map((t, i) => (
+                  <>
+                    {i > 0 && (i === b.temas.length - 1 ? " y " : ", ")}
+                    <a href={rutaTemaGeneral(slug, t)}>{t.titulo}</a>
+                  </>
+                ))}
+              </p>
+              <p>
+                <strong>Ejercicios resueltos para empezar:</strong>
+              </p>
+              <ul>
+                {b.ejemplos.map((e) => (
+                  <li>
+                    <a href={e.href}>{e.texto}</a> ({e.tema})
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ))
+      }
+
+      {
+        o.cambios && (
+          <>
+            <h2 id="cambios">Qué cambia respecto al examen de 2026</h2>
+            <p>{o.cambios.fuente}</p>
+            <div class="legal-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Aspecto</th>
+                    <th scope="col">Examen de 2026</th>
+                    <th scope="col">Curso {o.curso}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {o.cambios.filas.map((f) => (
+                    <tr>
+                      <th scope="row">{f.aspecto}</th>
+                      <td>{f.antes}</td>
+                      <td>{f.ahora}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="orientaciones-igual">{o.cambios.igual}</p>
+          </>
+        )
+      }
+
+      <h2 id="criterios">Criterios de corrección clave</h2>
+      <h3>Qué puntúa</h3>
+      <ul>{o.criterios.puntua.map((c) => <li>{c}</li>)}</ul>
+      <h3>Qué penaliza</h3>
+      <ul>{o.criterios.penaliza.map((c) => <li>{c}</li>)}</ul>
+
+      {
+        o.materiales && (
+          <>
+            <h2 id="materiales">Calculadora y materiales permitidos</h2>
+            <ul>{o.materiales.map((m) => <li>{m}</li>)}</ul>
+          </>
+        )
+      }
+
+      <h2 id="documento">Documento oficial</h2>
+      <p>
+        Puedes leer las directrices completas en el{" "}
+        <a href={o.url} rel="noopener" target="_blank">documento oficial de orientaciones de {asignatura.nombre} del curso {o.curso}</a>{" "}
+        (PDF, Junta de Andalucía). {o.incluye}
+      </p>
+      <p class="orientaciones-revision">
+        Documento oficial consultado el <time datetime={o.consultado}>{fechaLarga(o.consultado)}</time>.
+      </p>
+      <p class="orientaciones-revision">
+        Página revisada el <time datetime={o.revisado}>{fechaLarga(o.revisado)}</time>.
+      </p>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      {
+        o.faqs.map((f) => (
+          <>
+            <h3>{f.pregunta}</h3>
+            <p>{f.respuesta}</p>
+          </>
+        ))
+      }
+    </article>
+
+    <div class="container orientaciones-volver">
+      <a href={`/${slug}/`} class="button button--dark">
+        Ver los exámenes resueltos de {asignatura.nombre}
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+</Base>
