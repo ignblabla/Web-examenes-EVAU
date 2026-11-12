@@ -11,6 +11,7 @@ import {
   rutaAnio,
   rutaExamen,
   rutaTema,
+  rutaTemaGeneral,
   ultimoAnio,
   type Examen,
 } from "../../data/examenes"
@@ -273,7 +274,13 @@ const jsonLd = {
           temas.map((t, i) => (
             <article class="topic-card topic-card--tone" style={tono(i)}>
               <span class="topic-number">Tema {i + 1}</span>
-              <h3>{t.titulo}</h3>
+              <h3>
+                <a href={rutaTemaGeneral(slug, t)}>{t.titulo}</a>
+              </h3>
+              <a href={rutaTemaGeneral(slug, t)} class="topic-all">
+                Todos los ejercicios
+                <Icon name="arrow-up-right" />
+              </a>
               <div class="topic-years">
                 {cursosAsignatura.map((c) =>
                   temasPublicados.has(`${t.slug}/${c.anio}`) ? (

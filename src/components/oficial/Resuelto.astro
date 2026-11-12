@@ -1,5 +1,8 @@
 ---
 import { getEntry, render } from "astro:content"
+import { buscarAsignatura } from "../../data/asignaturas"
+import { nombreEnFrase, rutaTemaGeneral } from "../../data/examenes"
+import Icon from "../Icon.astro"
 import SolucionPlegable from "../SolucionPlegable.astro"
 import Bloque from "./Bloque.astro"
 import Datos from "./Datos.astro"
@@ -10,6 +13,7 @@ import Nuclido from "./Nuclido.astro"
 // tal como está en src/content/ejercicios. Así el examen completo y la página del tema
 // comparten el mismo texto. En el examen completo las soluciones empiezan plegadas.
 // Con parte (2, 3…), el tramo siguiente de un tema cuyos apartados no van seguidos en el examen.
+// Detrás, un enlace a la página general del tema (solo tras el último tramo del tema).
 interface Props {
   tema: string
   parte?: number
@@ -17,10 +21,24 @@ interface Props {
 
 const { asignatura, anio, examen } = Astro.params
 const { tema, parte } = Astro.props
-const id = `${asignatura}/${tema}/${anio}/${examen}${parte ? `-${parte}` : ""}`
+const raiz = `${asignatura}/${tema}/${anio}/${examen}`
+const id = `${raiz}${parte ? `-${parte}` : ""}`
 const entrada = await getEntry("ejercicios", id)
 if (!entrada) throw new Error(`Faltan los ejercicios resueltos de ${id}`)
 const { Content } = await render(entrada)
+
+const datosTema = buscarAsignatura(asignatura!).temas.find((t) => t.slug === tema)
+const ultimaParte = !(await getEntry("ejercicios", `${raiz}-${(parte ?? 1) + 1}`))
 ---
 
 <Content components={{ Bloque, Datos, Ecuacion, Nuclido, Solucion: SolucionPlegable }} />
+{
+  datosTema && ultimaParte && (
+    <p class="topic-more" lang="es">
+      <a href={rutaTemaGeneral(asignatura!, datosTema)}>
+        Más ejercicios de {nombreEnFrase(datosTema)}
+        <Icon name="arrow-up-right" />
+      </a>
+    </p>
+  )
+}

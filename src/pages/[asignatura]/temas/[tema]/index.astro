@@ -1,0 +1,302 @@
+---
+import "katex/dist/katex.min.css"
+import { getCollection, render } from "astro:content"
+import BotonPdf from "../../../../components/BotonPdf.astro"
+import Icon from "../../../../components/Icon.astro"
+import PieImpresion from "../../../../components/PieImpresion.astro"
+import SinSolucion from "../../../../components/SinSolucion.astro"
+import BloqueTema from "../../../../components/oficial/BloqueTema.astro"
+import Datos from "../../../../components/oficial/Datos.astro"
+import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
+import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
+import Nuclido from "../../../../components/oficial/Nuclido.astro"
+import { buscarAsignatura, nombreSeo, tituloTemaGeneral } from "../../../../data/asignaturas"
+import {
+  cursos,
+  etiquetaEjercicios,
+  examenesDe,
+  nombreCompleto,
+  nombreEnFrase,
+  nombreTema,
+  primerAnio,
+  ultimoAnio,
+  rutaExamen,
+  rutaTema,
+  rutaTemaGeneral,
+  tipoLargo,
+} from "../../../../data/examenes"
+import { ejercicios } from "../../../../data/ejercicios"
+import { fechaLarga, fechasDe } from "../../../../data/fechas"
+import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
+import Base from "../../../../layouts/Base.astro"
+
+// Página general de un tema: los enunciados de todos los años, del más reciente al más
+// antiguo, con un índice arriba. Las soluciones no se repiten aquí: cada enunciado enlaza a
+// la página del tema en ese año, que las tiene (así la página no pasa de unos 600 KB).
+export async function getStaticPaths() {
+  const ejercicios = await getCollection("ejercicios")
+  const claves = new Set(ejercicios.map((e) => `${e.data.asignatura}/${e.data.tema}`))
+  return [...claves].map((clave) => {
+    const [asignatura, tema] = clave.split("/")
+    return { params: { asignatura, tema } }
+  })
+}
+
+const { asignatura: slug, tema: temaSlug } = Astro.params
+const asignatura = buscarAsignatura(slug)
+const tema = asignatura.temas.find((t) => t.slug === temaSlug)
+if (!tema) throw new Error(`Tema desconocido: ${slug}/${temaSlug}`)
+
+const archivos = (await getCollection("ejercicios"))
+  .filter((e) => e.data.asignatura === slug && e.data.tema === temaSlug)
+  .sort((a, b) => (a.data.parte ?? 1) - (b.data.parte ?? 1))
+const examenesPublicados = (await getCollection("examenes")).filter(
+  (e) => e.data.asignatura === slug && e.data.anio >= primerAnio,
+)
+const publicado = (anio: number, convocatoria: string) =>
+  examenesPublicados.some((e) => e.data.anio === anio && e.data.convocatoria === convocatoria)
+
+// Un bloque por examen (con sus partes juntas), agrupados por curso, del más reciente al más antiguo.
+const anios = await Promise.all(
+  cursos
+    .filter((c) => archivos.some((e) => e.data.anio === c.anio))
+    .map(async (curso) => {
+      const examenes = await Promise.all(
+        examenesDe(curso)
+          .filter((examen) => archivos.some((e) => e.data.anio === curso.anio && e.data.convocatoria === examen.slug))
+          .map(async (examen) => {
+            const partes = archivos.filter(
+              (e) => e.data.anio === curso.anio && e.data.convocatoria === examen.slug,
+            )
+            const etiquetas = partes.flatMap((p) => ejercicios[p.id] ?? [])
+            return {
+              examen,
+              id: `${examen.slug}-${curso.anio}`,
+              formato: partes[0].data.formato,
+              etiquetas,
+              etiqueta: etiquetaEjercicios(etiquetas),
+              contenidos: await Promise.all(partes.map(async (p) => (await render(p)).Content)),
+              solucion: `${rutaTema(slug, tema, curso.anio)}#${examen.slug}`,
+              completo: publicado(curso.anio, examen.slug) ? rutaExamen(slug, curso.anio, examen) : undefined,
+            }
+          }),
+      )
+      return { anio: curso.anio, examenes }
+    }),
+)
+const bloques = anios.flatMap((a) => a.examenes.map((e) => ({ ...e, anio: a.anio })))
+
+// Cuántas veces ha caído, por convocatoria, sobre los exámenes publicados desde 2021.
+const cuenta = (tipo: string) => ({
+  cae: bloques.filter((b) => b.examen.tipo === tipo).length,
+  total: examenesPublicados.filter((e) =>
+    tipo === "reserva" ? e.data.convocatoria.startsWith("reserva") : e.data.convocatoria === (tipo === "ordinaria" ? "junio" : "julio"),
+  ).length,
+})
+const junio = cuenta("ordinaria")
+const julio = cuenta("extraordinaria")
+const reservas = cuenta("reserva")
+// "los 6 de junio" si ha caído en todos; "5 de 6 en junio" si no.
+const parte = (c: { cae: number; total: number }, todos: string, algunos: string) =>
+  c.cae === c.total ? todos : `${c.cae} de ${c.total} ${algunos}`
+const detalle = [
+  parte(junio, `los ${junio.total} de junio`, "en junio"),
+  parte(julio, `los ${julio.total} de julio`, "en julio"),
+  parte(reservas, `las ${reservas.total} reservas`, "en las reservas"),
+]
+const conteo = `Desde ${primerAnio} ha caído en ${
+  bloques.length === examenesPublicados.length
+    ? `los ${examenesPublicados.length}`
+    : `${bloques.length} de los ${examenesPublicados.length}`
+} exámenes: ${detalle[0]}, ${detalle[1]} y ${detalle[2]}.`
+// En Matemáticas cada rótulo es un ejercicio completo, así que se puede dar el total.
+const totalEjercicios = slug.startsWith("matematicas")
+  ? bloques.reduce((n, b) => n + b.etiquetas.length, 0)
+  : 0
+const introduccion = [
+  tema.queCae ?? tema.intro,
+  conteo,
+  totalEjercicios ? `En total son ${totalEjercicios} ejercicios.` : "",
+]
+  .filter(Boolean)
+  .join(" ")
+
+const nombre = nombreCompleto(tema)
+const corto = nombreSeo(asignatura)
+const titulo = tituloTemaGeneral(asignatura, tema)
+const h1 = `${nombre}: ejercicios resueltos de Selectividad de ${asignatura.nombre}`
+const enFrase = tema.espanol ? nombre : nombreEnFrase(tema)
+const rango = `de ${anios.at(-1)?.anio ?? primerAnio} a ${anios[0]?.anio ?? ultimoAnio}`
+// La descripción más completa que quepa en 160 caracteres.
+const descripciones = [
+  `Todos los ejercicios de ${enFrase} de Selectividad de ${corto} en Andalucía (PAU y PEvAU) ${rango}, con enunciados y soluciones paso a paso.`,
+  `Ejercicios de ${enFrase} de Selectividad de ${corto} en Andalucía (PAU y PEvAU) ${rango}, con enunciados y soluciones paso a paso.`,
+  `Ejercicios de ${enFrase} de Selectividad de ${corto} en Andalucía ${rango}, con enunciados y soluciones paso a paso.`,
+  `Ejercicios de ${enFrase} de Selectividad de ${corto} en Andalucía ${rango}, con soluciones.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const { publicado: fechaPublicacion, modificado } = fechasDe(rutaTemaGeneral(slug, tema))!
+const url = new URL(Astro.url.pathname, Astro.site).href
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": ["Article", "LearningResource"],
+      "@id": `${url}#ejercicios`,
+      headline: h1,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL(`/og/${slug}.png`, Astro.site).href,
+      inLanguage: asignatura.idioma ? ["es", asignatura.idioma] : "es",
+      datePublished: fechaPublicacion,
+      dateModified: modificado,
+      author: referenciaAutor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      learningResourceType: "Ejercicios resueltos",
+      educationalLevel: "2.º de Bachillerato",
+      educationalUse: "Preparación de la Prueba de Acceso a la Universidad (Selectividad)",
+      about: [
+        { "@type": "Thing", name: asignatura.nombre },
+        { "@type": "Thing", name: "Prueba de Acceso a la Universidad (PAU) de Andalucía" },
+      ],
+      teaches: nombreTema(tema),
+    },
+    migas(Astro.site, [
+      { nombre: asignatura.nombre, ruta: `/${slug}/` },
+      { nombre: tema.titulo, ruta: Astro.url.pathname },
+    ]),
+  ],
+}
+---
+
+<Base
+  title={titulo}
+  description={descripcion}
+  jsonLd={jsonLd}
+  image={`/og/${slug}.png`}
+  type="article"
+  modified={modificado}
+  noindex={!asignatura.indexable}
+>
+  <PieImpresion slot="head" url={url} />
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/${slug}/`}>{asignatura.nombre}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{tema.titulo}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Ejercicios por temas · {anios.at(-1)?.anio}–{anios[0]?.anio}
+      </div>
+      <h1>
+        {`${nombre}: `}
+        <br />
+        <em>ejercicios resueltos de Selectividad de {asignatura.nombre}</em>
+      </h1>
+      <p class="hero-lead">{introduccion}</p>
+      <div class="exam-meta">
+        <p class="exam-updated">
+          Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · Revisado el{" "}
+          <time datetime={modificado}>{fechaLarga(modificado)}</time>
+        </p>
+        <BotonPdf
+          asignatura={slug}
+          anio="todos"
+          convocatoria="todas"
+          tema={temaSlug}
+          texto="Descargar enunciados en PDF (para practicar)"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="exam-body">
+    <div class="container">
+      <nav class="topic-index" aria-labelledby="indice">
+        <p class="topic-tip">Intenta cada ejercicio y, si te atascas, abre la solución paso a paso.</p>
+        <h2 id="indice">Índice de ejercicios</h2>
+        <div class="topic-index-years">
+          {
+            anios.map(({ anio, examenes }) => (
+              <div class="topic-index-year">
+                <h3>{anio}</h3>
+                <ul>
+                  {examenes.map(({ examen, id, etiqueta, completo }) => (
+                    <li>
+                      <a href={`#${id}`}>
+                        <strong>{examen.titulo}</strong>
+                        {etiqueta && <span> · {etiqueta}</span>}
+                      </a>
+                      {completo && (
+                        <a href={completo} class="topic-index-exam" aria-label={`Examen completo de ${examen.titulo.toLowerCase()} de ${anio}`}>
+                          examen
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </nav>
+
+      {
+        anios.map(({ anio, examenes }) => (
+          <section class="topic-year" aria-labelledby={`anio-${anio}`}>
+            <h2 class="topic-year-title" id={`anio-${anio}`}>
+              {anio}
+            </h2>
+            {examenes.map(({ examen, id, formato, etiqueta, contenidos, solucion, completo }) => (
+              <article class="topic-item" id={id}>
+                <header class="topic-item-head">
+                  <p class="topic-exam-type">{tipoLargo(examen.tipo)}</p>
+                  <h3>
+                    {examen.titulo} {anio}
+                    {etiqueta && <span class="topic-item-label"> · {etiqueta}</span>}
+                  </h3>
+                </header>
+                <div class="exam-sheet">
+                  <div class={`official-statement official-statement--${formato}`} lang={asignatura.idioma}>
+                    {contenidos.map((Content) => (
+                      <Content
+                        components={{ Bloque: BloqueTema, Datos, Ecuacion, Ejercicio, Nuclido, Solucion: SinSolucion }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div class="topic-item-actions">
+                  <a href={solucion} class="button button--primary">
+                    Ver la solución
+                    <Icon name="arrow-up-right" />
+                  </a>
+                  {completo && (
+                    <a href={completo} class="text-link">
+                      Ver el examen completo
+                      <Icon name="arrow-up-right" />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </section>
+        ))
+      }
+
+      <a href={`/${slug}/#temas`} class="button button--dark exam-back">
+        Volver a los temas de {asignatura.nombre}
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+</Base>

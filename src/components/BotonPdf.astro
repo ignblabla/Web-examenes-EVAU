@@ -6,13 +6,17 @@ import Icon from "./Icon.astro"
 // el evento descargar_pdf.
 interface Props {
   asignatura: string
-  anio: number
+  // "todos" en la página general de un tema.
+  anio: number | "todos"
   // Slug de la convocatoria (junio, julio, reserva-1…) o "todas" en las páginas de tema.
   convocatoria: string
   tema?: string
+  // Texto del botón, si no es el de siempre (en la página general de un tema solo se
+  // imprimen los enunciados).
+  texto?: string
 }
 
-const { asignatura, anio, convocatoria, tema } = Astro.props
+const { asignatura, anio, convocatoria, tema, texto = "Descargar en PDF" } = Astro.props
 ---
 
 <span class="pdf-action">
@@ -26,7 +30,7 @@ const { asignatura, anio, convocatoria, tema } = Astro.props
     data-tema={tema}
   >
     <Icon name="download" />
-    Descargar en PDF
+    {texto}
   </button>
   <span class="pdf-hint">Guárdalo en PDF para estudiar sin conexión</span>
 </span>

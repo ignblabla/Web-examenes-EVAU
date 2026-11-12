@@ -11,7 +11,18 @@ import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
 import { buscarAsignatura, nombreSeo, nombresSeo } from "../../../../data/asignaturas"
-import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, rutaTema, tipoLargo } from "../../../../data/examenes"
+import {
+  cursos,
+  examenesDe,
+  nombreCompleto,
+  nombreEnFrase,
+  nombreTema,
+  prueba,
+  rutaExamen,
+  rutaTema,
+  rutaTemaGeneral,
+  tipoLargo,
+} from "../../../../data/examenes"
 import { fechaLarga, fechasDe } from "../../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
@@ -69,23 +80,23 @@ const secciones = await Promise.all(
   }),
 )
 
-const termino = tema.termino ?? tema.titulo
+const termino = nombreTema(tema)
 // Las mismas fechas que el <lastmod> del sitemap: salen de la ruta de la página.
 const { publicado, modificado } = fechasDe(rutaTema(slug, tema, anio))!
 
-// El title más completo que quepa en 60 caracteres.
+// El title más completo que quepa en 60 caracteres, siempre con "Andalucía" (como en los
+// exámenes): primero se quitan las palabras de relleno ("ejercicios resueltos", "con
+// soluciones") y solo después se abrevia, primero la asignatura (Mates CCSS) y luego el tema
+// (Límites y derivabilidad).
 const corto = nombreSeo(asignatura)
-// Antes de quitar "Andalucía" se prueba la abreviatura de la asignatura (Mates CCSS).
+const nombres = nombresSeo(asignatura)
+const temaCorto = tema.corto ?? termino
 const opciones = [
-  ...nombresSeo(asignatura).flatMap((n) => [
-    `${termino} ${n} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
-    `${termino} ${n} ${prueba(anio)} Andalucía ${anio} con soluciones`,
-  ]),
-  ...(asignatura.abreviatura ? [`${termino} ${asignatura.abreviatura} ${prueba(anio)} Andalucía ${anio}`] : []),
-  `${termino} ${corto} ${prueba(anio)} ${anio} con soluciones`,
-  `${termino} ${corto} ${prueba(anio)} ${anio}`,
-  // Para temas de nombre largo (Límites, continuidad y derivabilidad), sin la prueba.
-  `${termino} ${corto} ${anio}`,
+  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
+  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio} con soluciones`,
+  ...nombres.map((n) => `${termino} ${n} ${prueba(anio)} Andalucía ${anio}`),
+  ...nombres.map((n) => `${temaCorto} ${n} ${prueba(anio)} Andalucía ${anio}`),
+  `${temaCorto} ${nombres.at(-1)} Andalucía ${anio}`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 const examenesTexto = entradas.length === 1 ? "del examen" : `de los ${entradas.length} exámenes`
@@ -132,8 +143,8 @@ const jsonLd = {
     },
     migas(Astro.site, [
       { nombre: asignatura.nombre, ruta: `/${slug}/` },
-      { nombre: String(anio), ruta: rutaAnio(slug, anio) },
-      { nombre: tema.titulo, ruta: Astro.url.pathname },
+      { nombre: tema.titulo, ruta: rutaTemaGeneral(slug, tema) },
+      { nombre: String(anio), ruta: Astro.url.pathname },
     ]),
   ],
 }
@@ -156,16 +167,20 @@ const jsonLd = {
         <span aria-hidden="true">/</span>
         <a href={`/${slug}/`}>{asignatura.nombre}</a>
         <span aria-hidden="true">/</span>
-        <a href={rutaAnio(slug, anio)}>{anio}</a>
+        <a href={rutaTemaGeneral(slug, tema)}>{tema.titulo}</a>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">{tema.titulo}</span>
+        <span aria-current="page">{anio}</span>
       </nav>
       <div class="eyebrow">
         <span class="eyebrow-dot"></span>
         {tema.titulo} · Curso {curso?.curso ?? anio}
       </div>
+      <a href={rutaTemaGeneral(slug, tema)} class="topic-general-link">
+        Todos los ejercicios de {tema.espanol ? termino : nombreEnFrase(tema)}, de todos los años
+        <Icon name="arrow-up-right" />
+      </a>
       <h1>
-        {termino}.
+        {nombreCompleto(tema)}.
         <br />
         <em>{asignatura.nombre}, exámenes de {anio}.</em>
       </h1>

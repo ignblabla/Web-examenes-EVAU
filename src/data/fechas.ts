@@ -44,8 +44,13 @@ const mdx = (carpeta: string) =>
 // - Examen (/fisica/2026/junio/): el examen y sus partes resueltas en cada tema, incluidos
 //   los tramos de un tema partido (junio-2.mdx).
 // - Tema (/fisica/temas/ondas/2026/): todos los archivos del tema en ese año.
+// - Página general del tema (/fisica/temas/ondas/): todos los archivos del tema, de todos los
+//   años; su fecha de modificación es la del ejercicio cambiado más recientemente.
 function archivosDe(ruta: string) {
   const [asignatura, segunda, tercera, cuarta, quinta] = ruta.split("/").filter(Boolean)
+  if (segunda === "temas" && tercera && !cuarta) {
+    return mdx(`src/content/ejercicios/${asignatura}/${tercera}`)
+  }
   if (segunda === "temas" && cuarta && !quinta) {
     return mdx(`src/content/ejercicios/${asignatura}/${tercera}/${cuarta}`)
   }
@@ -73,7 +78,7 @@ export function fechasDe(ruta: string) {
 }
 
 // <lastmod> del sitemap: la misma fecha que article:modified_time. Solo la llevan los
-// exámenes y las páginas de tema.
+// exámenes y las páginas de tema (generales y por año).
 export function fechaSitemap(ruta: string) {
   return fechasDe(ruta)?.modificado
 }
