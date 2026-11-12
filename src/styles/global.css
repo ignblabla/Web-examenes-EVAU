@@ -314,6 +314,18 @@
   line-height: 1.65;
 }
 
+/* El H1 de cada asignatura es una frase larga: más pequeño que el de la portada. */
+.hero.subject-hero h1 {
+  font-size: clamp(40px, 4.2vw, 60px);
+  line-height: 1.02;
+}
+
+@media (max-width: 560px) {
+  .hero.subject-hero h1 {
+    font-size: 36px;
+  }
+}
+
 /* La introducción de cada asignatura es un párrafo largo: justificada salvo en móvil, como las
    preguntas frecuentes de la portada. */
 @media (min-width: 561px) {

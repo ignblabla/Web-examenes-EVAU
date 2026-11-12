@@ -67,6 +67,12 @@ export function nombreExamen(anio: number, examen: Examen) {
   return `${examen.titulo.toLowerCase()} de ${anio}`
 }
 
+// "junio", "julio (extraordinaria)", "reserva 2": para los title y las descripciones de los exámenes.
+export function convocatoriaSeo(examen: Examen) {
+  const nombre = examen.titulo.toLowerCase()
+  return examen.tipo === "extraordinaria" ? `${nombre} (extraordinaria)` : nombre
+}
+
 export function rutaAnio(asignatura: string, anio: number) {
   return `/${asignatura}/${anio}/`
 }

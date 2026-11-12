@@ -2,7 +2,7 @@
 
 Web de exámenes oficiales de Selectividad de Andalucía (PAU, antes PEvAU; también llamada EBAU) resueltos paso a paso en texto. Dominio: https://selectividadresuelta.es
 
-- **Asignaturas:** Matemáticas II, Matemáticas Aplicadas a las CCSS (slug `matematicas-aplicadas`, nombre corto "Matemáticas CCSS"), Física, Inglés y Francés.
+- **Asignaturas:** Matemáticas II, Matemáticas Aplicadas a las CCSS (slug `matematicas-aplicadas`, nombre en la web "Matemáticas CCSS"), Física, Inglés y Francés.
 - **Años:** 2021-2026. Cada curso tiene junio (ordinaria), julio (extraordinaria) y reservas 1 a 4 (en Física de 2026 solo está la reserva 1).
 - **Público:** estudiantes de 2.º de Bachillerato de Andalucía.
 - **Autor:** Ignacio Blanquero Blanco, con página en `/sobre-el-autor/`.
@@ -43,7 +43,7 @@ Las páginas se generan de forma estática con Astro, MDX y KaTeX. Los datos est
 | Home | Texto fijo en las props de `<Base>` | Texto fijo | `Organization` y `WebSite` |
 | Asignatura | Calculados en el frontmatter (`opciones` y `descripciones`) | `asignatura.titulo` y el rango de años | `Organization`, `CollectionPage` y `BreadcrumbList` |
 | Año | Calculados en el frontmatter | "{Asignatura}, {año}. Todos los exámenes resueltos." | Lo mismo, con un `ItemList` de las convocatorias |
-| Examen | Calculados en el frontmatter. La description se puede fijar con `descripcion` en el MDX y si no se usa `asignatura.resuelto` | "{Asignatura}, {convocatoria} de {año}. Examen de Selectividad resuelto." | `Organization`, `Person`, `Article` y `LearningResource`, y `BreadcrumbList` |
+| Examen | Calculados en el frontmatter. La description (máx. 155) se puede fijar con `descripcion` en el MDX y si no se completa con `asignatura.soluciones` | "{Asignatura}, {convocatoria} de {año}. Examen de Selectividad resuelto." | `Organization`, `Person`, `Article` y `LearningResource`, y `BreadcrumbList` |
 | Tema y año | Calculados en el frontmatter | "{término}. {Asignatura}, exámenes de {año}." | Lo mismo que el examen |
 
 - Los nodos compartidos (`editor`, `persona`, `migas`) y los datos del sitio están en `src/data/sitio.ts`.

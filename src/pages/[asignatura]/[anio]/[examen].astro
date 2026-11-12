@@ -10,9 +10,10 @@ import Ecuacion from "../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../components/oficial/Nuclido.astro"
 import Resuelto from "../../../components/oficial/Resuelto.astro"
-import { buscarAsignatura, nombreSeo, otraLengua } from "../../../data/asignaturas"
+import { buscarAsignatura, nombreSeo, nombresSeo, otraLengua } from "../../../data/asignaturas"
 import { cabeceras } from "../../../data/cabeceras"
 import {
+  convocatoriaSeo,
   cursos,
   examenesDe,
   nombreExamen,
@@ -74,20 +75,43 @@ const publicado = (asig: string, a: number, conv: string) => publicados.has(`${a
 // Las mismas fechas que el <lastmod> del sitemap: salen de la ruta de la página.
 const { publicado: fechaPublicacion, modificado } = fechasDe(rutaExamen(slug, anio, examen))!
 
-// El title más completo que quepa en 60 caracteres.
+// El title más completo que quepa en 60 caracteres, con la prueba de ese curso (PEvAU o PAU).
+// "Julio (extraordinaria)" no cabe junto a "Andalucía": se prefiere conservar Andalucía, y
+// para conservarla se prueba antes la abreviatura de la asignatura (Mates CCSS).
 const corto = nombreSeo(asignatura)
-const final = `${anio} ${examen.titulo.toLowerCase()}${resuelto ? " resuelto" : ""}`
+const convocatoriaLarga = convocatoriaSeo(examen)
+const convocatoriaCorta = examen.titulo.toLowerCase()
+const fin = resuelto ? " resuelto" : ""
 const opciones = [
-  `Examen ${corto} ${prueba(anio)} Andalucía ${final}`,
-  `Examen ${corto} ${prueba(anio)} ${final}`,
+  ...nombresSeo(asignatura).flatMap((n) => [
+    `Examen ${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaLarga}${fin}`,
+    `Examen ${n} ${prueba(anio)} Andalucía ${anio} ${convocatoriaCorta}${fin}`,
+  ]),
+  `Examen ${corto} ${prueba(anio)} ${anio} ${convocatoriaCorta}${fin}`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+// La descripción más completa que quepa en 155 caracteres. Hasta 2024 la prueba era la PEvAU.
+const pruebaSeo = prueba(anio) === "PAU" ? "PAU, antes PEvAU" : "PEvAU"
+const inicioDescripcion = `Examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía, ${convocatoriaLarga} de ${anio},`
+const descripciones = resuelto
+  ? [
+      ...(asignatura.soluciones
+        ? [`${inicioDescripcion} resuelto paso a paso, con soluciones ${asignatura.soluciones}.`]
+        : []),
+      `${inicioDescripcion} resuelto paso a paso, con soluciones explicadas.`,
+      `${inicioDescripcion} resuelto paso a paso y con soluciones.`,
+    ]
+  : [
+      `Enunciado oficial del examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`,
+    ]
 const descripcion =
-  entrada.data.descripcion ??
-  (resuelto
-    ? `Examen de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre} resuelto: ${asignatura.resuelto}.`
-    : `Enunciado oficial del examen de ${corto} de Selectividad (${prueba(anio)}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`)
+  entrada.data.descripcion ?? descripciones.find((d) => d.length <= 155) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
+// Primer párrafo: el nombre de la prueba ese curso y los demás con los que se busca.
+const presentacion =
+  prueba(anio) === "PAU"
+    ? "PAU de Andalucía (antes PEvAU, también conocida como EBAU o Selectividad)"
+    : "PEvAU de Andalucía (hoy PAU, también conocida como EBAU o Selectividad)"
 
 // Enlaces: anterior y siguiente en orden cronológico, la otra lengua, el año y los temas.
 const secuencia = [...cursos]
@@ -203,8 +227,8 @@ const jsonLd = {
       <p class="hero-lead">
         {
           resuelto
-            ? `Enunciado oficial completo de la ${prueba(anio)} de Andalucía, con las soluciones de ${bloquesResueltos} explicadas pregunta a pregunta. Intenta cada ejercicio antes de mirar su solución.`
-            : `Enunciado oficial completo de la ${prueba(anio)} de Andalucía. Las soluciones de este examen aún no están publicadas.`
+            ? `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}, corregido y con las soluciones de ${bloquesResueltos} explicadas pregunta a pregunta. Intenta cada ejercicio antes de mirar su solución.`
+            : `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}. Las soluciones aún no están publicadas.`
         }
       </p>
       <p class="exam-updated">

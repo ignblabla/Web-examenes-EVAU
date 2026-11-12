@@ -76,8 +76,10 @@ const filas = [
 
 // El title más completo que quepa en 60 caracteres.
 const corto = nombreSeo(asignatura)
+// La primera opción no cabe con los nombres actuales; queda por si se acorta alguno.
 const opciones = [
-  `Exámenes de ${corto} de Selectividad Andalucía resueltos`,
+  `Exámenes ${corto} Selectividad Andalucía resueltos (PAU y PEvAU)`,
+  `Exámenes ${corto} Selectividad Andalucía resueltos (PAU)`,
   `Exámenes ${corto} Selectividad Andalucía resueltos`,
 ]
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
@@ -87,6 +89,7 @@ const periodo = desde === ultimoAnio ? `de ${desde}` : `de ${desde} a ${ultimoAn
 // La descripción más completa que quepa en 160 caracteres.
 const inicio = `Todos los exámenes de ${corto} de Selectividad de Andalucía (${pruebas}) ${periodo}`
 const descripciones = [
+  `${inicio}: junio, julio y reservas resueltos paso a paso, con soluciones y por temas.`,
   `${inicio}: junio, julio y reservas, con las soluciones explicadas y por temas.`,
   `${inicio}: junio, julio y reservas, resueltos y por temas.`,
 ]
@@ -132,7 +135,7 @@ const jsonLd = {
           {asignatura.nombre} · Selectividad Andalucía
         </div>
         <h1>
-          {asignatura.titulo}
+          {`Exámenes de ${asignatura.nombre} de Selectividad de Andalucía resueltos (${pruebas})`}
           <br />
           <em>{desde === ultimoAnio ? `Curso ${desde - 1}-${desde}` : `De ${desde} a ${ultimoAnio}`}.</em>
         </h1>

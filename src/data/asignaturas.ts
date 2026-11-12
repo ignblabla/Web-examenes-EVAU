@@ -3,7 +3,6 @@ import type { Curso, Tema } from "./examenes"
 export interface Asignatura {
   slug: string
   nombre: string
-  titulo: string
   simbolo: "atom" | "graph" | "geometry" | "english" | "french"
   color: "physics" | "math" | "math-two" | "english" | "french"
   temas: Tema[]
@@ -13,12 +12,15 @@ export interface Asignatura {
   indexable: boolean
   // Texto de la página de la asignatura: cómo es el examen.
   intro?: string
-  // Qué incluye cada examen resuelto, para la meta descripción (ajustado a 140-160 caracteres).
-  resuelto?: string
+  // Cómo son las soluciones, para la meta descripción del examen: completa la frase
+  // "resuelto paso a paso, con soluciones …". Si no cabe en 155 caracteres, se omite.
+  soluciones?: string
   // Primer curso con exámenes, si la asignatura empieza después de primerAnio.
   desde?: number
   // Nombre para los title y las meta descripciones, si el nombre completo no cabe.
   nombreCorto?: string
+  // Nombre aún más corto, solo para los title que no caben con "Andalucía" ("Mates CCSS").
+  abreviatura?: string
   // Exámenes de reserva que existen en un curso, si no son los cuatro (en Física de 2026
   // solo se ha encontrado la reserva 1). Las demás no se muestran.
   reservas?: Record<number, number>
@@ -30,8 +32,16 @@ export function cursoDe(asignatura: Asignatura, curso: Curso): Curso {
   return n === undefined ? curso : { ...curso, reservas: curso.reservas.slice(0, n) }
 }
 
+// Los otros nombres de la prueba, para la intro de cada asignatura.
+const otrosNombres = "antes PEvAU, también conocida como EBAU o Selectividad"
+
 export function nombreSeo(asignatura: Asignatura) {
   return asignatura.nombreCorto ?? asignatura.nombre
+}
+
+// Nombres que se prueban, en orden, para que un title quepa sin quitar "Andalucía".
+export function nombresSeo(asignatura: Asignatura) {
+  return asignatura.abreviatura ? [nombreSeo(asignatura), asignatura.abreviatura] : [nombreSeo(asignatura)]
 }
 
 type DatosTema = string | Omit<Tema, "slug">
@@ -55,14 +65,13 @@ export const asignaturas: Asignatura[] = [
   {
     slug: "matematicas-ii",
     nombre: "Matemáticas II",
-    titulo: "Matemáticas II.",
     simbolo: "geometry",
     color: "math-two",
     indexable: true,
     desde: 2021,
     intro:
-      "El examen de Matemáticas II de la PAU de Andalucía dura 1 hora y 30 minutos y todos sus ejercicios valen 2,5 puntos. Desde 2026 tiene seis: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque, y de 2021 a 2023, ocho en dos bloques de cuatro, y se elegían cuatro cualesquiera. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.",
-    resuelto: "todos los ejercicios paso a paso y justificados",
+      `El examen de Matemáticas II de la PAU de Andalucía (${otrosNombres}) dura 1 hora y 30 minutos y todos sus ejercicios valen 2,5 puntos. Desde 2026 tiene seis: dos obligatorios y dos bloques con optatividad, en los que se elige uno de los dos ejercicios. En 2025 eran siete: uno obligatorio y tres bloques de dos ejercicios, para elegir uno en cada bloque; en 2024, ocho ejercicios en cuatro bloques de dos, y se elegía uno de cada bloque, y de 2021 a 2023, ocho en dos bloques de cuatro, y se elegían cuatro cualesquiera. Aquí tienes los exámenes resueltos paso a paso, con las figuras y siguiendo los criterios oficiales de corrección.`,
+    soluciones: "justificadas y figuras",
     temas: temas([
       "Matrices y determinantes",
       "Sistemas de ecuaciones lineales",
@@ -76,16 +85,15 @@ export const asignaturas: Asignatura[] = [
   },
   {
     slug: "matematicas-aplicadas",
-    nombre: "Matemáticas aplicadas",
-    titulo: "Matemáticas aplicadas.",
+    nombre: "Matemáticas CCSS",
     simbolo: "graph",
     color: "math",
     indexable: true,
     desde: 2021,
-    nombreCorto: "Matemáticas CCSS",
+    abreviatura: "Mates CCSS",
     intro:
-      "El examen de Matemáticas Aplicadas a las Ciencias Sociales II de la PAU de Andalucía dura 1 hora y 30 minutos. Desde 2026 tiene cuatro ejercicios: álgebra o programación lineal (3 puntos), funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos opciones, A) y B), en algunos de ellos. En 2024 y 2025 eran cuatro bloques y se elegía un ejercicio de 2.5 puntos en cada uno; de 2021 a 2023, cuatro de los ocho ejercicios, de al menos tres bloques. Aquí tienes todas las convocatorias resueltas paso a paso, con las gráficas y siguiendo los criterios oficiales de corrección.",
-    resuelto: "todos los ejercicios paso a paso y justificados",
+      "Matemáticas CCSS (Matemáticas Aplicadas a las Ciencias Sociales II, las «mates sociales») es una de las asignaturas de la PAU de Andalucía (antes PEvAU, también conocida como EBAU). Su examen dura 1 hora y 30 minutos. Desde 2026 tiene cuatro ejercicios: álgebra o programación lineal (3 puntos), funciones (3 puntos) y dos de probabilidad y estadística (2 puntos cada uno), con dos opciones, A) y B), en algunos de ellos. En 2024 y 2025 eran cuatro bloques y se elegía un ejercicio de 2.5 puntos en cada uno; de 2021 a 2023, cuatro de los ocho ejercicios, de al menos tres bloques. Aquí tienes todas las convocatorias resueltas paso a paso, con las gráficas y siguiendo los criterios oficiales de corrección.",
+    soluciones: "justificadas y gráficas",
     temas: temas([
       "Matrices y determinantes",
       "Sistemas de ecuaciones lineales",
@@ -99,7 +107,6 @@ export const asignaturas: Asignatura[] = [
   {
     slug: "fisica",
     nombre: "Física",
-    titulo: "Física.",
     simbolo: "atom",
     color: "physics",
     indexable: true,
@@ -107,8 +114,8 @@ export const asignaturas: Asignatura[] = [
     // En 2026 solo se ha encontrado la reserva 1; de 2021 a 2025 están las cuatro.
     reservas: { 2026: 1 },
     intro:
-      "El examen de Física de la PAU de Andalucía dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Desde 2026 un bloque es obligatorio y en los otros tres se elige entre dos opciones de a) y de b); en 2025 el a) era obligatorio en todos los bloques y solo se elegía el b), en 2024 cada bloque tenía dos ejercicios completos y se elegía uno, y de 2021 a 2023 se elegían libremente cuatro de los ocho ejercicios. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.",
-    resuelto: "todos los apartados paso a paso, con esquemas y unidades",
+      `El examen de Física de la PAU de Andalucía (${otrosNombres}) dura 1 hora y 30 minutos y tiene cuatro bloques: campo gravitatorio, campo electromagnético, vibraciones y ondas, y física relativista, cuántica y de partículas. En cada bloque se responde un apartado a), una cuestión de razonar que vale 1 punto, y un apartado b), un problema que vale 1,5 puntos. Desde 2026 un bloque es obligatorio y en los otros tres se elige entre dos opciones de a) y de b); en 2025 el a) era obligatorio en todos los bloques y solo se elegía el b), en 2024 cada bloque tenía dos ejercicios completos y se elegía uno, y de 2021 a 2023 se elegían libremente cuatro de los ocho ejercicios. Aquí tienes los exámenes resueltos paso a paso, con los esquemas y siguiendo los criterios oficiales de corrección.`,
+    soluciones: "razonadas, esquemas y unidades",
     temas: temas([
       {
         titulo: "Campo gravitatorio",
@@ -140,14 +147,13 @@ export const asignaturas: Asignatura[] = [
   {
     slug: "ingles",
     nombre: "Inglés",
-    titulo: "Exámenes de Inglés.",
     simbolo: "english",
     color: "english",
     idioma: "en",
     indexable: true,
     intro:
-      "El examen de Inglés de la Selectividad de Andalucía tiene tres bloques: Reading (4 puntos), Use of English (3 puntos) y Writing (3 puntos). Aquí tienes todas las convocatorias desde 2021, la ordinaria, la extraordinaria y las cuatro de reserva, con las respuestas de comprensión y de gramática explicadas una a una.",
-    resuelto: "Reading y Use of English con cada respuesta explicada en español",
+      `El examen de Inglés de la PAU de Andalucía (${otrosNombres}) tiene tres bloques: Reading (4 puntos), Use of English (3 puntos) y Writing (3 puntos). Aquí tienes todas las convocatorias desde 2021, la ordinaria, la extraordinaria y las cuatro de reserva, con las respuestas de comprensión y de gramática explicadas una a una.`,
+    soluciones: "del Reading y el Use of English",
     temas: temas([
       {
         titulo: "Comprensión lectora",
@@ -166,14 +172,13 @@ export const asignaturas: Asignatura[] = [
   {
     slug: "frances",
     nombre: "Francés",
-    titulo: "Exámenes de Francés.",
     simbolo: "french",
     color: "french",
     idioma: "fr",
     indexable: true,
     intro:
-      "El examen de Francés de la Selectividad de Andalucía tiene tres bloques: compréhension, compétence linguistique y expression écrite. Hasta 2025 valían 4, 2 y 4 puntos; desde 2026 valen 5, 2 y 3, y la redacción pasa a 120-150 palabras. Aquí tienes todas las convocatorias desde 2021, con las respuestas de comprensión y de gramática explicadas una a una.",
-    resuelto: "compréhension y compétence linguistique con cada respuesta explicada",
+      `El examen de Francés de la PAU de Andalucía (${otrosNombres}) tiene tres bloques: compréhension, compétence linguistique y expression écrite. Hasta 2025 valían 4, 2 y 4 puntos; desde 2026 valen 5, 2 y 3, y la redacción pasa a 120-150 palabras. Aquí tienes todas las convocatorias desde 2021, con las respuestas de comprensión y de gramática explicadas una a una.`,
+    soluciones: "de la compréhension y la compétence",
     temas: temas([
       {
         titulo: "Comprensión lectora",

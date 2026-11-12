@@ -8,7 +8,7 @@ import Ecuacion from "../../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../../components/oficial/Nuclido.astro"
 import Solucion from "../../../../components/Solucion.astro"
-import { buscarAsignatura, nombreSeo } from "../../../../data/asignaturas"
+import { buscarAsignatura, nombreSeo, nombresSeo } from "../../../../data/asignaturas"
 import { cursos, examenesDe, prueba, rutaAnio, rutaExamen, rutaTema, tipoLargo } from "../../../../data/examenes"
 import { fechasDe } from "../../../../data/fechas"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
@@ -73,9 +73,13 @@ const { publicado, modificado } = fechasDe(rutaTema(slug, tema, anio))!
 
 // El title más completo que quepa en 60 caracteres.
 const corto = nombreSeo(asignatura)
+// Antes de quitar "Andalucía" se prueba la abreviatura de la asignatura (Mates CCSS).
 const opciones = [
-  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
-  `${termino} ${corto} ${prueba(anio)} Andalucía ${anio} con soluciones`,
+  ...nombresSeo(asignatura).flatMap((n) => [
+    `${termino} ${n} ${prueba(anio)} Andalucía ${anio}: ejercicios resueltos`,
+    `${termino} ${n} ${prueba(anio)} Andalucía ${anio} con soluciones`,
+  ]),
+  ...(asignatura.abreviatura ? [`${termino} ${asignatura.abreviatura} ${prueba(anio)} Andalucía ${anio}`] : []),
   `${termino} ${corto} ${prueba(anio)} ${anio} con soluciones`,
   `${termino} ${corto} ${prueba(anio)} ${anio}`,
   // Para temas de nombre largo (Límites, continuidad y derivabilidad), sin la prueba.
