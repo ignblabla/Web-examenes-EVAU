@@ -1,6 +1,6 @@
 ---
 import { titular } from "../data/legal"
-import { autor, editor, migas, persona } from "../data/sitio"
+import { autor, editor, fuenteExamenes, migas, persona } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
 const nombre = "Sobre el autor"
@@ -46,9 +46,9 @@ const jsonLd = {
         <em>Quién resuelve los exámenes.</em>
       </h1>
       <p class="hero-lead">
-        Ingeniero de software, con amplia formación en inglés y en francés y la base matemática y
-        física de la ingeniería. Resuelvo y explico los exámenes de Selectividad de Andalucía para que
-        puedas prepararlos por tu cuenta.
+        Graduado en Ingeniería Informática (Ingeniería del Software) por la Universidad de Sevilla,
+        con el B2 de inglés de Cambridge y el B1 de francés. Resuelvo y explico los exámenes de
+        Selectividad de Andalucía para que puedas prepararlos por tu cuenta.
       </p>
     </div>
   </section>
@@ -58,9 +58,16 @@ const jsonLd = {
     <article class="legal-sheet">
       <h2>Quién soy</h2>
       <p>
-        Me llamo {autor.nombre} y soy ingeniero de software. Los idiomas me han acompañado
-        siempre: tengo una amplia formación en inglés, que completé viviendo una temporada en
-        Irlanda, y también en francés.
+        Me llamo {autor.nombre} y soy ingeniero de software. Soy graduado en Ingeniería
+        Informática, en la mención de Ingeniería del Software, por la Universidad de Sevilla.
+      </p>
+      <p>
+        Los idiomas me han acompañado siempre. Tengo el nivel B2 de inglés acreditado por
+        Cambridge, y viví una temporada en Irlanda. En francés tengo el nivel B1, acreditado por el
+        Ministerio de Educación Nacional de Francia.
+      </p>
+      <p>
+        Puedes ver mi trayectoria en <a href={autor.linkedin} rel="me noopener" target="_blank">LinkedIn</a>.
       </p>
       <p>
         Las matemáticas y la física son la base de la ingeniería. En la carrera estudié álgebra,
@@ -114,7 +121,9 @@ const jsonLd = {
       </p>
       <p class="legal-note">
         Esta web no está vinculada a las universidades andaluzas ni a la Junta de Andalucía. Los
-        enunciados son los oficiales; las soluciones y explicaciones son mías.
+        enunciados son los oficiales, publicados por el{" "}
+        <a href={fuenteExamenes.url} rel="noopener" target="_blank">{fuenteExamenes.organismo}</a>; las
+        soluciones y explicaciones son mías.
       </p>
     </article>
   </section>

@@ -34,6 +34,13 @@ export function referenciaWeb(site: URL | undefined) {
 export const autor = {
   nombre: "Ignacio Blanquero Blanco",
   ruta: "/sobre-el-autor/",
+  linkedin: "https://www.linkedin.com/in/ignacio-blanquero-blanco/",
+}
+
+// De dónde salen los enunciados: la página de exámenes anteriores del Distrito Único Andaluz.
+export const fuenteExamenes = {
+  organismo: "Distrito Único Andaluz (Junta de Andalucía)",
+  url: "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/?q=grados&d=g_b_examenes_anteriores.php",
 }
 
 // Página de contacto, enlazada en el pie junto a "Sobre el autor".
@@ -52,9 +59,29 @@ export function persona(site: URL | undefined) {
     jobTitle: "Ingeniero de software",
     knowsLanguage: ["es", "en", "fr"],
     worksFor: referenciaEditor(site),
-    // TODO (Ignacio): añadir aquí las URL de tus perfiles públicos (LinkedIn, GitHub…) y
-    // descomentar. No se rellena con nada que no hayas dado tú.
-    // sameAs: [],
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Universidad de Sevilla" },
+    // Títulos que ha dado el autor; no añadir ninguno que no haya dado él.
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        name: "Grado en Ingeniería Informática - Ingeniería del Software",
+        recognizedBy: { "@type": "CollegeOrUniversity", name: "Universidad de Sevilla" },
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certificate",
+        name: "Inglés, nivel B2",
+        recognizedBy: { "@type": "Organization", name: "Cambridge" },
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "certificate",
+        name: "Francés, nivel B1",
+        recognizedBy: { "@type": "Organization", name: "Ministerio de Educación Nacional de Francia" },
+      },
+    ],
+    sameAs: [autor.linkedin],
   }
 }
 

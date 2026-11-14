@@ -18,6 +18,8 @@ const TIPOS_SCHEMA = new Set([
   "Person",
   "WebSite",
   "EducationalAudience",
+  "CollegeOrUniversity",
+  "EducationalOccupationalCredential",
   "Article",
   "LearningResource",
   "CollectionPage",

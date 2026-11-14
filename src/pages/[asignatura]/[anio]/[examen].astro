@@ -28,7 +28,7 @@ import {
 } from "../../../data/examenes"
 import { fechaLarga, fechasDe } from "../../../data/fechas"
 import { orientacionesDe, rutaOrientaciones } from "../../../data/orientaciones"
-import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../data/sitio"
+import { autor, editor, fuenteExamenes, migas, persona, referenciaAutor, referenciaEditor } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
 export async function getStaticPaths() {
@@ -190,6 +190,7 @@ const jsonLd = {
       "@type": ["Article", "LearningResource"],
       "@id": `${url}#examen`,
       headline: titulo,
+      isBasedOn: fuenteExamenes.url,
       name: titulo,
       description: descripcion,
       url,
@@ -264,6 +265,8 @@ const jsonLd = {
         <p class="exam-updated">
           {resuelto && <>Resuelto por <a href={autor.ruta}>{autor.nombre}</a> · </>}
           Revisado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
+          {" · "}Enunciado oficial:{" "}
+          <a href={fuenteExamenes.url} rel="noopener" target="_blank">{fuenteExamenes.organismo}</a>
         </p>
         <BotonPdf asignatura={slug} anio={anio} convocatoria={convocatoria} />
       </div>
