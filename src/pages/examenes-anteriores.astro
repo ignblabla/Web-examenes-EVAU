@@ -3,7 +3,7 @@ import { getCollection } from "astro:content"
 import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
 import { asignaturas } from "../data/asignaturas"
 import { cursos, prueba, rutaAnio, rutaCurso, rutaExtraordinaria, rutaNombres, type Curso } from "../data/examenes"
-import { editor, migas, sitio } from "../data/sitio"
+import { editor, migas, referenciaWeb } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
 // Cursos anteriores al último con exámenes, agrupados por el nombre de la prueba:
@@ -59,7 +59,7 @@ const jsonLd = {
       description: descripcion,
       url,
       inLanguage: "es",
-      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      isPartOf: referenciaWeb(Astro.site),
       mainEntity: {
         "@type": "ItemList",
         itemListElement: anteriores.map((c, i) => ({

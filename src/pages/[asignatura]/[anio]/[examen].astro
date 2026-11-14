@@ -21,11 +21,13 @@ import {
   nombreExamen,
   prueba,
   rutaAnio,
+  rutaCurso,
   rutaExamen,
   rutaTema,
   tipoLargo,
 } from "../../../data/examenes"
 import { fechaLarga, fechasDe } from "../../../data/fechas"
+import { orientacionesDe, rutaOrientaciones } from "../../../data/orientaciones"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
@@ -156,6 +158,19 @@ enlaces.push({
   texto: `Todos los exámenes de ${asignatura.nombre} de ${anio}`,
   href: rutaAnio(slug, anio),
 })
+enlaces.push({
+  etiqueta: `Selectividad ${anio}`,
+  texto: `Exámenes de ${anio} de todas las asignaturas (${prueba(anio)})`,
+  href: rutaCurso(anio),
+})
+// Las orientaciones son las del próximo examen, no las del curso de este examen.
+const orientaciones = orientacionesDe(slug)
+if (orientaciones)
+  enlaces.push({
+    etiqueta: "Orientaciones oficiales",
+    texto: `Orientaciones de ${asignatura.nombre} para la PAU ${orientaciones.anio}: qué entra y cómo se corrige`,
+    href: rutaOrientaciones(slug),
+  })
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -144,3 +144,5 @@ export const rutaAnteriores = "/examenes-anteriores/"
 
 // Página que explica los nombres de la prueba (PAU, PEvAU, EBAU, Selectividad).
 export const rutaNombres = "/pau-pevau-ebau-selectividad/"
+// Fechas de esa página (AAAA-MM-DD). La revisión se cambia a mano y la usa también el sitemap.
+export const fechasNombres = { publicado: "2026-11-12", revisado: "2026-11-12" }

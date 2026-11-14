@@ -14,7 +14,8 @@ import {
   rutaTema,
   tipoLargo,
 } from "../../../data/examenes"
-import { editor, migas, sitio } from "../../../data/sitio"
+import { fechaLarga, fechasDe } from "../../../data/fechas"
+import { editor, migas, referenciaWeb } from "../../../data/sitio"
 import Base from "../../../layouts/Base.astro"
 
 // Una página por asignatura y año con todos los exámenes de ese curso y sus temas.
@@ -97,6 +98,8 @@ const descripciones = conReservas
     ]
 const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
+// La fecha del examen revisado más recientemente; la misma que el <lastmod> del sitemap.
+const { modificado } = fechasDe(rutaAnio(slug, anio))!
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -109,7 +112,8 @@ const jsonLd = {
       description: descripcion,
       url,
       inLanguage: "es",
-      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      dateModified: modificado,
+      isPartOf: referenciaWeb(Astro.site),
       about: { "@type": "Thing", name: asignatura.nombre },
       mainEntity: {
         "@type": "ItemList",
@@ -162,6 +166,9 @@ const jsonLd = {
         Los exámenes de {asignatura.nombre} de la Selectividad de Andalucía de {anio}: la
         convocatoria ordinaria de junio{conReservas ? ", la extraordinaria de julio y los exámenes de reserva" : " y la extraordinaria de julio"},
         con el enunciado oficial{conSoluciones && " y las soluciones explicadas"}.
+      </p>
+      <p class="exam-updated">
+        Actualizado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
       </p>
     </div>
   </section>

@@ -2,6 +2,7 @@
 import "katex/dist/katex.min.css"
 import { getCollection, render } from "astro:content"
 import BotonPdf from "../../../../components/BotonPdf.astro"
+import EnlacesRelacionados, { type Enlace } from "../../../../components/EnlacesRelacionados.astro"
 import Icon from "../../../../components/Icon.astro"
 import PieImpresion from "../../../../components/PieImpresion.astro"
 import BloqueTema from "../../../../components/oficial/BloqueTema.astro"
@@ -24,6 +25,7 @@ import {
   tipoLargo,
 } from "../../../../data/examenes"
 import { fechaLarga, fechasDe } from "../../../../data/fechas"
+import { orientacionesDe, rutaOrientaciones } from "../../../../data/orientaciones"
 import { autor, editor, migas, persona, referenciaAutor, referenciaEditor } from "../../../../data/sitio"
 import Base from "../../../../layouts/Base.astro"
 
@@ -108,6 +110,18 @@ const descripciones = [
 ]
 const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
 const url = new URL(Astro.url.pathname, Astro.site).href
+
+// Las orientaciones oficiales del próximo examen: qué entra de este tema y cómo se corrige.
+const orientaciones = orientacionesDe(slug)
+const antesDelExamen: Enlace[] = orientaciones
+  ? [
+      {
+        etiqueta: "Orientaciones oficiales",
+        texto: `Orientaciones de ${asignatura.nombre} para la PAU ${orientaciones.anio}: qué entra y cómo se corrige`,
+        href: rutaOrientaciones(slug),
+      },
+    ]
+  : []
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -235,6 +249,8 @@ const jsonLd = {
           </details>
         ))
       }
+
+      <EnlacesRelacionados id="antes-del-examen" titulo="Antes del examen" enlaces={antesDelExamen} />
 
       <a href={`/${slug}/#temas`} class="button button--dark exam-back">
         Volver a los temas de {asignatura.nombre}

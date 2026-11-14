@@ -19,7 +19,7 @@ import {
   type Examen,
 } from "../../data/examenes"
 import { orientacionesDe, rutaOrientaciones } from "../../data/orientaciones"
-import { editor, migas, sitio } from "../../data/sitio"
+import { editor, migas, referenciaWeb } from "../../data/sitio"
 import Base from "../../layouts/Base.astro"
 
 export function getStaticPaths() {
@@ -114,7 +114,7 @@ const jsonLd = {
       description: descripcion,
       url,
       inLanguage: "es",
-      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      isPartOf: referenciaWeb(Astro.site),
       about: { "@type": "Thing", name: asignatura.nombre },
     },
     migas(Astro.site, [{ nombre: asignatura.nombre, ruta: `/${slug}/` }]),

@@ -4,7 +4,7 @@ import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelaciona
 import TablaConvocatorias, { type Fila } from "../components/TablaConvocatorias.astro"
 import { asignaturas } from "../data/asignaturas"
 import { cursos, nombreExamen, prueba, rutaAnteriores, rutaCurso, rutaExamen } from "../data/examenes"
-import { editor, migas, sitio } from "../data/sitio"
+import { editor, migas, referenciaWeb } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
 // Todos los exámenes de julio (convocatoria extraordinaria): una fila por asignatura y una
@@ -67,7 +67,7 @@ const jsonLd = {
       description: descripcion,
       url,
       inLanguage: "es",
-      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      isPartOf: referenciaWeb(Astro.site),
       mainEntity: {
         "@type": "ItemList",
         itemListElement: publicadas.flatMap((a) =>

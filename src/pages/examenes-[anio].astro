@@ -14,7 +14,8 @@ import {
   rutaExamen,
   rutaExtraordinaria,
 } from "../data/examenes"
-import { editor, migas, sitio } from "../data/sitio"
+import { fechaLarga, fechasDe } from "../data/fechas"
+import { editor, migas, referenciaWeb } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
 // Una página por curso con los exámenes de todas las asignaturas publicadas (indexables).
@@ -89,6 +90,9 @@ const otros: Enlace[] = [
   { etiqueta: "Archivo", texto: "Exámenes de años anteriores (PEvAU y PAU)", href: rutaAnteriores },
 ]
 
+// La fecha del examen revisado más recientemente; la misma que el <lastmod> del sitemap.
+const { modificado } = fechasDe(rutaCurso(anio))!
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -100,7 +104,8 @@ const jsonLd = {
       description: descripcion,
       url,
       inLanguage: "es",
-      isPartOf: { "@type": "WebSite", name: sitio.nombre, url: Astro.site?.href },
+      dateModified: modificado,
+      isPartOf: referenciaWeb(Astro.site),
       mainEntity: {
         "@type": "ItemList",
         itemListElement: publicadas.map((a, i) => ({
@@ -143,6 +148,9 @@ const jsonLd = {
             ` De ${asignatura.nombre} de ${anio}, por ahora solo está disponible ${reservas.length === 1 ? `la ${reservas[0].titulo.toLowerCase()}` : `${reservas.length} reservas`}.`,
           )
         }
+      </p>
+      <p class="exam-updated">
+        Actualizado el <time datetime={modificado}>{fechaLarga(modificado)}</time>
       </p>
     </div>
   </section>

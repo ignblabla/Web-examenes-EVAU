@@ -62,6 +62,8 @@ Las páginas se generan de forma estática con Astro, MDX y KaTeX. Los datos est
 
 - Lo genera `@astrojs/sitemap` en `astro.config.mjs` y publica `/sitemap-index.xml`.
 - El filtro excluye las asignaturas con `indexable: false`, que además llevan `noindex`. Ahora mismo todas son indexables.
-- `serialize` añade `<lastmod>` solo a los exámenes y a las páginas de tema (generales y por año; la general toma la fecha más reciente de sus ejercicios), con `fechaSitemap()` de `src/data/fechas.ts`, que devuelve la misma fecha de modificación que `fechasDe()`.
-- `public/robots.txt` permite los buscadores, bloquea los bots de entrenamiento de IA y apunta al sitemap.
+- `serialize` añade `<lastmod>` con `fechaSitemap()` de `src/data/fechas.ts`, la misma fecha que se ve en la página. Desde git (`fechasDe()`): exámenes, temas (generales y por año) y páginas de año (`/<asignatura>/<año>/` y `/examenes-<año>/`, con "Actualizado el…"), que toman la fecha más reciente de sus archivos. Fechas fijas anotadas a mano: orientaciones (`revisado`), calendario (`actualizado`) y la página de PAU/PEvAU (`fechasNombres` en `src/data/examenes.ts`).
+- `public/robots.txt` permite los buscadores y, de forma explícita, los buscadores con IA (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot…), bloquea los bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended…) y apunta al sitemap.
+- `/llms.txt` lo genera `src/pages/llms.txt.ts` en cada build a partir de los datos (asignaturas, años, temas, orientaciones).
+- `persona()` en `src/data/sitio.ts` tiene un `TODO` para los perfiles del autor (`sameAs`).
 - `trailingSlash: 'always'`: todas las URL internas terminan en `/`.

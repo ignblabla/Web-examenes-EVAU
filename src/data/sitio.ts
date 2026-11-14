@@ -25,6 +25,11 @@ export function referenciaEditor(site: URL | undefined) {
   return { "@id": new URL("/#editor", site).href }
 }
 
+// El nodo WebSite completo está en la portada; el resto de páginas lo citan por su @id.
+export function referenciaWeb(site: URL | undefined) {
+  return { "@id": new URL("/#web", site).href }
+}
+
 // Autor de las soluciones: firma los exámenes resueltos y tiene su propia página.
 export const autor = {
   nombre: "Ignacio Blanquero Blanco",
@@ -47,6 +52,9 @@ export function persona(site: URL | undefined) {
     jobTitle: "Ingeniero de software",
     knowsLanguage: ["es", "en", "fr"],
     worksFor: referenciaEditor(site),
+    // TODO (Ignacio): añadir aquí las URL de tus perfiles públicos (LinkedIn, GitHub…) y
+    // descomentar. No se rellena con nada que no hayas dado tú.
+    // sameAs: [],
   }
 }
 

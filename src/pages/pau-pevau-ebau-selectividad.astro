@@ -1,7 +1,7 @@
 ---
 import Icon from "../components/Icon.astro"
 import { asignaturas } from "../data/asignaturas"
-import { rutaAnteriores, rutaNombres } from "../data/examenes"
+import { fechasNombres, rutaAnteriores, rutaNombres } from "../data/examenes"
 import { calendario, rutaFechas } from "../data/calendario"
 import { fechaLarga } from "../data/fechas"
 import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
@@ -26,8 +26,7 @@ import Base from "../layouts/Base.astro"
 // cada nombre.
 const boe = "https://www.boe.es/buscar/act.php?id=BOE-A-2024-11858"
 const boe2008 = "https://www.boe.es/buscar/act.php?id=BOE-A-2008-18947"
-const publicado = "2026-11-12"
-const revisado = "2026-11-12"
+const { publicado, revisado } = fechasNombres
 
 // El title más completo que quepa en 60 caracteres, siempre con "Andalucía".
 const opciones = [

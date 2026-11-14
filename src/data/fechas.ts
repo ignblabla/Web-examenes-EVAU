@@ -1,5 +1,8 @@
 import { execFileSync } from "node:child_process"
 import fs from "node:fs"
+import { calendario, rutaFechas } from "./calendario"
+import { fechasNombres, rutaNombres } from "./examenes"
+import { orientaciones, rutaOrientaciones } from "./orientaciones"
 
 // Fechas de publicación y de última modificación de cada página, sacadas del historial de git
 // de los archivos que la forman. La página (article:modified_time, "Revisado el…") y el
@@ -46,8 +49,19 @@ const mdx = (carpeta: string) =>
 // - Tema (/fisica/temas/ondas/2026/): todos los archivos del tema en ese año.
 // - Página general del tema (/fisica/temas/ondas/): todos los archivos del tema, de todos los
 //   años; su fecha de modificación es la del ejercicio cambiado más recientemente.
+// - Año de una asignatura (/fisica/2026/) y curso (/examenes-2026/): todos los archivos de los
+//   exámenes de ese año; su fecha es la del examen revisado más recientemente.
 function archivosDe(ruta: string) {
   const [asignatura, segunda, tercera, cuarta, quinta] = ruta.split("/").filter(Boolean)
+  const curso = asignatura?.match(/^examenes-(\d{4})$/)?.[1]
+  if (curso && !segunda) {
+    const delAnio = (f: string) => f.includes(`/${curso}/`)
+    return [...mdx("src/content/examenes"), ...mdx("src/content/ejercicios")].filter(delAnio)
+  }
+  if (/^\d{4}$/.test(segunda ?? "") && !tercera) {
+    const delAnio = (f: string) => f.includes(`/${segunda}/`)
+    return [...mdx(`src/content/examenes/${asignatura}`), ...mdx(`src/content/ejercicios/${asignatura}`)].filter(delAnio)
+  }
   if (segunda === "temas" && tercera && !cuarta) {
     return mdx(`src/content/ejercicios/${asignatura}/${tercera}`)
   }
@@ -77,10 +91,18 @@ export function fechasDe(ruta: string) {
   }
 }
 
-// <lastmod> del sitemap: la misma fecha que article:modified_time. Solo la llevan los
-// exámenes y las páginas de tema (generales y por año).
+// Páginas que no salen de la colección y cuya revisión se anota a mano en su archivo de datos:
+// las orientaciones, el calendario y la página de PAU, PEvAU, EBAU.
+const fechasFijas = new Map<string, string>([
+  ...orientaciones.map((o): [string, string] => [rutaOrientaciones(o.asignatura), o.revisado]),
+  [rutaFechas, calendario.actualizado],
+  [rutaNombres, fechasNombres.revisado],
+])
+
+// <lastmod> del sitemap: la misma fecha que se ve en la página ("Revisado el…", "Actualizado
+// el…"). La llevan los exámenes, los temas, las páginas de año y las de fecha fija.
 export function fechaSitemap(ruta: string) {
-  return fechasDe(ruta)?.modificado
+  return fechasFijas.get(ruta) ?? fechasDe(ruta)?.modificado
 }
 
 export function fechaLarga(fecha: string) {

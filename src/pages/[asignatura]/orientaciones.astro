@@ -1,7 +1,8 @@
 ---
 import Icon from "../../components/Icon.astro"
 import { buscarAsignatura, nombreSeo } from "../../data/asignaturas"
-import { cursos, examenesDe, nombreCompleto, nombreTema, rutaExamen, rutaTema, rutaTemaGeneral } from "../../data/examenes"
+import { calendario, rutaFechas } from "../../data/calendario"
+import { cursos, examenesDe, nombreCompleto, nombreTema, rutaExamen, rutaNombres, rutaTema, rutaTemaGeneral } from "../../data/examenes"
 import { ejercicios } from "../../data/ejercicios"
 import { fechaLarga } from "../../data/fechas"
 import { orientaciones, rutaOrientaciones, type Orientaciones } from "../../data/orientaciones"
@@ -286,6 +287,13 @@ const jsonLd = {
           </>
         )
       }
+
+      <h2 id="fechas">Fechas y nombre de la prueba</h2>
+      <p>
+        Las <a href={rutaFechas}>fechas y el horario de la PAU {calendario.anio} en Andalucía</a> están en
+        su propia página. Y si te lías con los nombres, aquí se explica si{" "}
+        <a href={rutaNombres}>PAU, PEvAU, EBAU y Selectividad son lo mismo</a>.
+      </p>
 
       <h2 id="documento">Documento oficial</h2>
       <p>

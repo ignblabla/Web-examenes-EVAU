@@ -1,9 +1,21 @@
-# Se permiten los buscadores (y el rastreador de AdSense) y se bloquean los bots que recogen
-# contenido para entrenar modelos de IA. Es la misma lista que gestionaba Cloudflare.
+# Se permiten los buscadores (y el rastreador de AdSense) y los buscadores con IA, que responden
+# citando la fuente, y se bloquean los bots que recogen contenido para entrenar modelos de IA.
+# La lista de bloqueados es la misma que gestionaba Cloudflare.
 
 User-agent: *
 Content-Signal: search=yes,ai-train=no,use=reference
 Allow: /
+
+# Buscadores con IA y visitas que pide un usuario: permitidos de forma explícita.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+
+# Entrenamiento de modelos de IA: bloqueados.
 
 User-agent: Amazonbot
 User-agent: Applebot-Extended
