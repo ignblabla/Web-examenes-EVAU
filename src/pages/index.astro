@@ -116,6 +116,8 @@ const anios = cursos
 
 // Exámenes oficiales (junio y julio) del último curso, enlazados directamente.
 const ultimo = cursos.find((c) => examenes.some((e) => e.data.anio === c.anio))
+// Primer curso con exámenes, para el rango de años de la portada.
+const primerAnio = cursos.findLast((c) => examenes.some((e) => e.data.anio === c.anio))?.anio
 const ultimosExamenes: Enlace[] = ultimo
   ? publicadas.flatMap((a) =>
       ultimo.oficiales
@@ -176,7 +178,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
             <Icon name="arrow-up-right" />
           </a>
           <a href="#metodo" class="text-link">
-            Conoce nuestro método
+            Cómo están resueltos
             <span aria-hidden="true">↓</span>
           </a>
         </div>
@@ -198,7 +200,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
     </div>
     <div class="container hero-foot">
       <span>Exámenes oficiales</span>
-      <span>Resoluciones revisadas</span>
+      <span>Cada respuesta justificada</span>
       <span>Acceso libre</span>
     </div>
   </section>
@@ -213,7 +215,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
         <h2>
           {cuantas} asignaturas.
           <br />
-          <em>Un objetivo claro.</em>
+          <em>De {primerAnio} a {ultimo?.anio}.</em>
         </h2>
         <p>
           Empieza por la asignatura que quieres preparar y avanza a tu ritmo con resoluciones
@@ -318,7 +320,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           <div>
             <h3>Razonamiento visible</h3>
             <p>
-              En los idiomas citamos la línea del texto que justifica cada respuesta y explicamos en
+              En los idiomas cito la línea del texto que justifica cada respuesta y explico en
               español la regla gramatical; en Matemáticas y Física, cada paso del planteamiento y del
               cálculo, con los esquemas y las unidades.
             </p>
@@ -348,8 +350,8 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           <em>exámenes reales.</em>
         </h2>
         <p>
-          Consulta las pruebas organizadas por asignatura, año y convocatoria. Un archivo que
-          crecerá contigo.
+          Consulta las pruebas organizadas por asignatura, año y convocatoria: cada curso, la
+          ordinaria de junio, la extraordinaria de julio y los exámenes de reserva.
         </p>
         <p class="curso-links">
           <a href={rutaExtraordinaria}>Convocatoria extraordinaria (julio)</a>
@@ -446,7 +448,7 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           <p>
             Dura hora y media. Desde el curso 2026-2027 tiene siete ejercicios de 2 puntos, de los que
             se responden cinco: los tres obligatorios y uno de cada uno de los dos bloques con
-            optatividad. Lo explicamos en las
+            optatividad. Lo explico en las
             <a href={rutaOrientaciones("matematicas-ii")}>orientaciones de Matemáticas II</a>. En 2026
             eran seis ejercicios de 2,5 puntos; en 2025, siete, uno obligatorio y tres bloques de dos;
             en 2024, ocho en cuatro bloques de dos, y de 2021 a 2023 se elegían cuatro de ocho. Entran

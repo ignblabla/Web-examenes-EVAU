@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import EnlacesRelacionados, { type Enlace } from "../../../components/EnlacesRelacionados.astro"
 import Icon from "../../../components/Icon.astro"
+import ResumenAnio from "../../../components/ResumenAnio.astro"
 import { asignaturas, buscarAsignatura, nombreSeo, otraLengua } from "../../../data/asignaturas"
 import {
   cursos,
@@ -176,6 +177,7 @@ const jsonLd = {
   <section class="exam-body">
     <div class="container">
       <EnlacesRelacionados id="convocatorias" titulo={`Convocatorias de ${anio}`} enlaces={convocatorias} />
+      <ResumenAnio asignatura={slug} anio={anio} />
       <EnlacesRelacionados id="temas" titulo="Practica por temas" enlaces={temas} />
       <EnlacesRelacionados id="otros-anios" titulo="Otros años" enlaces={otrosAnios} />
 

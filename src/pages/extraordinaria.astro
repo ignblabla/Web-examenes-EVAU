@@ -3,6 +3,7 @@ import { getCollection } from "astro:content"
 import EnlacesRelacionados, { type Enlace } from "../components/EnlacesRelacionados.astro"
 import TablaConvocatorias, { type Fila } from "../components/TablaConvocatorias.astro"
 import { asignaturas } from "../data/asignaturas"
+import { calendario, rutaFechas } from "../data/calendario"
 import { cursos, nombreExamen, prueba, rutaAnteriores, rutaCurso, rutaExamen } from "../data/examenes"
 import { editor, migas, referenciaWeb } from "../data/sitio"
 import Base from "../layouts/Base.astro"
@@ -28,6 +29,11 @@ const filas: Fila[] = publicadas.map((a) => ({
     }
   }),
 }))
+
+// Fechas de la próxima extraordinaria, si el calendario es de un curso sin exámenes todavía.
+const diaMes = new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", timeZone: "UTC" })
+const proxima = calendario.anio > ultimo ? calendario.extraordinaria.map((d) => diaMes.format(new Date(d))) : []
+const fechasProxima = proxima.length > 1 ? `${proxima.slice(0, -1).join(", ")} y ${proxima.at(-1)}` : proxima[0]
 
 const nombres = publicadas.map((a) => a.nombre)
 const lista = `${nombres.slice(0, -1).join(", ")} y ${nombres.at(-1)}`
@@ -126,6 +132,33 @@ const jsonLd = {
           columnas={anios.map((c) => `${c.anio} (${prueba(c.anio)})`)}
           filas={filas}
         />
+      </section>
+
+      <section class="year-notes" aria-labelledby="modelo">
+        <h2 class="related-title" id="modelo">
+          Cómo es el examen de julio
+        </h2>
+        <p>
+          El examen de julio sigue el mismo modelo que el de junio del mismo curso: las mismas
+          instrucciones, el mismo número de ejercicios y la misma puntuación. Por eso sirve igual
+          para practicar, y junto con junio y las reservas te da varios exámenes de cada año con el
+          mismo formato.
+        </p>
+        <p>
+          Lo que sí ha cambiado es el modelo de un curso a otro. Si practicas con exámenes de años
+          anteriores, mira cómo era el examen ese año en la página de cada curso, por ejemplo en la
+          de <a href={rutaCurso(ultimo)}>{ultimo}</a>, para saber qué parte de la optatividad ya no
+          se aplica.
+        </p>
+        {
+          fechasProxima && (
+            <p>
+              En {calendario.anio} la convocatoria extraordinaria será los días {fechasProxima}
+              {calendario.pendienteBoja && " (pendiente de su publicación en el BOJA)"}. Tienes el horario completo en las{" "}
+              <a href={rutaFechas}>fechas de la PAU</a>.
+            </p>
+          )
+        }
       </section>
 
       <section class="curso-section" aria-labelledby="por-anio">

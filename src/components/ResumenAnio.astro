@@ -1,0 +1,149 @@
+---
+// Resumen de un curso en la página de año de una asignatura (/<asignatura>/<año>/):
+// cómo era el examen y, en Matemáticas y Física, en qué ejercicio cayó cada tema; en los
+// idiomas, los textos de la comprensión lectora. Todo sale de los datos y de los enunciados.
+import { getCollection } from "astro:content"
+import { buscarAsignatura } from "../data/asignaturas"
+import { cursos, etiquetaEjercicios, examenesDe, rutaTema } from "../data/examenes"
+import { ejercicios as rotulos } from "../data/ejercicios"
+import { formatoDe } from "../data/formatos"
+
+interface Props {
+  asignatura: string
+  anio: number
+}
+
+const { asignatura: slug, anio } = Astro.props
+const asignatura = buscarAsignatura(slug)
+const curso = cursos.find((c) => c.anio === anio)!
+const formato = formatoDe(slug, anio)
+
+const archivos = (await getCollection("ejercicios")).filter(
+  (e) => e.data.asignatura === slug && e.data.anio === anio,
+)
+const examenes = examenesDe(curso).filter((ex) => archivos.some((a) => a.data.convocatoria === ex.slug))
+const idioma = slug === "ingles" || slug === "frances"
+
+// Matemáticas y Física: en qué ejercicio salió cada tema en cada convocatoria.
+const temas = idioma
+  ? []
+  : asignatura.temas
+      .map((tema) => {
+        const apariciones = examenes
+          .map((ex) => {
+            const partes = archivos.filter((a) => a.data.tema === tema.slug && a.data.convocatoria === ex.slug)
+            // En orden natural (apartado a2 antes que b2) y en minúscula, porque van dentro de la frase.
+            const etiquetas = partes
+              .flatMap((p) => rotulos[p.id] ?? [])
+              .sort((x, y) => x.localeCompare(y, "es", { numeric: true }))
+            // "Bloque C, apartado a2" y "Bloque C, apartado b2" se juntan en "Bloque C, apartados a2 y b2".
+            const apartados = etiquetas.map((e) => e.match(/^(.+), apartado (.+)$/))
+            const mismoBloque =
+              etiquetas.length > 1 && apartados.every((m) => m && m[1] === apartados[0]![1])
+            const texto = mismoBloque
+              ? `${apartados[0]![1]}, apartados ${apartados.map((m) => m![2]).join(" y ")}`
+              : etiquetaEjercicios(etiquetas)
+            const rotulo = texto.replace(/\b(Bloque|Ejercicios?)\b/g, (m) => m.toLowerCase())
+            return { examen: ex.titulo, rotulo }
+          })
+          .filter((a) => a.rotulo)
+        const iguales = apariciones.length > 0 && apariciones.every((a) => a.rotulo === apariciones[0].rotulo)
+        return { tema, apariciones, iguales }
+      })
+      .filter((t) => t.apariciones.length > 0)
+
+// Idiomas: títulos de los textos de la comprensión lectora, tal como aparecen en el examen.
+const comprension = asignatura.temas.find((t) => t.slug === "comprension-lectora")
+const textos = idioma
+  ? examenes
+      .map((ex) => {
+        const archivo = archivos.find((a) => a.data.tema === "comprension-lectora" && a.data.convocatoria === ex.slug)
+        const titulos = [...(archivo?.body ?? "").matchAll(/class="(?:en|fr)-heading[^"]*"[^>]*>([\s\S]*?)<\/p>/g)].map(
+          (m) =>
+            m[1]
+              .replace(/<[^>]+>/g, "")
+              .replace(/^TEXT \d+:\s*/i, "")
+              .trim(),
+        )
+        return { examen: ex.titulo, titulos }
+      })
+      .filter((t) => t.titulos.length > 0)
+  : []
+const dosTextos = textos.some((t) => t.titulos.length > 1)
+// "Reading" se escribe con mayúscula; "compréhension", en minúscula dentro de la frase.
+const termino = comprension ? (comprension.termino ?? comprension.titulo) : ""
+const nombreTextos = slug === "frances" ? termino.toLowerCase() : termino
+const unoODos = (n: number) => (n === 1 ? "uno" : String(n))
+
+---
+
+{
+  formato && (
+    <section class="year-notes" aria-labelledby="formato">
+      <h2 class="related-title" id="formato">
+        Cómo era el examen de {anio}
+      </h2>
+      <p>
+        <strong>Estructura.</strong>{" "}{formato.resumen}
+      </p>
+      {formato.detalle && <p>{formato.detalle}</p>}
+    </section>
+  )
+}
+
+{
+  temas.length > 0 && (
+    <section class="year-notes" aria-labelledby="que-cayo">
+      <h2 class="related-title" id="que-cayo">
+        Qué cayó en {anio}, tema a tema
+      </h2>
+      <p>
+        En qué ejercicio salió cada tema en {examenes.length === 1 ? "el examen" : `los ${examenes.length} exámenes`} de{" "}
+        {anio}. Cada tema enlaza con sus ejercicios de ese año, resueltos.
+      </p>
+      <ul class="year-topics">
+        {temas.map(({ tema, apariciones, iguales }) => (
+          <li>
+            <a href={rutaTema(slug, tema, anio)}>{tema.titulo}</a>{iguales && apariciones.length === examenes.length ? (
+              <span>
+                {examenes.length === 1 ? ": " : `: en los ${examenes.length} exámenes, `}
+                {apariciones[0].rotulo}.
+              </span>
+            ) : (
+              <span>
+                {apariciones.length === examenes.length
+                  ? `: en ${examenes.length === 1 ? "el examen" : `los ${examenes.length} exámenes`}. `
+                  : `: en ${unoODos(apariciones.length)} de los ${examenes.length} exámenes. `}
+                {apariciones.map((a) => `${a.examen}, ${a.rotulo}`).join("; ")}.
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+{
+  textos.length > 0 && comprension && (
+    <section class="year-notes" aria-labelledby="textos">
+      <h2 class="related-title" id="textos">
+        Los textos de {anio}
+      </h2>
+      <p>
+        {dosTextos
+          ? `En cada examen había dos textos de ${nombreTextos} y se elegía uno. Estos son sus títulos:`
+          : `Cada examen tenía un único texto de ${nombreTextos}. Estos son sus títulos:`}
+      </p>
+      <ul class="year-topics">
+        {textos.map((t) => (
+          <li>
+            <a href={`${rutaTema(slug, comprension, anio)}#${examenes.find((e) => e.titulo === t.examen)?.slug}`}>
+              {t.examen}
+            </a>{": "}{t.titulos.map((x, i) => <>{i > 0 && " y "}«<span lang={asignatura.idioma}>{x}</span>»</>)}.
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

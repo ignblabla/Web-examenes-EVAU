@@ -15,6 +15,7 @@ import {
   rutaExtraordinaria,
 } from "../data/examenes"
 import { fechaLarga, fechasDe } from "../data/fechas"
+import { formatoDe } from "../data/formatos"
 import { editor, migas, referenciaWeb } from "../data/sitio"
 import Base from "../layouts/Base.astro"
 
@@ -56,6 +57,16 @@ const filas: Fila[] = publicadas.map((a) => ({
 const incompletas = publicadas
   .map((a) => ({ asignatura: a, reservas: cursoDe(a, curso).reservas.filter((e) => publicado(a.slug, e.slug)) }))
   .filter((x) => x.reservas.length < curso.reservas.length)
+
+// Cómo era el examen de cada asignatura ese curso y cuáles cambiaron respecto al anterior.
+const formatos = publicadas
+  .map((a) => ({ asignatura: a, formato: formatoDe(a.slug, anio) }))
+  .filter((x) => x.formato)
+const conAnterior = examenes.some((e) => e.data.anio === anio - 1)
+const cambiaron = conAnterior
+  ? formatos.filter((x) => formatoDe(x.asignatura.slug, anio - 1) !== x.formato).map((x) => x.asignatura.nombre)
+  : []
+const unir = (xs: string[]) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} y ${xs.at(-1)}` : xs[0])
 
 const nombres = publicadas.map((a) => a.nombre)
 const lista = nombres.length > 1 ? `${nombres.slice(0, -1).join(", ")} y ${nombres.at(-1)}` : nombres[0]
@@ -167,6 +178,32 @@ const jsonLd = {
           filas={filas}
         />
       </section>
+
+      {
+        formatos.length > 0 && (
+          <section class="year-notes" aria-labelledby="formato">
+            <h2 class="related-title" id="formato">
+              Cómo era cada examen en {anio}
+            </h2>
+            <p>
+              Todos duraban 1 hora y 30 minutos.{" "}
+              {conAnterior &&
+                (cambiaron.length === 0
+                  ? `Ninguna asignatura cambió de formato respecto a ${anio - 1}.`
+                  : cambiaron.length === formatos.length
+                    ? `Respecto a ${anio - 1} hubo cambios en el examen de todas las asignaturas.`
+                    : `Respecto a ${anio - 1} hubo cambios en el examen de ${unir(cambiaron)}; el resto se mantuvo igual.`)}
+            </p>
+            <ul class="year-topics">
+              {formatos.map(({ asignatura, formato }) => (
+                <li>
+                  <a href={rutaAnio(asignatura.slug, anio)}>{asignatura.nombre}</a>{": "}{formato!.resumen}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
 
       <EnlacesRelacionados id="otros-anios" titulo="Otros años" enlaces={otros} />
     </div>
