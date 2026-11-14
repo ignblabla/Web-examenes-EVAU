@@ -13,6 +13,7 @@ import Ejercicio from "../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../components/oficial/Nuclido.astro"
 import Resuelto from "../../../components/oficial/Resuelto.astro"
 import IndiceExamen from "../../../components/IndiceExamen.astro"
+import Redaccion from "../../../components/Redaccion.astro"
 import { buscarAsignatura, nombreSeo, nombresSeo, otraLengua } from "../../../data/asignaturas"
 import { cabeceras } from "../../../data/cabeceras"
 import {
@@ -74,7 +75,14 @@ const bloquesResueltos =
   nombresResueltos.length > 1
     ? `${nombresResueltos.slice(0, -1).join(", ")} ${/^h?i(?![aeiouáéíóú])/i.test(ultimoResuelto) ? "e" : "y"} ${ultimoResuelto}`
     : ultimoResuelto
-const publicados = new Set((await getCollection("examenes")).map((e) => e.id))
+// Redacciones modelo del Writing / de la expression écrite, si el examen las tiene. El bloque
+// de la redacción es el C, salvo en Francés desde 2026, que numera los bloques I, II y III.
+const conRedacciones = (entrada.body ?? "").includes("<Redaccion")
+const nombreRedaccion = slug === "frances" ? "la expression écrite" : "Writing"
+const redaccion = conRedacciones
+  ? `${slug === "frances" ? "Expression écrite" : "Writing"}: bloque ${slug === "frances" && anio >= 2026 ? "III" : "C"}, con una redacción modelo de cada tema`
+  : undefined
+const publicados =new Set((await getCollection("examenes")).map((e) => e.id))
 const publicado = (asig: string, a: number, conv: string) => publicados.has(`${asig}/${a}/${conv}`)
 
 // Las mismas fechas que el <lastmod> del sitemap: salen de la ruta de la página.
@@ -258,7 +266,7 @@ const jsonLd = {
       <p class="hero-lead">
         {
           resuelto
-            ? `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}, corregido y con las soluciones de ${bloquesResueltos} explicadas pregunta a pregunta. Intenta cada ejercicio antes de mirar su solución.`
+            ? `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}, corregido y con las soluciones de ${bloquesResueltos} explicadas pregunta a pregunta${conRedacciones ? ` y una redacción modelo de cada tema de ${nombreRedaccion}` : ""}. Intenta cada ejercicio antes de mirar su solución.`
             : `Este es el examen oficial de ${examen.tipo === "reserva" ? "la " : ""}${nombre} de la ${presentacion}. Las soluciones aún no están publicadas.`
         }
       </p>
@@ -276,7 +284,7 @@ const jsonLd = {
 
   <section class="exam-body">
     <div class="container">
-      <IndiceExamen asignatura={asignatura} partes={ejercicios} />
+      <IndiceExamen asignatura={asignatura} partes={ejercicios} redaccion={redaccion} />
 
       <article class="exam-sheet">
         {cabecera && <Cabecera cabecera={cabecera} />}
@@ -284,7 +292,7 @@ const jsonLd = {
           class={`official-statement official-statement--${entrada.data.formato}`}
           lang={asignatura.idioma}
         >
-          <Content components={{ Bloque, Datos, Ecuacion, Ejercicio, Nuclido, Resuelto }} />
+          <Content components={{ Bloque, Datos, Ecuacion, Ejercicio, Nuclido, Redaccion, Resuelto }} />
         </div>
       </article>
       {

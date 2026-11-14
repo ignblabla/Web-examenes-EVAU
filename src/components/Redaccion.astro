@@ -1,0 +1,28 @@
+---
+// Redacción modelo de un tema del Writing (Inglés) o de la expression écrite (Francés), al
+// final del examen completo. El texto va en el idioma del examen y el comentario, en español.
+// El número de palabras se cuenta aquí, al compilar, para que nunca se desajuste del texto.
+import Solucion from "./Solucion.astro"
+
+interface Props {
+  titulo: string
+  idioma: "en" | "fr"
+}
+
+const { titulo, idioma } = Astro.props
+const texto = await Astro.slots.render("default")
+const comentario = Astro.slots.has("comentario") ? await Astro.slots.render("comentario") : ""
+// Cuenta como palabra cada grupo de caracteres sin espacios que tenga alguna letra o cifra:
+// "l’utilisation" o "well-known" cuentan como una, como en un contador de palabras.
+const palabras = texto
+  .replace(/<[^>]+>/g, " ")
+  .replace(/&[#a-z0-9]+;/gi, " ")
+  .split(/\s+/)
+  .filter((p) => /[\p{L}\p{N}]/u.test(p)).length
+---
+
+<Solucion plegable titulo={titulo}>
+  <div class="writing-model" lang={idioma} set:html={texto} />
+  <p class="writing-count">{palabras} palabras.</p>
+  {comentario && <Fragment set:html={comentario} />}
+</Solucion>

@@ -3448,6 +3448,29 @@ footer {
   margin-bottom: 0;
 }
 
+/* Redacción modelo: el texto en blanco, como una hoja, y debajo el recuento y el comentario. */
+.official-statement .solution .writing-model {
+  margin: 4px 0 10px;
+  padding: 14px 16px;
+  background: white;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.official-statement .solution .writing-model p {
+  margin: 0 0 10px;
+}
+
+.official-statement .solution .writing-model p:last-child {
+  margin-bottom: 0;
+}
+
+.official-statement .solution .writing-count {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .official-statement .solution .solution-label {
   margin-bottom: 6px;
   color: var(--teal);
