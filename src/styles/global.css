@@ -1382,11 +1382,12 @@ footer {
     height: 60px;
   }
 
+  /* En móvil los tres rótulos saltan de línea en vez de cortarse. */
   .hero-foot {
+    flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 30px;
-    overflow: hidden;
-    white-space: nowrap;
+    gap: 10px 26px;
+    padding: 16px 0;
   }
 
   .section-heading h2,
@@ -2052,12 +2053,15 @@ footer {
   margin: 0 0 14px;
 }
 
-/* Texto justificado, con guiones para que no queden huecos grandes en columnas estrechas. */
-.legal-sheet p,
-.legal-sheet li {
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
+/* Texto justificado, con guiones, solo donde la columna es ancha: en móvil deja huecos grandes
+   entre palabras. */
+@media (min-width: 561px) {
+  .legal-sheet p,
+  .legal-sheet li {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
 }
 
 .legal-sheet ul {
@@ -4268,4 +4272,73 @@ footer {
   padding-top: 16px !important;
   color: var(--ink-soft) !important;
   text-align: center !important;
+}
+
+/* ---------- Indicación de que una caja se desplaza en horizontal ---------- */
+
+/* Tablas y fórmulas más anchas que la columna: sombra en el borde que tiene más contenido, sin
+   JavaScript. Las capas "local" se mueven con el contenido y tapan la sombra al llegar a cada
+   extremo; si la caja cabe entera, las dos sombras quedan tapadas. --fondo-scroll debe ser el
+   color de fondo de la caja. */
+.legal-table,
+.tabla-convocatorias,
+.official-statement .solution .katex-display {
+  --fondo-scroll: white;
+  background:
+    linear-gradient(to right, var(--fondo-scroll) 30%, transparent) left / 36px 100% no-repeat local,
+    linear-gradient(to left, var(--fondo-scroll) 30%, transparent) right / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(23, 44, 39, 0.24), transparent) left / 12px 100%
+      no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(23, 44, 39, 0.24), transparent) right / 12px
+      100% no-repeat scroll,
+    var(--fondo-scroll);
+}
+
+.tabla-convocatorias {
+  --fondo-scroll: var(--paper);
+}
+
+.official-statement .solution .katex-display {
+  --fondo-scroll: #eef4f1;
+}
+
+/* En móvil, además, un aviso encima de las tablas. Es sticky para que no se vaya al desplazar
+   y los lectores de pantalla no lo leen (texto alternativo vacío). */
+@media (max-width: 560px) {
+  .legal-table::before,
+  .tabla-convocatorias::before {
+    content: "desliza →";
+    content: "desliza →" / "";
+    position: sticky;
+    left: 0;
+    display: block;
+    padding: 0 0 6px;
+    color: var(--ink-soft);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: right;
+  }
+
+  .tabla-convocatorias::before {
+    padding: 8px 12px 0;
+  }
+}
+
+@media print {
+  .legal-table,
+  .tabla-convocatorias,
+  .official-statement .solution .katex-display {
+    background: none;
+  }
+
+  .legal-table::before,
+  .tabla-convocatorias::before {
+    content: none;
+  }
+}
+
+/* Índice de años en la cabecera de la página de la extraordinaria. */
+.curso-links--hero {
+  margin: 22px 0 0;
 }

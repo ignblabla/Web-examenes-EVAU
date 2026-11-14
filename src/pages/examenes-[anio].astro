@@ -148,6 +148,7 @@ const jsonLd = {
             ` De ${asignatura.nombre} de ${anio}, por ahora solo está disponible ${reservas.length === 1 ? `la ${reservas[0].titulo.toLowerCase()}` : `${reservas.length} reservas`}.`,
           )
         }
+        {" "}Cada examen se puede descargar en PDF.
       </p>
       <p class="exam-updated">
         Actualizado el <time datetime={modificado}>{fechaLarga(modificado)}</time>

@@ -98,7 +98,12 @@ const opciones = [
 const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
 // La descripción más completa que quepa en 155 caracteres. Hasta 2024 la prueba era la PEvAU.
 const pruebaSeo = prueba(anio) === "PAU" ? "PAU, antes PEvAU" : "PEvAU"
-const inicioDescripcion = `Examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía, ${convocatoriaLarga} de ${anio},`
+// La extraordinaria empieza por su nombre ("Convocatoria extraordinaria (julio) de 2025"), que
+// es como se busca; el title sigue diciendo "julio".
+const inicioDescripcion =
+  examen.tipo === "extraordinaria"
+    ? `Convocatoria extraordinaria (${convocatoriaCorta}) de ${anio}: examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía,`
+    : `Examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía, ${convocatoriaLarga} de ${anio},`
 const descripciones = resuelto
   ? [
       ...(asignatura.soluciones
@@ -106,12 +111,16 @@ const descripciones = resuelto
         : []),
       `${inicioDescripcion} resuelto paso a paso, con soluciones explicadas.`,
       `${inicioDescripcion} resuelto paso a paso y con soluciones.`,
+      `${inicioDescripcion} resuelto paso a paso.`,
     ]
   : [
       `Enunciado oficial del examen de ${corto} de Selectividad (${pruebaSeo}) de Andalucía de ${nombre}: ${tipoLargo(examen.tipo).toLowerCase()} del curso ${curso.curso}.`,
     ]
-const descripcion =
+const descripcionBase =
   entrada.data.descripcion ?? descripciones.find((d) => d.length <= 155) ?? descripciones.at(-1)!
+// "Descargable en PDF" solo si cabe sin quitar nada de la descripción elegida.
+const conPdf = `${descripcionBase} Descargable en PDF.`
+const descripcion = resuelto && conPdf.length <= 155 ? conPdf : descripcionBase
 const url = new URL(Astro.url.pathname, Astro.site).href
 // Primer párrafo: el nombre de la prueba ese curso y los demás con los que se busca.
 const presentacion =

@@ -109,6 +109,10 @@ const jsonLd = {
         una convocatoria extraordinaria en julio. Aquí tienes todos los exámenes de julio de {lista},
         de {primero} a {ultimo}, con el enunciado oficial y las soluciones explicadas.
       </p>
+      <nav class="curso-links curso-links--hero" aria-label="Años">
+        Ir al año:
+        {anios.map((c) => <a href={`#${c.anio}`}>Julio {c.anio}</a>)}
+      </nav>
     </div>
   </section>
 
@@ -122,6 +126,30 @@ const jsonLd = {
           columnas={anios.map((c) => `${c.anio} (${prueba(c.anio)})`)}
           filas={filas}
         />
+      </section>
+
+      <section class="curso-section" aria-labelledby="por-anio">
+        <h2 id="por-anio">Exámenes de julio, año a año</h2>
+        {
+          anios.map((c) => {
+            const julio = c.oficiales.find((e) => e.tipo === "extraordinaria")!
+            return (
+              <section class="curso-anio" id={String(c.anio)} aria-labelledby={`julio-${c.anio}`}>
+                <h3 id={`julio-${c.anio}`}>
+                  Julio de {c.anio} ({prueba(c.anio)})
+                </h3>
+                <p class="curso-links">
+                  {publicadas
+                    .filter((a) => publicado(a.slug, c.anio))
+                    .map((a) => (
+                      <a href={rutaExamen(a.slug, c.anio, julio)}>{a.nombre}</a>
+                    ))}
+                  <a href={rutaCurso(c.anio)}>Todos los exámenes de {c.anio}</a>
+                </p>
+              </section>
+            )
+          })
+        }
       </section>
 
       <section class="curso-section" aria-labelledby="reservas">
