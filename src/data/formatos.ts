@@ -5,7 +5,7 @@
 // enunciados (src/content): número de ejercicios, optatividad, puntos y palabras de la
 // redacción. Al añadir un curso nuevo, añade aquí su formato a partir del examen oficial.
 
-interface Formato {
+export interface Formato {
   desde: number
   hasta: number
   // Una o dos frases; el resumen corto va primero y se usa también en /examenes-<año>/.
@@ -178,4 +178,9 @@ const formatos: Record<string, Formato[]> = {
 
 export function formatoDe(asignatura: string, anio: number): Formato | undefined {
   return formatos[asignatura]?.find((f) => anio >= f.desde && anio <= f.hasta)
+}
+
+// Todos los formatos de una asignatura, del más reciente al más antiguo.
+export function formatosDe(asignatura: string): Formato[] {
+  return [...(formatos[asignatura] ?? [])].reverse()
 }

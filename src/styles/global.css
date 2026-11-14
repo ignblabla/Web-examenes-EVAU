@@ -2415,6 +2415,30 @@ footer {
   margin-top: 48px;
 }
 
+/* Página de la asignatura: cómo ha cambiado el examen y los temas de la redacción. */
+.subject-notes .year-notes:first-child {
+  margin-top: 0;
+}
+
+.writing-topics {
+  margin-top: 18px;
+  max-width: 72ch;
+}
+
+.writing-topics summary {
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.writing-topics h3 {
+  margin: 22px 0 4px;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+}
+
 /* En el examen va antes del enunciado. */
 .exam-index {
   margin: 48px auto 56px;

@@ -1,0 +1,171 @@
+---
+// Texto propio de la página de una asignatura: cómo ha cambiado el examen desde 2021 y, en
+// Inglés y Francés, qué piden los temas de la redacción, qué asuntos se repiten y la lista
+// de todos ellos. Los recuentos se calculan a partir de los enunciados en cada build.
+import { getCollection } from "astro:content"
+import type { Asignatura } from "../data/asignaturas"
+import { cursos, examenesDe, rutaAnio, rutaExamen } from "../data/examenes"
+import { formatosDe } from "../data/formatos"
+import { asuntos, instruccionesFrances, instruccionesIngles, temasRedaccion } from "../data/redacciones"
+
+interface Props {
+  asignatura: Asignatura
+}
+
+const { asignatura } = Astro.props
+const { slug } = asignatura
+const formatos = formatosDe(slug)
+const idioma = slug === "ingles" || slug === "frances"
+
+// Temas de la redacción de cada examen publicado, del curso más reciente al más antiguo.
+const examenes = await getCollection("examenes")
+const porAnio = idioma
+  ? cursos
+      .map((c) => ({
+        anio: c.anio,
+        examenes: examenesDe(c)
+          .map((ex) => {
+            const entrada = examenes.find((e) => e.id === `${slug}/${c.anio}/${ex.slug}`)
+            return entrada ? { examen: ex, temas: temasRedaccion(entrada.body ?? "", slug) } : undefined
+          })
+          .filter((x) => x !== undefined && x.temas.length > 0),
+      }))
+      .filter((a) => a.examenes.length > 0)
+  : []
+const todos = porAnio.flatMap((a) => a.examenes.flatMap((e) => e!.temas.map((t) => ({ anio: a.anio, tema: t }))))
+const total = todos.length
+
+const instrucciones = (slug === "frances" ? instruccionesFrances : instruccionesIngles).map((i) => {
+  const casos = todos.filter((t) => i.patron.test(t.tema))
+  return { ...i, cuantos: casos.length, anios: [...new Set(casos.map((c) => c.anio))].sort() }
+})
+const sinInstruccionCasos = todos.filter((t) => !instrucciones.some((i) => i.patron.test(t.tema)))
+const sinInstruccion = sinInstruccionCasos.length
+const aniosSin = [...new Set(sinInstruccionCasos.map((t) => t.anio))]
+const anioSin = aniosSin.length === 1 ? aniosSin[0] : undefined
+const cuantos = (nombre: string) => instrucciones.find((i) => i.nombre === nombre)
+const racontez = cuantos("Racontez / Expliquez")
+const anioRacontez = racontez && racontez.anios.length === 1 ? racontez.anios[0] : undefined
+
+const repetidos = asuntos
+  .map((a) => ({ nombre: a.nombre, cuantos: todos.filter((t) => a.patron.test(t.tema)).length }))
+  .filter((a) => a.cuantos >= 3)
+  .sort((a, b) => b.cuantos - a.cuantos)
+const lista = (xs: string[]) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} y ${xs.at(-1)}` : xs[0])
+const rango = (desde: number, hasta: number) => (desde === hasta ? `${desde}` : `De ${desde} a ${hasta}`)
+---
+
+{
+  formatos.length > 1 && (
+    <section class="year-notes" aria-labelledby="cambios">
+      <h2 class="related-title" id="cambios">
+        Cómo ha cambiado el examen
+      </h2>
+      <p>
+        El examen de {asignatura.nombre} ha cambiado de formato varias veces desde{" "}
+        {formatos.at(-1)!.desde}. Si practicas con exámenes antiguos, ten en cuenta que la forma de
+        elegir los ejercicios no era la de ahora. Estos han sido los modelos:
+      </p>
+      <ul class="year-topics">
+        {formatos.map((f) => (
+          <li>
+            <a href={rutaAnio(slug, f.hasta)}>{rango(f.desde, f.hasta)}</a>
+            {": "}
+            {f.resumen}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+{
+  idioma && total > 0 && (
+    <section class="year-notes" aria-labelledby="redaccion">
+      <h2 class="related-title" id="redaccion">
+        {slug === "frances" ? "Los temas de la expression écrite" : "Los temas del Writing"}
+      </h2>
+      {slug === "ingles" ? (
+        <>
+          <p>
+            Desde {porAnio.at(-1)!.anio} han salido {total} temas de Writing, dos por examen. Casi
+            todos terminan con una instrucción que dice qué tipo de texto se espera:
+          </p>
+          <ul class="year-topics">
+            <li>
+              <strong lang="en">Discuss</strong> ({cuantos("Discuss")?.cuantos} temas): te dan un asunto o
+              una afirmación para que argumentes. Da tu opinión, apóyala con razones y reconoce el otro
+              punto de vista antes de concluir.
+            </li>
+            <li>
+              <strong lang="en">Explain</strong> ({cuantos("Explain")?.cuantos} temas): suele preguntar por
+              tu experiencia o por tu forma de ver algo. Responde con ejemplos personales concretos.
+            </li>
+            <li>
+              <strong lang="en">Give reasons</strong> ({cuantos("Give reasons")?.cuantos} temas, contando
+              los que terminan en <em lang="en">Why?</em>): pide una preferencia o una postura y las razones
+              que la justifican, mejor una por párrafo.
+            </li>
+            {sinInstruccion > 0 && (
+              <li>
+                Los otros {sinInstruccion}{anioSin && `, todos de ${anioSin},`} no llevan esa instrucción:
+                son preguntas directas o piden contar algo (<em lang="en">Share a memorable story</em>,{" "}
+                <em lang="en">Describe a trip</em>).
+              </li>
+            )}
+          </ul>
+        </>
+      ) : (
+        <>
+          <p>
+            Desde {porAnio.at(-1)!.anio} han salido {total} temas de expression écrite, dos por examen.
+            {cuantos("Argumentez votre réponse")?.cuantos} de ellos terminan con{" "}
+            <em lang="fr">Argumentez votre réponse</em>: piden un texto argumentativo, con tu opinión
+            y dos o tres razones bien ordenadas.
+            {racontez && racontez.cuantos > 0 && (
+              <>
+                {" "}Otros {racontez.cuantos}
+                {anioRacontez && `, todos de ${anioRacontez},`} piden contar tu experiencia
+                (<em lang="fr">Racontez</em>, <em lang="fr">Expliquez</em>, <em lang="fr">Illustrez</em>).
+                {sinInstruccion > 0 &&
+                  ` ${sinInstruccion === 1 ? "El que queda es una pregunta directa" : `Los ${sinInstruccion} que quedan son preguntas directas`} de opinión.`}
+              </>
+            )}
+          </p>
+        </>
+      )}
+      {repetidos.length > 0 && (
+        <p>
+          Los asuntos que más se repiten, contando los temas que los mencionan, son{" "}
+          {lista(repetidos.map((r) => `${r.nombre} (${r.cuantos})`))}. Tener preparado vocabulario de
+          estos asuntos es una buena inversión.
+        </p>
+      )}
+      <p>
+        Cada examen tiene una redacción modelo de cada tema, con un comentario de por qué funciona.
+      </p>
+      <details class="writing-topics">
+        <summary>Ver los {total} temas, año a año</summary>
+        {porAnio.map((a) => (
+          <>
+            <h3>{a.anio}</h3>
+            <ul class="year-topics">
+              {a.examenes.map((e) => (
+                <li>
+                  <a href={rutaExamen(slug, a.anio, e!.examen)}>{e!.examen.titulo}</a>
+                  {": "}
+                  {e!.temas.map((t, i) => (
+                    <>
+                      {i > 0 && " · "}
+                      <span lang={asignatura.idioma}>{t}</span>
+                    </>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </>
+        ))}
+      </details>
+    </section>
+  )
+}
