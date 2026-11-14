@@ -2417,7 +2417,12 @@ footer {
 
 /* En el examen va antes del enunciado. */
 .exam-index {
-  margin: 0 auto 56px;
+  margin: 48px auto 56px;
+}
+
+/* La hoja del examen sube sobre la cabecera con margen negativo; tras el recuadro, no. */
+.exam-index + .exam-sheet {
+  margin-top: 0;
 }
 
 .year-notes p {

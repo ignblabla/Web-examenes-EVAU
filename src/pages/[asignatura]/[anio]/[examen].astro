@@ -287,6 +287,15 @@ const jsonLd = {
           <Content components={{ Bloque, Datos, Ecuacion, Ejercicio, Nuclido, Resuelto }} />
         </div>
       </article>
+      {
+        /* La primera solución sale abierta, como muestra de cómo están resueltos; el resto,
+           plegadas. En línea y justo después del examen para que no se vea cerrarse y abrirse. */
+        resuelto && (
+          <script is:inline>
+            document.querySelector(".exam-sheet .solution--plegable")?.setAttribute("open", "")
+          </script>
+        )
+      }
 
       <EnlacesRelacionados id="sigue-practicando" titulo="Sigue practicando" enlaces={enlaces} />
 
