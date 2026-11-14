@@ -2415,6 +2415,11 @@ footer {
   margin-top: 48px;
 }
 
+/* En el examen va antes del enunciado. */
+.exam-index {
+  margin: 0 auto 56px;
+}
+
 .year-notes p {
   max-width: 72ch;
   margin: 0 0 14px;
@@ -3695,6 +3700,7 @@ footer {
   .solution-toggle,
   .topic-exam-toggle,
   .topic-exam-head .text-link,
+  .exam-index,
   ins.adsbygoogle,
   .google-auto-placed,
   button {

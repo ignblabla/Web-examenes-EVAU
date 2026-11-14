@@ -1,0 +1,52 @@
+---
+// "Qué entra en este examen": cada tema con sus ejercicios en el examen, en el orden del
+// examen, y en los idiomas el título del texto. Va encima del enunciado para que lo primero
+// que se lea sea contenido propio. Sale de src/data/ejercicios.ts y de los MDX de temas.
+import type { CollectionEntry } from "astro:content"
+import type { Asignatura } from "../data/asignaturas"
+import { rotuloEnFrase, rutaTemaGeneral, titulosTextos } from "../data/examenes"
+import { ejercicios as rotulos } from "../data/ejercicios"
+
+interface Props {
+  asignatura: Asignatura
+  // Los archivos de temas de este examen.
+  partes: CollectionEntry<"ejercicios">[]
+}
+
+const { asignatura, partes } = Astro.props
+
+const filas = asignatura.temas
+  .map((tema) => {
+    const archivos = partes.filter((p) => p.data.tema === tema.slug)
+    const etiquetas = archivos.flatMap((p) => rotulos[p.id] ?? [])
+    const titulos = tema.slug === "comprension-lectora" ? archivos.flatMap((p) => titulosTextos(p.body ?? "")) : []
+    return { tema, etiquetas, titulos }
+  })
+  .filter((f) => f.etiquetas.length > 0)
+  // En el orden en que aparecen en el examen: por su primer ejercicio.
+  .sort((a, b) => {
+    const primero = (xs: string[]) => [...xs].sort((x, y) => x.localeCompare(y, "es", { numeric: true }))[0]
+    return primero(a.etiquetas).localeCompare(primero(b.etiquetas), "es", { numeric: true })
+  })
+---
+
+{
+  filas.length > 0 && (
+    <section class="year-notes exam-index" aria-labelledby="que-entra">
+      <h2 class="related-title" id="que-entra">
+        Qué entra en este examen
+      </h2>
+      <p>
+        Los ejercicios resueltos en esta página y el tema de cada uno. Cada tema enlaza con todos sus
+        ejercicios de Selectividad desde 2021, para practicarlo a fondo.
+      </p>
+      <ul class="year-topics">
+        {filas.map(({ tema, etiquetas, titulos }) => (
+          <li>
+            <a href={rutaTemaGeneral(asignatura.slug, tema)}>{tema.termino ?? tema.titulo}</a>{": "}{rotuloEnFrase(etiquetas)}{titulos.length === 1 && <>, con el texto «<span lang={asignatura.idioma}>{titulos[0]}</span>»</>}{titulos.length > 1 && <>, con dos textos para elegir: {titulos.map((t, i) => <>{i > 0 && " y "}«<span lang={asignatura.idioma}>{t}</span>»</>)}</>}.
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

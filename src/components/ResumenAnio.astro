@@ -4,7 +4,7 @@
 // idiomas, los textos de la comprensión lectora. Todo sale de los datos y de los enunciados.
 import { getCollection } from "astro:content"
 import { buscarAsignatura } from "../data/asignaturas"
-import { cursos, etiquetaEjercicios, examenesDe, rutaTema } from "../data/examenes"
+import { cursos, examenesDe, rotuloEnFrase, rutaTema, titulosTextos } from "../data/examenes"
 import { ejercicios as rotulos } from "../data/ejercicios"
 import { formatoDe } from "../data/formatos"
 
@@ -32,19 +32,8 @@ const temas = idioma
         const apariciones = examenes
           .map((ex) => {
             const partes = archivos.filter((a) => a.data.tema === tema.slug && a.data.convocatoria === ex.slug)
-            // En orden natural (apartado a2 antes que b2) y en minúscula, porque van dentro de la frase.
-            const etiquetas = partes
-              .flatMap((p) => rotulos[p.id] ?? [])
-              .sort((x, y) => x.localeCompare(y, "es", { numeric: true }))
-            // "Bloque C, apartado a2" y "Bloque C, apartado b2" se juntan en "Bloque C, apartados a2 y b2".
-            const apartados = etiquetas.map((e) => e.match(/^(.+), apartado (.+)$/))
-            const mismoBloque =
-              etiquetas.length > 1 && apartados.every((m) => m && m[1] === apartados[0]![1])
-            const texto = mismoBloque
-              ? `${apartados[0]![1]}, apartados ${apartados.map((m) => m![2]).join(" y ")}`
-              : etiquetaEjercicios(etiquetas)
-            const rotulo = texto.replace(/\b(Bloque|Ejercicios?)\b/g, (m) => m.toLowerCase())
-            return { examen: ex.titulo, rotulo }
+            const etiquetas = partes.flatMap((p) => rotulos[p.id] ?? [])
+            return { examen: ex.titulo, rotulo: etiquetas.length > 0 ? rotuloEnFrase(etiquetas) : "" }
           })
           .filter((a) => a.rotulo)
         const iguales = apariciones.length > 0 && apariciones.every((a) => a.rotulo === apariciones[0].rotulo)
@@ -58,14 +47,7 @@ const textos = idioma
   ? examenes
       .map((ex) => {
         const archivo = archivos.find((a) => a.data.tema === "comprension-lectora" && a.data.convocatoria === ex.slug)
-        const titulos = [...(archivo?.body ?? "").matchAll(/class="(?:en|fr)-heading[^"]*"[^>]*>([\s\S]*?)<\/p>/g)].map(
-          (m) =>
-            m[1]
-              .replace(/<[^>]+>/g, "")
-              .replace(/^TEXT \d+:\s*/i, "")
-              .trim(),
-        )
-        return { examen: ex.titulo, titulos }
+        return { examen: ex.titulo, titulos: titulosTextos(archivo?.body ?? "") }
       })
       .filter((t) => t.titulos.length > 0)
   : []

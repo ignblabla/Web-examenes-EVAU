@@ -133,6 +133,28 @@ export function etiquetaEjercicios(etiquetas: string[]) {
   return etiquetas.join(" y ")
 }
 
+// Rótulos de un tema en un examen para ir dentro de una frase: en orden natural, con los
+// apartados de un mismo bloque juntos ("bloque C, apartados a2 y b2") y en minúscula.
+export function rotuloEnFrase(etiquetas: string[]) {
+  const ordenadas = [...etiquetas].sort((x, y) => x.localeCompare(y, "es", { numeric: true }))
+  const apartados = ordenadas.map((e) => e.match(/^(.+), apartado (.+)$/))
+  const mismoBloque = ordenadas.length > 1 && apartados.every((m) => m && m[1] === apartados[0]![1])
+  const texto = mismoBloque
+    ? `${apartados[0]![1]}, apartados ${apartados.map((m) => m![2]).join(" y ")}`
+    : etiquetaEjercicios(ordenadas)
+  return texto.replace(/\b(Bloque|Ejercicios?)\b/g, (m) => m.toLowerCase())
+}
+
+// Títulos de los textos de comprensión lectora de un MDX de idiomas, tal como salen en el examen.
+export function titulosTextos(mdx: string) {
+  return [...mdx.matchAll(/class="(?:en|fr)-heading[^"]*"[^>]*>([\s\S]*?)<\/p>/g)].map((m) =>
+    m[1]
+      .replace(/<[^>]+>/g, "")
+      .replace(/^TEXT \d+:\s*/i, "")
+      .trim(),
+  )
+}
+
 // Páginas que reúnen todas las asignaturas: un curso (/examenes-2026/), la convocatoria
 // extraordinaria de todos los cursos y los años anteriores al último.
 export function rutaCurso(anio: number) {

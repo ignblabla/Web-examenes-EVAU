@@ -12,6 +12,7 @@ import Ecuacion from "../../../components/oficial/Ecuacion.astro"
 import Ejercicio from "../../../components/oficial/Ejercicio.astro"
 import Nuclido from "../../../components/oficial/Nuclido.astro"
 import Resuelto from "../../../components/oficial/Resuelto.astro"
+import IndiceExamen from "../../../components/IndiceExamen.astro"
 import { buscarAsignatura, nombreSeo, nombresSeo, otraLengua } from "../../../data/asignaturas"
 import { cabeceras } from "../../../data/cabeceras"
 import {
@@ -275,6 +276,8 @@ const jsonLd = {
 
   <section class="exam-body">
     <div class="container">
+      <IndiceExamen asignatura={asignatura} partes={ejercicios} />
+
       <article class="exam-sheet">
         {cabecera && <Cabecera cabecera={cabecera} />}
         <div
