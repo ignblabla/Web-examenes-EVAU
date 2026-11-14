@@ -4,6 +4,7 @@
 // Uso: npm run seo  (compila y verifica)  ·  node scripts/verificar-seo.mjs [carpeta]
 import fs from "node:fs"
 import path from "node:path"
+import { sinSitemap } from "../src/data/sin-sitemap.mjs"
 
 const dist = process.argv[2] ?? "dist"
 if (!fs.existsSync(path.join(dist, "sitemap-0.xml"))) {
@@ -92,7 +93,9 @@ for (const { ruta, html } of paginas) {
     titulos.set(title, [...(titulos.get(title) ?? []), ruta])
     descripciones.set(descripcion, [...(descripciones.get(descripcion) ?? []), ruta])
     if (!canonical) aviso("sin canonical")
-    if (!enSitemap.has(ruta)) aviso("indexable pero fuera del sitemap")
+    if (sinSitemap.includes(ruta)) {
+      if (enSitemap.has(ruta)) aviso("debería estar fuera del sitemap (sinSitemap)")
+    } else if (!enSitemap.has(ruta)) aviso("indexable pero fuera del sitemap")
   }
   if (canonical && !canonical.endsWith(ruta)) aviso(`canonical que no apunta a sí misma: ${canonical}`)
   if (!/<meta property="og:image" content="https:\/\/[^"]+"/.test(html)) aviso("sin og:image")

@@ -61,7 +61,8 @@ Las páginas se generan de forma estática con Astro, MDX y KaTeX. Los datos est
 ## Sitemap y rastreo
 
 - Lo genera `@astrojs/sitemap` en `astro.config.mjs` y publica `/sitemap-index.xml`.
-- El filtro excluye las asignaturas con `indexable: false`, que además llevan `noindex`. Ahora mismo todas son indexables.
+- El filtro excluye las asignaturas con `indexable: false`, que además llevan `noindex` (ahora mismo todas son indexables), y las páginas legales de `src/data/sin-sitemap.mjs` (aviso legal, cookies, privacidad y contacto), que siguen siendo indexables. `serialize` deja solo `loc` y `lastmod`.
+- Las fechas de git necesitan el historial completo: el checkout de `.github/workflows/deploy.yml` lleva `fetch-depth: 0`, y si el repositorio es un clon superficial el build falla a propósito (`fechas.ts`).
 - `serialize` añade `<lastmod>` con `fechaSitemap()` de `src/data/fechas.ts`, la misma fecha que se ve en la página. Desde git (`fechasDe()`): exámenes, temas (generales y por año) y páginas de año (`/<asignatura>/<año>/` y `/examenes-<año>/`, con "Actualizado el…"), que toman la fecha más reciente de sus archivos. Fechas fijas anotadas a mano: orientaciones (`revisado`), calendario (`actualizado`) y la página de PAU/PEvAU (`fechasNombres` en `src/data/examenes.ts`).
 - `public/robots.txt` permite los buscadores y, de forma explícita, los buscadores con IA (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot…), bloquea los bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended…) y apunta al sitemap.
 - `/llms.txt` lo genera `src/pages/llms.txt.ts` en cada build a partir de los datos (asignaturas, años, temas, orientaciones).

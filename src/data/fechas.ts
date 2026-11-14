@@ -14,6 +14,19 @@ let historial: Map<string, { primera: string; ultima: string }> | undefined
 function historialDe(archivo: string) {
   if (!historial) {
     historial = new Map()
+    // Una sola comprobación por build (aquí solo se entra la primera vez): con un clon
+    // superficial, git log atribuye todos los archivos al último commit y todas las páginas
+    // saldrían con la fecha del despliegue. Mejor que el build falle.
+    let superficial = false
+    try {
+      superficial =
+        execFileSync("git", ["rev-parse", "--is-shallow-repository"], { encoding: "utf8" }).trim() === "true"
+    } catch {
+      // Sin git: se trata abajo.
+    }
+    if (superficial) {
+      throw new Error("Historial de git incompleto (clon superficial): usa fetch-depth: 0 en el checkout")
+    }
     try {
       const salida = execFileSync("git", ["log", "--format=%cs", "--name-only", "--", "src/content"], {
         encoding: "utf8",

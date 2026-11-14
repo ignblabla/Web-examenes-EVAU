@@ -21,6 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Historial completo: fechasDe() (src/data/fechas.ts) saca del git log de cada MDX la
+          # fecha de "Revisado el", dateModified y <lastmod>. Con el clon superficial por defecto,
+          # todas las páginas tendrían la fecha del despliegue.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           # La misma versión que en Cloudflare Pages y en local (Astro 5).
