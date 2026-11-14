@@ -2,6 +2,7 @@
 import Icon from "../components/Icon.astro"
 import { asignaturas } from "../data/asignaturas"
 import { rutaAnteriores, rutaNombres } from "../data/examenes"
+import { calendario, rutaFechas } from "../data/calendario"
 import { fechaLarga } from "../data/fechas"
 import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
 import { editor, migas, persona, referenciaAutor, referenciaEditor } from "../data/sitio"
@@ -164,6 +165,10 @@ const jsonLd = {
         El nombre oficial cambió, pero casi todo el mundo la sigue llamando Selectividad. En esta web
         usamos Selectividad para todos los años, PEvAU para los exámenes de 2021 a 2024 y PAU desde
         2025.
+      </p>
+      <p>
+        ¿Cuándo es la próxima? Lo tienes en las{" "}
+        <a href={rutaFechas}>fechas y el horario de la PAU {calendario.anio} en Andalucía</a>.
       </p>
 
       <h2 id="que-cambio">¿Qué cambió en el examen?</h2>

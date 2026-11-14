@@ -1,0 +1,324 @@
+---
+import Icon from "../components/Icon.astro"
+import { asignaturas } from "../data/asignaturas"
+import { calendario as c, diaConSemana, diasEnTexto, ordinales, rutaFechas } from "../data/calendario"
+import type { Materia } from "../data/calendario"
+import { rutaNombres } from "../data/examenes"
+import { fechaLarga } from "../data/fechas"
+import { rutaOrientaciones } from "../data/orientaciones"
+import { editor, migas, persona, referenciaAutor, referenciaEditor } from "../data/sitio"
+import Base from "../layouts/Base.astro"
+
+// Fechas y horario de la PAU de Andalucía. Todo sale de src/data/calendario.ts (y este, de la
+// página oficial copiada en fuentes/). La URL no lleva año: cada curso se actualiza el archivo.
+// Fases de la Lengua Extranjera: Real Decreto 534/2024 (BOE-A-2024-11858), texto consolidado
+// consultado el 14 de noviembre de 2026. La norma no usa "fase de acceso" ni "fase de admisión":
+// art. 12.1 c), la Lengua Extranjera II es uno de los ejercicios de la prueba de acceso; art. 22.1,
+// quien quiera mejorar su nota de admisión «podrán examinarse de una segunda lengua extranjera
+// distinta de la que hubieran elegido en dicha prueba».
+const boe = "https://www.boe.es/buscar/act.php?id=BOE-A-2024-11858"
+const { anio } = c
+const ordinaria = diasEnTexto(c.ordinaria)
+const extraordinaria = diasEnTexto(c.extraordinaria)
+
+const opciones = [
+  `Fechas PAU Andalucía ${anio}: calendario y horario de exámenes`,
+  `Fechas PAU Andalucía ${anio}: calendario y horario`,
+  `Selectividad Andalucía ${anio}: fechas y horario`,
+]
+const titulo = opciones.find((t) => t.length <= 60) ?? opciones.at(-1)!
+const descripciones = [
+  `Selectividad ${anio} en Andalucía (PAU, antes PEvAU): ordinaria el ${ordinaria} y extraordinaria el ${extraordinaria}. Horario de cada examen.`,
+  `Selectividad ${anio} en Andalucía (PAU, antes PEvAU): ordinaria el ${ordinaria} y extraordinaria el ${extraordinaria}.`,
+]
+const descripcion = descripciones.find((d) => d.length <= 160) ?? descripciones.at(-1)!
+const h1 = `Fechas de Selectividad ${anio} en Andalucía: calendario y horario de la PAU`
+
+const respuesta = `La Selectividad ${anio} en Andalucía (PAU) es el ${ordinaria} de ${anio} en la convocatoria ordinaria y el ${extraordinaria} de ${anio} en la extraordinaria.`
+
+const nombre = (slug: string) => asignaturas.find((a) => a.slug === slug)?.nombre ?? slug
+const destacadas = ["matematicas-ii", "matematicas-aplicadas", "fisica", "ingles", "frances"]
+const esDestacada = (m: Materia) => m.asignaturas?.some((s) => destacadas.includes(s)) ?? false
+
+// Día y hora de cada materia, para las preguntas frecuentes.
+function cuando(texto: string) {
+  for (const f of c.manana) {
+    const i = f.dias.findIndex((d) => d.some((m) => m.nombre.includes(texto)))
+    if (i >= 0)
+      return {
+        dia: i,
+        hora: f.hora.replace(" - ", " a "),
+        fecha: diaConSemana(c.ordinaria[i]),
+        fechaExtra: diaConSemana(c.extraordinaria[i]),
+      }
+  }
+  throw new Error(`No está en el horario: ${texto}`)
+}
+const acceso = cuando("fase de acceso")
+const admision = cuando("fase de admisión")
+const fases = [
+  "En la fase de acceso, la Lengua Extranjera II es uno de los ejercicios de la prueba de acceso (artículo 12.1 c del Real Decreto 534/2024).",
+  "En la fase de admisión, quien quiera mejorar su nota de admisión puede examinarse de una segunda lengua extranjera, distinta de la que eligió en la prueba de acceso (artículo 22.1).",
+]
+const inicio = (hora: string) => hora.split(" - ")[0].replace(/^0/, "")
+// Por cada día, las materias de la web en orden de franja: "Física a las 13:30".
+const orden = c.ordinaria.map((fecha, i) => {
+  const lista = c.manana.flatMap((f) =>
+    f.dias[i].filter(esDestacada).map((m) => `${m.nombre} a las ${inicio(f.hora)}`),
+  )
+  return `${ordinales[i]} (${diaConSemana(fecha)}), ${enLista(lista)}`
+})
+function enLista(partes: string[]) {
+  return partes.length < 2 ? partes.join("") : `${partes.slice(0, -1).join(", ")} y ${partes.at(-1)}`
+}
+
+const boja = c.pendienteBoja
+  ? " Las fechas están pendientes de publicación en el BOJA; revisaremos esta página cuando se publiquen."
+  : ""
+
+const faqs = [
+  {
+    pregunta: `¿Cuándo es la Selectividad ${anio} en Andalucía?`,
+    respuesta: `La convocatoria ordinaria de la PAU ${anio} es el ${ordinaria} de ${anio}.${boja}`,
+  },
+  {
+    pregunta: "¿Cuándo es la extraordinaria?",
+    respuesta: `La convocatoria extraordinaria es el ${extraordinaria} de ${anio}. La web oficial publica un único horario por días para la prueba: el 1.er día es el ${diaConSemana(c.extraordinaria[0])}, el 2.º el ${diaConSemana(c.extraordinaria[1])} y el 3.er el ${diaConSemana(c.extraordinaria[2])}.`,
+  },
+  {
+    pregunta: "¿En qué orden van los exámenes?",
+    respuesta: `Cada día tiene tres franjas de mañana (${enLista(c.manana.map((f) => inicio(f.hora)))}). El primer día empieza con ${c.manana[0].dias[0].map((m) => m.nombre).join(" y ")} y sigue con ${c.manana[1].dias[0].map((m) => m.nombre).join(" o ")}. Las asignaturas de esta web van así: ${orden.join("; ")}. El horario completo de todas las asignaturas está en la tabla.`,
+  },
+  {
+    pregunta: "¿Cuándo es el examen de Inglés o Francés?",
+    respuesta: `En el horario oficial Inglés y Francés aparecen como «Lengua Extranjera», sin nombrar el idioma. Hay dos exámenes: Lengua Extranjera (fase de acceso), el ${ordinales[acceso.dia]} de ${acceso.hora}, y Lengua Extranjera (fase de admisión), el ${ordinales[admision.dia]} de ${admision.hora}. En la convocatoria ordinaria son el ${acceso.fecha} y el ${admision.fecha}; en la extraordinaria, el ${acceso.fechaExtra} y el ${admision.fechaExtra}. ${fases.join(" ")}`,
+  },
+]
+
+const url = new URL(Astro.url.pathname, Astro.site).href
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    editor(Astro.site),
+    persona(Astro.site),
+    {
+      "@type": "Article",
+      "@id": `${url}#articulo`,
+      headline: h1,
+      name: titulo,
+      description: descripcion,
+      url,
+      mainEntityOfPage: url,
+      image: new URL("/og/inicio.png", Astro.site).href,
+      inLanguage: "es",
+      datePublished: c.actualizado,
+      dateModified: c.actualizado,
+      author: referenciaAutor(Astro.site),
+      publisher: referenciaEditor(Astro.site),
+      isAccessibleForFree: true,
+      citation: c.fuente,
+      about: [
+        { "@type": "Thing", name: "Prueba de Acceso a la Universidad (PAU) de Andalucía" },
+        { "@type": "Thing", name: "Selectividad" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${url}#preguntas`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.pregunta,
+        acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+      })),
+    },
+    migas(Astro.site, [{ nombre: `Fechas PAU ${anio}`, ruta: rutaFechas }]),
+  ],
+}
+
+---
+
+<Base title={titulo} description={descripcion} jsonLd={jsonLd} type="article" modified={c.actualizado}>
+  <section class="hero exam-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Fechas PAU {anio}</span>
+      </nav>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Selectividad Andalucía · Curso {c.curso}
+      </div>
+      <h1>
+        Fechas de Selectividad {anio} en Andalucía:
+        <br />
+        <em>calendario y horario de la PAU</em>
+      </h1>
+      <p class="hero-lead" id="respuesta">{respuesta}</p>
+      <p class="fechas-meta">
+        {c.pendienteBoja && (
+          <>
+            <strong>Pendiente de publicación en BOJA.</strong> Así lo indica la web oficial;
+            revisaremos esta página cuando se publique.{" "}
+          </>
+        )}
+        Última actualización: <time datetime={c.actualizado}>{fechaLarga(c.actualizado)}</time>.{" "}
+        <a href={c.fuente} rel="noopener" target="_blank">Ver el calendario oficial</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <article class="legal-sheet orientaciones">
+      <h2 id="convocatorias">Convocatorias de la PAU {anio}</h2>
+      <ul>
+        <li><strong>Ordinaria:</strong> {diasEnTexto(c.ordinaria, true)}.</li>
+        <li><strong>Extraordinaria:</strong> {diasEnTexto(c.extraordinaria, true)}.</li>
+      </ul>
+
+      <h2 id="horario">Horario de los exámenes</h2>
+      <p>
+        La web oficial publica un único horario por días para la prueba; las fechas de la
+        extraordinaria se corresponden con el 1.er, 2.º y 3.er día. Destacamos las asignaturas que
+        resolvemos en esta web, con enlace a sus orientaciones.
+      </p>
+      <div class="legal-table tabla-horario">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Hora</th>
+              {
+                c.ordinaria.map((fecha, i) => (
+                  <th scope="col">
+                    {ordinales[i]}
+                    <span>{diaConSemana(fecha)} (ordinaria)</span>
+                    <span>{diaConSemana(c.extraordinaria[i])} (extraordinaria)</span>
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{c.citacion}*</th>
+              {c.ordinaria.map(() => <td>Citación*</td>)}
+            </tr>
+            {
+              c.manana.map((f) => (
+                <tr>
+                  <th scope="row">{f.hora}</th>
+                  {f.dias.map((materias) => (
+                    <td>
+                      <ul>
+                        {materias.map((m) =>
+                          esDestacada(m) ? (
+                            <li class="destacada">
+                              {m.asignaturas!.length === 1 ? (
+                                <a href={rutaOrientaciones(m.asignaturas![0])}>{m.nombre}</a>
+                              ) : (
+                                <>
+                                  {m.nombre}
+                                  <span>
+                                    {m.asignaturas!.map((s, j) => (
+                                      <>
+                                        {j > 0 && (j === m.asignaturas!.length - 1 ? " o " : ", ")}
+                                        <a href={rutaOrientaciones(s)}>{nombre(s)}</a>
+                                      </>
+                                    ))}
+                                  </span>
+                                </>
+                              )}
+                            </li>
+                          ) : (
+                            <li>{m.nombre}</li>
+                          ),
+                        )}
+                      </ul>
+                    </td>
+                  ))}
+                </tr>
+              ))
+            }
+            <tr>
+              <th scope="rowgroup" colspan={c.ordinaria.length + 1} class="tabla-horario-tarde">
+                Horario de tarde (solo incompatibilidades horarias)
+              </th>
+            </tr>
+            {
+              c.tarde.map((f) => (
+                <tr>
+                  <th scope="row">{f.hora}</th>
+                  {f.dias.map((materias) => (
+                    <td>{materias.length ? materias.map((m) => m.nombre).join(", ") : "—"}</td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <ul class="orientaciones-notas">
+        <li>
+          * La citación de las {c.citacion} es la fijada por defecto: cada universidad puede fijar
+          otra según la sede.
+        </li>
+        <li>Los horarios están referidos al horario peninsular español.</li>
+        <li>
+          Inglés y Francés aparecen como «Lengua Extranjera», con dos exámenes: fase de acceso
+          {` (${ordinales[acceso.dia]}, de ${acceso.hora})`} y fase de admisión
+          {` (${ordinales[admision.dia]}, de ${admision.hora}). `}
+          En la fase de acceso, la Lengua Extranjera II es uno de los ejercicios de la prueba de acceso
+          (<a href={boe} rel="noopener" target="_blank">artículo 12.1 c del Real Decreto 534/2024</a>).{" "}
+          {fases[1]}
+        </li>
+        <li>
+          Si te presentas a Historia de España y a Historia de la Filosofía, según la web oficial
+          haces siempre Historia de España en la segunda franja del primer día; la otra, en el
+          horario de coincidencia horaria que fije la Comisión Interuniversitaria.
+        </li>
+      </ul>
+
+      <h2 id="examenes-resueltos">Cuándo publicamos los exámenes resueltos</h2>
+      <p>
+        Resolvemos cada examen de la PAU {anio} después de que se celebre y lo publicamos en la
+        página de su asignatura en cuanto está listo, junto con los de años anteriores:
+      </p>
+      <ul>
+        {
+          destacadas.map((slug) => (
+            <li>
+              <a href={`/${slug}/`}>Exámenes de {nombre(slug)} resueltos</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      {
+        faqs.map((f) => (
+          <>
+            <h3>{f.pregunta}</h3>
+            <p>{f.respuesta}</p>
+          </>
+        ))
+      }
+      <p>
+        ¿Te preguntas si la PAU y la PEvAU son lo mismo? Lo explicamos en{" "}
+        <a href={rutaNombres}>PAU, PEvAU, EBAU o Selectividad</a>.
+      </p>
+
+      <p class="orientaciones-revision">
+        Fuente: <a href={c.fuente} rel="noopener" target="_blank">calendario de la Prueba de Acceso
+        a la Universidad</a>, {c.organismo}. Página actualizada el{" "}
+        <time datetime={c.actualizado}>{fechaLarga(c.actualizado)}</time>.
+      </p>
+    </article>
+
+    <div class="container orientaciones-volver">
+      <a href="/#asignaturas" class="button button--dark">
+        Ver los exámenes resueltos
+        <Icon name="arrow-up-right" />
+      </a>
+    </div>
+  </section>
+</Base>

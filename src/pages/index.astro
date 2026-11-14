@@ -7,6 +7,7 @@ import Icon from "../components/Icon.astro"
 import SubjectSymbol from "../components/SubjectSymbol.astro"
 import { asignaturas, cursoDe } from "../data/asignaturas"
 import { orientaciones, rutaOrientaciones } from "../data/orientaciones"
+import { calendario, diasEnTexto, rutaFechas } from "../data/calendario"
 import { cursos, nombreExamen, rutaAnio, rutaAnteriores, rutaCurso, rutaExamen, rutaExtraordinaria, rutaNombres } from "../data/examenes"
 import { editor, referenciaEditor, sitio } from "../data/sitio"
 import Base from "../layouts/Base.astro"
@@ -151,6 +152,8 @@ const reservasUltimo = conteosReservas.size === 1 ? [...conteosReservas][0] : un
           <a href={rutaOrientaciones("matematicas-ii")}>Matemáticas II</a> cambia (7 ejercicios,
           respondes 5, 2 puntos cada uno). En <a href="#orientaciones">el resto de asignaturas</a>
           se mantiene el formato de 2026.
+          <a href={rutaFechas}>Fechas de la PAU {calendario.anio}</a>: ordinaria el
+          {` ${diasEnTexto(calendario.ordinaria)}`}.
         </p>
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>

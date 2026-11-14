@@ -2,6 +2,7 @@
 import Logo from "./Logo.astro"
 import { asignaturas } from "../data/asignaturas"
 import { cursos, rutaAnteriores, rutaCurso, rutaExtraordinaria, rutaNombres } from "../data/examenes"
+import { calendario, rutaFechas } from "../data/calendario"
 import { paginasLegales } from "../data/legal"
 import { autor, contacto } from "../data/sitio"
 
@@ -23,6 +24,7 @@ const enlaces = asignaturas.filter((a) => a.indexable)
       <a href={rutaExtraordinaria}>Convocatoria extraordinaria</a>
       <a href={rutaAnteriores}>Años anteriores</a>
       <a href={rutaNombres}>PAU, PEvAU, EBAU o Selectividad</a>
+      <a href={rutaFechas}>Fechas de la PAU {calendario.anio}</a>
     </nav>
     <div class="footer-bottom">
       <nav class="footer-legal" aria-label="Información legal">

@@ -36,6 +36,8 @@ Las páginas se generan de forma estática con Astro, MDX y KaTeX. Los datos est
 - En los temas, `queCae` (Matemáticas) o `intro` (Física e idiomas) es el texto de qué suele caer; el recuento por convocatoria se calcula en la página. `espanol` acompaña al término del examen ("Reading (comprensión lectora)") y `corto` es el nombre abreviado para los title.
 - Todas las asignaturas tienen temas, también Física y Francés. Física tiene 5: campo gravitatorio, campo eléctrico y magnético, ondas, óptica geométrica y física cuántica y nuclear. Francés tiene 2: compréhension y compétence linguistique. Los temas se definen en `src/data/asignaturas.ts`, con `termino` (el nombre que usa el examen) e `intro` (el texto de la página).
 - Las convocatorias y los cursos están en `src/data/examenes.ts`. `prueba(anio)` devuelve "PEvAU" hasta 2024 y "PAU" desde 2025. Las rutas se construyen con `rutaAnio`, `rutaExamen` y `rutaTema`.
+- **Convocatoria extraordinaria desde 2027:** en 2027 cae en parte en junio (29 y 30 de junio y 1 de julio). Al añadir los exámenes de 2027 y siguientes, la URL sigue siendo `/[asignatura]/[año]/julio/`, pero el texto visible dice "convocatoria extraordinaria" (no "julio"). Los exámenes de 2021-2026, incluidos sus title, siguen con "julio". Todavía no está aplicado.
+- El calendario de la PAU (fechas y horario) está en `src/data/calendario.ts` y lo usa `/fechas-pau-andalucia/` (URL sin año). Cada curso se actualiza solo ese archivo; `pendienteBoja` se pone a `false` cuando se publique en el BOJA.
 - Las cabeceras oficiales de cada examen están en `src/data/cabeceras.ts`. Las figuras SVG están en `src/components/figuras/`.
 
 ## SEO: dónde se define cada cosa
